@@ -1,0 +1,14 @@
+[package]
+name = "bevy_mod_debugdump"
+version = "0.4.0"
+authors = ["Jakob Hellermann <jakob.hellermann@protonmail.com>"]
+edition = "2018"
+
+[dependencies]
+bevy = { git = "https://github.com/bevyengine/bevy/", branch = "master", default-features = false, features = ["render"] }
+
+[dev-dependencies]
+bevy = { git = "https://github.com/bevyengine/bevy/", branch = "master", default-features = false, features = ["render", "bevy_wgpu", "x11"] }
+
+[patch."https://github.com/bevyengine/bevy/"]
+bevy = { path = "../../../contrib/bevy/bevy" }
