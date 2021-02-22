@@ -16,7 +16,7 @@ pub fn render_graph_dot(graph: &RenderGraph) -> String {
 
     for node in graph.iter_nodes() {
         let name = node.name.as_deref().unwrap_or("<node>");
-        let type_name = node.type_name.map(utils::short_name).unwrap_or_default();
+        let type_name = utils::short_name(node.type_name);
 
         let outputs = node
             .output_slots
