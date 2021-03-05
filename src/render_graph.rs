@@ -14,7 +14,10 @@ pub fn render_graph_dot(graph: &RenderGraph) -> String {
 
     dot.edge_attributes(&[font]).node_attributes(&[font]);
 
-    for node in graph.iter_nodes() {
+    let mut nodes: Vec<_> = graph.iter_nodes().collect();
+    nodes.sort_by_key(|node_state| &node_state.type_name);
+
+    for node in &nodes {
         let name = node.name.as_deref().unwrap_or("<node>");
         let type_name = utils::short_name(node.type_name);
 
