@@ -57,7 +57,24 @@ impl DotGraph {
         self.write(format!("\t{} {}", id, format_attributes(attrs)));
     }
 
-    pub fn add_edge(&mut self, from: &str, to: &str, attrs: &[(&str, &str)]) {
+    pub fn add_edge(
+        &mut self,
+        from: &str,
+        from_port: Option<&str>,
+        to: &str,
+        to_port: Option<&str>,
+        attrs: &[(&str, &str)],
+    ) {
+        let from = if let Some(from_port) = from_port {
+            format!("{}:{}", from, from_port)
+        } else {
+            from.to_string()
+        };
+        let to = if let Some(to_port) = to_port {
+            format!("{}:{}", to, to_port)
+        } else {
+            to.to_string()
+        };
         self.write(format!("\t{} -> {} {}", from, to, format_attributes(attrs)));
     }
 
