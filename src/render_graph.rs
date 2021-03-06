@@ -1,8 +1,8 @@
-use crate::{
-    dot::{font_tag, html_escape, DotGraph},
-    utils,
+use crate::dot::{font_tag, html_escape, DotGraph};
+use bevy::{
+    reflect::TypeRegistration,
+    render::render_graph::{Edge, NodeId, RenderGraph},
 };
-use bevy::render::render_graph::{Edge, NodeId, RenderGraph};
 use itertools::{EitherOrBoth, Itertools};
 
 pub fn render_graph_dot(graph: &RenderGraph) -> String {
@@ -22,7 +22,7 @@ pub fn render_graph_dot(graph: &RenderGraph) -> String {
 
     for node in &nodes {
         let name = node.name.as_deref().unwrap_or("<node>");
-        let type_name = utils::short_name(node.type_name);
+        let type_name = TypeRegistration::get_short_name(node.type_name);
 
         let inputs = node
             .input_slots
