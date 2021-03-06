@@ -103,14 +103,13 @@ pub fn render_graph_dot(graph: &RenderGraph) -> String {
                 } => {
                     let input = graph.get_node_state(*input_node).unwrap();
                     let input_slot = &input.input_slots.iter().nth(*input_index).unwrap().info;
-                    let label = format!("\"{}\"", input_slot.name);
 
                     dot.add_edge(
                         &node_id(output_node),
-                        Some(&format!("{}:e", input_index)),
+                        Some(&format!("{}:e", output_index)),
                         &node_id(input_node),
-                        Some(&format!("{}:w", output_index)),
-                        &[("label", &label), edge_color],
+                        Some(&format!("{}:w", input_index)),
+                        &[edge_color],
                     );
                 }
                 Edge::NodeEdge {
