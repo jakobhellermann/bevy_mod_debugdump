@@ -19,8 +19,12 @@ pub fn font_tag(text: &str, color: &str, size: u8) -> String {
     )
 }
 
-fn html_escape(input: &str) -> String {
-    input.replace('<', "&lt;").replace('>', "&gt;")
+pub fn html_escape(input: &str) -> String {
+    input
+        .replace("&", "&amp;")
+        .replace("\"", "&quot;")
+        .replace('<', "&lt;")
+        .replace('>', "&gt;")
 }
 
 impl DotGraph {

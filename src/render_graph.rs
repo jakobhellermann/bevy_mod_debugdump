@@ -1,25 +1,9 @@
-use std::borrow::Cow;
-
 use crate::{
-    dot::{font_tag, DotGraph},
+    dot::{font_tag, html_escape, DotGraph},
     utils,
 };
 use bevy::render::render_graph::{Edge, NodeId, RenderGraph};
 use itertools::{EitherOrBoth, Itertools};
-
-/// Escape tags in such a way that it is suitable for inclusion in a
-/// Graphviz HTML label.
-pub fn escape_html<'a, S>(s: S) -> Cow<'a, str>
-where
-    S: Into<Cow<'a, str>>,
-{
-    s.into()
-        .replace("&", "&amp;")
-        .replace("\"", "&quot;")
-        .replace("<", "&lt;")
-        .replace(">", "&gt;")
-        .into()
-}
 
 pub fn render_graph_dot(graph: &RenderGraph) -> String {
     let options = [("rankdir", "LR"), ("ranksep", "1.0")];
@@ -47,9 +31,9 @@ pub fn render_graph_dot(graph: &RenderGraph) -> String {
             .map(|(index, slot)| {
                 format!(
                     "<TD PORT=\"{}\">{}: {}</TD>",
-                    escape_html(format!("{}", index)),
-                    escape_html(slot.info.name.clone()),
-                    escape_html(format!("{:?}", slot.info.resource_type))
+                    html_escape(&format!("{}", index)),
+                    html_escape(&slot.info.name),
+                    html_escape(&format!("{:?}", slot.info.resource_type))
                 )
             })
             .collect::<Vec<_>>();
@@ -60,10 +44,10 @@ pub fn render_graph_dot(graph: &RenderGraph) -> String {
             .enumerate()
             .map(|(index, slot)| {
                 format!(
-                    "<TD PORT=\"{}\">{}: {:?}</TD>",
-                    escape_html(format!("{}", index)),
-                    escape_html(slot.info.name.clone()),
-                    escape_html(format!("{:?}", slot.info.resource_type))
+                    "<TD PORT=\"{}\">{}: {}</TD>",
+                    html_escape(&format!("{}", index)),
+                    html_escape(&slot.info.name),
+                    html_escape(&format!("{:?}", slot.info.resource_type))
                 )
             })
             .collect::<Vec<_>>();
@@ -83,9 +67,9 @@ pub fn render_graph_dot(graph: &RenderGraph) -> String {
             .collect::<String>();
 
         let label = format!(
-            "<<TABLE><TR><TD PORT=\"title\" BORDER=\"0\" COLSPAN=\"2\">{}<BR/>{}</TD></TR>{}</TABLE>>",
-            escape_html(name),
-            font_tag(&escape_html(&type_name), "red", 10),
+            "<<TABLE STYLE=\"rounded\"><TR><TD PORT=\"title\" BORDER=\"0\" COLSPAN=\"2\">{}<BR/>{}</TD></TR>{}</TABLE>>",
+            html_escape(name),
+            font_tag(&type_name, "red", 10),
             slots,
         );
 
@@ -101,9 +85,6 @@ pub fn render_graph_dot(graph: &RenderGraph) -> String {
                     output_node,
                     output_index,
                 } => {
-                    let input = graph.get_node_state(*input_node).unwrap();
-                    let input_slot = &input.input_slots.iter().nth(*input_index).unwrap().info;
-
                     dot.add_edge(
                         &node_id(output_node),
                         Some(&format!("{}:e", output_index)),
@@ -121,7 +102,7 @@ pub fn render_graph_dot(graph: &RenderGraph) -> String {
                         Some("title:e"),
                         &node_id(input_node),
                         Some("title:w"),
-                        &[("style", "dashed")],
+                        &[],
                     );
                 }
             }
