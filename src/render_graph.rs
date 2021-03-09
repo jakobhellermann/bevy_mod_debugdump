@@ -11,7 +11,7 @@ pub fn render_graph_dot(graph: &RenderGraph) -> String {
 
     // Convert to format fitting GraphViz node id requirements
     let node_id = |id: &NodeId| format!("{}", id.uuid().as_u128());
-    let font = ("fontname", "Roboto");
+    let font = ("fontname", "Helvetica");
     let shape = ("shape", "plaintext");
     let edge_color = ("color", "\"blue\"");
 
