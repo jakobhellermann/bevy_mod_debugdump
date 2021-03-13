@@ -7,6 +7,7 @@ edition = "2018"
 
 [dependencies]
 bevy = { git = "https://github.com/bevyengine/bevy/", default-features = false, features = ["render"] }
+pretty-type-name = "0.1"
 itertools = "0.10.0"
 
 [dev-dependencies]
