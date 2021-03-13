@@ -6,8 +6,8 @@ use bevy::{
 use itertools::{EitherOrBoth, Itertools};
 
 pub fn render_graph_dot(graph: &RenderGraph) -> String {
-    let options = [("rankdir", "LR"), ("ranksep", "1.0")];
-    let mut dot = DotGraph::new("RenderGraph", &options);
+    let options = [("rankdir=LR"), ("ranksep=1.0")];
+    let mut dot = DotGraph::digraph("RenderGraph", &options);
 
     // Convert to format fitting GraphViz node id requirements
     let node_id = |id: &NodeId| format!("{}", id.uuid().as_u128());
@@ -85,7 +85,7 @@ pub fn render_graph_dot(graph: &RenderGraph) -> String {
                     output_node,
                     output_index,
                 } => {
-                    dot.add_edge(
+                    dot.add_edge_with_ports(
                         &node_id(output_node),
                         Some(&format!("{}:e", output_index)),
                         &node_id(input_node),
@@ -97,7 +97,7 @@ pub fn render_graph_dot(graph: &RenderGraph) -> String {
                     input_node,
                     output_node,
                 } => {
-                    dot.add_edge(
+                    dot.add_edge_with_ports(
                         &node_id(output_node),
                         Some("title:e"),
                         &node_id(input_node),
