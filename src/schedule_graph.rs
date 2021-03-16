@@ -121,9 +121,9 @@ fn add_systems_to_graph<T: SystemContainer>(graph: &mut DotGraph, kind: SystemKi
         return;
     }
 
-    for system_container in systems {
-        let system_name = system_container.name();
-        let short_system_name = pretty_type_name::pretty_type_name_str(&system_name);
+    for (i, system_container) in systems.iter().enumerate() {
+        let id = node_id(system_container, i);
+        let short_system_name = pretty_type_name::pretty_type_name_str(&system_container.name());
 
         let kind = match kind {
             SystemKind::ExclusiveStart => Some("Exclusive at start"),
@@ -144,21 +144,21 @@ fn add_systems_to_graph<T: SystemContainer>(graph: &mut DotGraph, kind: SystemKi
         };
 
         graph.add_node(
-            &quote(&system_name),
+            &id,
             // &[("label", &quote(&short_system_name))],
             &[("label", &label)],
         );
 
         add_dependency_labels(
             graph,
-            &system_name,
+            &id,
             SystemDirection::Before,
             system_container.before(),
             systems,
         );
         add_dependency_labels(
             graph,
-            &system_name,
+            &id,
             SystemDirection::After,
             system_container.after(),
             systems,
@@ -172,22 +172,22 @@ enum SystemDirection {
 }
 fn add_dependency_labels(
     graph: &mut DotGraph,
-    system_name: &str,
+    system_node_id: &str,
     direction: SystemDirection,
     requirements: &[Box<dyn SystemLabel>],
     other_systems: &[impl SystemContainer],
 ) {
     for requirement in requirements {
         let mut found = false;
-        for node in other_systems
+        for (i, dependency) in other_systems
             .iter()
-            .filter(|node| node.labels().contains(requirement))
+            .enumerate()
+            .filter(|(_, node)| node.labels().contains(requirement))
         {
             found = true;
 
-            let before_id = node.name();
-            let me = quote(system_name);
-            let other = quote(&before_id);
+            let me = system_node_id;
+            let other = node_id(dependency, i);
 
             match direction {
                 SystemDirection::Before => graph.add_edge(&me, &other, &[("constraint", "false")]),
@@ -196,6 +196,10 @@ fn add_dependency_labels(
         }
         assert!(found);
     }
+}
+
+fn node_id(system: &impl SystemContainer, i: usize) -> String {
+    format!("\"{}{}\"", system.name(), i)
 }
 
 fn quote(str: &str) -> String {
