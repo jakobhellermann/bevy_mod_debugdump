@@ -88,21 +88,25 @@ fn system_stage_subgraph(
 
     add_systems_to_graph(
         &mut sub,
+        schedule_name,
         SystemKind::ExclusiveStart,
         system_stage.exclusive_at_start_systems(),
     );
     add_systems_to_graph(
         &mut sub,
+        schedule_name,
         SystemKind::ExclusiveBeforeCommands,
         system_stage.exclusive_before_commands_systems(),
     );
     add_systems_to_graph(
         &mut sub,
+        schedule_name,
         SystemKind::Parallel,
         system_stage.parallel_systems(),
     );
     add_systems_to_graph(
         &mut sub,
+        schedule_name,
         SystemKind::ExclusiveEnd,
         system_stage.exclusive_at_end_systems(),
     );
@@ -116,13 +120,18 @@ enum SystemKind {
     ExclusiveBeforeCommands,
     Parallel,
 }
-fn add_systems_to_graph<T: SystemContainer>(graph: &mut DotGraph, kind: SystemKind, systems: &[T]) {
+fn add_systems_to_graph<T: SystemContainer>(
+    graph: &mut DotGraph,
+    schedule_name: &str,
+    kind: SystemKind,
+    systems: &[T],
+) {
     if systems.is_empty() {
         return;
     }
 
     for (i, system_container) in systems.iter().enumerate() {
-        let id = node_id(system_container, i);
+        let id = node_id(schedule_name, system_container, i);
         let short_system_name = pretty_type_name::pretty_type_name_str(&system_container.name());
 
         let kind = match kind {
@@ -151,6 +160,7 @@ fn add_systems_to_graph<T: SystemContainer>(graph: &mut DotGraph, kind: SystemKi
 
         add_dependency_labels(
             graph,
+            schedule_name,
             &id,
             SystemDirection::Before,
             system_container.before(),
@@ -158,6 +168,7 @@ fn add_systems_to_graph<T: SystemContainer>(graph: &mut DotGraph, kind: SystemKi
         );
         add_dependency_labels(
             graph,
+            schedule_name,
             &id,
             SystemDirection::After,
             system_container.after(),
@@ -172,6 +183,7 @@ enum SystemDirection {
 }
 fn add_dependency_labels(
     graph: &mut DotGraph,
+    schedule_name: &str,
     system_node_id: &str,
     direction: SystemDirection,
     requirements: &[Box<dyn SystemLabel>],
@@ -187,7 +199,7 @@ fn add_dependency_labels(
             found = true;
 
             let me = system_node_id;
-            let other = node_id(dependency, i);
+            let other = node_id(schedule_name, dependency, i);
 
             match direction {
                 SystemDirection::Before => graph.add_edge(&me, &other, &[("constraint", "false")]),
@@ -198,8 +210,8 @@ fn add_dependency_labels(
     }
 }
 
-fn node_id(system: &impl SystemContainer, i: usize) -> String {
-    format!("\"{}{}\"", system.name(), i)
+fn node_id(schedule_name: &str, system: &impl SystemContainer, i: usize) -> String {
+    format!("\"{}_{}_{}\"", schedule_name, system.name(), i)
 }
 
 fn quote(str: &str) -> String {
