@@ -2,8 +2,10 @@ use bevy::prelude::*;
 
 mod dot;
 
+#[cfg(feature = "render_graph")]
 mod render_graph;
 mod schedule_graph;
+#[cfg(feature = "render_graph")]
 pub use render_graph::render_graph_dot;
 pub use schedule_graph::schedule_graph_dot;
 
@@ -20,6 +22,7 @@ pub use schedule_graph::schedule_graph_dot;
 ///         .run();
 /// }
 /// ```
+#[cfg(feature = "render_graph")]
 pub fn print_render_graph(render_graph: Res<bevy::render::render_graph::RenderGraph>) {
     let dot = render_graph_dot(&*render_graph);
     println!("{}", dot);

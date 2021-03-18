@@ -1,3 +1,4 @@
+#![cfg_attr(not(feature = "render_graph"), allow(dead_code))]
 pub struct DotGraph {
     buffer: String,
 }
