@@ -5,6 +5,7 @@ use bevy::{
 };
 use itertools::{EitherOrBoth, Itertools};
 
+/// Formats the render graph into a dot graph.
 pub fn render_graph_dot(graph: &RenderGraph) -> String {
     let options = [("rankdir=LR"), ("ranksep=1.0")];
     let mut dot = DotGraph::digraph("RenderGraph", &options);

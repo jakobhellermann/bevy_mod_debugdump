@@ -1,6 +1,7 @@
 use crate::{dot, dot::DotGraph};
 use bevy::ecs::{prelude::*, schedule::SystemContainer};
 
+/// Formats the schedule into a dot graph.
 pub fn schedule_graph_dot(schedule: &Schedule) -> String {
     schedule_graph(
         schedule,
