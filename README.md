@@ -18,7 +18,18 @@ fn print_render_graph(render_graph: Res<RenderGraph>) {
 }
 ```
 
-![bevy's render graph](docs/render_graph.png)
+![bevy's render graph](docs/render_graph.svg)
+
+<details>
+<summary>render graph for bevy's `multiple_windows` example</summary>
+
+![bevy's render graph](docs/render_graph_second_window.svg)
+</details>
+<details>
+<summary>render graph with `egui` plugin</summary>
+
+![bevy's render graph](docs/render_graph_egui.svg)
+</details>
 
 ### Schedule graph
 ```rust
