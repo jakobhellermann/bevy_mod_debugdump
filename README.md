@@ -44,3 +44,9 @@ fn main() {
 ```
 
 ![bevy's schedule graph](docs/schedule_graph.svg)
+
+## Bevy support table
+
+|bevy|bevy_mod_debugdump|
+|---|---|
+|0.5|0.1|
