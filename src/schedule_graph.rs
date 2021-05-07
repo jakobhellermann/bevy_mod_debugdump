@@ -7,11 +7,8 @@ pub fn schedule_graph_dot(schedule: &Schedule) -> String {
         schedule,
         "schedule",
         "digraph",
-        &[
-            "rankdir=\"LR\"",
-            "nodesep=0.05",
-            "node [shape=box, margin=0, height=0.4]",
-        ],
+        &[("rankdir", "LR"), ("nodesep", "0.05")],
+        &[("shape", "box"), ("margin", "0"), ("height", "0.4")],
         None,
     )
     .finish()
@@ -21,10 +18,11 @@ fn schedule_graph(
     schedule: &Schedule,
     schedule_name: &str,
     kind: &str,
-    options: &[&str],
+    attrs: &[(&str, &str)],
+    node_attrs: &[(&str, &str)],
     marker_node_id: Option<&str>,
 ) -> DotGraph {
-    let mut graph = DotGraph::new(schedule_name, kind, options);
+    let mut graph = DotGraph::new(schedule_name, kind, attrs).node_attributes(node_attrs);
 
     if let Some(marker_id) = marker_node_id {
         graph.add_invisible_node(marker_id);
@@ -33,19 +31,23 @@ fn schedule_graph(
     for (stage_name, stage) in schedule.iter_stages() {
         if let Some(system_stage) = stage.downcast_ref::<SystemStage>() {
             let subgraph = system_stage_subgraph(schedule_name, stage_name, system_stage);
-
             graph.add_sub_graph(subgraph);
         } else if let Some(schedule) = stage.downcast_ref::<Schedule>() {
             let name = format!("cluster_{:?}", stage_name);
-            let label = format!("label=\"{:?}\"", stage_name);
 
             let marker_id = marker_id(&schedule_name, stage_name);
+            let stage_name_str = format!("{:?}", stage_name);
 
             let subgraph = schedule_graph(
                 schedule,
                 &name,
                 "subgraph",
-                &[&label, "constraint=false", "rankdir=\"LR\""],
+                &[
+                    ("label", &stage_name_str),
+                    ("constraint", "false"),
+                    ("rankdir", "LR"),
+                ],
+                &[],
                 Some(&marker_id),
             );
             graph.add_sub_graph(subgraph);
@@ -72,18 +74,18 @@ fn system_stage_subgraph(
     stage_name: &dyn StageLabel,
     system_stage: &SystemStage,
 ) -> DotGraph {
-    let label = format!(r#"label = "{:?}""#, stage_name);
+    let stage_name_str = format!("{:?}", stage_name);
     let mut sub = DotGraph::new(
         &format!("cluster_{:?}", stage_name),
         "subgraph",
         &[
-            "style=filled",
-            "color=lightgrey",
-            "node [style=filled,color=white]",
-            "rankdir=\"TD\"",
-            &label,
+            ("style", "filled"),
+            ("color", "lightgrey"),
+            ("rankdir", "TD"),
+            ("label", &stage_name_str),
         ],
-    );
+    )
+    .node_attributes(&[("style", "filled"), ("color", "white")]);
 
     sub.add_invisible_node(&marker_id(schedule_name, stage_name));
 
@@ -150,14 +152,10 @@ fn add_systems_to_graph<T: SystemContainer>(
                     dot::font_tag(kind, "red", 11),
                 )
             }
-            None => quote(&short_system_name),
+            None => short_system_name,
         };
 
-        graph.add_node(
-            &id,
-            // &[("label", &quote(&short_system_name))],
-            &[("label", &label)],
-        );
+        graph.add_node(&id, &[("label", &label)]);
 
         add_dependency_labels(
             graph,
@@ -213,8 +211,4 @@ fn add_dependency_labels(
 
 fn node_id(schedule_name: &str, system: &impl SystemContainer, i: usize) -> String {
     format!("\"{}_{}_{}\"", schedule_name, system.name(), i)
-}
-
-fn quote(str: &str) -> String {
-    format!("\"{}\"", str)
 }

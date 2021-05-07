@@ -1,10 +1,31 @@
 #![cfg_attr(not(feature = "render_graph"), allow(dead_code))]
+
+use std::borrow::Cow;
 pub struct DotGraph {
     buffer: String,
 }
 
+fn escape_quote(input: &str) -> Cow<'_, str> {
+    if input.contains("\"") {
+        Cow::Owned(input.replace('"', "\\\""))
+    } else {
+        Cow::Borrowed(input.into())
+    }
+}
+
+fn escape_id(input: &str) -> Cow<'_, str> {
+    if input.starts_with('<') && input.ends_with('>') {
+        input.into()
+    } else {
+        format!("\"{}\"", escape_quote(input)).into()
+    }
+}
+
 fn format_attributes(attrs: &[(&str, &str)]) -> String {
-    let attrs: Vec<_> = attrs.iter().map(|(a, b)| format!("{}={}", a, b)).collect();
+    let attrs: Vec<_> = attrs
+        .iter()
+        .map(|(a, b)| format!("{}={}", escape_id(a), escape_id(b)))
+        .collect();
     let attrs = attrs.join(", ");
     format!("[{}]", attrs)
 }
@@ -29,29 +50,36 @@ pub fn html_escape(input: &str) -> String {
 }
 
 impl DotGraph {
-    pub fn new(name: &str, kind: &str, options: &[&str]) -> DotGraph {
+    pub fn new(name: &str, kind: &str, attrs: &[(&str, &str)]) -> DotGraph {
         let mut dot = DotGraph {
             buffer: String::new(),
         };
 
         dot.write(format!("{} {} {{", kind, name));
-        for attr in options {
-            dot.write(format!("\t{};", attr));
+
+        for (key, val) in attrs {
+            dot.write(format!("\t{}={};", escape_id(key), escape_id(val)));
         }
 
         dot
     }
 
-    pub fn digraph(name: &str, options: &[&str]) -> DotGraph {
+    pub fn digraph(name: &str, options: &[(&str, &str)]) -> DotGraph {
         DotGraph::new(name, "digraph", options)
     }
 
-    pub fn edge_attributes(&mut self, attrs: &[(&str, &str)]) -> &mut Self {
+    #[allow(dead_code)]
+    pub fn graph_attributes(mut self, attrs: &[(&str, &str)]) -> Self {
+        self.write(format!("\tgraph {};", format_attributes(attrs)));
+        self
+    }
+
+    pub fn edge_attributes(mut self, attrs: &[(&str, &str)]) -> Self {
         self.write(format!("\tedge {};", format_attributes(attrs)));
         self
     }
 
-    pub fn node_attributes(&mut self, attrs: &[(&str, &str)]) -> &mut Self {
+    pub fn node_attributes(mut self, attrs: &[(&str, &str)]) -> Self {
         self.write(format!("\tnode {};", format_attributes(attrs)));
         self
     }

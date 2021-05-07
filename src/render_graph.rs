@@ -7,16 +7,17 @@ use itertools::{EitherOrBoth, Itertools};
 
 /// Formats the render graph into a dot graph.
 pub fn render_graph_dot(graph: &RenderGraph) -> String {
-    let options = [("rankdir=LR"), ("ranksep=1.0")];
-    let mut dot = DotGraph::digraph("RenderGraph", &options);
+    let options = [("rankdir", "LR"), ("ranksep", "1.0")];
 
     // Convert to format fitting GraphViz node id requirements
     let node_id = |id: &NodeId| format!("{}", id.uuid().as_u128());
     let font = ("fontname", "Helvetica");
     let shape = ("shape", "plaintext");
-    let edge_color = ("color", "\"blue\"");
+    let edge_color = ("color", "blue");
 
-    dot.edge_attributes(&[font]).node_attributes(&[shape, font]);
+    let mut dot = DotGraph::digraph("RenderGraph", &options)
+        .edge_attributes(&[font])
+        .node_attributes(&[shape, font]);
 
     let mut nodes: Vec<_> = graph.iter_nodes().collect();
     nodes.sort_by_key(|node_state| &node_state.type_name);
