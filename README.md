@@ -49,4 +49,5 @@ fn main() {
 
 |bevy|bevy_mod_debugdump|
 |---|---|
+|0.5|0.2|
 |0.5|0.1|
