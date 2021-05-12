@@ -33,7 +33,7 @@ impl ScheduleGraphStyle {
             hide_startup_schedule: true,
         }
     }
-    pub fn discord() -> Self {
+    pub fn dark() -> Self {
         ScheduleGraphStyle {
             fontsize: 16.0,
             fontname: "Helvetica".into(),

@@ -7,17 +7,67 @@ use itertools::{EitherOrBoth, Itertools};
 
 /// Formats the render graph into a dot graph.
 pub fn render_graph_dot(graph: &RenderGraph) -> String {
+    let default_style = RenderGraphStyle::light();
+    render_graph_dot_styled(graph, &default_style)
+}
+pub struct RenderGraphStyle {
+    pub fontname: String,
+    pub fontsize: f32,
+    pub textcolor: String,
+    pub typename_color: String,
+    pub background_color: String,
+    pub node_color: String,
+    pub node_style: String,
+    pub edge_color: String,
+    pub slot_edge_color: String,
+}
+impl RenderGraphStyle {
+    pub fn light() -> Self {
+        RenderGraphStyle {
+            fontname: "Helvetica".into(),
+            fontsize: 14.0,
+            textcolor: "black".into(),
+            typename_color: "red".into(),
+            background_color: "white".into(),
+            node_color: "black".into(),
+            node_style: "rounded".into(),
+            edge_color: "black".into(),
+            slot_edge_color: "blue".into(),
+        }
+    }
+
+    pub fn dark() -> Self {
+        RenderGraphStyle {
+            fontname: "Helvetica".into(),
+            fontsize: 14.0,
+            textcolor: "white".into(),
+            typename_color: "red".into(),
+            background_color: "#23272a".into(),
+            node_color: "#99aab5".into(),
+            node_style: "rounded".into(),
+            edge_color: "white".into(),
+            slot_edge_color: "white".into(),
+        }
+    }
+}
+
+/// Formats the render graph into a dot graph using a custom [RenderGraphStyle].
+pub fn render_graph_dot_styled(graph: &RenderGraph, style: &RenderGraphStyle) -> String {
     let options = [("rankdir", "LR"), ("ranksep", "1.0")];
 
     // Convert to format fitting GraphViz node id requirements
     let node_id = |id: &NodeId| format!("{}", id.uuid().as_u128());
-    let font = ("fontname", "Helvetica");
-    let shape = ("shape", "plaintext");
-    let edge_color = ("color", "blue");
-
     let mut dot = DotGraph::digraph("RenderGraph", &options)
-        .edge_attributes(&[font])
-        .node_attributes(&[shape, font]);
+        .graph_attributes(&[("bgcolor", &style.background_color)])
+        .edge_attributes(&[
+            ("fontname", &style.fontname),
+            ("fontcolor", &style.textcolor),
+        ])
+        .node_attributes(&[
+            ("shape", "plaintext"),
+            ("fontname", &style.fontname),
+            ("fontcolor", &style.textcolor),
+        ]);
 
     let mut nodes: Vec<_> = graph.iter_nodes().collect();
     nodes.sort_by_key(|node_state| &node_state.type_name);
@@ -71,11 +121,18 @@ pub fn render_graph_dot(graph: &RenderGraph) -> String {
         let label = format!(
             "<<TABLE STYLE=\"rounded\"><TR><TD PORT=\"title\" BORDER=\"0\" COLSPAN=\"2\">{}<BR/>{}</TD></TR>{}</TABLE>>",
             html_escape(name),
-            font_tag(&type_name, "red", 10),
+            font_tag(&type_name, &style.typename_color, 10),
             slots,
         );
 
-        dot.add_node(&node_id(&node.id), &[("label", &label)]);
+        dot.add_node(
+            &node_id(&node.id),
+            &[
+                ("label", &label),
+                ("color", &style.node_color),
+                ("fillcolor", &style.node_color),
+            ],
+        );
     }
 
     for node in graph.iter_nodes() {
@@ -92,7 +149,7 @@ pub fn render_graph_dot(graph: &RenderGraph) -> String {
                         Some(&format!("{}:e", output_index)),
                         &node_id(input_node),
                         Some(&format!("{}:w", input_index)),
-                        &[edge_color],
+                        &[("color", &style.slot_edge_color)],
                     );
                 }
                 Edge::NodeEdge {
@@ -104,7 +161,7 @@ pub fn render_graph_dot(graph: &RenderGraph) -> String {
                         Some("title:e"),
                         &node_id(input_node),
                         Some("title:w"),
-                        &[],
+                        &[("color", &style.edge_color)],
                     );
                 }
             }
