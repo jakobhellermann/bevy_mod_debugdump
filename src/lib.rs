@@ -3,13 +3,10 @@ use bevy::prelude::*;
 mod dot;
 
 #[cfg(feature = "render_graph")]
-mod render_graph;
-mod schedule_graph;
-#[cfg(feature = "render_graph")]
-pub use render_graph::render_graph_dot;
-pub use schedule_graph::schedule_graph_dot;
+pub mod render_graph;
+pub mod schedule_graph;
 
-/// System which prints the current render graph.
+/// System which prints the current render graph using [render_graph_dot](render_graph::render_graph_dot).
 /// # Example
 /// ```rust,no_run
 /// use bevy::prelude::*;
@@ -24,11 +21,11 @@ pub use schedule_graph::schedule_graph_dot;
 /// ```
 #[cfg(feature = "render_graph")]
 pub fn print_render_graph(render_graph: Res<bevy::render::render_graph::RenderGraph>) {
-    let dot = render_graph_dot(&*render_graph);
+    let dot = render_graph::render_graph_dot(&*render_graph);
     println!("{}", dot);
 }
 
-/// App runner which prints the schedule as a dot graph and exits.
+/// App runner which prints the schedule using [schedule_graph_dot](schedule_graph::schedule_graph_dot) as a dot graph and exits.
 /// # Example
 /// ```rust,no_run
 /// use bevy::prelude::*;
@@ -68,5 +65,5 @@ pub fn print_schedule_runner(app: App) {
 
     app.update();*/
 
-    println!("{}", schedule_graph_dot(&app.schedule));
+    println!("{}", schedule_graph::schedule_graph_dot(&app.schedule));
 }

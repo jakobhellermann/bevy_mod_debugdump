@@ -2,14 +2,72 @@ use crate::{dot, dot::DotGraph};
 use bevy::ecs::{prelude::*, schedule::SystemContainer};
 
 /// Formats the schedule into a dot graph.
+///
+/// By default, the `Startup` subschedule is not shown, to enable it use [`schedule_graph_dot_styled`] and enable [`ScheduleGraphStyle::hide_startup_schedule`].
 pub fn schedule_graph_dot(schedule: &Schedule) -> String {
+    let mut default_style = ScheduleGraphStyle::light();
+    default_style.hide_startup_schedule = true;
+    schedule_graph_dot_styled(schedule, &default_style)
+}
+
+pub struct ScheduleGraphStyle {
+    pub fontsize: f32,
+    pub fontname: String,
+    pub bgcolor: String,
+    pub bgcolor_nested_schedule: String,
+    pub bgcolor_stage: String,
+    pub color_system: String,
+    pub color_edge: String,
+    pub hide_startup_schedule: bool,
+}
+impl ScheduleGraphStyle {
+    pub fn light() -> Self {
+        ScheduleGraphStyle {
+            fontsize: 16.0,
+            fontname: "Helvetica".into(),
+            bgcolor: "white".into(),
+            bgcolor_nested_schedule: "#d1d5da".into(),
+            bgcolor_stage: "#e1e5ea".into(),
+            color_system: "white".into(),
+            color_edge: "black".into(),
+            hide_startup_schedule: true,
+        }
+    }
+    pub fn discord() -> Self {
+        ScheduleGraphStyle {
+            fontsize: 16.0,
+            fontname: "Helvetica".into(),
+            bgcolor: "#23272a".into(),
+            bgcolor_nested_schedule: "#D0E1ED".into(),
+            bgcolor_stage: "#99aab5".into(),
+            color_system: "white".into(),
+            color_edge: "white".into(),
+            hide_startup_schedule: true,
+        }
+    }
+}
+impl Default for ScheduleGraphStyle {
+    fn default() -> Self {
+        ScheduleGraphStyle::light()
+    }
+}
+
+/// Formats the schedule into a dot graph using a custom [ScheduleGraphStyle].
+pub fn schedule_graph_dot_styled(schedule: &Schedule, style: &ScheduleGraphStyle) -> String {
     schedule_graph(
         schedule,
         "schedule",
         "digraph",
-        &[("rankdir", "LR"), ("nodesep", "0.05")],
+        &[
+            ("fontsize", &style.fontsize.to_string()),
+            ("fontname", &style.fontname),
+            ("rankdir", "LR"),
+            ("nodesep", "0.05"),
+            ("bgcolor", &style.bgcolor),
+        ],
         &[("shape", "box"), ("margin", "0"), ("height", "0.4")],
         None,
+        style,
     )
     .finish()
 }
@@ -21,18 +79,28 @@ fn schedule_graph(
     attrs: &[(&str, &str)],
     node_attrs: &[(&str, &str)],
     marker_node_id: Option<&str>,
+    style: &ScheduleGraphStyle,
 ) -> DotGraph {
-    let mut graph = DotGraph::new(schedule_name, kind, attrs).node_attributes(node_attrs);
+    let mut graph = DotGraph::new(schedule_name, kind, attrs)
+        .node_attributes(node_attrs)
+        .edge_attributes(&[("color", &style.color_edge)]);
 
     if let Some(marker_id) = marker_node_id {
         graph.add_invisible_node(marker_id);
     }
 
+    let is_startup_schedule =
+        |stage_name: &dyn StageLabel| format!("{:?}", stage_name) == "Startup";
+
     for (stage_name, stage) in schedule.iter_stages() {
         if let Some(system_stage) = stage.downcast_ref::<SystemStage>() {
-            let subgraph = system_stage_subgraph(schedule_name, stage_name, system_stage);
+            let subgraph = system_stage_subgraph(schedule_name, stage_name, system_stage, style);
             graph.add_sub_graph(subgraph);
         } else if let Some(schedule) = stage.downcast_ref::<Schedule>() {
+            if style.hide_startup_schedule && is_startup_schedule(stage_name) {
+                continue;
+            }
+
             let name = format!("cluster_{:?}", stage_name);
 
             let marker_id = marker_id(&schedule_name, stage_name);
@@ -44,11 +112,15 @@ fn schedule_graph(
                 "subgraph",
                 &[
                     ("label", &stage_name_str),
+                    ("fontsize", "20"),
                     ("constraint", "false"),
                     ("rankdir", "LR"),
+                    ("style", "rounded"),
+                    ("bgcolor", &style.bgcolor_nested_schedule),
                 ],
                 &[],
                 Some(&marker_id),
+                style,
             );
             graph.add_sub_graph(subgraph);
         } else {
@@ -56,7 +128,19 @@ fn schedule_graph(
         }
     }
 
-    for ((a, _), (b, _)) in schedule.iter_stages().zip(schedule.iter_stages().skip(1)) {
+    /*if style.hide_startup_schedule {
+        continue;
+    }*/
+
+    let iter_a = schedule
+        .iter_stages()
+        .filter(|(stage, _)| !style.hide_startup_schedule || !is_startup_schedule(*stage));
+    let iter_b = schedule
+        .iter_stages()
+        .filter(|(stage, _)| !style.hide_startup_schedule || !is_startup_schedule(*stage))
+        .skip(1);
+
+    for ((a, _), (b, _)) in iter_a.zip(iter_b) {
         let a = marker_id(schedule_name, a);
         let b = marker_id(schedule_name, b);
         graph.add_edge(&a, &b, &[]);
@@ -73,19 +157,25 @@ fn system_stage_subgraph(
     schedule_name: &str,
     stage_name: &dyn StageLabel,
     system_stage: &SystemStage,
+    style: &ScheduleGraphStyle,
 ) -> DotGraph {
     let stage_name_str = format!("{:?}", stage_name);
     let mut sub = DotGraph::new(
         &format!("cluster_{:?}", stage_name),
         "subgraph",
         &[
-            ("style", "filled"),
-            ("color", "lightgrey"),
+            ("style", "rounded"),
+            ("color", &style.bgcolor_stage),
+            ("bgcolor", &style.bgcolor_stage),
             ("rankdir", "TD"),
             ("label", &stage_name_str),
         ],
     )
-    .node_attributes(&[("style", "filled"), ("color", "white")]);
+    .node_attributes(&[
+        ("style", "filled"),
+        ("color", &style.color_system),
+        ("bgcolor", &style.color_system),
+    ]);
 
     sub.add_invisible_node(&marker_id(schedule_name, stage_name));
 

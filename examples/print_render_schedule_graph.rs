@@ -1,5 +1,5 @@
 use bevy::{prelude::*, render::render_graph::RenderGraph};
-use bevy_mod_debugdump::schedule_graph_dot;
+use bevy_mod_debugdump::schedule_graph::schedule_graph_dot;
 
 fn main() {
     App::build()
