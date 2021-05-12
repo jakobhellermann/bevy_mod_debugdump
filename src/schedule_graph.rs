@@ -5,8 +5,7 @@ use bevy::ecs::{prelude::*, schedule::SystemContainer};
 ///
 /// By default, the `Startup` subschedule is not shown, to enable it use [`schedule_graph_dot_styled`] and enable [`ScheduleGraphStyle::hide_startup_schedule`].
 pub fn schedule_graph_dot(schedule: &Schedule) -> String {
-    let mut default_style = ScheduleGraphStyle::light();
-    default_style.hide_startup_schedule = true;
+    let default_style = ScheduleGraphStyle::light();
     schedule_graph_dot_styled(schedule, &default_style)
 }
 
@@ -40,7 +39,7 @@ impl ScheduleGraphStyle {
             bgcolor: "#23272a".into(),
             bgcolor_nested_schedule: "#D0E1ED".into(),
             bgcolor_stage: "#99aab5".into(),
-            color_system: "white".into(),
+            color_system: "#eff1f3".into(),
             color_edge: "white".into(),
             hide_startup_schedule: true,
         }
