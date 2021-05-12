@@ -42,7 +42,7 @@ impl RenderGraphStyle {
             fontsize: 14.0,
             textcolor: "white".into(),
             typename_color: "red".into(),
-            background_color: "#23272a".into(),
+            background_color: "#35393F".into(),
             node_color: "#99aab5".into(),
             node_style: "rounded".into(),
             edge_color: "white".into(),

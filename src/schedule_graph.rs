@@ -36,7 +36,7 @@ impl ScheduleGraphStyle {
         ScheduleGraphStyle {
             fontsize: 16.0,
             fontname: "Helvetica".into(),
-            bgcolor: "#23272a".into(),
+            bgcolor: "#35393F".into(),
             bgcolor_nested_schedule: "#D0E1ED".into(),
             bgcolor_stage: "#99aab5".into(),
             color_system: "#eff1f3".into(),
