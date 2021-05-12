@@ -6,10 +6,10 @@ pub struct DotGraph {
 }
 
 fn escape_quote(input: &str) -> Cow<'_, str> {
-    if input.contains("\"") {
+    if input.contains('"') {
         Cow::Owned(input.replace('"', "\\\""))
     } else {
-        Cow::Borrowed(input.into())
+        Cow::Borrowed(input)
     }
 }
 
@@ -90,7 +90,7 @@ impl DotGraph {
         I: IntoIterator<Item = S>,
         S: AsRef<str>,
     {
-        self.write_no_newline(format!("{{ rank = same;"));
+        self.write_no_newline("{ rank = same;");
         for item in nodes {
             self.write(item);
             self.write("; ");
