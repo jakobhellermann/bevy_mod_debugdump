@@ -1,8 +1,7 @@
-use bevy::prelude::*;
+use bevy::{log::LogPlugin, PipelinedDefaultPlugins, prelude::*};
 
 fn main() {
-    let mut app = App::build();
-    app.add_plugins(DefaultPlugins);
-    app.set_runner(bevy_mod_debugdump::print_schedule_runner);
-    app.run();
+    let mut app = App::new();
+    app.add_plugins_with(PipelinedDefaultPlugins, |plugins| plugins.disable::<LogPlugin>());
+    bevy_mod_debugdump::print_schedule(&mut app);
 }

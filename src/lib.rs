@@ -1,5 +1,5 @@
 #![allow(clippy::needless_doctest_main)]
-use bevy::prelude::*;
+use bevy::{prelude::*, render2::RenderApp};
 
 mod dot;
 
@@ -7,64 +7,61 @@ mod dot;
 pub mod render_graph;
 pub mod schedule_graph;
 
-/// System which prints the current render graph using [render_graph_dot](render_graph::render_graph_dot).
+/// Prints the current render graph using [render_graph_dot](render_graph::render_graph_dot).
 /// # Example
 /// ```rust,no_run
 /// use bevy::prelude::*;
 ///
 /// fn main() {
-///     App::build()
-///         // .insert_resource(Msaa { samples: 4 })
-///         .add_plugins(DefaultPlugins)
-///         .add_startup_system(bevy_mod_debugdump::print_render_graph.system())
-///         .run();
+///     let mut app = App::new();
+///     app.add_plugins(DefaultPlugins);
+///     bevy_mod_debugdump::print_render_graph(&mut app);
 /// }
 /// ```
 #[cfg(feature = "render_graph")]
-pub fn print_render_graph(render_graph: Res<bevy::render::render_graph::RenderGraph>) {
+pub fn print_render_graph(app: &mut App) {
+    use bevy::render2::render_graph::RenderGraph;
+
+    let render_app = app.get_sub_app(RenderApp).expect("no render app");
+    let render_graph = render_app.world.get_resource::<RenderGraph>().unwrap();
+
     let dot = render_graph::render_graph_dot(&*render_graph);
     println!("{}", dot);
 }
 
-/// App runner which prints the schedule using [schedule_graph_dot](schedule_graph::schedule_graph_dot) as a dot graph and exits.
+/// Prints the system schedule of the render sub-app.
+/// ```rust,no_run
+/// use bevy::prelude::*;
+///
+/// fn main() {
+///     let mut app = App::new();
+///     app.add_plugins(DefaultPlugins);
+///     bevy_mod_debugdump::print_render_schedule_graph(&mut app);
+/// }
+pub fn print_render_schedule_graph(app: &mut App) {
+    let render_app = app.get_sub_app(RenderApp).expect("no render app");
+
+    let default_style = schedule_graph::ScheduleGraphStyle {
+        hide_startup_schedule: false,
+        ..schedule_graph::ScheduleGraphStyle::light()
+    };
+    println!(
+        "{}",
+        schedule_graph::schedule_graph_dot_styled(&render_app.schedule, &default_style)
+    );
+}
+
+/// Prints the app system schedule using [schedule_graph_dot](schedule_graph::schedule_graph_dot) as a dot graph and exits.
 /// # Example
 /// ```rust,no_run
 /// use bevy::prelude::*;
 ///
 /// fn main() {
-///     let mut app = App::build();
+///     let mut app = App::new();
 ///     app.add_plugins(DefaultPlugins);
-///     app.set_runner(bevy_mod_debugdump::print_schedule_runner);
-///     app.run();
+///     bevy_mod_debugdump::print_schedule(&mut app);
 /// }
 /// ```
-pub fn print_schedule_runner(app: App) {
-    /*
-    use bevy::app::Events;
-    use bevy::window::{WindowCreated, WindowId};
-    use bevy::winit::WinitWindows;
-
-    {
-        let world_cell = app.world.cell();
-        let mut window_created_events = world_cell
-            .get_resource_mut::<Events<WindowCreated>>()
-            .unwrap();
-        let mut windows = world_cell.get_resource_mut::<Windows>().unwrap();
-        let mut winit_windows = world_cell.get_resource_mut::<WinitWindows>().unwrap();
-
-        let event_loop = winit::event_loop::EventLoop::new();
-        let window = winit_windows.create_window(
-            &*event_loop,
-            WindowId::primary(),
-            &WindowDescriptor::default(),
-        );
-        windows.add(window);
-        window_created_events.send(WindowCreated {
-            id: WindowId::primary(),
-        });
-    }
-
-    app.update();*/
-
+pub fn print_schedule(app: &mut App) {
     println!("{}", schedule_graph::schedule_graph_dot(&app.schedule));
 }
