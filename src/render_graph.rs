@@ -1,7 +1,7 @@
 use crate::dot::{font_tag, html_escape, DotGraph};
 use bevy::{
     reflect::TypeRegistration,
-    render::render_graph::{Edge, NodeId, RenderGraph},
+    render2::render_graph::{Edge, NodeId, RenderGraph},
 };
 use itertools::{EitherOrBoth, Itertools};
 
@@ -84,8 +84,8 @@ pub fn render_graph_dot_styled(graph: &RenderGraph, style: &RenderGraphStyle) ->
                 format!(
                     "<TD PORT=\"{}\">{}: {}</TD>",
                     html_escape(&format!("{}", index)),
-                    html_escape(&slot.info.name),
-                    html_escape(&format!("{:?}", slot.info.resource_type))
+                    html_escape(&slot.name),
+                    html_escape(&format!("{:?}", slot.slot_type))
                 )
             })
             .collect::<Vec<_>>();
@@ -98,8 +98,8 @@ pub fn render_graph_dot_styled(graph: &RenderGraph, style: &RenderGraphStyle) ->
                 format!(
                     "<TD PORT=\"{}\">{}: {}</TD>",
                     html_escape(&format!("{}", index)),
-                    html_escape(&slot.info.name),
-                    html_escape(&format!("{:?}", slot.info.resource_type))
+                    html_escape(&slot.name),
+                    html_escape(&format!("{:?}", slot.slot_type))
                 )
             })
             .collect::<Vec<_>>();

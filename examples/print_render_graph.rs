@@ -1,10 +1,11 @@
-use bevy::{app::AppExit, prelude::*};
+use bevy::{log::LogPlugin, prelude::*, PipelinedDefaultPlugins};
 
 fn main() {
-    App::build()
-        // .insert_resource(Msaa { samples: 4 })
-        .add_plugins(DefaultPlugins)
-        .add_startup_system(bevy_mod_debugdump::print_render_graph.system())
-        .add_system((|mut exit: EventWriter<AppExit>| exit.send(AppExit)).system())
-        .run();
+    let mut app = App::new();
+    // .insert_resource(Msaa { samples: 4 })
+    app.add_plugins_with(PipelinedDefaultPlugins, |plugins| {
+        plugins.disable::<LogPlugin>()
+    });
+
+    bevy_mod_debugdump::print_render_graph(&mut app);
 }
