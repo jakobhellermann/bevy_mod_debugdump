@@ -1,10 +1,11 @@
-use bevy::{prelude::*, render::render_graph::RenderGraph};
+use bevy::{app::AppExit, prelude::*, render::render_graph::RenderGraph};
 use bevy_mod_debugdump::schedule_graph::schedule_graph_dot;
 
 fn main() {
     App::build()
         .add_plugins(DefaultPlugins)
         .add_startup_system(print_render_schedule.system())
+        .add_system((|mut exit: EventWriter<AppExit>| exit.send(AppExit)).system())
         .run();
 }
 
