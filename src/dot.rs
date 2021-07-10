@@ -55,7 +55,7 @@ impl DotGraph {
             buffer: String::new(),
         };
 
-        dot.write(format!("{} {} {{", kind, name));
+        dot.write(format!("{} {} {{", kind, escape_id(name)));
 
         for (key, val) in attrs {
             dot.write(format!("\t{}={};", escape_id(key), escape_id(val)));
@@ -111,12 +111,13 @@ impl DotGraph {
 
     /// label needs to include the quotes
     pub fn add_node(&mut self, id: &str, attrs: &[(&str, &str)]) {
-        self.write(format!("\t{} {}", id, format_attributes(attrs)));
+        self.write(format!("\t{} {}", escape_id(id), format_attributes(attrs)));
     }
     pub fn add_invisible_node(&mut self, id: &str) {
         self.add_node(id, &[("style", "invis")]);
     }
 
+    /// The DOT syntax actually allows subgraphs as the edge's nodes but this doesn't support it yet.
     pub fn add_edge(&mut self, from: &str, to: &str, attrs: &[(&str, &str)]) {
         self.add_edge_with_ports(from, None, to, None, attrs);
     }
@@ -130,16 +131,21 @@ impl DotGraph {
         attrs: &[(&str, &str)],
     ) {
         let from = if let Some(from_port) = from_port {
-            format!("{}:{}", from, from_port)
+            format!("{}:{}", escape_id(from), escape_id(from_port))
         } else {
-            from.to_string()
+            escape_id(from).to_string()
         };
         let to = if let Some(to_port) = to_port {
-            format!("{}:{}", to, to_port)
+            format!("{}:{}", escape_id(to), escape_id(to_port))
         } else {
-            to.to_string()
+            escape_id(to).to_string()
         };
-        self.write(format!("\t{} -> {} {}", from, to, format_attributes(attrs)));
+        self.write(format!(
+            "\t{} -> {} {}",
+            &from,
+            &to,
+            format_attributes(attrs)
+        ));
     }
 
     fn write_no_newline(&mut self, text: impl AsRef<str>) {

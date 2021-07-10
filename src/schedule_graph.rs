@@ -299,5 +299,5 @@ fn add_dependency_labels(
 }
 
 fn node_id(schedule_name: &str, system: &impl SystemContainer, i: usize) -> String {
-    format!("\"{}_{}_{}\"", schedule_name, system.name(), i)
+    format!("{}_{}_{}", schedule_name, system.name(), i)
 }
