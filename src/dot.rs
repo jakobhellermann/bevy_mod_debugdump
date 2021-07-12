@@ -67,6 +67,9 @@ impl DotGraph {
     pub fn digraph(name: &str, options: &[(&str, &str)]) -> DotGraph {
         DotGraph::new(name, "digraph", options)
     }
+    pub fn subgraph(name: &str, options: &[(&str, &str)]) -> DotGraph {
+        DotGraph::new(&format!("cluster{}", name), "subgraph", options)
+    }
 
     #[allow(dead_code)]
     pub fn graph_attributes(mut self, attrs: &[(&str, &str)]) -> Self {

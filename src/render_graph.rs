@@ -16,6 +16,8 @@ pub struct RenderGraphStyle {
     pub textcolor: String,
     pub typename_color: String,
     pub background_color: String,
+    pub subgraph_background_color: String,
+    pub subgraph_label_font_color: String,
     pub node_color: String,
     pub node_style: String,
     pub edge_color: String,
@@ -29,6 +31,8 @@ impl RenderGraphStyle {
             textcolor: "black".into(),
             typename_color: "red".into(),
             background_color: "white".into(),
+            subgraph_background_color: "#e4e9f5".into(),
+            subgraph_label_font_color: "black".into(),
             node_color: "black".into(),
             node_style: "rounded".into(),
             edge_color: "black".into(),
@@ -43,6 +47,8 @@ impl RenderGraphStyle {
             textcolor: "white".into(),
             typename_color: "red".into(),
             background_color: "#35393F".into(),
+            subgraph_background_color: "#5e6570".into(),
+            subgraph_label_font_color: "black".into(),
             node_color: "#99aab5".into(),
             node_style: "rounded".into(),
             edge_color: "white".into(),
@@ -54,9 +60,6 @@ impl RenderGraphStyle {
 /// Formats the render graph into a dot graph using a custom [RenderGraphStyle].
 pub fn render_graph_dot_styled(graph: &RenderGraph, style: &RenderGraphStyle) -> String {
     let options = [("rankdir", "LR"), ("ranksep", "1.0")];
-
-    // Convert to format fitting GraphViz node id requirements
-    let node_id = |id: &NodeId| format!("{}", id.uuid().as_u128());
     let mut dot = DotGraph::digraph("RenderGraph", &options)
         .graph_attributes(&[("bgcolor", &style.background_color)])
         .edge_attributes(&[
@@ -69,8 +72,27 @@ pub fn render_graph_dot_styled(graph: &RenderGraph, style: &RenderGraphStyle) ->
             ("fontcolor", &style.textcolor),
         ]);
 
+    build_dot_graph(&mut dot, graph, style);
+    dot.finish()
+}
+
+pub fn build_dot_graph(dot: &mut DotGraph, graph: &RenderGraph, style: &RenderGraphStyle) {
+    // Convert to format fitting GraphViz node id requirements
+    let node_id = |id: &NodeId| format!("{}", id.uuid().as_u128());
+
     let mut nodes: Vec<_> = graph.iter_nodes().collect();
     nodes.sort_by_key(|node_state| &node_state.type_name);
+
+    for (name, subgraph) in graph.iter_sub_graphs() {
+        let options = [("label", name.as_ref())];
+        let mut sub_dot = DotGraph::subgraph(name, &options).graph_attributes(&[
+            ("style", "rounded,filled"),
+            ("color", &style.subgraph_background_color),
+            ("fontcolor", &style.subgraph_label_font_color),
+        ]);
+        build_dot_graph(&mut sub_dot, subgraph, style);
+        dot.add_sub_graph(sub_dot);
+    }
 
     for node in &nodes {
         let name = node.name.as_deref().unwrap_or("<node>");
@@ -167,6 +189,4 @@ pub fn render_graph_dot_styled(graph: &RenderGraph, style: &RenderGraphStyle) ->
             }
         }
     }
-
-    dot.finish()
 }
