@@ -7,7 +7,7 @@ use itertools::{EitherOrBoth, Itertools};
 
 /// Formats the render graph into a dot graph.
 pub fn render_graph_dot(graph: &RenderGraph) -> String {
-    let default_style = RenderGraphStyle::light();
+    let default_style = RenderGraphStyle::dark();
     render_graph_dot_styled(graph, &default_style)
 }
 pub struct RenderGraphStyle {
