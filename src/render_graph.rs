@@ -105,7 +105,7 @@ pub fn build_dot_graph(dot: &mut DotGraph, graph: &RenderGraph, style: &RenderGr
             .map(|(index, slot)| {
                 format!(
                     "<TD PORT=\"{}\">{}: {}</TD>",
-                    html_escape(&format!("{}", index)),
+                    html_escape(&format!("in-{}", index)),
                     html_escape(&slot.name),
                     html_escape(&format!("{:?}", slot.slot_type))
                 )
@@ -119,7 +119,7 @@ pub fn build_dot_graph(dot: &mut DotGraph, graph: &RenderGraph, style: &RenderGr
             .map(|(index, slot)| {
                 format!(
                     "<TD PORT=\"{}\">{}: {}</TD>",
-                    html_escape(&format!("{}", index)),
+                    html_escape(&format!("out-{}", index)),
                     html_escape(&slot.name),
                     html_escape(&format!("{:?}", slot.slot_type))
                 )
@@ -168,9 +168,9 @@ pub fn build_dot_graph(dot: &mut DotGraph, graph: &RenderGraph, style: &RenderGr
                 } => {
                     dot.add_edge_with_ports(
                         &node_id(output_node),
-                        Some(&format!("{}:e", output_index)),
+                        Some(&format!("out-{}:e", output_index)),
                         &node_id(input_node),
-                        Some(&format!("{}:w", input_index)),
+                        Some(&format!("in-{}:w", input_index)),
                         &[("color", &style.slot_edge_color)],
                     );
                 }
