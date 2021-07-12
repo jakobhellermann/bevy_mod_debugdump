@@ -1,4 +1,4 @@
-view: examples render_graph.svg render_schedule_graph.svg schedule_graph.svg
+view: clean examples render_graph.svg render_schedule_graph.svg schedule_graph.svg
 	firefox render_graph.svg
 	firefox render_schedule_graph.svg
 	firefox schedule_graph.svg
@@ -17,4 +17,6 @@ examples:
 	cargo build --examples
 
 make clean:
-	rm -f *.{svg,png}
+	@rm -f *.svg
+	@rm -f *.png
+	@rm -f *.dot
