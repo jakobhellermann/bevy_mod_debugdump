@@ -43,7 +43,7 @@ pub fn print_render_schedule_graph(app: &mut App) {
 
     let default_style = schedule_graph::ScheduleGraphStyle {
         hide_startup_schedule: false,
-        ..schedule_graph::ScheduleGraphStyle::light()
+        ..schedule_graph::ScheduleGraphStyle::dark()
     };
     println!(
         "{}",
