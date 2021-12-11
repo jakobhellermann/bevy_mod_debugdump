@@ -76,6 +76,15 @@ pub fn render_graph_dot_styled(graph: &RenderGraph, style: &RenderGraphStyle) ->
     dot.finish()
 }
 
+fn sorted<'a, T: 'a, U: Ord>(
+    iter: impl IntoIterator<Item = T>,
+    key: impl Fn(&T) -> U,
+) -> impl IntoIterator<Item = T> + 'a {
+    let mut vec: Vec<_> = iter.into_iter().collect();
+    vec.sort_by_key(key);
+    vec.into_iter()
+}
+
 pub fn build_dot_graph(dot: &mut DotGraph, graph: &RenderGraph, style: &RenderGraphStyle) {
     // Convert to format fitting GraphViz node id requirements
     let node_id = |id: &NodeId| format!("{}", id.uuid().as_u128());
@@ -83,7 +92,7 @@ pub fn build_dot_graph(dot: &mut DotGraph, graph: &RenderGraph, style: &RenderGr
     let mut nodes: Vec<_> = graph.iter_nodes().collect();
     nodes.sort_by_key(|node_state| &node_state.type_name);
 
-    for (name, subgraph) in graph.iter_sub_graphs() {
+    for (name, subgraph) in sorted(graph.iter_sub_graphs(), |(name, _)| *name) {
         let options = [("label", name.as_ref())];
         let mut sub_dot = DotGraph::subgraph(name, &options).graph_attributes(&[
             ("style", "rounded,filled"),
@@ -157,7 +166,7 @@ pub fn build_dot_graph(dot: &mut DotGraph, graph: &RenderGraph, style: &RenderGr
         );
     }
 
-    for node in graph.iter_nodes() {
+    for node in &nodes {
         for edge in &node.edges.input_edges {
             match edge {
                 Edge::SlotEdge {
