@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 use crate::dot::{font_tag, html_escape, DotGraph};
 use bevy::{
     reflect::TypeRegistration,
@@ -72,7 +74,7 @@ pub fn render_graph_dot_styled(graph: &RenderGraph, style: &RenderGraphStyle) ->
             ("fontcolor", &style.textcolor),
         ]);
 
-    build_dot_graph(&mut dot, graph, style);
+    build_dot_graph(&mut dot, None, graph, style);
     dot.finish()
 }
 
@@ -85,9 +87,26 @@ fn sorted<'a, T: 'a, U: Ord>(
     vec.into_iter()
 }
 
-pub fn build_dot_graph(dot: &mut DotGraph, graph: &RenderGraph, style: &RenderGraphStyle) {
+pub fn build_dot_graph(
+    dot: &mut DotGraph,
+    graph_name: Option<&str>,
+    graph: &RenderGraph,
+    style: &RenderGraphStyle,
+) {
+    let node_mapping: HashMap<_, _> = graph
+        .iter_nodes()
+        .map(|node| {
+            let name = format!(
+                "{}{}",
+                graph_name.unwrap_or(""),
+                node.name.as_deref().unwrap_or_else(|| node.type_name)
+            );
+            (node.id, name)
+        })
+        .collect();
+
     // Convert to format fitting GraphViz node id requirements
-    let node_id = |id: &NodeId| format!("{}", id.uuid().as_u128());
+    let node_id = |id: &NodeId| &node_mapping[id];
 
     let mut nodes: Vec<_> = graph.iter_nodes().collect();
     nodes.sort_by_key(|node_state| &node_state.type_name);
@@ -99,7 +118,7 @@ pub fn build_dot_graph(dot: &mut DotGraph, graph: &RenderGraph, style: &RenderGr
             ("color", &style.subgraph_background_color),
             ("fontcolor", &style.subgraph_label_font_color),
         ]);
-        build_dot_graph(&mut sub_dot, subgraph, style);
+        build_dot_graph(&mut sub_dot, Some(name), subgraph, style);
         dot.add_sub_graph(sub_dot);
     }
 
