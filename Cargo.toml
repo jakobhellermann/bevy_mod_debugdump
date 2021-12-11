@@ -7,7 +7,7 @@ license = "MIT"
 description = "Visualization for bevy"
 keywords = ["bevy", "inspector", "visual", "editor", "game"]
 authors = ["Jakob Hellermann <jakob.hellermann@protonmail.com>"]
-edition = "2018"
+edition = "2021"
 exclude = ["docs/*"]
 
 
