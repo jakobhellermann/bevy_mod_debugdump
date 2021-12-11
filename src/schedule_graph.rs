@@ -1,10 +1,12 @@
 use crate::{dot, dot::DotGraph};
-use bevy::ecs::{prelude::*, schedule::SystemContainer};
+use bevy::ecs::{component::ComponentId, prelude::*, schedule::SystemContainer};
+use bevy::prelude::App;
+use pretty_type_name::pretty_type_name_str;
 
 /// Formats the schedule into a dot graph.
 ///
 /// By default, the `Startup` subschedule is not shown, to enable it use [`schedule_graph_dot_styled`] and enable [`ScheduleGraphStyle::hide_startup_schedule`].
-pub fn schedule_graph_dot(schedule: &Schedule) -> String {
+pub fn schedule_graph_dot(schedule: &App) -> String {
     let default_style = ScheduleGraphStyle::dark();
     schedule_graph_dot_styled(schedule, &default_style)
 }
@@ -60,9 +62,8 @@ impl Default for ScheduleGraphStyle {
 }
 
 /// Formats the schedule into a dot graph using a custom [ScheduleGraphStyle].
-pub fn schedule_graph_dot_styled(schedule: &Schedule, style: &ScheduleGraphStyle) -> String {
-    schedule_graph(
-        schedule,
+pub fn schedule_graph_dot_styled(app: &App, style: &ScheduleGraphStyle) -> String {
+    let mut graph = DotGraph::new(
         "schedule",
         "digraph",
         &[
@@ -71,27 +72,25 @@ pub fn schedule_graph_dot_styled(schedule: &Schedule, style: &ScheduleGraphStyle
             ("rankdir", "LR"),
             ("nodesep", "0.05"),
             ("bgcolor", &style.bgcolor),
+            ("compound", "true"),
         ],
-        &[("shape", "box"), ("margin", "0"), ("height", "0.4")],
-        None,
-        style,
     )
-    .finish()
+    .node_attributes(&[("shape", "box"), ("margin", "0"), ("height", "0.4")])
+    .edge_attributes(&[("color", &style.color_edge)]);
+
+    build_schedule_graph(&mut graph, app, &app.schedule, "schedule", None, &style);
+
+    graph.finish()
 }
 
-fn schedule_graph(
+fn build_schedule_graph(
+    graph: &mut DotGraph,
+    app: &App,
     schedule: &Schedule,
     schedule_name: &str,
-    kind: &str,
-    attrs: &[(&str, &str)],
-    node_attrs: &[(&str, &str)],
     marker_node_id: Option<&str>,
     style: &ScheduleGraphStyle,
-) -> DotGraph {
-    let mut graph = DotGraph::new(schedule_name, kind, attrs)
-        .node_attributes(node_attrs)
-        .edge_attributes(&[("color", &style.color_edge)]);
-
+) {
     if let Some(marker_id) = marker_node_id {
         graph.add_invisible_node(marker_id);
     }
@@ -101,7 +100,8 @@ fn schedule_graph(
 
     for (stage_name, stage) in schedule.iter_stages() {
         if let Some(system_stage) = stage.downcast_ref::<SystemStage>() {
-            let subgraph = system_stage_subgraph(schedule_name, stage_name, system_stage, style);
+            let subgraph =
+                system_stage_subgraph(&app.world, schedule_name, stage_name, system_stage, style);
             graph.add_sub_graph(subgraph);
         } else if let Some(schedule) = stage.downcast_ref::<Schedule>() {
             if style.hide_startup_schedule && is_startup_schedule(stage_name) {
@@ -113,8 +113,7 @@ fn schedule_graph(
             let marker_id = marker_id(&schedule_name, stage_name);
             let stage_name_str = format!("{:?}", stage_name);
 
-            let subgraph = schedule_graph(
-                schedule,
+            let mut schedule_sub_graph = DotGraph::new(
                 &name,
                 "subgraph",
                 &[
@@ -125,19 +124,21 @@ fn schedule_graph(
                     ("style", "rounded"),
                     ("bgcolor", &style.bgcolor_nested_schedule),
                 ],
-                &[],
+            )
+            .edge_attributes(&[("color", &style.color_edge)]);
+            build_schedule_graph(
+                &mut schedule_sub_graph,
+                app,
+                schedule,
+                &name,
                 Some(&marker_id),
                 style,
             );
-            graph.add_sub_graph(subgraph);
+            graph.add_sub_graph(schedule_sub_graph);
         } else {
             eprintln!("Missing downcast: {:?}", stage_name);
         }
     }
-
-    /*if style.hide_startup_schedule {
-        continue;
-    }*/
 
     let iter_a = schedule
         .iter_stages()
@@ -152,8 +153,6 @@ fn schedule_graph(
         let b = marker_id(schedule_name, b);
         graph.add_edge(&a, &b, &[]);
     }
-
-    graph
 }
 
 fn marker_id(schedule_name: &str, stage_name: &dyn StageLabel) -> String {
@@ -161,6 +160,7 @@ fn marker_id(schedule_name: &str, stage_name: &dyn StageLabel) -> String {
 }
 
 fn system_stage_subgraph(
+    world: &World,
     schedule_name: &str,
     stage_name: &dyn StageLabel,
     system_stage: &SystemStage,
@@ -188,6 +188,7 @@ fn system_stage_subgraph(
 
     add_systems_to_graph(
         &mut sub,
+        world,
         schedule_name,
         SystemKind::ExclusiveStart,
         system_stage.exclusive_at_start_systems(),
@@ -195,6 +196,7 @@ fn system_stage_subgraph(
     );
     add_systems_to_graph(
         &mut sub,
+        world,
         schedule_name,
         SystemKind::ExclusiveBeforeCommands,
         system_stage.exclusive_before_commands_systems(),
@@ -202,6 +204,7 @@ fn system_stage_subgraph(
     );
     add_systems_to_graph(
         &mut sub,
+        world,
         schedule_name,
         SystemKind::Parallel,
         system_stage.parallel_systems(),
@@ -209,6 +212,7 @@ fn system_stage_subgraph(
     );
     add_systems_to_graph(
         &mut sub,
+        world,
         schedule_name,
         SystemKind::ExclusiveEnd,
         system_stage.exclusive_at_end_systems(),
@@ -226,6 +230,7 @@ enum SystemKind {
 }
 fn add_systems_to_graph<T: SystemContainer>(
     graph: &mut DotGraph,
+    world: &World,
     schedule_name: &str,
     kind: SystemKind,
     systems: &[T],
@@ -248,7 +253,7 @@ fn add_systems_to_graph<T: SystemContainer>(
             }
         }
 
-        let short_system_name = pretty_type_name::pretty_type_name_str(&system_name);
+        let short_system_name = pretty_type_name_str(&system_container.name());
 
         let kind = match kind {
             SystemKind::ExclusiveStart => Some("Exclusive at start"),
@@ -268,7 +273,8 @@ fn add_systems_to_graph<T: SystemContainer>(
             None => short_system_name,
         };
 
-        graph.add_node(&id, &[("label", &label)]);
+        let tooltip = system_tooltip(system_container, world);
+        graph.add_node(&id, &[("label", &label), ("tooltip", &tooltip)]);
 
         add_dependency_labels(
             graph,
@@ -286,6 +292,56 @@ fn add_systems_to_graph<T: SystemContainer>(
             system_container.after(),
             systems,
         );
+    }
+}
+
+fn system_tooltip<T: SystemContainer>(system_container: &T, world: &World) -> String {
+    let mut tooltip = String::new();
+    let truncate_in_place =
+        |tooltip: &mut String, end: &str| tooltip.truncate(tooltip.trim_end_matches(end).len());
+
+    let components = world.components();
+    let name_of_component = |id| {
+        pretty_type_name_str(
+            components
+                .get_info(id)
+                .map_or_else(|| "<missing>".into(), |info| info.name()),
+        )
+    };
+
+    let is_resource = |id: &ComponentId| world.archetypes().resource().contains(*id);
+
+    if let Some(component_access) = system_container.component_access() {
+        let (read_resources, read_components): (Vec<_>, Vec<_>) =
+            component_access.reads().partition(is_resource);
+        let (write_resources, write_components): (Vec<_>, Vec<_>) =
+            component_access.writes().partition(is_resource);
+
+        let mut list = |name, components: &[ComponentId]| {
+            if components.len() == 0 {
+                return;
+            }
+            tooltip.push_str(name);
+            tooltip.push_str(" [");
+            for read_resource in components {
+                tooltip.push_str(&name_of_component(*read_resource));
+                tooltip.push_str(", ");
+            }
+            truncate_in_place(&mut tooltip, ", ");
+            tooltip.push_str("]\\n");
+        };
+
+        list("Components", &read_components);
+        list("ComponentsMut", &write_components);
+
+        list("Res", &read_resources);
+        list("ResMut", &write_resources);
+    }
+
+    if tooltip.is_empty() {
+        pretty_type_name_str(&system_container.name())
+    } else {
+        tooltip
     }
 }
 

@@ -39,6 +39,7 @@ pub fn print_render_graph(app: &mut App) {
 ///     bevy_mod_debugdump::print_render_schedule_graph(&mut app);
 /// }
 pub fn print_render_schedule_graph(app: &mut App) {
+    app.update();
     let render_app = app.get_sub_app(RenderApp).expect("no render app");
 
     let default_style = schedule_graph::ScheduleGraphStyle {
@@ -47,7 +48,7 @@ pub fn print_render_schedule_graph(app: &mut App) {
     };
     println!(
         "{}",
-        schedule_graph::schedule_graph_dot_styled(&render_app.schedule, &default_style)
+        schedule_graph::schedule_graph_dot_styled(render_app, &default_style)
     );
 }
 
@@ -63,5 +64,6 @@ pub fn print_render_schedule_graph(app: &mut App) {
 /// }
 /// ```
 pub fn print_schedule(app: &mut App) {
-    println!("{}", schedule_graph::schedule_graph_dot(&app.schedule));
+    app.update();
+    println!("{}", schedule_graph::schedule_graph_dot(&app));
 }
