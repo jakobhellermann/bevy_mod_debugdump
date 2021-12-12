@@ -1,5 +1,8 @@
 #![allow(clippy::needless_doctest_main)]
-use bevy::{prelude::*, render::RenderApp};
+use bevy::{
+    prelude::*,
+    render::{RenderApp, RenderStage},
+};
 
 mod dot;
 
@@ -40,7 +43,6 @@ pub fn print_render_graph(app: &mut App) {
 /// }
 pub fn print_render_schedule_graph(app: &mut App) {
     app.update();
-    let render_app = app.get_sub_app(RenderApp).expect("no render app");
 
     let default_style = schedule_graph::ScheduleGraphStyle {
         hide_startup_schedule: false,
@@ -48,7 +50,12 @@ pub fn print_render_schedule_graph(app: &mut App) {
     };
     println!(
         "{}",
-        schedule_graph::schedule_graph_dot_styled(render_app, &default_style)
+        schedule_graph::schedule_graph_dot_sub_app_styled(
+            app,
+            RenderApp,
+            &[&RenderStage::Extract],
+            &default_style
+        )
     );
 }
 

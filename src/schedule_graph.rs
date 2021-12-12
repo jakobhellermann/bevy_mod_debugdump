@@ -1,4 +1,5 @@
 use crate::{dot, dot::DotGraph};
+use bevy::app::AppLabel;
 use bevy::ecs::{component::ComponentId, prelude::*, schedule::SystemContainer};
 use bevy::prelude::App;
 use pretty_type_name::pretty_type_name_str;
@@ -61,8 +62,35 @@ impl Default for ScheduleGraphStyle {
     }
 }
 
-/// Formats the schedule into a dot graph using a custom [ScheduleGraphStyle].
+/// Formats the schedule into a dot graph using a custom [`ScheduleGraphStyle`].
 pub fn schedule_graph_dot_styled(app: &App, style: &ScheduleGraphStyle) -> String {
+    schedule_graph_dot_styled_inner(app, None, style)
+}
+
+/// Formats the schedule of a sub app into a dot graph using a custom [`ScheduleGraphStyle`].
+///
+/// Additionally accepts an array of stages for which
+/// the main world should be used when resolving system access for tooltips.
+/// This is useful for the render app, where the `Extract` stage is run on
+/// the main app but the command queue are applied on the render app.
+pub fn schedule_graph_dot_sub_app_styled(
+    app: &App,
+    label: impl AppLabel,
+    stages_using_main_world: &[&dyn StageLabel],
+    style: &ScheduleGraphStyle,
+) -> String {
+    schedule_graph_dot_styled_inner(
+        app.sub_app(label),
+        Some((&app.world, stages_using_main_world)),
+        style,
+    )
+}
+
+fn schedule_graph_dot_styled_inner(
+    app: &App,
+    use_world_info_for_stages: Option<(&World, &[&dyn StageLabel])>,
+    style: &ScheduleGraphStyle,
+) -> String {
     let mut graph = DotGraph::new(
         "schedule",
         "digraph",
@@ -78,7 +106,15 @@ pub fn schedule_graph_dot_styled(app: &App, style: &ScheduleGraphStyle) -> Strin
     .node_attributes(&[("shape", "box"), ("margin", "0"), ("height", "0.4")])
     .edge_attributes(&[("color", &style.color_edge)]);
 
-    build_schedule_graph(&mut graph, app, &app.schedule, "schedule", None, &style);
+    build_schedule_graph(
+        &mut graph,
+        app,
+        &app.schedule,
+        "schedule",
+        None,
+        use_world_info_for_stages,
+        &style,
+    );
 
     graph.finish()
 }
@@ -89,6 +125,7 @@ fn build_schedule_graph(
     schedule: &Schedule,
     schedule_name: &str,
     marker_node_id: Option<&str>,
+    use_world_info_for_stages: Option<(&World, &[&dyn StageLabel])>,
     style: &ScheduleGraphStyle,
 ) {
     if let Some(marker_id) = marker_node_id {
@@ -100,8 +137,14 @@ fn build_schedule_graph(
 
     for (stage_name, stage) in schedule.iter_stages() {
         if let Some(system_stage) = stage.downcast_ref::<SystemStage>() {
-            let subgraph =
-                system_stage_subgraph(&app.world, schedule_name, stage_name, system_stage, style);
+            let subgraph = system_stage_subgraph(
+                &app.world,
+                schedule_name,
+                stage_name,
+                system_stage,
+                use_world_info_for_stages,
+                style,
+            );
             graph.add_sub_graph(subgraph);
         } else if let Some(schedule) = stage.downcast_ref::<Schedule>() {
             if style.hide_startup_schedule && is_startup_schedule(stage_name) {
@@ -132,6 +175,7 @@ fn build_schedule_graph(
                 schedule,
                 &name,
                 Some(&marker_id),
+                use_world_info_for_stages,
                 style,
             );
             graph.add_sub_graph(schedule_sub_graph);
@@ -164,9 +208,11 @@ fn system_stage_subgraph(
     schedule_name: &str,
     stage_name: &dyn StageLabel,
     system_stage: &SystemStage,
+    use_world_info_for_stages: Option<(&World, &[&dyn StageLabel])>,
     style: &ScheduleGraphStyle,
 ) -> DotGraph {
     let stage_name_str = format!("{:?}", stage_name);
+
     let mut sub = DotGraph::new(
         &format!("cluster_{:?}", stage_name),
         "subgraph",
@@ -186,9 +232,14 @@ fn system_stage_subgraph(
 
     sub.add_invisible_node(&marker_id(schedule_name, stage_name));
 
+    let relevant_world = match use_world_info_for_stages {
+        Some((relevant_world, stages)) if stages.contains(&stage_name) => relevant_world,
+        _ => world,
+    };
+
     add_systems_to_graph(
         &mut sub,
-        world,
+        relevant_world,
         schedule_name,
         SystemKind::ExclusiveStart,
         system_stage.exclusive_at_start_systems(),
@@ -196,7 +247,7 @@ fn system_stage_subgraph(
     );
     add_systems_to_graph(
         &mut sub,
-        world,
+        relevant_world,
         schedule_name,
         SystemKind::ExclusiveBeforeCommands,
         system_stage.exclusive_before_commands_systems(),
@@ -204,7 +255,7 @@ fn system_stage_subgraph(
     );
     add_systems_to_graph(
         &mut sub,
-        world,
+        relevant_world,
         schedule_name,
         SystemKind::Parallel,
         system_stage.parallel_systems(),
@@ -212,7 +263,7 @@ fn system_stage_subgraph(
     );
     add_systems_to_graph(
         &mut sub,
-        world,
+        relevant_world,
         schedule_name,
         SystemKind::ExclusiveEnd,
         system_stage.exclusive_at_end_systems(),
