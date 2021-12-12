@@ -9,6 +9,11 @@ pub fn schedule_graph_dot(schedule: &Schedule) -> String {
     schedule_graph_dot_styled(schedule, &default_style)
 }
 
+#[non_exhaustive]
+pub struct SystemInfo<'a> {
+    pub name: &'a str,
+}
+
 pub struct ScheduleGraphStyle {
     pub fontsize: f32,
     pub fontname: String,
@@ -18,6 +23,7 @@ pub struct ScheduleGraphStyle {
     pub color_system: String,
     pub color_edge: String,
     pub hide_startup_schedule: bool,
+    pub system_filter: Option<Box<dyn Fn(&SystemInfo) -> bool>>,
 }
 impl ScheduleGraphStyle {
     pub fn light() -> Self {
@@ -30,6 +36,7 @@ impl ScheduleGraphStyle {
             color_system: "white".into(),
             color_edge: "black".into(),
             hide_startup_schedule: true,
+            system_filter: None,
         }
     }
     pub fn dark() -> Self {
@@ -42,6 +49,7 @@ impl ScheduleGraphStyle {
             color_system: "#eff1f3".into(),
             color_edge: "white".into(),
             hide_startup_schedule: true,
+            system_filter: None,
         }
     }
 }
@@ -183,24 +191,28 @@ fn system_stage_subgraph(
         schedule_name,
         SystemKind::ExclusiveStart,
         system_stage.exclusive_at_start_systems(),
+        style,
     );
     add_systems_to_graph(
         &mut sub,
         schedule_name,
         SystemKind::ExclusiveBeforeCommands,
         system_stage.exclusive_before_commands_systems(),
+        style,
     );
     add_systems_to_graph(
         &mut sub,
         schedule_name,
         SystemKind::Parallel,
         system_stage.parallel_systems(),
+        style,
     );
     add_systems_to_graph(
         &mut sub,
         schedule_name,
         SystemKind::ExclusiveEnd,
         system_stage.exclusive_at_end_systems(),
+        style,
     );
 
     sub
@@ -217,6 +229,7 @@ fn add_systems_to_graph<T: SystemContainer>(
     schedule_name: &str,
     kind: SystemKind,
     systems: &[T],
+    style: &ScheduleGraphStyle,
 ) {
     if systems.is_empty() {
         return;
@@ -224,7 +237,18 @@ fn add_systems_to_graph<T: SystemContainer>(
 
     for (i, system_container) in systems.iter().enumerate() {
         let id = node_id(schedule_name, system_container, i);
-        let short_system_name = pretty_type_name::pretty_type_name_str(&system_container.name());
+        let system_name = system_container.name();
+
+        if let Some(filter) = &style.system_filter {
+            let info = SystemInfo {
+                name: system_name.as_ref(),
+            };
+            if !filter(&info) {
+                continue;
+            }
+        }
+
+        let short_system_name = pretty_type_name::pretty_type_name_str(&system_name);
 
         let kind = match kind {
             SystemKind::ExclusiveStart => Some("Exclusive at start"),
