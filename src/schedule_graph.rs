@@ -236,11 +236,14 @@ fn add_systems_to_graph<T: SystemContainer>(
     systems: &[T],
     style: &ScheduleGraphStyle,
 ) {
+    let mut systems: Vec<_> = systems.iter().collect();
+    systems.sort_by_key(|system| system.name());
+
     if systems.is_empty() {
         return;
     }
 
-    for (i, system_container) in systems.iter().enumerate() {
+    for (i, &system_container) in systems.iter().enumerate() {
         let id = node_id(schedule_name, system_container, i);
         let system_name = system_container.name();
 
@@ -282,7 +285,7 @@ fn add_systems_to_graph<T: SystemContainer>(
             &id,
             SystemDirection::Before,
             system_container.before(),
-            systems,
+            &systems,
         );
         add_dependency_labels(
             graph,
@@ -290,7 +293,7 @@ fn add_systems_to_graph<T: SystemContainer>(
             &id,
             SystemDirection::After,
             system_container.after(),
-            systems,
+            &systems,
         );
     }
 }
@@ -355,11 +358,11 @@ fn add_dependency_labels(
     system_node_id: &str,
     direction: SystemDirection,
     requirements: &[Box<dyn SystemLabel>],
-    other_systems: &[impl SystemContainer],
+    other_systems: &[&impl SystemContainer],
 ) {
     for requirement in requirements {
         let mut found = false;
-        for (i, dependency) in other_systems
+        for (i, &dependency) in other_systems
             .iter()
             .enumerate()
             .filter(|(_, node)| node.labels().contains(requirement))
