@@ -12,7 +12,7 @@ exclude = ["docs/*"]
 
 [features]
 default = ["render_graph"]
-render_graph = ["bevy/bevy_render2"]
+render_graph = ["bevy/bevy_render"]
 
 [dependencies]
 bevy = { git = "https://github.com/bevyengine/bevy", branch = "main", default-features = false }
@@ -20,7 +20,7 @@ pretty-type-name = "1.0"
 itertools = "0.10.0"
 
 [dev-dependencies]
-bevy = { git = "https://github.com/bevyengine/bevy", branch = "main", features = ["bevy_pbr2", "bevy_sprite2"] }
+bevy = { git = "https://github.com/bevyengine/bevy", branch = "main", features = ["bevy_pbr", "bevy_sprite"] }
 
 [[example]]
 name = "print_render_graph"

@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use crate::dot::{font_tag, html_escape, DotGraph};
 use bevy::{
     reflect::TypeRegistration,
-    render2::render_graph::{Edge, NodeId, RenderGraph},
+    render::render_graph::{Edge, NodeId, RenderGraph},
 };
 use itertools::{EitherOrBoth, Itertools};
 

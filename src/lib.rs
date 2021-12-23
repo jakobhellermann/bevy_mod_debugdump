@@ -1,5 +1,5 @@
 #![allow(clippy::needless_doctest_main)]
-use bevy::{prelude::*, render2::RenderApp};
+use bevy::{prelude::*, render::RenderApp};
 
 mod dot;
 
@@ -20,7 +20,7 @@ pub mod schedule_graph;
 /// ```
 #[cfg(feature = "render_graph")]
 pub fn print_render_graph(app: &mut App) {
-    use bevy::render2::render_graph::RenderGraph;
+    use bevy::render::render_graph::RenderGraph;
 
     let render_app = app.get_sub_app(RenderApp).expect("no render app");
     let render_graph = render_app.world.get_resource::<RenderGraph>().unwrap();
