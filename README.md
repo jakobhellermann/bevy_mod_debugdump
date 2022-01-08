@@ -40,5 +40,6 @@ fn print_render_graph(render_graph: Res<RenderGraph>) {
 
 |bevy|bevy_mod_debugdump|
 |---|---|
+|0.6|0.3|
 |0.5|0.2|
 |0.5|0.1|
