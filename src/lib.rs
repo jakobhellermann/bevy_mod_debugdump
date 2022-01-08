@@ -10,6 +10,22 @@ mod dot;
 pub mod render_graph;
 pub mod schedule_graph;
 
+/// Prints the main system schedule using [`schedule_graph_dot`](schedule_graph::schedule_graph_dot) as a dot graph.
+/// # Example
+/// ```rust,no_run
+/// use bevy::prelude::*;
+///
+/// fn main() {
+///     let mut app = App::new();
+///     app.add_plugins(DefaultPlugins);
+///     bevy_mod_debugdump::print_schedule(&mut app);
+/// }
+/// ```
+pub fn print_schedule(app: &mut App) {
+    app.update();
+    println!("{}", schedule_graph::schedule_graph_dot(&app));
+}
+
 /// Prints the current render graph using [render_graph_dot](render_graph::render_graph_dot).
 /// # Example
 /// ```rust,no_run
@@ -39,38 +55,16 @@ pub fn print_render_graph(app: &mut App) {
 /// fn main() {
 ///     let mut app = App::new();
 ///     app.add_plugins(DefaultPlugins);
-///     bevy_mod_debugdump::print_render_schedule_graph(&mut app);
+///     bevy_mod_debugdump::print_render_schedule(&mut app);
 /// }
-pub fn print_render_schedule_graph(app: &mut App) {
+pub fn print_render_schedule(app: &mut App) {
     app.update();
 
-    let default_style = schedule_graph::ScheduleGraphStyle {
-        hide_startup_schedule: false,
-        ..schedule_graph::ScheduleGraphStyle::dark()
-    };
-    println!(
-        "{}",
-        schedule_graph::schedule_graph_dot_sub_app_styled(
-            app,
-            RenderApp,
-            &[&RenderStage::Extract],
-            &default_style
-        )
+    let dot = schedule_graph::schedule_graph_dot_sub_app_styled(
+        app,
+        RenderApp,
+        &[&RenderStage::Extract],
+        &schedule_graph::ScheduleGraphStyle::default(),
     );
-}
-
-/// Prints the app system schedule using [schedule_graph_dot](schedule_graph::schedule_graph_dot) as a dot graph and exits.
-/// # Example
-/// ```rust,no_run
-/// use bevy::prelude::*;
-///
-/// fn main() {
-///     let mut app = App::new();
-///     app.add_plugins(DefaultPlugins);
-///     bevy_mod_debugdump::print_schedule(&mut app);
-/// }
-/// ```
-pub fn print_schedule(app: &mut App) {
-    app.update();
-    println!("{}", schedule_graph::schedule_graph_dot(&app));
+    println!("{}", dot);
 }

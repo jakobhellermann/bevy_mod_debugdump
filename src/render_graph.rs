@@ -9,8 +9,7 @@ use itertools::{EitherOrBoth, Itertools};
 
 /// Formats the render graph into a dot graph.
 pub fn render_graph_dot(graph: &RenderGraph) -> String {
-    let default_style = RenderGraphStyle::dark();
-    render_graph_dot_styled(graph, &default_style)
+    render_graph_dot_styled(graph, &RenderGraphStyle::default())
 }
 pub struct RenderGraphStyle {
     pub fontname: String,
@@ -59,6 +58,12 @@ impl RenderGraphStyle {
     }
 }
 
+impl Default for RenderGraphStyle {
+    fn default() -> Self {
+        RenderGraphStyle::dark()
+    }
+}
+
 /// Formats the render graph into a dot graph using a custom [RenderGraphStyle].
 pub fn render_graph_dot_styled(graph: &RenderGraph, style: &RenderGraphStyle) -> String {
     let options = [("rankdir", "LR"), ("ranksep", "1.0")];
@@ -87,7 +92,7 @@ fn sorted<'a, T: 'a, U: Ord>(
     vec.into_iter()
 }
 
-pub fn build_dot_graph(
+fn build_dot_graph(
     dot: &mut DotGraph,
     graph_name: Option<&str>,
     graph: &RenderGraph,

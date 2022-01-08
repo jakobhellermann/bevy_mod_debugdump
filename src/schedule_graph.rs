@@ -58,7 +58,7 @@ impl ScheduleGraphStyle {
 }
 impl Default for ScheduleGraphStyle {
     fn default() -> Self {
-        ScheduleGraphStyle::light()
+        ScheduleGraphStyle::dark()
     }
 }
 
