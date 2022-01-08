@@ -23,7 +23,7 @@ pub mod schedule_graph;
 /// ```
 pub fn print_schedule(app: &mut App) {
     app.update();
-    println!("{}", schedule_graph::schedule_graph_dot(&app));
+    println!("{}", schedule_graph::schedule_graph_dot(app));
 }
 
 /// Prints the current render graph using [render_graph_dot](render_graph::render_graph_dot).

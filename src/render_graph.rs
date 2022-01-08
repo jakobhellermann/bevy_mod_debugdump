@@ -104,7 +104,7 @@ fn build_dot_graph(
             let name = format!(
                 "{}{}",
                 graph_name.unwrap_or(""),
-                node.name.as_deref().unwrap_or_else(|| node.type_name)
+                node.name.as_deref().unwrap_or(node.type_name)
             );
             (node.id, name)
         })
@@ -117,7 +117,7 @@ fn build_dot_graph(
     nodes.sort_by_key(|node_state| &node_state.type_name);
 
     for (name, subgraph) in sorted(graph.iter_sub_graphs(), |(name, _)| *name) {
-        let options = [("label", name.as_ref())];
+        let options = [("label", name)];
         let mut sub_dot = DotGraph::subgraph(name, &options).graph_attributes(&[
             ("style", "rounded,filled"),
             ("color", &style.subgraph_background_color),
@@ -181,7 +181,7 @@ fn build_dot_graph(
         );
 
         dot.add_node(
-            &node_id(&node.id),
+            node_id(&node.id),
             &[
                 ("label", &label),
                 ("color", &style.node_color),
@@ -200,9 +200,9 @@ fn build_dot_graph(
                     output_index,
                 } => {
                     dot.add_edge_with_ports(
-                        &node_id(output_node),
+                        node_id(output_node),
                         Some(&format!("out-{}:e", output_index)),
-                        &node_id(input_node),
+                        node_id(input_node),
                         Some(&format!("in-{}:w", input_index)),
                         &[("color", &style.slot_edge_color)],
                     );
@@ -212,9 +212,9 @@ fn build_dot_graph(
                     output_node,
                 } => {
                     dot.add_edge_with_ports(
-                        &node_id(output_node),
+                        node_id(output_node),
                         Some("title:e"),
-                        &node_id(input_node),
+                        node_id(input_node),
                         Some("title:w"),
                         &[("color", &style.edge_color)],
                     );

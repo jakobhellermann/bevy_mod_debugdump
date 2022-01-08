@@ -113,7 +113,7 @@ fn schedule_graph_dot_styled_inner(
         "schedule",
         None,
         use_world_info_for_stages,
-        &style,
+        style,
     );
 
     graph.finish()
@@ -153,7 +153,7 @@ fn build_schedule_graph(
 
             let name = format!("cluster_{:?}", stage_name);
 
-            let marker_id = marker_id(&schedule_name, stage_name);
+            let marker_id = marker_id(schedule_name, stage_name);
             let stage_name_str = format!("{:?}", stage_name);
 
             let mut schedule_sub_graph = DotGraph::new(
@@ -359,7 +359,7 @@ fn system_tooltip<T: SystemContainer>(system_container: &T, world: &World) -> St
         pretty_type_name_str(
             components
                 .get_info(id)
-                .map_or_else(|| "<missing>".into(), |info| info.name()),
+                .map_or_else(|| "<missing>", |info| info.name()),
         )
     };
 
@@ -372,7 +372,7 @@ fn system_tooltip<T: SystemContainer>(system_container: &T, world: &World) -> St
             component_access.writes().partition(is_resource);
 
         let mut list = |name, components: &[ComponentId]| {
-            if components.len() == 0 {
+            if components.is_empty() {
                 return;
             }
             tooltip.push_str(name);
@@ -424,8 +424,8 @@ fn add_dependency_labels(
             let other = node_id(schedule_name, dependency, i);
 
             match direction {
-                SystemDirection::Before => graph.add_edge(&me, &other, &[("constraint", "false")]),
-                SystemDirection::After => graph.add_edge(&other, &me, &[("constraint", "false")]),
+                SystemDirection::Before => graph.add_edge(me, &other, &[("constraint", "false")]),
+                SystemDirection::After => graph.add_edge(&other, me, &[("constraint", "false")]),
             }
         }
         assert!(found);
