@@ -13,7 +13,7 @@ fn main() {
 }
 ```
 
-![bevy's schedule graph](docs/schedule_graph.svg)
+![bevy's schedule graph](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule_graph.svg)
 
 ### Render Graph
 ```rust
@@ -31,10 +31,10 @@ fn print_render_graph(render_graph: Res<RenderGraph>) {
 }
 ```
 
-![bevy's render graph](docs/render_graph.svg)
+![bevy's render graph](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/render_graph.svg)
 
 **Render schedule graph**
-![bevy's render schedule graph](docs/render_schedule_graph.svg)
+![bevy's render schedule graph](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/render_schedule_graph.svg)
 
 ## Bevy support table
 
