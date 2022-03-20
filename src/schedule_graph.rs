@@ -133,7 +133,7 @@ fn build_schedule_graph(
     }
 
     let is_startup_schedule =
-        |stage_name: &dyn StageLabel| format!("{:?}", stage_name) == "Startup";
+        |stage_name: &dyn StageLabel| format!("{:?}", stage_name) == "StartupSchedule";
 
     for (stage_name, stage) in schedule.iter_stages() {
         if let Some(system_stage) = stage.downcast_ref::<SystemStage>() {
