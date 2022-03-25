@@ -191,7 +191,7 @@ fn build_dot_graph(
     }
 
     for node in &nodes {
-        for edge in &node.edges.input_edges {
+        for edge in node.edges.input_edges() {
             match edge {
                 Edge::SlotEdge {
                     input_node,
