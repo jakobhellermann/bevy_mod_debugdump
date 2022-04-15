@@ -12,10 +12,12 @@ exclude = ["docs/*"]
 
 [features]
 default = ["render_graph"]
-render_graph = ["bevy/bevy_render"]
+render_graph = ["bevy_render"]
 
 [dependencies]
-bevy = { git = "https://github.com/bevyengine/bevy", default-features = false }
+bevy_ecs = { git = "https://github.com/bevyengine/bevy", default-features = false }
+bevy_app = { git = "https://github.com/bevyengine/bevy", default-features = false }
+bevy_render = { git = "https://github.com/bevyengine/bevy", default-features = false, optional = true }
 pretty-type-name = "1.0"
 itertools = "0.10.0"
 
@@ -23,7 +25,14 @@ itertools = "0.10.0"
 bevy = { git = "https://github.com/bevyengine/bevy" }
 
 [[example]]
+name = "print_schedule_graph"
+
+[[example]]
 name = "print_render_graph"
+required-features = ["render_graph"]
+
+[[example]]
+name = "print_render_schedule_graph"
 required-features = ["render_graph"]
 
 # [patch."https://github.com/bevyengine/bevy"]

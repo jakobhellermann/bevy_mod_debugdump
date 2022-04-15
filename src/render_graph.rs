@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 use crate::dot::{font_tag, html_escape, DotGraph};
-use bevy::render::render_graph::{Edge, NodeId, RenderGraph};
+use bevy_render::render_graph::{Edge, NodeId, RenderGraph};
 use itertools::{EitherOrBoth, Itertools};
 use pretty_type_name::pretty_type_name_str;
 

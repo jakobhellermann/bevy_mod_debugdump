@@ -1,7 +1,6 @@
 use crate::{dot, dot::DotGraph};
-use bevy::app::AppLabel;
-use bevy::ecs::{component::ComponentId, prelude::*, schedule::SystemContainer};
-use bevy::prelude::App;
+use bevy_app::{App, AppLabel};
+use bevy_ecs::{component::ComponentId, prelude::*, schedule::SystemContainer};
 use pretty_type_name::pretty_type_name_str;
 
 /// Formats the schedule into a dot graph.

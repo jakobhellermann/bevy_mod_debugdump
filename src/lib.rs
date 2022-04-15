@@ -1,14 +1,14 @@
 #![allow(clippy::needless_doctest_main)]
-use bevy::{
-    prelude::*,
-    render::{RenderApp, RenderStage},
-};
 
 mod dot;
 
 #[cfg(feature = "render_graph")]
 pub mod render_graph;
 pub mod schedule_graph;
+
+use bevy_app::App;
+#[cfg(feature = "bevy_render")]
+use bevy_render::{RenderApp, RenderStage};
 
 /// Prints the main system schedule using [`schedule_graph_dot`](schedule_graph::schedule_graph_dot) as a dot graph.
 /// # Example
@@ -39,7 +39,7 @@ pub fn print_schedule(app: &mut App) {
 /// ```
 #[cfg(feature = "render_graph")]
 pub fn print_render_graph(app: &mut App) {
-    use bevy::render::render_graph::RenderGraph;
+    use bevy_render::render_graph::RenderGraph;
 
     let render_app = app.get_sub_app(RenderApp).expect("no render app");
     let render_graph = render_app.world.get_resource::<RenderGraph>().unwrap();
@@ -57,6 +57,7 @@ pub fn print_render_graph(app: &mut App) {
 ///     app.add_plugins(DefaultPlugins);
 ///     bevy_mod_debugdump::print_render_schedule(&mut app);
 /// }
+#[cfg(feature = "render_graph")]
 pub fn print_render_schedule(app: &mut App) {
     app.update();
 
