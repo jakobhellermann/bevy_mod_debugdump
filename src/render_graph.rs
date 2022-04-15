@@ -2,8 +2,9 @@ use std::collections::HashMap;
 
 use crate::dot::{font_tag, html_escape, DotGraph};
 use bevy_render::render_graph::{Edge, NodeId, RenderGraph};
-use itertools::{EitherOrBoth, Itertools};
 use pretty_type_name::pretty_type_name_str;
+
+use self::iter_utils::EitherOrBoth;
 
 /// Formats the render graph into a dot graph.
 pub fn render_graph_dot(graph: &RenderGraph) -> String {
@@ -157,9 +158,7 @@ fn build_dot_graph(
             })
             .collect::<Vec<_>>();
 
-        let slots = inputs
-            .iter()
-            .zip_longest(outputs.iter())
+        let slots = iter_utils::zip_longest(inputs.iter(), outputs.iter())
             .map(|pair| match pair {
                 EitherOrBoth::Both(input, output) => format!("<TR>{}{}</TR>", input, output),
                 EitherOrBoth::Left(input) => {
@@ -219,5 +218,71 @@ fn build_dot_graph(
                 }
             }
         }
+    }
+}
+
+mod iter_utils {
+    use std::iter::Fuse;
+
+    pub enum EitherOrBoth<A, B> {
+        Both(A, B),
+        Left(A),
+        Right(B),
+    }
+
+    #[derive(Clone, Debug)]
+    pub struct ZipLongest<T, U> {
+        a: Fuse<T>,
+        b: Fuse<U>,
+    }
+
+    pub fn zip_longest<T, U>(a: T, b: U) -> ZipLongest<T, U>
+    where
+        T: Iterator,
+        U: Iterator,
+    {
+        ZipLongest {
+            a: a.fuse(),
+            b: b.fuse(),
+        }
+    }
+
+    impl<T, U> Iterator for ZipLongest<T, U>
+    where
+        T: Iterator,
+        U: Iterator,
+    {
+        type Item = EitherOrBoth<T::Item, U::Item>;
+
+        fn next(&mut self) -> Option<Self::Item> {
+            match (self.a.next(), self.b.next()) {
+                (None, None) => None,
+                (Some(a), None) => Some(EitherOrBoth::Left(a)),
+                (None, Some(b)) => Some(EitherOrBoth::Right(b)),
+                (Some(a), Some(b)) => Some(EitherOrBoth::Both(a, b)),
+            }
+        }
+
+        #[inline]
+        fn size_hint(&self) -> (usize, Option<usize>) {
+            max_size_hint(self.a.size_hint(), self.b.size_hint())
+        }
+    }
+
+    fn max_size_hint(
+        a: (usize, Option<usize>),
+        b: (usize, Option<usize>),
+    ) -> (usize, Option<usize>) {
+        let (a_lower, a_upper) = a;
+        let (b_lower, b_upper) = b;
+
+        let lower = std::cmp::max(a_lower, b_lower);
+
+        let upper = match (a_upper, b_upper) {
+            (Some(x), Some(y)) => Some(std::cmp::max(x, y)),
+            _ => None,
+        };
+
+        (lower, upper)
     }
 }
