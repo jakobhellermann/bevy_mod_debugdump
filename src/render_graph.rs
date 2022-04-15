@@ -1,11 +1,9 @@
 use std::collections::HashMap;
 
 use crate::dot::{font_tag, html_escape, DotGraph};
-use bevy::{
-    reflect::TypeRegistration,
-    render::render_graph::{Edge, NodeId, RenderGraph},
-};
+use bevy::render::render_graph::{Edge, NodeId, RenderGraph};
 use itertools::{EitherOrBoth, Itertools};
+use pretty_type_name::pretty_type_name_str;
 
 /// Formats the render graph into a dot graph.
 pub fn render_graph_dot(graph: &RenderGraph) -> String {
@@ -129,7 +127,7 @@ fn build_dot_graph(
 
     for node in &nodes {
         let name = node.name.as_deref().unwrap_or("<node>");
-        let type_name = TypeRegistration::get_short_name(node.type_name);
+        let type_name = pretty_type_name_str(node.type_name);
 
         let inputs = node
             .input_slots
