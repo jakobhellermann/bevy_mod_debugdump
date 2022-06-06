@@ -16,7 +16,7 @@ pub struct RenderGraphStyle {
     pub textcolor: String,
     pub typename_color: String,
     pub background_color: String,
-    pub subgraph_background_color: String,
+    pub subgraph_background_color: Vec<String>,
     pub subgraph_label_font_color: String,
     pub node_color: String,
     pub node_style: String,
@@ -31,7 +31,7 @@ impl RenderGraphStyle {
             textcolor: "black".into(),
             typename_color: "red".into(),
             background_color: "white".into(),
-            subgraph_background_color: "#e4e9f5".into(),
+            subgraph_background_color: vec!["#e4e9f5".into(), "#c4d0ed".into()],
             subgraph_label_font_color: "black".into(),
             node_color: "black".into(),
             node_style: "rounded".into(),
@@ -47,7 +47,7 @@ impl RenderGraphStyle {
             textcolor: "white".into(),
             typename_color: "red".into(),
             background_color: "#35393F".into(),
-            subgraph_background_color: "#5e6570".into(),
+            subgraph_background_color: vec!["#5e6570".into(), "#6a83aa".into()],
             subgraph_label_font_color: "black".into(),
             node_color: "#99aab5".into(),
             node_style: "rounded".into(),
@@ -78,7 +78,7 @@ pub fn render_graph_dot_styled(graph: &RenderGraph, style: &RenderGraphStyle) ->
             ("fontcolor", &style.textcolor),
         ]);
 
-    build_dot_graph(&mut dot, None, graph, style);
+    build_dot_graph(&mut dot, None, graph, style, 0);
     dot.finish()
 }
 
@@ -96,6 +96,7 @@ fn build_dot_graph(
     graph_name: Option<&str>,
     graph: &RenderGraph,
     style: &RenderGraphStyle,
+    subgraph_nest_level: usize,
 ) {
     let node_mapping: HashMap<_, _> = graph
         .iter_nodes()
@@ -110,19 +111,28 @@ fn build_dot_graph(
         .collect();
 
     // Convert to format fitting GraphViz node id requirements
-    let node_id = |id: &NodeId| &node_mapping[id];
+    let node_id = |id: &NodeId| format!("{}_{}", graph_name.unwrap_or_default(), &node_mapping[id]);
 
     let mut nodes: Vec<_> = graph.iter_nodes().collect();
     nodes.sort_by_key(|node_state| &node_state.type_name);
 
     for (name, subgraph) in sorted(graph.iter_sub_graphs(), |(name, _)| *name) {
+        let internal_name = format!("{}_{}", graph_name.unwrap_or_default(), name);
         let options = [("label", name)];
-        let mut sub_dot = DotGraph::subgraph(name, &options).graph_attributes(&[
+        let bg_color = &style.subgraph_background_color
+            [subgraph_nest_level % style.subgraph_background_color.len()];
+        let mut sub_dot = DotGraph::subgraph(&internal_name, &options).graph_attributes(&[
             ("style", "rounded,filled"),
-            ("color", &style.subgraph_background_color),
+            ("color", bg_color),
             ("fontcolor", &style.subgraph_label_font_color),
         ]);
-        build_dot_graph(&mut sub_dot, Some(name), subgraph, style);
+        build_dot_graph(
+            &mut sub_dot,
+            Some(&internal_name),
+            subgraph,
+            style,
+            subgraph_nest_level + 1,
+        );
         dot.add_sub_graph(sub_dot);
     }
 
@@ -178,7 +188,7 @@ fn build_dot_graph(
         );
 
         dot.add_node(
-            node_id(&node.id),
+            &node_id(&node.id),
             &[
                 ("label", &label),
                 ("color", &style.node_color),
@@ -197,9 +207,9 @@ fn build_dot_graph(
                     output_index,
                 } => {
                     dot.add_edge_with_ports(
-                        node_id(output_node),
+                        &node_id(output_node),
                         Some(&format!("out-{}:e", output_index)),
-                        node_id(input_node),
+                        &node_id(input_node),
                         Some(&format!("in-{}:w", input_index)),
                         &[("color", &style.slot_edge_color)],
                     );
@@ -209,9 +219,9 @@ fn build_dot_graph(
                     output_node,
                 } => {
                     dot.add_edge_with_ports(
-                        node_id(output_node),
+                        &node_id(output_node),
                         Some("title:e"),
-                        node_id(input_node),
+                        &node_id(input_node),
                         Some("title:w"),
                         &[("color", &style.edge_color)],
                     );
