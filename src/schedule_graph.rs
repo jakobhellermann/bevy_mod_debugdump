@@ -1,6 +1,10 @@
 use crate::{dot, dot::DotGraph};
-use bevy_app::{App, AppLabel};
-use bevy_ecs::{component::ComponentId, prelude::*, schedule::SystemContainer};
+use bevy_app::{App, AppLabel, StartupSchedule};
+use bevy_ecs::{
+    component::ComponentId,
+    prelude::*,
+    schedule::{StageLabelId, SystemContainer, SystemLabelId},
+};
 use pretty_type_name::pretty_type_name_str;
 
 /// Formats the schedule into a dot graph.
@@ -131,8 +135,7 @@ fn build_schedule_graph(
         graph.add_invisible_node(marker_id);
     }
 
-    let is_startup_schedule =
-        |stage_name: &dyn StageLabel| format!("{:?}", stage_name) == "StartupSchedule";
+    let is_startup_schedule = |stage_name: StageLabelId| stage_name == StartupSchedule.as_label();
 
     for (stage_name, stage) in schedule.iter_stages() {
         if let Some(system_stage) = stage.downcast_ref::<SystemStage>() {
@@ -198,22 +201,22 @@ fn build_schedule_graph(
     }
 }
 
-fn marker_id(schedule_name: &str, stage_name: &dyn StageLabel) -> String {
-    format!("MARKER_{}_{:?}", schedule_name, stage_name,)
+fn marker_id(schedule_name: &str, stage_name: StageLabelId) -> String {
+    format!("MARKER_{}_{:?}", schedule_name, stage_name)
 }
 
 fn system_stage_subgraph(
     world: &World,
     schedule_name: &str,
-    stage_name: &dyn StageLabel,
+    stage_name: StageLabelId,
     system_stage: &SystemStage,
     use_world_info_for_stages: Option<(&World, &[&dyn StageLabel])>,
     style: &ScheduleGraphStyle,
 ) -> DotGraph {
-    let stage_name_str = format!("{:?}", stage_name);
+    let stage_name_str = stage_name.as_str();
 
     let mut sub = DotGraph::new(
-        &format!("cluster_{:?}", stage_name),
+        &format!("cluster_{:?}", stage_name.as_str()),
         "subgraph",
         &[
             ("style", "rounded"),
@@ -232,7 +235,11 @@ fn system_stage_subgraph(
     sub.add_invisible_node(&marker_id(schedule_name, stage_name));
 
     let relevant_world = match use_world_info_for_stages {
-        Some((relevant_world, stages)) if stages.contains(&stage_name) => relevant_world,
+        Some((relevant_world, stages))
+            if stages.iter().any(|stage| stage.as_label() == stage_name) =>
+        {
+            relevant_world
+        }
         _ => world,
     };
 
@@ -407,7 +414,7 @@ fn add_dependency_labels(
     schedule_name: &str,
     system_node_id: &str,
     direction: SystemDirection,
-    requirements: &[Box<dyn SystemLabel>],
+    requirements: &[SystemLabelId],
     other_systems: &[&impl SystemContainer],
 ) {
     for requirement in requirements {

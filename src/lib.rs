@@ -80,7 +80,9 @@ pub fn print_render_graph(app: &mut App) {
 pub fn get_render_graph(app: &mut App) -> String {
     use bevy_render::render_graph::RenderGraph;
 
-    let render_app = app.get_sub_app(RenderApp).expect("no render app");
+    let render_app = app
+        .get_sub_app(RenderApp)
+        .unwrap_or_else(|_| panic!("no render app"));
     let render_graph = render_app.world.get_resource::<RenderGraph>().unwrap();
 
     render_graph::render_graph_dot(&*render_graph)
