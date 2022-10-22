@@ -3,7 +3,7 @@ use bevy_app::{App, AppLabel, StartupSchedule};
 use bevy_ecs::{
     component::ComponentId,
     prelude::*,
-    schedule::{StageLabelId, SystemContainer, SystemLabelId},
+    schedule::{GraphNode, StageLabelId, SystemContainer, SystemLabelId},
 };
 use pretty_type_name::pretty_type_name_str;
 
@@ -29,6 +29,7 @@ pub struct ScheduleGraphStyle {
     pub color_system: String,
     pub color_edge: String,
     pub hide_startup_schedule: bool,
+    #[allow(clippy::type_complexity)]
     pub system_filter: Option<Box<dyn Fn(&SystemInfo) -> bool>>,
 }
 impl ScheduleGraphStyle {
@@ -223,7 +224,7 @@ fn system_stage_subgraph(
             ("color", &style.bgcolor_stage),
             ("bgcolor", &style.bgcolor_stage),
             ("rankdir", "TD"),
-            ("label", &stage_name_str),
+            ("label", stage_name_str),
         ],
     )
     .node_attributes(&[
@@ -285,12 +286,12 @@ enum SystemKind {
     ExclusiveBeforeCommands,
     Parallel,
 }
-fn add_systems_to_graph<T: SystemContainer>(
+fn add_systems_to_graph(
     graph: &mut DotGraph,
     world: &World,
     schedule_name: &str,
     kind: SystemKind,
-    systems: &[T],
+    systems: &[SystemContainer],
     style: &ScheduleGraphStyle,
 ) {
     let mut systems: Vec<_> = systems.iter().collect();
@@ -355,7 +356,7 @@ fn add_systems_to_graph<T: SystemContainer>(
     }
 }
 
-fn system_tooltip<T: SystemContainer>(system_container: &T, world: &World) -> String {
+fn system_tooltip(system_container: &SystemContainer, world: &World) -> String {
     let mut tooltip = String::new();
     let truncate_in_place =
         |tooltip: &mut String, end: &str| tooltip.truncate(tooltip.trim_end_matches(end).len());
@@ -371,32 +372,31 @@ fn system_tooltip<T: SystemContainer>(system_container: &T, world: &World) -> St
 
     let is_resource = |id: &ComponentId| world.archetypes().resource().contains(*id);
 
-    if let Some(component_access) = system_container.component_access() {
-        let (read_resources, read_components): (Vec<_>, Vec<_>) =
-            component_access.reads().partition(is_resource);
-        let (write_resources, write_components): (Vec<_>, Vec<_>) =
-            component_access.writes().partition(is_resource);
+    let component_access = system_container.component_access();
+    let (read_resources, read_components): (Vec<_>, Vec<_>) =
+        component_access.reads().partition(is_resource);
+    let (write_resources, write_components): (Vec<_>, Vec<_>) =
+        component_access.writes().partition(is_resource);
 
-        let mut list = |name, components: &[ComponentId]| {
-            if components.is_empty() {
-                return;
-            }
-            tooltip.push_str(name);
-            tooltip.push_str(" [");
-            for read_resource in components {
-                tooltip.push_str(&name_of_component(*read_resource));
-                tooltip.push_str(", ");
-            }
-            truncate_in_place(&mut tooltip, ", ");
-            tooltip.push_str("]\\n");
-        };
+    let mut list = |name, components: &[ComponentId]| {
+        if components.is_empty() {
+            return;
+        }
+        tooltip.push_str(name);
+        tooltip.push_str(" [");
+        for read_resource in components {
+            tooltip.push_str(&name_of_component(*read_resource));
+            tooltip.push_str(", ");
+        }
+        truncate_in_place(&mut tooltip, ", ");
+        tooltip.push_str("]\\n");
+    };
 
-        list("Components", &read_components);
-        list("ComponentsMut", &write_components);
+    list("Components", &read_components);
+    list("ComponentsMut", &write_components);
 
-        list("Res", &read_resources);
-        list("ResMut", &write_resources);
-    }
+    list("Res", &read_resources);
+    list("ResMut", &write_resources);
 
     if tooltip.is_empty() {
         pretty_type_name_str(&system_container.name())
@@ -415,7 +415,7 @@ fn add_dependency_labels(
     system_node_id: &str,
     direction: SystemDirection,
     requirements: &[SystemLabelId],
-    other_systems: &[&impl SystemContainer],
+    other_systems: &[&SystemContainer],
 ) {
     for requirement in requirements {
         let mut found = false;
@@ -438,6 +438,6 @@ fn add_dependency_labels(
     }
 }
 
-fn node_id(schedule_name: &str, system: &impl SystemContainer, i: usize) -> String {
+fn node_id(schedule_name: &str, system: &SystemContainer, i: usize) -> String {
     format!("{}_{}_{}", schedule_name, system.name(), i)
 }
