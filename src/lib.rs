@@ -85,7 +85,7 @@ pub fn get_render_graph(app: &mut App) -> String {
         .unwrap_or_else(|_| panic!("no render app"));
     let render_graph = render_app.world.get_resource::<RenderGraph>().unwrap();
 
-    render_graph::render_graph_dot(&*render_graph)
+    render_graph::render_graph_dot(render_graph)
 }
 
 /// Prints the system schedule of the render sub-app.
