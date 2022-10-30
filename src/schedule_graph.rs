@@ -370,7 +370,7 @@ fn system_tooltip(system_container: &SystemContainer, world: &World) -> String {
         )
     };
 
-    let is_resource = |id: &ComponentId| world.archetypes().resource().contains(*id);
+    let is_resource = |id: &ComponentId| world.get_resource_by_id(*id).is_some();
 
     let component_access = system_container.component_access();
     let (read_resources, read_components): (Vec<_>, Vec<_>) =
