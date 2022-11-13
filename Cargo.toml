@@ -1,6 +1,6 @@
 [package]
 name = "bevy_mod_debugdump"
-version = "0.5.0"
+version = "0.6.0"
 repository = "https://github.com/jakobhellermann/bevy_mod_debugdump"
 readme = "README.md"
 license = "MIT"

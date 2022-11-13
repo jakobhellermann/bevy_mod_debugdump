@@ -8,7 +8,8 @@ use bevy::log::LogPlugin;
 
 fn main() {
     let mut app = App::new();
-    app.add_plugins_with(DefaultPlugins, |plugins| plugins.disable::<bevy::log::LogPlugin>()); // disable LogPlugin so that you can pipe the output directly into `dot -Tsvg`
+    // disable LogPlugin so that you can pipe the output directly into `dot -Tsvg`
+    app.add_plugins(DefaultPlugins.build().disable::<LogPlugin>()); 
     bevy_mod_debugdump::print_schedule(&mut app);
 }
 ```
@@ -22,7 +23,7 @@ use bevy::log::LogPlugin;
 
 fn main() {
     let mut app = App::new();
-    app.add_plugins_with(DefaultPlugins, |plugins| plugins.disable::<LogPlugin>());
+    app.add_plugins(DefaultPlugins.build().disable::<LogPlugin>()); 
     bevy_mod_debugdump::print_render_graph(&mut app);
 }
 ```
@@ -37,7 +38,7 @@ use bevy::log::LogPlugin;
 
 fn main() {
     let mut app = App::new();
-    app.add_plugins_with(DefaultPlugins, |plugins| plugins.disable::<LogPlugin>());
+    app.add_plugins(DefaultPlugins.build().disable::<LogPlugin>()); 
     bevy_mod_debugdump::print_render_schedule(&mut app);
 }
 ```
@@ -46,8 +47,9 @@ fn main() {
 
 ## Bevy support table
 
-|bevy|bevy_mod_debugdump|
+|bevy|bevy\_mod\_debugdump|
 |---|---|
+|0.9|0.6|
 |0.8|0.5|
 |0.7|0.4|
 |0.6|0.3|
