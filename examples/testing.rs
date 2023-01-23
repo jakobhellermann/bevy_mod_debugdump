@@ -1,3 +1,4 @@
+use bevy::MinimalPlugins;
 use bevy_app::{App, CoreSchedule, CoreSet};
 use bevy_ecs::scheduling::{IntoSystemConfig, NodeId, Schedule, ScheduleLabel, Schedules};
 
@@ -9,6 +10,7 @@ fn system_in_multiple() {}
 
 fn main() {
     let mut app = App::new();
+    app.add_plugins(MinimalPlugins);
     app.add_system(system_in_update.in_set(CoreSet::Update));
     app.add_system(system_freestanding);
     app.add_system(
