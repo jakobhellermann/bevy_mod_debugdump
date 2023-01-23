@@ -1,0 +1,9 @@
+[package]
+name = "bevy_mod_debugdump_stageless"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bevy_ecs = { path = "../bevy/crates/bevy_ecs" }
+bevy_app = { path = "../bevy/crates/bevy_app" }
+pretty-type-name = "1.0.0"
