@@ -10,6 +10,7 @@ use dot::DotGraph;
 use petgraph::Direction;
 
 const SCHEDULE_RANKDIR: &str = "TD";
+const MULTIPLE_SET_EDGE_COLOR: &str = "red";
 
 pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) -> String {
     let name = format!("{:?}", schedule_label);
@@ -84,12 +85,20 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
     }
 
     for &(system_id, system) in systems_in_multiple_sets.iter() {
-        // TODO: handle more specifically
         let name = system_name(system);
-        dot.add_node(
-            &node_id(system_id),
-            &[("label", &format!("{name}\n(part of multiple sets)"))],
-        );
+        dot.add_node(&node_id(system_id), &[("label", &name)]);
+
+        for parent in hierarchy_parents(system_id) {
+            dot.add_edge(
+                &node_id(parent),
+                &node_id(system_id),
+                &[
+                    ("dir", "none"),
+                    ("color", MULTIPLE_SET_EDGE_COLOR),
+                    ("ltail", &set_cluster_name(parent)),
+                ],
+            );
+        }
     }
 
     let dependency = graph.dependency();
