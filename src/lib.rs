@@ -1,10 +1,13 @@
 mod dot;
 
+use std::collections::HashMap;
+
 use bevy_ecs::{
-    schedule::{NodeId, Schedule, ScheduleLabel},
+    scheduling::{NodeId, Schedule, ScheduleLabel},
     system::System,
 };
 use dot::DotGraph;
+use petgraph::Direction;
 
 const SCHEDULE_RANKDIR: &str = "TD";
 
@@ -21,12 +24,35 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
         ],
     );
 
-    eprintln!("\n");
+    let hierarchy = &graph.hierarchy().graph;
+
+    let hierarchy_parents = |node| {
+        hierarchy
+            .neighbors_directed(node, Direction::Incoming)
+            .filter(|&parent| !graph.set_at(parent).is_system_type())
+    };
 
     let mut system_sets: Vec<_> = graph.system_sets().collect();
     system_sets.sort_by_key(|&(node_id, ..)| node_id);
 
-    let systems: Vec<_> = graph.systems().collect();
+    let mut systems_freestanding = Vec::new();
+    let mut systems_in_single_set = HashMap::<NodeId, Vec<_>>::new();
+    let mut systems_in_multiple_sets = Vec::new();
+
+    for (system_id, system, _conditions) in graph.systems() {
+        let single_parent = iter_single(hierarchy_parents(system_id));
+
+        match single_parent {
+            IterSingleResult::Empty => systems_freestanding.push((system_id, system)),
+            IterSingleResult::Single(parent) => {
+                systems_in_single_set
+                    .entry(parent)
+                    .or_default()
+                    .push((system_id, system));
+            }
+            IterSingleResult::Multiple => systems_in_multiple_sets.push((system_id, system)),
+        }
+    }
 
     for &(set_id, set, _conditions) in system_sets.iter() {
         let name = format!("{set:?}");
@@ -40,12 +66,30 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
 
         system_set_graph.add_invisible_node(&marker_name(set_id));
 
+        for &(system_id, system) in systems_in_single_set
+            .get(&set_id)
+            .map(|systems| systems.as_slice())
+            .unwrap_or(&[])
+        {
+            let name = system_name(system);
+            system_set_graph.add_node(&node_id(system_id), &[("label", &name)]);
+        }
+
         dot.add_sub_graph(system_set_graph);
     }
 
-    for &(system_id, system, _conditions) in systems.iter() {
+    for &(system_id, system) in systems_freestanding.iter() {
         let name = system_name(system);
         dot.add_node(&node_id(system_id), &[("label", &name)]);
+    }
+
+    for &(system_id, system) in systems_in_multiple_sets.iter() {
+        // TODO: handle more specifically
+        let name = system_name(system);
+        dot.add_node(
+            &node_id(system_id),
+            &[("label", &format!("{name}\n(part of multiple sets)"))],
+        );
     }
 
     let dependency = graph.dependency();
@@ -92,4 +136,15 @@ fn node_id(node_id: NodeId) -> String {
         NodeId::System(_) => node_index_name(node_id),
         NodeId::Set(_) => marker_name(node_id),
     }
+}
+
+enum IterSingleResult<T> {
+    Empty,
+    Single(T),
+    Multiple,
+}
+fn iter_single<T>(mut iter: impl Iterator<Item = T>) -> IterSingleResult<T> {
+    let Some(first) = iter.next() else { return IterSingleResult::Empty };
+    let None = iter.next() else { return IterSingleResult::Multiple };
+    IterSingleResult::Single(first)
 }

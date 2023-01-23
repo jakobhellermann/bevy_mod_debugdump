@@ -1,11 +1,21 @@
 use bevy_app::{App, CoreSchedule, CoreSet};
 use bevy_ecs::scheduling::{IntoSystemConfig, NodeId, Schedule, ScheduleLabel, Schedules};
 
-fn test_system() {}
+fn system_in_update() {}
+
+fn system_freestanding() {}
+
+fn system_in_multiple() {}
 
 fn main() {
     let mut app = App::new();
-    app.add_system(test_system.in_set(CoreSet::Update));
+    app.add_system(system_in_update.in_set(CoreSet::Update));
+    app.add_system(system_freestanding);
+    app.add_system(
+        system_in_multiple
+            .in_set(CoreSet::Update)
+            .in_set(CoreSet::First),
+    );
 
     let schedules = app.world.resource::<Schedules>();
 
