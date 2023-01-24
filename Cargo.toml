@@ -10,4 +10,4 @@ pretty-type-name = "1.0.0"
 petgraph = "0.6.2"
 
 [dev-dependencies]
-bevy = { path = "../bevy", default-features = false }
+bevy = { path = "../bevy" }

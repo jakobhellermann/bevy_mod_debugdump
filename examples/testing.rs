@@ -1,10 +1,10 @@
-use bevy::DefaultPlugins;
-use bevy_app::{App, CoreSchedule};
+use bevy::{log::LogPlugin, DefaultPlugins};
+use bevy_app::{App, CoreSchedule, PluginGroup};
 use bevy_ecs::scheduling::{NodeId, Schedule, ScheduleLabel, Schedules};
 
 fn main() {
     let mut app = App::new();
-    app.add_plugins(DefaultPlugins);
+    app.add_plugins(DefaultPlugins.build().disable::<LogPlugin>());
 
     let schedules = app.world.resource::<Schedules>();
 
