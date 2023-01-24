@@ -9,7 +9,7 @@ use bevy_ecs::{
 use dot::DotGraph;
 use petgraph::Direction;
 
-const SCHEDULE_RANKDIR: &str = "TD";
+const SCHEDULE_RANKDIR: &str = "LR";
 const MULTIPLE_SET_EDGE_COLOR: &str = "red";
 
 pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) -> String {
@@ -23,7 +23,8 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
             ("compound", "true"), // enable ltail/lhead
             ("rankdir", SCHEDULE_RANKDIR),
         ],
-    );
+    )
+    .node_attributes(&[("shape", "box")]);
 
     let hierarchy = &graph.hierarchy().graph;
 
