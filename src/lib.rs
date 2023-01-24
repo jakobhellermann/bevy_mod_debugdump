@@ -32,7 +32,7 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
     let hierarchy_parents = |node| {
         hierarchy
             .neighbors_directed(node, Direction::Incoming)
-            .filter(|&parent| !graph.set_at(parent).is_system_type())
+            .filter(|&parent| graph.set_at(parent).system_type().is_none())
     };
 
     let mut system_sets: Vec<_> = graph.system_sets().collect();
@@ -64,7 +64,7 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
 
     for &(set_id, set, _conditions) in system_sets
         .iter()
-        .filter(|&&(id, ..)| !graph.set_at(id).is_system_type())
+        .filter(|&&(id, ..)| graph.set_at(id).system_type().is_none())
     {
         let single_parent = iter_single(hierarchy_parents(set_id));
 
@@ -183,7 +183,8 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
 
     let dependency = graph.dependency();
     for (from, to, ()) in dependency.graph.all_edges() {
-        let is_non_system_set = |id: NodeId| id.is_set() && !graph.set_at(id).is_system_type();
+        let is_non_system_set =
+            |id: NodeId| id.is_set() && graph.set_at(id).system_type().is_none();
 
         let ltail = is_non_system_set(from)
             .then(|| set_cluster_name(from))
@@ -225,10 +226,16 @@ fn node_id(node_id: NodeId, graph: &ScheduleGraph) -> String {
         NodeId::System(_) => node_index_name(node_id),
         NodeId::Set(_) => {
             let set = graph.set_at(node_id);
-            if !set.is_system_type() {
-                marker_name(node_id)
+            if let Some(system_type) = set.system_type() {
+                let system_node = graph
+                    .systems()
+                    .find_map(|(node_id, system, _)| {
+                        (system.type_id() == system_type).then_some(node_id)
+                    })
+                    .unwrap();
+                node_index_name(system_node)
             } else {
-                "TODO: dependency on SystemSet".into()
+                marker_name(node_id)
             }
         }
     }
