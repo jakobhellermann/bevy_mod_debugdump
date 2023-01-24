@@ -57,9 +57,9 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
 
     for &(set_id, set, _conditions) in system_sets.iter() {
         let name = format!("{set:?}");
-        if name.starts_with("SystemTypeSet") {
-            continue; // skip for now
-        }
+        if set.is_system_type() {
+            continue;
+        };
 
         let system_set_cluster_name = node_index_name(set_id); // in sync with system_cluster_name
         let mut system_set_graph =
@@ -103,12 +103,12 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
 
     let dependency = graph.dependency();
     for (from, to, ()) in dependency.graph.all_edges() {
-        let ltail = from
-            .is_set()
+        let is_non_system_set = |id: NodeId| id.is_set() && !graph.set_at(id).is_system_type();
+
+        let ltail = is_non_system_set(from)
             .then(|| set_cluster_name(from))
             .unwrap_or_default();
-        let lhead = to
-            .is_set()
+        let lhead = is_non_system_set(to)
             .then(|| set_cluster_name(to))
             .unwrap_or_default();
 
