@@ -3,7 +3,7 @@ mod dot;
 use std::collections::HashMap;
 
 use bevy_ecs::{
-    scheduling::{NodeId, Schedule, ScheduleLabel},
+    scheduling::{NodeId, Schedule, ScheduleGraph, ScheduleLabel, SystemSet},
     system::System,
 };
 use dot::DotGraph;
@@ -28,6 +28,7 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
 
     let hierarchy = &graph.hierarchy().graph;
 
+    // utilities
     let hierarchy_parents = |node| {
         hierarchy
             .neighbors_directed(node, Direction::Incoming)
@@ -37,6 +38,7 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
     let mut system_sets: Vec<_> = graph.system_sets().collect();
     system_sets.sort_by_key(|&(node_id, ..)| node_id);
 
+    // collect sets and systems
     let mut systems_freestanding = Vec::new();
     let mut systems_in_single_set = HashMap::<NodeId, Vec<_>>::new();
     let mut systems_in_multiple_sets = Vec::new();
@@ -56,11 +58,38 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
         }
     }
 
-    for &(set_id, set, _conditions) in system_sets.iter() {
+    let mut sets_freestanding = Vec::new();
+    let mut sets_in_single_set = HashMap::<NodeId, Vec<_>>::new();
+    let mut sets_in_multiple_sets = Vec::new();
+
+    for &(set_id, set, _conditions) in system_sets
+        .iter()
+        .filter(|&&(id, ..)| !graph.set_at(id).is_system_type())
+    {
+        let single_parent = iter_single(hierarchy_parents(set_id));
+
+        match single_parent {
+            IterSingleResult::Empty => sets_freestanding.push((set_id, set)),
+            IterSingleResult::Single(parent) => {
+                sets_in_single_set
+                    .entry(parent)
+                    .or_default()
+                    .push((set_id, set));
+            }
+            IterSingleResult::Multiple => sets_in_multiple_sets.push((set_id, set)),
+        }
+    }
+
+    // add regular set and system hierarchy
+    fn add_set(
+        set_id: NodeId,
+        set: &dyn SystemSet,
+        dot: &mut DotGraph,
+        graph: &ScheduleGraph,
+        sets_in_single_set: &HashMap<NodeId, Vec<(NodeId, &dyn SystemSet)>>,
+        systems_in_single_set: &HashMap<NodeId, Vec<(NodeId, &(dyn System<In = (), Out = ()>))>>,
+    ) {
         let name = format!("{set:?}");
-        if set.is_system_type() {
-            continue;
-        };
 
         let system_set_cluster_name = node_index_name(set_id); // in sync with system_cluster_name
         let mut system_set_graph =
@@ -68,31 +97,81 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
 
         system_set_graph.add_invisible_node(&marker_name(set_id));
 
+        for &(nested_set_id, nested_set) in sets_in_single_set
+            .get(&set_id)
+            .map(|sets| sets.as_slice())
+            .unwrap_or(&[])
+        {
+            add_set(
+                nested_set_id,
+                nested_set,
+                &mut system_set_graph,
+                graph,
+                sets_in_single_set,
+                systems_in_single_set,
+            );
+        }
+
         for &(system_id, system) in systems_in_single_set
             .get(&set_id)
             .map(|systems| systems.as_slice())
             .unwrap_or(&[])
         {
             let name = system_name(system);
-            system_set_graph.add_node(&node_id(system_id), &[("label", &name)]);
+            system_set_graph.add_node(&node_id(system_id, graph), &[("label", &name)]);
         }
 
         dot.add_sub_graph(system_set_graph);
     }
 
+    for &(set_id, set) in sets_freestanding.iter() {
+        add_set(
+            set_id,
+            set,
+            &mut dot,
+            graph,
+            &sets_in_single_set,
+            &systems_in_single_set,
+        );
+    }
+    for &(set_id, set) in sets_in_multiple_sets.iter() {
+        // TODO
+        add_set(
+            set_id,
+            set,
+            &mut dot,
+            graph,
+            &sets_in_single_set,
+            &systems_in_single_set,
+        );
+
+        for parent in hierarchy_parents(set_id) {
+            dot.add_edge(
+                &node_id(parent, graph),
+                &node_id(set_id, graph),
+                &[
+                    ("dir", "none"),
+                    ("color", MULTIPLE_SET_EDGE_COLOR),
+                    ("ltail", &set_cluster_name(parent)),
+                    ("lhead", &set_cluster_name(set_id)),
+                ],
+            );
+        }
+    }
+
     for &(system_id, system) in systems_freestanding.iter() {
         let name = system_name(system);
-        dot.add_node(&node_id(system_id), &[("label", &name)]);
+        dot.add_node(&node_id(system_id, graph), &[("label", &name)]);
     }
 
     for &(system_id, system) in systems_in_multiple_sets.iter() {
         let name = system_name(system);
-        dot.add_node(&node_id(system_id), &[("label", &name)]);
+        dot.add_node(&node_id(system_id, graph), &[("label", &name)]);
 
         for parent in hierarchy_parents(system_id) {
             dot.add_edge(
-                &node_id(parent),
-                &node_id(system_id),
+                &node_id(parent, graph),
+                &node_id(system_id, graph),
                 &[
                     ("dir", "none"),
                     ("color", MULTIPLE_SET_EDGE_COLOR),
@@ -114,8 +193,8 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
             .unwrap_or_default();
 
         dot.add_edge(
-            &node_id(from),
-            &node_id(to),
+            &node_id(from, graph),
+            &node_id(to, graph),
             &[("lhead", &lhead), ("ltail", &ltail)],
         );
     }
@@ -141,10 +220,17 @@ fn marker_name(node_id: NodeId) -> String {
     format!("set_marker_node_{:?}", node_id)
 }
 
-fn node_id(node_id: NodeId) -> String {
+fn node_id(node_id: NodeId, graph: &ScheduleGraph) -> String {
     match node_id {
         NodeId::System(_) => node_index_name(node_id),
-        NodeId::Set(_) => marker_name(node_id),
+        NodeId::Set(_) => {
+            let set = graph.set_at(node_id);
+            if !set.is_system_type() {
+                marker_name(node_id)
+            } else {
+                "TODO: dependency on SystemSet".into()
+            }
+        }
     }
 }
 
