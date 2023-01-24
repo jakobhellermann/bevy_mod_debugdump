@@ -11,7 +11,22 @@ fn main() {
     let schedule_label = CoreSchedule::Main;
     let schedule = schedules.get(&schedule_label).unwrap();
     if true {
-        let dot = bevy_mod_debugdump_stageless::schedule_to_dot(&schedule_label, schedule);
+        let settings = bevy_mod_debugdump_stageless::Settings {
+            include_system: Box::new(|system| {
+                let name = system.name();
+                let _ignore = ![
+                    "asset_event_system",
+                    ">::update_system",
+                    "update_asset_storage",
+                ]
+                .iter()
+                .any(|ignore| name.contains(ignore));
+                _ignore
+                // true
+            }),
+        };
+        let dot =
+            bevy_mod_debugdump_stageless::schedule_to_dot(&schedule_label, schedule, &settings);
         println!("{dot}");
     } else {
         print_schedule(schedule, &schedule_label);

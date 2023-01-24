@@ -12,7 +12,20 @@ use petgraph::Direction;
 const SCHEDULE_RANKDIR: &str = "LR";
 const MULTIPLE_SET_EDGE_COLOR: &str = "red";
 
-pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) -> String {
+pub struct Settings {
+    pub include_system: Box<dyn Fn(&dyn System<In = (), Out = ()>) -> bool>,
+}
+impl Settings {
+    fn include_system(&self, system: &dyn System<In = (), Out = ()>) -> bool {
+        (self.include_system)(system)
+    }
+}
+
+pub fn schedule_to_dot(
+    schedule_label: &dyn ScheduleLabel,
+    schedule: &Schedule,
+    settings: &Settings,
+) -> String {
     let name = format!("{:?}", schedule_label);
     let graph = schedule.graph();
 
@@ -44,6 +57,10 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
     let mut systems_in_multiple_sets = Vec::new();
 
     for (system_id, system, _conditions) in graph.systems() {
+        if !settings.include_system(system) {
+            continue;
+        }
+
         let single_parent = iter_single(hierarchy_parents(system_id));
 
         match single_parent {
@@ -86,6 +103,7 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
         set: &dyn SystemSet,
         dot: &mut DotGraph,
         graph: &ScheduleGraph,
+        settings: &Settings,
         sets_in_single_set: &HashMap<NodeId, Vec<(NodeId, &dyn SystemSet)>>,
         systems_in_single_set: &HashMap<NodeId, Vec<(NodeId, &(dyn System<In = (), Out = ()>))>>,
     ) {
@@ -107,6 +125,7 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
                 nested_set,
                 &mut system_set_graph,
                 graph,
+                settings,
                 sets_in_single_set,
                 systems_in_single_set,
             );
@@ -117,6 +136,10 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
             .map(|systems| systems.as_slice())
             .unwrap_or(&[])
         {
+            if !settings.include_system(system) {
+                continue;
+            }
+
             let name = system_name(system);
             system_set_graph.add_node(&node_id(system_id, graph), &[("label", &name)]);
         }
@@ -130,6 +153,7 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
             set,
             &mut dot,
             graph,
+            settings,
             &sets_in_single_set,
             &systems_in_single_set,
         );
@@ -141,6 +165,7 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
             set,
             &mut dot,
             graph,
+            settings,
             &sets_in_single_set,
             &systems_in_single_set,
         );
