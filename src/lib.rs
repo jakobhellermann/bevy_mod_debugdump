@@ -1,6 +1,6 @@
 mod dot;
 
-use std::collections::HashMap;
+use std::{collections::HashMap, fmt::Write};
 
 use bevy_ecs::{
     scheduling::{NodeId, Schedule, ScheduleGraph, ScheduleLabel, SystemSet},
@@ -165,10 +165,13 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
     }
 
     for &(system_id, system) in systems_in_multiple_sets.iter() {
-        let name = system_name(system);
-        dot.add_node(&node_id(system_id, graph), &[("label", &name)]);
+        let mut name = system_name(system);
+        name.push_str("\nIn multiple sets");
 
         for parent in hierarchy_parents(system_id) {
+            let parent_set = graph.set_at(parent);
+            let _ = write!(&mut name, ", {parent_set:?}");
+
             dot.add_edge(
                 &node_id(parent, graph),
                 &node_id(system_id, graph),
@@ -179,6 +182,8 @@ pub fn schedule_to_dot(schedule_label: &dyn ScheduleLabel, schedule: &Schedule) 
                 ],
             );
         }
+
+        dot.add_node(&node_id(system_id, graph), &[("label", &name)]);
     }
 
     let dependency = graph.dependency();
