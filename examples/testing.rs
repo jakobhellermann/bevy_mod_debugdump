@@ -1,29 +1,12 @@
-use bevy::MinimalPlugins;
-use bevy_app::{App, CoreSchedule, CoreSet};
-use bevy_ecs::scheduling::{IntoSystemConfig, NodeId, Schedule, ScheduleLabel, Schedules};
-
-fn system_in_update() {}
-
-fn system_freestanding() {}
-
-fn system_in_multiple() {}
+use bevy::DefaultPlugins;
+use bevy_app::{App, CoreSchedule};
+use bevy_ecs::scheduling::{NodeId, Schedule, ScheduleLabel, Schedules};
 
 fn main() {
     let mut app = App::new();
-    app.add_plugins(MinimalPlugins);
-    app.add_system(system_in_update.in_set(CoreSet::Update));
-    app.add_system(system_freestanding);
-    app.add_system(
-        system_in_multiple
-            .in_set(CoreSet::Update)
-            .in_set(CoreSet::First),
-    );
+    app.add_plugins(DefaultPlugins);
 
     let schedules = app.world.resource::<Schedules>();
-
-    // for (schedule_label, schedule) in schedules.iter() {
-    // print_schedule(schedule, schedule_label);
-    // }
 
     let schedule_label = CoreSchedule::Main;
     let schedule = schedules.get(&schedule_label).unwrap();
