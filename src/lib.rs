@@ -9,12 +9,36 @@ use bevy_ecs::{
 use dot::DotGraph;
 use petgraph::Direction;
 
-const SCHEDULE_RANKDIR: &str = "LR";
+pub enum RankDir {
+    TopDown,
+    LeftRight,
+}
+
+impl RankDir {
+    fn as_dot(&self) -> &'static str {
+        match self {
+            RankDir::TopDown => "TD",
+            RankDir::LeftRight => "LR",
+        }
+    }
+}
+
 const MULTIPLE_SET_EDGE_COLOR: &str = "red";
 
 pub struct Settings {
+    pub schedule_rankdir: RankDir,
     pub show_single_system_in_set: bool,
     pub include_system: Box<dyn Fn(&dyn System<In = (), Out = ()>) -> bool>,
+}
+
+impl Default for Settings {
+    fn default() -> Self {
+        Self {
+            schedule_rankdir: RankDir::LeftRight,
+            show_single_system_in_set: true,
+            include_system: Box::new(|_| true),
+        }
+    }
 }
 impl Settings {
     fn include_system(&self, system: &dyn System<In = (), Out = ()>) -> bool {
@@ -35,7 +59,7 @@ pub fn schedule_to_dot(
         "digraph",
         &[
             ("compound", "true"), // enable ltail/lhead
-            ("rankdir", SCHEDULE_RANKDIR),
+            ("rankdir", settings.schedule_rankdir.as_dot()),
         ],
     )
     .node_attributes(&[("shape", "box")]);

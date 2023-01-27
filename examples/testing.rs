@@ -1,4 +1,4 @@
-use bevy::{log::LogPlugin, DefaultPlugins};
+use bevy::{log::LogPlugin, prelude::System, DefaultPlugins};
 use bevy_app::{App, CoreSchedule, PluginGroup};
 use bevy_ecs::scheduling::{NodeId, Schedule, ScheduleLabel, Schedules};
 
@@ -11,20 +11,22 @@ fn main() {
     let schedule_label = CoreSchedule::Main;
     let schedule = schedules.get(&schedule_label).unwrap();
     if true {
+        let ignore_asset_event = |system: &dyn System<In = (), Out = ()>| {
+            let name = system.name();
+            let _ignore = ![
+                "asset_event_system",
+                ">::update_system",
+                "update_asset_storage",
+            ]
+            .iter()
+            .any(|ignore| name.contains(ignore));
+            _ignore
+            // true
+        };
         let settings = bevy_mod_debugdump_stageless::Settings {
             show_single_system_in_set: false,
-            include_system: Box::new(|system| {
-                let name = system.name();
-                let _ignore = ![
-                    "asset_event_system",
-                    ">::update_system",
-                    "update_asset_storage",
-                ]
-                .iter()
-                .any(|ignore| name.contains(ignore));
-                _ignore
-                // true
-            }),
+            include_system: Box::new(ignore_asset_event),
+            ..Default::default()
         };
         let dot =
             bevy_mod_debugdump_stageless::schedule_to_dot(&schedule_label, schedule, &settings);
