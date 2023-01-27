@@ -117,7 +117,7 @@ impl DotGraph {
         self.write(format!("\t{} {}", escape_id(id), format_attributes(attrs)));
     }
     pub fn add_invisible_node(&mut self, id: &str) {
-        self.add_node(id, &[("style", "invis")]);
+        self.add_node(id, &[("style", "invis"), ("label", "")]);
     }
 
     /// The DOT syntax actually allows subgraphs as the edge's nodes but this doesn't support it yet.

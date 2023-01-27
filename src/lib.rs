@@ -13,6 +13,7 @@ const SCHEDULE_RANKDIR: &str = "LR";
 const MULTIPLE_SET_EDGE_COLOR: &str = "red";
 
 pub struct Settings {
+    pub show_single_system_in_set: bool,
     pub include_system: Box<dyn Fn(&dyn System<In = (), Out = ()>) -> bool>,
 }
 impl Settings {
@@ -131,17 +132,25 @@ pub fn schedule_to_dot(
             );
         }
 
-        for &(system_id, system) in systems_in_single_set
+        let systems = systems_in_single_set
             .get(&set_id)
             .map(|systems| systems.as_slice())
-            .unwrap_or(&[])
-        {
+            .unwrap_or(&[]);
+        let show_systems = settings.show_single_system_in_set || systems.len() > 1;
+        for &(system_id, system) in systems {
             if !settings.include_system(system) {
                 continue;
             }
 
             let name = system_name(system);
-            system_set_graph.add_node(&node_id(system_id, graph), &[("label", &name)]);
+            if show_systems {
+                system_set_graph.add_node(&node_id(system_id, graph), &[("label", name.as_str())]);
+            } else {
+                system_set_graph.add_node(
+                    &node_id(system_id, graph),
+                    &[("label", ""), ("style", "invis")],
+                );
+            }
         }
 
         dot.add_sub_graph(system_set_graph);

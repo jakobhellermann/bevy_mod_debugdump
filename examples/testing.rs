@@ -12,6 +12,7 @@ fn main() {
     let schedule = schedules.get(&schedule_label).unwrap();
     if true {
         let settings = bevy_mod_debugdump_stageless::Settings {
+            show_single_system_in_set: false,
             include_system: Box::new(|system| {
                 let name = system.name();
                 let _ignore = ![
