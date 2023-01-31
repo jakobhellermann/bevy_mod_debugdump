@@ -1,4 +1,8 @@
-use bevy::{log::LogPlugin, prelude::System, DefaultPlugins};
+use bevy::{
+    log::LogPlugin,
+    prelude::{System, World},
+    DefaultPlugins,
+};
 use bevy_app::{App, CoreSchedule, PluginGroup};
 use bevy_ecs::scheduling::{NodeId, Schedule, ScheduleLabel, Schedules};
 
@@ -6,10 +10,18 @@ fn main() {
     let mut app = App::new();
     app.add_plugins(DefaultPlugins.build().disable::<LogPlugin>());
 
-    let schedules = app.world.resource::<Schedules>();
+    let mut schedules = app.world.resource_mut::<Schedules>();
 
     let schedule_label = CoreSchedule::Main;
-    let schedule = schedules.get(&schedule_label).unwrap();
+    let schedule = schedules.get_mut(&schedule_label).unwrap();
+
+    let mut world = World::default();
+    schedule.graph_mut().initialize(&mut world);
+    schedule
+        .graph_mut()
+        .build_schedule(world.components())
+        .unwrap();
+
     if true {
         let ignore_asset_event = |system: &dyn System<In = (), Out = ()>| {
             let name = system.name();
@@ -24,20 +36,24 @@ fn main() {
             // true
         };
         let settings = bevy_mod_debugdump_stageless::Settings {
-            show_single_system_in_set: false,
+            show_single_system_in_set: true,
             include_system: Box::new(ignore_asset_event),
             ..Default::default()
         };
-        let dot =
-            bevy_mod_debugdump_stageless::schedule_to_dot(&schedule_label, schedule, &settings);
+        let dot = bevy_mod_debugdump_stageless::schedule_to_dot(
+            &schedule_label,
+            schedule,
+            &world,
+            &settings,
+        );
         println!("{dot}");
-    } else {
+    } else if false {
         print_schedule(schedule, &schedule_label);
     }
 
     if false {
-        app.get_schedule_mut(schedule_label)
-            .unwrap()
+        let schedule = app.get_schedule_mut(schedule_label).unwrap();
+        schedule
             .initialize(&mut bevy_ecs::world::World::new())
             .unwrap();
     }

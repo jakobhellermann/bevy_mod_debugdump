@@ -5,6 +5,7 @@ use std::{collections::HashMap, fmt::Write};
 use bevy_ecs::{
     scheduling::{NodeId, Schedule, ScheduleGraph, ScheduleLabel, SystemSet},
     system::System,
+    world::World,
 };
 use dot::DotGraph;
 use petgraph::Direction;
@@ -29,6 +30,11 @@ pub struct Settings {
     pub schedule_rankdir: RankDir,
     pub show_single_system_in_set: bool,
     pub include_system: Box<dyn Fn(&dyn System<In = (), Out = ()>) -> bool>,
+
+    pub show_ambiguities: bool,
+    pub show_ambiguities_on_world: bool,
+    pub ambiguity_color: String,
+    pub ambiguity_bgcolor: String,
 }
 
 impl Default for Settings {
@@ -37,6 +43,10 @@ impl Default for Settings {
             schedule_rankdir: RankDir::LeftRight,
             show_single_system_in_set: true,
             include_system: Box::new(|_| true),
+            show_ambiguities: true,
+            show_ambiguities_on_world: false,
+            ambiguity_color: "blue".into(),
+            ambiguity_bgcolor: "#d3d3d3".into(),
         }
     }
 }
@@ -49,6 +59,7 @@ impl Settings {
 pub fn schedule_to_dot(
     schedule_label: &dyn ScheduleLabel,
     schedule: &Schedule,
+    world: &World,
     settings: &Settings,
 ) -> String {
     let name = format!("{:?}", schedule_label);
@@ -261,6 +272,46 @@ pub fn schedule_to_dot(
             &node_id(to, graph),
             &[("lhead", &lhead), ("ltail", &ltail)],
         );
+    }
+
+    if settings.show_ambiguities {
+        for &(system_a, system_b, ref conflicts) in graph.conflicting_systems() {
+            if conflicts.is_empty() && !settings.show_ambiguities_on_world {
+                continue;
+            }
+
+            let label = if conflicts.is_empty() {
+                "World".to_owned()
+            } else {
+                let component_names = conflicts.iter().map(|&component_id| {
+                    let component_name = world.components().get_info(component_id).unwrap().name();
+                    let pretty_name = pretty_type_name::pretty_type_name_str(&component_name);
+
+                    format!(
+                        r#"<tr><td bgcolor="{}">{}</td></tr>"#,
+                        settings.ambiguity_bgcolor,
+                        dot::html_escape(&pretty_name)
+                    )
+                });
+                let trs = component_names.collect::<String>();
+                format!(r#"<<table border="0" cellborder="0">{trs}</table>>"#)
+            };
+            let name_a = system_name(graph.system_at(system_a));
+            let name_b = system_name(graph.system_at(system_b));
+
+            dot.add_edge(
+                &node_id(system_a, graph),
+                &node_id(system_b, graph),
+                &[
+                    ("dir", "none"),
+                    ("constraint", "false"),
+                    ("color", &settings.ambiguity_color),
+                    ("fontcolor", &settings.ambiguity_color),
+                    ("label", &label),
+                    ("labeltooltip", &format!("{name_a} -- {name_b}")),
+                ],
+            );
+        }
     }
 
     dot.finish()
