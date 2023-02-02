@@ -3,7 +3,7 @@ mod dot;
 use std::{collections::HashMap, fmt::Write};
 
 use bevy_ecs::{
-    scheduling::{NodeId, Schedule, ScheduleGraph, ScheduleLabel, SystemSet},
+    schedule_v3::{NodeId, Schedule, ScheduleGraph, ScheduleLabel, SystemSet},
     system::System,
     world::World,
 };

@@ -4,7 +4,7 @@ use bevy::{
     DefaultPlugins,
 };
 use bevy_app::{App, CoreSchedule, PluginGroup};
-use bevy_ecs::scheduling::{NodeId, Schedule, ScheduleLabel, Schedules};
+use bevy_ecs::schedule_v3::{NodeId, Schedule, ScheduleLabel, Schedules};
 
 fn main() {
     let mut app = App::new();
