@@ -40,12 +40,7 @@ fn main() {
             include_system: Box::new(ignore_asset_event),
             ..Default::default()
         };
-        let dot = bevy_mod_debugdump_stageless::schedule_to_dot(
-            &schedule_label,
-            schedule,
-            &world,
-            &settings,
-        );
+        let dot = bevy_mod_debugdump_stageless::schedule_to_dot(schedule, &world, &settings);
         println!("{dot}");
     } else if false {
         print_schedule(schedule, &schedule_label);

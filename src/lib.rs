@@ -6,7 +6,7 @@ use std::{
 };
 
 use bevy_ecs::{
-    schedule_v3::{NodeId, Schedule, ScheduleGraph, ScheduleLabel, SystemSet},
+    schedule_v3::{NodeId, Schedule, ScheduleGraph, SystemSet},
     system::System,
     world::World,
 };
@@ -59,18 +59,12 @@ impl Settings {
     }
 }
 
-pub fn schedule_to_dot(
-    schedule_label: &dyn ScheduleLabel,
-    schedule: &Schedule,
-    world: &World,
-    settings: &Settings,
-) -> String {
-    let name = format!("{:?}", schedule_label);
+pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) -> String {
     let graph = schedule.graph();
     let hierarchy = &graph.hierarchy().graph;
 
     let mut dot = DotGraph::new(
-        &name,
+        "schedule",
         "digraph",
         &[
             ("compound", "true"), // enable ltail/lhead
