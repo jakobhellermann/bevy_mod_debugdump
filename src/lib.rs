@@ -17,7 +17,6 @@ pub enum RankDir {
     TopDown,
     LeftRight,
 }
-
 impl RankDir {
     fn as_dot(&self) -> &'static str {
         match self {
@@ -27,10 +26,34 @@ impl RankDir {
     }
 }
 
+#[derive(Clone, Copy)]
+pub enum EdgeStyle {
+    None,
+    Line,
+    Polyline,
+    Curved,
+    Ortho,
+    Spline,
+}
+impl EdgeStyle {
+    pub fn as_dot(&self) -> &'static str {
+        match self {
+            EdgeStyle::None => "none",
+            EdgeStyle::Line => "line",
+            EdgeStyle::Polyline => "polyline",
+            EdgeStyle::Curved => "curved",
+            EdgeStyle::Ortho => "ortho",
+            EdgeStyle::Spline => "spline",
+        }
+    }
+}
+
 const MULTIPLE_SET_EDGE_COLOR: &str = "red";
 
 pub struct Settings {
     pub schedule_rankdir: RankDir,
+    pub edge_style: EdgeStyle,
+
     pub show_single_system_in_set: bool,
     pub include_system: Box<dyn Fn(&dyn System<In = (), Out = ()>) -> bool>,
 
@@ -44,6 +67,8 @@ impl Default for Settings {
     fn default() -> Self {
         Self {
             schedule_rankdir: RankDir::LeftRight,
+            edge_style: EdgeStyle::Spline,
+
             show_single_system_in_set: true,
             include_system: Box::new(|_| true),
             show_ambiguities: true,
@@ -67,6 +92,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
         "schedule",
         "digraph",
         &[
+            ("splines", settings.edge_style.as_dot()),
             ("compound", "true"), // enable ltail/lhead
             ("rankdir", settings.schedule_rankdir.as_dot()),
         ],
