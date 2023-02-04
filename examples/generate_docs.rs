@@ -10,7 +10,9 @@ fn main() -> Result<(), std::io::Error> {
     let mut app = App::new();
     app.add_plugins(DefaultPlugins);
 
-    let settings = Settings::default();
+    let settings = Settings {
+        ..Default::default()
+    };
 
     app.world
         .resource_scope::<Schedules, _>(|world, mut schedules| {

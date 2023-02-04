@@ -57,6 +57,8 @@ pub struct Settings {
     pub show_single_system_in_set: bool,
     pub include_system: Box<dyn Fn(&dyn System<In = (), Out = ()>) -> bool>,
 
+    pub prettify_system_names: bool,
+
     pub show_ambiguities: bool,
     pub show_ambiguities_on_world: bool,
     pub ambiguity_color: String,
@@ -71,6 +73,9 @@ impl Default for Settings {
 
             show_single_system_in_set: true,
             include_system: Box::new(|_| true),
+
+            prettify_system_names: true,
+
             show_ambiguities: true,
             show_ambiguities_on_world: false,
             ambiguity_color: "blue".into(),
@@ -203,7 +208,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
                 continue;
             }
 
-            let name = system_name(system);
+            let name = system_name(system, settings);
             if show_systems {
                 system_set_graph.add_node(&node_id(system_id, graph), &[("label", name.as_str())]);
             } else {
@@ -256,12 +261,12 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
     }
 
     for &(system_id, system) in systems_freestanding.iter() {
-        let name = system_name(system);
+        let name = system_name(system, settings);
         dot.add_node(&node_id(system_id, graph), &[("label", &name)]);
     }
 
     for &(system_id, system) in systems_in_multiple_sets.iter() {
-        let mut name = system_name(system);
+        let mut name = system_name(system, settings);
         name.push_str("\nIn multiple sets");
 
         for parent in hierarchy_parents(system_id) {
@@ -320,8 +325,8 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
                 let trs = component_names.collect::<String>();
                 format!(r#"<<table border="0" cellborder="0">{trs}</table>>"#)
             };
-            let name_a = system_name(graph.system_at(system_a));
-            let name_b = system_name(graph.system_at(system_b));
+            let name_a = system_name(graph.system_at(system_a), settings);
+            let name_b = system_name(graph.system_at(system_b), settings);
 
             dot.add_edge(
                 &node_id(system_a, graph),
@@ -386,9 +391,13 @@ fn set_cluster_name(id: NodeId) -> String {
     format!("cluster{}", node_index_name(id))
 }
 
-fn system_name(system: &dyn System<In = (), Out = ()>) -> String {
+fn system_name(system: &dyn System<In = (), Out = ()>, settings: &Settings) -> String {
     let name = system.name();
-    pretty_type_name::pretty_type_name_str(&name)
+    if settings.prettify_system_names {
+        pretty_type_name::pretty_type_name_str(&name)
+    } else {
+        name.into()
+    }
 }
 
 fn node_index_name(node_id: NodeId) -> String {
