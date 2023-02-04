@@ -210,7 +210,6 @@ pub fn schedule_to_dot(
         );
     }
     for &(set_id, set) in sets_in_multiple_sets.iter() {
-        // TODO
         add_set(
             set_id,
             set,
@@ -229,8 +228,8 @@ pub fn schedule_to_dot(
                 &[
                     ("dir", "none"),
                     ("color", MULTIPLE_SET_EDGE_COLOR),
-                    ("ltail", &set_cluster_name(parent)),
-                    ("lhead", &set_cluster_name(set_id)),
+                    ("ltail", &lref(parent, graph)),
+                    ("lhead", &lref(set_id, graph)),
                 ],
             );
         }
@@ -265,16 +264,6 @@ pub fn schedule_to_dot(
 
     let dependency = graph.dependency();
     for (from, to, ()) in dependency.graph.all_edges() {
-        let is_non_system_set =
-            |id: NodeId| id.is_set() && graph.set_at(id).system_type().is_none();
-
-        let ltail = is_non_system_set(from)
-            .then(|| set_cluster_name(from))
-            .unwrap_or_default();
-        let lhead = is_non_system_set(to)
-            .then(|| set_cluster_name(to))
-            .unwrap_or_default();
-
         if !included_systems_sets.contains(&from) && !included_systems_sets.contains(&to) {
             continue;
         }
@@ -282,7 +271,7 @@ pub fn schedule_to_dot(
         dot.add_edge(
             &node_id(from, graph),
             &node_id(to, graph),
-            &[("lhead", &lhead), ("ltail", &ltail)],
+            &[("lhead", &lref(to, graph)), ("ltail", &lref(from, graph))],
         );
     }
 
@@ -356,6 +345,17 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
     }
 
     included_systems
+}
+
+fn is_non_system_set(node_id: NodeId, graph: &ScheduleGraph) -> bool {
+    node_id.is_set() && graph.set_at(node_id).system_type().is_none()
+}
+
+// lhead/ltail
+fn lref(node_id: NodeId, graph: &ScheduleGraph) -> String {
+    is_non_system_set(node_id, graph)
+        .then(|| set_cluster_name(node_id))
+        .unwrap_or_default()
 }
 
 fn set_cluster_name(id: NodeId) -> String {
