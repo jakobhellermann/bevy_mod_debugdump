@@ -1,0 +1,6 @@
+digraph "schedule" {
+	"splines"="spline";
+	"compound"="true";
+	"rankdir"="LR";
+	node ["shape"="box"];
+}
