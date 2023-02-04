@@ -1,6 +1,9 @@
 /target
 /Cargo.lock
 
-*.dot
-*.svg
-*.png
+
+/compare
+
+/*.dot
+/*.svg
+/*.png
