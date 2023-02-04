@@ -1,6 +1,9 @@
 mod dot;
 
-use std::{collections::HashMap, fmt::Write};
+use std::{
+    collections::{HashMap, HashSet},
+    fmt::Write,
+};
 
 use bevy_ecs::{
     schedule_v3::{NodeId, Schedule, ScheduleGraph, ScheduleLabel, SystemSet},
@@ -64,6 +67,7 @@ pub fn schedule_to_dot(
 ) -> String {
     let name = format!("{:?}", schedule_label);
     let graph = schedule.graph();
+    let hierarchy = &graph.hierarchy().graph;
 
     let mut dot = DotGraph::new(
         &name,
@@ -75,14 +79,14 @@ pub fn schedule_to_dot(
     )
     .node_attributes(&[("shape", "box")]);
 
-    let hierarchy = &graph.hierarchy().graph;
-
     // utilities
     let hierarchy_parents = |node| {
         hierarchy
             .neighbors_directed(node, Direction::Incoming)
             .filter(|&parent| graph.set_at(parent).system_type().is_none())
     };
+
+    let included_systems_sets = included_systems_sets(graph, settings);
 
     let mut system_sets: Vec<_> = graph.system_sets().collect();
     system_sets.sort_by_key(|&(node_id, ..)| node_id);
@@ -93,7 +97,7 @@ pub fn schedule_to_dot(
     let mut systems_in_multiple_sets = Vec::new();
 
     for (system_id, system, _conditions) in graph.systems() {
-        if !settings.include_system(system) {
+        if !included_systems_sets.contains(&system_id) {
             continue;
         }
 
@@ -142,6 +146,7 @@ pub fn schedule_to_dot(
         settings: &Settings,
         sets_in_single_set: &HashMap<NodeId, Vec<(NodeId, &dyn SystemSet)>>,
         systems_in_single_set: &HashMap<NodeId, Vec<(NodeId, &(dyn System<In = (), Out = ()>))>>,
+        included_systems_sets: &HashSet<NodeId>,
     ) {
         let name = format!("{set:?}");
 
@@ -164,6 +169,7 @@ pub fn schedule_to_dot(
                 settings,
                 sets_in_single_set,
                 systems_in_single_set,
+                included_systems_sets,
             );
         }
 
@@ -173,7 +179,7 @@ pub fn schedule_to_dot(
             .unwrap_or(&[]);
         let show_systems = settings.show_single_system_in_set || systems.len() > 1;
         for &(system_id, system) in systems {
-            if !settings.include_system(system) {
+            if !included_systems_sets.contains(&system_id) {
                 continue;
             }
 
@@ -200,6 +206,7 @@ pub fn schedule_to_dot(
             settings,
             &sets_in_single_set,
             &systems_in_single_set,
+            &included_systems_sets,
         );
     }
     for &(set_id, set) in sets_in_multiple_sets.iter() {
@@ -212,6 +219,7 @@ pub fn schedule_to_dot(
             settings,
             &sets_in_single_set,
             &systems_in_single_set,
+            &included_systems_sets,
         );
 
         for parent in hierarchy_parents(set_id) {
@@ -267,6 +275,10 @@ pub fn schedule_to_dot(
             .then(|| set_cluster_name(to))
             .unwrap_or_default();
 
+        if !included_systems_sets.contains(&from) && !included_systems_sets.contains(&to) {
+            continue;
+        }
+
         dot.add_edge(
             &node_id(from, graph),
             &node_id(to, graph),
@@ -315,6 +327,35 @@ pub fn schedule_to_dot(
     }
 
     dot.finish()
+}
+
+fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<NodeId> {
+    let mut included_systems: HashSet<NodeId> = graph
+        .systems()
+        .filter(|&(.., system, _)| settings.include_system(system))
+        .map(|(id, ..)| id)
+        .collect();
+    included_systems.extend(graph.system_sets().map(|(id, _, _)| id));
+
+    if settings.show_ambiguities {
+        for &(a, b, ref conflicts) in graph.conflicting_systems() {
+            if !settings.show_ambiguities_on_world && conflicts.is_empty() {
+                continue;
+            }
+            included_systems.insert(a);
+            included_systems.insert(b);
+        }
+    }
+    for (from, to, ()) in graph.dependency().graph.all_edges() {
+        if included_systems.contains(&from) {
+            included_systems.insert(to);
+        }
+        if included_systems.contains(&to) {
+            included_systems.insert(from);
+        }
+    }
+
+    included_systems
 }
 
 fn set_cluster_name(id: NodeId) -> String {
