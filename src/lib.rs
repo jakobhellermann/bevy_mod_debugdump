@@ -296,7 +296,10 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
     }
 
     if settings.show_ambiguities {
-        for &(system_a, system_b, ref conflicts) in graph.conflicting_systems() {
+        let mut conflicting_systems = graph.conflicting_systems.to_vec();
+        conflicting_systems.sort();
+
+        for (system_a, system_b, conflicts) in conflicting_systems {
             if conflicts.is_empty() && !settings.show_ambiguities_on_world {
                 continue;
             }
