@@ -39,6 +39,7 @@ digraph "schedule" {
 		subgraph "clusternode_Set(16)" {
 			"label"="TimeSystem";
 			"set_marker_node_Set(16)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(8)" ["label"="time_system"]
 		}
 		
 	}
@@ -49,9 +50,13 @@ digraph "schedule" {
 		subgraph "clusternode_Set(24)" {
 			"label"="InputSystem";
 			"set_marker_node_Set(24)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(15)" ["label"="keyboard_input_system"]
+			"node_System(19)" ["label"="mouse_button_input_system"]
+			"node_System(24)" ["label"="gamepad_event_system"]
 			"node_System(25)" ["label"="gamepad_connection_system"]
 			"node_System(26)" ["label"="gamepad_button_event_system"]
 			"node_System(27)" ["label"="gamepad_axis_event_system"]
+			"node_System(29)" ["label"="touch_screen_input_system"]
 		}
 		
 		subgraph "clusternode_Set(115)" {
@@ -60,6 +65,8 @@ digraph "schedule" {
 			"node_System(94)" ["label"="ui_focus_system"]
 		}
 		
+		"node_System(47)" ["label"="free_unused_assets_system"]
+		"node_System(56)" ["label"="scene_spawner"]
 		"node_System(130)" ["label"="gilrs_event_system"]
 	}
 	
@@ -71,6 +78,7 @@ digraph "schedule" {
 	subgraph "clusternode_Set(9)" {
 		"label"="FixedUpdate";
 		"set_marker_node_Set(9)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(9)" ["label"="run_fixed_update_schedule"]
 	}
 	
 	subgraph "clusternode_Set(10)" {
@@ -79,8 +87,10 @@ digraph "schedule" {
 		subgraph "clusternode_Set(81)" {
 			"label"="CalculateBounds";
 			"set_marker_node_Set(81)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(66)" ["label"="calculate_bounds"]
 		}
 		
+		"node_System(55)" ["label"="scene_spawner_system"]
 	}
 	
 	subgraph "clusternode_Set(11)" {
@@ -89,11 +99,14 @@ digraph "schedule" {
 		subgraph "clusternode_Set(20)" {
 			"label"="TransformPropagate";
 			"set_marker_node_Set(20)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(11)" ["label"="sync_simple_transforms"]
+			"node_System(12)" ["label"="propagate_transforms"]
 		}
 		
 		subgraph "clusternode_Set(70)" {
 			"label"="ModifiesWindows";
 			"set_marker_node_Set(70)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(57)" ["label"="changed_window"]
 			"node_System(58)" ["label"="despawn_window"]
 		}
 		
@@ -131,6 +144,7 @@ digraph "schedule" {
 		subgraph "clusternode_Set(86)" {
 			"label"="VisibilityPropagate";
 			"set_marker_node_Set(86)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(70)" ["label"="visibility_propagate_system"]
 		}
 		
 		subgraph "clusternode_Set(116)" {
@@ -142,6 +156,7 @@ digraph "schedule" {
 		subgraph "clusternode_Set(117)" {
 			"label"="Stack";
 			"set_marker_node_Set(117)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(98)" ["label"="ui_stack_system"]
 		}
 		
 		subgraph "clusternode_Set(127)" {
@@ -176,22 +191,29 @@ digraph "schedule" {
 			"node_System(106)" ["label"="update_directional_light_cascades"]
 		}
 		
+		"node_System(45)" ["label"="exit_on_all_closed"]
 		"node_System(69)" ["label"="update_frusta<Projection>"]
 		"node_System(93)" ["label"="update_text2d_layout"]
 		"node_System(95)" ["label"="text_system"]
 		"node_System(96)" ["label"="update_image_calculated_size_system"]
 		"node_System(99)" ["label"="update_clipping_system"]
+		"node_System(129)" ["label"="play_queued_audio_system<AudioSource>"]
 		"node_System(134)" ["label"="animation_player"]
 	}
 	
 	subgraph "clusternode_Set(12)" {
 		"label"="Last";
 		"set_marker_node_Set(12)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(6)" ["label"="tick_global_task_pools"]
+		"node_System(7)" ["label"="update_frame_count"]
+		"node_System(10)" ["label"="check_hierarchy_component_has_valid_parent<GlobalTransform>"]
+		"node_System(62)" ["label"="check_hierarchy_component_has_valid_parent<ComputedVisibility>"]
 	}
 	
 	subgraph "clusternode_Set(58)" {
 		"label"="LoadAssets";
 		"set_marker_node_Set(58)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(48)" ["label"="filesystem_watcher_system"]
 	}
 	
 	subgraph "clusternode_Set(59)" {
@@ -199,6 +221,7 @@ digraph "schedule" {
 		"set_marker_node_Set(59)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
+	"node_System(46)" ["label"="close_when_requested"]
 	"node_System(104)" ["label"="apply_system_buffers"]
 	"set_marker_node_Set(6)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="clusternode_Set(6)"]
 	"set_marker_node_Set(1)" -> "set_marker_node_Set(7)" ["lhead"="clusternode_Set(7)", "ltail"="clusternode_Set(1)"]

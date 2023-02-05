@@ -11,7 +11,7 @@ use bevy_ecs::{
     world::World,
 };
 use dot::DotGraph;
-use petgraph::Direction;
+use petgraph::{prelude::DiGraphMap, Direction};
 
 pub enum RankDir {
     TopDown,
@@ -121,11 +121,10 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
     let mut systems_in_single_set = HashMap::<NodeId, Vec<_>>::new();
     let mut systems_in_multiple_sets = Vec::new();
 
-    for (system_id, system, _conditions) in graph.systems() {
-        if !included_systems_sets.contains(&system_id) {
-            continue;
-        }
-
+    for (system_id, system, _conditions) in graph
+        .systems()
+        .filter(|(id, ..)| included_systems_sets.contains(id))
+    {
         let single_parent = iter_single(hierarchy_parents(system_id));
 
         match single_parent {
@@ -147,6 +146,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
     for &(set_id, set, _conditions) in system_sets
         .iter()
         .filter(|&&(id, ..)| graph.set_at(id).system_type().is_none())
+        .filter(|(id, ..)| included_systems_sets.contains(id))
     {
         let single_parent = iter_single(hierarchy_parents(set_id));
 
@@ -203,11 +203,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
             .map(|systems| systems.as_slice())
             .unwrap_or(&[]);
         let show_systems = settings.show_single_system_in_set || systems.len() > 1;
-        for &(system_id, system) in systems {
-            if !included_systems_sets.contains(&system_id) {
-                continue;
-            }
-
+        for &(system_id, system) in systems.iter() {
             let name = system_name(system, settings);
             if show_systems {
                 system_set_graph.add_node(&node_id(system_id, graph), &[("label", name.as_str())]);
@@ -223,6 +219,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
     }
 
     for &(set_id, set) in sets_freestanding.iter() {
+        assert!(included_systems_sets.contains(&set_id));
         add_set(
             set_id,
             set,
@@ -235,6 +232,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
         );
     }
     for &(set_id, set) in sets_in_multiple_sets.iter() {
+        assert!(included_systems_sets.contains(&set_id));
         add_set(
             set_id,
             set,
@@ -247,6 +245,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
         );
 
         for parent in hierarchy_parents(set_id) {
+            assert!(included_systems_sets.contains(&parent));
             dot.add_edge(
                 &node_id(parent, graph),
                 &node_id(set_id, graph),
@@ -261,15 +260,18 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
     }
 
     for &(system_id, system) in systems_freestanding.iter() {
+        assert!(included_systems_sets.contains(&system_id));
         let name = system_name(system, settings);
         dot.add_node(&node_id(system_id, graph), &[("label", &name)]);
     }
 
     for &(system_id, system) in systems_in_multiple_sets.iter() {
+        assert!(included_systems_sets.contains(&system_id));
         let mut name = system_name(system, settings);
         name.push_str("\nIn multiple sets");
 
         for parent in hierarchy_parents(system_id) {
+            assert!(included_systems_sets.contains(&parent));
             let parent_set = graph.set_at(parent);
             let _ = write!(&mut name, ", {parent_set:?}");
 
@@ -289,7 +291,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
 
     let dependency = graph.dependency();
     for (from, to, ()) in dependency.graph.all_edges() {
-        if !included_systems_sets.contains(&from) && !included_systems_sets.contains(&to) {
+        if !included_systems_sets.contains(&from) || !included_systems_sets.contains(&to) {
             continue;
         }
 
@@ -305,6 +307,12 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
         conflicting_systems.sort();
 
         for (system_a, system_b, conflicts) in conflicting_systems {
+            if !included_systems_sets.contains(&system_a)
+                || !included_systems_sets.contains(&system_b)
+            {
+                continue;
+            }
+
             if conflicts.is_empty() && !settings.show_ambiguities_on_world {
                 continue;
             }
@@ -347,32 +355,71 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
 }
 
 fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<NodeId> {
-    let mut included_systems: HashSet<NodeId> = graph
+    let hierarchy = &graph.hierarchy().graph;
+
+    let root_sets = hierarchy.nodes().filter(|&node| {
+        node.is_set()
+            && graph.set_at(node).system_type().is_none()
+            && hierarchy
+                .neighbors_directed(node, Direction::Incoming)
+                .next()
+                .is_none()
+    });
+
+    let systems_of_interest: HashSet<NodeId> = graph
         .systems()
         .filter(|&(.., system, _)| settings.include_system(system))
         .map(|(id, ..)| id)
         .collect();
-    included_systems.extend(graph.system_sets().map(|(id, _, _)| id));
+
+    fn include_ancestors(
+        id: NodeId,
+        hierarchy: &DiGraphMap<NodeId, ()>,
+        included_systems_sets: &mut HashSet<NodeId>,
+    ) {
+        let parents = hierarchy.neighbors_directed(id, Direction::Incoming);
+
+        for parent in parents {
+            included_systems_sets.insert(parent);
+            include_ancestors(parent, hierarchy, included_systems_sets);
+        }
+    }
+
+    let mut included_systems_sets = systems_of_interest.clone();
+    included_systems_sets.extend(root_sets);
+
+    for &id in &systems_of_interest {
+        include_ancestors(id, hierarchy, &mut included_systems_sets);
+    }
 
     if settings.show_ambiguities {
         for &(a, b, ref conflicts) in graph.conflicting_systems() {
+            if !systems_of_interest.contains(&a) || !systems_of_interest.contains(&b) {
+                continue;
+            }
+
             if !settings.show_ambiguities_on_world && conflicts.is_empty() {
                 continue;
             }
-            included_systems.insert(a);
-            included_systems.insert(b);
-        }
-    }
-    for (from, to, ()) in graph.dependency().graph.all_edges() {
-        if included_systems.contains(&from) {
-            included_systems.insert(to);
-        }
-        if included_systems.contains(&to) {
-            included_systems.insert(from);
+
+            included_systems_sets.insert(a);
+            included_systems_sets.insert(b);
         }
     }
 
-    included_systems
+    for (from, to, ()) in graph.dependency().graph.all_edges() {
+        if systems_of_interest.contains(&from) {
+            included_systems_sets.insert(to);
+            include_ancestors(to, hierarchy, &mut included_systems_sets);
+        }
+
+        if systems_of_interest.contains(&to) {
+            included_systems_sets.insert(from);
+            include_ancestors(to, hierarchy, &mut included_systems_sets);
+        }
+    }
+
+    included_systems_sets
 }
 
 fn is_non_system_set(node_id: NodeId, graph: &ScheduleGraph) -> bool {

@@ -36,7 +36,10 @@ fn main() -> Result<(), std::io::Error> {
                 show_ambiguities: false,
                 include_system: Box::new(|system| {
                     let name = system.name();
-                    name.contains("buffers")
+                    let ignore = ["asset_event_system", "update_asset_storage_system"];
+                    let events_update_system = name.starts_with("bevy_ecs::event::Events")
+                        && name.ends_with("::update_system");
+                    !events_update_system && !ignore.iter().any(|remove| name.contains(remove))
                 }),
                 ..settings
             };
