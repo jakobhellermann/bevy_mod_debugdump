@@ -5,7 +5,7 @@ pub mod settings;
 pub use settings::Settings;
 
 use std::{
-    collections::{HashMap, HashSet},
+    collections::{HashMap, HashSet, VecDeque},
     fmt::Write,
 };
 
@@ -40,13 +40,6 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
     ])
     .edge_attributes(&[("color", &settings.style.color_edge)]);
 
-    // utilities
-    let hierarchy_parents = |node| {
-        hierarchy
-            .neighbors_directed(node, Direction::Incoming)
-            .filter(|&parent| graph.set_at(parent).system_type().is_none())
-    };
-
     let included_systems_sets = included_systems_sets(graph, settings);
 
     let mut system_sets: Vec<_> = graph.system_sets().collect();
@@ -55,13 +48,13 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
     // collect sets and systems
     let mut systems_freestanding = Vec::new();
     let mut systems_in_single_set = HashMap::<NodeId, Vec<_>>::new();
-    let mut systems_in_multiple_sets = Vec::new();
+    let mut systems_in_multiple_sets = bevy_utils::HashMap::<Option<NodeId>, Vec<_>>::new();
 
     for (system_id, system, _conditions) in graph
         .systems()
         .filter(|(id, ..)| included_systems_sets.contains(id))
     {
-        let single_parent = iter_single(hierarchy_parents(system_id));
+        let single_parent = iter_single(hierarchy_parents(system_id, graph));
 
         match single_parent {
             IterSingleResult::Empty => systems_freestanding.push((system_id, system)),
@@ -71,20 +64,27 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
                     .or_default()
                     .push((system_id, system));
             }
-            IterSingleResult::Multiple => systems_in_multiple_sets.push((system_id, system)),
+            IterSingleResult::Multiple(parents) => {
+                let first_common_ancestor = lowest_common_ancestor(&parents, hierarchy);
+
+                systems_in_multiple_sets
+                    .entry(first_common_ancestor)
+                    .or_default()
+                    .push((system_id, system))
+            }
         }
     }
 
     let mut sets_freestanding = Vec::new();
     let mut sets_in_single_set = HashMap::<NodeId, Vec<_>>::new();
-    let mut sets_in_multiple_sets = Vec::new();
+    let mut sets_in_multiple_sets = bevy_utils::HashMap::<Option<NodeId>, Vec<_>>::new();
 
     for &(set_id, set, _conditions) in system_sets
         .iter()
         .filter(|&&(id, ..)| graph.set_at(id).system_type().is_none())
         .filter(|(id, ..)| included_systems_sets.contains(id))
     {
-        let single_parent = iter_single(hierarchy_parents(set_id));
+        let single_parent = iter_single(hierarchy_parents(set_id, graph));
 
         match single_parent {
             IterSingleResult::Empty => sets_freestanding.push((set_id, set)),
@@ -94,7 +94,91 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
                     .or_default()
                     .push((set_id, set));
             }
-            IterSingleResult::Multiple => sets_in_multiple_sets.push((set_id, set)),
+            IterSingleResult::Multiple(parents) => {
+                let first_common_ancestor = lowest_common_ancestor(&parents, hierarchy);
+
+                sets_in_multiple_sets
+                    .entry(first_common_ancestor)
+                    .or_default()
+                    .push((set_id, set));
+            }
+        }
+    }
+
+    fn add_system_in_multiple_sets(
+        dot: &mut DotGraph,
+        system_id: NodeId,
+        system: &(dyn System<In = (), Out = ()>),
+        graph: &ScheduleGraph,
+        included_systems_sets: &HashSet<NodeId>,
+        settings: &Settings,
+    ) {
+        assert!(included_systems_sets.contains(&system_id));
+        let mut name = system_name(system, settings);
+        name.push_str("\nIn multiple sets");
+
+        for parent in hierarchy_parents(system_id, graph) {
+            assert!(included_systems_sets.contains(&parent));
+            let parent_set = graph.set_at(parent);
+            let _ = write!(&mut name, ", {parent_set:?}");
+
+            dot.add_edge(
+                &node_id(system_id, graph),
+                &node_id(parent, graph),
+                &[
+                    ("dir", "none"),
+                    ("color", &settings.style.multiple_set_edge_color),
+                    ("lhead", &set_cluster_name(parent)),
+                ],
+            );
+        }
+        dot.add_node(&node_id(system_id, graph), &[("label", &name)]);
+    }
+
+    fn add_set_in_multiple_sets(
+        dot: &mut DotGraph,
+        set_id: NodeId,
+        set: &dyn SystemSet,
+        graph: &ScheduleGraph,
+        settings: &Settings,
+        sets_in_single_set: &HashMap<NodeId, Vec<(NodeId, &dyn SystemSet)>>,
+        sets_in_multiple_sets: &bevy_utils::hashbrown::HashMap<
+            Option<NodeId>,
+            Vec<(NodeId, &dyn SystemSet)>,
+        >,
+        systems_in_single_set: &HashMap<NodeId, Vec<(NodeId, &(dyn System<In = (), Out = ()>))>>,
+        systems_in_multiple_sets: &bevy_utils::hashbrown::HashMap<
+            Option<NodeId>,
+            Vec<(NodeId, &(dyn System<In = (), Out = ()>))>,
+        >,
+        included_systems_sets: &HashSet<NodeId>,
+    ) {
+        assert!(included_systems_sets.contains(&set_id));
+        add_set(
+            set_id,
+            set,
+            dot,
+            graph,
+            settings,
+            &sets_in_single_set,
+            &sets_in_multiple_sets,
+            &systems_in_single_set,
+            &systems_in_multiple_sets,
+            &included_systems_sets,
+        );
+
+        for parent in hierarchy_parents(set_id, graph) {
+            assert!(included_systems_sets.contains(&parent));
+            dot.add_edge(
+                &node_id(parent, graph),
+                &node_id(set_id, graph),
+                &[
+                    ("dir", "none"),
+                    ("color", &settings.style.multiple_set_edge_color),
+                    ("ltail", &lref(parent, graph)),
+                    ("lhead", &lref(set_id, graph)),
+                ],
+            );
         }
     }
 
@@ -106,7 +190,15 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
         graph: &ScheduleGraph,
         settings: &Settings,
         sets_in_single_set: &HashMap<NodeId, Vec<(NodeId, &dyn SystemSet)>>,
+        sets_in_multiple_sets: &bevy_utils::hashbrown::HashMap<
+            Option<NodeId>,
+            Vec<(NodeId, &dyn SystemSet)>,
+        >,
         systems_in_single_set: &HashMap<NodeId, Vec<(NodeId, &(dyn System<In = (), Out = ()>))>>,
+        systems_in_multiple_sets: &bevy_utils::hashbrown::HashMap<
+            Option<NodeId>,
+            Vec<(NodeId, &(dyn System<In = (), Out = ()>))>,
+        >,
         included_systems_sets: &HashSet<NodeId>,
     ) {
         let name = format!("{set:?}");
@@ -135,8 +227,29 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
                 graph,
                 settings,
                 sets_in_single_set,
+                sets_in_multiple_sets,
                 systems_in_single_set,
+                systems_in_multiple_sets,
                 included_systems_sets,
+            );
+        }
+
+        for &(nested_set_id, nested_set) in sets_in_multiple_sets
+            .get(&Some(set_id))
+            .map(|vec| vec.as_slice())
+            .unwrap_or_default()
+        {
+            add_set_in_multiple_sets(
+                &mut system_set_graph,
+                nested_set_id,
+                nested_set,
+                graph,
+                settings,
+                &sets_in_single_set,
+                &sets_in_multiple_sets,
+                &systems_in_single_set,
+                &systems_in_multiple_sets,
+                &included_systems_sets,
             );
         }
 
@@ -157,6 +270,21 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
             }
         }
 
+        for &(system_id, system) in systems_in_multiple_sets
+            .get(&Some(set_id))
+            .map(|vec| vec.as_slice())
+            .unwrap_or_default()
+        {
+            add_system_in_multiple_sets(
+                &mut system_set_graph,
+                system_id,
+                system,
+                graph,
+                &included_systems_sets,
+                settings,
+            );
+        }
+
         dot.add_sub_graph(system_set_graph);
     }
 
@@ -169,36 +297,29 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
             graph,
             settings,
             &sets_in_single_set,
+            &sets_in_multiple_sets,
             &systems_in_single_set,
+            &systems_in_multiple_sets,
             &included_systems_sets,
         );
     }
-    for &(set_id, set) in sets_in_multiple_sets.iter() {
-        assert!(included_systems_sets.contains(&set_id));
-        add_set(
+    for &(set_id, set) in sets_in_multiple_sets
+        .get(&None)
+        .map(|vec| vec.as_slice())
+        .unwrap_or_default()
+    {
+        add_set_in_multiple_sets(
+            &mut dot,
             set_id,
             set,
-            &mut dot,
             graph,
             settings,
             &sets_in_single_set,
+            &sets_in_multiple_sets,
             &systems_in_single_set,
+            &systems_in_multiple_sets,
             &included_systems_sets,
         );
-
-        for parent in hierarchy_parents(set_id) {
-            assert!(included_systems_sets.contains(&parent));
-            dot.add_edge(
-                &node_id(parent, graph),
-                &node_id(set_id, graph),
-                &[
-                    ("dir", "none"),
-                    ("color", &settings.style.multiple_set_edge_color),
-                    ("ltail", &lref(parent, graph)),
-                    ("lhead", &lref(set_id, graph)),
-                ],
-            );
-        }
     }
 
     for &(system_id, system) in systems_freestanding.iter() {
@@ -207,28 +328,19 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
         dot.add_node(&node_id(system_id, graph), &[("label", &name)]);
     }
 
-    for &(system_id, system) in systems_in_multiple_sets.iter() {
-        assert!(included_systems_sets.contains(&system_id));
-        let mut name = system_name(system, settings);
-        name.push_str("\nIn multiple sets");
-
-        for parent in hierarchy_parents(system_id) {
-            assert!(included_systems_sets.contains(&parent));
-            let parent_set = graph.set_at(parent);
-            let _ = write!(&mut name, ", {parent_set:?}");
-
-            dot.add_edge(
-                &node_id(parent, graph),
-                &node_id(system_id, graph),
-                &[
-                    ("dir", "none"),
-                    ("color", &settings.style.multiple_set_edge_color),
-                    ("ltail", &set_cluster_name(parent)),
-                ],
-            );
-        }
-
-        dot.add_node(&node_id(system_id, graph), &[("label", &name)]);
+    for &(system_id, system) in systems_in_multiple_sets
+        .get(&None)
+        .map(|vec| vec.as_slice())
+        .unwrap_or_default()
+    {
+        add_system_in_multiple_sets(
+            &mut dot,
+            system_id,
+            system,
+            graph,
+            &included_systems_sets,
+            settings,
+        );
     }
 
     let dependency = graph.dependency();
@@ -294,6 +406,24 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
     }
 
     dot.finish()
+}
+
+fn lowest_common_ancestor(
+    parents: &[NodeId],
+    hierarchy: &DiGraphMap<NodeId, ()>,
+) -> Option<NodeId> {
+    let parent = parents.last().unwrap();
+    let mut common_ancestors: Vec<_> = ancestors_of_node(*parent, hierarchy).collect();
+
+    for &other_parent in parents[0..parents.len() - 1].iter().rev() {
+        common_ancestors.retain(|&ancestor| {
+            ancestors_of_node(other_parent, hierarchy)
+                .any(|other_ancestor| other_ancestor == ancestor)
+        })
+    }
+
+    let first_common_ancestor = common_ancestors.first().copied();
+    first_common_ancestor
 }
 
 fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<NodeId> {
@@ -420,10 +550,55 @@ fn node_id(node_id: NodeId, graph: &ScheduleGraph) -> String {
 enum IterSingleResult<T> {
     Empty,
     Single(T),
-    Multiple,
+    Multiple(Vec<T>),
 }
 fn iter_single<T>(mut iter: impl Iterator<Item = T>) -> IterSingleResult<T> {
     let Some(first) = iter.next() else { return IterSingleResult::Empty };
-    let None = iter.next() else { return IterSingleResult::Multiple };
-    IterSingleResult::Single(first)
+    match iter.next() {
+        Some(second) => {
+            let mut items = Vec::with_capacity(iter.size_hint().0 + 2);
+            items.push(first);
+            items.push(second);
+            items.extend(iter);
+            IterSingleResult::Multiple(items)
+        }
+        None => IterSingleResult::Single(first),
+    }
+}
+
+fn ancestors_of_node(
+    node_id: NodeId,
+    graph: &DiGraphMap<NodeId, ()>,
+) -> impl Iterator<Item = NodeId> + '_ {
+    let mut queue = VecDeque::with_capacity(1);
+    queue.push_back(node_id);
+    Ancestors { queue, graph }
+}
+
+struct Ancestors<'a> {
+    queue: VecDeque<NodeId>,
+    graph: &'a DiGraphMap<NodeId, ()>,
+}
+
+impl Iterator for Ancestors<'_> {
+    type Item = NodeId;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let item = self.queue.pop_front()?;
+
+        self.queue
+            .extend(self.graph.neighbors_directed(item, Direction::Incoming));
+
+        Some(item)
+    }
+}
+
+fn hierarchy_parents<'a>(
+    node: NodeId,
+    graph: &'a ScheduleGraph,
+) -> impl Iterator<Item = NodeId> + 'a {
+    let hierarchy = &graph.hierarchy().graph;
+    hierarchy
+        .neighbors_directed(node, Direction::Incoming)
+        .filter(|&parent| graph.set_at(parent).system_type().is_none())
 }

@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 bevy_ecs = { path = "../bevy/crates/bevy_ecs" }
 bevy_app = { path = "../bevy/crates/bevy_app" }
+bevy_utils = { path = "../bevy/crates/bevy_utils" }
 pretty-type-name = "1.0.0"
 petgraph = "0.6.2"
 
