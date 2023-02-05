@@ -133,7 +133,7 @@ impl Default for Settings {
             include_system: Box::new(|_| true),
             include_single_system_in_set: true,
 
-            ambiguity_enable: false,
+            ambiguity_enable: true,
             ambiguity_enable_on_world: false,
 
             prettify_system_names: true,

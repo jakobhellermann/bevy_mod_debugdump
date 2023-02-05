@@ -36,7 +36,6 @@ fn main() -> Result<(), std::io::Error> {
             // filtered main, without mass event/asset systems
             let main = schedules.get(&CoreSchedule::Main).unwrap();
             let main_filtered_settings = Settings {
-                ambiguity_enable: false,
                 include_system: Box::new(|system| {
                     let name = system.name();
                     let ignore = ["asset_event_system", "update_asset_storage_system"];
