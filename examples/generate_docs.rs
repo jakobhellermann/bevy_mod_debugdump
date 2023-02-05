@@ -1,11 +1,13 @@
 use std::path::PathBuf;
 
-use bevy::prelude::*;
+use bevy::{prelude::*, utils::HashSet};
 use bevy_mod_debugdump_stageless::Settings;
 
 fn main() -> Result<(), std::io::Error> {
     let docs_path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("docs");
+    let docs_path_by_crate = docs_path.join("by-crate");
     std::fs::create_dir_all(&docs_path)?;
+    std::fs::create_dir_all(&docs_path_by_crate)?;
 
     let mut app = App::new();
     app.add_plugins(DefaultPlugins);
@@ -31,6 +33,7 @@ fn main() -> Result<(), std::io::Error> {
                 std::fs::write(docs_path.join(format!("schedule_{label:?}.dot")), dot)?;
             }
 
+            // filtered main, without mass event/asset systems
             let main = schedules.get(&CoreSchedule::Main).unwrap();
             let main_filtered_settings = Settings {
                 show_ambiguities: false,
@@ -50,6 +53,32 @@ fn main() -> Result<(), std::io::Error> {
             );
 
             std::fs::write(docs_path.join(format!("schedule_Main_filtered.dot")), dot)?;
+
+            // by crate
+            let bevy_crates: HashSet<_> = main
+                .graph()
+                .systems()
+                .filter_map(|(_, system, _)| Some(system.name().split_once("::")?.0.to_owned()))
+                .collect();
+
+            for bevy_crate in bevy_crates {
+                let bevy_crate_clone = bevy_crate.clone();
+                let by_crate_settings = Settings {
+                    include_system: Box::new(move |system| {
+                        let bevy_crate = bevy_crate_clone.clone();
+                        let name = system.name();
+                        name.starts_with(&bevy_crate)
+                    }),
+                    ..Default::default()
+                };
+
+                let dot =
+                    bevy_mod_debugdump_stageless::schedule_to_dot(main, &world, &by_crate_settings);
+                std::fs::write(
+                    docs_path_by_crate.join(format!("schedule_Main_{}.dot", bevy_crate)),
+                    dot,
+                )?;
+            }
 
             Ok(())
         })

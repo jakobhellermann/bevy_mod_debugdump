@@ -1,7 +1,7 @@
 .PHONY: docs
 docs:
 	cargo run --example generate_docs
-	ls docs/*.dot | xargs -I '{}' dot -Tsvg '{}' -o '{}.svg'
+	ls docs/*.dot docs/*/*.dot | xargs -I '{}' dot -Tsvg '{}' -o '{}.svg'
 
 .PHONY: compare
 compare:
