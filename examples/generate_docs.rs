@@ -1,6 +1,6 @@
 use std::path::PathBuf;
 
-use bevy::{prelude::*, utils::HashSet};
+use bevy::{prelude::*, render::RenderApp, utils::HashSet};
 use bevy_mod_debugdump_stageless::Settings;
 
 fn main() -> Result<(), std::io::Error> {
@@ -12,12 +12,11 @@ fn main() -> Result<(), std::io::Error> {
     let mut app = App::new();
     app.add_plugins(DefaultPlugins);
 
-    let settings = Settings {
-        ..Default::default()
-    };
-
     app.world
         .resource_scope::<Schedules, _>(|world, mut schedules| {
+            let settings = Settings {
+                ..Default::default()
+            };
             for (label, schedule) in schedules.iter_mut() {
                 // for access info
                 schedule.graph_mut().initialize(world);
@@ -79,6 +78,38 @@ fn main() -> Result<(), std::io::Error> {
                 )?;
             }
 
-            Ok(())
-        })
+            Ok::<_, std::io::Error>(())
+        })?;
+
+    let render_app = app.sub_app_mut(RenderApp);
+    render_app
+        .world
+        .resource_scope::<Schedules, _>(|world, mut schedules| {
+            let settings = Settings {
+                ..Default::default()
+            };
+
+            for (label, schedule) in schedules.iter_mut() {
+                // TODO: currently panics
+                // for access info
+                // schedule.graph_mut().initialize(world);
+                // for `conflicting_systems`
+
+                schedule
+                    .graph_mut()
+                    .build_schedule(world.components())
+                    .unwrap();
+
+                let dot =
+                    bevy_mod_debugdump_stageless::schedule_to_dot(schedule, &world, &settings);
+
+                std::fs::write(
+                    docs_path.join(format!("schedule_render_{label:?}.dot")),
+                    dot,
+                )?;
+            }
+            Ok::<(), std::io::Error>(())
+        })?;
+
+    Ok(())
 }
