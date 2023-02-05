@@ -1,14 +1,16 @@
-use bevy::{
-    log::LogPlugin,
-    prelude::{System, World},
-    DefaultPlugins,
-};
-use bevy_app::{App, CoreSchedule, PluginGroup};
+use bevy::prelude::{IntoSystemConfig, SystemSet, World};
+use bevy_app::{App, CoreSchedule};
 use bevy_ecs::schedule_v3::{NodeId, Schedule, ScheduleLabel, Schedules};
+
+fn test_system() {}
+
+#[derive(SystemSet, PartialEq, Eq, Clone, Hash, Debug)]
+struct TestSet;
 
 fn main() {
     let mut app = App::new();
-    app.add_plugins(DefaultPlugins.build().disable::<LogPlugin>());
+    app.add_system(test_system.in_set(TestSet));
+    // app.add_plugins(DefaultPlugins.build().disable::<LogPlugin>());
 
     let mut schedules = app.world.resource_mut::<Schedules>();
 
@@ -22,36 +24,7 @@ fn main() {
         .build_schedule(world.components())
         .unwrap();
 
-    if true {
-        let ignore_asset_event = |system: &dyn System<In = (), Out = ()>| {
-            let name = system.name();
-            let _ignore = ![
-                "asset_event_system",
-                ">::update_system",
-                "update_asset_storage",
-            ]
-            .iter()
-            .any(|ignore| name.contains(ignore));
-            _ignore
-            // true
-        };
-        let settings = bevy_mod_debugdump_stageless::Settings {
-            show_single_system_in_set: true,
-            include_system: Box::new(ignore_asset_event),
-            ..Default::default()
-        };
-        let dot = bevy_mod_debugdump_stageless::schedule_to_dot(schedule, &world, &settings);
-        println!("{dot}");
-    } else if false {
-        print_schedule(schedule, &schedule_label);
-    }
-
-    if false {
-        let schedule = app.get_schedule_mut(schedule_label).unwrap();
-        schedule
-            .initialize(&mut bevy_ecs::world::World::new())
-            .unwrap();
-    }
+    print_schedule(schedule, &schedule_label);
 }
 
 fn print_schedule(schedule: &Schedule, schedule_label: &dyn ScheduleLabel) {
