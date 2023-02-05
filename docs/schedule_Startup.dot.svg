@@ -11,42 +11,42 @@
 <polygon fill="#0d1117" stroke="none" points="-4,4 -4,-479 1316,-479 1316,4 -4,4"/>
 <g id="clust1" class="cluster">
 <title>clusternode_Set(1)</title>
-<polygon fill="#99aab5" stroke="white" points="243,-8 243,-101 420,-101 420,-8 243,-8"/>
+<polygon fill="#6f90ad" stroke="black" points="243,-8 243,-101 420,-101 420,-8 243,-8"/>
 <text text-anchor="middle" x="331.5" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">PreStartupFlush</text>
 </g>
 <g id="clust2" class="cluster">
 <title>clusternode_Set(2)</title>
-<polygon fill="#99aab5" stroke="white" points="600,-8 600,-101 777,-101 777,-8 600,-8"/>
+<polygon fill="#6f90ad" stroke="black" points="600,-8 600,-101 777,-101 777,-8 600,-8"/>
 <text text-anchor="middle" x="688.5" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">StartupFlush</text>
 </g>
 <g id="clust3" class="cluster">
 <title>clusternode_Set(3)</title>
-<polygon fill="#99aab5" stroke="white" points="1127,-8 1127,-101 1304,-101 1304,-8 1127,-8"/>
+<polygon fill="#6f90ad" stroke="black" points="1127,-8 1127,-101 1304,-101 1304,-8 1127,-8"/>
 <text text-anchor="middle" x="1215.5" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">PostStartupFlush</text>
 </g>
 <g id="clust4" class="cluster">
 <title>clusternode_Set(4)</title>
-<polygon fill="#99aab5" stroke="white" points="8,-8 8,-101 223,-101 223,-8 8,-8"/>
+<polygon fill="#6f90ad" stroke="black" points="8,-8 8,-101 223,-101 223,-8 8,-8"/>
 <text text-anchor="middle" x="115.5" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">PreStartup</text>
 </g>
 <g id="clust5" class="cluster">
 <title>clusternode_Set(5)</title>
-<polygon fill="#99aab5" stroke="white" points="440,-8 440,-101 580,-101 580,-8 440,-8"/>
+<polygon fill="#6f90ad" stroke="black" points="440,-8 440,-101 580,-101 580,-8 440,-8"/>
 <text text-anchor="middle" x="510" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">Startup</text>
 </g>
 <g id="clust6" class="cluster">
 <title>clusternode_Set(6)</title>
-<polygon fill="#99aab5" stroke="white" points="789,-62 789,-467 1115,-467 1115,-62 789,-62"/>
+<polygon fill="#6f90ad" stroke="black" points="789,-62 789,-467 1115,-467 1115,-62 789,-62"/>
 <text text-anchor="middle" x="952" y="-451.8" font-family="Helvetica,sans-Serif" font-size="14.00">PostStartup</text>
 </g>
 <g id="clust7" class="cluster">
 <title>clusternode_Set(7)</title>
-<polygon fill="#99aab5" stroke="white" points="854.5,-289 854.5,-436 1049.5,-436 1049.5,-289 854.5,-289"/>
+<polygon fill="#6f90ad" stroke="black" points="854.5,-289 854.5,-436 1049.5,-436 1049.5,-289 854.5,-289"/>
 <text text-anchor="middle" x="952" y="-420.8" font-family="Helvetica,sans-Serif" font-size="14.00">TransformPropagate</text>
 </g>
 <g id="clust8" class="cluster">
 <title>clusternode_Set(11)</title>
-<polygon fill="#99aab5" stroke="white" points="797,-80 797,-281 1107,-281 1107,-80 797,-80"/>
+<polygon fill="#6f90ad" stroke="black" points="797,-80 797,-281 1107,-281 1107,-80 797,-80"/>
 <text text-anchor="middle" x="952" y="-265.8" font-family="Helvetica,sans-Serif" font-size="14.00">CameraUpdateSystem</text>
 </g>
 <!-- set_marker_node_Set(1) -->

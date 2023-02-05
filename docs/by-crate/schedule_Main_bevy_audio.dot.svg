@@ -11,72 +11,72 @@
 <polygon fill="#0d1117" stroke="none" points="-4,4 -4,-136 1526,-136 1526,4 -4,4"/>
 <g id="clust1" class="cluster">
 <title>clusternode_Set(1)</title>
-<polygon fill="#99aab5" stroke="white" points="70,-85 70,-124 152,-124 152,-85 70,-85"/>
+<polygon fill="#6f90ad" stroke="black" points="70,-85 70,-124 152,-124 152,-85 70,-85"/>
 <text text-anchor="middle" x="111" y="-108.8" font-family="Helvetica,sans-Serif" font-size="14.00">FirstFlush</text>
 </g>
 <g id="clust2" class="cluster">
 <title>clusternode_Set(2)</title>
-<polygon fill="#99aab5" stroke="white" points="283,-62 283,-101 405,-101 405,-62 283,-62"/>
+<polygon fill="#6f90ad" stroke="black" points="283,-62 283,-101 405,-101 405,-62 283,-62"/>
 <text text-anchor="middle" x="344" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">PreUpdateFlush</text>
 </g>
 <g id="clust3" class="cluster">
 <title>clusternode_Set(3)</title>
-<polygon fill="#99aab5" stroke="white" points="772,-62 772,-101 873,-101 873,-62 772,-62"/>
+<polygon fill="#6f90ad" stroke="black" points="772,-62 772,-101 873,-101 873,-62 772,-62"/>
 <text text-anchor="middle" x="822.5" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">UpdateFlush</text>
 </g>
 <g id="clust4" class="cluster">
 <title>clusternode_Set(4)</title>
-<polygon fill="#99aab5" stroke="white" points="1229,-73 1229,-112 1358,-112 1358,-73 1229,-73"/>
+<polygon fill="#6f90ad" stroke="black" points="1229,-73 1229,-112 1358,-112 1358,-73 1229,-73"/>
 <text text-anchor="middle" x="1293.5" y="-96.8" font-family="Helvetica,sans-Serif" font-size="14.00">PostUpdateFlush</text>
 </g>
 <g id="clust5" class="cluster">
 <title>clusternode_Set(5)</title>
-<polygon fill="#99aab5" stroke="white" points="1442,-49 1442,-88 1522,-88 1522,-49 1442,-49"/>
+<polygon fill="#6f90ad" stroke="black" points="1442,-49 1442,-88 1522,-88 1522,-49 1442,-49"/>
 <text text-anchor="middle" x="1482" y="-72.8" font-family="Helvetica,sans-Serif" font-size="14.00">LastFlush</text>
 </g>
 <g id="clust6" class="cluster">
 <title>clusternode_Set(6)</title>
-<polygon fill="#99aab5" stroke="white" points="0,-61 0,-100 46,-100 46,-61 0,-61"/>
+<polygon fill="#6f90ad" stroke="black" points="0,-61 0,-100 46,-100 46,-61 0,-61"/>
 <text text-anchor="middle" x="23" y="-84.8" font-family="Helvetica,sans-Serif" font-size="14.00">First</text>
 </g>
 <g id="clust7" class="cluster">
 <title>clusternode_Set(7)</title>
-<polygon fill="#99aab5" stroke="white" points="177,-62 177,-101 263,-101 263,-62 177,-62"/>
+<polygon fill="#6f90ad" stroke="black" points="177,-62 177,-101 263,-101 263,-62 177,-62"/>
 <text text-anchor="middle" x="220" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">PreUpdate</text>
 </g>
 <g id="clust8" class="cluster">
 <title>clusternode_Set(8)</title>
-<polygon fill="#99aab5" stroke="white" points="425,-62 425,-101 547,-101 547,-62 425,-62"/>
+<polygon fill="#6f90ad" stroke="black" points="425,-62 425,-101 547,-101 547,-62 425,-62"/>
 <text text-anchor="middle" x="486" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">StateTransitions</text>
 </g>
 <g id="clust9" class="cluster">
 <title>clusternode_Set(9)</title>
-<polygon fill="#99aab5" stroke="white" points="567,-62 567,-101 667,-101 667,-62 567,-62"/>
+<polygon fill="#6f90ad" stroke="black" points="567,-62 567,-101 667,-101 667,-62 567,-62"/>
 <text text-anchor="middle" x="617" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">FixedUpdate</text>
 </g>
 <g id="clust10" class="cluster">
 <title>clusternode_Set(10)</title>
-<polygon fill="#99aab5" stroke="white" points="687,-62 687,-101 752,-101 752,-62 687,-62"/>
+<polygon fill="#6f90ad" stroke="black" points="687,-62 687,-101 752,-101 752,-62 687,-62"/>
 <text text-anchor="middle" x="719.5" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">Update</text>
 </g>
 <g id="clust11" class="cluster">
 <title>clusternode_Set(11)</title>
-<polygon fill="#99aab5" stroke="white" points="893,-8 893,-101 1209,-101 1209,-8 893,-8"/>
+<polygon fill="#6f90ad" stroke="black" points="893,-8 893,-101 1209,-101 1209,-8 893,-8"/>
 <text text-anchor="middle" x="1051" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">PostUpdate</text>
 </g>
 <g id="clust12" class="cluster">
 <title>clusternode_Set(12)</title>
-<polygon fill="#99aab5" stroke="white" points="1378,-49 1378,-88 1422,-88 1422,-49 1378,-49"/>
+<polygon fill="#6f90ad" stroke="black" points="1378,-49 1378,-88 1422,-88 1422,-49 1378,-49"/>
 <text text-anchor="middle" x="1400" y="-72.8" font-family="Helvetica,sans-Serif" font-size="14.00">Last</text>
 </g>
 <g id="clust13" class="cluster">
 <title>clusternode_Set(58)</title>
-<polygon fill="#99aab5" stroke="white" points="66,-38 66,-77 157,-77 157,-38 66,-38"/>
+<polygon fill="#6f90ad" stroke="black" points="66,-38 66,-77 157,-77 157,-38 66,-38"/>
 <text text-anchor="middle" x="111.5" y="-61.8" font-family="Helvetica,sans-Serif" font-size="14.00">LoadAssets</text>
 </g>
 <g id="clust14" class="cluster">
 <title>clusternode_Set(59)</title>
-<polygon fill="#99aab5" stroke="white" points="1245,-26 1245,-65 1341,-65 1341,-26 1245,-26"/>
+<polygon fill="#6f90ad" stroke="black" points="1245,-26 1245,-65 1341,-65 1341,-26 1245,-26"/>
 <text text-anchor="middle" x="1293" y="-49.8" font-family="Helvetica,sans-Serif" font-size="14.00">AssetEvents</text>
 </g>
 <!-- set_marker_node_Set(1) -->
