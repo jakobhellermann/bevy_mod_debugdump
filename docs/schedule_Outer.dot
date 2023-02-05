@@ -1,7 +1,0 @@
-digraph "schedule" {
-	"splines"="spline";
-	"compound"="true";
-	"rankdir"="LR";
-	node ["shape"="box"];
-	"node_System(0)" ["label"="outer_loop"]
-}
