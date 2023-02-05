@@ -8,59 +8,59 @@
  viewBox="0.00 0.00 1320.00 483.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 479)">
 <title>schedule</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-479 1316,-479 1316,4 -4,4"/>
+<polygon fill="#35393f" stroke="none" points="-4,4 -4,-479 1316,-479 1316,4 -4,4"/>
 <g id="clust1" class="cluster">
 <title>clusternode_Set(1)</title>
-<polygon fill="none" stroke="black" points="243,-8 243,-101 420,-101 420,-8 243,-8"/>
-<text text-anchor="middle" x="331.5" y="-85.8" font-family="Times,serif" font-size="14.00">PreStartupFlush</text>
+<polygon fill="#99aab5" stroke="white" points="243,-8 243,-101 420,-101 420,-8 243,-8"/>
+<text text-anchor="middle" x="331.5" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">PreStartupFlush</text>
 </g>
 <g id="clust2" class="cluster">
 <title>clusternode_Set(2)</title>
-<polygon fill="none" stroke="black" points="600,-8 600,-101 777,-101 777,-8 600,-8"/>
-<text text-anchor="middle" x="688.5" y="-85.8" font-family="Times,serif" font-size="14.00">StartupFlush</text>
+<polygon fill="#99aab5" stroke="white" points="600,-8 600,-101 777,-101 777,-8 600,-8"/>
+<text text-anchor="middle" x="688.5" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">StartupFlush</text>
 </g>
 <g id="clust3" class="cluster">
 <title>clusternode_Set(3)</title>
-<polygon fill="none" stroke="black" points="1127,-8 1127,-101 1304,-101 1304,-8 1127,-8"/>
-<text text-anchor="middle" x="1215.5" y="-85.8" font-family="Times,serif" font-size="14.00">PostStartupFlush</text>
+<polygon fill="#99aab5" stroke="white" points="1127,-8 1127,-101 1304,-101 1304,-8 1127,-8"/>
+<text text-anchor="middle" x="1215.5" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">PostStartupFlush</text>
 </g>
 <g id="clust4" class="cluster">
 <title>clusternode_Set(4)</title>
-<polygon fill="none" stroke="black" points="8,-8 8,-101 223,-101 223,-8 8,-8"/>
-<text text-anchor="middle" x="115.5" y="-85.8" font-family="Times,serif" font-size="14.00">PreStartup</text>
+<polygon fill="#99aab5" stroke="white" points="8,-8 8,-101 223,-101 223,-8 8,-8"/>
+<text text-anchor="middle" x="115.5" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">PreStartup</text>
 </g>
 <g id="clust5" class="cluster">
 <title>clusternode_Set(5)</title>
-<polygon fill="none" stroke="black" points="440,-8 440,-101 580,-101 580,-8 440,-8"/>
-<text text-anchor="middle" x="510" y="-85.8" font-family="Times,serif" font-size="14.00">Startup</text>
+<polygon fill="#99aab5" stroke="white" points="440,-8 440,-101 580,-101 580,-8 440,-8"/>
+<text text-anchor="middle" x="510" y="-85.8" font-family="Helvetica,sans-Serif" font-size="14.00">Startup</text>
 </g>
 <g id="clust6" class="cluster">
 <title>clusternode_Set(6)</title>
-<polygon fill="none" stroke="black" points="789,-62 789,-467 1115,-467 1115,-62 789,-62"/>
-<text text-anchor="middle" x="952" y="-451.8" font-family="Times,serif" font-size="14.00">PostStartup</text>
+<polygon fill="#99aab5" stroke="white" points="789,-62 789,-467 1115,-467 1115,-62 789,-62"/>
+<text text-anchor="middle" x="952" y="-451.8" font-family="Helvetica,sans-Serif" font-size="14.00">PostStartup</text>
 </g>
 <g id="clust7" class="cluster">
 <title>clusternode_Set(7)</title>
-<polygon fill="none" stroke="black" points="854.5,-289 854.5,-436 1049.5,-436 1049.5,-289 854.5,-289"/>
-<text text-anchor="middle" x="952" y="-420.8" font-family="Times,serif" font-size="14.00">TransformPropagate</text>
+<polygon fill="#99aab5" stroke="white" points="854.5,-289 854.5,-436 1049.5,-436 1049.5,-289 854.5,-289"/>
+<text text-anchor="middle" x="952" y="-420.8" font-family="Helvetica,sans-Serif" font-size="14.00">TransformPropagate</text>
 </g>
 <g id="clust8" class="cluster">
 <title>clusternode_Set(11)</title>
-<polygon fill="none" stroke="black" points="797,-80 797,-281 1107,-281 1107,-80 797,-80"/>
-<text text-anchor="middle" x="952" y="-265.8" font-family="Times,serif" font-size="14.00">CameraUpdateSystem</text>
+<polygon fill="#99aab5" stroke="white" points="797,-80 797,-281 1107,-281 1107,-80 797,-80"/>
+<text text-anchor="middle" x="952" y="-265.8" font-family="Helvetica,sans-Serif" font-size="14.00">CameraUpdateSystem</text>
 </g>
 <!-- set_marker_node_Set(1) -->
 <!-- set_marker_node_Set(5) -->
 <!-- set_marker_node_Set(1)&#45;&gt;set_marker_node_Set(5) -->
 <g id="edge2" class="edge">
 <title>set_marker_node_Set(1)&#45;&gt;set_marker_node_Set(5)</title>
-<path fill="none" stroke="black" d="M420,-70C422.87,-70 425.74,-70 428.6,-70"/>
-<polygon fill="black" stroke="black" points="428.49,-73.5 438.49,-70 428.49,-66.5 428.49,-73.5"/>
+<path fill="none" stroke="white" d="M420,-70C422.87,-70 425.74,-70 428.6,-70"/>
+<polygon fill="white" stroke="white" points="428.49,-73.5 438.49,-70 428.49,-66.5 428.49,-73.5"/>
 </g>
 <!-- node_System(0) -->
 <g id="node2" class="node">
 <title>node_System(0)</title>
-<polygon fill="none" stroke="black" points="412,-52 251,-52 251,-16 412,-16 412,-52"/>
+<polygon fill="#eff1f3" stroke="#eff1f3" points="412,-52 251,-52 251,-16 412,-16 412,-52"/>
 <text text-anchor="middle" x="331.5" y="-30.3" font-family="Times,serif" font-size="14.00">apply_system_buffers</text>
 </g>
 <!-- set_marker_node_Set(2) -->
@@ -68,83 +68,83 @@
 <!-- set_marker_node_Set(2)&#45;&gt;set_marker_node_Set(6) -->
 <g id="edge4" class="edge">
 <title>set_marker_node_Set(2)&#45;&gt;set_marker_node_Set(6)</title>
-<path fill="none" stroke="black" d="M777,-70C777.25,-70 777.5,-70 777.76,-70"/>
-<polygon fill="black" stroke="black" points="777.49,-73.5 787.49,-70 777.49,-66.5 777.49,-73.5"/>
+<path fill="none" stroke="white" d="M777,-70C777.25,-70 777.5,-70 777.76,-70"/>
+<polygon fill="white" stroke="white" points="777.49,-73.5 787.49,-70 777.49,-66.5 777.49,-73.5"/>
 </g>
 <!-- node_System(1) -->
 <g id="node4" class="node">
 <title>node_System(1)</title>
-<polygon fill="none" stroke="black" points="769,-52 608,-52 608,-16 769,-16 769,-52"/>
+<polygon fill="#eff1f3" stroke="#eff1f3" points="769,-52 608,-52 608,-16 769,-16 769,-52"/>
 <text text-anchor="middle" x="688.5" y="-30.3" font-family="Times,serif" font-size="14.00">apply_system_buffers</text>
 </g>
 <!-- set_marker_node_Set(3) -->
 <!-- node_System(2) -->
 <g id="node6" class="node">
 <title>node_System(2)</title>
-<polygon fill="none" stroke="black" points="1296,-52 1135,-52 1135,-16 1296,-16 1296,-52"/>
+<polygon fill="#eff1f3" stroke="#eff1f3" points="1296,-52 1135,-52 1135,-16 1296,-16 1296,-52"/>
 <text text-anchor="middle" x="1215.5" y="-30.3" font-family="Times,serif" font-size="14.00">apply_system_buffers</text>
 </g>
 <!-- set_marker_node_Set(4) -->
 <!-- set_marker_node_Set(4)&#45;&gt;set_marker_node_Set(1) -->
 <g id="edge1" class="edge">
 <title>set_marker_node_Set(4)&#45;&gt;set_marker_node_Set(1)</title>
-<path fill="none" stroke="black" d="M223,-70C225.94,-70 228.88,-70 231.81,-70"/>
-<polygon fill="black" stroke="black" points="231.49,-73.5 241.49,-70 231.49,-66.5 231.49,-73.5"/>
+<path fill="none" stroke="white" d="M223,-70C225.94,-70 228.88,-70 231.81,-70"/>
+<polygon fill="white" stroke="white" points="231.49,-73.5 241.49,-70 231.49,-66.5 231.49,-73.5"/>
 </g>
 <!-- node_System(9) -->
 <g id="node8" class="node">
 <title>node_System(9)</title>
-<polygon fill="none" stroke="black" points="215,-52 16,-52 16,-16 215,-16 215,-52"/>
+<polygon fill="#eff1f3" stroke="#eff1f3" points="215,-52 16,-52 16,-16 215,-16 215,-52"/>
 <text text-anchor="middle" x="115.5" y="-30.3" font-family="Times,serif" font-size="14.00">gilrs_event_startup_system</text>
 </g>
 <!-- set_marker_node_Set(5)&#45;&gt;set_marker_node_Set(2) -->
 <g id="edge3" class="edge">
 <title>set_marker_node_Set(5)&#45;&gt;set_marker_node_Set(2)</title>
-<path fill="none" stroke="black" d="M580,-70C582.87,-70 585.77,-70 588.69,-70"/>
-<polygon fill="black" stroke="black" points="588.49,-73.5 598.49,-70 588.49,-66.5 588.49,-73.5"/>
+<path fill="none" stroke="white" d="M580,-70C582.87,-70 585.77,-70 588.69,-70"/>
+<polygon fill="white" stroke="white" points="588.49,-73.5 598.49,-70 588.49,-66.5 588.49,-73.5"/>
 </g>
 <!-- node_System(5) -->
 <g id="node10" class="node">
 <title>node_System(5)</title>
-<polygon fill="none" stroke="black" points="572,-52 448,-52 448,-16 572,-16 572,-52"/>
+<polygon fill="#eff1f3" stroke="#eff1f3" points="572,-52 448,-52 448,-16 572,-16 572,-52"/>
 <text text-anchor="middle" x="510" y="-30.3" font-family="Times,serif" font-size="14.00">log_system_info</text>
 </g>
 <!-- set_marker_node_Set(6)&#45;&gt;set_marker_node_Set(3) -->
 <g id="edge5" class="edge">
 <title>set_marker_node_Set(6)&#45;&gt;set_marker_node_Set(3)</title>
-<path fill="none" stroke="black" d="M1115,-70C1115.29,-70 1115.58,-70 1115.87,-70"/>
-<polygon fill="black" stroke="black" points="1115.49,-73.5 1125.49,-70 1115.49,-66.5 1115.49,-73.5"/>
+<path fill="none" stroke="white" d="M1115,-70C1115.29,-70 1115.58,-70 1115.87,-70"/>
+<polygon fill="white" stroke="white" points="1115.49,-73.5 1125.49,-70 1115.49,-66.5 1115.49,-73.5"/>
 </g>
 <!-- set_marker_node_Set(7) -->
 <!-- node_System(3) -->
 <g id="node13" class="node">
 <title>node_System(3)</title>
-<polygon fill="none" stroke="black" points="1041.5,-387 862.5,-387 862.5,-351 1041.5,-351 1041.5,-387"/>
+<polygon fill="#eff1f3" stroke="#eff1f3" points="1041.5,-387 862.5,-387 862.5,-351 1041.5,-351 1041.5,-387"/>
 <text text-anchor="middle" x="952" y="-365.3" font-family="Times,serif" font-size="14.00">sync_simple_transforms</text>
 </g>
 <!-- node_System(4) -->
 <g id="node14" class="node">
 <title>node_System(4)</title>
-<polygon fill="none" stroke="black" points="1035,-333 869,-333 869,-297 1035,-297 1035,-333"/>
+<polygon fill="#eff1f3" stroke="#eff1f3" points="1035,-333 869,-333 869,-297 1035,-297 1035,-333"/>
 <text text-anchor="middle" x="952" y="-311.3" font-family="Times,serif" font-size="14.00">propagate_transforms</text>
 </g>
 <!-- set_marker_node_Set(11) -->
 <!-- node_System(6) -->
 <g id="node16" class="node">
 <title>node_System(6)</title>
-<polygon fill="none" stroke="black" points="1054,-232 850,-232 850,-196 1054,-196 1054,-232"/>
+<polygon fill="#eff1f3" stroke="#eff1f3" points="1054,-232 850,-232 850,-196 1054,-196 1054,-232"/>
 <text text-anchor="middle" x="952" y="-210.3" font-family="Times,serif" font-size="14.00">camera_system&lt;Projection&gt;</text>
 </g>
 <!-- node_System(7) -->
 <g id="node17" class="node">
 <title>node_System(7)</title>
-<polygon fill="none" stroke="black" points="1099,-178 805,-178 805,-142 1099,-142 1099,-178"/>
+<polygon fill="#eff1f3" stroke="#eff1f3" points="1099,-178 805,-178 805,-142 1099,-142 1099,-178"/>
 <text text-anchor="middle" x="952" y="-156.3" font-family="Times,serif" font-size="14.00">camera_system&lt;OrthographicProjection&gt;</text>
 </g>
 <!-- node_System(8) -->
 <g id="node18" class="node">
 <title>node_System(8)</title>
-<polygon fill="none" stroke="black" points="1092.5,-124 811.5,-124 811.5,-88 1092.5,-88 1092.5,-124"/>
+<polygon fill="#eff1f3" stroke="#eff1f3" points="1092.5,-124 811.5,-124 811.5,-88 1092.5,-88 1092.5,-124"/>
 <text text-anchor="middle" x="952" y="-102.3" font-family="Times,serif" font-size="14.00">camera_system&lt;PerspectiveProjection&gt;</text>
 </g>
 </g>
