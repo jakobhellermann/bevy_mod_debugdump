@@ -207,93 +207,93 @@
 <polygon fill="none" stroke="black" points="429,-862 155,-862 155,-826 429,-826 429,-862"/>
 <text text-anchor="middle" x="292" y="-840.3" font-family="Times,serif" font-size="14.00">update_asset_storage_system&lt;Shader&gt;</text>
 </g>
-<!-- node_System(73) -->
+<!-- node_System(74) -->
 <g id="node19" class="node">
-<title>node_System(73)</title>
+<title>node_System(74)</title>
 <polygon fill="none" stroke="black" points="423.5,-808 160.5,-808 160.5,-772 423.5,-772 423.5,-808"/>
 <text text-anchor="middle" x="292" y="-786.3" font-family="Times,serif" font-size="14.00">update_asset_storage_system&lt;Mesh&gt;</text>
 </g>
-<!-- node_System(76) -->
+<!-- node_System(77) -->
 <g id="node20" class="node">
-<title>node_System(76)</title>
+<title>node_System(77)</title>
 <polygon fill="none" stroke="black" points="509,-754 75,-754 75,-718 509,-718 509,-754"/>
 <text text-anchor="middle" x="292" y="-732.3" font-family="Times,serif" font-size="14.00">update_asset_storage_system&lt;SkinnedMeshInverseBindposes&gt;</text>
 </g>
-<!-- node_System(79) -->
+<!-- node_System(80) -->
 <g id="node21" class="node">
-<title>node_System(79)</title>
+<title>node_System(80)</title>
 <polygon fill="none" stroke="black" points="426.5,-700 157.5,-700 157.5,-664 426.5,-664 426.5,-700"/>
 <text text-anchor="middle" x="292" y="-678.3" font-family="Times,serif" font-size="14.00">update_asset_storage_system&lt;Image&gt;</text>
 </g>
-<!-- node_System(82) -->
+<!-- node_System(83) -->
 <g id="node22" class="node">
-<title>node_System(82)</title>
+<title>node_System(83)</title>
 <polygon fill="none" stroke="black" points="448.5,-646 135.5,-646 135.5,-610 448.5,-610 448.5,-646"/>
 <text text-anchor="middle" x="292" y="-624.3" font-family="Times,serif" font-size="14.00">update_asset_storage_system&lt;TextureAtlas&gt;</text>
 </g>
-<!-- node_System(85) -->
+<!-- node_System(86) -->
 <g id="node23" class="node">
-<title>node_System(85)</title>
+<title>node_System(86)</title>
 <polygon fill="none" stroke="black" points="452.5,-592 131.5,-592 131.5,-556 452.5,-556 452.5,-592"/>
 <text text-anchor="middle" x="292" y="-570.3" font-family="Times,serif" font-size="14.00">update_asset_storage_system&lt;ColorMaterial&gt;</text>
 </g>
-<!-- node_System(88) -->
+<!-- node_System(89) -->
 <g id="node24" class="node">
-<title>node_System(88)</title>
+<title>node_System(89)</title>
 <polygon fill="none" stroke="black" points="420.5,-538 163.5,-538 163.5,-502 420.5,-502 420.5,-538"/>
 <text text-anchor="middle" x="292" y="-516.3" font-family="Times,serif" font-size="14.00">update_asset_storage_system&lt;Font&gt;</text>
 </g>
-<!-- node_System(91) -->
+<!-- node_System(92) -->
 <g id="node25" class="node">
-<title>node_System(91)</title>
+<title>node_System(92)</title>
 <polygon fill="none" stroke="black" points="447.5,-484 136.5,-484 136.5,-448 447.5,-448 447.5,-484"/>
 <text text-anchor="middle" x="292" y="-462.3" font-family="Times,serif" font-size="14.00">update_asset_storage_system&lt;FontAtlasSet&gt;</text>
 </g>
-<!-- node_System(101) -->
+<!-- node_System(102) -->
 <g id="node26" class="node">
-<title>node_System(101)</title>
+<title>node_System(102)</title>
 <polygon fill="none" stroke="black" points="465.5,-430 118.5,-430 118.5,-394 465.5,-394 465.5,-430"/>
 <text text-anchor="middle" x="292" y="-408.3" font-family="Times,serif" font-size="14.00">update_asset_storage_system&lt;StandardMaterial&gt;</text>
 </g>
-<!-- node_System(112) -->
+<!-- node_System(113) -->
 <g id="node27" class="node">
-<title>node_System(112)</title>
+<title>node_System(113)</title>
 <polygon fill="none" stroke="black" points="417.5,-376 166.5,-376 166.5,-340 417.5,-340 417.5,-376"/>
 <text text-anchor="middle" x="292" y="-354.3" font-family="Times,serif" font-size="14.00">update_asset_storage_system&lt;Gltf&gt;</text>
 </g>
-<!-- node_System(115) -->
+<!-- node_System(116) -->
 <g id="node28" class="node">
-<title>node_System(115)</title>
+<title>node_System(116)</title>
 <polygon fill="none" stroke="black" points="435,-322 149,-322 149,-286 435,-286 435,-322"/>
 <text text-anchor="middle" x="292" y="-300.3" font-family="Times,serif" font-size="14.00">update_asset_storage_system&lt;GltfNode&gt;</text>
 </g>
-<!-- node_System(118) -->
+<!-- node_System(119) -->
 <g id="node29" class="node">
-<title>node_System(118)</title>
+<title>node_System(119)</title>
 <polygon fill="none" stroke="black" points="449,-268 135,-268 135,-232 449,-232 449,-268"/>
 <text text-anchor="middle" x="292" y="-246.3" font-family="Times,serif" font-size="14.00">update_asset_storage_system&lt;GltfPrimitive&gt;</text>
 </g>
-<!-- node_System(121) -->
+<!-- node_System(122) -->
 <g id="node30" class="node">
-<title>node_System(121)</title>
+<title>node_System(122)</title>
 <polygon fill="none" stroke="black" points="435.5,-214 148.5,-214 148.5,-178 435.5,-178 435.5,-214"/>
 <text text-anchor="middle" x="292" y="-192.3" font-family="Times,serif" font-size="14.00">update_asset_storage_system&lt;GltfMesh&gt;</text>
 </g>
-<!-- node_System(124) -->
+<!-- node_System(125) -->
 <g id="node31" class="node">
-<title>node_System(124)</title>
+<title>node_System(125)</title>
 <polygon fill="none" stroke="black" points="448,-160 136,-160 136,-124 448,-124 448,-160"/>
 <text text-anchor="middle" x="292" y="-138.3" font-family="Times,serif" font-size="14.00">update_asset_storage_system&lt;AudioSource&gt;</text>
 </g>
-<!-- node_System(127) -->
+<!-- node_System(128) -->
 <g id="node32" class="node">
-<title>node_System(127)</title>
+<title>node_System(128)</title>
 <polygon fill="none" stroke="black" points="440,-106 144,-106 144,-70 440,-70 440,-106"/>
 <text text-anchor="middle" x="292" y="-84.3" font-family="Times,serif" font-size="14.00">update_asset_storage_system&lt;AudioSink&gt;</text>
 </g>
-<!-- node_System(132) -->
+<!-- node_System(133) -->
 <g id="node33" class="node">
-<title>node_System(132)</title>
+<title>node_System(133)</title>
 <polygon fill="none" stroke="black" points="454,-52 130,-52 130,-16 454,-16 454,-52"/>
 <text text-anchor="middle" x="292" y="-30.3" font-family="Times,serif" font-size="14.00">update_asset_storage_system&lt;AnimationClip&gt;</text>
 </g>
@@ -321,93 +321,93 @@
 <polygon fill="none" stroke="black" points="1835,-928 1585,-928 1585,-892 1835,-892 1835,-928"/>
 <text text-anchor="middle" x="1710" y="-906.3" font-family="Times,serif" font-size="14.00">Assets&lt;Shader&gt;asset_event_system</text>
 </g>
-<!-- node_System(72) -->
+<!-- node_System(73) -->
 <g id="node38" class="node">
-<title>node_System(72)</title>
+<title>node_System(73)</title>
 <polygon fill="none" stroke="black" points="1829.5,-874 1590.5,-874 1590.5,-838 1829.5,-838 1829.5,-874"/>
 <text text-anchor="middle" x="1710" y="-852.3" font-family="Times,serif" font-size="14.00">Assets&lt;Mesh&gt;asset_event_system</text>
 </g>
-<!-- node_System(75) -->
+<!-- node_System(76) -->
 <g id="node39" class="node">
-<title>node_System(75)</title>
+<title>node_System(76)</title>
 <polygon fill="none" stroke="black" points="1915,-820 1505,-820 1505,-784 1915,-784 1915,-820"/>
 <text text-anchor="middle" x="1710" y="-798.3" font-family="Times,serif" font-size="14.00">Assets&lt;SkinnedMeshInverseBindposes&gt;asset_event_system</text>
 </g>
-<!-- node_System(78) -->
+<!-- node_System(79) -->
 <g id="node40" class="node">
-<title>node_System(78)</title>
+<title>node_System(79)</title>
 <polygon fill="none" stroke="black" points="1832.5,-766 1587.5,-766 1587.5,-730 1832.5,-730 1832.5,-766"/>
 <text text-anchor="middle" x="1710" y="-744.3" font-family="Times,serif" font-size="14.00">Assets&lt;Image&gt;asset_event_system</text>
 </g>
-<!-- node_System(81) -->
+<!-- node_System(82) -->
 <g id="node41" class="node">
-<title>node_System(81)</title>
+<title>node_System(82)</title>
 <polygon fill="none" stroke="black" points="1854.5,-712 1565.5,-712 1565.5,-676 1854.5,-676 1854.5,-712"/>
 <text text-anchor="middle" x="1710" y="-690.3" font-family="Times,serif" font-size="14.00">Assets&lt;TextureAtlas&gt;asset_event_system</text>
 </g>
-<!-- node_System(84) -->
+<!-- node_System(85) -->
 <g id="node42" class="node">
-<title>node_System(84)</title>
+<title>node_System(85)</title>
 <polygon fill="none" stroke="black" points="1858.5,-658 1561.5,-658 1561.5,-622 1858.5,-622 1858.5,-658"/>
 <text text-anchor="middle" x="1710" y="-636.3" font-family="Times,serif" font-size="14.00">Assets&lt;ColorMaterial&gt;asset_event_system</text>
 </g>
-<!-- node_System(87) -->
+<!-- node_System(88) -->
 <g id="node43" class="node">
-<title>node_System(87)</title>
+<title>node_System(88)</title>
 <polygon fill="none" stroke="black" points="1826.5,-604 1593.5,-604 1593.5,-568 1826.5,-568 1826.5,-604"/>
 <text text-anchor="middle" x="1710" y="-582.3" font-family="Times,serif" font-size="14.00">Assets&lt;Font&gt;asset_event_system</text>
 </g>
-<!-- node_System(90) -->
+<!-- node_System(91) -->
 <g id="node44" class="node">
-<title>node_System(90)</title>
+<title>node_System(91)</title>
 <polygon fill="none" stroke="black" points="1853.5,-550 1566.5,-550 1566.5,-514 1853.5,-514 1853.5,-550"/>
 <text text-anchor="middle" x="1710" y="-528.3" font-family="Times,serif" font-size="14.00">Assets&lt;FontAtlasSet&gt;asset_event_system</text>
 </g>
-<!-- node_System(100) -->
+<!-- node_System(101) -->
 <g id="node45" class="node">
-<title>node_System(100)</title>
+<title>node_System(101)</title>
 <polygon fill="none" stroke="black" points="1871.5,-496 1548.5,-496 1548.5,-460 1871.5,-460 1871.5,-496"/>
 <text text-anchor="middle" x="1710" y="-474.3" font-family="Times,serif" font-size="14.00">Assets&lt;StandardMaterial&gt;asset_event_system</text>
 </g>
-<!-- node_System(111) -->
+<!-- node_System(112) -->
 <g id="node46" class="node">
-<title>node_System(111)</title>
+<title>node_System(112)</title>
 <polygon fill="none" stroke="black" points="1823.5,-442 1596.5,-442 1596.5,-406 1823.5,-406 1823.5,-442"/>
 <text text-anchor="middle" x="1710" y="-420.3" font-family="Times,serif" font-size="14.00">Assets&lt;Gltf&gt;asset_event_system</text>
 </g>
-<!-- node_System(114) -->
+<!-- node_System(115) -->
 <g id="node47" class="node">
-<title>node_System(114)</title>
+<title>node_System(115)</title>
 <polygon fill="none" stroke="black" points="1841,-388 1579,-388 1579,-352 1841,-352 1841,-388"/>
 <text text-anchor="middle" x="1710" y="-366.3" font-family="Times,serif" font-size="14.00">Assets&lt;GltfNode&gt;asset_event_system</text>
 </g>
-<!-- node_System(117) -->
+<!-- node_System(118) -->
 <g id="node48" class="node">
-<title>node_System(117)</title>
+<title>node_System(118)</title>
 <polygon fill="none" stroke="black" points="1855,-334 1565,-334 1565,-298 1855,-298 1855,-334"/>
 <text text-anchor="middle" x="1710" y="-312.3" font-family="Times,serif" font-size="14.00">Assets&lt;GltfPrimitive&gt;asset_event_system</text>
 </g>
-<!-- node_System(120) -->
+<!-- node_System(121) -->
 <g id="node49" class="node">
-<title>node_System(120)</title>
+<title>node_System(121)</title>
 <polygon fill="none" stroke="black" points="1841.5,-280 1578.5,-280 1578.5,-244 1841.5,-244 1841.5,-280"/>
 <text text-anchor="middle" x="1710" y="-258.3" font-family="Times,serif" font-size="14.00">Assets&lt;GltfMesh&gt;asset_event_system</text>
 </g>
-<!-- node_System(123) -->
+<!-- node_System(124) -->
 <g id="node50" class="node">
-<title>node_System(123)</title>
+<title>node_System(124)</title>
 <polygon fill="none" stroke="black" points="1854,-226 1566,-226 1566,-190 1854,-190 1854,-226"/>
 <text text-anchor="middle" x="1710" y="-204.3" font-family="Times,serif" font-size="14.00">Assets&lt;AudioSource&gt;asset_event_system</text>
 </g>
-<!-- node_System(126) -->
+<!-- node_System(127) -->
 <g id="node51" class="node">
-<title>node_System(126)</title>
+<title>node_System(127)</title>
 <polygon fill="none" stroke="black" points="1846,-172 1574,-172 1574,-136 1846,-136 1846,-172"/>
 <text text-anchor="middle" x="1710" y="-150.3" font-family="Times,serif" font-size="14.00">Assets&lt;AudioSink&gt;asset_event_system</text>
 </g>
-<!-- node_System(131) -->
+<!-- node_System(132) -->
 <g id="node52" class="node">
-<title>node_System(131)</title>
+<title>node_System(132)</title>
 <polygon fill="none" stroke="black" points="1860,-118 1560,-118 1560,-82 1860,-82 1860,-118"/>
 <text text-anchor="middle" x="1710" y="-96.3" font-family="Times,serif" font-size="14.00">Assets&lt;AnimationClip&gt;asset_event_system</text>
 </g>
