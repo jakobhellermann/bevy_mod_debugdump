@@ -67,7 +67,7 @@ impl Style {
             color_set: "white".into(),
             color_set_border: "white".into(),
             color_edge: "black".into(),
-            multiple_set_edge_color: "red".into(),
+            multiple_set_edge_color: "blue".into(),
             ambiguity_color: "blue".into(),
             ambiguity_bgcolor: "#d3d3d3".into(),
         }
@@ -86,7 +86,7 @@ impl Style {
             color_edge: "white".into(),
             ambiguity_color: "blue".into(),
             ambiguity_bgcolor: "#d3d3d3".into(),
-            multiple_set_edge_color: "red".into(),
+            multiple_set_edge_color: "blue".into(),
         }
     }
 
@@ -103,7 +103,7 @@ impl Style {
             color_edge: "white".into(),
             ambiguity_color: "#c93526".into(),
             ambiguity_bgcolor: "#C6E6FF".into(),
-            multiple_set_edge_color: "red".into(),
+            multiple_set_edge_color: "blue".into(),
         }
     }
 }
