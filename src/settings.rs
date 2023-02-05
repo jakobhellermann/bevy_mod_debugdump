@@ -42,19 +42,57 @@ pub struct Style {
     pub schedule_rankdir: RankDir,
     pub edge_style: EdgeStyle,
 
+    pub fontname: String,
+
+    pub color_background: String,
+    pub color_system: String,
+    pub color_system_border: String,
+    pub color_set: String,
+    pub color_set_border: String,
+    pub color_edge: String,
     pub multiple_set_edge_color: String,
+
     pub ambiguity_color: String,
     pub ambiguity_bgcolor: String,
 }
-impl Default for Style {
-    fn default() -> Self {
+impl Style {
+    pub fn light() -> Style {
         Style {
             schedule_rankdir: RankDir::default(),
             edge_style: EdgeStyle::default(),
+            fontname: "Helvetica".into(),
+            color_background: "white".into(),
+            color_system: "white".into(),
+            color_system_border: "black".into(),
+            color_set: "white".into(),
+            color_set_border: "white".into(),
+            color_edge: "black".into(),
             multiple_set_edge_color: "red".into(),
             ambiguity_color: "blue".into(),
             ambiguity_bgcolor: "#d3d3d3".into(),
         }
+    }
+
+    pub fn dark_discord() -> Style {
+        Style {
+            schedule_rankdir: RankDir::default(),
+            edge_style: EdgeStyle::default(),
+            fontname: "Helvetica".into(),
+            color_background: "#35393f".into(),
+            color_system: "#eff1f3".into(),
+            color_system_border: "#eff1f3".into(),
+            color_set: "white".into(),
+            color_set_border: "#99aab5".into(),
+            color_edge: "white".into(),
+            ambiguity_color: "blue".into(),
+            ambiguity_bgcolor: "#d3d3d3".into(),
+            multiple_set_edge_color: "red".into(),
+        }
+    }
+}
+impl Default for Style {
+    fn default() -> Self {
+        Style::dark_discord()
     }
 }
 

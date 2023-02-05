@@ -25,12 +25,20 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
         "schedule",
         "digraph",
         &[
-            ("splines", settings.style.edge_style.as_dot()),
             ("compound", "true"), // enable ltail/lhead
+            ("splines", settings.style.edge_style.as_dot()),
             ("rankdir", settings.style.schedule_rankdir.as_dot()),
+            ("bgcolor", &settings.style.color_background),
+            ("fontname", &settings.style.fontname),
         ],
     )
-    .node_attributes(&[("shape", "box")]);
+    .node_attributes(&[
+        ("shape", "box"),
+        ("style", "filled"),
+        ("fillcolor", &settings.style.color_system),
+        ("color", &settings.style.color_system_border),
+    ])
+    .edge_attributes(&[("color", &settings.style.color_edge)]);
 
     // utilities
     let hierarchy_parents = |node| {
@@ -104,8 +112,14 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
         let name = format!("{set:?}");
 
         let system_set_cluster_name = node_index_name(set_id); // in sync with system_cluster_name
-        let mut system_set_graph =
-            DotGraph::subgraph(&system_set_cluster_name, &[("label", &name)]);
+        let mut system_set_graph = DotGraph::subgraph(
+            &system_set_cluster_name,
+            &[
+                ("label", &name),
+                ("color", &settings.style.color_set),
+                ("bgcolor", &settings.style.color_set_border),
+            ],
+        );
 
         system_set_graph.add_invisible_node(&marker_name(set_id));
 
