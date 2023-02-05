@@ -8,7 +8,7 @@
  viewBox="0.00 0.00 1510.00 219.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 215)">
 <title>schedule</title>
-<polygon fill="#35393f" stroke="none" points="-4,4 -4,-215 1506,-215 1506,4 -4,4"/>
+<polygon fill="#0d1117" stroke="none" points="-4,4 -4,-215 1506,-215 1506,4 -4,4"/>
 <g id="clust1" class="cluster">
 <title>clusternode_Set(1)</title>
 <polygon fill="#99aab5" stroke="white" points="157,-85 157,-124 239,-124 239,-85 157,-85"/>

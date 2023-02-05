@@ -89,10 +89,27 @@ impl Style {
             multiple_set_edge_color: "red".into(),
         }
     }
+
+    pub fn dark_github() -> Style {
+        Style {
+            schedule_rankdir: RankDir::default(),
+            edge_style: EdgeStyle::default(),
+            fontname: "Helvetica".into(),
+            color_background: "#0d1117".into(),
+            color_system: "#eff1f3".into(),
+            color_system_border: "#eff1f3".into(),
+            color_set: "white".into(),
+            color_set_border: "#99aab5".into(),
+            color_edge: "white".into(),
+            ambiguity_color: "#c93526".into(),
+            ambiguity_bgcolor: "#C6E6FF".into(),
+            multiple_set_edge_color: "red".into(),
+        }
+    }
 }
 impl Default for Style {
     fn default() -> Self {
-        Style::dark_discord()
+        Style::dark_github()
     }
 }
 
