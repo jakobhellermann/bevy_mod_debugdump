@@ -1,5 +1,9 @@
 mod dot;
 
+pub mod settings;
+
+pub use settings::Settings;
+
 use std::{
     collections::{HashMap, HashSet},
     fmt::Write,
@@ -13,82 +17,6 @@ use bevy_ecs::{
 use dot::DotGraph;
 use petgraph::{prelude::DiGraphMap, Direction};
 
-pub enum RankDir {
-    TopDown,
-    LeftRight,
-}
-impl RankDir {
-    fn as_dot(&self) -> &'static str {
-        match self {
-            RankDir::TopDown => "TD",
-            RankDir::LeftRight => "LR",
-        }
-    }
-}
-
-#[derive(Clone, Copy)]
-pub enum EdgeStyle {
-    None,
-    Line,
-    Polyline,
-    Curved,
-    Ortho,
-    Spline,
-}
-impl EdgeStyle {
-    pub fn as_dot(&self) -> &'static str {
-        match self {
-            EdgeStyle::None => "none",
-            EdgeStyle::Line => "line",
-            EdgeStyle::Polyline => "polyline",
-            EdgeStyle::Curved => "curved",
-            EdgeStyle::Ortho => "ortho",
-            EdgeStyle::Spline => "spline",
-        }
-    }
-}
-
-const MULTIPLE_SET_EDGE_COLOR: &str = "red";
-
-pub struct Settings {
-    pub schedule_rankdir: RankDir,
-    pub edge_style: EdgeStyle,
-
-    pub show_single_system_in_set: bool,
-    pub include_system: Box<dyn Fn(&dyn System<In = (), Out = ()>) -> bool>,
-
-    pub prettify_system_names: bool,
-
-    pub show_ambiguities: bool,
-    pub show_ambiguities_on_world: bool,
-    pub ambiguity_color: String,
-    pub ambiguity_bgcolor: String,
-}
-
-impl Default for Settings {
-    fn default() -> Self {
-        Self {
-            schedule_rankdir: RankDir::LeftRight,
-            edge_style: EdgeStyle::Spline,
-
-            show_single_system_in_set: true,
-            include_system: Box::new(|_| true),
-
-            prettify_system_names: true,
-
-            show_ambiguities: true,
-            show_ambiguities_on_world: false,
-            ambiguity_color: "blue".into(),
-            ambiguity_bgcolor: "#d3d3d3".into(),
-        }
-    }
-}
-impl Settings {
-    fn include_system(&self, system: &dyn System<In = (), Out = ()>) -> bool {
-        (self.include_system)(system)
-    }
-}
-
 pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) -> String {
     let graph = schedule.graph();
     let hierarchy = &graph.hierarchy().graph;
@@ -97,9 +25,9 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
         "schedule",
         "digraph",
         &[
-            ("splines", settings.edge_style.as_dot()),
+            ("splines", settings.style.edge_style.as_dot()),
             ("compound", "true"), // enable ltail/lhead
-            ("rankdir", settings.schedule_rankdir.as_dot()),
+            ("rankdir", settings.style.schedule_rankdir.as_dot()),
         ],
     )
     .node_attributes(&[("shape", "box")]);
@@ -202,7 +130,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
             .get(&set_id)
             .map(|systems| systems.as_slice())
             .unwrap_or(&[]);
-        let show_systems = settings.show_single_system_in_set || systems.len() > 1;
+        let show_systems = settings.include_single_system_in_set || systems.len() > 1;
         for &(system_id, system) in systems.iter() {
             let name = system_name(system, settings);
             if show_systems {
@@ -251,7 +179,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
                 &node_id(set_id, graph),
                 &[
                     ("dir", "none"),
-                    ("color", MULTIPLE_SET_EDGE_COLOR),
+                    ("color", &settings.style.multiple_set_edge_color),
                     ("ltail", &lref(parent, graph)),
                     ("lhead", &lref(set_id, graph)),
                 ],
@@ -280,7 +208,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
                 &node_id(system_id, graph),
                 &[
                     ("dir", "none"),
-                    ("color", MULTIPLE_SET_EDGE_COLOR),
+                    ("color", &settings.style.multiple_set_edge_color),
                     ("ltail", &set_cluster_name(parent)),
                 ],
             );
@@ -302,7 +230,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
         );
     }
 
-    if settings.show_ambiguities {
+    if settings.ambiguity_enable {
         let mut conflicting_systems = graph.conflicting_systems.to_vec();
         conflicting_systems.sort();
 
@@ -313,7 +241,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
                 continue;
             }
 
-            if conflicts.is_empty() && !settings.show_ambiguities_on_world {
+            if conflicts.is_empty() && !settings.ambiguity_enable_on_world {
                 continue;
             }
 
@@ -326,7 +254,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
 
                     format!(
                         r#"<tr><td bgcolor="{}">{}</td></tr>"#,
-                        settings.ambiguity_bgcolor,
+                        settings.style.ambiguity_bgcolor,
                         dot::html_escape(&pretty_name)
                     )
                 });
@@ -342,8 +270,8 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
                 &[
                     ("dir", "none"),
                     ("constraint", "false"),
-                    ("color", &settings.ambiguity_color),
-                    ("fontcolor", &settings.ambiguity_color),
+                    ("color", &settings.style.ambiguity_color),
+                    ("fontcolor", &settings.style.ambiguity_color),
                     ("label", &label),
                     ("labeltooltip", &format!("{name_a} -- {name_b}")),
                 ],
@@ -392,13 +320,13 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
         include_ancestors(id, hierarchy, &mut included_systems_sets);
     }
 
-    if settings.show_ambiguities {
+    if settings.ambiguity_enable {
         for &(a, b, ref conflicts) in graph.conflicting_systems() {
             if !systems_of_interest.contains(&a) || !systems_of_interest.contains(&b) {
                 continue;
             }
 
-            if !settings.show_ambiguities_on_world && conflicts.is_empty() {
+            if !settings.ambiguity_enable_on_world && conflicts.is_empty() {
                 continue;
             }
 

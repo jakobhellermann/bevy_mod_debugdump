@@ -1,7 +1,7 @@
 use std::path::PathBuf;
 
 use bevy::prelude::*;
-use bevy_mod_debugdump_stageless::EdgeStyle;
+use bevy_mod_debugdump_stageless::{settings::EdgeStyle, Settings};
 
 fn main() -> Result<(), std::io::Error> {
     let compare_path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("compare");
@@ -30,10 +30,8 @@ fn main() -> Result<(), std::io::Error> {
                 EdgeStyle::Ortho,
                 EdgeStyle::Spline,
             ] {
-                let settings = bevy_mod_debugdump_stageless::Settings {
-                    edge_style,
-                    ..Default::default()
-                };
+                let mut settings = Settings::default();
+                settings.style.edge_style = edge_style;
                 let dot =
                     bevy_mod_debugdump_stageless::schedule_to_dot(schedule, &world, &settings);
 
