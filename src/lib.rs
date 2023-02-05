@@ -116,8 +116,8 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
             &system_set_cluster_name,
             &[
                 ("label", &name),
-                ("color", &settings.style.color_set),
-                ("bgcolor", &settings.style.color_set_border),
+                ("bgcolor", &settings.style.color_set),
+                // ("color", &settings.style.color_set_border),
             ],
         );
 
