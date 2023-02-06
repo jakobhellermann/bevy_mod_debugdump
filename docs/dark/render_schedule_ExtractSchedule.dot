@@ -1,0 +1,71 @@
+digraph "schedule" {
+	"compound"="true";
+	"splines"="spline";
+	"rankdir"="LR";
+	"bgcolor"="#0d1117";
+	"fontname"="Helvetica";
+	node ["shape"="box", "style"="filled", "fillcolor"="#eff1f3", "color"="#eff1f3"];
+	edge ["color"="white"];
+	subgraph "clusternode_Set(20)" {
+		"label"="ExtractSprites";
+		"bgcolor"="#6f90ad";
+		"set_marker_node_Set(20)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(19)" ["label"="extract_sprites"]
+	}
+	
+	subgraph "clusternode_Set(27)" {
+		"label"="ExtractNode";
+		"bgcolor"="#6f90ad";
+		"set_marker_node_Set(27)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(25)" ["label"="extract_uinodes"]
+	}
+	
+	subgraph "clusternode_Set(37)" {
+		"label"="ExtractClusters";
+		"bgcolor"="#6f90ad";
+		"set_marker_node_Set(37)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(34)" ["label"="extract_clusters"]
+	}
+	
+	subgraph "clusternode_Set(39)" {
+		"label"="ExtractLights";
+		"bgcolor"="#6f90ad";
+		"set_marker_node_Set(39)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(35)" ["label"="extract_lights"]
+	}
+	
+	"node_System(0)" ["label"="extract_shaders"]
+	"node_System(1)" ["label"="extract_windows"]
+	"node_System(2)" ["label"="extract_cameras"]
+	"node_System(3)" ["label"="extract_resource<Msaa>"]
+	"node_System(4)" ["label"="extract_render_asset<Mesh>"]
+	"node_System(5)" ["label"="extract_frame_count"]
+	"node_System(6)" ["label"="extract_time"]
+	"node_System(7)" ["label"="extract_render_asset<Image>"]
+	"node_System(8)" ["label"="extract_resource<ClearColor>"]
+	"node_System(9)" ["label"="extract_components<Camera2d>"]
+	"node_System(10)" ["label"="extract_core_2d_camera_phases"]
+	"node_System(11)" ["label"="extract_components<Camera3d>"]
+	"node_System(12)" ["label"="extract_core_3d_camera_phases"]
+	"node_System(13)" ["label"="extract_components<Tonemapping>"]
+	"node_System(14)" ["label"="extract_components<BloomSettings>"]
+	"node_System(15)" ["label"="extract_components<Fxaa>"]
+	"node_System(16)" ["label"="extract_mesh2d"]
+	"node_System(17)" ["label"="extract_visible_components<Handle<ColorMaterial>>"]
+	"node_System(18)" ["label"="extract_materials_2d<ColorMaterial>"]
+	"node_System(20)" ["label"="extract_sprite_events"]
+	"node_System(21)" ["label"="extract_text2d_sprite"]
+	"node_System(22)" ["label"="extract_components<UiCameraConfig>"]
+	"node_System(23)" ["label"="extract_default_ui_camera_view<Camera2d>"]
+	"node_System(24)" ["label"="extract_default_ui_camera_view<Camera3d>"]
+	"node_System(26)" ["label"="extract_text_uinodes"]
+	"node_System(27)" ["label"="extract_meshes"]
+	"node_System(28)" ["label"="extract_skinned_meshes"]
+	"node_System(29)" ["label"="extract_visible_components<Handle<StandardMaterial>>"]
+	"node_System(30)" ["label"="extract_materials<StandardMaterial>"]
+	"node_System(31)" ["label"="extract_camera_prepass_phase"]
+	"node_System(32)" ["label"="extract_resource<AmbientLight>"]
+	"node_System(33)" ["label"="extract_components<FogSettings>"]
+	"set_marker_node_Set(20)" -> "node_System(21)" ["lhead"="", "ltail"="clusternode_Set(20)"]
+	"set_marker_node_Set(27)" -> "node_System(26)" ["lhead"="", "ltail"="clusternode_Set(27)"]
+}

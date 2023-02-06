@@ -1,0 +1,10 @@
+digraph "schedule" {
+	"compound"="true";
+	"splines"="spline";
+	"rankdir"="LR";
+	"bgcolor"="white";
+	"fontname"="Helvetica";
+	node ["shape"="box", "style"="filled", "fillcolor"="white", "color"="black"];
+	edge ["color"="black"];
+	"node_System(0)" ["label"="run_main_schedule"]
+}

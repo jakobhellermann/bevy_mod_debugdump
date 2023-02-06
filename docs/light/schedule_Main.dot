@@ -1,0 +1,426 @@
+digraph "schedule" {
+	"compound"="true";
+	"splines"="spline";
+	"rankdir"="LR";
+	"bgcolor"="white";
+	"fontname"="Helvetica";
+	node ["shape"="box", "style"="filled", "fillcolor"="white", "color"="black"];
+	edge ["color"="black"];
+	subgraph "clusternode_Set(0)" {
+		"label"="Update";
+		"bgcolor"="white";
+		"set_marker_node_Set(0)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(55)" ["label"="scene_spawner_system"]
+	}
+	
+	subgraph "clusternode_Set(2)" {
+		"label"="FirstFlush";
+		"bgcolor"="white";
+		"set_marker_node_Set(2)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(0)" ["label"="apply_system_buffers"]
+	}
+	
+	subgraph "clusternode_Set(3)" {
+		"label"="PreUpdateFlush";
+		"bgcolor"="white";
+		"set_marker_node_Set(3)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(1)" ["label"="apply_system_buffers"]
+	}
+	
+	subgraph "clusternode_Set(4)" {
+		"label"="UpdateFlush";
+		"bgcolor"="white";
+		"set_marker_node_Set(4)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(2)" ["label"="apply_system_buffers"]
+	}
+	
+	subgraph "clusternode_Set(5)" {
+		"label"="PostUpdateFlush";
+		"bgcolor"="white";
+		"set_marker_node_Set(5)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(3)" ["label"="apply_system_buffers"]
+	}
+	
+	subgraph "clusternode_Set(6)" {
+		"label"="LastFlush";
+		"bgcolor"="white";
+		"set_marker_node_Set(6)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(4)" ["label"="apply_system_buffers"]
+	}
+	
+	subgraph "clusternode_Set(7)" {
+		"label"="First";
+		"bgcolor"="white";
+		"set_marker_node_Set(7)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		subgraph "clusternode_Set(16)" {
+			"label"="TimeSystem";
+			"bgcolor"="white";
+			"set_marker_node_Set(16)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(8)" ["label"="time_system"]
+		}
+		
+		"node_System(5)" ["label"="Events<AppExit>update_system"]
+		"node_System(13)" ["label"="Events<HierarchyEvent>update_system"]
+		"node_System(14)" ["label"="Events<KeyboardInput>update_system"]
+		"node_System(16)" ["label"="Events<MouseButtonInput>update_system"]
+		"node_System(17)" ["label"="Events<MouseMotion>update_system"]
+		"node_System(18)" ["label"="Events<MouseWheel>update_system"]
+		"node_System(20)" ["label"="Events<GamepadConnectionEvent>update_system"]
+		"node_System(21)" ["label"="Events<GamepadButtonChangedEvent>update_system"]
+		"node_System(22)" ["label"="Events<GamepadAxisChangedEvent>update_system"]
+		"node_System(23)" ["label"="Events<GamepadEvent>update_system"]
+		"node_System(28)" ["label"="Events<TouchInput>update_system"]
+		"node_System(30)" ["label"="Events<WindowResized>update_system"]
+		"node_System(31)" ["label"="Events<WindowCreated>update_system"]
+		"node_System(32)" ["label"="Events<WindowClosed>update_system"]
+		"node_System(33)" ["label"="Events<WindowCloseRequested>update_system"]
+		"node_System(34)" ["label"="Events<RequestRedraw>update_system"]
+		"node_System(35)" ["label"="Events<CursorMoved>update_system"]
+		"node_System(36)" ["label"="Events<CursorEntered>update_system"]
+		"node_System(37)" ["label"="Events<CursorLeft>update_system"]
+		"node_System(38)" ["label"="Events<ReceivedCharacter>update_system"]
+		"node_System(39)" ["label"="Events<Ime>update_system"]
+		"node_System(40)" ["label"="Events<WindowFocused>update_system"]
+		"node_System(41)" ["label"="Events<WindowScaleFactorChanged>update_system"]
+		"node_System(42)" ["label"="Events<WindowBackendScaleFactorChanged>update_system"]
+		"node_System(43)" ["label"="Events<FileDragAndDrop>update_system"]
+		"node_System(44)" ["label"="Events<WindowMoved>update_system"]
+		"node_System(51)" ["label"="Events<AssetEvent<DynamicScene>>update_system"]
+		"node_System(54)" ["label"="Events<AssetEvent<Scene>>update_system"]
+		"node_System(61)" ["label"="Events<AssetEvent<Shader>>update_system"]
+		"node_System(75)" ["label"="Events<AssetEvent<Mesh>>update_system"]
+		"node_System(78)" ["label"="Events<AssetEvent<SkinnedMeshInverseBindposes>>update_system"]
+		"node_System(81)" ["label"="Events<AssetEvent<Image>>update_system"]
+		"node_System(84)" ["label"="Events<AssetEvent<TextureAtlas>>update_system"]
+		"node_System(87)" ["label"="Events<AssetEvent<ColorMaterial>>update_system"]
+		"node_System(90)" ["label"="Events<AssetEvent<Font>>update_system"]
+		"node_System(93)" ["label"="Events<AssetEvent<FontAtlasSet>>update_system"]
+		"node_System(103)" ["label"="Events<AssetEvent<StandardMaterial>>update_system"]
+		"node_System(114)" ["label"="Events<AssetEvent<Gltf>>update_system"]
+		"node_System(117)" ["label"="Events<AssetEvent<GltfNode>>update_system"]
+		"node_System(120)" ["label"="Events<AssetEvent<GltfPrimitive>>update_system"]
+		"node_System(123)" ["label"="Events<AssetEvent<GltfMesh>>update_system"]
+		"node_System(126)" ["label"="Events<AssetEvent<AudioSource>>update_system"]
+		"node_System(129)" ["label"="Events<AssetEvent<AudioSink>>update_system"]
+		"node_System(134)" ["label"="Events<AssetEvent<AnimationClip>>update_system"]
+	}
+	
+	subgraph "clusternode_Set(8)" {
+		"label"="PreUpdate";
+		"bgcolor"="white";
+		"set_marker_node_Set(8)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		subgraph "clusternode_Set(24)" {
+			"label"="InputSystem";
+			"bgcolor"="white";
+			"set_marker_node_Set(24)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(15)" ["label"="keyboard_input_system"]
+			"node_System(19)" ["label"="mouse_button_input_system"]
+			"node_System(24)" ["label"="gamepad_event_system"]
+			"node_System(25)" ["label"="gamepad_connection_system"]
+			"node_System(26)" ["label"="gamepad_button_event_system"]
+			"node_System(27)" ["label"="gamepad_axis_event_system"]
+			"node_System(29)" ["label"="touch_screen_input_system"]
+		}
+		
+		subgraph "clusternode_Set(116)" {
+			"label"="Focus";
+			"bgcolor"="white";
+			"set_marker_node_Set(116)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(95)" ["label"="ui_focus_system"]
+		}
+		
+		"node_System(47)" ["label"="free_unused_assets_system"]
+		"node_System(56)" ["label"="scene_spawner"]
+		"node_System(131)" ["label"="gilrs_event_system"]
+	}
+	
+	subgraph "clusternode_Set(9)" {
+		"label"="StateTransitions";
+		"bgcolor"="white";
+		"set_marker_node_Set(9)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+	}
+	
+	subgraph "clusternode_Set(10)" {
+		"label"="FixedUpdate";
+		"bgcolor"="white";
+		"set_marker_node_Set(10)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(9)" ["label"="run_fixed_update_schedule"]
+	}
+	
+	subgraph "clusternode_Set(11)" {
+		"label"="PostUpdate";
+		"bgcolor"="white";
+		"set_marker_node_Set(11)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		subgraph "clusternode_Set(20)" {
+			"label"="TransformPropagate";
+			"bgcolor"="white";
+			"set_marker_node_Set(20)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(11)" ["label"="sync_simple_transforms"]
+			"node_System(12)" ["label"="propagate_transforms"]
+		}
+		
+		subgraph "clusternode_Set(70)" {
+			"label"="ModifiesWindows";
+			"bgcolor"="white";
+			"set_marker_node_Set(70)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(57)" ["label"="changed_window"]
+			"node_System(58)" ["label"="despawn_window"]
+		}
+		
+		subgraph "clusternode_Set(77)" {
+			"label"="CameraUpdateSystem";
+			"bgcolor"="white";
+			"set_marker_node_Set(77)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(63)" ["label"="camera_system<Projection>"]
+			"node_System(64)" ["label"="camera_system<OrthographicProjection>"]
+			"node_System(65)" ["label"="camera_system<PerspectiveProjection>"]
+		}
+		
+		subgraph "clusternode_Set(81)" {
+			"label"="CalculateBounds";
+			"bgcolor"="white";
+			"set_marker_node_Set(81)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(67)" ["label"="calculate_bounds"]
+		}
+		
+		subgraph "clusternode_Set(82)" {
+			"label"="CalculateBoundsFlush";
+			"bgcolor"="white";
+			"set_marker_node_Set(82)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(66)" ["label"="apply_system_buffers"]
+		}
+		
+		subgraph "clusternode_Set(83)" {
+			"label"="UpdateOrthographicFrusta";
+			"bgcolor"="white";
+			"set_marker_node_Set(83)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(68)" ["label"="update_frusta<OrthographicProjection>"]
+		}
+		
+		subgraph "clusternode_Set(84)" {
+			"label"="UpdatePerspectiveFrusta";
+			"bgcolor"="white";
+			"set_marker_node_Set(84)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(69)" ["label"="update_frusta<PerspectiveProjection>"]
+		}
+		
+		subgraph "clusternode_Set(85)" {
+			"label"="UpdateProjectionFrusta";
+			"bgcolor"="white";
+			"set_marker_node_Set(85)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		}
+		
+		subgraph "clusternode_Set(86)" {
+			"label"="CheckVisibility";
+			"bgcolor"="white";
+			"set_marker_node_Set(86)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(72)" ["label"="check_visibility"]
+		}
+		
+		subgraph "clusternode_Set(87)" {
+			"label"="VisibilityPropagate";
+			"bgcolor"="white";
+			"set_marker_node_Set(87)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(71)" ["label"="visibility_propagate_system"]
+		}
+		
+		subgraph "clusternode_Set(117)" {
+			"label"="Flex";
+			"bgcolor"="white";
+			"set_marker_node_Set(117)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(98)" ["label"="flex_node_system"]
+		}
+		
+		subgraph "clusternode_Set(118)" {
+			"label"="Stack";
+			"bgcolor"="white";
+			"set_marker_node_Set(118)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(99)" ["label"="ui_stack_system"]
+		}
+		
+		subgraph "clusternode_Set(128)" {
+			"label"="AddClusters";
+			"bgcolor"="white";
+			"set_marker_node_Set(128)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(104)" ["label"="add_clusters"]
+		}
+		
+		subgraph "clusternode_Set(129)" {
+			"label"="AddClustersFlush";
+			"bgcolor"="white";
+			"set_marker_node_Set(129)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(105)" ["label"="apply_system_buffers"]
+		}
+		
+		subgraph "clusternode_Set(130)" {
+			"label"="AssignLightsToClusters";
+			"bgcolor"="white";
+			"set_marker_node_Set(130)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(106)" ["label"="assign_lights_to_clusters"]
+		}
+		
+		subgraph "clusternode_Set(131)" {
+			"label"="CheckLightVisibility";
+			"bgcolor"="white";
+			"set_marker_node_Set(131)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(111)" ["label"="check_light_mesh_visibility"]
+		}
+		
+		subgraph "clusternode_Set(132)" {
+			"label"="UpdateDirectionalLightCascades";
+			"bgcolor"="white";
+			"set_marker_node_Set(132)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(107)" ["label"="update_directional_light_cascades"]
+		}
+		
+		subgraph "clusternode_Set(133)" {
+			"label"="UpdateLightFrusta";
+			"bgcolor"="white";
+			"set_marker_node_Set(133)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(108)" ["label"="update_directional_light_frusta"]
+			"node_System(109)" ["label"="update_point_light_frusta"]
+			"node_System(110)" ["label"="update_spot_light_frusta"]
+		}
+		
+		"node_System(45)" ["label"="exit_on_all_closed"]
+		"node_System(46)" ["label"="close_when_requested"]
+		"node_System(70)" ["label"="update_frusta<Projection>"]
+		"node_System(94)" ["label"="update_text2d_layout"]
+		"node_System(96)" ["label"="text_system"]
+		"node_System(97)" ["label"="update_image_calculated_size_system"]
+		"node_System(100)" ["label"="update_clipping_system"]
+		"node_System(130)" ["label"="play_queued_audio_system<AudioSource>"]
+		"node_System(135)" ["label"="animation_player"]
+	}
+	
+	subgraph "clusternode_Set(12)" {
+		"label"="Last";
+		"bgcolor"="white";
+		"set_marker_node_Set(12)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(6)" ["label"="tick_global_task_pools"]
+		"node_System(7)" ["label"="update_frame_count"]
+		"node_System(10)" ["label"="check_hierarchy_component_has_valid_parent<GlobalTransform>"]
+		"node_System(62)" ["label"="check_hierarchy_component_has_valid_parent<ComputedVisibility>"]
+	}
+	
+	subgraph "clusternode_Set(58)" {
+		"label"="LoadAssets";
+		"bgcolor"="white";
+		"set_marker_node_Set(58)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(48)" ["label"="filesystem_watcher_system"]
+		"node_System(50)" ["label"="update_asset_storage_system<DynamicScene>"]
+		"node_System(53)" ["label"="update_asset_storage_system<Scene>"]
+		"node_System(60)" ["label"="update_asset_storage_system<Shader>"]
+		"node_System(74)" ["label"="update_asset_storage_system<Mesh>"]
+		"node_System(77)" ["label"="update_asset_storage_system<SkinnedMeshInverseBindposes>"]
+		"node_System(80)" ["label"="update_asset_storage_system<Image>"]
+		"node_System(83)" ["label"="update_asset_storage_system<TextureAtlas>"]
+		"node_System(86)" ["label"="update_asset_storage_system<ColorMaterial>"]
+		"node_System(89)" ["label"="update_asset_storage_system<Font>"]
+		"node_System(92)" ["label"="update_asset_storage_system<FontAtlasSet>"]
+		"node_System(102)" ["label"="update_asset_storage_system<StandardMaterial>"]
+		"node_System(113)" ["label"="update_asset_storage_system<Gltf>"]
+		"node_System(116)" ["label"="update_asset_storage_system<GltfNode>"]
+		"node_System(119)" ["label"="update_asset_storage_system<GltfPrimitive>"]
+		"node_System(122)" ["label"="update_asset_storage_system<GltfMesh>"]
+		"node_System(125)" ["label"="update_asset_storage_system<AudioSource>"]
+		"node_System(128)" ["label"="update_asset_storage_system<AudioSink>"]
+		"node_System(133)" ["label"="update_asset_storage_system<AnimationClip>"]
+	}
+	
+	subgraph "clusternode_Set(59)" {
+		"label"="AssetEvents";
+		"bgcolor"="white";
+		"set_marker_node_Set(59)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(49)" ["label"="Assets<DynamicScene>asset_event_system"]
+		"node_System(52)" ["label"="Assets<Scene>asset_event_system"]
+		"node_System(59)" ["label"="Assets<Shader>asset_event_system"]
+		"node_System(73)" ["label"="Assets<Mesh>asset_event_system"]
+		"node_System(76)" ["label"="Assets<SkinnedMeshInverseBindposes>asset_event_system"]
+		"node_System(79)" ["label"="Assets<Image>asset_event_system"]
+		"node_System(82)" ["label"="Assets<TextureAtlas>asset_event_system"]
+		"node_System(85)" ["label"="Assets<ColorMaterial>asset_event_system"]
+		"node_System(88)" ["label"="Assets<Font>asset_event_system"]
+		"node_System(91)" ["label"="Assets<FontAtlasSet>asset_event_system"]
+		"node_System(101)" ["label"="Assets<StandardMaterial>asset_event_system"]
+		"node_System(112)" ["label"="Assets<Gltf>asset_event_system"]
+		"node_System(115)" ["label"="Assets<GltfNode>asset_event_system"]
+		"node_System(118)" ["label"="Assets<GltfPrimitive>asset_event_system"]
+		"node_System(121)" ["label"="Assets<GltfMesh>asset_event_system"]
+		"node_System(124)" ["label"="Assets<AudioSource>asset_event_system"]
+		"node_System(127)" ["label"="Assets<AudioSink>asset_event_system"]
+		"node_System(132)" ["label"="Assets<AnimationClip>asset_event_system"]
+	}
+	
+	"set_marker_node_Set(7)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(7)"]
+	"set_marker_node_Set(2)" -> "set_marker_node_Set(8)" ["lhead"="clusternode_Set(8)", "ltail"="clusternode_Set(2)"]
+	"set_marker_node_Set(8)" -> "set_marker_node_Set(3)" ["lhead"="clusternode_Set(3)", "ltail"="clusternode_Set(8)"]
+	"set_marker_node_Set(3)" -> "set_marker_node_Set(9)" ["lhead"="clusternode_Set(9)", "ltail"="clusternode_Set(3)"]
+	"set_marker_node_Set(9)" -> "set_marker_node_Set(10)" ["lhead"="clusternode_Set(10)", "ltail"="clusternode_Set(9)"]
+	"set_marker_node_Set(10)" -> "set_marker_node_Set(0)" ["lhead"="clusternode_Set(0)", "ltail"="clusternode_Set(10)"]
+	"set_marker_node_Set(0)" -> "set_marker_node_Set(4)" ["lhead"="clusternode_Set(4)", "ltail"="clusternode_Set(0)"]
+	"set_marker_node_Set(4)" -> "set_marker_node_Set(11)" ["lhead"="clusternode_Set(11)", "ltail"="clusternode_Set(4)"]
+	"set_marker_node_Set(11)" -> "set_marker_node_Set(5)" ["lhead"="clusternode_Set(5)", "ltail"="clusternode_Set(11)"]
+	"set_marker_node_Set(5)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(5)"]
+	"set_marker_node_Set(12)" -> "set_marker_node_Set(6)" ["lhead"="clusternode_Set(6)", "ltail"="clusternode_Set(12)"]
+	"node_System(24)" -> "node_System(25)" ["lhead"="", "ltail"=""]
+	"node_System(24)" -> "node_System(26)" ["lhead"="", "ltail"=""]
+	"node_System(25)" -> "node_System(26)" ["lhead"="", "ltail"=""]
+	"node_System(24)" -> "node_System(27)" ["lhead"="", "ltail"=""]
+	"node_System(25)" -> "node_System(27)" ["lhead"="", "ltail"=""]
+	"set_marker_node_Set(58)" -> "set_marker_node_Set(8)" ["lhead"="clusternode_Set(8)", "ltail"="clusternode_Set(58)"]
+	"set_marker_node_Set(7)" -> "set_marker_node_Set(58)" ["lhead"="clusternode_Set(58)", "ltail"="clusternode_Set(7)"]
+	"set_marker_node_Set(11)" -> "set_marker_node_Set(59)" ["lhead"="clusternode_Set(59)", "ltail"="clusternode_Set(11)"]
+	"set_marker_node_Set(59)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(59)"]
+	"node_System(57)" -> "node_System(58)" ["lhead"="", "ltail"=""]
+	"set_marker_node_Set(70)" -> "node_System(63)" ["lhead"="", "ltail"="clusternode_Set(70)"]
+	"set_marker_node_Set(70)" -> "node_System(64)" ["lhead"="", "ltail"="clusternode_Set(70)"]
+	"set_marker_node_Set(70)" -> "node_System(65)" ["lhead"="", "ltail"="clusternode_Set(70)"]
+	"set_marker_node_Set(81)" -> "set_marker_node_Set(82)" ["lhead"="clusternode_Set(82)", "ltail"="clusternode_Set(81)"]
+	"node_System(64)" -> "node_System(68)" ["lhead"="", "ltail"=""]
+	"set_marker_node_Set(20)" -> "node_System(68)" ["lhead"="", "ltail"="clusternode_Set(20)"]
+	"node_System(65)" -> "node_System(69)" ["lhead"="", "ltail"=""]
+	"set_marker_node_Set(20)" -> "node_System(69)" ["lhead"="", "ltail"="clusternode_Set(20)"]
+	"node_System(63)" -> "node_System(70)" ["lhead"="", "ltail"=""]
+	"set_marker_node_Set(20)" -> "node_System(70)" ["lhead"="", "ltail"="clusternode_Set(20)"]
+	"set_marker_node_Set(82)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(82)"]
+	"set_marker_node_Set(83)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(83)"]
+	"set_marker_node_Set(84)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(84)"]
+	"set_marker_node_Set(85)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(85)"]
+	"set_marker_node_Set(87)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(87)"]
+	"set_marker_node_Set(20)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(20)"]
+	"set_marker_node_Set(70)" -> "node_System(94)" ["lhead"="", "ltail"="clusternode_Set(70)"]
+	"set_marker_node_Set(24)" -> "node_System(95)" ["lhead"="", "ltail"="clusternode_Set(24)"]
+	"node_System(96)" -> "set_marker_node_Set(117)" ["lhead"="clusternode_Set(117)", "ltail"=""]
+	"set_marker_node_Set(70)" -> "node_System(96)" ["lhead"="", "ltail"="clusternode_Set(70)"]
+	"node_System(97)" -> "set_marker_node_Set(117)" ["lhead"="clusternode_Set(117)", "ltail"=""]
+	"node_System(98)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"=""]
+	"set_marker_node_Set(70)" -> "node_System(98)" ["lhead"="", "ltail"="clusternode_Set(70)"]
+	"set_marker_node_Set(20)" -> "node_System(100)" ["lhead"="", "ltail"="clusternode_Set(20)"]
+	"set_marker_node_Set(128)" -> "set_marker_node_Set(129)" ["lhead"="clusternode_Set(129)", "ltail"="clusternode_Set(128)"]
+	"set_marker_node_Set(129)" -> "set_marker_node_Set(130)" ["lhead"="clusternode_Set(130)", "ltail"="clusternode_Set(129)"]
+	"set_marker_node_Set(20)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(20)"]
+	"set_marker_node_Set(86)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(86)"]
+	"set_marker_node_Set(77)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(77)"]
+	"set_marker_node_Set(70)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(70)"]
+	"set_marker_node_Set(20)" -> "node_System(107)" ["lhead"="", "ltail"="clusternode_Set(20)"]
+	"set_marker_node_Set(77)" -> "node_System(107)" ["lhead"="", "ltail"="clusternode_Set(77)"]
+	"set_marker_node_Set(86)" -> "node_System(108)" ["lhead"="", "ltail"="clusternode_Set(86)"]
+	"set_marker_node_Set(20)" -> "node_System(108)" ["lhead"="", "ltail"="clusternode_Set(20)"]
+	"set_marker_node_Set(132)" -> "node_System(108)" ["lhead"="", "ltail"="clusternode_Set(132)"]
+	"set_marker_node_Set(20)" -> "node_System(109)" ["lhead"="", "ltail"="clusternode_Set(20)"]
+	"set_marker_node_Set(130)" -> "node_System(109)" ["lhead"="", "ltail"="clusternode_Set(130)"]
+	"set_marker_node_Set(20)" -> "node_System(110)" ["lhead"="", "ltail"="clusternode_Set(20)"]
+	"set_marker_node_Set(130)" -> "node_System(110)" ["lhead"="", "ltail"="clusternode_Set(130)"]
+	"set_marker_node_Set(82)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(82)"]
+	"set_marker_node_Set(20)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(20)"]
+	"set_marker_node_Set(133)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(133)"]
+	"set_marker_node_Set(86)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(86)"]
+	"node_System(131)" -> "set_marker_node_Set(24)" ["lhead"="clusternode_Set(24)", "ltail"=""]
+	"node_System(135)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"=""]
+	"node_System(70)" -> "node_System(72)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Frustum</td></tr></table>>, "labeltooltip"="update_frusta<Projection> -- check_visibility"]
+	"node_System(70)" -> "node_System(106)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Frustum</td></tr></table>>, "labeltooltip"="update_frusta<Projection> -- assign_lights_to_clusters"]
+	"node_System(70)" -> "node_System(110)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Frustum</td></tr></table>>, "labeltooltip"="update_frusta<Projection> -- update_spot_light_frusta"]
+	"node_System(70)" -> "node_System(111)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Frustum</td></tr></table>>, "labeltooltip"="update_frusta<Projection> -- check_light_mesh_visibility"]
+	"node_System(98)" -> "node_System(135)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Transform</td></tr></table>>, "labeltooltip"="flex_node_system -- animation_player"]
+}

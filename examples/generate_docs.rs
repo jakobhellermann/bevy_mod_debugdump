@@ -1,48 +1,82 @@
 use std::path::PathBuf;
 
 use bevy::{prelude::*, render::RenderApp, utils::HashSet};
-use bevy_mod_debugdump_stageless::Settings;
+use bevy_mod_debugdump_stageless::{settings::Style, Settings};
 
 fn main() -> Result<(), std::io::Error> {
     let docs_path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("docs");
     let docs_path_by_crate = docs_path.join("by-crate");
-    std::fs::create_dir_all(&docs_path)?;
-    std::fs::create_dir_all(&docs_path_by_crate)?;
+    std::fs::create_dir_all(docs_path.join("light"))?;
+    std::fs::create_dir_all(docs_path.join("dark"))?;
+    std::fs::create_dir_all(&docs_path_by_crate.join("light"))?;
+    std::fs::create_dir_all(&docs_path_by_crate.join("dark"))?;
 
     let mut app = App::new();
     app.add_plugins(DefaultPlugins);
+
+    let style_light = Style::light();
+    let style_dark = Style::dark_github();
 
     app.world
         .resource_scope::<Schedules, _>(|world, mut schedules| {
             initialize_schedules(&mut schedules, world)?;
 
-            let settings = Settings::default();
+            let settings_light = Settings {
+                style: style_light.clone(),
+                ..Settings::default()
+            };
+            let settings_dark = Settings {
+                style: style_dark.clone(),
+                ..Settings::default()
+            };
             for (label, schedule) in schedules.iter() {
-                let dot =
-                    bevy_mod_debugdump_stageless::schedule_to_dot(schedule, &world, &settings);
+                let dot_light = bevy_mod_debugdump_stageless::schedule_to_dot(
+                    schedule,
+                    &world,
+                    &settings_light,
+                );
+                let dot_dark =
+                    bevy_mod_debugdump_stageless::schedule_to_dot(schedule, &world, &settings_dark);
 
-                std::fs::write(docs_path.join(format!("schedule_{label:?}.dot")), dot)?;
+                let filename = format!("schedule_{label:?}.dot");
+                std::fs::write(docs_path.join("light").join(&filename), dot_light)?;
+                std::fs::write(docs_path.join("dark").join(&filename), dot_dark)?;
             }
 
             // filtered main, without mass event/asset systems
             let main = schedules.get(&CoreSchedule::Main).unwrap();
-            let main_filtered_settings = Settings {
-                include_system: Some(Box::new(|system| {
-                    let name = system.name();
-                    let ignore = ["asset_event_system", "update_asset_storage_system"];
-                    let events_update_system = name.starts_with("bevy_ecs::event::Events")
-                        && name.ends_with("::update_system");
-                    !events_update_system && !ignore.iter().any(|remove| name.contains(remove))
-                })),
-                ..settings
+
+            let filter = |system: &dyn System<In = (), Out = ()>| {
+                let name = system.name();
+                let ignore = ["asset_event_system", "update_asset_storage_system"];
+                let events_update_system = name.starts_with("bevy_ecs::event::Events")
+                    && name.ends_with("::update_system");
+                !events_update_system && !ignore.iter().any(|remove| name.contains(remove))
             };
-            let dot = bevy_mod_debugdump_stageless::schedule_to_dot(
+            let main_filtered_settings_light = Settings {
+                include_system: Some(Box::new(filter)),
+                style: style_light.clone(),
+                ..Settings::default()
+            };
+            let main_filtered_settings_dark = Settings {
+                include_system: Some(Box::new(filter)),
+                style: style_dark.clone(),
+                ..Settings::default()
+            };
+            let dot_light = bevy_mod_debugdump_stageless::schedule_to_dot(
                 main,
                 &world,
-                &main_filtered_settings,
+                &main_filtered_settings_light,
+            );
+            let dot_dark = bevy_mod_debugdump_stageless::schedule_to_dot(
+                main,
+                &world,
+                &main_filtered_settings_dark,
             );
 
-            std::fs::write(docs_path.join(format!("schedule_Main_Filtered.dot")), dot)?;
+            let filename = format!("schedule_Main_Filtered.dot");
+            std::fs::write(docs_path.join("light").join(&filename), dot_light)?;
+            std::fs::write(docs_path.join("dark").join(&filename), dot_dark)?;
 
             // by crate
             let bevy_crates: HashSet<_> = main
@@ -53,21 +87,40 @@ fn main() -> Result<(), std::io::Error> {
 
             for bevy_crate in bevy_crates {
                 let bevy_crate_clone = bevy_crate.clone();
-                let by_crate_settings = Settings {
+                let by_crate_settings_light = Settings {
                     include_system: Some(Box::new(move |system| {
                         let bevy_crate = bevy_crate_clone.clone();
                         let name = system.name();
                         name.starts_with(&bevy_crate)
                     })),
+                    style: style_light.clone(),
+                    ..Default::default()
+                };
+                let bevy_crate_clone = bevy_crate.clone();
+                let by_crate_settings_dark = Settings {
+                    include_system: Some(Box::new(move |system| {
+                        let bevy_crate = bevy_crate_clone.clone();
+                        let name = system.name();
+                        name.starts_with(&bevy_crate)
+                    })),
+                    style: style_dark.clone(),
                     ..Default::default()
                 };
 
-                let dot =
-                    bevy_mod_debugdump_stageless::schedule_to_dot(main, &world, &by_crate_settings);
-                std::fs::write(
-                    docs_path_by_crate.join(format!("schedule_Main_{}.dot", bevy_crate)),
-                    dot,
-                )?;
+                let dot_light = bevy_mod_debugdump_stageless::schedule_to_dot(
+                    main,
+                    &world,
+                    &by_crate_settings_light,
+                );
+                let dot_dark = bevy_mod_debugdump_stageless::schedule_to_dot(
+                    main,
+                    &world,
+                    &by_crate_settings_dark,
+                );
+
+                let filename = format!("schedule_Main_{}.dot", bevy_crate);
+                std::fs::write(docs_path_by_crate.join("light").join(&filename), dot_light)?;
+                std::fs::write(docs_path_by_crate.join("dark").join(&filename), dot_dark)?;
             }
 
             Ok::<_, std::io::Error>(())
@@ -77,10 +130,6 @@ fn main() -> Result<(), std::io::Error> {
     render_app
         .world
         .resource_scope::<Schedules, _>(|world, mut schedules| {
-            let settings = Settings {
-                ..Default::default()
-            };
-
             for (label, schedule) in schedules.iter_mut() {
                 // TODO: currently panics
                 // for access info
@@ -92,13 +141,26 @@ fn main() -> Result<(), std::io::Error> {
                     .build_schedule(world.components())
                     .unwrap();
 
-                let dot =
-                    bevy_mod_debugdump_stageless::schedule_to_dot(schedule, &world, &settings);
+                let settings_light = Settings {
+                    style: style_light.clone(),
+                    ..Default::default()
+                };
+                let settings_dark = Settings {
+                    style: style_dark.clone(),
+                    ..Default::default()
+                };
 
-                std::fs::write(
-                    docs_path.join(format!("render_schedule_{label:?}.dot")),
-                    dot,
-                )?;
+                let dot_light = bevy_mod_debugdump_stageless::schedule_to_dot(
+                    schedule,
+                    &world,
+                    &settings_light,
+                );
+                let dot_dark =
+                    bevy_mod_debugdump_stageless::schedule_to_dot(schedule, &world, &settings_dark);
+
+                let filename = format!("render_schedule_{label:?}.dot");
+                std::fs::write(docs_path.join("light").join(&filename), dot_light)?;
+                std::fs::write(docs_path.join("dark").join(&filename), dot_dark)?;
             }
             Ok::<(), std::io::Error>(())
         })?;

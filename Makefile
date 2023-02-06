@@ -3,7 +3,7 @@ REPO_BASE=https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/s
 .PHONY: docs
 docs:
 	cargo run --example generate_docs
-	ls docs/*.dot docs/*/*.dot | xargs -I '{}' dot -Tsvg '{}' -o '{}.svg'
+	ls docs/{light,dark}/*.dot docs/by-crate/{light,dark}/*.dot | xargs -I '{}' dot -Tsvg '{}' -o '{}.svg'
 
 	./docs/generate_readme.sh
 

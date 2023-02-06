@@ -38,6 +38,7 @@ impl EdgeStyle {
     }
 }
 
+#[derive(Clone)]
 pub struct Style {
     pub schedule_rankdir: RankDir,
     pub edge_style: EdgeStyle,
@@ -102,14 +103,14 @@ impl Style {
             color_set_border: "white".into(),
             color_edge: "white".into(),
             ambiguity_color: "#c93526".into(),
-            ambiguity_bgcolor: "#C6E6FF".into(),
+            ambiguity_bgcolor: "#c6e6ff".into(),
             multiple_set_edge_color: "blue".into(),
         }
     }
 }
 impl Default for Style {
     fn default() -> Self {
-        Style::dark_github()
+        Style::light()
     }
 }
 

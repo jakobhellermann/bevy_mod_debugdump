@@ -1,0 +1,72 @@
+digraph "schedule" {
+	"compound"="true";
+	"splines"="spline";
+	"rankdir"="LR";
+	"bgcolor"="#0d1117";
+	"fontname"="Helvetica";
+	node ["shape"="box", "style"="filled", "fillcolor"="#eff1f3", "color"="#eff1f3"];
+	edge ["color"="white"];
+	subgraph "clusternode_Set(1)" {
+		"label"="PreStartupFlush";
+		"bgcolor"="#6f90ad";
+		"set_marker_node_Set(1)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(0)" ["label"="apply_system_buffers"]
+	}
+	
+	subgraph "clusternode_Set(2)" {
+		"label"="StartupFlush";
+		"bgcolor"="#6f90ad";
+		"set_marker_node_Set(2)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(1)" ["label"="apply_system_buffers"]
+	}
+	
+	subgraph "clusternode_Set(3)" {
+		"label"="PostStartupFlush";
+		"bgcolor"="#6f90ad";
+		"set_marker_node_Set(3)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(2)" ["label"="apply_system_buffers"]
+	}
+	
+	subgraph "clusternode_Set(4)" {
+		"label"="PreStartup";
+		"bgcolor"="#6f90ad";
+		"set_marker_node_Set(4)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(9)" ["label"="gilrs_event_startup_system"]
+	}
+	
+	subgraph "clusternode_Set(5)" {
+		"label"="Startup";
+		"bgcolor"="#6f90ad";
+		"set_marker_node_Set(5)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(5)" ["label"="log_system_info"]
+	}
+	
+	subgraph "clusternode_Set(6)" {
+		"label"="PostStartup";
+		"bgcolor"="#6f90ad";
+		"set_marker_node_Set(6)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		subgraph "clusternode_Set(7)" {
+			"label"="TransformPropagate";
+			"bgcolor"="#6f90ad";
+			"set_marker_node_Set(7)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(3)" ["label"="sync_simple_transforms"]
+			"node_System(4)" ["label"="propagate_transforms"]
+		}
+		
+		subgraph "clusternode_Set(11)" {
+			"label"="CameraUpdateSystem";
+			"bgcolor"="#6f90ad";
+			"set_marker_node_Set(11)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(6)" ["label"="camera_system<Projection>"]
+			"node_System(7)" ["label"="camera_system<OrthographicProjection>"]
+			"node_System(8)" ["label"="camera_system<PerspectiveProjection>"]
+		}
+		
+	}
+	
+	"set_marker_node_Set(4)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="clusternode_Set(4)"]
+	"set_marker_node_Set(1)" -> "set_marker_node_Set(5)" ["lhead"="clusternode_Set(5)", "ltail"="clusternode_Set(1)"]
+	"set_marker_node_Set(5)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(5)"]
+	"set_marker_node_Set(2)" -> "set_marker_node_Set(6)" ["lhead"="clusternode_Set(6)", "ltail"="clusternode_Set(2)"]
+	"set_marker_node_Set(6)" -> "set_marker_node_Set(3)" ["lhead"="clusternode_Set(3)", "ltail"="clusternode_Set(6)"]
+}
