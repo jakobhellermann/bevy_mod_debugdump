@@ -17,8 +17,9 @@ enum TestSet {
 fn main() -> Result<(), std::io::Error> {
     let mut app = App::new();
 
-    app.configure_set(TestSet::A.in_base_set(CoreSet::Update))
-        .add_systems((test_system_1, test_system_2).chain().in_set(TestSet::A));
+    // app.configure_set(TestSet::A.in_base_set(CoreSet::Update))
+    // .add_systems((test_system_1, test_system_2).chain().in_set(TestSet::A));
+    app.configure_sets((TestSet::A, TestSet::B).chain().in_set(TestSet::C));
     // app.add_plugins(DefaultPlugins.build().disable::<LogPlugin>());
 
     app.world

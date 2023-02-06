@@ -27,13 +27,13 @@ fn main() -> Result<(), std::io::Error> {
             // filtered main, without mass event/asset systems
             let main = schedules.get(&CoreSchedule::Main).unwrap();
             let main_filtered_settings = Settings {
-                include_system: Box::new(|system| {
+                include_system: Some(Box::new(|system| {
                     let name = system.name();
                     let ignore = ["asset_event_system", "update_asset_storage_system"];
                     let events_update_system = name.starts_with("bevy_ecs::event::Events")
                         && name.ends_with("::update_system");
                     !events_update_system && !ignore.iter().any(|remove| name.contains(remove))
-                }),
+                })),
                 ..settings
             };
             let dot = bevy_mod_debugdump_stageless::schedule_to_dot(
@@ -54,11 +54,11 @@ fn main() -> Result<(), std::io::Error> {
             for bevy_crate in bevy_crates {
                 let bevy_crate_clone = bevy_crate.clone();
                 let by_crate_settings = Settings {
-                    include_system: Box::new(move |system| {
+                    include_system: Some(Box::new(move |system| {
                         let bevy_crate = bevy_crate_clone.clone();
                         let name = system.name();
                         name.starts_with(&bevy_crate)
-                    }),
+                    })),
                     ..Default::default()
                 };
 

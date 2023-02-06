@@ -427,6 +427,14 @@ fn lowest_common_ancestor(
 }
 
 fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<NodeId> {
+    let Some(include_system) = &settings.include_system else {
+        return graph
+            .systems()
+            .map(|(id, ..)| id)
+            .chain(graph.system_sets().map(|(id, ..)| id))
+            .collect();
+    };
+
     let hierarchy = graph.hierarchy().graph();
 
     let root_sets = hierarchy.nodes().filter(|&node| {
@@ -440,7 +448,7 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
 
     let systems_of_interest: HashSet<NodeId> = graph
         .systems()
-        .filter(|&(_, system, _, _)| settings.include_system(system))
+        .filter(|&(_, system, _, _)| include_system(system))
         .map(|(id, ..)| id)
         .collect();
 

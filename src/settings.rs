@@ -116,7 +116,8 @@ impl Default for Style {
 pub struct Settings {
     pub style: Style,
 
-    pub include_system: Box<dyn Fn(&dyn System<In = (), Out = ()>) -> bool>,
+    /// When set to `Some`, will only include systems matching the predicate, and their ancestor sets
+    pub include_system: Option<Box<dyn Fn(&dyn System<In = (), Out = ()>) -> bool>>,
     pub include_single_system_in_set: bool,
 
     pub ambiguity_enable: bool,
@@ -130,7 +131,7 @@ impl Default for Settings {
         Self {
             style: Style::default(),
 
-            include_system: Box::new(|_| true),
+            include_system: None,
             include_single_system_in_set: true,
 
             ambiguity_enable: true,
@@ -138,11 +139,5 @@ impl Default for Settings {
 
             prettify_system_names: true,
         }
-    }
-}
-
-impl Settings {
-    pub(crate) fn include_system(&self, system: &dyn System<In = (), Out = ()>) -> bool {
-        (self.include_system)(system)
     }
 }
