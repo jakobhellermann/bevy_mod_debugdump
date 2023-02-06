@@ -68,7 +68,7 @@ impl Style {
             color_set_border: "white".into(),
             color_edge: "black".into(),
             multiple_set_edge_color: "blue".into(),
-            ambiguity_color: "blue".into(),
+            ambiguity_color: "#c93526".into(),
             ambiguity_bgcolor: "#d3d3d3".into(),
         }
     }
@@ -84,8 +84,8 @@ impl Style {
             color_set: "#99aab5".into(),
             color_set_border: "white".into(),
             color_edge: "white".into(),
-            ambiguity_color: "blue".into(),
-            ambiguity_bgcolor: "#d3d3d3".into(),
+            ambiguity_color: "#c93526".into(),
+            ambiguity_bgcolor: "#c5daeb".into(),
             multiple_set_edge_color: "blue".into(),
         }
     }
