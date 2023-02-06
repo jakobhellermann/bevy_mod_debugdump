@@ -1,68 +1,119 @@
-# bevy_animation
+## bevy_animation
 
-![bevy_animation](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_animation.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_animation.dot.svg">
+<img alt="bevy_animation" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_animation.dot.svg">
+</picture>
 
-# bevy_asset
+## bevy_asset
 
-![bevy_asset](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_asset.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_asset.dot.svg">
+<img alt="bevy_asset" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_asset.dot.svg">
+</picture>
 
-# bevy_audio
+## bevy_audio
 
-![bevy_audio](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_audio.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_audio.dot.svg">
+<img alt="bevy_audio" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_audio.dot.svg">
+</picture>
 
-# bevy_core
+## bevy_core
 
-![bevy_core](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_core.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_core.dot.svg">
+<img alt="bevy_core" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_core.dot.svg">
+</picture>
 
-# bevy_ecs
+## bevy_ecs
 
-![bevy_ecs](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_ecs.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_ecs.dot.svg">
+<img alt="bevy_ecs" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_ecs.dot.svg">
+</picture>
 
-# bevy_gilrs
+## bevy_gilrs
 
-![bevy_gilrs](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_gilrs.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_gilrs.dot.svg">
+<img alt="bevy_gilrs" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_gilrs.dot.svg">
+</picture>
 
-# bevy_hierarchy
+## bevy_hierarchy
 
-![bevy_hierarchy](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_hierarchy.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_hierarchy.dot.svg">
+<img alt="bevy_hierarchy" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_hierarchy.dot.svg">
+</picture>
 
-# bevy_input
+## bevy_input
 
-![bevy_input](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_input.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_input.dot.svg">
+<img alt="bevy_input" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_input.dot.svg">
+</picture>
 
-# bevy_pbr
+## bevy_pbr
 
-![bevy_pbr](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_pbr.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_pbr.dot.svg">
+<img alt="bevy_pbr" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_pbr.dot.svg">
+</picture>
 
-# bevy_render
+## bevy_render
 
-![bevy_render](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_render.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_render.dot.svg">
+<img alt="bevy_render" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_render.dot.svg">
+</picture>
 
-# bevy_scene
+## bevy_scene
 
-![bevy_scene](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_scene.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_scene.dot.svg">
+<img alt="bevy_scene" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_scene.dot.svg">
+</picture>
 
-# bevy_text
+## bevy_text
 
-![bevy_text](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_text.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_text.dot.svg">
+<img alt="bevy_text" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_text.dot.svg">
+</picture>
 
-# bevy_time
+## bevy_time
 
-![bevy_time](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_time.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_time.dot.svg">
+<img alt="bevy_time" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_time.dot.svg">
+</picture>
 
-# bevy_transform
+## bevy_transform
 
-![bevy_transform](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_transform.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_transform.dot.svg">
+<img alt="bevy_transform" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_transform.dot.svg">
+</picture>
 
-# bevy_ui
+## bevy_ui
 
-![bevy_ui](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_ui.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_ui.dot.svg">
+<img alt="bevy_ui" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_ui.dot.svg">
+</picture>
 
-# bevy_window
+## bevy_window
 
-![bevy_window](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_window.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_window.dot.svg">
+<img alt="bevy_window" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_window.dot.svg">
+</picture>
 
-# bevy_winit
+## bevy_winit
 
-![bevy_winit](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed/docs/by-crate/light/schedule_Main_bevy_winit.dot.svg)
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/dark/schedule_Main_bevy_winit.dot.svg">
+<img alt="bevy_winit" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/by-crate/light/schedule_Main_bevy_winit.dot.svg">
+</picture>
 

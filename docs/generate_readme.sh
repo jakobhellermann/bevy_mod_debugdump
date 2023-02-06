@@ -2,15 +2,37 @@
 
 set -eu
 
-REPO_BASE="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless-themed"
+REPO_BASE="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless"
 cd $(dirname "${BASH_SOURCE[0]}")
 
+function picture() {
+    printf '<picture>\n'
+    printf "<source media=\"(prefers-color-scheme: dark)\" srcset=\"$REPO_BASE/$3\">\n"
+    printf "<img alt=\"$1\" src=\"$REPO_BASE/$2\">\n"
+    printf '</picture>\n\n'
+}
+
 printf "# Main App\n\n" > README.md
-ls light/schedule*.svg | sd 'light/schedule_(.*).dot.svg' "## \$1\n\n![\$1]($REPO_BASE/docs/light/schedule_\$1.dot.svg)\n" \
-    >> README.md
+for path in light/schedule*.svg; do
+    file=$(basename "$path")
+    name=$(echo "$file" | sed 's|schedule_\(.*\).dot.svg|\1|' | tr '_' ' ')
+    printf "## $name\n\n" >> README.md
+    picture "$name" docs/{light,dark}/"$file" >> README.md
+done
 
 printf "# Render App\n\n" >> README.md
-ls light/render_*.svg | sd 'light/render_schedule_(.*).dot.svg' "## \$1\n\n![\$1]($REPO_BASE/docs/light/render_schedule_\$1.dot.svg)\n" \
-    >> README.md
+for path in light/render_schedule*.svg; do
+    file=$(basename "$path")
+    name=$(echo "$file" | sed 's|render_schedule_\(.*\).dot.svg|\1|' | tr '_' ' ')
+    printf "## $name\n\n" >> README.md
+    picture "$name" docs/{light,dark}/"$file" >> README.md
+done
 
-ls by-crate/light/*.svg | sd 'by-crate/light/schedule_Main_(.*).dot.svg' "# \$1\n\n![\$1]($REPO_BASE/docs/by-crate/light/schedule_Main_\$1.dot.svg)\n" > by-crate/README.md
+
+truncate -s 0 by-crate/README.md
+for path in by-crate/light/schedule*.svg; do
+    file=$(basename "$path")
+    name=$(echo "$file" | sed 's|schedule_Main_\(.*\).dot.svg|\1|')
+    printf "## $name\n\n" >> by-crate/README.md
+    picture "$name" docs/by-crate/{light,dark}/"$file" >> by-crate/README.md
+done
