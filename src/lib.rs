@@ -19,7 +19,7 @@ use petgraph::{prelude::DiGraphMap, Direction};
 
 pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) -> String {
     let graph = schedule.graph();
-    let hierarchy = &graph.hierarchy().graph;
+    let hierarchy = graph.hierarchy().graph();
 
     let mut dot = DotGraph::new(
         "schedule",
@@ -50,7 +50,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
     let mut systems_in_single_set = HashMap::<NodeId, Vec<_>>::new();
     let mut systems_in_multiple_sets = bevy_utils::HashMap::<Option<NodeId>, Vec<_>>::new();
 
-    for (system_id, system, _conditions) in graph
+    for (system_id, system, _base_set, _conditions) in graph
         .systems()
         .filter(|(id, ..)| included_systems_sets.contains(id))
     {
@@ -79,7 +79,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
     let mut sets_in_single_set = HashMap::<NodeId, Vec<_>>::new();
     let mut sets_in_multiple_sets = bevy_utils::HashMap::<Option<NodeId>, Vec<_>>::new();
 
-    for &(set_id, set, _conditions) in system_sets
+    for &(set_id, set, _base_set_membership, _conditions) in system_sets
         .iter()
         .filter(|&&(id, ..)| graph.set_at(id).system_type().is_none())
         .filter(|(id, ..)| included_systems_sets.contains(id))
@@ -344,7 +344,7 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
     }
 
     let dependency = graph.dependency();
-    for (from, to, ()) in dependency.graph.all_edges() {
+    for (from, to, ()) in dependency.graph().all_edges() {
         if !included_systems_sets.contains(&from) || !included_systems_sets.contains(&to) {
             continue;
         }
@@ -427,7 +427,7 @@ fn lowest_common_ancestor(
 }
 
 fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<NodeId> {
-    let hierarchy = &graph.hierarchy().graph;
+    let hierarchy = graph.hierarchy().graph();
 
     let root_sets = hierarchy.nodes().filter(|&node| {
         node.is_set()
@@ -440,7 +440,7 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
 
     let systems_of_interest: HashSet<NodeId> = graph
         .systems()
-        .filter(|&(.., system, _)| settings.include_system(system))
+        .filter(|&(_, system, _, _)| settings.include_system(system))
         .map(|(id, ..)| id)
         .collect();
 
@@ -479,7 +479,7 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
         }
     }
 
-    for (from, to, ()) in graph.dependency().graph.all_edges() {
+    for (from, to, ()) in graph.dependency().graph().all_edges() {
         if systems_of_interest.contains(&from) {
             included_systems_sets.insert(to);
             include_ancestors(to, hierarchy, &mut included_systems_sets);
@@ -535,7 +535,7 @@ fn node_id(node_id: NodeId, graph: &ScheduleGraph) -> String {
             if let Some(system_type) = set.system_type() {
                 let system_node = graph
                     .systems()
-                    .find_map(|(node_id, system, _)| {
+                    .find_map(|(node_id, system, _, _)| {
                         (system.type_id() == system_type).then_some(node_id)
                     })
                     .unwrap();
@@ -597,7 +597,7 @@ fn hierarchy_parents<'a>(
     node: NodeId,
     graph: &'a ScheduleGraph,
 ) -> impl Iterator<Item = NodeId> + 'a {
-    let hierarchy = &graph.hierarchy().graph;
+    let hierarchy = graph.hierarchy().graph();
     hierarchy
         .neighbors_directed(node, Direction::Incoming)
         .filter(|&parent| graph.set_at(parent).system_type().is_none())

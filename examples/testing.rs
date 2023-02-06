@@ -64,13 +64,13 @@ fn print_schedule(schedule: &Schedule, schedule_label: &dyn ScheduleLabel) {
 
     println!("- HIERARCHY");
     let hierarchy = graph.hierarchy();
-    for (from, to, ()) in hierarchy.graph.all_edges() {
+    for (from, to, ()) in hierarchy.graph().all_edges() {
         println!("  - {} -> {}", name_of_node(from), name_of_node(to));
     }
 
     println!("- DEPENDENCY");
     let hierarchy = graph.dependency();
-    for (from, to, ()) in hierarchy.graph.all_edges() {
+    for (from, to, ()) in hierarchy.graph().all_edges() {
         println!("  - {} -> {}", name_of_node(from), name_of_node(to));
     }
 
