@@ -14,18 +14,10 @@ fn main() -> Result<(), std::io::Error> {
 
     app.world
         .resource_scope::<Schedules, _>(|world, mut schedules| {
-            let settings = Settings {
-                ..Default::default()
-            };
-            for (label, schedule) in schedules.iter_mut() {
-                // for access info
-                schedule.graph_mut().initialize(world);
-                // for `conflicting_systems`
-                schedule
-                    .graph_mut()
-                    .build_schedule(world.components())
-                    .unwrap();
+            initialize_schedules(&mut schedules, world)?;
 
+            let settings = Settings::default();
+            for (label, schedule) in schedules.iter() {
                 let dot =
                     bevy_mod_debugdump_stageless::schedule_to_dot(schedule, &world, &settings);
 
@@ -50,7 +42,7 @@ fn main() -> Result<(), std::io::Error> {
                 &main_filtered_settings,
             );
 
-            std::fs::write(docs_path.join(format!("schedule_Main_filtered.dot")), dot)?;
+            std::fs::write(docs_path.join(format!("schedule_Main_Filtered.dot")), dot)?;
 
             // by crate
             let bevy_crates: HashSet<_> = main
@@ -104,7 +96,7 @@ fn main() -> Result<(), std::io::Error> {
                     bevy_mod_debugdump_stageless::schedule_to_dot(schedule, &world, &settings);
 
                 std::fs::write(
-                    docs_path.join(format!("schedule_render_{label:?}.dot")),
+                    docs_path.join(format!("render_schedule_{label:?}.dot")),
                     dot,
                 )?;
             }
@@ -112,4 +104,19 @@ fn main() -> Result<(), std::io::Error> {
         })?;
 
     Ok(())
+}
+
+fn initialize_schedules(
+    schedules: &mut Mut<Schedules>,
+    world: &mut World,
+) -> Result<(), std::io::Error> {
+    Ok(for (_, schedule) in schedules.iter_mut() {
+        // for access info
+        schedule.graph_mut().initialize(world);
+        // for `conflicting_systems`
+        schedule
+            .graph_mut()
+            .build_schedule(world.components())
+            .unwrap();
+    })
 }

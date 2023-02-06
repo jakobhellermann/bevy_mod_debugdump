@@ -1,32 +1,36 @@
-# FixedUpdate
+# Main App
+
+## FixedUpdate
 
 ![FixedUpdate](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/schedule_FixedUpdate.dot.svg)
 
-# Main
+## Main
 
 ![Main](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/schedule_Main.dot.svg)
 
-# Main_filtered
+## Main_Filtered
 
-![Main_filtered](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/schedule_Main_filtered.dot.svg)
+![Main_Filtered](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/schedule_Main_Filtered.dot.svg)
 
-# Outer
+## Outer
 
 ![Outer](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/schedule_Outer.dot.svg)
 
-# render_ExtractSchedule
-
-![render_ExtractSchedule](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/schedule_render_ExtractSchedule.dot.svg)
-
-# render_Main
-
-![render_Main](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/schedule_render_Main.dot.svg)
-
-# render_Outer
-
-![render_Outer](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/schedule_render_Outer.dot.svg)
-
-# Startup
+## Startup
 
 ![Startup](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/schedule_Startup.dot.svg)
+
+# Render App
+
+## ExtractSchedule
+
+![ExtractSchedule](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/render_schedule_ExtractSchedule.dot.svg)
+
+## Main
+
+![Main](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/render_schedule_Main.dot.svg)
+
+## Outer
+
+![Outer](https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/render_schedule_Outer.dot.svg)
 
