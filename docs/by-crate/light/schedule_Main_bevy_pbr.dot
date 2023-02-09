@@ -76,62 +76,56 @@ digraph "schedule" {
 			"set_marker_node_Set(20)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		}
 		
-		subgraph "clusternode_Set(70)" {
-			"label"="ModifiesWindows";
-			"bgcolor"="white";
-			"set_marker_node_Set(70)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		}
-		
-		subgraph "clusternode_Set(77)" {
+		subgraph "clusternode_Set(76)" {
 			"label"="CameraUpdateSystem";
 			"bgcolor"="white";
-			"set_marker_node_Set(77)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(76)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		}
 		
-		subgraph "clusternode_Set(82)" {
+		subgraph "clusternode_Set(81)" {
 			"label"="CalculateBoundsFlush";
 			"bgcolor"="white";
-			"set_marker_node_Set(82)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(81)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		}
 		
-		subgraph "clusternode_Set(86)" {
+		subgraph "clusternode_Set(85)" {
 			"label"="CheckVisibility";
 			"bgcolor"="white";
-			"set_marker_node_Set(86)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(85)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		}
 		
-		subgraph "clusternode_Set(128)" {
+		subgraph "clusternode_Set(127)" {
 			"label"="AddClusters";
 			"bgcolor"="white";
-			"set_marker_node_Set(128)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(127)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(104)" ["label"="add_clusters"]
 		}
 		
-		subgraph "clusternode_Set(130)" {
+		subgraph "clusternode_Set(129)" {
 			"label"="AssignLightsToClusters";
 			"bgcolor"="white";
-			"set_marker_node_Set(130)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(129)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(106)" ["label"="assign_lights_to_clusters"]
 		}
 		
-		subgraph "clusternode_Set(131)" {
+		subgraph "clusternode_Set(130)" {
 			"label"="CheckLightVisibility";
 			"bgcolor"="white";
-			"set_marker_node_Set(131)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(130)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(111)" ["label"="check_light_mesh_visibility"]
 		}
 		
-		subgraph "clusternode_Set(132)" {
+		subgraph "clusternode_Set(131)" {
 			"label"="UpdateDirectionalLightCascades";
 			"bgcolor"="white";
-			"set_marker_node_Set(132)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(131)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(107)" ["label"="update_directional_light_cascades"]
 		}
 		
-		subgraph "clusternode_Set(133)" {
+		subgraph "clusternode_Set(132)" {
 			"label"="UpdateLightFrusta";
 			"bgcolor"="white";
-			"set_marker_node_Set(133)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(132)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(108)" ["label"="update_directional_light_frusta"]
 			"node_System(109)" ["label"="update_point_light_frusta"]
 			"node_System(110)" ["label"="update_spot_light_frusta"]
@@ -173,20 +167,19 @@ digraph "schedule" {
 	"set_marker_node_Set(11)" -> "set_marker_node_Set(59)" ["lhead"="clusternode_Set(59)", "ltail"="clusternode_Set(11)"]
 	"set_marker_node_Set(59)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(59)"]
 	"set_marker_node_Set(20)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(20)"]
-	"set_marker_node_Set(86)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(86)"]
-	"set_marker_node_Set(77)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(77)"]
-	"set_marker_node_Set(70)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(70)"]
+	"set_marker_node_Set(85)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(85)"]
+	"set_marker_node_Set(76)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(76)"]
 	"set_marker_node_Set(20)" -> "node_System(107)" ["lhead"="", "ltail"="clusternode_Set(20)"]
-	"set_marker_node_Set(77)" -> "node_System(107)" ["lhead"="", "ltail"="clusternode_Set(77)"]
-	"set_marker_node_Set(86)" -> "node_System(108)" ["lhead"="", "ltail"="clusternode_Set(86)"]
+	"set_marker_node_Set(76)" -> "node_System(107)" ["lhead"="", "ltail"="clusternode_Set(76)"]
+	"set_marker_node_Set(85)" -> "node_System(108)" ["lhead"="", "ltail"="clusternode_Set(85)"]
 	"set_marker_node_Set(20)" -> "node_System(108)" ["lhead"="", "ltail"="clusternode_Set(20)"]
-	"set_marker_node_Set(132)" -> "node_System(108)" ["lhead"="", "ltail"="clusternode_Set(132)"]
+	"set_marker_node_Set(131)" -> "node_System(108)" ["lhead"="", "ltail"="clusternode_Set(131)"]
 	"set_marker_node_Set(20)" -> "node_System(109)" ["lhead"="", "ltail"="clusternode_Set(20)"]
-	"set_marker_node_Set(130)" -> "node_System(109)" ["lhead"="", "ltail"="clusternode_Set(130)"]
+	"set_marker_node_Set(129)" -> "node_System(109)" ["lhead"="", "ltail"="clusternode_Set(129)"]
 	"set_marker_node_Set(20)" -> "node_System(110)" ["lhead"="", "ltail"="clusternode_Set(20)"]
-	"set_marker_node_Set(130)" -> "node_System(110)" ["lhead"="", "ltail"="clusternode_Set(130)"]
-	"set_marker_node_Set(82)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(82)"]
+	"set_marker_node_Set(129)" -> "node_System(110)" ["lhead"="", "ltail"="clusternode_Set(129)"]
+	"set_marker_node_Set(81)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(81)"]
 	"set_marker_node_Set(20)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(20)"]
-	"set_marker_node_Set(133)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(133)"]
-	"set_marker_node_Set(86)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(86)"]
+	"set_marker_node_Set(132)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(132)"]
+	"set_marker_node_Set(85)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(85)"]
 }

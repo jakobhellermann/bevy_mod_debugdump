@@ -58,10 +58,10 @@ digraph "schedule" {
 			"set_marker_node_Set(24)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		}
 		
-		subgraph "clusternode_Set(116)" {
+		subgraph "clusternode_Set(115)" {
 			"label"="Focus";
 			"bgcolor"="white";
-			"set_marker_node_Set(116)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(115)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(95)" ["label"="ui_focus_system"]
 		}
 		
@@ -89,23 +89,17 @@ digraph "schedule" {
 			"set_marker_node_Set(20)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		}
 		
-		subgraph "clusternode_Set(70)" {
-			"label"="ModifiesWindows";
-			"bgcolor"="white";
-			"set_marker_node_Set(70)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		}
-		
-		subgraph "clusternode_Set(117)" {
+		subgraph "clusternode_Set(116)" {
 			"label"="Flex";
 			"bgcolor"="white";
-			"set_marker_node_Set(117)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(116)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(98)" ["label"="flex_node_system"]
 		}
 		
-		subgraph "clusternode_Set(118)" {
+		subgraph "clusternode_Set(117)" {
 			"label"="Stack";
 			"bgcolor"="white";
-			"set_marker_node_Set(118)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(117)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(99)" ["label"="ui_stack_system"]
 		}
 		
@@ -148,10 +142,8 @@ digraph "schedule" {
 	"set_marker_node_Set(11)" -> "set_marker_node_Set(59)" ["lhead"="clusternode_Set(59)", "ltail"="clusternode_Set(11)"]
 	"set_marker_node_Set(59)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(59)"]
 	"set_marker_node_Set(24)" -> "node_System(95)" ["lhead"="", "ltail"="clusternode_Set(24)"]
-	"node_System(96)" -> "set_marker_node_Set(117)" ["lhead"="clusternode_Set(117)", "ltail"=""]
-	"set_marker_node_Set(70)" -> "node_System(96)" ["lhead"="", "ltail"="clusternode_Set(70)"]
-	"node_System(97)" -> "set_marker_node_Set(117)" ["lhead"="clusternode_Set(117)", "ltail"=""]
+	"node_System(96)" -> "set_marker_node_Set(116)" ["lhead"="clusternode_Set(116)", "ltail"=""]
+	"node_System(97)" -> "set_marker_node_Set(116)" ["lhead"="clusternode_Set(116)", "ltail"=""]
 	"node_System(98)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"=""]
-	"set_marker_node_Set(70)" -> "node_System(98)" ["lhead"="", "ltail"="clusternode_Set(70)"]
 	"set_marker_node_Set(20)" -> "node_System(100)" ["lhead"="", "ltail"="clusternode_Set(20)"]
 }

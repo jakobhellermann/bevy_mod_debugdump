@@ -70,20 +70,14 @@ digraph "schedule" {
 		"label"="PostUpdate";
 		"bgcolor"="white";
 		"set_marker_node_Set(11)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		subgraph "clusternode_Set(70)" {
-			"label"="ModifiesWindows";
-			"bgcolor"="white";
-			"set_marker_node_Set(70)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(57)" ["label"="changed_window"]
-			"node_System(58)" ["label"="despawn_window"]
-		}
-		
 	}
 	
 	subgraph "clusternode_Set(12)" {
 		"label"="Last";
 		"bgcolor"="white";
 		"set_marker_node_Set(12)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(57)" ["label"="changed_window"]
+		"node_System(58)" ["label"="despawn_window"]
 	}
 	
 	subgraph "clusternode_Set(58)" {

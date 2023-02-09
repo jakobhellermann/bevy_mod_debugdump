@@ -53,11 +53,59 @@ digraph "schedule" {
 		"label"="Prepare";
 		"bgcolor"="white";
 		"set_marker_node_Set(7)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		subgraph "clusternode_Set(60)" {
+		subgraph "clusternode_Set(16)" {
+			"label"="Prepare";
+			"bgcolor"="white";
+			"set_marker_node_Set(16)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(10)" ["label"="prepare_windows"]
+		}
+		
+		subgraph "clusternode_Set(18)" {
+			"label"="PrepareUniforms";
+			"bgcolor"="white";
+			"set_marker_node_Set(18)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(11)" ["label"="prepare_view_uniforms"]
+		}
+		
+		subgraph "clusternode_Set(21)" {
+			"label"="PreAssetPrepare";
+			"bgcolor"="white";
+			"set_marker_node_Set(21)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(15)" ["label"="prepare_assets<Image>"]
+		}
+		
+		subgraph "clusternode_Set(22)" {
+			"label"="AssetPrepare";
+			"bgcolor"="white";
+			"set_marker_node_Set(22)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(13)" ["label"="prepare_assets<Mesh>"]
+		}
+		
+		subgraph "clusternode_Set(23)" {
+			"label"="PostAssetPrepare";
+			"bgcolor"="white";
+			"set_marker_node_Set(23)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		}
+		
+		subgraph "clusternode_Set(61)" {
 			"label"="PrepareFog";
 			"bgcolor"="white";
-			"set_marker_node_Set(60)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(61)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(49)" ["label"="prepare_fog"]
+		}
+		
+		subgraph "clusternode_Set(62)" {
+			"label"="PrepareLights";
+			"bgcolor"="white";
+			"set_marker_node_Set(62)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(50)" ["label"="prepare_lights"]
+		}
+		
+		subgraph "clusternode_Set(63)" {
+			"label"="PrepareClusters";
+			"bgcolor"="white";
+			"set_marker_node_Set(63)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(52)" ["label"="prepare_clusters"]
 		}
 		
 		"node_System(12)" ["label"="prepare_view_targets"]
@@ -71,7 +119,6 @@ digraph "schedule" {
 		"node_System(35)" ["label"="prepare_uinodes"]
 		"node_System(38)" ["label"="prepare_uniform_components<MeshUniform>"]
 		"node_System(39)" ["label"="prepare_skinned_meshes"]
-		"node_System(42)" ["label"="prepare_materials<StandardMaterial>"]
 		"node_System(44)" ["label"="prepare_prepass_textures"]
 	}
 	
@@ -79,6 +126,13 @@ digraph "schedule" {
 		"label"="Queue";
 		"bgcolor"="white";
 		"set_marker_node_Set(8)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		subgraph "clusternode_Set(64)" {
+			"label"="QueueShadows";
+			"bgcolor"="white";
+			"set_marker_node_Set(64)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(53)" ["label"="queue_shadows"]
+		}
+		
 		"node_System(23)" ["label"="queue_view_tonemapping_pipelines"]
 		"node_System(24)" ["label"="queue_view_upscaling_pipelines"]
 		"node_System(27)" ["label"="queue_bloom_bind_groups"]
@@ -126,77 +180,8 @@ digraph "schedule" {
 		"node_System(16)" ["label"="update_texture_cache_system"]
 	}
 	
-	subgraph "clusternode_Set(17)" {
-		"label"="Prepare";
-		"bgcolor"="white";
-		"set_marker_node_Set(17)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-	}
-	
-	subgraph "clusternode_Set(19)" {
-		"label"="PrepareUniforms";
-		"bgcolor"="white";
-		"set_marker_node_Set(19)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-	}
-	
-	subgraph "clusternode_Set(22)" {
-		"label"="AssetPrepare";
-		"bgcolor"="white";
-		"set_marker_node_Set(22)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-	}
-	
-	subgraph "clusternode_Set(23)" {
-		"label"="PreAssetPrepare";
-		"bgcolor"="white";
-		"set_marker_node_Set(23)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-	}
-	
-	subgraph "clusternode_Set(62)" {
-		"label"="PrepareLights";
-		"bgcolor"="white";
-		"set_marker_node_Set(62)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-	}
-	
-	subgraph "clusternode_Set(64)" {
-		"label"="PrepareClusters";
-		"bgcolor"="white";
-		"set_marker_node_Set(64)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-	}
-	
-	subgraph "clusternode_Set(66)" {
-		"label"="QueueShadows";
-		"bgcolor"="white";
-		"set_marker_node_Set(66)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-	}
-	
+	"node_System(42)" ["label"="prepare_materials<StandardMaterial>"]
 	"node_System(51)" ["label"="apply_system_buffers"]
-	"node_System(10)" -> "set_marker_node_Set(7)" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(7)"]
-	"node_System(10)" -> "set_marker_node_Set(17)" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(17)"]
-	"node_System(10)" ["label"="prepare_windows
-In multiple sets, Prepare, Prepare"]
-	"node_System(11)" -> "set_marker_node_Set(7)" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(7)"]
-	"node_System(11)" -> "set_marker_node_Set(19)" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(19)"]
-	"node_System(11)" ["label"="prepare_view_uniforms
-In multiple sets, Prepare, PrepareUniforms"]
-	"node_System(13)" -> "set_marker_node_Set(7)" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(7)"]
-	"node_System(13)" -> "set_marker_node_Set(22)" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(22)"]
-	"node_System(13)" ["label"="prepare_assets<Mesh>
-In multiple sets, Prepare, AssetPrepare"]
-	"node_System(15)" -> "set_marker_node_Set(7)" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(7)"]
-	"node_System(15)" -> "set_marker_node_Set(23)" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(23)"]
-	"node_System(15)" ["label"="prepare_assets<Image>
-In multiple sets, Prepare, PreAssetPrepare"]
-	"node_System(50)" -> "set_marker_node_Set(7)" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(7)"]
-	"node_System(50)" -> "set_marker_node_Set(62)" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(62)"]
-	"node_System(50)" ["label"="prepare_lights
-In multiple sets, Prepare, PrepareLights"]
-	"node_System(52)" -> "set_marker_node_Set(7)" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(7)"]
-	"node_System(52)" -> "set_marker_node_Set(64)" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(64)"]
-	"node_System(52)" ["label"="prepare_clusters
-In multiple sets, Prepare, PrepareClusters"]
-	"node_System(53)" -> "set_marker_node_Set(8)" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(8)"]
-	"node_System(53)" -> "set_marker_node_Set(66)" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(66)"]
-	"node_System(53)" ["label"="queue_shadows
-In multiple sets, Queue, QueueShadows"]
 	"set_marker_node_Set(1)" -> "set_marker_node_Set(7)" ["lhead"="clusternode_Set(7)", "ltail"="clusternode_Set(1)"]
 	"set_marker_node_Set(7)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(7)"]
 	"set_marker_node_Set(2)" -> "set_marker_node_Set(8)" ["lhead"="clusternode_Set(8)", "ltail"="clusternode_Set(2)"]
@@ -208,13 +193,14 @@ In multiple sets, Queue, QueueShadows"]
 	"set_marker_node_Set(5)" -> "set_marker_node_Set(11)" ["lhead"="clusternode_Set(11)", "ltail"="clusternode_Set(5)"]
 	"set_marker_node_Set(11)" -> "set_marker_node_Set(6)" ["lhead"="clusternode_Set(6)", "ltail"="clusternode_Set(11)"]
 	"node_System(7)" -> "node_System(8)" ["lhead"="", "ltail"=""]
-	"set_marker_node_Set(17)" -> "node_System(12)" ["lhead"="", "ltail"="clusternode_Set(17)"]
-	"set_marker_node_Set(23)" -> "node_System(13)" ["lhead"="", "ltail"="clusternode_Set(23)"]
+	"set_marker_node_Set(16)" -> "node_System(12)" ["lhead"="", "ltail"="clusternode_Set(16)"]
+	"set_marker_node_Set(21)" -> "set_marker_node_Set(22)" ["lhead"="clusternode_Set(22)", "ltail"="clusternode_Set(21)"]
+	"set_marker_node_Set(22)" -> "set_marker_node_Set(23)" ["lhead"="clusternode_Set(23)", "ltail"="clusternode_Set(22)"]
 	"node_System(17)" -> "node_System(18)" ["lhead"="", "ltail"=""]
-	"set_marker_node_Set(23)" -> "node_System(32)" ["lhead"="", "ltail"="clusternode_Set(23)"]
-	"set_marker_node_Set(23)" -> "node_System(42)" ["lhead"="", "ltail"="clusternode_Set(23)"]
-	"node_System(50)" -> "set_marker_node_Set(19)" ["lhead"="clusternode_Set(19)", "ltail"=""]
+	"set_marker_node_Set(21)" -> "node_System(32)" ["lhead"="", "ltail"="clusternode_Set(21)"]
+	"set_marker_node_Set(21)" -> "node_System(42)" ["lhead"="", "ltail"="clusternode_Set(21)"]
+	"node_System(50)" -> "set_marker_node_Set(18)" ["lhead"="clusternode_Set(18)", "ltail"=""]
 	"set_marker_node_Set(62)" -> "node_System(51)" ["lhead"="", "ltail"="clusternode_Set(62)"]
-	"node_System(51)" -> "set_marker_node_Set(19)" ["lhead"="clusternode_Set(19)", "ltail"=""]
+	"node_System(51)" -> "set_marker_node_Set(18)" ["lhead"="clusternode_Set(18)", "ltail"=""]
 	"node_System(50)" -> "node_System(52)" ["lhead"="", "ltail"=""]
 }

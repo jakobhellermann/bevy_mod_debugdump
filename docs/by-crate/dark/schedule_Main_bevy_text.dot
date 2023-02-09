@@ -70,12 +70,6 @@ digraph "schedule" {
 		"label"="PostUpdate";
 		"bgcolor"="#6f90ad";
 		"set_marker_node_Set(11)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		subgraph "clusternode_Set(70)" {
-			"label"="ModifiesWindows";
-			"bgcolor"="#6f90ad";
-			"set_marker_node_Set(70)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		}
-		
 		"node_System(94)" ["label"="update_text2d_layout"]
 	}
 	
@@ -112,5 +106,4 @@ digraph "schedule" {
 	"set_marker_node_Set(7)" -> "set_marker_node_Set(58)" ["lhead"="clusternode_Set(58)", "ltail"="clusternode_Set(7)"]
 	"set_marker_node_Set(11)" -> "set_marker_node_Set(59)" ["lhead"="clusternode_Set(59)", "ltail"="clusternode_Set(11)"]
 	"set_marker_node_Set(59)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(59)"]
-	"set_marker_node_Set(70)" -> "node_System(94)" ["lhead"="", "ltail"="clusternode_Set(70)"]
 }

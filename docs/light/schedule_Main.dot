@@ -122,10 +122,10 @@ digraph "schedule" {
 			"node_System(29)" ["label"="touch_screen_input_system"]
 		}
 		
-		subgraph "clusternode_Set(116)" {
+		subgraph "clusternode_Set(115)" {
 			"label"="Focus";
 			"bgcolor"="white";
-			"set_marker_node_Set(116)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(115)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(95)" ["label"="ui_focus_system"]
 		}
 		
@@ -159,124 +159,117 @@ digraph "schedule" {
 			"node_System(12)" ["label"="propagate_transforms"]
 		}
 		
-		subgraph "clusternode_Set(70)" {
-			"label"="ModifiesWindows";
-			"bgcolor"="white";
-			"set_marker_node_Set(70)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(57)" ["label"="changed_window"]
-			"node_System(58)" ["label"="despawn_window"]
-		}
-		
-		subgraph "clusternode_Set(77)" {
+		subgraph "clusternode_Set(76)" {
 			"label"="CameraUpdateSystem";
 			"bgcolor"="white";
-			"set_marker_node_Set(77)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(76)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(63)" ["label"="camera_system<Projection>"]
 			"node_System(64)" ["label"="camera_system<OrthographicProjection>"]
 			"node_System(65)" ["label"="camera_system<PerspectiveProjection>"]
 		}
 		
-		subgraph "clusternode_Set(81)" {
+		subgraph "clusternode_Set(80)" {
 			"label"="CalculateBounds";
 			"bgcolor"="white";
-			"set_marker_node_Set(81)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(80)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(67)" ["label"="calculate_bounds"]
 		}
 		
-		subgraph "clusternode_Set(82)" {
+		subgraph "clusternode_Set(81)" {
 			"label"="CalculateBoundsFlush";
 			"bgcolor"="white";
-			"set_marker_node_Set(82)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(81)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(66)" ["label"="apply_system_buffers"]
 		}
 		
-		subgraph "clusternode_Set(83)" {
+		subgraph "clusternode_Set(82)" {
 			"label"="UpdateOrthographicFrusta";
 			"bgcolor"="white";
-			"set_marker_node_Set(83)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(82)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(68)" ["label"="update_frusta<OrthographicProjection>"]
 		}
 		
-		subgraph "clusternode_Set(84)" {
+		subgraph "clusternode_Set(83)" {
 			"label"="UpdatePerspectiveFrusta";
 			"bgcolor"="white";
-			"set_marker_node_Set(84)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(83)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(69)" ["label"="update_frusta<PerspectiveProjection>"]
 		}
 		
-		subgraph "clusternode_Set(85)" {
+		subgraph "clusternode_Set(84)" {
 			"label"="UpdateProjectionFrusta";
 			"bgcolor"="white";
-			"set_marker_node_Set(85)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(84)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(70)" ["label"="update_frusta<Projection>"]
 		}
 		
-		subgraph "clusternode_Set(86)" {
+		subgraph "clusternode_Set(85)" {
 			"label"="CheckVisibility";
 			"bgcolor"="white";
-			"set_marker_node_Set(86)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(85)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(72)" ["label"="check_visibility"]
 		}
 		
-		subgraph "clusternode_Set(87)" {
+		subgraph "clusternode_Set(86)" {
 			"label"="VisibilityPropagate";
 			"bgcolor"="white";
-			"set_marker_node_Set(87)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(86)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(71)" ["label"="visibility_propagate_system"]
 		}
 		
-		subgraph "clusternode_Set(117)" {
+		subgraph "clusternode_Set(116)" {
 			"label"="Flex";
 			"bgcolor"="white";
-			"set_marker_node_Set(117)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(116)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(98)" ["label"="flex_node_system"]
 		}
 		
-		subgraph "clusternode_Set(118)" {
+		subgraph "clusternode_Set(117)" {
 			"label"="Stack";
 			"bgcolor"="white";
-			"set_marker_node_Set(118)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(117)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(99)" ["label"="ui_stack_system"]
 		}
 		
-		subgraph "clusternode_Set(128)" {
+		subgraph "clusternode_Set(127)" {
 			"label"="AddClusters";
 			"bgcolor"="white";
-			"set_marker_node_Set(128)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(127)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(104)" ["label"="add_clusters"]
 		}
 		
-		subgraph "clusternode_Set(129)" {
+		subgraph "clusternode_Set(128)" {
 			"label"="AddClustersFlush";
 			"bgcolor"="white";
-			"set_marker_node_Set(129)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(128)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(105)" ["label"="apply_system_buffers"]
 		}
 		
-		subgraph "clusternode_Set(130)" {
+		subgraph "clusternode_Set(129)" {
 			"label"="AssignLightsToClusters";
 			"bgcolor"="white";
-			"set_marker_node_Set(130)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(129)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(106)" ["label"="assign_lights_to_clusters"]
 		}
 		
-		subgraph "clusternode_Set(131)" {
+		subgraph "clusternode_Set(130)" {
 			"label"="CheckLightVisibility";
 			"bgcolor"="white";
-			"set_marker_node_Set(131)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(130)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(111)" ["label"="check_light_mesh_visibility"]
 		}
 		
-		subgraph "clusternode_Set(132)" {
+		subgraph "clusternode_Set(131)" {
 			"label"="UpdateDirectionalLightCascades";
 			"bgcolor"="white";
-			"set_marker_node_Set(132)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(131)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(107)" ["label"="update_directional_light_cascades"]
 		}
 		
-		subgraph "clusternode_Set(133)" {
+		subgraph "clusternode_Set(132)" {
 			"label"="UpdateLightFrusta";
 			"bgcolor"="white";
-			"set_marker_node_Set(133)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(132)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(108)" ["label"="update_directional_light_frusta"]
 			"node_System(109)" ["label"="update_point_light_frusta"]
 			"node_System(110)" ["label"="update_spot_light_frusta"]
@@ -284,7 +277,6 @@ digraph "schedule" {
 		
 		"node_System(45)" ["label"="exit_on_all_closed"]
 		"node_System(46)" ["label"="close_when_requested"]
-		"node_System(70)" ["label"="update_frusta<Projection>"]
 		"node_System(94)" ["label"="update_text2d_layout"]
 		"node_System(96)" ["label"="text_system"]
 		"node_System(97)" ["label"="update_image_calculated_size_system"]
@@ -300,6 +292,8 @@ digraph "schedule" {
 		"node_System(6)" ["label"="tick_global_task_pools"]
 		"node_System(7)" ["label"="update_frame_count"]
 		"node_System(10)" ["label"="check_hierarchy_component_has_valid_parent<GlobalTransform>"]
+		"node_System(57)" ["label"="changed_window"]
+		"node_System(58)" ["label"="despawn_window"]
 		"node_System(62)" ["label"="check_hierarchy_component_has_valid_parent<ComputedVisibility>"]
 	}
 	
@@ -373,54 +367,43 @@ digraph "schedule" {
 	"set_marker_node_Set(11)" -> "set_marker_node_Set(59)" ["lhead"="clusternode_Set(59)", "ltail"="clusternode_Set(11)"]
 	"set_marker_node_Set(59)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(59)"]
 	"node_System(57)" -> "node_System(58)" ["lhead"="", "ltail"=""]
-	"set_marker_node_Set(70)" -> "node_System(63)" ["lhead"="", "ltail"="clusternode_Set(70)"]
-	"set_marker_node_Set(70)" -> "node_System(64)" ["lhead"="", "ltail"="clusternode_Set(70)"]
-	"set_marker_node_Set(70)" -> "node_System(65)" ["lhead"="", "ltail"="clusternode_Set(70)"]
-	"set_marker_node_Set(81)" -> "set_marker_node_Set(82)" ["lhead"="clusternode_Set(82)", "ltail"="clusternode_Set(81)"]
+	"set_marker_node_Set(80)" -> "set_marker_node_Set(81)" ["lhead"="clusternode_Set(81)", "ltail"="clusternode_Set(80)"]
 	"node_System(64)" -> "node_System(68)" ["lhead"="", "ltail"=""]
 	"set_marker_node_Set(20)" -> "node_System(68)" ["lhead"="", "ltail"="clusternode_Set(20)"]
 	"node_System(65)" -> "node_System(69)" ["lhead"="", "ltail"=""]
 	"set_marker_node_Set(20)" -> "node_System(69)" ["lhead"="", "ltail"="clusternode_Set(20)"]
 	"node_System(63)" -> "node_System(70)" ["lhead"="", "ltail"=""]
 	"set_marker_node_Set(20)" -> "node_System(70)" ["lhead"="", "ltail"="clusternode_Set(20)"]
+	"set_marker_node_Set(81)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(81)"]
 	"set_marker_node_Set(82)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(82)"]
 	"set_marker_node_Set(83)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(83)"]
 	"set_marker_node_Set(84)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(84)"]
-	"set_marker_node_Set(85)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(85)"]
-	"set_marker_node_Set(87)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(87)"]
+	"set_marker_node_Set(86)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(86)"]
 	"set_marker_node_Set(20)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(20)"]
-	"set_marker_node_Set(70)" -> "node_System(94)" ["lhead"="", "ltail"="clusternode_Set(70)"]
 	"set_marker_node_Set(24)" -> "node_System(95)" ["lhead"="", "ltail"="clusternode_Set(24)"]
-	"node_System(96)" -> "set_marker_node_Set(117)" ["lhead"="clusternode_Set(117)", "ltail"=""]
-	"set_marker_node_Set(70)" -> "node_System(96)" ["lhead"="", "ltail"="clusternode_Set(70)"]
-	"node_System(97)" -> "set_marker_node_Set(117)" ["lhead"="clusternode_Set(117)", "ltail"=""]
+	"node_System(96)" -> "set_marker_node_Set(116)" ["lhead"="clusternode_Set(116)", "ltail"=""]
+	"node_System(97)" -> "set_marker_node_Set(116)" ["lhead"="clusternode_Set(116)", "ltail"=""]
 	"node_System(98)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"=""]
-	"set_marker_node_Set(70)" -> "node_System(98)" ["lhead"="", "ltail"="clusternode_Set(70)"]
 	"set_marker_node_Set(20)" -> "node_System(100)" ["lhead"="", "ltail"="clusternode_Set(20)"]
+	"set_marker_node_Set(127)" -> "set_marker_node_Set(128)" ["lhead"="clusternode_Set(128)", "ltail"="clusternode_Set(127)"]
 	"set_marker_node_Set(128)" -> "set_marker_node_Set(129)" ["lhead"="clusternode_Set(129)", "ltail"="clusternode_Set(128)"]
-	"set_marker_node_Set(129)" -> "set_marker_node_Set(130)" ["lhead"="clusternode_Set(130)", "ltail"="clusternode_Set(129)"]
 	"set_marker_node_Set(20)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(20)"]
-	"set_marker_node_Set(86)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(86)"]
-	"set_marker_node_Set(77)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(77)"]
-	"set_marker_node_Set(70)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(70)"]
+	"set_marker_node_Set(85)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(85)"]
+	"set_marker_node_Set(76)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(76)"]
 	"set_marker_node_Set(20)" -> "node_System(107)" ["lhead"="", "ltail"="clusternode_Set(20)"]
-	"set_marker_node_Set(77)" -> "node_System(107)" ["lhead"="", "ltail"="clusternode_Set(77)"]
-	"set_marker_node_Set(86)" -> "node_System(108)" ["lhead"="", "ltail"="clusternode_Set(86)"]
+	"set_marker_node_Set(76)" -> "node_System(107)" ["lhead"="", "ltail"="clusternode_Set(76)"]
+	"set_marker_node_Set(85)" -> "node_System(108)" ["lhead"="", "ltail"="clusternode_Set(85)"]
 	"set_marker_node_Set(20)" -> "node_System(108)" ["lhead"="", "ltail"="clusternode_Set(20)"]
-	"set_marker_node_Set(132)" -> "node_System(108)" ["lhead"="", "ltail"="clusternode_Set(132)"]
+	"set_marker_node_Set(131)" -> "node_System(108)" ["lhead"="", "ltail"="clusternode_Set(131)"]
 	"set_marker_node_Set(20)" -> "node_System(109)" ["lhead"="", "ltail"="clusternode_Set(20)"]
-	"set_marker_node_Set(130)" -> "node_System(109)" ["lhead"="", "ltail"="clusternode_Set(130)"]
+	"set_marker_node_Set(129)" -> "node_System(109)" ["lhead"="", "ltail"="clusternode_Set(129)"]
 	"set_marker_node_Set(20)" -> "node_System(110)" ["lhead"="", "ltail"="clusternode_Set(20)"]
-	"set_marker_node_Set(130)" -> "node_System(110)" ["lhead"="", "ltail"="clusternode_Set(130)"]
-	"set_marker_node_Set(82)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(82)"]
+	"set_marker_node_Set(129)" -> "node_System(110)" ["lhead"="", "ltail"="clusternode_Set(129)"]
+	"set_marker_node_Set(81)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(81)"]
 	"set_marker_node_Set(20)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(20)"]
-	"set_marker_node_Set(133)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(133)"]
-	"set_marker_node_Set(86)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(86)"]
+	"set_marker_node_Set(132)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(132)"]
+	"set_marker_node_Set(85)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(85)"]
 	"node_System(131)" -> "set_marker_node_Set(24)" ["lhead"="clusternode_Set(24)", "ltail"=""]
 	"node_System(135)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"=""]
-	"node_System(70)" -> "node_System(72)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Frustum</td></tr></table>>, "labeltooltip"="update_frusta<Projection> -- check_visibility"]
-	"node_System(70)" -> "node_System(106)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Frustum</td></tr></table>>, "labeltooltip"="update_frusta<Projection> -- assign_lights_to_clusters"]
-	"node_System(70)" -> "node_System(110)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Frustum</td></tr></table>>, "labeltooltip"="update_frusta<Projection> -- update_spot_light_frusta"]
-	"node_System(70)" -> "node_System(111)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Frustum</td></tr></table>>, "labeltooltip"="update_frusta<Projection> -- check_light_mesh_visibility"]
 	"node_System(98)" -> "node_System(135)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Transform</td></tr></table>>, "labeltooltip"="flex_node_system -- animation_player"]
 }
