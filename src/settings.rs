@@ -110,7 +110,7 @@ impl Style {
 }
 impl Default for Style {
     fn default() -> Self {
-        Style::light()
+        Style::dark_github()
     }
 }
 
