@@ -10,7 +10,7 @@ use std::{
 };
 
 use bevy_ecs::{
-    schedule_v3::{NodeId, Schedule, ScheduleGraph, SystemSet},
+    schedule::{NodeId, Schedule, ScheduleGraph, SystemSet},
     system::System,
     world::World,
 };

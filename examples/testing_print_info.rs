@@ -1,6 +1,6 @@
 use bevy::prelude::{IntoSystemConfig, SystemSet, World};
 use bevy_app::{App, CoreSchedule};
-use bevy_ecs::schedule_v3::{NodeId, Schedule, ScheduleLabel, Schedules};
+use bevy_ecs::schedule::{NodeId, Schedule, ScheduleLabel, Schedules};
 
 fn test_system() {}
 
@@ -53,12 +53,12 @@ fn print_schedule(schedule: &Schedule, schedule_label: &dyn ScheduleLabel) {
     println!("{:?}", schedule_label);
 
     println!("- SETS");
-    for (_set_id, set, _conditions) in graph.system_sets() {
+    for (_set_id, set, _, _conditions) in graph.system_sets() {
         println!("  - {:?}", set);
     }
 
     println!("- SYSTEMS");
-    for (_system_id, system, _conditions) in graph.systems() {
+    for (_system_id, system, _, _conditions) in graph.systems() {
         println!("  - {}", system.name());
     }
 

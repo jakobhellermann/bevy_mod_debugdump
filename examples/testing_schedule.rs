@@ -1,3 +1,4 @@
+#![allow(unused)]
 use std::path::PathBuf;
 
 use bevy::{prelude::*, render::RenderApp, utils::HashSet};
