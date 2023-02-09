@@ -34,7 +34,10 @@ fn main() -> Result<(), std::io::Error> {
                 .build_schedule(world.components())
                 .unwrap();
 
-            let settings = Settings::default();
+            let settings = Settings {
+                collapse_single_system_sets: true,
+                ..Default::default()
+            };
             let dot = bevy_mod_debugdump_stageless::schedule_to_dot(schedule, world, &settings);
 
             println!("{dot}");

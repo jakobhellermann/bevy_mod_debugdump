@@ -3,6 +3,7 @@ use bevy_app::{App, CoreSchedule};
 use bevy_ecs::schedule::{NodeId, Schedule, ScheduleLabel, Schedules};
 
 fn test_system() {}
+fn test_system_2() {}
 
 #[derive(SystemSet, PartialEq, Eq, Clone, Hash, Debug)]
 struct TestSet;
@@ -10,7 +11,10 @@ struct TestSet;
 fn main() {
     let mut app = App::new();
     app.add_system(test_system.in_set(TestSet));
-    // app.add_plugins(DefaultPlugins.build().disable::<LogPlugin>());
+    app.add_system(test_system_2.after(test_system));
+    // app.add_plugins(
+    // bevy_app::PluginGroup::build(bevy::DefaultPlugins).disable::<bevy::log::LogPlugin>(),
+    // );
 
     let mut schedules = app.world.resource_mut::<Schedules>();
 

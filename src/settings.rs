@@ -119,7 +119,7 @@ pub struct Settings {
 
     /// When set to `Some`, will only include systems matching the predicate, and their ancestor sets
     pub include_system: Option<Box<dyn Fn(&dyn System<In = (), Out = ()>) -> bool>>,
-    pub include_single_system_in_set: bool,
+    pub collapse_single_system_sets: bool,
 
     pub ambiguity_enable: bool,
     pub ambiguity_enable_on_world: bool,
@@ -133,7 +133,7 @@ impl Default for Settings {
             style: Style::default(),
 
             include_system: None,
-            include_single_system_in_set: true,
+            collapse_single_system_sets: false,
 
             ambiguity_enable: true,
             ambiguity_enable_on_world: false,

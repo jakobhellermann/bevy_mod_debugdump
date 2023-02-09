@@ -5,7 +5,7 @@ pub mod settings;
 use bevy_utils::{HashMap, HashSet};
 pub use settings::Settings;
 
-use std::{collections::VecDeque, fmt::Write};
+use std::{any::TypeId, collections::VecDeque, fmt::Write};
 
 use bevy_ecs::{
     schedule::{NodeId, Schedule, ScheduleGraph, SystemSet},
@@ -59,6 +59,9 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
     let mut sets_in_single_set = HashMap::<NodeId, Vec<_>>::new();
     let mut sets_in_multiple_sets = bevy_utils::HashMap::<Option<NodeId>, Vec<_>>::new();
 
+    let mut collapsed_sets = HashSet::new();
+    let mut collapsed_set_children = HashMap::new();
+
     for &(set_id, set, _base_set_membership, _conditions) in system_sets
         .iter()
         .filter(|&&(id, ..)| graph.set_at(id).system_type().is_none())
@@ -81,6 +84,43 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
                     .entry(first_common_ancestor)
                     .or_default()
                     .push((set_id, set));
+            }
+        }
+    }
+
+    for &(set_id, ..) in system_sets
+        .iter()
+        .filter(|&&(id, ..)| graph.set_at(id).system_type().is_none())
+        .filter(|(id, ..)| included_systems_sets.contains(id))
+    {
+        if settings.collapse_single_system_sets {
+            let children = systems_in_single_set
+                .get(&set_id)
+                .map_or(&[] as &[_], |vec| vec.as_slice());
+            let children_in_multiple = systems_in_multiple_sets
+                .get(&Some(set_id))
+                .map_or(&[] as &[_], |vec| vec.as_slice());
+
+            let children_sets_empty = sets_in_single_set
+                .get(&set_id)
+                .map_or(true, |vec| vec.is_empty());
+            let children_sets_in_multiple_empty = systems_in_multiple_sets
+                .get(&Some(set_id))
+                .map_or(true, |vec| vec.is_empty());
+
+            if children_in_multiple.is_empty()
+                && children.len() <= 1
+                && children_sets_empty
+                && children_sets_in_multiple_empty
+            {
+                collapsed_sets.insert(set_id);
+
+                for &(child, ..) in children {
+                    collapsed_set_children.insert(child, set_id);
+                }
+                for &(child, ..) in children_in_multiple {
+                    collapsed_set_children.insert(child, set_id);
+                }
             }
         }
     }
@@ -116,6 +156,8 @@ pub fn schedule_to_dot(schedule: &Schedule, world: &World, settings: &Settings) 
         sets_freestanding,
         sets_in_single_set,
         sets_in_multiple_sets,
+        collapsed_sets,
+        collapsed_set_children,
     };
 
     context.add_sets(&mut dot);
@@ -146,6 +188,10 @@ struct ScheduleGraphContext<'a> {
     sets_freestanding: Vec<(NodeId, &'a dyn SystemSet)>,
     sets_in_single_set: HashMap<NodeId, Vec<(NodeId, &'a dyn SystemSet)>>,
     sets_in_multiple_sets: HashMap<Option<NodeId>, Vec<(NodeId, &'a dyn SystemSet)>>,
+
+    collapsed_sets: HashSet<NodeId>,
+    // map from child to collapsed set
+    collapsed_set_children: HashMap<NodeId, NodeId>,
 }
 
 impl ScheduleGraphContext<'_> {
@@ -194,8 +240,8 @@ impl ScheduleGraphContext<'_> {
             }
 
             dot.add_edge(
-                &self.node_id(from),
-                &self.node_id(to),
+                &self.node_ref(from),
+                &self.node_ref(to),
                 &[("lhead", &self.lref(to)), ("ltail", &self.lref(from))],
             );
         }
@@ -242,8 +288,8 @@ impl ScheduleGraphContext<'_> {
             let name_b = system_name(self.graph.system_at(system_b), self.settings);
 
             dot.add_edge(
-                &self.node_id(system_a),
-                &self.node_id(system_b),
+                &self.node_ref(system_a),
+                &self.node_ref(system_b),
                 &[
                     ("dir", "none"),
                     ("constraint", "false"),
@@ -265,8 +311,8 @@ impl ScheduleGraphContext<'_> {
         for parent in hierarchy_parents(set_id, self.graph) {
             assert!(self.included_systems_sets.contains(&parent));
             dot.add_edge(
-                &self.node_id(parent),
-                &self.node_id(set_id),
+                &self.node_ref(parent),
+                &self.node_ref(set_id),
                 &[
                     ("dir", "none"),
                     ("color", &self.settings.style.multiple_set_edge_color),
@@ -280,6 +326,12 @@ impl ScheduleGraphContext<'_> {
     // add regular set and system hierarchy
     fn add_set(&self, set_id: NodeId, set: &dyn SystemSet, dot: &mut DotGraph) {
         let name = format!("{set:?}");
+
+        if self.collapsed_sets.contains(&set_id) {
+            dot.add_node(&node_index_name(set_id), &[("label", &name)]);
+
+            return;
+        }
 
         let system_set_cluster_name = node_index_name(set_id); // in sync with system_cluster_name
         let mut system_set_graph = DotGraph::subgraph(
@@ -316,17 +368,9 @@ impl ScheduleGraphContext<'_> {
             .get(&set_id)
             .map(|systems| systems.as_slice())
             .unwrap_or(&[]);
-        let show_systems = self.settings.include_single_system_in_set || systems.len() > 1;
         for &(system_id, system) in systems.iter() {
             let name = system_name(system, self.settings);
-            if show_systems {
-                system_set_graph.add_node(&self.node_id(system_id), &[("label", name.as_str())]);
-            } else {
-                system_set_graph.add_node(
-                    &self.node_id(system_id),
-                    &[("label", ""), ("style", "invis")],
-                );
-            }
+            system_set_graph.add_node(&self.node_ref(system_id), &[("label", name.as_str())]);
         }
 
         for &(system_id, system) in self
@@ -357,8 +401,8 @@ impl ScheduleGraphContext<'_> {
             let _ = write!(&mut name, ", {parent_set:?}");
 
             dot.add_edge(
-                &self.node_id(system_id),
-                &self.node_id(parent),
+                &self.node_ref(system_id),
+                &self.node_ref(parent),
                 &[
                     ("dir", "none"),
                     ("color", &self.settings.style.multiple_set_edge_color),
@@ -366,7 +410,7 @@ impl ScheduleGraphContext<'_> {
                 ],
             );
         }
-        dot.add_node(&self.node_id(system_id), &[("label", &name)]);
+        dot.add_node(&self.node_ref(system_id), &[("label", &name)]);
     }
 }
 
@@ -453,26 +497,43 @@ impl ScheduleGraphContext<'_> {
 
     // lhead/ltail
     fn lref(&self, node_id: NodeId) -> String {
-        self.is_non_system_set(node_id)
-            .then(|| set_cluster_name(node_id))
-            .unwrap_or_default()
+        if self.is_non_system_set(node_id) && !self.collapsed_sets.contains(&node_id) {
+            set_cluster_name(node_id)
+        } else {
+            String::new()
+        }
     }
 
-    fn node_id(&self, node_id: NodeId) -> String {
+    // PERF: O(n)
+    fn system_of_system_type(&self, system_type: TypeId) -> NodeId {
+        let system_node = self
+            .graph
+            .systems()
+            .find_map(|(node_id, system, _, _)| {
+                (system.type_id() == system_type).then_some(node_id)
+            })
+            .unwrap();
+        system_node
+    }
+
+    fn system_node_ref(&self, node_id: NodeId) -> String {
+        assert!(node_id.is_system());
+        if let Some(collapsed_set) = self.collapsed_set_children.get(&node_id) {
+            node_index_name(*collapsed_set)
+        } else {
+            node_index_name(node_id)
+        }
+    }
+
+    fn node_ref(&self, node_id: NodeId) -> String {
         match node_id {
-            NodeId::System(_) => node_index_name(node_id),
+            NodeId::System(_) => self.system_node_ref(node_id),
+            NodeId::Set(_) if self.collapsed_sets.contains(&node_id) => node_index_name(node_id),
             NodeId::Set(_) => {
                 let set = self.graph.set_at(node_id);
                 if let Some(system_type) = set.system_type() {
-                    // TODO: O(n)
-                    let system_node = self
-                        .graph
-                        .systems()
-                        .find_map(|(node_id, system, _, _)| {
-                            (system.type_id() == system_type).then_some(node_id)
-                        })
-                        .unwrap();
-                    node_index_name(system_node)
+                    let system_node = self.system_of_system_type(system_type);
+                    self.system_node_ref(system_node)
                 } else {
                     marker_name(node_id)
                 }
