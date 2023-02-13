@@ -10,6 +10,7 @@ digraph "schedule" {
 		"label"="Update";
 		"bgcolor"="#6f90ad";
 		"set_marker_node_Set(0)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(46)" ["label"="close_when_requested"]
 	}
 	
 	subgraph "clusternode_Set(2)" {
@@ -71,7 +72,6 @@ digraph "schedule" {
 		"bgcolor"="#6f90ad";
 		"set_marker_node_Set(11)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		"node_System(45)" ["label"="exit_on_all_closed"]
-		"node_System(46)" ["label"="close_when_requested"]
 	}
 	
 	subgraph "clusternode_Set(12)" {

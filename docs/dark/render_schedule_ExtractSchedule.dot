@@ -20,18 +20,18 @@ digraph "schedule" {
 		"node_System(25)" ["label"="extract_uinodes"]
 	}
 	
-	subgraph "clusternode_Set(37)" {
+	subgraph "clusternode_Set(38)" {
 		"label"="ExtractClusters";
 		"bgcolor"="#6f90ad";
-		"set_marker_node_Set(37)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(34)" ["label"="extract_clusters"]
+		"set_marker_node_Set(38)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(35)" ["label"="extract_clusters"]
 	}
 	
-	subgraph "clusternode_Set(39)" {
+	subgraph "clusternode_Set(40)" {
 		"label"="ExtractLights";
 		"bgcolor"="#6f90ad";
-		"set_marker_node_Set(39)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(35)" ["label"="extract_lights"]
+		"set_marker_node_Set(40)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(36)" ["label"="extract_lights"]
 	}
 	
 	"node_System(0)" ["label"="extract_shaders"]
@@ -64,8 +64,9 @@ digraph "schedule" {
 	"node_System(29)" ["label"="extract_visible_components<Handle<StandardMaterial>>"]
 	"node_System(30)" ["label"="extract_materials<StandardMaterial>"]
 	"node_System(31)" ["label"="extract_camera_prepass_phase"]
-	"node_System(32)" ["label"="extract_resource<AmbientLight>"]
-	"node_System(33)" ["label"="extract_components<FogSettings>"]
+	"node_System(32)" ["label"="extract_components<EnvironmentMapLight>"]
+	"node_System(33)" ["label"="extract_resource<AmbientLight>"]
+	"node_System(34)" ["label"="extract_components<FogSettings>"]
 	"set_marker_node_Set(20)" -> "node_System(21)" ["lhead"="", "ltail"="clusternode_Set(20)"]
 	"set_marker_node_Set(27)" -> "node_System(26)" ["lhead"="", "ltail"="clusternode_Set(27)"]
 }

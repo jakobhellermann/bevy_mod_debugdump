@@ -10,6 +10,7 @@ digraph "schedule" {
 		"label"="Update";
 		"bgcolor"="white";
 		"set_marker_node_Set(0)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(46)" ["label"="close_when_requested"]
 		"node_System(55)" ["label"="scene_spawner_system"]
 	}
 	
@@ -276,7 +277,6 @@ digraph "schedule" {
 		}
 		
 		"node_System(45)" ["label"="exit_on_all_closed"]
-		"node_System(46)" ["label"="close_when_requested"]
 		"node_System(94)" ["label"="update_text2d_layout"]
 		"node_System(96)" ["label"="text_system"]
 		"node_System(97)" ["label"="update_image_calculated_size_system"]
