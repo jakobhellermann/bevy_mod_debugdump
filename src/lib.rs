@@ -249,7 +249,7 @@ impl ScheduleGraphContext<'_> {
 
     /// Add ambiguity edges
     fn add_ambiguities(&self, dot: &mut DotGraph) {
-        let mut conflicting_systems = self.graph.conflicting_systems.to_vec();
+        let mut conflicting_systems = self.graph.conflicting_systems().to_vec();
         conflicting_systems.sort();
 
         for (system_a, system_b, conflicts) in conflicting_systems {
