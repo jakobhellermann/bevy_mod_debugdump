@@ -139,46 +139,46 @@ fn main() -> Result<(), std::io::Error> {
             Ok::<_, std::io::Error>(())
         })?;
 
-    let render_app = app.sub_app_mut(RenderApp);
-    render_app
-        .world
-        .resource_scope::<Schedules, _>(|world, mut schedules| {
-            for (label, schedule) in schedules.iter_mut() {
-                // TODO: currently panics
-                // for access info
-                // schedule.graph_mut().initialize(world);
-                // for `conflicting_systems`
-                schedule
-                    .graph_mut()
-                    .build_schedule(world.components())
-                    .unwrap();
+    with_main_world_in_render_app(&mut app, |render_app| {
+        render_app
+            .world
+            .resource_scope::<Schedules, _>(|world, mut schedules| {
+                for (label, schedule) in schedules.iter_mut() {
+                    // for access info
+                    schedule.graph_mut().initialize(world);
+                    // for `conflicting_systems`
+                    schedule
+                        .graph_mut()
+                        .build_schedule(world.components())
+                        .unwrap();
 
-                let settings_light = Settings {
-                    style: style_light.clone(),
-                    ..Default::default()
-                };
-                let settings_dark = Settings {
-                    style: style_dark.clone(),
-                    ..Default::default()
-                };
+                    let settings_light = Settings {
+                        style: style_light.clone(),
+                        ..Default::default()
+                    };
+                    let settings_dark = Settings {
+                        style: style_dark.clone(),
+                        ..Default::default()
+                    };
 
-                let dot_light = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
-                    schedule,
-                    &world,
-                    &settings_light,
-                );
-                let dot_dark = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
-                    schedule,
-                    &world,
-                    &settings_dark,
-                );
+                    let dot_light = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
+                        schedule,
+                        &world,
+                        &settings_light,
+                    );
+                    let dot_dark = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
+                        schedule,
+                        &world,
+                        &settings_dark,
+                    );
 
-                let filename = format!("render_schedule_{label:?}.dot");
-                std::fs::write(schedule_path.join("light").join(&filename), dot_light)?;
-                std::fs::write(schedule_path.join("dark").join(&filename), dot_dark)?;
-            }
-            Ok::<(), std::io::Error>(())
-        })?;
+                    let filename = format!("render_schedule_{label:?}.dot");
+                    std::fs::write(schedule_path.join("light").join(&filename), dot_light)?;
+                    std::fs::write(schedule_path.join("dark").join(&filename), dot_dark)?;
+                }
+                Ok::<(), std::io::Error>(())
+            })
+    })?;
 
     let settings_render_light = bevy_mod_debugdump::render_graph::Settings {
         style: bevy_mod_debugdump::render_graph::settings::Style::light(),
@@ -208,4 +208,25 @@ fn initialize_schedules(
             .build_schedule(world.components())
             .unwrap();
     })
+}
+
+fn with_main_world_in_render_app<T>(app: &mut App, f: impl Fn(&mut App) -> T) -> T {
+    // temporarily add the app world to the render world as a resource
+    let inserted_world = std::mem::take(&mut app.world);
+    let mut render_main_world = bevy_render::MainWorld::default();
+    *render_main_world = inserted_world;
+
+    let render_app = app.sub_app_mut(RenderApp);
+    render_app.world.insert_resource(render_main_world);
+
+    let ret = f(render_app);
+
+    // move the app world back, as if nothing happened.
+    let mut inserted_world = render_app
+        .world
+        .remove_resource::<bevy_render::MainWorld>()
+        .unwrap();
+    app.world = std::mem::take(&mut *inserted_world);
+
+    ret
 }
