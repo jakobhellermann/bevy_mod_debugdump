@@ -1,110 +1,138 @@
-digraph "schedule" {
+digraph "" {
 	"compound"="true";
 	"splines"="spline";
 	"rankdir"="LR";
 	"bgcolor"="white";
 	"fontname"="Helvetica";
+	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled", "fillcolor"="white", "color"="black"];
-	edge ["color"="black"];
 	subgraph "clusternode_Set(0)" {
 		"label"="Update";
+		"tooltip"="Update";
 		"bgcolor"="white";
+		"color"="black";
 		"set_marker_node_Set(0)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(2)" {
 		"label"="FirstFlush";
+		"tooltip"="FirstFlush";
 		"bgcolor"="white";
+		"color"="black";
 		"set_marker_node_Set(2)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(3)" {
 		"label"="PreUpdateFlush";
+		"tooltip"="PreUpdateFlush";
 		"bgcolor"="white";
+		"color"="black";
 		"set_marker_node_Set(3)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(4)" {
 		"label"="UpdateFlush";
+		"tooltip"="UpdateFlush";
 		"bgcolor"="white";
+		"color"="black";
 		"set_marker_node_Set(4)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(5)" {
 		"label"="PostUpdateFlush";
+		"tooltip"="PostUpdateFlush";
 		"bgcolor"="white";
+		"color"="black";
 		"set_marker_node_Set(5)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(6)" {
 		"label"="LastFlush";
+		"tooltip"="LastFlush";
 		"bgcolor"="white";
+		"color"="black";
 		"set_marker_node_Set(6)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(7)" {
 		"label"="First";
+		"tooltip"="First";
 		"bgcolor"="white";
+		"color"="black";
 		"set_marker_node_Set(7)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(8)" {
 		"label"="PreUpdate";
+		"tooltip"="PreUpdate";
 		"bgcolor"="white";
+		"color"="black";
 		"set_marker_node_Set(8)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(9)" {
 		"label"="StateTransitions";
+		"tooltip"="StateTransitions";
 		"bgcolor"="white";
+		"color"="black";
 		"set_marker_node_Set(9)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(10)" {
 		"label"="FixedUpdate";
+		"tooltip"="FixedUpdate";
 		"bgcolor"="white";
+		"color"="black";
 		"set_marker_node_Set(10)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(11)" {
 		"label"="PostUpdate";
+		"tooltip"="PostUpdate";
 		"bgcolor"="white";
+		"color"="black";
 		"set_marker_node_Set(11)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(12)" {
 		"label"="Last";
+		"tooltip"="Last";
 		"bgcolor"="white";
+		"color"="black";
 		"set_marker_node_Set(12)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(10)" ["label"="check_hierarchy_component_has_valid_parent<GlobalTransform>"]
-		"node_System(62)" ["label"="check_hierarchy_component_has_valid_parent<ComputedVisibility>"]
+		"node_System(10)" ["label"="check_hierarchy_component_has_valid_parent<GlobalTransform>", "tooltip"="bevy_hierarchy::valid_parent_check_plugin::check_hierarchy_component_has_valid_parent<bevy_transform::components::global_transform::GlobalTransform>"]
+		"node_System(62)" ["label"="check_hierarchy_component_has_valid_parent<ComputedVisibility>", "tooltip"="bevy_hierarchy::valid_parent_check_plugin::check_hierarchy_component_has_valid_parent<bevy_render::view::visibility::ComputedVisibility>"]
 	}
 	
 	subgraph "clusternode_Set(58)" {
 		"label"="LoadAssets";
+		"tooltip"="LoadAssets";
 		"bgcolor"="white";
+		"color"="black";
 		"set_marker_node_Set(58)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(59)" {
 		"label"="AssetEvents";
+		"tooltip"="AssetEvents";
 		"bgcolor"="white";
+		"color"="black";
 		"set_marker_node_Set(59)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
-	"set_marker_node_Set(7)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(7)"]
-	"set_marker_node_Set(2)" -> "set_marker_node_Set(8)" ["lhead"="clusternode_Set(8)", "ltail"="clusternode_Set(2)"]
-	"set_marker_node_Set(8)" -> "set_marker_node_Set(3)" ["lhead"="clusternode_Set(3)", "ltail"="clusternode_Set(8)"]
-	"set_marker_node_Set(3)" -> "set_marker_node_Set(9)" ["lhead"="clusternode_Set(9)", "ltail"="clusternode_Set(3)"]
-	"set_marker_node_Set(9)" -> "set_marker_node_Set(10)" ["lhead"="clusternode_Set(10)", "ltail"="clusternode_Set(9)"]
-	"set_marker_node_Set(10)" -> "set_marker_node_Set(0)" ["lhead"="clusternode_Set(0)", "ltail"="clusternode_Set(10)"]
-	"set_marker_node_Set(0)" -> "set_marker_node_Set(4)" ["lhead"="clusternode_Set(4)", "ltail"="clusternode_Set(0)"]
-	"set_marker_node_Set(4)" -> "set_marker_node_Set(11)" ["lhead"="clusternode_Set(11)", "ltail"="clusternode_Set(4)"]
-	"set_marker_node_Set(11)" -> "set_marker_node_Set(5)" ["lhead"="clusternode_Set(5)", "ltail"="clusternode_Set(11)"]
-	"set_marker_node_Set(5)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(5)"]
-	"set_marker_node_Set(12)" -> "set_marker_node_Set(6)" ["lhead"="clusternode_Set(6)", "ltail"="clusternode_Set(12)"]
-	"set_marker_node_Set(58)" -> "set_marker_node_Set(8)" ["lhead"="clusternode_Set(8)", "ltail"="clusternode_Set(58)"]
-	"set_marker_node_Set(7)" -> "set_marker_node_Set(58)" ["lhead"="clusternode_Set(58)", "ltail"="clusternode_Set(7)"]
-	"set_marker_node_Set(11)" -> "set_marker_node_Set(59)" ["lhead"="clusternode_Set(59)", "ltail"="clusternode_Set(11)"]
-	"set_marker_node_Set(59)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(59)"]
+	"set_marker_node_Set(7)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(7)", "tooltip"="First → FirstFlush", "color"="#c4cc1d"]
+	"set_marker_node_Set(2)" -> "set_marker_node_Set(8)" ["lhead"="clusternode_Set(8)", "ltail"="clusternode_Set(2)", "tooltip"="FirstFlush → PreUpdate", "color"="#251dcc"]
+	"set_marker_node_Set(8)" -> "set_marker_node_Set(3)" ["lhead"="clusternode_Set(3)", "ltail"="clusternode_Set(8)", "tooltip"="PreUpdate → PreUpdateFlush", "color"="#cd1d91"]
+	"set_marker_node_Set(3)" -> "set_marker_node_Set(9)" ["lhead"="clusternode_Set(9)", "ltail"="clusternode_Set(3)", "tooltip"="PreUpdateFlush → StateTransitions", "color"="#1dcd59"]
+	"set_marker_node_Set(9)" -> "set_marker_node_Set(10)" ["lhead"="clusternode_Set(10)", "ltail"="clusternode_Set(9)", "tooltip"="StateTransitions → FixedUpdate", "color"="#1dc4cc"]
+	"set_marker_node_Set(10)" -> "set_marker_node_Set(0)" ["lhead"="clusternode_Set(0)", "ltail"="clusternode_Set(10)", "tooltip"="FixedUpdate → Update", "color"="#cc251d"]
+	"set_marker_node_Set(0)" -> "set_marker_node_Set(4)" ["lhead"="clusternode_Set(4)", "ltail"="clusternode_Set(0)", "tooltip"="Update → UpdateFlush", "color"="#ccd60d"]
+	"set_marker_node_Set(4)" -> "set_marker_node_Set(11)" ["lhead"="clusternode_Set(11)", "ltail"="clusternode_Set(4)", "tooltip"="UpdateFlush → PostUpdate", "color"="#29e000"]
+	"set_marker_node_Set(11)" -> "set_marker_node_Set(5)" ["lhead"="clusternode_Set(5)", "ltail"="clusternode_Set(11)", "tooltip"="PostUpdate → PostUpdateFlush", "color"="#58cd0c"]
+	"set_marker_node_Set(5)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(5)", "tooltip"="PostUpdateFlush → Last", "color"="#810ccd"]
+	"set_marker_node_Set(12)" -> "set_marker_node_Set(6)" ["lhead"="clusternode_Set(6)", "ltail"="clusternode_Set(12)", "tooltip"="Last → LastFlush", "color"="#cf410c"]
+	"set_marker_node_Set(58)" -> "set_marker_node_Set(8)" ["lhead"="clusternode_Set(8)", "ltail"="clusternode_Set(58)", "tooltip"="LoadAssets → PreUpdate", "color"="#0c9acf"]
+	"set_marker_node_Set(7)" -> "set_marker_node_Set(58)" ["lhead"="clusternode_Set(58)", "ltail"="clusternode_Set(7)", "tooltip"="First → LoadAssets", "color"="#c4cc1d"]
+	"set_marker_node_Set(11)" -> "set_marker_node_Set(59)" ["lhead"="clusternode_Set(59)", "ltail"="clusternode_Set(11)", "tooltip"="PostUpdate → AssetEvents", "color"="#251dcc"]
+	"set_marker_node_Set(59)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(59)", "tooltip"="AssetEvents → Last", "color"="#cd1d91"]
 }

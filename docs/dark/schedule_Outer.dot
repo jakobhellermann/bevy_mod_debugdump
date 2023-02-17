@@ -1,10 +1,10 @@
-digraph "schedule" {
+digraph "" {
 	"compound"="true";
 	"splines"="spline";
 	"rankdir"="LR";
 	"bgcolor"="#0d1117";
 	"fontname"="Helvetica";
+	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled", "fillcolor"="#eff1f3", "color"="#eff1f3"];
-	edge ["color"="white"];
-	"node_System(0)" ["label"="outer_loop"]
+	"node_System(0)" ["label"="outer_loop", "tooltip"="bevy_app::CoreSchedule::outer_loop"]
 }

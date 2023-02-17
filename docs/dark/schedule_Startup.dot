@@ -1,72 +1,88 @@
-digraph "schedule" {
+digraph "" {
 	"compound"="true";
 	"splines"="spline";
 	"rankdir"="LR";
 	"bgcolor"="#0d1117";
 	"fontname"="Helvetica";
+	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled", "fillcolor"="#eff1f3", "color"="#eff1f3"];
-	edge ["color"="white"];
 	subgraph "clusternode_Set(1)" {
 		"label"="PreStartupFlush";
+		"tooltip"="PreStartupFlush";
 		"bgcolor"="#6f90ad";
+		"color"="black";
 		"set_marker_node_Set(1)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(0)" ["label"="apply_system_buffers"]
+		"node_System(0)" ["label"="apply_system_buffers", "tooltip"="bevy_ecs::schedule::executor::apply_system_buffers"]
 	}
 	
 	subgraph "clusternode_Set(2)" {
 		"label"="StartupFlush";
+		"tooltip"="StartupFlush";
 		"bgcolor"="#6f90ad";
+		"color"="black";
 		"set_marker_node_Set(2)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(1)" ["label"="apply_system_buffers"]
+		"node_System(1)" ["label"="apply_system_buffers", "tooltip"="bevy_ecs::schedule::executor::apply_system_buffers"]
 	}
 	
 	subgraph "clusternode_Set(3)" {
 		"label"="PostStartupFlush";
+		"tooltip"="PostStartupFlush";
 		"bgcolor"="#6f90ad";
+		"color"="black";
 		"set_marker_node_Set(3)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(2)" ["label"="apply_system_buffers"]
+		"node_System(2)" ["label"="apply_system_buffers", "tooltip"="bevy_ecs::schedule::executor::apply_system_buffers"]
 	}
 	
 	subgraph "clusternode_Set(4)" {
 		"label"="PreStartup";
+		"tooltip"="PreStartup";
 		"bgcolor"="#6f90ad";
+		"color"="black";
 		"set_marker_node_Set(4)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(9)" ["label"="gilrs_event_startup_system"]
+		"node_System(9)" ["label"="gilrs_event_startup_system", "tooltip"="bevy_gilrs::gilrs_system::gilrs_event_startup_system"]
 	}
 	
 	subgraph "clusternode_Set(5)" {
 		"label"="Startup";
+		"tooltip"="Startup";
 		"bgcolor"="#6f90ad";
+		"color"="black";
 		"set_marker_node_Set(5)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(5)" ["label"="log_system_info"]
+		"node_System(5)" ["label"="log_system_info", "tooltip"="bevy_diagnostic::system_information_diagnostics_plugin::internal::log_system_info"]
 	}
 	
 	subgraph "clusternode_Set(6)" {
 		"label"="PostStartup";
+		"tooltip"="PostStartup";
 		"bgcolor"="#6f90ad";
+		"color"="black";
 		"set_marker_node_Set(6)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		subgraph "clusternode_Set(7)" {
 			"label"="TransformPropagate";
+			"tooltip"="TransformPropagate";
 			"bgcolor"="#6f90ad";
+			"color"="black";
 			"set_marker_node_Set(7)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(3)" ["label"="sync_simple_transforms"]
-			"node_System(4)" ["label"="propagate_transforms"]
+			"node_System(3)" ["label"="sync_simple_transforms", "tooltip"="bevy_transform::systems::sync_simple_transforms"]
+			"node_System(4)" ["label"="propagate_transforms", "tooltip"="bevy_transform::systems::propagate_transforms"]
 		}
 		
 		subgraph "clusternode_Set(11)" {
 			"label"="CameraUpdateSystem";
+			"tooltip"="CameraUpdateSystem";
 			"bgcolor"="#6f90ad";
+			"color"="black";
 			"set_marker_node_Set(11)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(6)" ["label"="camera_system<Projection>"]
-			"node_System(7)" ["label"="camera_system<OrthographicProjection>"]
-			"node_System(8)" ["label"="camera_system<PerspectiveProjection>"]
+			"node_System(6)" ["label"="camera_system<Projection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::Projection>"]
+			"node_System(7)" ["label"="camera_system<OrthographicProjection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::OrthographicProjection>"]
+			"node_System(8)" ["label"="camera_system<PerspectiveProjection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::PerspectiveProjection>"]
 		}
 		
 	}
 	
-	"set_marker_node_Set(4)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="clusternode_Set(4)"]
-	"set_marker_node_Set(1)" -> "set_marker_node_Set(5)" ["lhead"="clusternode_Set(5)", "ltail"="clusternode_Set(1)"]
-	"set_marker_node_Set(5)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(5)"]
-	"set_marker_node_Set(2)" -> "set_marker_node_Set(6)" ["lhead"="clusternode_Set(6)", "ltail"="clusternode_Set(2)"]
-	"set_marker_node_Set(6)" -> "set_marker_node_Set(3)" ["lhead"="clusternode_Set(3)", "ltail"="clusternode_Set(6)"]
+	"set_marker_node_Set(4)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="clusternode_Set(4)", "tooltip"="PreStartup → PreStartupFlush", "color"="#a6f2d4"]
+	"set_marker_node_Set(1)" -> "set_marker_node_Set(5)" ["lhead"="clusternode_Set(5)", "ltail"="clusternode_Set(1)", "tooltip"="PreStartupFlush → Startup", "color"="#c4cc1d"]
+	"set_marker_node_Set(5)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(5)", "tooltip"="Startup → StartupFlush", "color"="#251dcc"]
+	"set_marker_node_Set(2)" -> "set_marker_node_Set(6)" ["lhead"="clusternode_Set(6)", "ltail"="clusternode_Set(2)", "tooltip"="StartupFlush → PostStartup", "color"="#cd1d91"]
+	"set_marker_node_Set(6)" -> "set_marker_node_Set(3)" ["lhead"="clusternode_Set(3)", "ltail"="clusternode_Set(6)", "tooltip"="PostStartup → PostStartupFlush", "color"="#1dcd59"]
 }
