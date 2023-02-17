@@ -3,7 +3,7 @@ pub mod settings;
 use bevy_utils::{HashMap, HashSet};
 pub use settings::Settings;
 
-use std::{any::TypeId, borrow::Cow, collections::VecDeque, fmt::Write};
+use std::{any::TypeId, borrow::Cow, collections::VecDeque, fmt::Write, sync::atomic::AtomicUsize};
 
 use crate::dot::DotGraph;
 use bevy_ecs::{
@@ -135,13 +135,13 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
             ("fontname", &settings.style.fontname),
         ],
     )
+    .edge_attributes(&[("penwidth", &format!("{}", settings.style.penwidth_edge))])
     .node_attributes(&[
         ("shape", "box"),
         ("style", "filled"),
         ("fillcolor", &settings.style.color_system),
         ("color", &settings.style.color_system_border),
-    ])
-    .edge_attributes(&[("color", &settings.style.color_edge)]);
+    ]);
 
     let context = ScheduleGraphContext {
         settings,
@@ -157,6 +157,8 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
         sets_in_multiple_sets,
         collapsed_sets,
         collapsed_set_children,
+
+        color_edge_idx: AtomicUsize::new(0),
     };
 
     context.add_sets(&mut dot);
@@ -191,6 +193,8 @@ struct ScheduleGraphContext<'a> {
     collapsed_sets: HashSet<NodeId>,
     // map from child to collapsed set
     collapsed_set_children: HashMap<NodeId, NodeId>,
+
+    color_edge_idx: AtomicUsize,
 }
 
 impl ScheduleGraphContext<'_> {
@@ -241,6 +245,7 @@ impl ScheduleGraphContext<'_> {
                 continue;
             }
 
+            let color_edge = self.next_edge_color();
             dot.add_edge(
                 &self.node_ref(from),
                 &self.node_ref(to),
@@ -248,6 +253,7 @@ impl ScheduleGraphContext<'_> {
                     ("lhead", &self.lref(to)),
                     ("ltail", &self.lref(from)),
                     ("tooltip", &self.edge_tooltip(from, to)),
+                    ("color", color_edge),
                 ],
             );
         }
@@ -437,6 +443,17 @@ impl ScheduleGraphContext<'_> {
 
     fn edge_tooltip_undirected(&self, a: NodeId, b: NodeId) -> String {
         format!("{} — {}", self.name(a), self.name(b))
+    }
+
+    fn next_edge_color(&self) -> &str {
+        use std::sync::atomic::Ordering;
+        let (Ok(idx) | Err(idx)) =
+            self.color_edge_idx
+                .fetch_update(Ordering::SeqCst, Ordering::SeqCst, |a| {
+                    Some((a + 1) % self.settings.style.color_edge.len())
+                });
+
+        &self.settings.style.color_edge[idx]
     }
 }
 

@@ -50,11 +50,13 @@ pub struct Style {
     pub color_system_border: String,
     pub color_set: String,
     pub color_set_border: String,
-    pub color_edge: String,
+    pub color_edge: Vec<String>,
     pub multiple_set_edge_color: String,
 
     pub ambiguity_color: String,
     pub ambiguity_bgcolor: String,
+
+    pub penwidth_edge: f32,
 }
 impl Style {
     pub fn light() -> Style {
@@ -67,10 +69,24 @@ impl Style {
             color_system_border: "black".into(),
             color_set: "white".into(),
             color_set_border: "black".into(),
-            color_edge: "black".into(),
+            color_edge: vec![
+                "#c4cc1d".into(),
+                "#251dcc".into(),
+                "#cd1d91".into(),
+                "#1dcd59".into(),
+                "#1dc4cc".into(),
+                "#cc251d".into(),
+                "#ccd60d".into(),
+                "#29e000".into(),
+                "#58cd0c".into(),
+                "#810ccd".into(),
+                "#cf410c".into(),
+                "#0c9acf".into(),
+            ],
             multiple_set_edge_color: "blue".into(),
             ambiguity_color: "#c93526".into(),
             ambiguity_bgcolor: "#d3d3d3".into(),
+            penwidth_edge: 2.0,
         }
     }
 
@@ -84,10 +100,25 @@ impl Style {
             color_system_border: "#eff1f3".into(),
             color_set: "#99aab5".into(),
             color_set_border: "black".into(),
-            color_edge: "white".into(),
+            color_edge: vec![
+                "#a6f2d4".into(),
+                "#c4cc1d".into(),
+                "#251dcc".into(),
+                "#cd1d91".into(),
+                "#1dcd59".into(),
+                "#1dc4cc".into(),
+                "#cc251d".into(),
+                "#ccd60d".into(),
+                "#29e000".into(),
+                "#58cd0c".into(),
+                "#810ccd".into(),
+                "#cf410c".into(),
+                "#0c9acf".into(),
+            ],
             ambiguity_color: "#c93526".into(),
             ambiguity_bgcolor: "#c5daeb".into(),
             multiple_set_edge_color: "blue".into(),
+            penwidth_edge: 2.0,
         }
     }
 
@@ -101,10 +132,25 @@ impl Style {
             color_system_border: "#eff1f3".into(),
             color_set: "#6f90ad".into(),
             color_set_border: "black".into(),
-            color_edge: "white".into(),
+            color_edge: vec![
+                "#a6f2d4".into(),
+                "#c4cc1d".into(),
+                "#251dcc".into(),
+                "#cd1d91".into(),
+                "#1dcd59".into(),
+                "#1dc4cc".into(),
+                "#cc251d".into(),
+                "#ccd60d".into(),
+                "#29e000".into(),
+                "#58cd0c".into(),
+                "#810ccd".into(),
+                "#cf410c".into(),
+                "#0c9acf".into(),
+            ],
             ambiguity_color: "#c93526".into(),
             ambiguity_bgcolor: "#c6e6ff".into(),
             multiple_set_edge_color: "blue".into(),
+            penwidth_edge: 2.0,
         }
     }
 }
