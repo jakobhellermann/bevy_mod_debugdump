@@ -1,34 +1,51 @@
-use bevy::prelude::{IntoSystemConfig, SystemSet, World};
-use bevy_app::{App, CoreSchedule};
-use bevy_ecs::schedule::{NodeId, Schedule, ScheduleLabel, Schedules};
+#![allow(unused)]
+use std::path::PathBuf;
 
-fn test_system() {}
+use bevy::{prelude::*, render::RenderApp, utils::HashSet};
+use bevy_ecs::schedule::{NodeId, ScheduleLabel};
+use bevy_mod_debugdump::schedule_graph::Settings;
+
+fn test_system_1() {}
 fn test_system_2() {}
+fn test_system_3() {}
 
 #[derive(SystemSet, PartialEq, Eq, Clone, Hash, Debug)]
-struct TestSet;
+enum TestSet {
+    A,
+    B,
+    C,
+}
 
-fn main() {
+fn main() -> Result<(), std::io::Error> {
     let mut app = App::new();
-    app.add_system(test_system.in_set(TestSet));
-    app.add_system(test_system_2.after(test_system));
-    // app.add_plugins(
-    // bevy_app::PluginGroup::build(bevy::DefaultPlugins).disable::<bevy::log::LogPlugin>(),
-    // );
 
-    let mut schedules = app.world.resource_mut::<Schedules>();
+    // app.configure_set(TestSet::A.in_base_set(CoreSet::Update))
+    // .add_systems((test_system_1, test_system_2).chain().in_set(TestSet::A));
+    // app.configure_sets((TestSet::A, TestSet::B).chain().in_set(TestSet::C));
+    app.add_plugins(DefaultPlugins.build().disable::<bevy::log::LogPlugin>());
 
-    let schedule_label = CoreSchedule::Main;
-    let schedule = schedules.get_mut(&schedule_label).unwrap();
+    app.world
+        .resource_scope::<Schedules, _>(|world, mut schedules| {
+            let schedule_label = CoreSchedule::Main;
+            let schedule = schedules.get_mut(&schedule_label).unwrap();
 
-    let mut world = World::default();
-    schedule.graph_mut().initialize(&mut world);
-    schedule
-        .graph_mut()
-        .build_schedule(world.components())
-        .unwrap();
+            schedule.graph_mut().initialize(world);
+            schedule
+                .graph_mut()
+                .build_schedule(world.components())
+                .unwrap();
 
-    print_schedule(schedule, &schedule_label);
+            let settings = Settings {
+                collapse_single_system_sets: true,
+                ..Default::default()
+            };
+            let dot =
+                bevy_mod_debugdump::schedule_graph::schedule_graph_dot(schedule, world, &settings);
+
+            println!("{dot}");
+        });
+
+    Ok(())
 }
 
 fn print_schedule(schedule: &Schedule, schedule_label: &dyn ScheduleLabel) {

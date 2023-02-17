@@ -1,5 +1,5 @@
 [package]
-name = "bevy_mod_debugdump_stageless"
+name = "bevy_mod_debugdump"
 version = "0.1.0"
 edition = "2021"
 

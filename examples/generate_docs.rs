@@ -1,7 +1,7 @@
 use std::path::PathBuf;
 
 use bevy::{prelude::*, render::RenderApp, utils::HashSet};
-use bevy_mod_debugdump_stageless::{settings::Style, Settings};
+use bevy_mod_debugdump::schedule_graph::{settings::Style, Settings};
 
 fn main() -> Result<(), std::io::Error> {
     let docs_path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("docs");
@@ -30,13 +30,16 @@ fn main() -> Result<(), std::io::Error> {
                 ..Settings::default()
             };
             for (label, schedule) in schedules.iter() {
-                let dot_light = bevy_mod_debugdump_stageless::schedule_to_dot(
+                let dot_light = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
                     schedule,
                     &world,
                     &settings_light,
                 );
-                let dot_dark =
-                    bevy_mod_debugdump_stageless::schedule_to_dot(schedule, &world, &settings_dark);
+                let dot_dark = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
+                    schedule,
+                    &world,
+                    &settings_dark,
+                );
 
                 let filename = format!("schedule_{label:?}.dot");
                 std::fs::write(docs_path.join("light").join(&filename), dot_light)?;
@@ -63,12 +66,12 @@ fn main() -> Result<(), std::io::Error> {
                 style: style_dark.clone(),
                 ..Settings::default()
             };
-            let dot_light = bevy_mod_debugdump_stageless::schedule_to_dot(
+            let dot_light = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
                 main,
                 &world,
                 &main_filtered_settings_light,
             );
-            let dot_dark = bevy_mod_debugdump_stageless::schedule_to_dot(
+            let dot_dark = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
                 main,
                 &world,
                 &main_filtered_settings_dark,
@@ -107,12 +110,12 @@ fn main() -> Result<(), std::io::Error> {
                     ..Default::default()
                 };
 
-                let dot_light = bevy_mod_debugdump_stageless::schedule_to_dot(
+                let dot_light = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
                     main,
                     &world,
                     &by_crate_settings_light,
                 );
-                let dot_dark = bevy_mod_debugdump_stageless::schedule_to_dot(
+                let dot_dark = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
                     main,
                     &world,
                     &by_crate_settings_dark,
@@ -135,7 +138,6 @@ fn main() -> Result<(), std::io::Error> {
                 // for access info
                 // schedule.graph_mut().initialize(world);
                 // for `conflicting_systems`
-
                 schedule
                     .graph_mut()
                     .build_schedule(world.components())
@@ -150,13 +152,16 @@ fn main() -> Result<(), std::io::Error> {
                     ..Default::default()
                 };
 
-                let dot_light = bevy_mod_debugdump_stageless::schedule_to_dot(
+                let dot_light = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
                     schedule,
                     &world,
                     &settings_light,
                 );
-                let dot_dark =
-                    bevy_mod_debugdump_stageless::schedule_to_dot(schedule, &world, &settings_dark);
+                let dot_dark = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
+                    schedule,
+                    &world,
+                    &settings_dark,
+                );
 
                 let filename = format!("render_schedule_{label:?}.dot");
                 std::fs::write(docs_path.join("light").join(&filename), dot_light)?;

@@ -1,7 +1,7 @@
 use std::path::PathBuf;
 
 use bevy::prelude::*;
-use bevy_mod_debugdump_stageless::{settings::EdgeStyle, Settings};
+use bevy_mod_debugdump::schedule_graph::{settings::EdgeStyle, Settings};
 
 fn main() -> Result<(), std::io::Error> {
     let compare_path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("compare");
@@ -32,8 +32,9 @@ fn main() -> Result<(), std::io::Error> {
             ] {
                 let mut settings = Settings::default();
                 settings.style.edge_style = edge_style;
-                let dot =
-                    bevy_mod_debugdump_stageless::schedule_to_dot(schedule, &world, &settings);
+                let dot = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
+                    schedule, &world, &settings,
+                );
 
                 std::fs::write(
                     compare_path.join(format!("schedule_{}.dot", edge_style.as_dot())),
