@@ -350,7 +350,7 @@ impl ScheduleGraphContext<'_> {
                 ("label", &name),
                 ("tooltip", &name),
                 ("bgcolor", &self.settings.style.color_set),
-                // ("color", &settings.style.color_set_border),
+                ("color", &self.settings.style.color_set_border),
             ],
         );
 
