@@ -7,10 +7,13 @@ fn main() -> Result<(), std::io::Error> {
     let docs_path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("docs");
     let schedule_path = docs_path.join("schedule");
     let schedule_path_by_crate = schedule_path.join("by-crate");
+    let render_path = docs_path.join("render");
     std::fs::create_dir_all(schedule_path.join("light"))?;
     std::fs::create_dir_all(schedule_path.join("dark"))?;
     std::fs::create_dir_all(&schedule_path_by_crate.join("light"))?;
     std::fs::create_dir_all(&schedule_path_by_crate.join("dark"))?;
+    std::fs::create_dir_all(render_path.join("light"))?;
+    std::fs::create_dir_all(render_path.join("dark"))?;
 
     let mut app = App::new();
     app.add_plugins(DefaultPlugins);
@@ -176,6 +179,18 @@ fn main() -> Result<(), std::io::Error> {
             }
             Ok::<(), std::io::Error>(())
         })?;
+
+    let settings_render_light = bevy_mod_debugdump::render_graph::Settings {
+        style: bevy_mod_debugdump::render_graph::settings::Style::light(),
+    };
+    let settings_render_dark = bevy_mod_debugdump::render_graph::Settings {
+        style: bevy_mod_debugdump::render_graph::settings::Style::dark_github(),
+    };
+    let dot_light = bevy_mod_debugdump::render_graph_dot(&app, &settings_render_light);
+    let dot_dark = bevy_mod_debugdump::render_graph_dot(&app, &settings_render_dark);
+    let filename = "render_graph.dot";
+    std::fs::write(render_path.join("light").join(filename), dot_light)?;
+    std::fs::write(render_path.join("dark").join(filename), dot_dark)?;
 
     Ok(())
 }

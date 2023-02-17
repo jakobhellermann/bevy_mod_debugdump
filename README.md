@@ -3,3 +3,5 @@
 [Schedule Graphs](./docs/schedule/README.md)
 
 [Per-Crate Main Schedule](./docs/schedule/by-crate/README.md)
+
+[Render graph](./docs/render/README.md)

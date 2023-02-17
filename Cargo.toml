@@ -3,12 +3,21 @@ name = "bevy_mod_debugdump"
 version = "0.1.0"
 edition = "2021"
 
+[features]
+default = ["render_graph"]
+render_graph = ["bevy_render"]
+
 [dependencies]
 bevy_ecs = { path = "../bevy/crates/bevy_ecs" }
 bevy_app = { path = "../bevy/crates/bevy_app" }
 bevy_utils = { path = "../bevy/crates/bevy_utils" }
+bevy_render = { path = "../bevy/crates/bevy_render", optional = true }
 pretty-type-name = "1.0.0"
 petgraph = "0.6.2"
 
 [dev-dependencies]
 bevy = { path = "../bevy" }
+
+[[example]]
+name = "print_render_graph"
+required-features = ["render_graph"]
