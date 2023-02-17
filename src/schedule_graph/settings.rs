@@ -184,6 +184,23 @@ pub struct Settings {
 }
 
 impl Settings {
+    pub fn filter_in_crate(mut self, crate_: &str) -> Self {
+        let crate_ = crate_.to_owned();
+        self.include_system = Some(Box::new(move |system| {
+            let name = system.name();
+            name.starts_with(&crate_)
+        }));
+        self
+    }
+    pub fn filter_in_crates(mut self, crates: &[&str]) -> Self {
+        let crates: Vec<_> = crates.iter().map(|&s| s.to_owned()).collect();
+        self.include_system = Some(Box::new(move |system| {
+            let name = system.name();
+            crates.iter().any(|crate_| name.starts_with(crate_))
+        }));
+        self
+    }
+
     pub fn without_single_ambiguities_on(mut self, type_ids: &[TypeId]) -> Self {
         let type_ids = type_ids.to_vec();
         self.include_ambiguity = Some(Box::new(move |_, _, conflicts, world| {

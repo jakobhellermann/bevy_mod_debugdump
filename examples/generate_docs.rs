@@ -93,26 +93,16 @@ fn main() -> Result<(), std::io::Error> {
                 .collect();
 
             for bevy_crate in bevy_crates {
-                let bevy_crate_clone = bevy_crate.clone();
                 let by_crate_settings_light = Settings {
-                    include_system: Some(Box::new(move |system| {
-                        let bevy_crate = bevy_crate_clone.clone();
-                        let name = system.name();
-                        name.starts_with(&bevy_crate)
-                    })),
                     style: style_light.clone(),
                     ..Default::default()
-                };
-                let bevy_crate_clone = bevy_crate.clone();
+                }
+                .filter_in_crate(&bevy_crate);
                 let by_crate_settings_dark = Settings {
-                    include_system: Some(Box::new(move |system| {
-                        let bevy_crate = bevy_crate_clone.clone();
-                        let name = system.name();
-                        name.starts_with(&bevy_crate)
-                    })),
                     style: style_dark.clone(),
                     ..Default::default()
-                };
+                }
+                .filter_in_crate(&bevy_crate);
 
                 let dot_light = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
                     main,
