@@ -3,7 +3,7 @@ pub mod settings;
 use bevy_utils::{HashMap, HashSet};
 pub use settings::Settings;
 
-use std::{any::TypeId, collections::VecDeque, fmt::Write};
+use std::{any::TypeId, borrow::Cow, collections::VecDeque, fmt::Write};
 
 use crate::dot::DotGraph;
 use bevy_ecs::{
@@ -125,7 +125,7 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
     }
 
     let mut dot = DotGraph::new(
-        "schedule",
+        "",
         "digraph",
         &[
             ("compound", "true"), // enable ltail/lhead
@@ -215,8 +215,11 @@ impl ScheduleGraphContext<'_> {
     fn add_freestanding_systems(&self, dot: &mut DotGraph) {
         for &(system_id, system) in self.systems_freestanding.iter() {
             assert!(self.included_systems_sets.contains(&system_id));
-            let name = system_name(system, self.settings);
-            dot.add_node(&node_index_name(system_id), &[("label", &name)]);
+            let name = self.system_name(system);
+            dot.add_node(
+                &node_index_name(system_id),
+                &[("label", &name), ("tooltip", &system.name())],
+            );
         }
 
         for &(system_id, system) in self
@@ -241,7 +244,11 @@ impl ScheduleGraphContext<'_> {
             dot.add_edge(
                 &self.node_ref(from),
                 &self.node_ref(to),
-                &[("lhead", &self.lref(to)), ("ltail", &self.lref(from))],
+                &[
+                    ("lhead", &self.lref(to)),
+                    ("ltail", &self.lref(from)),
+                    ("tooltip", &self.edge_tooltip(from, to)),
+                ],
             );
         }
     }
@@ -283,8 +290,6 @@ impl ScheduleGraphContext<'_> {
                 let trs = component_names.collect::<String>();
                 format!(r#"<<table border="0" cellborder="0">{trs}</table>>"#)
             };
-            let name_a = system_name(self.graph.system_at(system_a), self.settings);
-            let name_b = system_name(self.graph.system_at(system_b), self.settings);
 
             dot.add_edge(
                 &self.node_ref(system_a),
@@ -295,7 +300,10 @@ impl ScheduleGraphContext<'_> {
                     ("color", &self.settings.style.ambiguity_color),
                     ("fontcolor", &self.settings.style.ambiguity_color),
                     ("label", &label),
-                    ("labeltooltip", &format!("{name_a} -- {name_b}")),
+                    (
+                        "labeltooltip",
+                        &self.edge_tooltip_undirected(system_a, system_b),
+                    ),
                 ],
             );
         }
@@ -327,7 +335,10 @@ impl ScheduleGraphContext<'_> {
         let name = format!("{set:?}");
 
         if self.collapsed_sets.contains(&set_id) {
-            dot.add_node(&node_index_name(set_id), &[("label", &name)]);
+            dot.add_node(
+                &node_index_name(set_id),
+                &[("label", &name), ("tooltip", &name)],
+            );
 
             return;
         }
@@ -337,6 +348,7 @@ impl ScheduleGraphContext<'_> {
             &system_set_cluster_name,
             &[
                 ("label", &name),
+                ("tooltip", &name),
                 ("bgcolor", &self.settings.style.color_set),
                 // ("color", &settings.style.color_set_border),
             ],
@@ -368,8 +380,11 @@ impl ScheduleGraphContext<'_> {
             .map(|systems| systems.as_slice())
             .unwrap_or(&[]);
         for &(system_id, system) in systems.iter() {
-            let name = system_name(system, self.settings);
-            system_set_graph.add_node(&self.node_ref(system_id), &[("label", name.as_str())]);
+            let name = self.system_name(system);
+            system_set_graph.add_node(
+                &self.node_ref(system_id),
+                &[("label", &name), ("tooltip", &system.name())],
+            );
         }
 
         for &(system_id, system) in self
@@ -391,13 +406,14 @@ impl ScheduleGraphContext<'_> {
         system: &(dyn System<In = (), Out = ()>),
     ) {
         assert!(self.included_systems_sets.contains(&system_id));
-        let mut name = system_name(system, self.settings);
+        let mut name = self.system_name(system);
+        let name = name.to_mut();
         name.push_str("\nIn multiple sets");
 
         for parent in hierarchy_parents(system_id, self.graph) {
             assert!(self.included_systems_sets.contains(&parent));
             let parent_set = self.graph.set_at(parent);
-            let _ = write!(&mut name, ", {parent_set:?}");
+            let _ = write!(name, ", {parent_set:?}");
 
             dot.add_edge(
                 &self.node_ref(system_id),
@@ -409,7 +425,18 @@ impl ScheduleGraphContext<'_> {
                 ],
             );
         }
-        dot.add_node(&self.node_ref(system_id), &[("label", &name)]);
+        dot.add_node(
+            &self.node_ref(system_id),
+            &[("label", &name), ("tooltip", &system.name())],
+        );
+    }
+
+    fn edge_tooltip(&self, a: NodeId, b: NodeId) -> String {
+        format!("{} → {}", self.name(a), self.name(b))
+    }
+
+    fn edge_tooltip_undirected(&self, a: NodeId, b: NodeId) -> String {
+        format!("{} — {}", self.name(a), self.name(b))
     }
 }
 
@@ -490,6 +517,32 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
 }
 
 impl ScheduleGraphContext<'_> {
+    fn system_name(&self, system: &dyn System<In = (), Out = ()>) -> Cow<str> {
+        let name = system.name();
+        if self.settings.prettify_system_names {
+            pretty_type_name::pretty_type_name_str(&name).into()
+        } else {
+            name
+        }
+    }
+
+    fn full_name(&self, node_id: NodeId) -> Cow<str> {
+        match node_id {
+            NodeId::System(_) => self.graph.system_at(node_id).name(),
+            NodeId::Set(_) => format!("{:?}", self.graph.set_at(node_id)).into(),
+        }
+    }
+
+    fn name(&self, node_id: NodeId) -> Cow<str> {
+        let name = self.full_name(node_id);
+
+        if self.settings.prettify_system_names {
+            pretty_type_name::pretty_type_name_str(&name).into()
+        } else {
+            name
+        }
+    }
+
     fn is_non_system_set(&self, node_id: NodeId) -> bool {
         node_id.is_set() && self.graph.set_at(node_id).system_type().is_none()
     }
@@ -544,15 +597,6 @@ impl ScheduleGraphContext<'_> {
 fn set_cluster_name(id: NodeId) -> String {
     assert!(id.is_set());
     format!("cluster{}", node_index_name(id))
-}
-
-fn system_name(system: &dyn System<In = (), Out = ()>, settings: &Settings) -> String {
-    let name = system.name();
-    if settings.prettify_system_names {
-        pretty_type_name::pretty_type_name_str(&name)
-    } else {
-        name.into()
-    }
 }
 
 fn node_index_name(node_id: NodeId) -> String {
