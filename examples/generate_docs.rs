@@ -5,11 +5,12 @@ use bevy_mod_debugdump::schedule_graph::{settings::Style, Settings};
 
 fn main() -> Result<(), std::io::Error> {
     let docs_path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("docs");
-    let docs_path_by_crate = docs_path.join("by-crate");
-    std::fs::create_dir_all(docs_path.join("light"))?;
-    std::fs::create_dir_all(docs_path.join("dark"))?;
-    std::fs::create_dir_all(&docs_path_by_crate.join("light"))?;
-    std::fs::create_dir_all(&docs_path_by_crate.join("dark"))?;
+    let schedule_path = docs_path.join("schedule");
+    let schedule_path_by_crate = schedule_path.join("by-crate");
+    std::fs::create_dir_all(schedule_path.join("light"))?;
+    std::fs::create_dir_all(schedule_path.join("dark"))?;
+    std::fs::create_dir_all(&schedule_path_by_crate.join("light"))?;
+    std::fs::create_dir_all(&schedule_path_by_crate.join("dark"))?;
 
     let mut app = App::new();
     app.add_plugins(DefaultPlugins);
@@ -42,8 +43,8 @@ fn main() -> Result<(), std::io::Error> {
                 );
 
                 let filename = format!("schedule_{label:?}.dot");
-                std::fs::write(docs_path.join("light").join(&filename), dot_light)?;
-                std::fs::write(docs_path.join("dark").join(&filename), dot_dark)?;
+                std::fs::write(schedule_path.join("light").join(&filename), dot_light)?;
+                std::fs::write(schedule_path.join("dark").join(&filename), dot_dark)?;
             }
 
             // filtered main, without mass event/asset systems
@@ -78,8 +79,8 @@ fn main() -> Result<(), std::io::Error> {
             );
 
             let filename = format!("schedule_Main_Filtered.dot");
-            std::fs::write(docs_path.join("light").join(&filename), dot_light)?;
-            std::fs::write(docs_path.join("dark").join(&filename), dot_dark)?;
+            std::fs::write(schedule_path.join("light").join(&filename), dot_light)?;
+            std::fs::write(schedule_path.join("dark").join(&filename), dot_dark)?;
 
             // by crate
             let bevy_crates: HashSet<_> = main
@@ -122,8 +123,14 @@ fn main() -> Result<(), std::io::Error> {
                 );
 
                 let filename = format!("schedule_Main_{}.dot", bevy_crate);
-                std::fs::write(docs_path_by_crate.join("light").join(&filename), dot_light)?;
-                std::fs::write(docs_path_by_crate.join("dark").join(&filename), dot_dark)?;
+                std::fs::write(
+                    schedule_path_by_crate.join("light").join(&filename),
+                    dot_light,
+                )?;
+                std::fs::write(
+                    schedule_path_by_crate.join("dark").join(&filename),
+                    dot_dark,
+                )?;
             }
 
             Ok::<_, std::io::Error>(())
@@ -164,8 +171,8 @@ fn main() -> Result<(), std::io::Error> {
                 );
 
                 let filename = format!("render_schedule_{label:?}.dot");
-                std::fs::write(docs_path.join("light").join(&filename), dot_light)?;
-                std::fs::write(docs_path.join("dark").join(&filename), dot_dark)?;
+                std::fs::write(schedule_path.join("light").join(&filename), dot_light)?;
+                std::fs::write(schedule_path.join("dark").join(&filename), dot_dark)?;
             }
             Ok::<(), std::io::Error>(())
         })?;

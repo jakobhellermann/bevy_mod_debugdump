@@ -12,12 +12,13 @@ function picture() {
     printf '</picture>\n\n'
 }
 
+pushd schedule >/dev/null
 printf "# Main App\n\n" > README.md
 for path in light/schedule*.svg; do
     file=$(basename "$path")
     name=$(echo "$file" | sed 's|schedule_\(.*\).dot.svg|\1|' | tr '_' ' ')
     printf "## $name\n\n" >> README.md
-    picture "$name" docs/{light,dark}/"$file" >> README.md
+    picture "$name" docs/schedule/{light,dark}/"$file" >> README.md
 done
 
 printf "# Render App\n\n" >> README.md
@@ -25,7 +26,7 @@ for path in light/render_schedule*.svg; do
     file=$(basename "$path")
     name=$(echo "$file" | sed 's|render_schedule_\(.*\).dot.svg|\1|' | tr '_' ' ')
     printf "## $name\n\n" >> README.md
-    picture "$name" docs/{light,dark}/"$file" >> README.md
+    picture "$name" docs/schedule/{light,dark}/"$file" >> README.md
 done
 
 
@@ -34,5 +35,6 @@ for path in by-crate/light/schedule*.svg; do
     file=$(basename "$path")
     name=$(echo "$file" | sed 's|schedule_Main_\(.*\).dot.svg|\1|')
     printf "## $name\n\n" >> by-crate/README.md
-    picture "$name" docs/by-crate/{light,dark}/"$file" >> by-crate/README.md
+    picture "$name" docs/schedule/by-crate/{light,dark}/"$file" >> by-crate/README.md
 done
+popd >/dev/null
