@@ -1,7 +1,14 @@
 [package]
 name = "bevy_mod_debugdump"
-version = "0.1.0"
+version = "0.6.0"
+repository = "https://github.com/jakobhellermann/bevy_mod_debugdump"
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+description = "Visualization tools for bevy"
+keywords = ["bevy", "schedule", "visual", "editor", "render", "graph"]
+authors = ["Jakob Hellermann <jakob.hellermann@protonmail.com>"]
 edition = "2021"
+exclude = ["docs/*"]
 
 [features]
 default = ["render_graph"]
