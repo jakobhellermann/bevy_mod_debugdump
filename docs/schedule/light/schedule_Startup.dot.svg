@@ -78,8 +78,8 @@
 <g id="edge2" class="edge">
 <title>set_marker_node_Set(1)&#45;&gt;set_marker_node_Set(5)</title>
 <g id="a_edge2"><a xlink:title="PreStartupFlush → Startup">
-<path fill="none" stroke="#251dcc" stroke-width="2" d="M420,-70C422.39,-70 424.78,-70 427.16,-70"/>
-<polygon fill="#251dcc" stroke="#251dcc" stroke-width="2" points="426.98,-73.5 436.98,-70 426.98,-66.5 426.98,-73.5"/>
+<path fill="none" stroke="#881877" stroke-width="2" d="M420,-70C422.39,-70 424.78,-70 427.16,-70"/>
+<polygon fill="#881877" stroke="#881877" stroke-width="2" points="426.98,-73.5 436.98,-70 426.98,-66.5 426.98,-73.5"/>
 </a>
 </g>
 </g>
@@ -98,8 +98,8 @@
 <g id="edge4" class="edge">
 <title>set_marker_node_Set(2)&#45;&gt;set_marker_node_Set(6)</title>
 <g id="a_edge4"><a xlink:title="StartupFlush → PostStartup">
-<path fill="none" stroke="#1dcd59" stroke-width="2" d="M777,-70C780,-70 783,-70 786,-70"/>
-<polygon fill="#1dcd59" stroke="#1dcd59" stroke-width="2" points="775.98,-73.5 785.98,-70 775.98,-66.5 775.98,-73.5"/>
+<path fill="none" stroke="#aa3a55" stroke-width="2" d="M777,-70C780,-70 783,-70 786,-70"/>
+<polygon fill="#aa3a55" stroke="#aa3a55" stroke-width="2" points="775.98,-73.5 785.98,-70 775.98,-66.5 775.98,-73.5"/>
 </a>
 </g>
 </g>
@@ -127,8 +127,8 @@
 <g id="edge1" class="edge">
 <title>set_marker_node_Set(4)&#45;&gt;set_marker_node_Set(1)</title>
 <g id="a_edge1"><a xlink:title="PreStartup → PreStartupFlush">
-<path fill="none" stroke="#c4cc1d" stroke-width="2" d="M223,-70C225.36,-70 227.73,-70 230.1,-70"/>
-<polygon fill="#c4cc1d" stroke="#c4cc1d" stroke-width="2" points="229.97,-73.5 239.97,-70 229.97,-66.5 229.97,-73.5"/>
+<path fill="none" stroke="#eede00" stroke-width="2" d="M223,-70C225.36,-70 227.73,-70 230.1,-70"/>
+<polygon fill="#eede00" stroke="#eede00" stroke-width="2" points="229.97,-73.5 239.97,-70 229.97,-66.5 229.97,-73.5"/>
 </a>
 </g>
 </g>
@@ -145,8 +145,8 @@
 <g id="edge3" class="edge">
 <title>set_marker_node_Set(5)&#45;&gt;set_marker_node_Set(2)</title>
 <g id="a_edge3"><a xlink:title="Startup → StartupFlush">
-<path fill="none" stroke="#cd1d91" stroke-width="2" d="M580,-70C582.46,-70 584.94,-70 587.44,-70"/>
-<polygon fill="#cd1d91" stroke="#cd1d91" stroke-width="2" points="586.97,-73.5 596.97,-70 586.97,-66.5 586.97,-73.5"/>
+<path fill="none" stroke="#00b0cc" stroke-width="2" d="M580,-70C582.46,-70 584.94,-70 587.44,-70"/>
+<polygon fill="#00b0cc" stroke="#00b0cc" stroke-width="2" points="586.97,-73.5 596.97,-70 586.97,-66.5 586.97,-73.5"/>
 </a>
 </g>
 </g>
@@ -163,8 +163,8 @@
 <g id="edge5" class="edge">
 <title>set_marker_node_Set(6)&#45;&gt;set_marker_node_Set(3)</title>
 <g id="a_edge5"><a xlink:title="PostStartup → PostStartupFlush">
-<path fill="none" stroke="#1dc4cc" stroke-width="2" d="M1115,-70C1118,-70 1121,-70 1124,-70"/>
-<polygon fill="#1dc4cc" stroke="#1dc4cc" stroke-width="2" points="1113.98,-73.5 1123.98,-70 1113.98,-66.5 1113.98,-73.5"/>
+<path fill="none" stroke="#44d488" stroke-width="2" d="M1115,-70C1118,-70 1121,-70 1124,-70"/>
+<polygon fill="#44d488" stroke="#44d488" stroke-width="2" points="1113.98,-73.5 1123.98,-70 1113.98,-66.5 1113.98,-73.5"/>
 </a>
 </g>
 </g>

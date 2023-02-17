@@ -54,8 +54,8 @@
 <g id="edge1" class="edge">
 <title>set_marker_node_Set(20)&#45;&gt;node_System(21)</title>
 <g id="a_edge1"><a xlink:title="ExtractSprites → extract_text2d_sprite">
-<path fill="none" stroke="#c4cc1d" stroke-width="2" d="M266,-70C311.49,-70 373.08,-70 423.63,-70"/>
-<polygon fill="#c4cc1d" stroke="#c4cc1d" stroke-width="2" points="423.52,-73.5 433.52,-70 423.52,-66.5 423.52,-73.5"/>
+<path fill="none" stroke="#eede00" stroke-width="2" d="M266,-70C311.49,-70 373.08,-70 423.63,-70"/>
+<polygon fill="#eede00" stroke="#eede00" stroke-width="2" points="423.52,-73.5 433.52,-70 423.52,-66.5 423.52,-73.5"/>
 </a>
 </g>
 </g>
@@ -82,8 +82,8 @@
 <g id="edge2" class="edge">
 <title>set_marker_node_Set(27)&#45;&gt;node_System(26)</title>
 <g id="a_edge2"><a xlink:title="ExtractNode → extract_text_uinodes">
-<path fill="none" stroke="#251dcc" stroke-width="2" d="M270,-171C315.42,-171 375.52,-171 424.82,-171"/>
-<polygon fill="#251dcc" stroke="#251dcc" stroke-width="2" points="424.72,-174.5 434.72,-171 424.72,-167.5 424.72,-174.5"/>
+<path fill="none" stroke="#881877" stroke-width="2" d="M270,-171C315.42,-171 375.52,-171 424.82,-171"/>
+<polygon fill="#881877" stroke="#881877" stroke-width="2" points="424.72,-174.5 434.72,-171 424.72,-167.5 424.72,-174.5"/>
 </a>
 </g>
 </g>

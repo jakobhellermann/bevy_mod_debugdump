@@ -134,8 +134,8 @@
 <g id="edge7" class="edge">
 <title>set_marker_node_Set(0)&#45;&gt;set_marker_node_Set(4)</title>
 <g id="a_edge7"><a xlink:title="Update → UpdateFlush">
-<path fill="none" stroke="#cc251d" stroke-width="2" d="M756,-45C758.35,-45 760.77,-45 763.22,-45"/>
-<polygon fill="#cc251d" stroke="#cc251d" stroke-width="2" points="762.97,-48.5 772.97,-45 762.97,-41.5 762.97,-48.5"/>
+<path fill="none" stroke="#ee9e44" stroke-width="2" d="M756,-45C758.35,-45 760.77,-45 763.22,-45"/>
+<polygon fill="#ee9e44" stroke="#ee9e44" stroke-width="2" points="762.97,-48.5 772.97,-45 762.97,-41.5 762.97,-48.5"/>
 </a>
 </g>
 </g>
@@ -145,8 +145,8 @@
 <g id="edge2" class="edge">
 <title>set_marker_node_Set(2)&#45;&gt;set_marker_node_Set(8)</title>
 <g id="a_edge2"><a xlink:title="FirstFlush → PreUpdate">
-<path fill="none" stroke="#c4cc1d" stroke-width="2" d="M152,-56.27C155.98,-55.6 160.07,-54.91 164.17,-54.22"/>
-<polygon fill="#c4cc1d" stroke="#c4cc1d" stroke-width="2" points="164.74,-57.68 174.02,-52.57 163.58,-50.77 164.74,-57.68"/>
+<path fill="none" stroke="#881877" stroke-width="2" d="M152,-56.27C155.98,-55.6 160.07,-54.91 164.17,-54.22"/>
+<polygon fill="#881877" stroke="#881877" stroke-width="2" points="164.74,-57.68 174.02,-52.57 163.58,-50.77 164.74,-57.68"/>
 </a>
 </g>
 </g>
@@ -156,8 +156,8 @@
 <g id="edge4" class="edge">
 <title>set_marker_node_Set(3)&#45;&gt;set_marker_node_Set(9)</title>
 <g id="a_edge4"><a xlink:title="PreUpdateFlush → StateTransitions">
-<path fill="none" stroke="#cd1d91" stroke-width="2" d="M407,-45C409.39,-45 411.8,-45 414.21,-45"/>
-<polygon fill="#cd1d91" stroke="#cd1d91" stroke-width="2" points="413.98,-48.5 423.98,-45 413.98,-41.5 413.98,-48.5"/>
+<path fill="none" stroke="#aa3a55" stroke-width="2" d="M407,-45C409.39,-45 411.8,-45 414.21,-45"/>
+<polygon fill="#aa3a55" stroke="#aa3a55" stroke-width="2" points="413.98,-48.5 423.98,-45 413.98,-41.5 413.98,-48.5"/>
 </a>
 </g>
 </g>
@@ -166,8 +166,8 @@
 <g id="edge8" class="edge">
 <title>set_marker_node_Set(4)&#45;&gt;set_marker_node_Set(11)</title>
 <g id="a_edge8"><a xlink:title="UpdateFlush → PostUpdate">
-<path fill="none" stroke="#ccd60d" stroke-width="2" d="M877,-45C880,-45 883,-45 886,-45"/>
-<polygon fill="#ccd60d" stroke="#ccd60d" stroke-width="2" points="875.98,-48.5 885.98,-45 875.98,-41.5 875.98,-48.5"/>
+<path fill="none" stroke="#663699" stroke-width="2" d="M877,-45C880,-45 883,-45 886,-45"/>
+<polygon fill="#663699" stroke="#663699" stroke-width="2" points="875.98,-48.5 885.98,-45 875.98,-41.5 875.98,-48.5"/>
 </a>
 </g>
 </g>
@@ -177,8 +177,8 @@
 <g id="edge10" class="edge">
 <title>set_marker_node_Set(5)&#45;&gt;set_marker_node_Set(12)</title>
 <g id="a_edge10"><a xlink:title="PostUpdateFlush → Last">
-<path fill="none" stroke="#58cd0c" stroke-width="2" d="M1228.03,-66C1232.46,-64.84 1236.84,-63.51 1241,-62 1243.86,-60.96 1246.76,-59.74 1249.62,-58.4"/>
-<polygon fill="#58cd0c" stroke="#58cd0c" stroke-width="2" points="1251.05,-61.61 1258.32,-53.9 1247.83,-55.39 1251.05,-61.61"/>
+<path fill="none" stroke="#22c2bb" stroke-width="2" d="M1228.03,-66C1232.46,-64.84 1236.84,-63.51 1241,-62 1243.86,-60.96 1246.76,-59.74 1249.62,-58.4"/>
+<polygon fill="#22c2bb" stroke="#22c2bb" stroke-width="2" points="1251.05,-61.61 1258.32,-53.9 1247.83,-55.39 1251.05,-61.61"/>
 </a>
 </g>
 </g>
@@ -188,8 +188,8 @@
 <g id="edge1" class="edge">
 <title>set_marker_node_Set(7)&#45;&gt;set_marker_node_Set(2)</title>
 <g id="a_edge1"><a xlink:title="First → FirstFlush">
-<path fill="none" stroke="#a6f2d4" stroke-width="2" d="M46,-45.34C52.44,-47.18 59.5,-49.18 66,-51 66.73,-51.2 67.47,-51.41 68.21,-51.62"/>
-<polygon fill="#a6f2d4" stroke="#a6f2d4" stroke-width="2" points="67,-54.91 77.57,-54.2 68.86,-48.17 67,-54.91"/>
+<path fill="none" stroke="#eede00" stroke-width="2" d="M46,-45.34C52.44,-47.18 59.5,-49.18 66,-51 66.73,-51.2 67.47,-51.41 68.21,-51.62"/>
+<polygon fill="#eede00" stroke="#eede00" stroke-width="2" points="67,-54.91 77.57,-54.2 68.86,-48.17 67,-54.91"/>
 </a>
 </g>
 </g>
@@ -198,8 +198,8 @@
 <g id="edge13" class="edge">
 <title>set_marker_node_Set(7)&#45;&gt;set_marker_node_Set(58)</title>
 <g id="a_edge13"><a xlink:title="First → LoadAssets">
-<path fill="none" stroke="#0c9acf" stroke-width="2" d="M46,-33.12C48.46,-32.46 51.05,-31.77 53.71,-31.05"/>
-<polygon fill="#0c9acf" stroke="#0c9acf" stroke-width="2" points="54.32,-34.51 63.08,-28.55 52.51,-27.75 54.32,-34.51"/>
+<path fill="none" stroke="#881877" stroke-width="2" d="M46,-33.12C48.46,-32.46 51.05,-31.77 53.71,-31.05"/>
+<polygon fill="#881877" stroke="#881877" stroke-width="2" points="54.32,-34.51 63.08,-28.55 52.51,-27.75 54.32,-34.51"/>
 </a>
 </g>
 </g>
@@ -207,8 +207,8 @@
 <g id="edge3" class="edge">
 <title>set_marker_node_Set(8)&#45;&gt;set_marker_node_Set(3)</title>
 <g id="a_edge3"><a xlink:title="PreUpdate → PreUpdateFlush">
-<path fill="none" stroke="#251dcc" stroke-width="2" d="M264,-45C266.39,-45 268.82,-45 271.28,-45"/>
-<polygon fill="#251dcc" stroke="#251dcc" stroke-width="2" points="270.98,-48.5 280.98,-45 270.98,-41.5 270.98,-48.5"/>
+<path fill="none" stroke="#00b0cc" stroke-width="2" d="M264,-45C266.39,-45 268.82,-45 271.28,-45"/>
+<polygon fill="#00b0cc" stroke="#00b0cc" stroke-width="2" points="270.98,-48.5 280.98,-45 270.98,-41.5 270.98,-48.5"/>
 </a>
 </g>
 </g>
@@ -217,8 +217,8 @@
 <g id="edge5" class="edge">
 <title>set_marker_node_Set(9)&#45;&gt;set_marker_node_Set(10)</title>
 <g id="a_edge5"><a xlink:title="StateTransitions → FixedUpdate">
-<path fill="none" stroke="#1dcd59" stroke-width="2" d="M551,-45C553.39,-45 555.79,-45 558.19,-45"/>
-<polygon fill="#1dcd59" stroke="#1dcd59" stroke-width="2" points="557.98,-48.5 567.98,-45 557.98,-41.5 557.98,-48.5"/>
+<path fill="none" stroke="#44d488" stroke-width="2" d="M551,-45C553.39,-45 555.79,-45 558.19,-45"/>
+<polygon fill="#44d488" stroke="#44d488" stroke-width="2" points="557.98,-48.5 567.98,-45 557.98,-41.5 557.98,-48.5"/>
 </a>
 </g>
 </g>
@@ -226,8 +226,8 @@
 <g id="edge6" class="edge">
 <title>set_marker_node_Set(10)&#45;&gt;set_marker_node_Set(0)</title>
 <g id="a_edge6"><a xlink:title="FixedUpdate → Update">
-<path fill="none" stroke="#1dc4cc" stroke-width="2" d="M671,-45C673.37,-45 675.75,-45 678.11,-45"/>
-<polygon fill="#1dc4cc" stroke="#1dc4cc" stroke-width="2" points="677.98,-48.5 687.98,-45 677.98,-41.5 677.98,-48.5"/>
+<path fill="none" stroke="#0090cc" stroke-width="2" d="M671,-45C673.37,-45 675.75,-45 678.11,-45"/>
+<polygon fill="#0090cc" stroke="#0090cc" stroke-width="2" points="677.98,-48.5 687.98,-45 677.98,-41.5 677.98,-48.5"/>
 </a>
 </g>
 </g>
@@ -235,8 +235,8 @@
 <g id="edge9" class="edge">
 <title>set_marker_node_Set(11)&#45;&gt;set_marker_node_Set(5)</title>
 <g id="a_edge9"><a xlink:title="PostUpdate → PostUpdateFlush">
-<path fill="none" stroke="#29e000" stroke-width="2" d="M1100,-51C1104.48,-52.89 1105.44,-55.74 1110.43,-59.61"/>
-<polygon fill="#29e000" stroke="#29e000" stroke-width="2" points="1108.47,-62.52 1118.88,-64.49 1111.97,-56.46 1108.47,-62.52"/>
+<path fill="none" stroke="#3363bb" stroke-width="2" d="M1100,-51C1104.48,-52.89 1105.44,-55.74 1110.43,-59.61"/>
+<polygon fill="#3363bb" stroke="#3363bb" stroke-width="2" points="1108.47,-62.52 1118.88,-64.49 1111.97,-56.46 1108.47,-62.52"/>
 </a>
 </g>
 </g>
@@ -245,8 +245,8 @@
 <g id="edge14" class="edge">
 <title>set_marker_node_Set(11)&#45;&gt;set_marker_node_Set(59)</title>
 <g id="a_edge14"><a xlink:title="PostUpdate → AssetEvents">
-<path fill="none" stroke="#a6f2d4" stroke-width="2" d="M1075.24,-37C1088.63,-35.66 1102.32,-34.29 1115.1,-33.01"/>
-<polygon fill="#a6f2d4" stroke="#a6f2d4" stroke-width="2" points="1115.39,-36.5 1124.99,-32.01 1114.69,-29.53 1115.39,-36.5"/>
+<path fill="none" stroke="#00b0cc" stroke-width="2" d="M1075.24,-37C1088.63,-35.66 1102.32,-34.29 1115.1,-33.01"/>
+<polygon fill="#00b0cc" stroke="#00b0cc" stroke-width="2" points="1115.39,-36.5 1124.99,-32.01 1114.69,-29.53 1115.39,-36.5"/>
 </a>
 </g>
 </g>
@@ -273,8 +273,8 @@
 <g id="edge11" class="edge">
 <title>set_marker_node_Set(12)&#45;&gt;set_marker_node_Set(6)</title>
 <g id="a_edge11"><a xlink:title="Last → LastFlush">
-<path fill="none" stroke="#810ccd" stroke-width="2" d="M1305,-39C1307.31,-39 1309.74,-39 1312.23,-39"/>
-<polygon fill="#810ccd" stroke="#810ccd" stroke-width="2" points="1311.98,-42.5 1321.98,-39 1311.98,-35.5 1311.98,-42.5"/>
+<path fill="none" stroke="#99d955" stroke-width="2" d="M1305,-39C1307.31,-39 1309.74,-39 1312.23,-39"/>
+<polygon fill="#99d955" stroke="#99d955" stroke-width="2" points="1311.98,-42.5 1321.98,-39 1311.98,-35.5 1311.98,-42.5"/>
 </a>
 </g>
 </g>
@@ -282,8 +282,8 @@
 <g id="edge12" class="edge">
 <title>set_marker_node_Set(58)&#45;&gt;set_marker_node_Set(8)</title>
 <g id="a_edge12"><a xlink:title="LoadAssets → PreUpdate">
-<path fill="none" stroke="#cf410c" stroke-width="2" d="M157,-28.2C163.62,-29.99 170.43,-31.83 176.99,-33.61"/>
-<polygon fill="#cf410c" stroke="#cf410c" stroke-width="2" points="176.01,-36.97 186.57,-36.21 177.84,-30.22 176.01,-36.97"/>
+<path fill="none" stroke="#eede00" stroke-width="2" d="M157,-28.2C163.62,-29.99 170.43,-31.83 176.99,-33.61"/>
+<polygon fill="#eede00" stroke="#eede00" stroke-width="2" points="176.01,-36.97 186.57,-36.21 177.84,-30.22 176.01,-36.97"/>
 </a>
 </g>
 </g>
@@ -291,8 +291,8 @@
 <g id="edge15" class="edge">
 <title>set_marker_node_Set(59)&#45;&gt;set_marker_node_Set(12)</title>
 <g id="a_edge15"><a xlink:title="AssetEvents → Last">
-<path fill="none" stroke="#c4cc1d" stroke-width="2" d="M1224,-32.37C1232.11,-33.3 1240.4,-34.25 1248.08,-35.12"/>
-<polygon fill="#c4cc1d" stroke="#c4cc1d" stroke-width="2" points="1247.66,-38.6 1258,-36.26 1248.46,-31.64 1247.66,-38.6"/>
+<path fill="none" stroke="#aa3a55" stroke-width="2" d="M1224,-32.37C1232.11,-33.3 1240.4,-34.25 1248.08,-35.12"/>
+<polygon fill="#aa3a55" stroke="#aa3a55" stroke-width="2" points="1247.66,-38.6 1258,-36.26 1248.46,-31.64 1247.66,-38.6"/>
 </a>
 </g>
 </g>

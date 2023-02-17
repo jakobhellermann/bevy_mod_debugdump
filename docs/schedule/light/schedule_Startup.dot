@@ -80,9 +80,9 @@ digraph "" {
 		
 	}
 	
-	"set_marker_node_Set(4)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="clusternode_Set(4)", "tooltip"="PreStartup → PreStartupFlush", "color"="#c4cc1d"]
-	"set_marker_node_Set(1)" -> "set_marker_node_Set(5)" ["lhead"="clusternode_Set(5)", "ltail"="clusternode_Set(1)", "tooltip"="PreStartupFlush → Startup", "color"="#251dcc"]
-	"set_marker_node_Set(5)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(5)", "tooltip"="Startup → StartupFlush", "color"="#cd1d91"]
-	"set_marker_node_Set(2)" -> "set_marker_node_Set(6)" ["lhead"="clusternode_Set(6)", "ltail"="clusternode_Set(2)", "tooltip"="StartupFlush → PostStartup", "color"="#1dcd59"]
-	"set_marker_node_Set(6)" -> "set_marker_node_Set(3)" ["lhead"="clusternode_Set(3)", "ltail"="clusternode_Set(6)", "tooltip"="PostStartup → PostStartupFlush", "color"="#1dc4cc"]
+	"set_marker_node_Set(4)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="clusternode_Set(4)", "tooltip"="PreStartup → PreStartupFlush", "color"="#eede00"]
+	"set_marker_node_Set(1)" -> "set_marker_node_Set(5)" ["lhead"="clusternode_Set(5)", "ltail"="clusternode_Set(1)", "tooltip"="PreStartupFlush → Startup", "color"="#881877"]
+	"set_marker_node_Set(5)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(5)", "tooltip"="Startup → StartupFlush", "color"="#00b0cc"]
+	"set_marker_node_Set(2)" -> "set_marker_node_Set(6)" ["lhead"="clusternode_Set(6)", "ltail"="clusternode_Set(2)", "tooltip"="StartupFlush → PostStartup", "color"="#aa3a55"]
+	"set_marker_node_Set(6)" -> "set_marker_node_Set(3)" ["lhead"="clusternode_Set(3)", "ltail"="clusternode_Set(6)", "tooltip"="PostStartup → PostStartupFlush", "color"="#44d488"]
 }

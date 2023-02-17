@@ -75,6 +75,6 @@ digraph "" {
 	"node_System(32)" ["label"="extract_components<EnvironmentMapLight>", "tooltip"="bevy_render::extract_component::extract_components<bevy_pbr::environment_map::EnvironmentMapLight>"]
 	"node_System(33)" ["label"="extract_resource<AmbientLight>", "tooltip"="bevy_render::extract_resource::extract_resource<bevy_pbr::light::AmbientLight>"]
 	"node_System(34)" ["label"="extract_components<FogSettings>", "tooltip"="bevy_render::extract_component::extract_components<bevy_pbr::fog::FogSettings>"]
-	"set_marker_node_Set(20)" -> "node_System(21)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="ExtractSprites → extract_text2d_sprite", "color"="#a6f2d4"]
-	"set_marker_node_Set(27)" -> "node_System(26)" ["lhead"="", "ltail"="clusternode_Set(27)", "tooltip"="ExtractNode → extract_text_uinodes", "color"="#c4cc1d"]
+	"set_marker_node_Set(20)" -> "node_System(21)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="ExtractSprites → extract_text2d_sprite", "color"="#eede00"]
+	"set_marker_node_Set(27)" -> "node_System(26)" ["lhead"="", "ltail"="clusternode_Set(27)", "tooltip"="ExtractNode → extract_text_uinodes", "color"="#881877"]
 }
