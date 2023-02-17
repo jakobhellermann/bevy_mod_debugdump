@@ -275,6 +275,14 @@ impl ScheduleGraphContext<'_> {
                 continue;
             }
 
+            if let Some(include_ambiguity) = &self.settings.include_ambiguity {
+                let system_a = self.graph.system_at(system_a);
+                let system_b = self.graph.system_at(system_b);
+                if !include_ambiguity(system_a, system_b, &conflicts, self.world) {
+                    continue;
+                }
+            }
+
             let label = if conflicts.is_empty() {
                 "World".to_owned()
             } else {

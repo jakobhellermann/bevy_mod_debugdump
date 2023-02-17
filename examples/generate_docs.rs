@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+use std::{any::TypeId, path::PathBuf};
 
 use bevy::{prelude::*, render::RenderApp, utils::HashSet};
 use bevy_mod_debugdump::schedule_graph::{settings::Style, Settings};
@@ -152,14 +152,17 @@ fn main() -> Result<(), std::io::Error> {
                         .build_schedule(world.components())
                         .unwrap();
 
+                    let ignore_ambiguities = &[TypeId::of::<bevy_render::texture::TextureCache>()];
                     let settings_light = Settings {
                         style: style_light.clone(),
                         ..Default::default()
-                    };
+                    }
+                    .without_single_ambiguities_on(ignore_ambiguities);
                     let settings_dark = Settings {
                         style: style_dark.clone(),
                         ..Default::default()
-                    };
+                    }
+                    .without_single_ambiguities_on(ignore_ambiguities);
 
                     let dot_light = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
                         schedule,

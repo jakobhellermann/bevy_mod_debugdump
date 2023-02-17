@@ -1,4 +1,6 @@
-use bevy_ecs::system::System;
+use std::any::TypeId;
+
+use bevy_ecs::{component::ComponentId, system::System, world::World};
 
 #[derive(Default, Clone, Copy)]
 pub enum RankDir {
@@ -160,6 +162,13 @@ impl Default for Style {
     }
 }
 
+type IncludeAmbiguityFn = dyn Fn(
+    &dyn System<In = (), Out = ()>,
+    &dyn System<In = (), Out = ()>,
+    &[ComponentId],
+    &World,
+) -> bool;
+
 pub struct Settings {
     pub style: Style,
 
@@ -169,8 +178,21 @@ pub struct Settings {
 
     pub ambiguity_enable: bool,
     pub ambiguity_enable_on_world: bool,
+    pub include_ambiguity: Option<Box<IncludeAmbiguityFn>>,
 
     pub prettify_system_names: bool,
+}
+
+impl Settings {
+    pub fn without_single_ambiguities_on(mut self, type_ids: &[TypeId]) -> Self {
+        let type_ids = type_ids.to_vec();
+        self.include_ambiguity = Some(Box::new(move |_, _, conflicts, world| {
+            let &[conflict] = conflicts else { return true };
+            let Some(type_id) = world.components().get_info(conflict).and_then(|info| info.type_id()) else { return true };
+            !type_ids.contains(&type_id)
+        }));
+        self
+    }
 }
 
 impl Default for Settings {
@@ -183,6 +205,7 @@ impl Default for Settings {
 
             ambiguity_enable: true,
             ambiguity_enable_on_world: false,
+            include_ambiguity: None,
 
             prettify_system_names: true,
         }
