@@ -147,12 +147,12 @@ fn main() -> Result<(), std::io::Error> {
                         style: style_light.clone(),
                         ..Default::default()
                     }
-                    .without_single_ambiguities_on(ignore_ambiguities);
+                    .without_single_ambiguities_on_one_of(ignore_ambiguities);
                     let settings_dark = Settings {
                         style: style_dark.clone(),
                         ..Default::default()
                     }
-                    .without_single_ambiguities_on(ignore_ambiguities);
+                    .without_single_ambiguities_on_one_of(ignore_ambiguities);
 
                     let dot_light = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
                         schedule,

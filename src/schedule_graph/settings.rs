@@ -180,6 +180,15 @@ pub struct Settings {
 }
 
 impl Settings {
+    /// Set the `include_system` predicate to match only systems for which their names matches `filter`
+    pub fn filter_name(mut self, filter: impl Fn(&str) -> bool + 'static) -> Self {
+        self.include_system = Some(Box::new(move |system| {
+            let name = system.name();
+            filter(&name)
+        }));
+        self
+    }
+    /// Set the `include_system` predicate to only match systems from the specified crate
     pub fn filter_in_crate(mut self, crate_: &str) -> Self {
         let crate_ = crate_.to_owned();
         self.include_system = Some(Box::new(move |system| {
@@ -188,6 +197,7 @@ impl Settings {
         }));
         self
     }
+    /// Set the `include_system` predicate to only match systems from the specified crates
     pub fn filter_in_crates(mut self, crates: &[&str]) -> Self {
         let crates: Vec<_> = crates.iter().map(|&s| s.to_owned()).collect();
         self.include_system = Some(Box::new(move |system| {
@@ -197,7 +207,18 @@ impl Settings {
         self
     }
 
-    pub fn without_single_ambiguities_on(mut self, type_ids: &[TypeId]) -> Self {
+    /// Specifies `include_ambiguity` to ignore ambiguities that are only ambiguous with regard to `T`
+    pub fn without_single_ambiguities_on<T: 'static>(mut self) -> Self {
+        self.include_ambiguity = Some(Box::new(move |_, _, conflicts, world| {
+            let &[conflict] = conflicts else { return true };
+            let Some(type_id) = world.components().get_info(conflict).and_then(|info| info.type_id()) else { return true };
+            type_id != TypeId::of::<T>()
+        }));
+        self
+    }
+
+    /// Specifies `include_ambiguity` to ignore ambiguities that are exactly one of the given `type_ids`
+    pub fn without_single_ambiguities_on_one_of(mut self, type_ids: &[TypeId]) -> Self {
         let type_ids = type_ids.to_vec();
         self.include_ambiguity = Some(Box::new(move |_, _, conflicts, world| {
             let &[conflict] = conflicts else { return true };
