@@ -14,8 +14,8 @@ fn main() {
 ```
 
 <picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/schedule/dark/schedule_Main.dot.svg">
-<img alt="Main (filtered)" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/schedule/light/schedule_Main.dot.svg">
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main/docs/schedule/dark/schedule_Main.dot.svg">
+<img alt="Main (filtered)" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main/docs/schedule/light/schedule_Main.dot.svg">
 </picture>
 
 See all schedules at [docs/schedule](./docs/schedule/README.md).
@@ -37,22 +37,22 @@ fn main() {
 ```
 
 <picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/render/dark/render_graph.dot.svg">
-<img alt="render graph" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/render/light/render_graph.dot.svg">
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main/docs/render/dark/render_graph.dot.svg">
+<img alt="render graph" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main/docs/render/light/render_graph.dot.svg">
 </picture>
 
 ### Extract schedule
 
 <picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/schedule/dark/render_schedule_ExtractSchedule.dot.svg">
-<img alt="ExtractSchedule" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/schedule/light/render_schedule_ExtractSchedule.dot.svg" height=512>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main/docs/schedule/dark/render_schedule_ExtractSchedule.dot.svg">
+<img alt="ExtractSchedule" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main/docs/schedule/light/render_schedule_ExtractSchedule.dot.svg" height=512>
 </picture>
 
 ### Main render schedule
 
 <picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/schedule/dark/render_schedule_Main.dot.svg">
-<img alt="Main" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless/docs/schedule/light/render_schedule_Main.dot.svg">
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main/docs/schedule/dark/render_schedule_Main.dot.svg">
+<img alt="Main" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main/docs/schedule/light/render_schedule_Main.dot.svg">
 </picture>
 
 
@@ -60,7 +60,7 @@ fn main() {
 
 |bevy|bevy\_mod\_debugdump|
 |---|---|
-|*main*|*stageless*|
+|*main*|*bevy-main*|
 |0.9|0.6|
 |0.8|0.5|
 |0.7|0.4|

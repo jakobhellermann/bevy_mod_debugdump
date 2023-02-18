@@ -1,5 +1,3 @@
-REPO_BASE=https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/stageless
-
 .PHONY: docs
 docs:
 	cargo run --example generate_docs
