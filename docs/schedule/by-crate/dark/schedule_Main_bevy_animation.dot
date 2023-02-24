@@ -100,7 +100,7 @@ digraph "" {
 			"set_marker_node_Set(20)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		}
 		
-		"node_System(135)" ["label"="animation_player", "tooltip"="bevy_animation::animation_player"]
+		"node_System(138)" ["label"="animation_player", "tooltip"="bevy_animation::animation_player"]
 	}
 	
 	subgraph "clusternode_Set(12)" {
@@ -142,5 +142,5 @@ digraph "" {
 	"set_marker_node_Set(7)" -> "set_marker_node_Set(58)" ["lhead"="clusternode_Set(58)", "ltail"="clusternode_Set(7)", "tooltip"="First → LoadAssets", "color"="#881877"]
 	"set_marker_node_Set(11)" -> "set_marker_node_Set(59)" ["lhead"="clusternode_Set(59)", "ltail"="clusternode_Set(11)", "tooltip"="PostUpdate → AssetEvents", "color"="#00b0cc"]
 	"set_marker_node_Set(59)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(59)", "tooltip"="AssetEvents → Last", "color"="#aa3a55"]
-	"node_System(135)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"="", "tooltip"="animation_player → TransformPropagate", "color"="#44d488"]
+	"node_System(138)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"="", "tooltip"="animation_player → TransformPropagate", "color"="#44d488"]
 }

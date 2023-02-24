@@ -110,7 +110,7 @@ digraph "" {
 		
 		"node_System(47)" ["label"="free_unused_assets_system", "tooltip"="bevy_asset::asset_server::free_unused_assets_system"]
 		"node_System(56)" ["label"="scene_spawner", "tooltip"="bevy_scene::bundle::scene_spawner"]
-		"node_System(131)" ["label"="gilrs_event_system", "tooltip"="bevy_gilrs::gilrs_system::gilrs_event_system"]
+		"node_System(134)" ["label"="gilrs_event_system", "tooltip"="bevy_gilrs::gilrs_system::gilrs_event_system"]
 	}
 	
 	subgraph "clusternode_Set(9)" {
@@ -299,8 +299,8 @@ digraph "" {
 		"node_System(96)" ["label"="text_system", "tooltip"="bevy_ui::widget::text::text_system"]
 		"node_System(97)" ["label"="update_image_calculated_size_system", "tooltip"="bevy_ui::widget::image::update_image_calculated_size_system"]
 		"node_System(100)" ["label"="update_clipping_system", "tooltip"="bevy_ui::update::update_clipping_system"]
-		"node_System(130)" ["label"="play_queued_audio_system<AudioSource>", "tooltip"="bevy_audio::audio_output::play_queued_audio_system<bevy_audio::audio_source::AudioSource>"]
-		"node_System(135)" ["label"="animation_player", "tooltip"="bevy_animation::animation_player"]
+		"node_System(133)" ["label"="play_queued_audio_system<AudioSource>", "tooltip"="bevy_audio::audio_output::play_queued_audio_system<bevy_audio::audio_source::AudioSource>"]
+		"node_System(138)" ["label"="animation_player", "tooltip"="bevy_animation::animation_player"]
 	}
 	
 	subgraph "clusternode_Set(12)" {
@@ -391,7 +391,7 @@ digraph "" {
 	"set_marker_node_Set(20)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → check_light_mesh_visibility", "color"="#99d955"]
 	"set_marker_node_Set(132)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(132)", "tooltip"="UpdateLightFrusta → check_light_mesh_visibility", "color"="#eede00"]
 	"set_marker_node_Set(85)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(85)", "tooltip"="CheckVisibility → check_light_mesh_visibility", "color"="#881877"]
-	"node_System(131)" -> "set_marker_node_Set(24)" ["lhead"="clusternode_Set(24)", "ltail"="", "tooltip"="gilrs_event_system → InputSystem", "color"="#00b0cc"]
-	"node_System(135)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"="", "tooltip"="animation_player → TransformPropagate", "color"="#aa3a55"]
-	"node_System(98)" -> "node_System(135)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">Transform</td></tr></table>>, "labeltooltip"="flex_node_system — animation_player"]
+	"node_System(134)" -> "set_marker_node_Set(24)" ["lhead"="clusternode_Set(24)", "ltail"="", "tooltip"="gilrs_event_system → InputSystem", "color"="#00b0cc"]
+	"node_System(138)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"="", "tooltip"="animation_player → TransformPropagate", "color"="#aa3a55"]
+	"node_System(98)" -> "node_System(138)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">Transform</td></tr></table>>, "labeltooltip"="flex_node_system — animation_player"]
 }

@@ -84,56 +84,56 @@ digraph "" {
 			"node_System(10)" ["label"="prepare_view_uniforms", "tooltip"="bevy_render::view::prepare_view_uniforms"]
 		}
 		
-		subgraph "clusternode_Set(21)" {
+		subgraph "clusternode_Set(22)" {
 			"label"="PreAssetPrepare";
 			"tooltip"="PreAssetPrepare";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(21)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(22)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(14)" ["label"="prepare_assets<Image>", "tooltip"="bevy_render::render_asset::prepare_assets<bevy_render::texture::image::Image>"]
 		}
 		
-		subgraph "clusternode_Set(22)" {
+		subgraph "clusternode_Set(23)" {
 			"label"="AssetPrepare";
 			"tooltip"="AssetPrepare";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(22)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(23)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(12)" ["label"="prepare_assets<Mesh>", "tooltip"="bevy_render::render_asset::prepare_assets<bevy_render::mesh::mesh::Mesh>"]
 		}
 		
-		subgraph "clusternode_Set(23)" {
+		subgraph "clusternode_Set(24)" {
 			"label"="PostAssetPrepare";
 			"tooltip"="PostAssetPrepare";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(23)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(24)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		}
 		
-		subgraph "clusternode_Set(61)" {
+		subgraph "clusternode_Set(62)" {
 			"label"="PrepareFog";
 			"tooltip"="PrepareFog";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(61)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(62)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(48)" ["label"="prepare_fog", "tooltip"="bevy_pbr::render::fog::prepare_fog"]
 		}
 		
-		subgraph "clusternode_Set(62)" {
+		subgraph "clusternode_Set(63)" {
 			"label"="PrepareLights";
 			"tooltip"="PrepareLights";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(62)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(63)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(49)" ["label"="prepare_lights", "tooltip"="bevy_pbr::render::light::prepare_lights"]
 		}
 		
-		subgraph "clusternode_Set(63)" {
+		subgraph "clusternode_Set(64)" {
 			"label"="PrepareClusters";
 			"tooltip"="PrepareClusters";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(63)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(64)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(51)" ["label"="prepare_clusters", "tooltip"="bevy_pbr::render::light::prepare_clusters"]
 		}
 		
@@ -159,12 +159,12 @@ digraph "" {
 		"bgcolor"="#6f90ad";
 		"color"="black";
 		"set_marker_node_Set(8)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		subgraph "clusternode_Set(64)" {
+		subgraph "clusternode_Set(65)" {
 			"label"="QueueShadows";
 			"tooltip"="QueueShadows";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(64)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(65)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(52)" ["label"="queue_shadows", "tooltip"="bevy_pbr::render::light::queue_shadows"]
 		}
 		
@@ -233,18 +233,17 @@ digraph "" {
 	"set_marker_node_Set(11)" -> "set_marker_node_Set(5)" ["lhead"="clusternode_Set(5)", "ltail"="clusternode_Set(11)", "tooltip"="Cleanup → CleanupFlush", "color"="#22c2bb"]
 	"node_System(6)" -> "node_System(7)" ["lhead"="", "ltail"="", "tooltip"="process_pipeline_queue_system → SystemTypeSet(render_system\")", "color"="#99d955"]
 	"set_marker_node_Set(16)" -> "node_System(11)" ["lhead"="", "ltail"="clusternode_Set(16)", "tooltip"="Prepare → prepare_view_targets", "color"="#eede00"]
-	"set_marker_node_Set(21)" -> "set_marker_node_Set(22)" ["lhead"="clusternode_Set(22)", "ltail"="clusternode_Set(21)", "tooltip"="PreAssetPrepare → AssetPrepare", "color"="#881877"]
-	"set_marker_node_Set(22)" -> "set_marker_node_Set(23)" ["lhead"="clusternode_Set(23)", "ltail"="clusternode_Set(22)", "tooltip"="AssetPrepare → PostAssetPrepare", "color"="#00b0cc"]
-	"node_System(16)" -> "node_System(17)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(sort_phase_system<Transparent2d>\") → batch_phase_system<Transparent2d>", "color"="#aa3a55"]
-	"set_marker_node_Set(21)" -> "node_System(31)" ["lhead"="", "ltail"="clusternode_Set(21)", "tooltip"="PreAssetPrepare → prepare_materials_2d<ColorMaterial>", "color"="#44d488"]
-	"set_marker_node_Set(21)" -> "node_System(41)" ["lhead"="", "ltail"="clusternode_Set(21)", "tooltip"="PreAssetPrepare → prepare_materials<StandardMaterial>", "color"="#0090cc"]
-	"node_System(49)" -> "set_marker_node_Set(18)" ["lhead"="clusternode_Set(18)", "ltail"="", "tooltip"="prepare_lights → PrepareUniforms", "color"="#ee9e44"]
-	"set_marker_node_Set(62)" -> "node_System(50)" ["lhead"="", "ltail"="clusternode_Set(62)", "tooltip"="PrepareLights → apply_system_buffers", "color"="#663699"]
-	"node_System(50)" -> "set_marker_node_Set(18)" ["lhead"="clusternode_Set(18)", "ltail"="", "tooltip"="apply_system_buffers → PrepareUniforms", "color"="#3363bb"]
-	"node_System(49)" -> "node_System(51)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_lights\") → prepare_clusters", "color"="#22c2bb"]
-	"node_System(9)" -> "node_System(18)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">Msaa</td></tr></table>>, "labeltooltip"="prepare_windows — prepare_core_3d_depth_textures"]
-	"node_System(9)" -> "node_System(43)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">Msaa</td></tr></table>>, "labeltooltip"="prepare_windows — prepare_prepass_textures"]
-	"node_System(11)" -> "node_System(14)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">RenderAssets&lt;Image&gt;</td></tr></table>>, "labeltooltip"="prepare_view_targets — prepare_assets<Image>"]
-	"node_System(32)" -> "node_System(33)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">RenderPhase&lt;Transparent2d&gt;</td></tr></table>>, "labeltooltip"="queue_material2d_meshes<ColorMaterial> — queue_sprites"]
-	"node_System(40)" -> "node_System(53)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">LightMeta</td></tr></table>>, "labeltooltip"="queue_mesh_view_bind_groups — queue_shadow_view_bind_group"]
+	"node_System(14)" -> "node_System(11)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<Image>\") → prepare_view_targets", "color"="#881877"]
+	"set_marker_node_Set(22)" -> "set_marker_node_Set(23)" ["lhead"="clusternode_Set(23)", "ltail"="clusternode_Set(22)", "tooltip"="PreAssetPrepare → AssetPrepare", "color"="#00b0cc"]
+	"set_marker_node_Set(23)" -> "set_marker_node_Set(24)" ["lhead"="clusternode_Set(24)", "ltail"="clusternode_Set(23)", "tooltip"="AssetPrepare → PostAssetPrepare", "color"="#aa3a55"]
+	"node_System(16)" -> "node_System(17)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(sort_phase_system<Transparent2d>\") → batch_phase_system<Transparent2d>", "color"="#44d488"]
+	"node_System(9)" -> "node_System(18)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_windows\") → prepare_core_3d_depth_textures", "color"="#0090cc"]
+	"set_marker_node_Set(22)" -> "node_System(31)" ["lhead"="", "ltail"="clusternode_Set(22)", "tooltip"="PreAssetPrepare → prepare_materials_2d<ColorMaterial>", "color"="#ee9e44"]
+	"set_marker_node_Set(22)" -> "node_System(41)" ["lhead"="", "ltail"="clusternode_Set(22)", "tooltip"="PreAssetPrepare → prepare_materials<StandardMaterial>", "color"="#663699"]
+	"node_System(9)" -> "node_System(43)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_windows\") → prepare_prepass_textures", "color"="#3363bb"]
+	"node_System(49)" -> "set_marker_node_Set(18)" ["lhead"="clusternode_Set(18)", "ltail"="", "tooltip"="prepare_lights → PrepareUniforms", "color"="#22c2bb"]
+	"set_marker_node_Set(63)" -> "node_System(50)" ["lhead"="", "ltail"="clusternode_Set(63)", "tooltip"="PrepareLights → apply_system_buffers", "color"="#99d955"]
+	"node_System(50)" -> "set_marker_node_Set(18)" ["lhead"="clusternode_Set(18)", "ltail"="", "tooltip"="apply_system_buffers → PrepareUniforms", "color"="#eede00"]
+	"node_System(49)" -> "node_System(51)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_lights\") → prepare_clusters", "color"="#881877"]
+	"node_System(14)" -> "node_System(49)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">RenderAssets&lt;Image&gt;</td></tr></table>>, "labeltooltip"="prepare_assets<Image> — prepare_lights"]
 }

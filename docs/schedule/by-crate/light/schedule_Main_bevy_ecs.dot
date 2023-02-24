@@ -107,8 +107,9 @@ digraph "" {
 		"node_System(120)" ["label"="Events<AssetEvent<GltfPrimitive>>update_system", "tooltip"="bevy_ecs::event::Events<bevy_asset::assets::AssetEvent<bevy_gltf::GltfPrimitive>>::update_system"]
 		"node_System(123)" ["label"="Events<AssetEvent<GltfMesh>>update_system", "tooltip"="bevy_ecs::event::Events<bevy_asset::assets::AssetEvent<bevy_gltf::GltfMesh>>::update_system"]
 		"node_System(126)" ["label"="Events<AssetEvent<AudioSource>>update_system", "tooltip"="bevy_ecs::event::Events<bevy_asset::assets::AssetEvent<bevy_audio::audio_source::AudioSource>>::update_system"]
-		"node_System(129)" ["label"="Events<AssetEvent<AudioSink>>update_system", "tooltip"="bevy_ecs::event::Events<bevy_asset::assets::AssetEvent<bevy_audio::audio_output::AudioSink>>::update_system"]
-		"node_System(134)" ["label"="Events<AssetEvent<AnimationClip>>update_system", "tooltip"="bevy_ecs::event::Events<bevy_asset::assets::AssetEvent<bevy_animation::AnimationClip>>::update_system"]
+		"node_System(129)" ["label"="Events<AssetEvent<AudioSink>>update_system", "tooltip"="bevy_ecs::event::Events<bevy_asset::assets::AssetEvent<bevy_audio::sinks::AudioSink>>::update_system"]
+		"node_System(132)" ["label"="Events<AssetEvent<SpatialAudioSink>>update_system", "tooltip"="bevy_ecs::event::Events<bevy_asset::assets::AssetEvent<bevy_audio::sinks::SpatialAudioSink>>::update_system"]
+		"node_System(137)" ["label"="Events<AssetEvent<AnimationClip>>update_system", "tooltip"="bevy_ecs::event::Events<bevy_asset::assets::AssetEvent<bevy_animation::AnimationClip>>::update_system"]
 	}
 	
 	subgraph "clusternode_Set(8)" {

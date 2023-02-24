@@ -118,8 +118,9 @@ digraph "" {
 		"node_System(120)" ["label"="Events<AssetEvent<GltfPrimitive>>update_system", "tooltip"="bevy_ecs::event::Events<bevy_asset::assets::AssetEvent<bevy_gltf::GltfPrimitive>>::update_system"]
 		"node_System(123)" ["label"="Events<AssetEvent<GltfMesh>>update_system", "tooltip"="bevy_ecs::event::Events<bevy_asset::assets::AssetEvent<bevy_gltf::GltfMesh>>::update_system"]
 		"node_System(126)" ["label"="Events<AssetEvent<AudioSource>>update_system", "tooltip"="bevy_ecs::event::Events<bevy_asset::assets::AssetEvent<bevy_audio::audio_source::AudioSource>>::update_system"]
-		"node_System(129)" ["label"="Events<AssetEvent<AudioSink>>update_system", "tooltip"="bevy_ecs::event::Events<bevy_asset::assets::AssetEvent<bevy_audio::audio_output::AudioSink>>::update_system"]
-		"node_System(134)" ["label"="Events<AssetEvent<AnimationClip>>update_system", "tooltip"="bevy_ecs::event::Events<bevy_asset::assets::AssetEvent<bevy_animation::AnimationClip>>::update_system"]
+		"node_System(129)" ["label"="Events<AssetEvent<AudioSink>>update_system", "tooltip"="bevy_ecs::event::Events<bevy_asset::assets::AssetEvent<bevy_audio::sinks::AudioSink>>::update_system"]
+		"node_System(132)" ["label"="Events<AssetEvent<SpatialAudioSink>>update_system", "tooltip"="bevy_ecs::event::Events<bevy_asset::assets::AssetEvent<bevy_audio::sinks::SpatialAudioSink>>::update_system"]
+		"node_System(137)" ["label"="Events<AssetEvent<AnimationClip>>update_system", "tooltip"="bevy_ecs::event::Events<bevy_asset::assets::AssetEvent<bevy_animation::AnimationClip>>::update_system"]
 	}
 	
 	subgraph "clusternode_Set(8)" {
@@ -154,7 +155,7 @@ digraph "" {
 		
 		"node_System(47)" ["label"="free_unused_assets_system", "tooltip"="bevy_asset::asset_server::free_unused_assets_system"]
 		"node_System(56)" ["label"="scene_spawner", "tooltip"="bevy_scene::bundle::scene_spawner"]
-		"node_System(131)" ["label"="gilrs_event_system", "tooltip"="bevy_gilrs::gilrs_system::gilrs_event_system"]
+		"node_System(134)" ["label"="gilrs_event_system", "tooltip"="bevy_gilrs::gilrs_system::gilrs_event_system"]
 	}
 	
 	subgraph "clusternode_Set(9)" {
@@ -343,8 +344,8 @@ digraph "" {
 		"node_System(96)" ["label"="text_system", "tooltip"="bevy_ui::widget::text::text_system"]
 		"node_System(97)" ["label"="update_image_calculated_size_system", "tooltip"="bevy_ui::widget::image::update_image_calculated_size_system"]
 		"node_System(100)" ["label"="update_clipping_system", "tooltip"="bevy_ui::update::update_clipping_system"]
-		"node_System(130)" ["label"="play_queued_audio_system<AudioSource>", "tooltip"="bevy_audio::audio_output::play_queued_audio_system<bevy_audio::audio_source::AudioSource>"]
-		"node_System(135)" ["label"="animation_player", "tooltip"="bevy_animation::animation_player"]
+		"node_System(133)" ["label"="play_queued_audio_system<AudioSource>", "tooltip"="bevy_audio::audio_output::play_queued_audio_system<bevy_audio::audio_source::AudioSource>"]
+		"node_System(138)" ["label"="animation_player", "tooltip"="bevy_animation::animation_player"]
 	}
 	
 	subgraph "clusternode_Set(12)" {
@@ -384,8 +385,9 @@ digraph "" {
 		"node_System(119)" ["label"="update_asset_storage_system<GltfPrimitive>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_gltf::GltfPrimitive>"]
 		"node_System(122)" ["label"="update_asset_storage_system<GltfMesh>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_gltf::GltfMesh>"]
 		"node_System(125)" ["label"="update_asset_storage_system<AudioSource>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_audio::audio_source::AudioSource>"]
-		"node_System(128)" ["label"="update_asset_storage_system<AudioSink>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_audio::audio_output::AudioSink>"]
-		"node_System(133)" ["label"="update_asset_storage_system<AnimationClip>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_animation::AnimationClip>"]
+		"node_System(128)" ["label"="update_asset_storage_system<AudioSink>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_audio::sinks::AudioSink>"]
+		"node_System(131)" ["label"="update_asset_storage_system<SpatialAudioSink>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_audio::sinks::SpatialAudioSink>"]
+		"node_System(136)" ["label"="update_asset_storage_system<AnimationClip>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_animation::AnimationClip>"]
 	}
 	
 	subgraph "clusternode_Set(59)" {
@@ -410,8 +412,9 @@ digraph "" {
 		"node_System(118)" ["label"="Assets<GltfPrimitive>asset_event_system", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::GltfPrimitive>::asset_event_system"]
 		"node_System(121)" ["label"="Assets<GltfMesh>asset_event_system", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::GltfMesh>::asset_event_system"]
 		"node_System(124)" ["label"="Assets<AudioSource>asset_event_system", "tooltip"="bevy_asset::assets::Assets<bevy_audio::audio_source::AudioSource>::asset_event_system"]
-		"node_System(127)" ["label"="Assets<AudioSink>asset_event_system", "tooltip"="bevy_asset::assets::Assets<bevy_audio::audio_output::AudioSink>::asset_event_system"]
-		"node_System(132)" ["label"="Assets<AnimationClip>asset_event_system", "tooltip"="bevy_asset::assets::Assets<bevy_animation::AnimationClip>::asset_event_system"]
+		"node_System(127)" ["label"="Assets<AudioSink>asset_event_system", "tooltip"="bevy_asset::assets::Assets<bevy_audio::sinks::AudioSink>::asset_event_system"]
+		"node_System(130)" ["label"="Assets<SpatialAudioSink>asset_event_system", "tooltip"="bevy_asset::assets::Assets<bevy_audio::sinks::SpatialAudioSink>::asset_event_system"]
+		"node_System(135)" ["label"="Assets<AnimationClip>asset_event_system", "tooltip"="bevy_asset::assets::Assets<bevy_animation::AnimationClip>::asset_event_system"]
 	}
 	
 	"set_marker_node_Set(7)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(7)", "tooltip"="First → FirstFlush", "color"="#eede00"]
@@ -471,7 +474,7 @@ digraph "" {
 	"set_marker_node_Set(20)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → check_light_mesh_visibility", "color"="#99d955"]
 	"set_marker_node_Set(132)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(132)", "tooltip"="UpdateLightFrusta → check_light_mesh_visibility", "color"="#eede00"]
 	"set_marker_node_Set(85)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(85)", "tooltip"="CheckVisibility → check_light_mesh_visibility", "color"="#881877"]
-	"node_System(131)" -> "set_marker_node_Set(24)" ["lhead"="clusternode_Set(24)", "ltail"="", "tooltip"="gilrs_event_system → InputSystem", "color"="#00b0cc"]
-	"node_System(135)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"="", "tooltip"="animation_player → TransformPropagate", "color"="#aa3a55"]
-	"node_System(98)" -> "node_System(135)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">Transform</td></tr></table>>, "labeltooltip"="flex_node_system — animation_player"]
+	"node_System(134)" -> "set_marker_node_Set(24)" ["lhead"="clusternode_Set(24)", "ltail"="", "tooltip"="gilrs_event_system → InputSystem", "color"="#00b0cc"]
+	"node_System(138)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"="", "tooltip"="animation_player → TransformPropagate", "color"="#aa3a55"]
+	"node_System(98)" -> "node_System(138)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">Transform</td></tr></table>>, "labeltooltip"="flex_node_system — animation_player"]
 }

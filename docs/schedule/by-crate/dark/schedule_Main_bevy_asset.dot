@@ -126,8 +126,9 @@ digraph "" {
 		"node_System(119)" ["label"="update_asset_storage_system<GltfPrimitive>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_gltf::GltfPrimitive>"]
 		"node_System(122)" ["label"="update_asset_storage_system<GltfMesh>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_gltf::GltfMesh>"]
 		"node_System(125)" ["label"="update_asset_storage_system<AudioSource>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_audio::audio_source::AudioSource>"]
-		"node_System(128)" ["label"="update_asset_storage_system<AudioSink>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_audio::audio_output::AudioSink>"]
-		"node_System(133)" ["label"="update_asset_storage_system<AnimationClip>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_animation::AnimationClip>"]
+		"node_System(128)" ["label"="update_asset_storage_system<AudioSink>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_audio::sinks::AudioSink>"]
+		"node_System(131)" ["label"="update_asset_storage_system<SpatialAudioSink>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_audio::sinks::SpatialAudioSink>"]
+		"node_System(136)" ["label"="update_asset_storage_system<AnimationClip>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_animation::AnimationClip>"]
 	}
 	
 	subgraph "clusternode_Set(59)" {
@@ -152,8 +153,9 @@ digraph "" {
 		"node_System(118)" ["label"="Assets<GltfPrimitive>asset_event_system", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::GltfPrimitive>::asset_event_system"]
 		"node_System(121)" ["label"="Assets<GltfMesh>asset_event_system", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::GltfMesh>::asset_event_system"]
 		"node_System(124)" ["label"="Assets<AudioSource>asset_event_system", "tooltip"="bevy_asset::assets::Assets<bevy_audio::audio_source::AudioSource>::asset_event_system"]
-		"node_System(127)" ["label"="Assets<AudioSink>asset_event_system", "tooltip"="bevy_asset::assets::Assets<bevy_audio::audio_output::AudioSink>::asset_event_system"]
-		"node_System(132)" ["label"="Assets<AnimationClip>asset_event_system", "tooltip"="bevy_asset::assets::Assets<bevy_animation::AnimationClip>::asset_event_system"]
+		"node_System(127)" ["label"="Assets<AudioSink>asset_event_system", "tooltip"="bevy_asset::assets::Assets<bevy_audio::sinks::AudioSink>::asset_event_system"]
+		"node_System(130)" ["label"="Assets<SpatialAudioSink>asset_event_system", "tooltip"="bevy_asset::assets::Assets<bevy_audio::sinks::SpatialAudioSink>::asset_event_system"]
+		"node_System(135)" ["label"="Assets<AnimationClip>asset_event_system", "tooltip"="bevy_asset::assets::Assets<bevy_animation::AnimationClip>::asset_event_system"]
 	}
 	
 	"set_marker_node_Set(7)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(7)", "tooltip"="First → FirstFlush", "color"="#eede00"]
