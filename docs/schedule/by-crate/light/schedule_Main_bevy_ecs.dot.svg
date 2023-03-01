@@ -97,7 +97,7 @@
 </g>
 </g>
 <g id="clust12" class="cluster">
-<title>clusternode_Set(81)</title>
+<title>clusternode_Set(82)</title>
 <g id="a_clust12"><a xlink:title="CalculateBoundsFlush">
 <polygon fill="white" stroke="black" points="1563,-2556 1563,-2649 1740,-2649 1740,-2556 1563,-2556"/>
 <text text-anchor="middle" x="1651.5" y="-2633.8" font-family="Helvetica,sans-Serif" font-size="14.00">CalculateBoundsFlush</text>
@@ -105,7 +105,7 @@
 </g>
 </g>
 <g id="clust13" class="cluster">
-<title>clusternode_Set(128)</title>
+<title>clusternode_Set(129)</title>
 <g id="a_clust13"><a xlink:title="AddClustersFlush">
 <polygon fill="white" stroke="black" points="1563,-2455 1563,-2548 1740,-2548 1740,-2455 1563,-2455"/>
 <text text-anchor="middle" x="1651.5" y="-2532.8" font-family="Helvetica,sans-Serif" font-size="14.00">AddClustersFlush</text>
@@ -121,16 +121,24 @@
 </g>
 </g>
 <g id="clust15" class="cluster">
-<title>clusternode_Set(58)</title>
-<g id="a_clust15"><a xlink:title="LoadAssets">
-<polygon fill="white" stroke="black" points="559.5,-2387 559.5,-2426 650.5,-2426 650.5,-2387 559.5,-2387"/>
-<text text-anchor="middle" x="605" y="-2410.8" font-family="Helvetica,sans-Serif" font-size="14.00">LoadAssets</text>
+<title>clusternode_Set(22)</title>
+<g id="a_clust15"><a xlink:title="PropagateTransformsSet">
+<polygon fill="white" stroke="black" points="162,-2513 162,-2552 342,-2552 342,-2513 162,-2513"/>
+<text text-anchor="middle" x="252" y="-2536.8" font-family="Helvetica,sans-Serif" font-size="14.00">PropagateTransformsSet</text>
 </a>
 </g>
 </g>
 <g id="clust16" class="cluster">
 <title>clusternode_Set(59)</title>
-<g id="a_clust16"><a xlink:title="AssetEvents">
+<g id="a_clust16"><a xlink:title="LoadAssets">
+<polygon fill="white" stroke="black" points="559.5,-2387 559.5,-2426 650.5,-2426 650.5,-2387 559.5,-2387"/>
+<text text-anchor="middle" x="605" y="-2410.8" font-family="Helvetica,sans-Serif" font-size="14.00">LoadAssets</text>
+</a>
+</g>
+</g>
+<g id="clust17" class="cluster">
+<title>clusternode_Set(60)</title>
+<g id="a_clust17"><a xlink:title="AssetEvents">
 <polygon fill="white" stroke="black" points="1800.5,-2387 1800.5,-2426 1896.5,-2426 1896.5,-2387 1800.5,-2387"/>
 <text text-anchor="middle" x="1848.5" y="-2410.8" font-family="Helvetica,sans-Serif" font-size="14.00">AssetEvents</text>
 </a>
@@ -246,10 +254,10 @@
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(58) -->
-<!-- set_marker_node_Set(7)&#45;&gt;set_marker_node_Set(58) -->
+<!-- set_marker_node_Set(59) -->
+<!-- set_marker_node_Set(7)&#45;&gt;set_marker_node_Set(59) -->
 <g id="edge13" class="edge">
-<title>set_marker_node_Set(7)&#45;&gt;set_marker_node_Set(58)</title>
+<title>set_marker_node_Set(7)&#45;&gt;set_marker_node_Set(59)</title>
 <g id="a_edge13"><a xlink:title="First → LoadAssets">
 <path fill="none" stroke="#881877" stroke-width="2" d="M496,-2437C498.95,-2436.39 522.93,-2427.05 547.49,-2417.34"/>
 <polygon fill="#881877" stroke="#881877" stroke-width="2" points="548.68,-2420.63 556.69,-2413.69 546.1,-2414.12 548.68,-2420.63"/>
@@ -698,17 +706,17 @@
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(59) -->
-<!-- set_marker_node_Set(11)&#45;&gt;set_marker_node_Set(59) -->
+<!-- set_marker_node_Set(60) -->
+<!-- set_marker_node_Set(11)&#45;&gt;set_marker_node_Set(60) -->
 <g id="edge14" class="edge">
-<title>set_marker_node_Set(11)&#45;&gt;set_marker_node_Set(59)</title>
+<title>set_marker_node_Set(11)&#45;&gt;set_marker_node_Set(60)</title>
 <g id="a_edge14"><a xlink:title="PostUpdate → AssetEvents">
 <path fill="none" stroke="#00b0cc" stroke-width="2" d="M1683.7,-2437C1711.76,-2429.81 1753.75,-2419.04 1788.19,-2410.21"/>
 <polygon fill="#00b0cc" stroke="#00b0cc" stroke-width="2" points="1788.75,-2413.68 1797.57,-2407.8 1787.01,-2406.9 1788.75,-2413.68"/>
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(81) -->
+<!-- set_marker_node_Set(82) -->
 <!-- node_System(66) -->
 <g id="node63" class="node">
 <title>node_System(66)</title>
@@ -718,7 +726,7 @@
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(128) -->
+<!-- set_marker_node_Set(129) -->
 <!-- node_System(105) -->
 <g id="node65" class="node">
 <title>node_System(105)</title>
@@ -737,18 +745,19 @@
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(58)&#45;&gt;set_marker_node_Set(8) -->
+<!-- set_marker_node_Set(22) -->
+<!-- set_marker_node_Set(59)&#45;&gt;set_marker_node_Set(8) -->
 <g id="edge12" class="edge">
-<title>set_marker_node_Set(58)&#45;&gt;set_marker_node_Set(8)</title>
+<title>set_marker_node_Set(59)&#45;&gt;set_marker_node_Set(8)</title>
 <g id="a_edge12"><a xlink:title="LoadAssets → PreUpdate">
 <path fill="none" stroke="#eede00" stroke-width="2" d="M650.5,-2410.05C672.34,-2417.36 698.25,-2426.02 718.8,-2432.89"/>
 <polygon fill="#eede00" stroke="#eede00" stroke-width="2" points="717.63,-2436.19 728.22,-2436.04 719.85,-2429.55 717.63,-2436.19"/>
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(59)&#45;&gt;set_marker_node_Set(12) -->
+<!-- set_marker_node_Set(60)&#45;&gt;set_marker_node_Set(12) -->
 <g id="edge15" class="edge">
-<title>set_marker_node_Set(59)&#45;&gt;set_marker_node_Set(12)</title>
+<title>set_marker_node_Set(60)&#45;&gt;set_marker_node_Set(12)</title>
 <g id="a_edge15"><a xlink:title="AssetEvents → Last">
 <path fill="none" stroke="#aa3a55" stroke-width="2" d="M1896.5,-2413.29C1912.84,-2419.65 1930.79,-2426.63 1945.68,-2432.42"/>
 <polygon fill="#aa3a55" stroke="#aa3a55" stroke-width="2" points="1944.04,-2435.54 1954.63,-2435.91 1946.58,-2429.02 1944.04,-2435.54"/>

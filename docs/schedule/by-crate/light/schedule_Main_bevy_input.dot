@@ -68,12 +68,12 @@ digraph "" {
 		"bgcolor"="white";
 		"color"="black";
 		"set_marker_node_Set(8)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		subgraph "clusternode_Set(24)" {
+		subgraph "clusternode_Set(25)" {
 			"label"="InputSystem";
 			"tooltip"="InputSystem";
 			"bgcolor"="white";
 			"color"="black";
-			"set_marker_node_Set(24)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(25)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(15)" ["label"="keyboard_input_system", "tooltip"="bevy_input::keyboard::keyboard_input_system"]
 			"node_System(19)" ["label"="mouse_button_input_system", "tooltip"="bevy_input::mouse::mouse_button_input_system"]
 			"node_System(24)" ["label"="gamepad_event_system", "tooltip"="bevy_input::gamepad::gamepad_event_system"]
@@ -117,20 +117,28 @@ digraph "" {
 		"set_marker_node_Set(12)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
-	subgraph "clusternode_Set(58)" {
+	subgraph "clusternode_Set(22)" {
+		"label"="PropagateTransformsSet";
+		"tooltip"="PropagateTransformsSet";
+		"bgcolor"="white";
+		"color"="black";
+		"set_marker_node_Set(22)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+	}
+	
+	subgraph "clusternode_Set(59)" {
 		"label"="LoadAssets";
 		"tooltip"="LoadAssets";
 		"bgcolor"="white";
 		"color"="black";
-		"set_marker_node_Set(58)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"set_marker_node_Set(59)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
-	subgraph "clusternode_Set(59)" {
+	subgraph "clusternode_Set(60)" {
 		"label"="AssetEvents";
 		"tooltip"="AssetEvents";
 		"bgcolor"="white";
 		"color"="black";
-		"set_marker_node_Set(59)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"set_marker_node_Set(60)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	"set_marker_node_Set(7)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(7)", "tooltip"="First → FirstFlush", "color"="#eede00"]
@@ -149,8 +157,8 @@ digraph "" {
 	"node_System(25)" -> "node_System(26)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(gamepad_connection_system\") → gamepad_button_event_system", "color"="#00b0cc"]
 	"node_System(24)" -> "node_System(27)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(gamepad_event_system\") → gamepad_axis_event_system", "color"="#aa3a55"]
 	"node_System(25)" -> "node_System(27)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(gamepad_connection_system\") → gamepad_axis_event_system", "color"="#44d488"]
-	"set_marker_node_Set(58)" -> "set_marker_node_Set(8)" ["lhead"="clusternode_Set(8)", "ltail"="clusternode_Set(58)", "tooltip"="LoadAssets → PreUpdate", "color"="#0090cc"]
-	"set_marker_node_Set(7)" -> "set_marker_node_Set(58)" ["lhead"="clusternode_Set(58)", "ltail"="clusternode_Set(7)", "tooltip"="First → LoadAssets", "color"="#ee9e44"]
-	"set_marker_node_Set(11)" -> "set_marker_node_Set(59)" ["lhead"="clusternode_Set(59)", "ltail"="clusternode_Set(11)", "tooltip"="PostUpdate → AssetEvents", "color"="#663699"]
-	"set_marker_node_Set(59)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(59)", "tooltip"="AssetEvents → Last", "color"="#3363bb"]
+	"set_marker_node_Set(59)" -> "set_marker_node_Set(8)" ["lhead"="clusternode_Set(8)", "ltail"="clusternode_Set(59)", "tooltip"="LoadAssets → PreUpdate", "color"="#0090cc"]
+	"set_marker_node_Set(7)" -> "set_marker_node_Set(59)" ["lhead"="clusternode_Set(59)", "ltail"="clusternode_Set(7)", "tooltip"="First → LoadAssets", "color"="#ee9e44"]
+	"set_marker_node_Set(11)" -> "set_marker_node_Set(60)" ["lhead"="clusternode_Set(60)", "ltail"="clusternode_Set(11)", "tooltip"="PostUpdate → AssetEvents", "color"="#663699"]
+	"set_marker_node_Set(60)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(60)", "tooltip"="AssetEvents → Last", "color"="#3363bb"]
 }

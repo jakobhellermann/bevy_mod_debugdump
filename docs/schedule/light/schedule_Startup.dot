@@ -64,15 +64,14 @@ digraph "" {
 			"color"="black";
 			"set_marker_node_Set(7)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(3)" ["label"="sync_simple_transforms", "tooltip"="bevy_transform::systems::sync_simple_transforms"]
-			"node_System(4)" ["label"="propagate_transforms", "tooltip"="bevy_transform::systems::propagate_transforms"]
 		}
 		
-		subgraph "clusternode_Set(11)" {
+		subgraph "clusternode_Set(12)" {
 			"label"="CameraUpdateSystem";
 			"tooltip"="CameraUpdateSystem";
 			"bgcolor"="white";
 			"color"="black";
-			"set_marker_node_Set(11)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(12)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 			"node_System(6)" ["label"="camera_system<Projection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::Projection>"]
 			"node_System(7)" ["label"="camera_system<OrthographicProjection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::OrthographicProjection>"]
 			"node_System(8)" ["label"="camera_system<PerspectiveProjection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::PerspectiveProjection>"]
@@ -80,6 +79,18 @@ digraph "" {
 		
 	}
 	
+	subgraph "clusternode_Set(9)" {
+		"label"="PropagateTransformsSet";
+		"tooltip"="PropagateTransformsSet";
+		"bgcolor"="white";
+		"color"="black";
+		"set_marker_node_Set(9)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+	}
+	
+	"node_System(4)" -> "set_marker_node_Set(7)" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(7)"]
+	"node_System(4)" -> "set_marker_node_Set(9)" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(9)"]
+	"node_System(4)" ["label"="propagate_transforms
+In multiple sets, TransformPropagate, PropagateTransformsSet", "tooltip"="bevy_transform::systems::propagate_transforms"]
 	"set_marker_node_Set(5)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(5)", "tooltip"="PreStartup → PreStartupFlush", "color"="#eede00"]
 	"set_marker_node_Set(2)" -> "set_marker_node_Set(0)" ["lhead"="clusternode_Set(0)", "ltail"="clusternode_Set(2)", "tooltip"="PreStartupFlush → Startup", "color"="#881877"]
 	"set_marker_node_Set(0)" -> "set_marker_node_Set(3)" ["lhead"="clusternode_Set(3)", "ltail"="clusternode_Set(0)", "tooltip"="Startup → StartupFlush", "color"="#00b0cc"]
