@@ -1,0 +1,17 @@
+[package]
+name = "debugdumpgen"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bevy = { git = "https://github.com/bevyengine/bevy", version = "0.9.0" }
+bevy_mod_debugdump = { git = "https://github.com/jakobhellermann/bevy_mod_debugdump", branch = "bevy-main", version = "0.7.0" }
+wasm-bindgen = "0.2.84"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+opt-level = "s"
+lto = "thin"
+strip = true

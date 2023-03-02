@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>bevy_mod_debugdump Playground</title>
+
+    <script src="./index.ts" type="module"></script>
+</head>
+
+<body>
+    <canvas id="canvas" style="display: none;"></canvas>
+    <div>
+        <div class="filterSection">
+            <p>Schedule</p>
+            <select id="scheduleSelect">
+                <option value="Main">Main</option>
+                <option value="Startup">Startup</option>
+                <option value="RenderExtract">Render (Extract)</option>
+                <option value="RenderMain">Render (Main)</option>
+            </select>
+
+            <p>Include:&nbsp;</p>
+            <input type="text" class="filter" id="includes" placeholder="bevy_render,bevy_pbr">
+            <p>Exclude:&nbsp;</p>
+            <input type="text" class="filter" id="excludes" placeholder="update_asset_storage,..."
+                value="update_asset_storage,Events&lt;,Assets&lt;">
+        </div>
+    </div>
+
+    <div id="svg"></div>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "debugdumpgen",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/index.html",
+  "targets": {
+    "default": {
+      "distDir": "../docs",
+      "publicUrl": "/bevy_mod_debugdump"
+    }
+  },
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hpcc-js/wasm": "^2.8.0",
+    "parcel": "^2.8.3"
+  }
+}

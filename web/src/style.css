@@ -1,0 +1,35 @@
+body {
+    background-color: #0D1117;
+}
+
+.filterSection {
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.filterSection input {
+    margin-right: 0.5rem;
+}
+
+.filterSection select {
+    margin-right: 0.5rem;
+}
+
+.filter {
+    width: 16rem;
+}
+
+#svg {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+#svg svg {
+    width: 100%;
+    height: auto;
+
+    max-height: 90vh;
+}
