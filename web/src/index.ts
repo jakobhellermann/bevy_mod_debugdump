@@ -5,6 +5,27 @@ const includesInput = document.getElementById("includes") as HTMLInputElement;
 const excludesInput = document.getElementById("excludes") as HTMLInputElement;
 const scheduleSelect = document.getElementById("scheduleSelect") as HTMLSelectElement;
 const svgElement = document.getElementById("svg")! as HTMLImageElement;
+const shareButton = document.getElementById("share")! as HTMLButtonElement;
+
+function loadQuery() {
+    const params = new URLSearchParams(window.location.search);
+    let include = params.get("include");
+    let exclude = params.get("exclude");
+    let schedule = params.get("schedule");
+
+    if (include) includesInput.value = include;
+    if (exclude) excludesInput.value = exclude;
+    if (schedule && ["Main", "Startup", "RenderExtract", "RenderMain"].includes(schedule)) scheduleSelect.value = schedule;
+}
+loadQuery();
+
+shareButton.addEventListener("click", () => {
+    let query = `schedule=${scheduleSelect.value}&include=${includesInput.value}&exclude=${excludesInput.value}`;
+    let url = `${window.location.protocol}//${window.location.host}${window.location.pathname}?${query}`;
+    navigator.clipboard.writeText(url);
+
+    window.history.pushState({ path: url }, '', url);
+});
 
 async function run() {
     let [graphviz, _] = await Promise.all([GraphvizLoader.load(), init()]);
