@@ -4,6 +4,7 @@ all:
 
 .PHONY: docs
 docs:
+	rm -rf docs
 	cd web && npm run build
 
 clean:
