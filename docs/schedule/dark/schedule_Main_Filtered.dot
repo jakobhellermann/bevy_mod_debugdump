@@ -14,6 +14,14 @@ digraph "" {
 		"set_marker_node_Set(0)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		"node_System(46)" ["label"="close_when_requested", "tooltip"="bevy_window::system::close_when_requested"]
 		"node_System(55)" ["label"="scene_spawner_system", "tooltip"="bevy_scene::scene_spawner::scene_spawner_system"]
+		"node_System(60)" ["label"="handle_window_focus", "tooltip"="bevy_winit::accessibility::handle_window_focus"]
+		"node_System(61)" ["label"="window_closed", "tooltip"="bevy_winit::accessibility::window_closed"]
+		"node_System(62)" ["label"="poll_receivers", "tooltip"="bevy_winit::accessibility::poll_receivers"]
+		"node_System(63)" ["label"="update_accessibility_nodes", "tooltip"="bevy_winit::accessibility::update_accessibility_nodes"]
+		"node_System(100)" ["label"="calc_bounds", "tooltip"="bevy_ui::accessibility::calc_bounds"]
+		"node_System(101)" ["label"="button_changed", "tooltip"="bevy_ui::accessibility::button_changed"]
+		"node_System(102)" ["label"="image_changed", "tooltip"="bevy_ui::accessibility::image_changed"]
+		"node_System(103)" ["label"="label_changed", "tooltip"="bevy_ui::accessibility::label_changed"]
 	}
 	
 	subgraph "clusternode_Set(2)" {
@@ -99,18 +107,18 @@ digraph "" {
 			"node_System(29)" ["label"="touch_screen_input_system", "tooltip"="bevy_input::touch::touch_screen_input_system"]
 		}
 		
-		subgraph "clusternode_Set(116)" {
+		subgraph "clusternode_Set(125)" {
 			"label"="Focus";
 			"tooltip"="Focus";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(116)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(95)" ["label"="ui_focus_system", "tooltip"="bevy_ui::focus::ui_focus_system"]
+			"set_marker_node_Set(125)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(104)" ["label"="ui_focus_system", "tooltip"="bevy_ui::focus::ui_focus_system"]
 		}
 		
 		"node_System(47)" ["label"="free_unused_assets_system", "tooltip"="bevy_asset::asset_server::free_unused_assets_system"]
 		"node_System(56)" ["label"="scene_spawner", "tooltip"="bevy_scene::bundle::scene_spawner"]
-		"node_System(134)" ["label"="gilrs_event_system", "tooltip"="bevy_gilrs::gilrs_system::gilrs_event_system"]
+		"node_System(143)" ["label"="gilrs_event_system", "tooltip"="bevy_gilrs::gilrs_system::gilrs_event_system"]
 	}
 	
 	subgraph "clusternode_Set(9)" {
@@ -145,161 +153,161 @@ digraph "" {
 			"node_System(11)" ["label"="sync_simple_transforms", "tooltip"="bevy_transform::systems::sync_simple_transforms"]
 		}
 		
-		subgraph "clusternode_Set(77)" {
+		subgraph "clusternode_Set(82)" {
 			"label"="CameraUpdateSystem";
 			"tooltip"="CameraUpdateSystem";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(77)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(63)" ["label"="camera_system<Projection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::Projection>"]
-			"node_System(64)" ["label"="camera_system<OrthographicProjection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::OrthographicProjection>"]
-			"node_System(65)" ["label"="camera_system<PerspectiveProjection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::PerspectiveProjection>"]
+			"set_marker_node_Set(82)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(68)" ["label"="camera_system<Projection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::Projection>"]
+			"node_System(69)" ["label"="camera_system<OrthographicProjection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::OrthographicProjection>"]
+			"node_System(70)" ["label"="camera_system<PerspectiveProjection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::PerspectiveProjection>"]
 		}
 		
-		subgraph "clusternode_Set(81)" {
+		subgraph "clusternode_Set(86)" {
 			"label"="CalculateBounds";
 			"tooltip"="CalculateBounds";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(81)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(67)" ["label"="calculate_bounds", "tooltip"="bevy_render::view::visibility::calculate_bounds"]
+			"set_marker_node_Set(86)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(72)" ["label"="calculate_bounds", "tooltip"="bevy_render::view::visibility::calculate_bounds"]
 		}
 		
-		subgraph "clusternode_Set(82)" {
+		subgraph "clusternode_Set(87)" {
 			"label"="CalculateBoundsFlush";
 			"tooltip"="CalculateBoundsFlush";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(82)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(66)" ["label"="apply_system_buffers", "tooltip"="bevy_ecs::schedule::executor::apply_system_buffers"]
+			"set_marker_node_Set(87)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(71)" ["label"="apply_system_buffers", "tooltip"="bevy_ecs::schedule::executor::apply_system_buffers"]
 		}
 		
-		subgraph "clusternode_Set(83)" {
+		subgraph "clusternode_Set(88)" {
 			"label"="UpdateOrthographicFrusta";
 			"tooltip"="UpdateOrthographicFrusta";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(83)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(68)" ["label"="update_frusta<OrthographicProjection>", "tooltip"="bevy_render::view::visibility::update_frusta<bevy_render::camera::projection::OrthographicProjection>"]
+			"set_marker_node_Set(88)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(73)" ["label"="update_frusta<OrthographicProjection>", "tooltip"="bevy_render::view::visibility::update_frusta<bevy_render::camera::projection::OrthographicProjection>"]
 		}
 		
-		subgraph "clusternode_Set(84)" {
+		subgraph "clusternode_Set(89)" {
 			"label"="UpdatePerspectiveFrusta";
 			"tooltip"="UpdatePerspectiveFrusta";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(84)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(69)" ["label"="update_frusta<PerspectiveProjection>", "tooltip"="bevy_render::view::visibility::update_frusta<bevy_render::camera::projection::PerspectiveProjection>"]
+			"set_marker_node_Set(89)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(74)" ["label"="update_frusta<PerspectiveProjection>", "tooltip"="bevy_render::view::visibility::update_frusta<bevy_render::camera::projection::PerspectiveProjection>"]
 		}
 		
-		subgraph "clusternode_Set(85)" {
+		subgraph "clusternode_Set(90)" {
 			"label"="UpdateProjectionFrusta";
 			"tooltip"="UpdateProjectionFrusta";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(85)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(70)" ["label"="update_frusta<Projection>", "tooltip"="bevy_render::view::visibility::update_frusta<bevy_render::camera::projection::Projection>"]
+			"set_marker_node_Set(90)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(75)" ["label"="update_frusta<Projection>", "tooltip"="bevy_render::view::visibility::update_frusta<bevy_render::camera::projection::Projection>"]
 		}
 		
-		subgraph "clusternode_Set(86)" {
+		subgraph "clusternode_Set(91)" {
 			"label"="CheckVisibility";
 			"tooltip"="CheckVisibility";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(86)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(72)" ["label"="check_visibility", "tooltip"="bevy_render::view::visibility::check_visibility"]
+			"set_marker_node_Set(91)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(77)" ["label"="check_visibility", "tooltip"="bevy_render::view::visibility::check_visibility"]
 		}
 		
-		subgraph "clusternode_Set(87)" {
+		subgraph "clusternode_Set(92)" {
 			"label"="VisibilityPropagate";
 			"tooltip"="VisibilityPropagate";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(87)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(71)" ["label"="visibility_propagate_system", "tooltip"="bevy_render::view::visibility::visibility_propagate_system"]
+			"set_marker_node_Set(92)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(76)" ["label"="visibility_propagate_system", "tooltip"="bevy_render::view::visibility::visibility_propagate_system"]
 		}
 		
-		subgraph "clusternode_Set(117)" {
+		subgraph "clusternode_Set(126)" {
 			"label"="Flex";
 			"tooltip"="Flex";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(117)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(98)" ["label"="flex_node_system", "tooltip"="bevy_ui::flex::flex_node_system"]
+			"set_marker_node_Set(126)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(107)" ["label"="flex_node_system", "tooltip"="bevy_ui::flex::flex_node_system"]
 		}
 		
-		subgraph "clusternode_Set(118)" {
+		subgraph "clusternode_Set(127)" {
 			"label"="Stack";
 			"tooltip"="Stack";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(118)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(99)" ["label"="ui_stack_system", "tooltip"="bevy_ui::stack::ui_stack_system"]
+			"set_marker_node_Set(127)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(108)" ["label"="ui_stack_system", "tooltip"="bevy_ui::stack::ui_stack_system"]
 		}
 		
-		subgraph "clusternode_Set(128)" {
+		subgraph "clusternode_Set(137)" {
 			"label"="AddClusters";
 			"tooltip"="AddClusters";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(128)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(104)" ["label"="add_clusters", "tooltip"="bevy_pbr::light::add_clusters"]
+			"set_marker_node_Set(137)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(113)" ["label"="add_clusters", "tooltip"="bevy_pbr::light::add_clusters"]
 		}
 		
-		subgraph "clusternode_Set(129)" {
+		subgraph "clusternode_Set(138)" {
 			"label"="AddClustersFlush";
 			"tooltip"="AddClustersFlush";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(129)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(105)" ["label"="apply_system_buffers", "tooltip"="bevy_ecs::schedule::executor::apply_system_buffers"]
+			"set_marker_node_Set(138)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(114)" ["label"="apply_system_buffers", "tooltip"="bevy_ecs::schedule::executor::apply_system_buffers"]
 		}
 		
-		subgraph "clusternode_Set(130)" {
+		subgraph "clusternode_Set(139)" {
 			"label"="AssignLightsToClusters";
 			"tooltip"="AssignLightsToClusters";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(130)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(106)" ["label"="assign_lights_to_clusters", "tooltip"="bevy_pbr::light::assign_lights_to_clusters"]
+			"set_marker_node_Set(139)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(115)" ["label"="assign_lights_to_clusters", "tooltip"="bevy_pbr::light::assign_lights_to_clusters"]
 		}
 		
-		subgraph "clusternode_Set(131)" {
+		subgraph "clusternode_Set(140)" {
 			"label"="CheckLightVisibility";
 			"tooltip"="CheckLightVisibility";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(131)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(111)" ["label"="check_light_mesh_visibility", "tooltip"="bevy_pbr::light::check_light_mesh_visibility"]
+			"set_marker_node_Set(140)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(120)" ["label"="check_light_mesh_visibility", "tooltip"="bevy_pbr::light::check_light_mesh_visibility"]
 		}
 		
-		subgraph "clusternode_Set(132)" {
+		subgraph "clusternode_Set(141)" {
 			"label"="UpdateDirectionalLightCascades";
 			"tooltip"="UpdateDirectionalLightCascades";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(132)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(107)" ["label"="update_directional_light_cascades", "tooltip"="bevy_pbr::light::update_directional_light_cascades"]
+			"set_marker_node_Set(141)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(116)" ["label"="update_directional_light_cascades", "tooltip"="bevy_pbr::light::update_directional_light_cascades"]
 		}
 		
-		subgraph "clusternode_Set(133)" {
+		subgraph "clusternode_Set(142)" {
 			"label"="UpdateLightFrusta";
 			"tooltip"="UpdateLightFrusta";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(133)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(108)" ["label"="update_directional_light_frusta", "tooltip"="bevy_pbr::light::update_directional_light_frusta"]
-			"node_System(109)" ["label"="update_point_light_frusta", "tooltip"="bevy_pbr::light::update_point_light_frusta"]
-			"node_System(110)" ["label"="update_spot_light_frusta", "tooltip"="bevy_pbr::light::update_spot_light_frusta"]
+			"set_marker_node_Set(142)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(117)" ["label"="update_directional_light_frusta", "tooltip"="bevy_pbr::light::update_directional_light_frusta"]
+			"node_System(118)" ["label"="update_point_light_frusta", "tooltip"="bevy_pbr::light::update_point_light_frusta"]
+			"node_System(119)" ["label"="update_spot_light_frusta", "tooltip"="bevy_pbr::light::update_spot_light_frusta"]
 		}
 		
 		"node_System(45)" ["label"="exit_on_all_closed", "tooltip"="bevy_window::system::exit_on_all_closed"]
-		"node_System(94)" ["label"="update_text2d_layout", "tooltip"="bevy_text::text2d::update_text2d_layout"]
-		"node_System(96)" ["label"="text_system", "tooltip"="bevy_ui::widget::text::text_system"]
-		"node_System(97)" ["label"="update_image_calculated_size_system", "tooltip"="bevy_ui::widget::image::update_image_calculated_size_system"]
-		"node_System(100)" ["label"="update_clipping_system", "tooltip"="bevy_ui::update::update_clipping_system"]
-		"node_System(133)" ["label"="play_queued_audio_system<AudioSource>", "tooltip"="bevy_audio::audio_output::play_queued_audio_system<bevy_audio::audio_source::AudioSource>"]
-		"node_System(138)" ["label"="animation_player", "tooltip"="bevy_animation::animation_player"]
+		"node_System(99)" ["label"="update_text2d_layout", "tooltip"="bevy_text::text2d::update_text2d_layout"]
+		"node_System(105)" ["label"="text_system", "tooltip"="bevy_ui::widget::text::text_system"]
+		"node_System(106)" ["label"="update_image_calculated_size_system", "tooltip"="bevy_ui::widget::image::update_image_calculated_size_system"]
+		"node_System(109)" ["label"="update_clipping_system", "tooltip"="bevy_ui::update::update_clipping_system"]
+		"node_System(142)" ["label"="play_queued_audio_system<AudioSource>", "tooltip"="bevy_audio::audio_output::play_queued_audio_system<bevy_audio::audio_source::AudioSource>"]
+		"node_System(147)" ["label"="animation_player", "tooltip"="bevy_animation::animation_player"]
 	}
 	
 	subgraph "clusternode_Set(12)" {
@@ -313,7 +321,7 @@ digraph "" {
 		"node_System(10)" ["label"="check_hierarchy_component_has_valid_parent<GlobalTransform>", "tooltip"="bevy_hierarchy::valid_parent_check_plugin::check_hierarchy_component_has_valid_parent<bevy_transform::components::global_transform::GlobalTransform>"]
 		"node_System(57)" ["label"="changed_window", "tooltip"="bevy_winit::system::changed_window"]
 		"node_System(58)" ["label"="despawn_window", "tooltip"="bevy_winit::system::despawn_window"]
-		"node_System(62)" ["label"="check_hierarchy_component_has_valid_parent<ComputedVisibility>", "tooltip"="bevy_hierarchy::valid_parent_check_plugin::check_hierarchy_component_has_valid_parent<bevy_render::view::visibility::ComputedVisibility>"]
+		"node_System(67)" ["label"="check_hierarchy_component_has_valid_parent<ComputedVisibility>", "tooltip"="bevy_hierarchy::valid_parent_check_plugin::check_hierarchy_component_has_valid_parent<bevy_render::view::visibility::ComputedVisibility>"]
 	}
 	
 	subgraph "clusternode_Set(22)" {
@@ -366,43 +374,56 @@ In multiple sets, TransformPropagate, PropagateTransformsSet", "tooltip"="bevy_t
 	"set_marker_node_Set(11)" -> "set_marker_node_Set(60)" ["lhead"="clusternode_Set(60)", "ltail"="clusternode_Set(11)", "tooltip"="PostUpdate → AssetEvents", "color"="#663699"]
 	"set_marker_node_Set(60)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(60)", "tooltip"="AssetEvents → Last", "color"="#3363bb"]
 	"node_System(57)" -> "node_System(58)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(changed_window\") → despawn_window", "color"="#22c2bb"]
-	"set_marker_node_Set(81)" -> "set_marker_node_Set(82)" ["lhead"="clusternode_Set(82)", "ltail"="clusternode_Set(81)", "tooltip"="CalculateBounds → CalculateBoundsFlush", "color"="#99d955"]
-	"node_System(64)" -> "node_System(68)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(camera_system<OrthographicProjection>\") → update_frusta<OrthographicProjection>", "color"="#eede00"]
-	"set_marker_node_Set(20)" -> "node_System(68)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_frusta<OrthographicProjection>", "color"="#881877"]
-	"node_System(65)" -> "node_System(69)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(camera_system<PerspectiveProjection>\") → update_frusta<PerspectiveProjection>", "color"="#00b0cc"]
-	"set_marker_node_Set(20)" -> "node_System(69)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_frusta<PerspectiveProjection>", "color"="#aa3a55"]
-	"node_System(63)" -> "node_System(70)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(camera_system<Projection>\") → update_frusta<Projection>", "color"="#44d488"]
-	"set_marker_node_Set(20)" -> "node_System(70)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_frusta<Projection>", "color"="#0090cc"]
-	"set_marker_node_Set(82)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(82)", "tooltip"="CalculateBoundsFlush → check_visibility", "color"="#ee9e44"]
-	"set_marker_node_Set(83)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(83)", "tooltip"="UpdateOrthographicFrusta → check_visibility", "color"="#663699"]
-	"set_marker_node_Set(84)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(84)", "tooltip"="UpdatePerspectiveFrusta → check_visibility", "color"="#3363bb"]
-	"set_marker_node_Set(85)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(85)", "tooltip"="UpdateProjectionFrusta → check_visibility", "color"="#22c2bb"]
-	"set_marker_node_Set(87)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(87)", "tooltip"="VisibilityPropagate → check_visibility", "color"="#99d955"]
-	"set_marker_node_Set(20)" -> "node_System(72)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → check_visibility", "color"="#eede00"]
-	"set_marker_node_Set(25)" -> "node_System(95)" ["lhead"="", "ltail"="clusternode_Set(25)", "tooltip"="InputSystem → ui_focus_system", "color"="#881877"]
-	"node_System(96)" -> "set_marker_node_Set(117)" ["lhead"="clusternode_Set(117)", "ltail"="", "tooltip"="text_system → Flex", "color"="#00b0cc"]
-	"node_System(97)" -> "set_marker_node_Set(117)" ["lhead"="clusternode_Set(117)", "ltail"="", "tooltip"="update_image_calculated_size_system → Flex", "color"="#aa3a55"]
-	"node_System(98)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"="", "tooltip"="flex_node_system → TransformPropagate", "color"="#44d488"]
-	"set_marker_node_Set(20)" -> "node_System(100)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_clipping_system", "color"="#0090cc"]
-	"set_marker_node_Set(128)" -> "set_marker_node_Set(129)" ["lhead"="clusternode_Set(129)", "ltail"="clusternode_Set(128)", "tooltip"="AddClusters → AddClustersFlush", "color"="#ee9e44"]
-	"set_marker_node_Set(129)" -> "set_marker_node_Set(130)" ["lhead"="clusternode_Set(130)", "ltail"="clusternode_Set(129)", "tooltip"="AddClustersFlush → AssignLightsToClusters", "color"="#663699"]
-	"set_marker_node_Set(20)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → assign_lights_to_clusters", "color"="#3363bb"]
-	"set_marker_node_Set(86)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(86)", "tooltip"="CheckVisibility → assign_lights_to_clusters", "color"="#22c2bb"]
-	"set_marker_node_Set(77)" -> "node_System(106)" ["lhead"="", "ltail"="clusternode_Set(77)", "tooltip"="CameraUpdateSystem → assign_lights_to_clusters", "color"="#99d955"]
-	"set_marker_node_Set(20)" -> "node_System(107)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_directional_light_cascades", "color"="#eede00"]
-	"set_marker_node_Set(77)" -> "node_System(107)" ["lhead"="", "ltail"="clusternode_Set(77)", "tooltip"="CameraUpdateSystem → update_directional_light_cascades", "color"="#881877"]
-	"set_marker_node_Set(86)" -> "node_System(108)" ["lhead"="", "ltail"="clusternode_Set(86)", "tooltip"="CheckVisibility → update_directional_light_frusta", "color"="#00b0cc"]
-	"set_marker_node_Set(20)" -> "node_System(108)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_directional_light_frusta", "color"="#aa3a55"]
-	"set_marker_node_Set(132)" -> "node_System(108)" ["lhead"="", "ltail"="clusternode_Set(132)", "tooltip"="UpdateDirectionalLightCascades → update_directional_light_frusta", "color"="#44d488"]
-	"set_marker_node_Set(20)" -> "node_System(109)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_point_light_frusta", "color"="#0090cc"]
-	"set_marker_node_Set(130)" -> "node_System(109)" ["lhead"="", "ltail"="clusternode_Set(130)", "tooltip"="AssignLightsToClusters → update_point_light_frusta", "color"="#ee9e44"]
-	"set_marker_node_Set(20)" -> "node_System(110)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_spot_light_frusta", "color"="#663699"]
-	"set_marker_node_Set(130)" -> "node_System(110)" ["lhead"="", "ltail"="clusternode_Set(130)", "tooltip"="AssignLightsToClusters → update_spot_light_frusta", "color"="#3363bb"]
-	"set_marker_node_Set(82)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(82)", "tooltip"="CalculateBoundsFlush → check_light_mesh_visibility", "color"="#22c2bb"]
-	"set_marker_node_Set(20)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → check_light_mesh_visibility", "color"="#99d955"]
-	"set_marker_node_Set(133)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(133)", "tooltip"="UpdateLightFrusta → check_light_mesh_visibility", "color"="#eede00"]
-	"set_marker_node_Set(86)" -> "node_System(111)" ["lhead"="", "ltail"="clusternode_Set(86)", "tooltip"="CheckVisibility → check_light_mesh_visibility", "color"="#881877"]
-	"node_System(134)" -> "set_marker_node_Set(25)" ["lhead"="clusternode_Set(25)", "ltail"="", "tooltip"="gilrs_event_system → InputSystem", "color"="#00b0cc"]
-	"node_System(138)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"="", "tooltip"="animation_player → TransformPropagate", "color"="#aa3a55"]
-	"node_System(98)" -> "node_System(138)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">Transform</td></tr></table>>, "labeltooltip"="flex_node_system — animation_player"]
+	"set_marker_node_Set(86)" -> "set_marker_node_Set(87)" ["lhead"="clusternode_Set(87)", "ltail"="clusternode_Set(86)", "tooltip"="CalculateBounds → CalculateBoundsFlush", "color"="#99d955"]
+	"node_System(69)" -> "node_System(73)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(camera_system<OrthographicProjection>\") → update_frusta<OrthographicProjection>", "color"="#eede00"]
+	"set_marker_node_Set(20)" -> "node_System(73)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_frusta<OrthographicProjection>", "color"="#881877"]
+	"node_System(70)" -> "node_System(74)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(camera_system<PerspectiveProjection>\") → update_frusta<PerspectiveProjection>", "color"="#00b0cc"]
+	"set_marker_node_Set(20)" -> "node_System(74)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_frusta<PerspectiveProjection>", "color"="#aa3a55"]
+	"node_System(68)" -> "node_System(75)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(camera_system<Projection>\") → update_frusta<Projection>", "color"="#44d488"]
+	"set_marker_node_Set(20)" -> "node_System(75)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_frusta<Projection>", "color"="#0090cc"]
+	"set_marker_node_Set(87)" -> "node_System(77)" ["lhead"="", "ltail"="clusternode_Set(87)", "tooltip"="CalculateBoundsFlush → check_visibility", "color"="#ee9e44"]
+	"set_marker_node_Set(88)" -> "node_System(77)" ["lhead"="", "ltail"="clusternode_Set(88)", "tooltip"="UpdateOrthographicFrusta → check_visibility", "color"="#663699"]
+	"set_marker_node_Set(89)" -> "node_System(77)" ["lhead"="", "ltail"="clusternode_Set(89)", "tooltip"="UpdatePerspectiveFrusta → check_visibility", "color"="#3363bb"]
+	"set_marker_node_Set(90)" -> "node_System(77)" ["lhead"="", "ltail"="clusternode_Set(90)", "tooltip"="UpdateProjectionFrusta → check_visibility", "color"="#22c2bb"]
+	"set_marker_node_Set(92)" -> "node_System(77)" ["lhead"="", "ltail"="clusternode_Set(92)", "tooltip"="VisibilityPropagate → check_visibility", "color"="#99d955"]
+	"set_marker_node_Set(20)" -> "node_System(77)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → check_visibility", "color"="#eede00"]
+	"set_marker_node_Set(25)" -> "node_System(104)" ["lhead"="", "ltail"="clusternode_Set(25)", "tooltip"="InputSystem → ui_focus_system", "color"="#881877"]
+	"node_System(105)" -> "set_marker_node_Set(126)" ["lhead"="clusternode_Set(126)", "ltail"="", "tooltip"="text_system → Flex", "color"="#00b0cc"]
+	"node_System(106)" -> "set_marker_node_Set(126)" ["lhead"="clusternode_Set(126)", "ltail"="", "tooltip"="update_image_calculated_size_system → Flex", "color"="#aa3a55"]
+	"node_System(107)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"="", "tooltip"="flex_node_system → TransformPropagate", "color"="#44d488"]
+	"set_marker_node_Set(20)" -> "node_System(109)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_clipping_system", "color"="#0090cc"]
+	"set_marker_node_Set(137)" -> "set_marker_node_Set(138)" ["lhead"="clusternode_Set(138)", "ltail"="clusternode_Set(137)", "tooltip"="AddClusters → AddClustersFlush", "color"="#ee9e44"]
+	"set_marker_node_Set(138)" -> "set_marker_node_Set(139)" ["lhead"="clusternode_Set(139)", "ltail"="clusternode_Set(138)", "tooltip"="AddClustersFlush → AssignLightsToClusters", "color"="#663699"]
+	"set_marker_node_Set(20)" -> "node_System(115)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → assign_lights_to_clusters", "color"="#3363bb"]
+	"set_marker_node_Set(91)" -> "node_System(115)" ["lhead"="", "ltail"="clusternode_Set(91)", "tooltip"="CheckVisibility → assign_lights_to_clusters", "color"="#22c2bb"]
+	"set_marker_node_Set(82)" -> "node_System(115)" ["lhead"="", "ltail"="clusternode_Set(82)", "tooltip"="CameraUpdateSystem → assign_lights_to_clusters", "color"="#99d955"]
+	"set_marker_node_Set(20)" -> "node_System(116)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_directional_light_cascades", "color"="#eede00"]
+	"set_marker_node_Set(82)" -> "node_System(116)" ["lhead"="", "ltail"="clusternode_Set(82)", "tooltip"="CameraUpdateSystem → update_directional_light_cascades", "color"="#881877"]
+	"set_marker_node_Set(91)" -> "node_System(117)" ["lhead"="", "ltail"="clusternode_Set(91)", "tooltip"="CheckVisibility → update_directional_light_frusta", "color"="#00b0cc"]
+	"set_marker_node_Set(20)" -> "node_System(117)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_directional_light_frusta", "color"="#aa3a55"]
+	"set_marker_node_Set(141)" -> "node_System(117)" ["lhead"="", "ltail"="clusternode_Set(141)", "tooltip"="UpdateDirectionalLightCascades → update_directional_light_frusta", "color"="#44d488"]
+	"set_marker_node_Set(20)" -> "node_System(118)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_point_light_frusta", "color"="#0090cc"]
+	"set_marker_node_Set(139)" -> "node_System(118)" ["lhead"="", "ltail"="clusternode_Set(139)", "tooltip"="AssignLightsToClusters → update_point_light_frusta", "color"="#ee9e44"]
+	"set_marker_node_Set(20)" -> "node_System(119)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_spot_light_frusta", "color"="#663699"]
+	"set_marker_node_Set(139)" -> "node_System(119)" ["lhead"="", "ltail"="clusternode_Set(139)", "tooltip"="AssignLightsToClusters → update_spot_light_frusta", "color"="#3363bb"]
+	"set_marker_node_Set(87)" -> "node_System(120)" ["lhead"="", "ltail"="clusternode_Set(87)", "tooltip"="CalculateBoundsFlush → check_light_mesh_visibility", "color"="#22c2bb"]
+	"set_marker_node_Set(20)" -> "node_System(120)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → check_light_mesh_visibility", "color"="#99d955"]
+	"set_marker_node_Set(142)" -> "node_System(120)" ["lhead"="", "ltail"="clusternode_Set(142)", "tooltip"="UpdateLightFrusta → check_light_mesh_visibility", "color"="#eede00"]
+	"set_marker_node_Set(91)" -> "node_System(120)" ["lhead"="", "ltail"="clusternode_Set(91)", "tooltip"="CheckVisibility → check_light_mesh_visibility", "color"="#881877"]
+	"node_System(143)" -> "set_marker_node_Set(25)" ["lhead"="clusternode_Set(25)", "ltail"="", "tooltip"="gilrs_event_system → InputSystem", "color"="#00b0cc"]
+	"node_System(147)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"="", "tooltip"="animation_player → TransformPropagate", "color"="#aa3a55"]
+	"node_System(60)" -> "node_System(61)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessKitAdapters</td></tr></table>>, "labeltooltip"="handle_window_focus — window_closed"]
+	"node_System(61)" -> "node_System(62)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">WinitActionHandlers</td></tr></table>>, "labeltooltip"="window_closed — poll_receivers"]
+	"node_System(61)" -> "node_System(63)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessKitAdapters</td></tr></table>>, "labeltooltip"="window_closed — update_accessibility_nodes"]
+	"node_System(63)" -> "node_System(100)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessibilityNode</td></tr></table>>, "labeltooltip"="update_accessibility_nodes — calc_bounds"]
+	"node_System(63)" -> "node_System(101)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessibilityNode</td></tr></table>>, "labeltooltip"="update_accessibility_nodes — button_changed"]
+	"node_System(63)" -> "node_System(102)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessibilityNode</td></tr></table>>, "labeltooltip"="update_accessibility_nodes — image_changed"]
+	"node_System(63)" -> "node_System(103)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessibilityNode</td></tr></table>>, "labeltooltip"="update_accessibility_nodes — label_changed"]
+	"node_System(100)" -> "node_System(101)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessibilityNode</td></tr></table>>, "labeltooltip"="calc_bounds — button_changed"]
+	"node_System(100)" -> "node_System(102)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessibilityNode</td></tr></table>>, "labeltooltip"="calc_bounds — image_changed"]
+	"node_System(100)" -> "node_System(103)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessibilityNode</td></tr></table>>, "labeltooltip"="calc_bounds — label_changed"]
+	"node_System(101)" -> "node_System(102)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessibilityNode</td></tr></table>>, "labeltooltip"="button_changed — image_changed"]
+	"node_System(101)" -> "node_System(103)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessibilityNode</td></tr></table>>, "labeltooltip"="button_changed — label_changed"]
+	"node_System(102)" -> "node_System(103)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessibilityNode</td></tr></table>>, "labeltooltip"="image_changed — label_changed"]
+	"node_System(107)" -> "node_System(147)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">Transform</td></tr></table>>, "labeltooltip"="flex_node_system — animation_player"]
 }

@@ -105,7 +105,7 @@
 </g>
 </g>
 <g id="clust13" class="cluster">
-<title>clusternode_Set(77)</title>
+<title>clusternode_Set(82)</title>
 <g id="a_clust13"><a xlink:title="CameraUpdateSystem">
 <polygon fill="#6f90ad" stroke="black" points="1031,-269 1031,-470 1341,-470 1341,-269 1031,-269"/>
 <text text-anchor="middle" x="1186" y="-454.8" font-family="Helvetica,sans-Serif" font-size="14.00">CameraUpdateSystem</text>
@@ -113,7 +113,7 @@
 </g>
 </g>
 <g id="clust14" class="cluster">
-<title>clusternode_Set(81)</title>
+<title>clusternode_Set(86)</title>
 <g id="a_clust14"><a xlink:title="CalculateBounds">
 <polygon fill="#6f90ad" stroke="black" points="1111.5,-157 1111.5,-250 1260.5,-250 1260.5,-157 1111.5,-157"/>
 <text text-anchor="middle" x="1186" y="-234.8" font-family="Helvetica,sans-Serif" font-size="14.00">CalculateBounds</text>
@@ -121,7 +121,7 @@
 </g>
 </g>
 <g id="clust15" class="cluster">
-<title>clusternode_Set(82)</title>
+<title>clusternode_Set(87)</title>
 <g id="a_clust15"><a xlink:title="CalculateBoundsFlush">
 <polygon fill="#6f90ad" stroke="black" points="1429,-211 1429,-250 1593,-250 1593,-211 1429,-211"/>
 <text text-anchor="middle" x="1511" y="-234.8" font-family="Helvetica,sans-Serif" font-size="14.00">CalculateBoundsFlush</text>
@@ -129,7 +129,7 @@
 </g>
 </g>
 <g id="clust16" class="cluster">
-<title>clusternode_Set(83)</title>
+<title>clusternode_Set(88)</title>
 <g id="a_clust16"><a xlink:title="UpdateOrthographicFrusta">
 <polygon fill="#6f90ad" stroke="black" points="1361,-258 1361,-351 1661,-351 1661,-258 1361,-258"/>
 <text text-anchor="middle" x="1511" y="-335.8" font-family="Helvetica,sans-Serif" font-size="14.00">UpdateOrthographicFrusta</text>
@@ -137,7 +137,7 @@
 </g>
 </g>
 <g id="clust17" class="cluster">
-<title>clusternode_Set(84)</title>
+<title>clusternode_Set(89)</title>
 <g id="a_clust17"><a xlink:title="UpdatePerspectiveFrusta">
 <polygon fill="#6f90ad" stroke="black" points="1367.5,-359 1367.5,-452 1654.5,-452 1654.5,-359 1367.5,-359"/>
 <text text-anchor="middle" x="1511" y="-436.8" font-family="Helvetica,sans-Serif" font-size="14.00">UpdatePerspectiveFrusta</text>
@@ -145,7 +145,7 @@
 </g>
 </g>
 <g id="clust18" class="cluster">
-<title>clusternode_Set(85)</title>
+<title>clusternode_Set(90)</title>
 <g id="a_clust18"><a xlink:title="UpdateProjectionFrusta">
 <polygon fill="#6f90ad" stroke="black" points="1406,-460 1406,-553 1616,-553 1616,-460 1406,-460"/>
 <text text-anchor="middle" x="1511" y="-537.8" font-family="Helvetica,sans-Serif" font-size="14.00">UpdateProjectionFrusta</text>
@@ -153,7 +153,7 @@
 </g>
 </g>
 <g id="clust19" class="cluster">
-<title>clusternode_Set(86)</title>
+<title>clusternode_Set(91)</title>
 <g id="a_clust19"><a xlink:title="CheckVisibility">
 <polygon fill="#6f90ad" stroke="black" points="1681,-344 1681,-437 1817,-437 1817,-344 1681,-344"/>
 <text text-anchor="middle" x="1749" y="-421.8" font-family="Helvetica,sans-Serif" font-size="14.00">CheckVisibility</text>
@@ -161,7 +161,7 @@
 </g>
 </g>
 <g id="clust20" class="cluster">
-<title>clusternode_Set(87)</title>
+<title>clusternode_Set(92)</title>
 <g id="a_clust20"><a xlink:title="VisibilityPropagate">
 <polygon fill="#6f90ad" stroke="black" points="1401.5,-110 1401.5,-203 1620.5,-203 1620.5,-110 1401.5,-110"/>
 <text text-anchor="middle" x="1511" y="-187.8" font-family="Helvetica,sans-Serif" font-size="14.00">VisibilityPropagate</text>
@@ -323,206 +323,206 @@
 </g>
 </g>
 <!-- set_marker_node_Set(20) -->
-<!-- node_System(68) -->
+<!-- node_System(73) -->
 <g id="node21" class="node">
-<title>node_System(68)</title>
+<title>node_System(73)</title>
 <g id="a_node21"><a xlink:title="bevy_render::view::visibility::update_frusta&lt;bevy_render::camera::projection::OrthographicProjection&gt;">
 <polygon fill="#eff1f3" stroke="#eff1f3" points="1653,-302 1369,-302 1369,-266 1653,-266 1653,-302"/>
 <text text-anchor="middle" x="1511" y="-280.3" font-family="Times,serif" font-size="14.00">update_frusta&lt;OrthographicProjection&gt;</text>
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(20)&#45;&gt;node_System(68) -->
+<!-- set_marker_node_Set(20)&#45;&gt;node_System(73) -->
 <g id="edge18" class="edge">
-<title>set_marker_node_Set(20)&#45;&gt;node_System(68)</title>
+<title>set_marker_node_Set(20)&#45;&gt;node_System(73)</title>
 <g id="a_edge18"><a xlink:title="TransformPropagate → update_frusta&lt;OrthographicProjection&gt;">
 <path fill="none" stroke="#ee9e44" stroke-width="2" d="M1262,-498.7C1290.17,-499.15 1320.34,-493.77 1341,-474 1390.96,-426.21 1319.25,-370.31 1362.3,-312.13"/>
 <polygon fill="#ee9e44" stroke="#ee9e44" stroke-width="2" points="1364.81,-314.58 1368.63,-304.7 1359.48,-310.04 1364.81,-314.58"/>
 </a>
 </g>
 </g>
-<!-- node_System(69) -->
+<!-- node_System(74) -->
 <g id="node23" class="node">
-<title>node_System(69)</title>
+<title>node_System(74)</title>
 <g id="a_node23"><a xlink:title="bevy_render::view::visibility::update_frusta&lt;bevy_render::camera::projection::PerspectiveProjection&gt;">
 <polygon fill="#eff1f3" stroke="#eff1f3" points="1646.5,-403 1375.5,-403 1375.5,-367 1646.5,-367 1646.5,-403"/>
 <text text-anchor="middle" x="1511" y="-381.3" font-family="Times,serif" font-size="14.00">update_frusta&lt;PerspectiveProjection&gt;</text>
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(20)&#45;&gt;node_System(69) -->
+<!-- set_marker_node_Set(20)&#45;&gt;node_System(74) -->
 <g id="edge20" class="edge">
-<title>set_marker_node_Set(20)&#45;&gt;node_System(69)</title>
+<title>set_marker_node_Set(20)&#45;&gt;node_System(74)</title>
 <g id="a_edge20"><a xlink:title="TransformPropagate → update_frusta&lt;PerspectiveProjection&gt;">
 <path fill="none" stroke="#3363bb" stroke-width="2" d="M1262,-496.61C1289.41,-496.53 1319.04,-491.33 1341,-474 1363.73,-456.06 1339.21,-431.07 1361,-412 1362.09,-411.05 1363.2,-410.12 1364.33,-409.23"/>
 <polygon fill="#3363bb" stroke="#3363bb" stroke-width="2" points="1366.26,-412.15 1372.52,-403.6 1362.3,-406.38 1366.26,-412.15"/>
 </a>
 </g>
 </g>
-<!-- node_System(70) -->
+<!-- node_System(75) -->
 <g id="node25" class="node">
-<title>node_System(70)</title>
+<title>node_System(75)</title>
 <g id="a_node25"><a xlink:title="bevy_render::view::visibility::update_frusta&lt;bevy_render::camera::projection::Projection&gt;">
 <polygon fill="#eff1f3" stroke="#eff1f3" points="1608,-504 1414,-504 1414,-468 1608,-468 1608,-504"/>
 <text text-anchor="middle" x="1511" y="-482.3" font-family="Times,serif" font-size="14.00">update_frusta&lt;Projection&gt;</text>
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(20)&#45;&gt;node_System(70) -->
+<!-- set_marker_node_Set(20)&#45;&gt;node_System(75) -->
 <g id="edge22" class="edge">
-<title>set_marker_node_Set(20)&#45;&gt;node_System(70)</title>
+<title>set_marker_node_Set(20)&#45;&gt;node_System(75)</title>
 <g id="a_edge22"><a xlink:title="TransformPropagate → update_frusta&lt;Projection&gt;">
 <path fill="none" stroke="#99d955" stroke-width="2" d="M1262,-486C1303.31,-486 1355.33,-486 1401.05,-486"/>
 <polygon fill="#99d955" stroke="#99d955" stroke-width="2" points="1400.9,-489.5 1410.9,-486 1400.9,-482.5 1400.9,-489.5"/>
 </a>
 </g>
 </g>
-<!-- node_System(72) -->
+<!-- node_System(77) -->
 <g id="node27" class="node">
-<title>node_System(72)</title>
+<title>node_System(77)</title>
 <g id="a_node27"><a xlink:title="bevy_render::view::visibility::check_visibility">
 <polygon fill="#eff1f3" stroke="#eff1f3" points="1809,-388 1689,-388 1689,-352 1809,-352 1809,-388"/>
 <text text-anchor="middle" x="1749" y="-366.3" font-family="Times,serif" font-size="14.00">check_visibility</text>
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(20)&#45;&gt;node_System(72) -->
+<!-- set_marker_node_Set(20)&#45;&gt;node_System(77) -->
 <g id="edge28" class="edge">
-<title>set_marker_node_Set(20)&#45;&gt;node_System(72)</title>
+<title>set_marker_node_Set(20)&#45;&gt;node_System(77)</title>
 <g id="a_edge28"><a xlink:title="TransformPropagate → check_visibility">
 <path fill="none" stroke="#0090cc" stroke-width="2" d="M1238.75,-517C1334.7,-570.02 1541.29,-662.68 1661,-557 1711.79,-512.17 1645.36,-459.86 1682.31,-398.96"/>
 <polygon fill="#0090cc" stroke="#0090cc" stroke-width="2" points="1685.17,-400.97 1688.06,-390.78 1679.44,-396.95 1685.17,-400.97"/>
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(77) -->
-<!-- node_System(63) -->
+<!-- set_marker_node_Set(82) -->
+<!-- node_System(68) -->
 <g id="node14" class="node">
-<title>node_System(63)</title>
+<title>node_System(68)</title>
 <g id="a_node14"><a xlink:title="bevy_render::camera::camera::camera_system&lt;bevy_render::camera::projection::Projection&gt;">
 <polygon fill="#eff1f3" stroke="#eff1f3" points="1288,-421 1084,-421 1084,-385 1288,-385 1288,-421"/>
 <text text-anchor="middle" x="1186" y="-399.3" font-family="Times,serif" font-size="14.00">camera_system&lt;Projection&gt;</text>
 </a>
 </g>
 </g>
-<!-- node_System(63)&#45;&gt;node_System(70) -->
+<!-- node_System(68)&#45;&gt;node_System(75) -->
 <g id="edge21" class="edge">
-<title>node_System(63)&#45;&gt;node_System(70)</title>
+<title>node_System(68)&#45;&gt;node_System(75)</title>
 <g id="a_edge21"><a xlink:title="SystemTypeSet(camera_system&lt;Projection&gt;&quot;) → update_frusta&lt;Projection&gt;">
 <path fill="none" stroke="#22c2bb" stroke-width="2" d="M1288.22,-409.74C1306.67,-413.96 1325.09,-420.37 1341,-430 1353.47,-437.55 1348.62,-448.29 1361,-456 1373.21,-463.6 1386.99,-469.33 1401.1,-473.63"/>
 <polygon fill="#22c2bb" stroke="#22c2bb" stroke-width="2" points="1400.06,-476.98 1410.63,-476.26 1401.92,-470.23 1400.06,-476.98"/>
 </a>
 </g>
 </g>
-<!-- node_System(64) -->
+<!-- node_System(69) -->
 <g id="node15" class="node">
-<title>node_System(64)</title>
+<title>node_System(69)</title>
 <g id="a_node15"><a xlink:title="bevy_render::camera::camera::camera_system&lt;bevy_render::camera::projection::OrthographicProjection&gt;">
 <polygon fill="#eff1f3" stroke="#eff1f3" points="1333,-313 1039,-313 1039,-277 1333,-277 1333,-313"/>
 <text text-anchor="middle" x="1186" y="-291.3" font-family="Times,serif" font-size="14.00">camera_system&lt;OrthographicProjection&gt;</text>
 </a>
 </g>
 </g>
-<!-- node_System(64)&#45;&gt;node_System(68) -->
+<!-- node_System(69)&#45;&gt;node_System(73) -->
 <g id="edge17" class="edge">
-<title>node_System(64)&#45;&gt;node_System(68)</title>
+<title>node_System(69)&#45;&gt;node_System(73)</title>
 <g id="a_edge17"><a xlink:title="SystemTypeSet(camera_system&lt;OrthographicProjection&gt;&quot;) → update_frusta&lt;OrthographicProjection&gt;">
 <path fill="none" stroke="#0090cc" stroke-width="2" d="M1333.38,-290.01C1340.77,-289.76 1348.21,-289.51 1355.63,-289.26"/>
 <polygon fill="#0090cc" stroke="#0090cc" stroke-width="2" points="1355.6,-292.76 1365.48,-288.92 1355.37,-285.76 1355.6,-292.76"/>
 </a>
 </g>
 </g>
-<!-- node_System(65) -->
+<!-- node_System(70) -->
 <g id="node16" class="node">
-<title>node_System(65)</title>
+<title>node_System(70)</title>
 <g id="a_node16"><a xlink:title="bevy_render::camera::camera::camera_system&lt;bevy_render::camera::projection::PerspectiveProjection&gt;">
 <polygon fill="#eff1f3" stroke="#eff1f3" points="1326.5,-367 1045.5,-367 1045.5,-331 1326.5,-331 1326.5,-367"/>
 <text text-anchor="middle" x="1186" y="-345.3" font-family="Times,serif" font-size="14.00">camera_system&lt;PerspectiveProjection&gt;</text>
 </a>
 </g>
 </g>
-<!-- node_System(65)&#45;&gt;node_System(69) -->
+<!-- node_System(70)&#45;&gt;node_System(74) -->
 <g id="edge19" class="edge">
-<title>node_System(65)&#45;&gt;node_System(69)</title>
+<title>node_System(70)&#45;&gt;node_System(74)</title>
 <g id="a_edge19"><a xlink:title="SystemTypeSet(camera_system&lt;PerspectiveProjection&gt;&quot;) → update_frusta&lt;PerspectiveProjection&gt;">
 <path fill="none" stroke="#663699" stroke-width="2" d="M1326.79,-364.58C1338.56,-365.89 1350.49,-367.22 1362.32,-368.54"/>
 <polygon fill="#663699" stroke="#663699" stroke-width="2" points="1361.76,-372 1372.09,-369.63 1362.54,-365.04 1361.76,-372"/>
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(81) -->
-<!-- set_marker_node_Set(82) -->
-<!-- set_marker_node_Set(81)&#45;&gt;set_marker_node_Set(82) -->
+<!-- set_marker_node_Set(86) -->
+<!-- set_marker_node_Set(87) -->
+<!-- set_marker_node_Set(86)&#45;&gt;set_marker_node_Set(87) -->
 <g id="edge16" class="edge">
-<title>set_marker_node_Set(81)&#45;&gt;set_marker_node_Set(82)</title>
+<title>set_marker_node_Set(86)&#45;&gt;set_marker_node_Set(87)</title>
 <g id="a_edge16"><a xlink:title="CalculateBounds → CalculateBoundsFlush">
 <path fill="none" stroke="#44d488" stroke-width="2" d="M1260.5,-219C1306.59,-219 1366.45,-219 1415.98,-219"/>
 <polygon fill="#44d488" stroke="#44d488" stroke-width="2" points="1415.98,-222.5 1425.98,-219 1415.98,-215.5 1415.98,-222.5"/>
 </a>
 </g>
 </g>
-<!-- node_System(67) -->
+<!-- node_System(72) -->
 <g id="node18" class="node">
-<title>node_System(67)</title>
+<title>node_System(72)</title>
 <g id="a_node18"><a xlink:title="bevy_render::view::visibility::calculate_bounds">
 <polygon fill="#eff1f3" stroke="#eff1f3" points="1252.5,-201 1119.5,-201 1119.5,-165 1252.5,-165 1252.5,-201"/>
 <text text-anchor="middle" x="1186" y="-179.3" font-family="Times,serif" font-size="14.00">calculate_bounds</text>
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(82)&#45;&gt;node_System(72) -->
+<!-- set_marker_node_Set(87)&#45;&gt;node_System(77) -->
 <g id="edge23" class="edge">
-<title>set_marker_node_Set(82)&#45;&gt;node_System(72)</title>
+<title>set_marker_node_Set(87)&#45;&gt;node_System(77)</title>
 <g id="a_edge23"><a xlink:title="CalculateBoundsFlush → check_visibility">
 <path fill="none" stroke="#eede00" stroke-width="2" d="M1593,-227.46C1616.31,-232.6 1640.85,-240.83 1661,-254 1693.71,-275.38 1718.74,-313.48 1733.37,-340.17"/>
 <polygon fill="#eede00" stroke="#eede00" stroke-width="2" points="1730.19,-341.63 1737.95,-348.84 1736.38,-338.37 1730.19,-341.63"/>
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(83) -->
-<!-- set_marker_node_Set(83)&#45;&gt;node_System(72) -->
+<!-- set_marker_node_Set(88) -->
+<!-- set_marker_node_Set(88)&#45;&gt;node_System(77) -->
 <g id="edge24" class="edge">
-<title>set_marker_node_Set(83)&#45;&gt;node_System(72)</title>
+<title>set_marker_node_Set(88)&#45;&gt;node_System(77)</title>
 <g id="a_edge24"><a xlink:title="UpdateOrthographicFrusta → check_visibility">
 <path fill="none" stroke="#881877" stroke-width="2" d="M1658.32,-351C1664.39,-352.29 1670.36,-353.55 1676.15,-354.78"/>
 <polygon fill="#881877" stroke="#881877" stroke-width="2" points="1675.17,-358.15 1685.68,-356.8 1676.62,-351.3 1675.17,-358.15"/>
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(84) -->
-<!-- set_marker_node_Set(84)&#45;&gt;node_System(72) -->
+<!-- set_marker_node_Set(89) -->
+<!-- set_marker_node_Set(89)&#45;&gt;node_System(77) -->
 <g id="edge25" class="edge">
-<title>set_marker_node_Set(84)&#45;&gt;node_System(72)</title>
+<title>set_marker_node_Set(89)&#45;&gt;node_System(77)</title>
 <g id="a_edge25"><a xlink:title="UpdatePerspectiveFrusta → check_visibility">
 <path fill="none" stroke="#00b0cc" stroke-width="2" d="M1654.5,-414.23C1656.69,-413.53 1658.86,-412.79 1661,-412 1671.43,-408.17 1671.32,-402.46 1681,-397 1682.76,-396.01 1684.56,-395.04 1686.39,-394.08"/>
 <polygon fill="#00b0cc" stroke="#00b0cc" stroke-width="2" points="1687.73,-397.32 1695.2,-389.81 1684.68,-391.03 1687.73,-397.32"/>
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(85) -->
-<!-- set_marker_node_Set(85)&#45;&gt;node_System(72) -->
+<!-- set_marker_node_Set(90) -->
+<!-- set_marker_node_Set(90)&#45;&gt;node_System(77) -->
 <g id="edge26" class="edge">
-<title>set_marker_node_Set(85)&#45;&gt;node_System(72)</title>
+<title>set_marker_node_Set(90)&#45;&gt;node_System(77)</title>
 <g id="a_edge26"><a xlink:title="UpdateProjectionFrusta → check_visibility">
 <path fill="none" stroke="#aa3a55" stroke-width="2" d="M1616,-533.23C1632.6,-530.37 1648.42,-524.26 1661,-513 1697.24,-480.56 1654.98,-443.36 1682.47,-398.7"/>
 <polygon fill="#aa3a55" stroke="#aa3a55" stroke-width="2" points="1685.11,-401.02 1688.18,-390.88 1679.46,-396.89 1685.11,-401.02"/>
 </a>
 </g>
 </g>
-<!-- set_marker_node_Set(86) -->
-<!-- set_marker_node_Set(87) -->
-<!-- set_marker_node_Set(87)&#45;&gt;node_System(72) -->
+<!-- set_marker_node_Set(91) -->
+<!-- set_marker_node_Set(92) -->
+<!-- set_marker_node_Set(92)&#45;&gt;node_System(77) -->
 <g id="edge27" class="edge">
-<title>set_marker_node_Set(87)&#45;&gt;node_System(72)</title>
+<title>set_marker_node_Set(92)&#45;&gt;node_System(77)</title>
 <g id="a_edge27"><a xlink:title="VisibilityPropagate → check_visibility">
 <path fill="none" stroke="#44d488" stroke-width="2" d="M1620.5,-185.88C1635.03,-190.95 1649.03,-197.79 1661,-207 1704.48,-240.44 1728.69,-301.93 1739.98,-339.08"/>
 <polygon fill="#44d488" stroke="#44d488" stroke-width="2" points="1736.6,-340.02 1742.72,-348.66 1743.33,-338.08 1736.6,-340.02"/>
 </a>
 </g>
 </g>
-<!-- node_System(71) -->
+<!-- node_System(76) -->
 <g id="node29" class="node">
-<title>node_System(71)</title>
+<title>node_System(76)</title>
 <g id="a_node29"><a xlink:title="bevy_render::view::visibility::visibility_propagate_system">
 <polygon fill="#eff1f3" stroke="#eff1f3" points="1612.5,-154 1409.5,-154 1409.5,-118 1612.5,-118 1612.5,-154"/>
 <text text-anchor="middle" x="1511" y="-132.3" font-family="Times,serif" font-size="14.00">visibility_propagate_system</text>

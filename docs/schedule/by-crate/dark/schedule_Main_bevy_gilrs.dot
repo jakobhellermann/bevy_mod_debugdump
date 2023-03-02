@@ -76,7 +76,7 @@ digraph "" {
 			"set_marker_node_Set(25)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		}
 		
-		"node_System(134)" ["label"="gilrs_event_system", "tooltip"="bevy_gilrs::gilrs_system::gilrs_event_system"]
+		"node_System(143)" ["label"="gilrs_event_system", "tooltip"="bevy_gilrs::gilrs_system::gilrs_event_system"]
 	}
 	
 	subgraph "clusternode_Set(9)" {
@@ -150,5 +150,5 @@ digraph "" {
 	"set_marker_node_Set(7)" -> "set_marker_node_Set(59)" ["lhead"="clusternode_Set(59)", "ltail"="clusternode_Set(7)", "tooltip"="First → LoadAssets", "color"="#881877"]
 	"set_marker_node_Set(11)" -> "set_marker_node_Set(60)" ["lhead"="clusternode_Set(60)", "ltail"="clusternode_Set(11)", "tooltip"="PostUpdate → AssetEvents", "color"="#00b0cc"]
 	"set_marker_node_Set(60)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(60)", "tooltip"="AssetEvents → Last", "color"="#aa3a55"]
-	"node_System(134)" -> "set_marker_node_Set(25)" ["lhead"="clusternode_Set(25)", "ltail"="", "tooltip"="gilrs_event_system → InputSystem", "color"="#44d488"]
+	"node_System(143)" -> "set_marker_node_Set(25)" ["lhead"="clusternode_Set(25)", "ltail"="", "tooltip"="gilrs_event_system → InputSystem", "color"="#44d488"]
 }

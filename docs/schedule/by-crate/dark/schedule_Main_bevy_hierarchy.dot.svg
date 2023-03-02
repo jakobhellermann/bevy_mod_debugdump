@@ -268,9 +268,9 @@
 </a>
 </g>
 </g>
-<!-- node_System(62) -->
+<!-- node_System(67) -->
 <g id="node14" class="node">
-<title>node_System(62)</title>
+<title>node_System(67)</title>
 <g id="a_node14"><a xlink:title="bevy_hierarchy::valid_parent_check_plugin::check_hierarchy_component_has_valid_parent&lt;bevy_render::view::visibility::ComputedVisibility&gt;">
 <polygon fill="#eff1f3" stroke="#eff1f3" points="1776,-52 1301,-52 1301,-16 1776,-16 1776,-52"/>
 <text text-anchor="middle" x="1538.5" y="-30.3" font-family="Times,serif" font-size="14.00">check_hierarchy_component_has_valid_parent&lt;ComputedVisibility&gt;</text>

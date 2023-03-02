@@ -12,6 +12,10 @@ digraph "" {
 		"bgcolor"="#6f90ad";
 		"color"="black";
 		"set_marker_node_Set(0)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(60)" ["label"="handle_window_focus", "tooltip"="bevy_winit::accessibility::handle_window_focus"]
+		"node_System(61)" ["label"="window_closed", "tooltip"="bevy_winit::accessibility::window_closed"]
+		"node_System(62)" ["label"="poll_receivers", "tooltip"="bevy_winit::accessibility::poll_receivers"]
+		"node_System(63)" ["label"="update_accessibility_nodes", "tooltip"="bevy_winit::accessibility::update_accessibility_nodes"]
 	}
 	
 	subgraph "clusternode_Set(2)" {
@@ -144,4 +148,7 @@ digraph "" {
 	"set_marker_node_Set(11)" -> "set_marker_node_Set(60)" ["lhead"="clusternode_Set(60)", "ltail"="clusternode_Set(11)", "tooltip"="PostUpdate → AssetEvents", "color"="#00b0cc"]
 	"set_marker_node_Set(60)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(60)", "tooltip"="AssetEvents → Last", "color"="#aa3a55"]
 	"node_System(57)" -> "node_System(58)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(changed_window\") → despawn_window", "color"="#44d488"]
+	"node_System(60)" -> "node_System(61)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessKitAdapters</td></tr></table>>, "labeltooltip"="handle_window_focus — window_closed"]
+	"node_System(61)" -> "node_System(62)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">WinitActionHandlers</td></tr></table>>, "labeltooltip"="window_closed — poll_receivers"]
+	"node_System(61)" -> "node_System(63)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessKitAdapters</td></tr></table>>, "labeltooltip"="window_closed — update_accessibility_nodes"]
 }

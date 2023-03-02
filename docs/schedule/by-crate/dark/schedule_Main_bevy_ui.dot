@@ -12,6 +12,10 @@ digraph "" {
 		"bgcolor"="#6f90ad";
 		"color"="black";
 		"set_marker_node_Set(0)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(100)" ["label"="calc_bounds", "tooltip"="bevy_ui::accessibility::calc_bounds"]
+		"node_System(101)" ["label"="button_changed", "tooltip"="bevy_ui::accessibility::button_changed"]
+		"node_System(102)" ["label"="image_changed", "tooltip"="bevy_ui::accessibility::image_changed"]
+		"node_System(103)" ["label"="label_changed", "tooltip"="bevy_ui::accessibility::label_changed"]
 	}
 	
 	subgraph "clusternode_Set(2)" {
@@ -76,13 +80,13 @@ digraph "" {
 			"set_marker_node_Set(25)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		}
 		
-		subgraph "clusternode_Set(116)" {
+		subgraph "clusternode_Set(125)" {
 			"label"="Focus";
 			"tooltip"="Focus";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(116)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(95)" ["label"="ui_focus_system", "tooltip"="bevy_ui::focus::ui_focus_system"]
+			"set_marker_node_Set(125)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(104)" ["label"="ui_focus_system", "tooltip"="bevy_ui::focus::ui_focus_system"]
 		}
 		
 	}
@@ -117,27 +121,27 @@ digraph "" {
 			"set_marker_node_Set(20)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		}
 		
-		subgraph "clusternode_Set(117)" {
+		subgraph "clusternode_Set(126)" {
 			"label"="Flex";
 			"tooltip"="Flex";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(117)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(98)" ["label"="flex_node_system", "tooltip"="bevy_ui::flex::flex_node_system"]
+			"set_marker_node_Set(126)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(107)" ["label"="flex_node_system", "tooltip"="bevy_ui::flex::flex_node_system"]
 		}
 		
-		subgraph "clusternode_Set(118)" {
+		subgraph "clusternode_Set(127)" {
 			"label"="Stack";
 			"tooltip"="Stack";
 			"bgcolor"="#6f90ad";
 			"color"="black";
-			"set_marker_node_Set(118)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(99)" ["label"="ui_stack_system", "tooltip"="bevy_ui::stack::ui_stack_system"]
+			"set_marker_node_Set(127)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(108)" ["label"="ui_stack_system", "tooltip"="bevy_ui::stack::ui_stack_system"]
 		}
 		
-		"node_System(96)" ["label"="text_system", "tooltip"="bevy_ui::widget::text::text_system"]
-		"node_System(97)" ["label"="update_image_calculated_size_system", "tooltip"="bevy_ui::widget::image::update_image_calculated_size_system"]
-		"node_System(100)" ["label"="update_clipping_system", "tooltip"="bevy_ui::update::update_clipping_system"]
+		"node_System(105)" ["label"="text_system", "tooltip"="bevy_ui::widget::text::text_system"]
+		"node_System(106)" ["label"="update_image_calculated_size_system", "tooltip"="bevy_ui::widget::image::update_image_calculated_size_system"]
+		"node_System(109)" ["label"="update_clipping_system", "tooltip"="bevy_ui::update::update_clipping_system"]
 	}
 	
 	subgraph "clusternode_Set(12)" {
@@ -187,9 +191,15 @@ digraph "" {
 	"set_marker_node_Set(7)" -> "set_marker_node_Set(59)" ["lhead"="clusternode_Set(59)", "ltail"="clusternode_Set(7)", "tooltip"="First → LoadAssets", "color"="#881877"]
 	"set_marker_node_Set(11)" -> "set_marker_node_Set(60)" ["lhead"="clusternode_Set(60)", "ltail"="clusternode_Set(11)", "tooltip"="PostUpdate → AssetEvents", "color"="#00b0cc"]
 	"set_marker_node_Set(60)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(60)", "tooltip"="AssetEvents → Last", "color"="#aa3a55"]
-	"set_marker_node_Set(25)" -> "node_System(95)" ["lhead"="", "ltail"="clusternode_Set(25)", "tooltip"="InputSystem → ui_focus_system", "color"="#44d488"]
-	"node_System(96)" -> "set_marker_node_Set(117)" ["lhead"="clusternode_Set(117)", "ltail"="", "tooltip"="text_system → Flex", "color"="#0090cc"]
-	"node_System(97)" -> "set_marker_node_Set(117)" ["lhead"="clusternode_Set(117)", "ltail"="", "tooltip"="update_image_calculated_size_system → Flex", "color"="#ee9e44"]
-	"node_System(98)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"="", "tooltip"="flex_node_system → TransformPropagate", "color"="#663699"]
-	"set_marker_node_Set(20)" -> "node_System(100)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_clipping_system", "color"="#3363bb"]
+	"set_marker_node_Set(25)" -> "node_System(104)" ["lhead"="", "ltail"="clusternode_Set(25)", "tooltip"="InputSystem → ui_focus_system", "color"="#44d488"]
+	"node_System(105)" -> "set_marker_node_Set(126)" ["lhead"="clusternode_Set(126)", "ltail"="", "tooltip"="text_system → Flex", "color"="#0090cc"]
+	"node_System(106)" -> "set_marker_node_Set(126)" ["lhead"="clusternode_Set(126)", "ltail"="", "tooltip"="update_image_calculated_size_system → Flex", "color"="#ee9e44"]
+	"node_System(107)" -> "set_marker_node_Set(20)" ["lhead"="clusternode_Set(20)", "ltail"="", "tooltip"="flex_node_system → TransformPropagate", "color"="#663699"]
+	"set_marker_node_Set(20)" -> "node_System(109)" ["lhead"="", "ltail"="clusternode_Set(20)", "tooltip"="TransformPropagate → update_clipping_system", "color"="#3363bb"]
+	"node_System(100)" -> "node_System(101)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessibilityNode</td></tr></table>>, "labeltooltip"="calc_bounds — button_changed"]
+	"node_System(100)" -> "node_System(102)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessibilityNode</td></tr></table>>, "labeltooltip"="calc_bounds — image_changed"]
+	"node_System(100)" -> "node_System(103)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessibilityNode</td></tr></table>>, "labeltooltip"="calc_bounds — label_changed"]
+	"node_System(101)" -> "node_System(102)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessibilityNode</td></tr></table>>, "labeltooltip"="button_changed — image_changed"]
+	"node_System(101)" -> "node_System(103)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessibilityNode</td></tr></table>>, "labeltooltip"="button_changed — label_changed"]
+	"node_System(102)" -> "node_System(103)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#c6e6ff">AccessibilityNode</td></tr></table>>, "labeltooltip"="image_changed — label_changed"]
 }
