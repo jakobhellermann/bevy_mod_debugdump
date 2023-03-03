@@ -1,4 +1,5 @@
 pub mod settings;
+mod system_style;
 
 use bevy_utils::{HashMap, HashSet};
 pub use settings::Settings;
@@ -137,12 +138,7 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
         ],
     )
     .edge_attributes(&[("penwidth", &format!("{}", settings.style.penwidth_edge))])
-    .node_attributes(&[
-        ("shape", "box"),
-        ("style", "filled"),
-        ("fillcolor", &settings.style.color_system),
-        ("color", &settings.style.color_system_border),
-    ]);
+    .node_attributes(&[("shape", "box"), ("style", "filled")]);
 
     let context = ScheduleGraphContext {
         settings,
@@ -396,11 +392,22 @@ impl ScheduleGraphContext<'_> {
             .get(&set_id)
             .map(|systems| systems.as_slice())
             .unwrap_or(&[]);
+
         for &(system_id, system) in systems.iter() {
             let name = self.system_name(system);
+            let node_style = self.settings.get_system_style(system);
+
             system_set_graph.add_node(
                 &self.node_ref(system_id),
-                &[("label", &name), ("tooltip", &system.name())],
+                &[
+                    ("label", &name),
+                    ("tooltip", &system.name()),
+                    ("fillcolor", &node_style.bg_color),
+                    ("fontname", &self.settings.style.fontname),
+                    ("fontcolor", &node_style.text_color),
+                    ("color", &node_style.border_color),
+                    ("penwidth", &node_style.border_width.to_string()),
+                ],
             );
         }
 

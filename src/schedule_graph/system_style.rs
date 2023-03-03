@@ -1,0 +1,90 @@
+use std::borrow::Cow;
+
+use bevy_ecs::system::System;
+use bevy_render::color::Color;
+use bevy_utils::HashMap;
+
+#[rustfmt::skip]
+const CRATE_COLORS: [(&str, &str); 19] = [
+    // Beige/Red
+    ("bevy_transform", "FFE7B9"),
+    ("bevy_animation", "FFBDB9"),
+
+    // Greys
+    ("bevy_asset", "D1CBC5"),
+    ("bevy_scene", "BACFCB"),
+    ("bevy_time", "C7DDBD"),
+
+    // Greens
+    ("bevy_core", "3E583C"),
+    ("bevy_app", "639D18"),
+    ("bevy_ecs", "B0D34A"),
+    ("bevy_hierarchy", "E4FBA3"),
+
+    // Turquesa
+    ("bevy_audio", "98F1D1"),
+
+    // Purples/Pinks
+    ("bevy_winit", "664F72"),
+    ("bevy_a11y", "9163A6"),
+    ("bevy_window", "BB85D4"),
+    ("bevy_text", "E9BBFF"),
+    ("bevy_gilrs", "973977"),
+    ("bevy_input", "D36AAF"),
+    ("bevy_ui", "FFB1E5"),
+
+    // Blues
+    ("bevy_render", "70B9FC"),
+    ("bevy_pbr", "ABD5FC"),
+];
+
+pub struct SystemStyle {
+    pub bg_color: Color,
+    pub text_color: Option<Color>,
+    pub border_color: Option<Color>,
+    pub border_width: f32,
+}
+
+pub fn color_to_hex(color: Color) -> String {
+    format!(
+        "#{:0>2x}{:0>2x}{:0>2x}",
+        (color.r() * 255.0) as u8,
+        (color.g() * 255.0) as u8,
+        (color.b() * 255.0) as u8,
+    )
+}
+
+pub fn system_to_style(system: &dyn System<In = (), Out = ()>) -> SystemStyle {
+    // TODO: Don't recreate `HashMap` on each call
+    let crate_colors: HashMap<_, _> = CRATE_COLORS.into_iter().collect();
+    let name = system.name();
+    let pretty_name: Cow<str> = pretty_type_name::pretty_type_name_str(&name).into();
+    let is_apply_system_buffers = pretty_name == "apply_system_buffers";
+    let name_without_event = system
+        .name()
+        .replace("bevy_ecs::event::Events<", "")
+        .replace(">::update_system", "");
+    let crate_name = name_without_event.split("::").next();
+
+    if is_apply_system_buffers {
+        SystemStyle {
+            bg_color: Color::hex("E70000").unwrap(),
+            text_color: Some(Color::hex("ffffff").unwrap()),
+            border_color: Some(Color::hex("5A0000").unwrap()),
+            border_width: 2.0,
+        }
+    } else {
+        let bg_color = crate_name
+            .and_then(|n| crate_colors.get(n))
+            .map(Color::hex)
+            .unwrap_or(Color::hex("eff1f3"))
+            .unwrap();
+
+        SystemStyle {
+            bg_color,
+            text_color: None,
+            border_color: None,
+            border_width: 1.0,
+        }
+    }
+}

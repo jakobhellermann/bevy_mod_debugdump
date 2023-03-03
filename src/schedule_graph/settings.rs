@@ -1,6 +1,9 @@
 use std::any::TypeId;
 
 use bevy_ecs::{component::ComponentId, system::System, world::World};
+use bevy_render::color::Color;
+
+use super::system_style::{color_to_hex, system_to_style, SystemStyle};
 
 #[derive(Default, Clone, Copy)]
 pub enum RankDir {
@@ -48,8 +51,6 @@ pub struct Style {
     pub fontname: String,
 
     pub color_background: String,
-    pub color_system: String,
-    pub color_system_border: String,
     pub color_set: String,
     pub color_set_border: String,
     pub color_edge: Vec<String>,
@@ -68,8 +69,6 @@ impl Style {
             edge_style: EdgeStyle::default(),
             fontname: "Helvetica".into(),
             color_background: "white".into(),
-            color_system: "white".into(),
-            color_system_border: "black".into(),
             color_set: "#00000005".into(),
             color_set_border: "#00000040".into(),
             color_edge: vec![
@@ -98,8 +97,6 @@ impl Style {
             edge_style: EdgeStyle::default(),
             fontname: "Helvetica".into(),
             color_background: "#35393f".into(),
-            color_system: "#eff1f3".into(),
-            color_system_border: "#eff1f3".into(),
             color_set: "#ffffff44".into(),
             color_set_border: "#ffffff50".into(),
             color_edge: vec![
@@ -128,8 +125,6 @@ impl Style {
             edge_style: EdgeStyle::default(),
             fontname: "Helvetica".into(),
             color_background: "#0d1117".into(),
-            color_system: "#eff1f3".into(),
-            color_system_border: "#eff1f3".into(),
             color_set: "#ffffff44".into(),
             color_set_border: "#ffffff50".into(),
             color_edge: vec![
@@ -165,11 +160,22 @@ type IncludeAmbiguityFn = dyn Fn(
     &World,
 ) -> bool;
 
+pub struct NodeStyle {
+    pub bg_color: String,
+    pub text_color: String,
+    pub border_color: String,
+    pub border_width: String,
+}
+
+// Function that maps `System` to `T`
+type SystemMapperFn<T> = Box<dyn Fn(&dyn System<In = (), Out = ()>) -> T>;
+
 pub struct Settings {
     pub style: Style,
+    pub system_style: Option<SystemMapperFn<SystemStyle>>,
 
     /// When set to `Some`, will only include systems matching the predicate, and their ancestor sets
-    pub include_system: Option<Box<dyn Fn(&dyn System<In = (), Out = ()>) -> bool>>,
+    pub include_system: Option<SystemMapperFn<bool>>,
     pub collapse_single_system_sets: bool,
 
     pub ambiguity_enable: bool,
@@ -207,18 +213,49 @@ impl Settings {
         self
     }
 
-    /// Specifies `include_ambiguity` to ignore ambiguities that are only ambiguous with regard to `T`
-    pub fn without_single_ambiguities_on<T: 'static>(mut self) -> Self {
-        self.include_ambiguity = Some(Box::new(move |_, _, conflicts, world| {
-            let &[conflict] = conflicts else { return true };
-            let Some(type_id) = world.components().get_info(conflict).and_then(|info| info.type_id()) else { return true };
-            type_id != TypeId::of::<T>()
-        }));
-        self
+    pub fn get_system_style(&self, system: &dyn System<In = (), Out = ()>) -> NodeStyle {
+        let style = match self.system_style.as_ref() {
+            Some(mapper) => mapper(system),
+            None => system_to_style(system),
+        };
+
+        // Check if bg is dark
+        let [h, s, l, _] = style.bg_color.as_hsla_f32();
+        // TODO Fix following: https://ux.stackexchange.com/q/107318
+        let is_dark = l < 0.6;
+
+        // Calculate text color based on bg
+        let text_color = style
+            .text_color
+            .or_else(|| {
+                if is_dark {
+                    Some(Color::hsl(h, s, 0.85))
+                } else {
+                    Some(Color::hsl(h, s, 0.15))
+                }
+            })
+            .unwrap();
+
+        // Calculate border color based on bg
+        let border_color = style
+            .border_color
+            .or_else(|| {
+                let offset = if is_dark { 0.2 } else { -0.2 };
+                let border_l = (l + offset).clamp(0.0, 1.0);
+
+                Some(Color::hsl(h, s, border_l))
+            })
+            .unwrap();
+
+        NodeStyle {
+            bg_color: color_to_hex(style.bg_color),
+            text_color: color_to_hex(text_color),
+            border_color: color_to_hex(border_color),
+            border_width: style.border_width.to_string(),
+        }
     }
 
-    /// Specifies `include_ambiguity` to ignore ambiguities that are exactly one of the given `type_ids`
-    pub fn without_single_ambiguities_on_one_of(mut self, type_ids: &[TypeId]) -> Self {
+    pub fn without_single_ambiguities_on(mut self, type_ids: &[TypeId]) -> Self {
         let type_ids = type_ids.to_vec();
         self.include_ambiguity = Some(Box::new(move |_, _, conflicts, world| {
             let &[conflict] = conflicts else { return true };
@@ -233,6 +270,7 @@ impl Default for Settings {
     fn default() -> Self {
         Self {
             style: Style::default(),
+            system_style: None,
 
             include_system: None,
             collapse_single_system_sets: false,
