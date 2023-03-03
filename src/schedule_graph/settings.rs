@@ -255,7 +255,18 @@ impl Settings {
         }
     }
 
-    pub fn without_single_ambiguities_on(mut self, type_ids: &[TypeId]) -> Self {
+    /// Specifies `include_ambiguity` to ignore ambiguities that are only ambiguous with regard to `T`
+    pub fn without_single_ambiguities_on<T: 'static>(mut self) -> Self {
+        self.include_ambiguity = Some(Box::new(move |_, _, conflicts, world| {
+            let &[conflict] = conflicts else { return true };
+            let Some(type_id) = world.components().get_info(conflict).and_then(|info| info.type_id()) else { return true };
+            type_id != TypeId::of::<T>()
+        }));
+        self
+    }
+
+    /// Specifies `include_ambiguity` to ignore ambiguities that are exactly one of the given `type_ids`
+    pub fn without_single_ambiguities_on_one_of(mut self, type_ids: &[TypeId]) -> Self {
         let type_ids = type_ids.to_vec();
         self.include_ambiguity = Some(Box::new(move |_, _, conflicts, world| {
             let &[conflict] = conflicts else { return true };
