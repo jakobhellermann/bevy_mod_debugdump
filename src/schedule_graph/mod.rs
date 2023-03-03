@@ -133,6 +133,7 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
             ("rankdir", settings.style.schedule_rankdir.as_dot()),
             ("bgcolor", &settings.style.color_background),
             ("fontname", &settings.style.fontname),
+            ("nodesep", "0.15"),
         ],
     )
     .edge_attributes(&[("penwidth", &format!("{}", settings.style.penwidth_edge))])
