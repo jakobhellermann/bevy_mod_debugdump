@@ -361,10 +361,12 @@ impl ScheduleGraphContext<'_> {
         let mut system_set_graph = DotGraph::subgraph(
             &system_set_cluster_name,
             &[
+                ("style", "rounded,filled"),
                 ("label", &name),
                 ("tooltip", &name),
-                ("bgcolor", &self.settings.style.color_set),
+                ("fillcolor", &self.settings.style.color_set),
                 ("color", &self.settings.style.color_set_border),
+                ("penwidth", "2"),
             ],
         );
 

@@ -70,8 +70,8 @@ impl Style {
             color_background: "white".into(),
             color_system: "white".into(),
             color_system_border: "black".into(),
-            color_set: "white".into(),
-            color_set_border: "black".into(),
+            color_set: "#00000005".into(),
+            color_set_border: "#00000040".into(),
             color_edge: vec![
                 "#eede00".into(),
                 "#881877".into(),
@@ -100,8 +100,8 @@ impl Style {
             color_background: "#35393f".into(),
             color_system: "#eff1f3".into(),
             color_system_border: "#eff1f3".into(),
-            color_set: "#99aab5".into(),
-            color_set_border: "black".into(),
+            color_set: "#ffffff44".into(),
+            color_set_border: "#ffffff50".into(),
             color_edge: vec![
                 "#eede00".into(),
                 "#881877".into(),
@@ -130,8 +130,8 @@ impl Style {
             color_background: "#0d1117".into(),
             color_system: "#eff1f3".into(),
             color_system_border: "#eff1f3".into(),
-            color_set: "#6f90ad".into(),
-            color_set_border: "black".into(),
+            color_set: "#ffffff44".into(),
+            color_set_border: "#ffffff50".into(),
             color_edge: vec![
                 "#eede00".into(),
                 "#881877".into(),
