@@ -15,16 +15,16 @@ default = ["render_graph"]
 render_graph = ["bevy_render"]
 
 [dependencies]
-bevy_ecs = { git = "https://github.com/bevyengine/bevy" }
-bevy_app = { git = "https://github.com/bevyengine/bevy" }
-bevy_utils = { git = "https://github.com/bevyengine/bevy" }
-bevy_render = { git = "https://github.com/bevyengine/bevy", optional = true }
-pretty-type-name = "1.0.0"
-petgraph = "0.6.2"
-once_cell = "1.17.1"
+bevy_ecs = "0.10"
+bevy_app = "0.10"
+bevy_utils = "0.10"
+bevy_render = { version = "0.10", optional = true }
+pretty-type-name = "1.0"
+petgraph = "0.6"
+once_cell = "1.17"
 
 [dev-dependencies]
-bevy = { git = "https://github.com/bevyengine/bevy" }
+bevy = "0.10"
 
 [[example]]
 name = "print_render_graph"
