@@ -224,25 +224,23 @@ impl Settings {
         // Calculate text color based on bg
         let text_color = style
             .text_color
-            .or_else(|| {
+            .unwrap_or_else(|| {
                 if is_dark {
-                    Some(Color::hsl(h, s, 0.85))
+                    Color::hsl(h, s, 0.85)
                 } else {
-                    Some(Color::hsl(h, s, 0.15))
+                    Color::hsl(h, s, 0.15)
                 }
-            })
-            .unwrap();
+            });
 
         // Calculate border color based on bg
         let border_color = style
             .border_color
-            .or_else(|| {
+            .unwrap_or_else(|| {
                 let offset = if is_dark { 0.2 } else { -0.2 };
                 let border_l = (l + offset).clamp(0.0, 1.0);
 
-                Some(Color::hsl(h, s, border_l))
-            })
-            .unwrap();
+                Color::hsl(h, s, border_l)
+            });
 
         NodeStyle {
             bg_color: color_to_hex(style.bg_color),
