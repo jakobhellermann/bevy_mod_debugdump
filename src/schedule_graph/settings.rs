@@ -226,9 +226,9 @@ impl Settings {
             .text_color
             .unwrap_or_else(|| {
                 if is_dark {
-                    Color::hsl(h, s, 0.85)
+                    Color::hsl(h, s, 0.9)
                 } else {
-                    Color::hsl(h, s, 0.15)
+                    Color::hsl(h, s, 0.1)
                 }
             });
 
