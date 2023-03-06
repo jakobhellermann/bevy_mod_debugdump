@@ -1,42 +1,41 @@
+use once_cell::sync::Lazy;
 use std::borrow::Cow;
 
 use bevy_ecs::system::System;
 use bevy_render::color::Color;
 use bevy_utils::HashMap;
 
-#[rustfmt::skip]
-const CRATE_COLORS: [(&str, &str); 19] = [
-    // Beige/Red
-    ("bevy_transform", "FFE7B9"),
-    ("bevy_animation", "FFBDB9"),
-
-    // Greys
-    ("bevy_asset", "D1CBC5"),
-    ("bevy_scene", "BACFCB"),
-    ("bevy_time", "C7DDBD"),
-
-    // Greens
-    ("bevy_core", "3E583C"),
-    ("bevy_app", "639D18"),
-    ("bevy_ecs", "B0D34A"),
-    ("bevy_hierarchy", "E4FBA3"),
-
-    // Turquesa
-    ("bevy_audio", "98F1D1"),
-
-    // Purples/Pinks
-    ("bevy_winit", "664F72"),
-    ("bevy_a11y", "9163A6"),
-    ("bevy_window", "BB85D4"),
-    ("bevy_text", "E9BBFF"),
-    ("bevy_gilrs", "973977"),
-    ("bevy_input", "D36AAF"),
-    ("bevy_ui", "FFB1E5"),
-
-    // Blues
-    ("bevy_render", "70B9FC"),
-    ("bevy_pbr", "ABD5FC"),
-];
+static CRATE_COLORS: Lazy<HashMap<&str, &str>> = Lazy::new(|| {
+    [
+        // Beige/Red
+        ("bevy_transform", "FFE7B9"),
+        ("bevy_animation", "FFBDB9"),
+        // Greys
+        ("bevy_asset", "D1CBC5"),
+        ("bevy_scene", "BACFCB"),
+        ("bevy_time", "C7DDBD"),
+        // Greens
+        ("bevy_core", "3E583C"),
+        ("bevy_app", "639D18"),
+        ("bevy_ecs", "B0D34A"),
+        ("bevy_hierarchy", "E4FBA3"),
+        // Turquesa
+        ("bevy_audio", "98F1D1"),
+        // Purples/Pinks
+        ("bevy_winit", "664F72"),
+        ("bevy_a11y", "9163A6"),
+        ("bevy_window", "BB85D4"),
+        ("bevy_text", "E9BBFF"),
+        ("bevy_gilrs", "973977"),
+        ("bevy_input", "D36AAF"),
+        ("bevy_ui", "FFB1E5"),
+        // Blues
+        ("bevy_render", "70B9FC"),
+        ("bevy_pbr", "ABD5FC"),
+    ]
+    .into_iter()
+    .collect()
+});
 
 pub struct SystemStyle {
     pub bg_color: Color,
@@ -55,8 +54,6 @@ pub fn color_to_hex(color: Color) -> String {
 }
 
 pub fn system_to_style(system: &dyn System<In = (), Out = ()>) -> SystemStyle {
-    // TODO: Don't recreate `HashMap` on each call
-    let crate_colors: HashMap<_, _> = CRATE_COLORS.into_iter().collect();
     let name = system.name();
     let pretty_name: Cow<str> = pretty_type_name::pretty_type_name_str(&name).into();
     let is_apply_system_buffers = pretty_name == "apply_system_buffers";
@@ -74,7 +71,7 @@ pub fn system_to_style(system: &dyn System<In = (), Out = ()>) -> SystemStyle {
         }
     } else {
         let bg_color = crate_name
-            .and_then(|n| crate_colors.get(n))
+            .and_then(|n| CRATE_COLORS.get(n))
             .map(Color::hex)
             .unwrap_or(Color::hex("eff1f3"))
             .unwrap();
