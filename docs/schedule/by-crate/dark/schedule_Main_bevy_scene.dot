@@ -4,127 +4,148 @@ digraph "" {
 	"rankdir"="LR";
 	"bgcolor"="#0d1117";
 	"fontname"="Helvetica";
+	"nodesep"="0.15";
 	edge ["penwidth"="2"];
-	node ["shape"="box", "style"="filled", "fillcolor"="#eff1f3", "color"="#eff1f3"];
+	node ["shape"="box", "style"="filled"];
 	subgraph "clusternode_Set(0)" {
+		"style"="rounded,filled";
 		"label"="Update";
 		"tooltip"="Update";
-		"bgcolor"="#6f90ad";
-		"color"="black";
+		"fillcolor"="#ffffff44";
+		"color"="#ffffff50";
+		"penwidth"="2";
 		"set_marker_node_Set(0)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(55)" ["label"="scene_spawner_system", "tooltip"="bevy_scene::scene_spawner::scene_spawner_system"]
+		"node_System(55)" ["label"="scene_spawner_system", "tooltip"="bevy_scene::scene_spawner::scene_spawner_system", "fillcolor"="#bacfcb", "fontname"="Helvetica", "fontcolor"="#141e1c", "color"="#7da59d", "penwidth"="1"]
 	}
 	
 	subgraph "clusternode_Set(2)" {
+		"style"="rounded,filled";
 		"label"="FirstFlush";
 		"tooltip"="FirstFlush";
-		"bgcolor"="#6f90ad";
-		"color"="black";
+		"fillcolor"="#ffffff44";
+		"color"="#ffffff50";
+		"penwidth"="2";
 		"set_marker_node_Set(2)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(3)" {
+		"style"="rounded,filled";
 		"label"="PreUpdateFlush";
 		"tooltip"="PreUpdateFlush";
-		"bgcolor"="#6f90ad";
-		"color"="black";
+		"fillcolor"="#ffffff44";
+		"color"="#ffffff50";
+		"penwidth"="2";
 		"set_marker_node_Set(3)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(4)" {
+		"style"="rounded,filled";
 		"label"="UpdateFlush";
 		"tooltip"="UpdateFlush";
-		"bgcolor"="#6f90ad";
-		"color"="black";
+		"fillcolor"="#ffffff44";
+		"color"="#ffffff50";
+		"penwidth"="2";
 		"set_marker_node_Set(4)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(5)" {
+		"style"="rounded,filled";
 		"label"="PostUpdateFlush";
 		"tooltip"="PostUpdateFlush";
-		"bgcolor"="#6f90ad";
-		"color"="black";
+		"fillcolor"="#ffffff44";
+		"color"="#ffffff50";
+		"penwidth"="2";
 		"set_marker_node_Set(5)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(6)" {
+		"style"="rounded,filled";
 		"label"="LastFlush";
 		"tooltip"="LastFlush";
-		"bgcolor"="#6f90ad";
-		"color"="black";
+		"fillcolor"="#ffffff44";
+		"color"="#ffffff50";
+		"penwidth"="2";
 		"set_marker_node_Set(6)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(7)" {
+		"style"="rounded,filled";
 		"label"="First";
 		"tooltip"="First";
-		"bgcolor"="#6f90ad";
-		"color"="black";
+		"fillcolor"="#ffffff44";
+		"color"="#ffffff50";
+		"penwidth"="2";
 		"set_marker_node_Set(7)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(8)" {
+		"style"="rounded,filled";
 		"label"="PreUpdate";
 		"tooltip"="PreUpdate";
-		"bgcolor"="#6f90ad";
-		"color"="black";
+		"fillcolor"="#ffffff44";
+		"color"="#ffffff50";
+		"penwidth"="2";
 		"set_marker_node_Set(8)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(56)" ["label"="scene_spawner", "tooltip"="bevy_scene::bundle::scene_spawner"]
+		"node_System(56)" ["label"="scene_spawner", "tooltip"="bevy_scene::bundle::scene_spawner", "fillcolor"="#bacfcb", "fontname"="Helvetica", "fontcolor"="#141e1c", "color"="#7da59d", "penwidth"="1"]
 	}
 	
 	subgraph "clusternode_Set(9)" {
+		"style"="rounded,filled";
 		"label"="StateTransitions";
 		"tooltip"="StateTransitions";
-		"bgcolor"="#6f90ad";
-		"color"="black";
+		"fillcolor"="#ffffff44";
+		"color"="#ffffff50";
+		"penwidth"="2";
 		"set_marker_node_Set(9)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(10)" {
+		"style"="rounded,filled";
 		"label"="FixedUpdate";
 		"tooltip"="FixedUpdate";
-		"bgcolor"="#6f90ad";
-		"color"="black";
+		"fillcolor"="#ffffff44";
+		"color"="#ffffff50";
+		"penwidth"="2";
 		"set_marker_node_Set(10)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(11)" {
+		"style"="rounded,filled";
 		"label"="PostUpdate";
 		"tooltip"="PostUpdate";
-		"bgcolor"="#6f90ad";
-		"color"="black";
+		"fillcolor"="#ffffff44";
+		"color"="#ffffff50";
+		"penwidth"="2";
 		"set_marker_node_Set(11)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(12)" {
+		"style"="rounded,filled";
 		"label"="Last";
 		"tooltip"="Last";
-		"bgcolor"="#6f90ad";
-		"color"="black";
+		"fillcolor"="#ffffff44";
+		"color"="#ffffff50";
+		"penwidth"="2";
 		"set_marker_node_Set(12)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
-	subgraph "clusternode_Set(22)" {
-		"label"="PropagateTransformsSet";
-		"tooltip"="PropagateTransformsSet";
-		"bgcolor"="#6f90ad";
-		"color"="black";
-		"set_marker_node_Set(22)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-	}
-	
 	subgraph "clusternode_Set(59)" {
+		"style"="rounded,filled";
 		"label"="LoadAssets";
 		"tooltip"="LoadAssets";
-		"bgcolor"="#6f90ad";
-		"color"="black";
+		"fillcolor"="#ffffff44";
+		"color"="#ffffff50";
+		"penwidth"="2";
 		"set_marker_node_Set(59)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	
 	subgraph "clusternode_Set(60)" {
+		"style"="rounded,filled";
 		"label"="AssetEvents";
 		"tooltip"="AssetEvents";
-		"bgcolor"="#6f90ad";
-		"color"="black";
+		"fillcolor"="#ffffff44";
+		"color"="#ffffff50";
+		"penwidth"="2";
 		"set_marker_node_Set(60)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 	}
 	

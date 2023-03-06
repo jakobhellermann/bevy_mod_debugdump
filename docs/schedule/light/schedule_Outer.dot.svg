@@ -12,7 +12,7 @@
 <g id="node1" class="node">
 <title>node_System(0)</title>
 <g id="a_node1"><a xlink:title="bevy_app::CoreSchedule::outer_loop">
-<polygon fill="white" stroke="black" points="89,-36 0,-36 0,0 89,0 89,-36"/>
+<polygon fill="lightgrey" stroke="black" points="89,-36 0,-36 0,0 89,0 89,-36"/>
 <text text-anchor="middle" x="44.5" y="-14.3" font-family="Times,serif" font-size="14.00">outer_loop</text>
 </a>
 </g>

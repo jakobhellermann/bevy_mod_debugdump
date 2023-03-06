@@ -4,7 +4,8 @@ digraph "" {
 	"rankdir"="LR";
 	"bgcolor"="#0d1117";
 	"fontname"="Helvetica";
+	"nodesep"="0.15";
 	edge ["penwidth"="2"];
-	node ["shape"="box", "style"="filled", "fillcolor"="#eff1f3", "color"="#eff1f3"];
+	node ["shape"="box", "style"="filled"];
 	"node_System(0)" ["label"="outer_loop", "tooltip"="bevy_app::CoreSchedule::outer_loop"]
 }

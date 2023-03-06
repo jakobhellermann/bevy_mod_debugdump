@@ -4,42 +4,51 @@ digraph "" {
 	"rankdir"="LR";
 	"bgcolor"="white";
 	"fontname"="Helvetica";
+	"nodesep"="0.15";
 	edge ["penwidth"="2"];
-	node ["shape"="box", "style"="filled", "fillcolor"="white", "color"="black"];
+	node ["shape"="box", "style"="filled"];
 	subgraph "clusternode_Set(22)" {
+		"style"="rounded,filled";
 		"label"="ExtractSprites";
 		"tooltip"="ExtractSprites";
-		"bgcolor"="white";
-		"color"="black";
+		"fillcolor"="#00000008";
+		"color"="#00000040";
+		"penwidth"="2";
 		"set_marker_node_Set(22)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(21)" ["label"="extract_sprites", "tooltip"="bevy_sprite::render::extract_sprites"]
+		"node_System(21)" ["label"="extract_sprites", "tooltip"="bevy_sprite::render::extract_sprites", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 	}
 	
 	subgraph "clusternode_Set(29)" {
+		"style"="rounded,filled";
 		"label"="ExtractNode";
 		"tooltip"="ExtractNode";
-		"bgcolor"="white";
-		"color"="black";
+		"fillcolor"="#00000008";
+		"color"="#00000040";
+		"penwidth"="2";
 		"set_marker_node_Set(29)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(27)" ["label"="extract_uinodes", "tooltip"="bevy_ui::render::extract_uinodes"]
+		"node_System(27)" ["label"="extract_uinodes", "tooltip"="bevy_ui::render::extract_uinodes", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
 	}
 	
 	subgraph "clusternode_Set(40)" {
+		"style"="rounded,filled";
 		"label"="ExtractClusters";
 		"tooltip"="ExtractClusters";
-		"bgcolor"="white";
-		"color"="black";
+		"fillcolor"="#00000008";
+		"color"="#00000040";
+		"penwidth"="2";
 		"set_marker_node_Set(40)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(37)" ["label"="extract_clusters", "tooltip"="bevy_pbr::render::light::extract_clusters"]
+		"node_System(37)" ["label"="extract_clusters", "tooltip"="bevy_pbr::render::light::extract_clusters", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
 	}
 	
 	subgraph "clusternode_Set(42)" {
+		"style"="rounded,filled";
 		"label"="ExtractLights";
 		"tooltip"="ExtractLights";
-		"bgcolor"="white";
-		"color"="black";
+		"fillcolor"="#00000008";
+		"color"="#00000040";
+		"penwidth"="2";
 		"set_marker_node_Set(42)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(38)" ["label"="extract_lights", "tooltip"="bevy_pbr::render::light::extract_lights"]
+		"node_System(38)" ["label"="extract_lights", "tooltip"="bevy_pbr::render::light::extract_lights", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
 	}
 	
 	"node_System(0)" ["label"="extract_shaders", "tooltip"="bevy_render::render_resource::pipeline_cache::PipelineCache::extract_shaders"]
@@ -58,7 +67,7 @@ digraph "" {
 	"node_System(13)" ["label"="extract_resource<TonemappingLuts>", "tooltip"="bevy_render::extract_resource::extract_resource<bevy_core_pipeline::tonemapping::TonemappingLuts>"]
 	"node_System(14)" ["label"="extract_components<Tonemapping>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::tonemapping::Tonemapping>"]
 	"node_System(15)" ["label"="extract_components<DebandDither>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::tonemapping::DebandDither>"]
-	"node_System(16)" ["label"="extract_components<BloomSettings>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::bloom::BloomSettings>"]
+	"node_System(16)" ["label"="extract_components<BloomSettings>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::bloom::settings::BloomSettings>"]
 	"node_System(17)" ["label"="extract_components<Fxaa>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::fxaa::Fxaa>"]
 	"node_System(18)" ["label"="extract_mesh2d", "tooltip"="bevy_sprite::mesh2d::mesh::extract_mesh2d"]
 	"node_System(19)" ["label"="extract_visible_components<Handle<ColorMaterial>>", "tooltip"="bevy_render::extract_component::extract_visible_components<bevy_asset::handle::Handle<bevy_sprite::mesh2d::color_material::ColorMaterial>>"]
