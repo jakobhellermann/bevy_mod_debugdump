@@ -1,5 +1,7 @@
 # bevy_mod_debugdump
 
+Live playground: [jakobhellermann.github.io/bevy_mod_debugdump](https://jakobhellermann.github.io/bevy_mod_debugdump)
+
 ## Schedule graph
 
 ```rust
