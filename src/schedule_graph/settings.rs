@@ -172,7 +172,7 @@ type SystemMapperFn<T> = Box<dyn Fn(&dyn System<In = (), Out = ()>) -> T>;
 
 pub struct Settings {
     pub style: Style,
-    pub system_style: Option<SystemMapperFn<SystemStyle>>,
+    pub system_style: SystemMapperFn<SystemStyle>,
 
     /// When set to `Some`, will only include systems matching the predicate, and their ancestor sets
     pub include_system: Option<SystemMapperFn<bool>>,
@@ -214,10 +214,7 @@ impl Settings {
     }
 
     pub fn get_system_style(&self, system: &dyn System<In = (), Out = ()>) -> NodeStyle {
-        let style = match self.system_style.as_ref() {
-            Some(mapper) => mapper(system),
-            None => system_to_style(system),
-        };
+        let style = (self.system_style)(system);
 
         // Check if bg is dark
         let [h, s, l, _] = style.bg_color.as_hsla_f32();
@@ -281,7 +278,7 @@ impl Default for Settings {
     fn default() -> Self {
         Self {
             style: Style::default(),
-            system_style: None,
+            system_style: Box::new(system_to_style),
 
             include_system: None,
             collapse_single_system_sets: false,
