@@ -69,7 +69,7 @@ impl Style {
             edge_style: EdgeStyle::default(),
             fontname: "Helvetica".into(),
             color_background: "white".into(),
-            color_set: "#00000005".into(),
+            color_set: "#00000008".into(),
             color_set_border: "#00000040".into(),
             color_edge: vec![
                 "#eede00".into(),
