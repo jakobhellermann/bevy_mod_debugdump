@@ -7,20 +7,40 @@ const scheduleSelect = document.getElementById("scheduleSelect") as HTMLSelectEl
 const svgElement = document.getElementById("svg")! as HTMLImageElement;
 const shareButton = document.getElementById("share")! as HTMLButtonElement;
 
+let schedules: string[] | undefined = undefined;
+
+let scheduleSelectFromQuery: string | undefined = undefined;
+
 function loadQuery() {
     const params = new URLSearchParams(window.location.search);
     let include = params.get("include");
     let exclude = params.get("exclude");
     let schedule = params.get("schedule");
+    let renderApp = params.get("renderApp");
 
     if (include) includesInput.value = include;
     if (exclude) excludesInput.value = exclude;
-    if (schedule && ["Main", "Startup", "RenderExtract", "RenderMain"].includes(schedule)) scheduleSelect.value = schedule;
+
+    if (schedule) {
+        scheduleSelectFromQuery = `${schedule}:${renderApp ?? "false"}`;
+    }
 }
 loadQuery();
 
 shareButton.addEventListener("click", () => {
-    let query = `schedule=${scheduleSelect.value}&include=${includesInput.value}&exclude=${excludesInput.value}`;
+    let [schedule, renderApp] = scheduleSelect.value.split(":");
+
+    let query = `schedule=${schedule}`;
+    if (renderApp !== "false") {
+        query = `${query}&renderApp=${renderApp}`;
+    }
+    if (includesInput.value) {
+        query = `${query}&include=${includesInput.value}`;
+    }
+    if (excludesInput.value) {
+        query = `${query}&exclude=${excludesInput.value}`;
+    }
+
     let url = `${window.location.protocol}//${window.location.host}${window.location.pathname}?${query}`;
     navigator.clipboard.writeText(url);
 
@@ -31,6 +51,30 @@ async function run() {
     let [graphviz, _] = await Promise.all([GraphvizLoader.load(), init()]);
     let context = new Context();
 
+
+    let main_schedules = context.main_schedules();
+    let non_main_schedules = context.non_main_schedules();
+    let render_schedules = context.render_schedules();
+
+    let optgroup = (label: string, options: string[], render: boolean) => {
+        let group = document.createElement("optgroup");
+        group.label = label;
+        for (let name of options) {
+            let option = document.createElement("option");
+            option.value = name + ":" + render;
+            option.innerText = name;
+            group.appendChild(option);
+        }
+        return group;
+    };
+    scheduleSelect.replaceChildren(optgroup("Main", main_schedules, false), optgroup("Other", non_main_schedules, false), optgroup("Render", render_schedules, true));
+
+    if (scheduleSelectFromQuery) {
+        scheduleSelect.value = scheduleSelectFromQuery;
+    } else {
+        scheduleSelect.value = "PreUpdate:false";
+    }
+
     let updateSvgElement = (content: string) => {
         let svg = timed("dot", () => graphviz.dot(content, "svg"));
         svgElement.innerHTML = svg;
@@ -39,15 +83,29 @@ async function run() {
     let regenerate = () => {
         console.log(`Generate ${scheduleSelect.value}`);
         try {
+            let [schedule, renderApp] = scheduleSelect.value.split(":");
+            let isRenderApp = renderApp === "true";
+
+            if (!schedule) return;
+
             let svg = timed("svg", () => context.generate_svg(
-                scheduleSelect.value,
+                schedule,
+                isRenderApp,
                 includesInput.value,
                 excludesInput.value
             ));
             updateSvgElement(svg);
         } catch (e) {
             console.error(e);
-            alert(e);
+
+            let msg;
+            if (e instanceof Error) {
+                msg = e.message;
+            } else {
+                msg = "" + e;
+            }
+
+            alert("Failed to generate schedule: " + msg);
         }
 
     };

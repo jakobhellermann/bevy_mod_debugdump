@@ -1,6 +1,6 @@
 use std::any::TypeId;
 
-use bevy::{prelude::*, render::RenderApp};
+use bevy::{app::MainScheduleOrder, prelude::*, render::RenderApp};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
@@ -13,6 +13,20 @@ impl Context {
     #[wasm_bindgen(constructor)]
     pub fn new() -> Self {
         let mut app = App::default();
+
+        #[derive(States, PartialEq, Eq, Clone, Debug, Hash, Default)]
+        enum ExampleState1 {
+            #[default]
+            A,
+        }
+        #[derive(States, PartialEq, Eq, Clone, Debug, Hash, Default)]
+        enum ExampleState2 {
+            #[default]
+            A,
+        }
+        app.add_state::<ExampleState1>();
+        app.add_state::<ExampleState2>();
+
         app.add_plugins(DefaultPlugins.set(WindowPlugin {
             primary_window: Some(Window {
                 canvas: Some("#canvas".to_string()),
@@ -24,47 +38,99 @@ impl Context {
         Context { app }
     }
 
-    pub fn generate_svg(&mut self, schedule: String, includes: String, excludes: String) -> String {
-        let split = |s: &str| {
-            s.split(",")
-                .filter(|s| !s.is_empty())
-                .map(|i| i.trim().to_owned())
-                .collect::<Vec<_>>()
-        };
-        let includes = split(&includes);
-        let excludes = split(&excludes);
+    pub fn main_schedules(&self) -> Vec<JsValue> {
+        let main_schedule_order = self.app.world.resource::<MainScheduleOrder>();
+        main_schedule_order
+            .labels
+            .iter()
+            .map(|label| JsValue::from(format!("{:?}", *label)))
+            .collect()
+    }
+    pub fn non_main_schedules(&self) -> Vec<JsValue> {
+        let main_schedule_order = self.app.world.resource::<MainScheduleOrder>();
+        let schedules = self.app.world.resource::<Schedules>();
 
-        let ignore_ambiguities = &[TypeId::of::<bevy::render::texture::TextureCache>()];
-        let settings = bevy_mod_debugdump::schedule_graph::Settings {
-            include_system: Some(Box::new(move |system| {
-                let name = system.name();
-                if excludes.iter().any(|e| name.contains(e)) {
-                    return false;
+        schedules
+            .iter()
+            .filter_map(|(label, _)| {
+                let in_main = main_schedule_order
+                    .labels
+                    .iter()
+                    .any(|main| **main == *label);
+
+                if !in_main {
+                    Some(JsValue::from(format!("{label:?}")))
+                } else {
+                    None
                 }
+            })
+            .collect()
+    }
+    pub fn render_schedules(&self) -> Vec<JsValue> {
+        let schedules = self.app.sub_app(RenderApp).world.resource::<Schedules>();
 
-                includes.is_empty() || includes.iter().any(|i| name.contains(i))
-            })),
-            ..default()
-        }
-        .without_single_ambiguities_on_one_of(ignore_ambiguities);
+        schedules
+            .iter()
+            .map(|(label, _)| JsValue::from(format!("{label:?}")))
+            .collect()
+    }
 
-        match schedule.as_str() {
-            "Main" => {
-                bevy_mod_debugdump::schedule_graph_dot(&mut self.app, CoreSchedule::Main, &settings)
+    pub fn generate_svg(
+        &mut self,
+        schedule_label: String,
+        render_app: bool,
+        includes: String,
+        excludes: String,
+    ) -> Result<String, String> {
+        choose_app(&mut self.app, render_app, |app| {
+            let schedules = app.world.resource::<Schedules>();
+
+            let label = schedules
+                .iter()
+                .find_map(|(label, _)| (format!("{:?}", label) == schedule_label).then_some(label))
+                .ok_or_else(|| {
+                    format!(
+                        "schedule '{schedule_label}' not found in {}app",
+                        if render_app { "render " } else { "" }
+                    )
+                })?
+                .dyn_clone();
+
+            let split = |s: &str| {
+                s.split(",")
+                    .filter(|s| !s.is_empty())
+                    .map(|i| i.trim().to_owned())
+                    .collect::<Vec<_>>()
+            };
+            let includes = split(&includes);
+            let excludes = split(&excludes);
+
+            let ignore_ambiguities = &[TypeId::of::<bevy::render::texture::TextureCache>()];
+            let settings = bevy_mod_debugdump::schedule_graph::Settings {
+                include_system: Some(Box::new(move |system| {
+                    let name = system.name();
+                    if excludes.iter().any(|e| name.contains(e)) {
+                        return false;
+                    }
+
+                    includes.is_empty() || includes.iter().any(|i| name.contains(i))
+                })),
+                ..default()
             }
-            "Startup" => bevy_mod_debugdump::schedule_graph_dot(
-                &mut self.app,
-                CoreSchedule::Startup,
-                &settings,
-            ),
-            "RenderExtract" => with_main_world_in_render_app(&mut self.app, |render_app| {
-                bevy_mod_debugdump::schedule_graph_dot(render_app, ExtractSchedule, &settings)
-            }),
-            "RenderMain" => with_main_world_in_render_app(&mut self.app, |render_app| {
-                bevy_mod_debugdump::schedule_graph_dot(render_app, CoreSchedule::Main, &settings)
-            }),
-            _ => panic!("unknown schedule: {schedule}"),
-        }
+            .without_single_ambiguities_on_one_of(ignore_ambiguities);
+
+            Ok(bevy_mod_debugdump::schedule_graph_dot(
+                app, label, &settings,
+            ))
+        })
+    }
+}
+
+fn choose_app<T>(main_app: &mut App, render_app: bool, f: impl Fn(&mut App) -> T) -> T {
+    if render_app {
+        with_main_world_in_render_app(main_app, f)
+    } else {
+        f(main_app)
     }
 }
 

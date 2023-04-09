@@ -4,8 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-bevy = "0.10"
-bevy_mod_debugdump = { git = "https://github.com/jakobhellermann/bevy_mod_debugdump", rev = "1c2fccb1e0630c2f8842ea4f6d2eac93a4669078" }
+bevy = "0.11"
+bevy_mod_debugdump = "0.8"
 wasm-bindgen = "0.2"
 
 [lib]

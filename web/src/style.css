@@ -22,6 +22,10 @@ body {
     width: 16rem;
 }
 
+#scheduleSelect {
+    min-width: 11rem;
+}
+
 #svg {
     margin-top: 1rem;
     width: 100%;
