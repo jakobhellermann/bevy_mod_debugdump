@@ -3,7 +3,6 @@
 
 
 /docs/*.dot
-/docs/by-crate/*.dot
 /compare
 
 /*.dot

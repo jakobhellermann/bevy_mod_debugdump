@@ -1,17 +1,14 @@
 use std::{any::TypeId, path::PathBuf};
 
-use bevy::{prelude::*, render::RenderApp, utils::HashSet};
+use bevy::{prelude::*, render::RenderApp};
 use bevy_mod_debugdump::schedule_graph::{settings::Style, Settings};
 
 fn main() -> Result<(), std::io::Error> {
     let docs_path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("docs");
     let schedule_path = docs_path.join("schedule");
-    let schedule_path_by_crate = schedule_path.join("by-crate");
     let render_path = docs_path.join("render");
     std::fs::create_dir_all(schedule_path.join("light"))?;
     std::fs::create_dir_all(schedule_path.join("dark"))?;
-    std::fs::create_dir_all(&schedule_path_by_crate.join("light"))?;
-    std::fs::create_dir_all(&schedule_path_by_crate.join("dark"))?;
     std::fs::create_dir_all(render_path.join("light"))?;
     std::fs::create_dir_all(render_path.join("dark"))?;
 
@@ -48,82 +45,6 @@ fn main() -> Result<(), std::io::Error> {
                 let filename = format!("schedule_{label:?}.dot");
                 std::fs::write(schedule_path.join("light").join(&filename), dot_light)?;
                 std::fs::write(schedule_path.join("dark").join(&filename), dot_dark)?;
-            }
-
-            // filtered main, without mass event/asset systems
-            let main = schedules.get(&Main).unwrap();
-
-            let filter = |system: &dyn System<In = (), Out = ()>| {
-                let name = system.name();
-                let ignore = ["asset_event_system", "update_asset_storage_system"];
-                let events_update_system = name.starts_with("bevy_ecs::event::Events")
-                    && name.ends_with("::update_system");
-                !events_update_system && !ignore.iter().any(|remove| name.contains(remove))
-            };
-            let main_filtered_settings_light = Settings {
-                include_system: Some(Box::new(filter)),
-                style: style_light.clone(),
-                ..Settings::default()
-            };
-            let main_filtered_settings_dark = Settings {
-                include_system: Some(Box::new(filter)),
-                style: style_dark.clone(),
-                ..Settings::default()
-            };
-            let dot_light = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
-                main,
-                &world,
-                &main_filtered_settings_light,
-            );
-            let dot_dark = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
-                main,
-                &world,
-                &main_filtered_settings_dark,
-            );
-
-            let filename = format!("schedule_Main_Filtered.dot");
-            std::fs::write(schedule_path.join("light").join(&filename), dot_light)?;
-            std::fs::write(schedule_path.join("dark").join(&filename), dot_dark)?;
-
-            // by crate
-            let bevy_crates: HashSet<String> = main
-                .graph()
-                .systems()
-                .filter_map(|(_, system, _)| Some(system.name().split_once("::")?.0.to_owned()))
-                .collect();
-
-            for bevy_crate in bevy_crates {
-                let by_crate_settings_light = Settings {
-                    style: style_light.clone(),
-                    ..Default::default()
-                }
-                .filter_in_crate(&bevy_crate);
-                let by_crate_settings_dark = Settings {
-                    style: style_dark.clone(),
-                    ..Default::default()
-                }
-                .filter_in_crate(&bevy_crate);
-
-                let dot_light = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
-                    main,
-                    &world,
-                    &by_crate_settings_light,
-                );
-                let dot_dark = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
-                    main,
-                    &world,
-                    &by_crate_settings_dark,
-                );
-
-                let filename = format!("schedule_Main_{}.dot", bevy_crate);
-                std::fs::write(
-                    schedule_path_by_crate.join("light").join(&filename),
-                    dot_light,
-                )?;
-                std::fs::write(
-                    schedule_path_by_crate.join("dark").join(&filename),
-                    dot_dark,
-                )?;
             }
 
             Ok::<_, std::io::Error>(())

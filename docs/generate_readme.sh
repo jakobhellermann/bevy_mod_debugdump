@@ -28,13 +28,3 @@ for path in light/render_schedule*.svg; do
     printf "## $name\n\n" >> README.md
     picture "$name" docs/schedule/{light,dark}/"$file" >> README.md
 done
-
-
-truncate -s 0 by-crate/README.md
-for path in by-crate/light/schedule*.svg; do
-    file=$(basename "$path")
-    name=$(echo "$file" | sed 's|schedule_Main_\(.*\).dot.svg|\1|')
-    printf "## $name\n\n" >> by-crate/README.md
-    picture "$name" docs/schedule/by-crate/{light,dark}/"$file" >> by-crate/README.md
-done
-popd >/dev/null

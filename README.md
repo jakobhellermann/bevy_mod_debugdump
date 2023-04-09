@@ -21,7 +21,6 @@ fn main() {
 </picture>
 
 See all schedules at [docs/schedule](./docs/schedule/README.md).
-Per-crate filtered schedules are at [docs/schedule/by-crate](./docs/schedule/by-crate/README.md).
 
 ## Render app
 
