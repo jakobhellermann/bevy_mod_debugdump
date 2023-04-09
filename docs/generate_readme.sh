@@ -2,7 +2,7 @@
 
 set -eu
 
-REPO_BASE="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main"
+REPO_BASE="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy"
 cd $(dirname "${BASH_SOURCE[0]}")
 
 function picture() {
