@@ -16,8 +16,8 @@ fn main() {
 ```
 
 <picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy/docs/schedule/dark/schedule_Main.dot.svg">
-<img alt="Main (filtered)" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy/docs/schedule/light/schedule_Main.dot.svg">
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/schedule_Main.dot.svg">
+<img alt="Main (filtered)" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_Main.dot.svg">
 </picture>
 
 See all schedules at [docs/schedule](./docs/schedule/README.md).
