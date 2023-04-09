@@ -1,0 +1,48 @@
+digraph "" {
+	"compound"="true";
+	"splines"="spline";
+	"rankdir"="LR";
+	"bgcolor"="#0d1117";
+	"fontname"="Helvetica";
+	"nodesep"="0.15";
+	edge ["penwidth"="2"];
+	node ["shape"="box", "style"="filled"];
+	subgraph "clusternode_Set(1)" {
+		"style"="rounded,filled";
+		"label"="TransformPropagate";
+		"tooltip"="TransformPropagate";
+		"fillcolor"="#ffffff44";
+		"fontcolor"="#ffffff";
+		"color"="#ffffff50";
+		"penwidth"="2";
+		"set_marker_node_Set(1)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		subgraph "clusternode_Set(0)" {
+			"style"="rounded,filled";
+			"label"="PropagateTransformsSet";
+			"tooltip"="PropagateTransformsSet";
+			"fillcolor"="#ffffff44";
+			"fontcolor"="#ffffff";
+			"color"="#ffffff50";
+			"penwidth"="2";
+			"set_marker_node_Set(0)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(1)" ["label"="propagate_transforms", "tooltip"="bevy_transform::systems::propagate_transforms", "fillcolor"="#ffe7b9", "fontname"="Helvetica", "fontcolor"="#322100", "color"="#ffc453", "penwidth"="1"]
+		}
+		
+		"node_System(0)" ["label"="sync_simple_transforms", "tooltip"="bevy_transform::systems::sync_simple_transforms", "fillcolor"="#ffe7b9", "fontname"="Helvetica", "fontcolor"="#322100", "color"="#ffc453", "penwidth"="1"]
+	}
+	
+	subgraph "clusternode_Set(5)" {
+		"style"="rounded,filled";
+		"label"="CameraUpdateSystem";
+		"tooltip"="CameraUpdateSystem";
+		"fillcolor"="#ffffff44";
+		"fontcolor"="#ffffff";
+		"color"="#ffffff50";
+		"penwidth"="2";
+		"set_marker_node_Set(5)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(2)" ["label"="camera_system<Projection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::Projection>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(3)" ["label"="camera_system<OrthographicProjection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::OrthographicProjection>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(4)" ["label"="camera_system<PerspectiveProjection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::PerspectiveProjection>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+	}
+	
+}

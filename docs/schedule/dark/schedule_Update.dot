@@ -1,0 +1,14 @@
+digraph "" {
+	"compound"="true";
+	"splines"="spline";
+	"rankdir"="LR";
+	"bgcolor"="#0d1117";
+	"fontname"="Helvetica";
+	"nodesep"="0.15";
+	edge ["penwidth"="2"];
+	node ["shape"="box", "style"="filled"];
+	"node_System(0)" ["label"="close_when_requested", "tooltip"="bevy_window::system::close_when_requested"]
+	"node_System(1)" ["label"="scene_spawner_system", "tooltip"="bevy_scene::scene_spawner::scene_spawner_system"]
+	"node_System(2)" ["label"="draw_aabbs", "tooltip"="bevy_gizmos::draw_aabbs"]
+	"node_System(3)" ["label"="draw_all_aabbs", "tooltip"="bevy_gizmos::draw_all_aabbs"]
+}

@@ -1,0 +1,52 @@
+digraph "" {
+	"compound"="true";
+	"splines"="spline";
+	"rankdir"="LR";
+	"bgcolor"="white";
+	"fontname"="Helvetica";
+	"nodesep"="0.15";
+	edge ["penwidth"="2"];
+	node ["shape"="box", "style"="filled"];
+	subgraph "clusternode_Set(1)" {
+		"style"="rounded,filled";
+		"label"="InputSystem";
+		"tooltip"="InputSystem";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(1)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(0)" ["label"="keyboard_input_system", "tooltip"="bevy_input::keyboard::keyboard_input_system", "fillcolor"="#d36aaf", "fontname"="Helvetica", "fontcolor"="#270b1d", "color"="#a5317d", "penwidth"="1"]
+		"node_System(1)" ["label"="mouse_button_input_system", "tooltip"="bevy_input::mouse::mouse_button_input_system", "fillcolor"="#d36aaf", "fontname"="Helvetica", "fontcolor"="#270b1d", "color"="#a5317d", "penwidth"="1"]
+		"node_System(2)" ["label"="gamepad_event_system", "tooltip"="bevy_input::gamepad::gamepad_event_system", "fillcolor"="#d36aaf", "fontname"="Helvetica", "fontcolor"="#270b1d", "color"="#a5317d", "penwidth"="1"]
+		"node_System(3)" ["label"="gamepad_connection_system", "tooltip"="bevy_input::gamepad::gamepad_connection_system", "fillcolor"="#d36aaf", "fontname"="Helvetica", "fontcolor"="#270b1d", "color"="#a5317d", "penwidth"="1"]
+		"node_System(4)" ["label"="gamepad_button_event_system", "tooltip"="bevy_input::gamepad::gamepad_button_event_system", "fillcolor"="#d36aaf", "fontname"="Helvetica", "fontcolor"="#270b1d", "color"="#a5317d", "penwidth"="1"]
+		"node_System(5)" ["label"="gamepad_axis_event_system", "tooltip"="bevy_input::gamepad::gamepad_axis_event_system", "fillcolor"="#d36aaf", "fontname"="Helvetica", "fontcolor"="#270b1d", "color"="#a5317d", "penwidth"="1"]
+		"node_System(6)" ["label"="touch_screen_input_system", "tooltip"="bevy_input::touch::touch_screen_input_system", "fillcolor"="#d36aaf", "fontname"="Helvetica", "fontcolor"="#270b1d", "color"="#a5317d", "penwidth"="1"]
+	}
+	
+	subgraph "clusternode_Set(11)" {
+		"style"="rounded,filled";
+		"label"="Focus";
+		"tooltip"="Focus";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(11)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(9)" ["label"="ui_focus_system", "tooltip"="bevy_ui::focus::ui_focus_system", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
+	}
+	
+	"node_System(7)" ["label"="free_unused_assets_system", "tooltip"="bevy_asset::asset_server::free_unused_assets_system"]
+	"node_System(8)" ["label"="scene_spawner", "tooltip"="bevy_scene::bundle::scene_spawner"]
+	"node_System(10)" ["label"="update_mesh_previous_global_transforms", "tooltip"="bevy_pbr::prepass::update_mesh_previous_global_transforms"]
+	"node_System(11)" ["label"="update_previous_view_projections", "tooltip"="bevy_pbr::prepass::update_previous_view_projections"]
+	"node_System(12)" ["label"="gilrs_event_system", "tooltip"="bevy_gilrs::gilrs_system::gilrs_event_system"]
+	"node_System(2)" -> "node_System(3)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(gamepad_event_system\") → gamepad_connection_system", "color"="#eede00"]
+	"node_System(2)" -> "node_System(4)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(gamepad_event_system\") → gamepad_button_event_system", "color"="#881877"]
+	"node_System(3)" -> "node_System(4)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(gamepad_connection_system\") → gamepad_button_event_system", "color"="#00b0cc"]
+	"node_System(2)" -> "node_System(5)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(gamepad_event_system\") → gamepad_axis_event_system", "color"="#aa3a55"]
+	"node_System(3)" -> "node_System(5)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(gamepad_connection_system\") → gamepad_axis_event_system", "color"="#44d488"]
+	"set_marker_node_Set(1)" -> "node_System(9)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="InputSystem → ui_focus_system", "color"="#0090cc"]
+	"node_System(12)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="", "tooltip"="gilrs_event_system → InputSystem", "color"="#ee9e44"]
+}

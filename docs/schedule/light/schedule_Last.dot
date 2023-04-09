@@ -1,0 +1,18 @@
+digraph "" {
+	"compound"="true";
+	"splines"="spline";
+	"rankdir"="LR";
+	"bgcolor"="white";
+	"fontname"="Helvetica";
+	"nodesep"="0.15";
+	edge ["penwidth"="2"];
+	node ["shape"="box", "style"="filled"];
+	"node_System(0)" ["label"="tick_global_task_pools", "tooltip"="bevy_core::tick_global_task_pools"]
+	"node_System(1)" ["label"="update_frame_count", "tooltip"="bevy_core::update_frame_count"]
+	"node_System(2)" ["label"="check_hierarchy_component_has_valid_parent<GlobalTransform>", "tooltip"="bevy_hierarchy::valid_parent_check_plugin::check_hierarchy_component_has_valid_parent<bevy_transform::components::global_transform::GlobalTransform>"]
+	"node_System(3)" ["label"="changed_window", "tooltip"="bevy_winit::system::changed_window"]
+	"node_System(4)" ["label"="despawn_window", "tooltip"="bevy_winit::system::despawn_window"]
+	"node_System(5)" ["label"="check_hierarchy_component_has_valid_parent<ComputedVisibility>", "tooltip"="bevy_hierarchy::valid_parent_check_plugin::check_hierarchy_component_has_valid_parent<bevy_render::view::visibility::ComputedVisibility>"]
+	"node_System(6)" ["label"="update_gizmo_meshes", "tooltip"="bevy_gizmos::update_gizmo_meshes"]
+	"node_System(3)" -> "node_System(4)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(changed_window\") → despawn_window", "color"="#eede00"]
+}

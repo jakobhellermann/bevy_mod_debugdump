@@ -1,0 +1,29 @@
+digraph "" {
+	"compound"="true";
+	"splines"="spline";
+	"rankdir"="LR";
+	"bgcolor"="#0d1117";
+	"fontname"="Helvetica";
+	"nodesep"="0.15";
+	edge ["penwidth"="2"];
+	node ["shape"="box", "style"="filled"];
+	"node_System(0)" ["label"="filesystem_watcher_system", "tooltip"="bevy_asset::io::file_asset_io::filesystem_watcher_system"]
+	"node_System(1)" ["label"="update_asset_storage_system<DynamicScene>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_scene::dynamic_scene::DynamicScene>"]
+	"node_System(2)" ["label"="update_asset_storage_system<Scene>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_scene::scene::Scene>"]
+	"node_System(3)" ["label"="update_asset_storage_system<Shader>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_render::render_resource::shader::Shader>"]
+	"node_System(4)" ["label"="update_asset_storage_system<Mesh>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_render::mesh::mesh::Mesh>"]
+	"node_System(5)" ["label"="update_asset_storage_system<SkinnedMeshInverseBindposes>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_render::mesh::mesh::skinning::SkinnedMeshInverseBindposes>"]
+	"node_System(6)" ["label"="update_asset_storage_system<Image>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_render::texture::image::Image>"]
+	"node_System(7)" ["label"="update_asset_storage_system<TextureAtlas>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_sprite::texture_atlas::TextureAtlas>"]
+	"node_System(8)" ["label"="update_asset_storage_system<ColorMaterial>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_sprite::mesh2d::color_material::ColorMaterial>"]
+	"node_System(9)" ["label"="update_asset_storage_system<Font>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_text::font::Font>"]
+	"node_System(10)" ["label"="update_asset_storage_system<FontAtlasSet>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_text::font_atlas_set::FontAtlasSet>"]
+	"node_System(11)" ["label"="update_asset_storage_system<StandardMaterial>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_pbr::pbr_material::StandardMaterial>"]
+	"node_System(12)" ["label"="update_asset_storage_system<Gltf>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_gltf::Gltf>"]
+	"node_System(13)" ["label"="update_asset_storage_system<GltfNode>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_gltf::GltfNode>"]
+	"node_System(14)" ["label"="update_asset_storage_system<GltfPrimitive>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_gltf::GltfPrimitive>"]
+	"node_System(15)" ["label"="update_asset_storage_system<GltfMesh>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_gltf::GltfMesh>"]
+	"node_System(16)" ["label"="update_asset_storage_system<AudioSource>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_audio::audio_source::AudioSource>"]
+	"node_System(17)" ["label"="update_asset_storage_system<AnimationClip>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_animation::AnimationClip>"]
+	"node_System(18)" ["label"="update_asset_storage_system<LineGizmo>", "tooltip"="bevy_asset::loader::update_asset_storage_system<bevy_gizmos::LineGizmo>"]
+}
