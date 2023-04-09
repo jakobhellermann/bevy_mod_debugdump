@@ -50,7 +50,11 @@ fn build_dot_graph(
     let node_id = |id: &NodeId| format!("{}_{}", graph_name.unwrap_or_default(), &node_mapping[id]);
 
     let mut nodes: Vec<_> = graph.iter_nodes().collect();
-    nodes.sort_by_key(|node_state| &node_state.type_name);
+    nodes.sort_by(|a, b| {
+        a.type_name
+            .cmp(b.type_name)
+            .then_with(|| a.name.cmp(&b.name))
+    });
 
     let layer_style = &settings.style.layers[subgraph_nest_level % settings.style.layers.len()];
     let next_layer_style =
