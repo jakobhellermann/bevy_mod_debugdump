@@ -12,13 +12,13 @@ exclude = ["docs/*"]
 
 [features]
 default = ["render_graph"]
-render_graph = ["bevy_render"]
+render_graph = []
 
 [dependencies]
 bevy_ecs = "0.11"
 bevy_app = "0.11"
 bevy_utils = "0.11"
-bevy_render = { version = "0.11", optional = true }
+bevy_render = { version = "0.11" }
 pretty-type-name = "1.0"
 petgraph = "0.6"
 once_cell = "1.17"
