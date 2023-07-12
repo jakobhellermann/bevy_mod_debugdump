@@ -26,7 +26,7 @@ fn main() -> Result<(), std::io::Error> {
 
     app.world
         .resource_scope::<Schedules, _>(|world, mut schedules| {
-            let schedule_label = CoreSchedule::Main;
+            let schedule_label = Main;
             let schedule = schedules.get_mut(&schedule_label).unwrap();
 
             schedule.graph_mut().initialize(world);
@@ -74,12 +74,12 @@ fn print_schedule(schedule: &Schedule, schedule_label: &dyn ScheduleLabel) {
     println!("{:?}", schedule_label);
 
     println!("- SETS");
-    for (_set_id, set, _, _conditions) in graph.system_sets() {
+    for (_set_id, set, _conditions) in graph.system_sets() {
         println!("  - {:?}", set);
     }
 
     println!("- SYSTEMS");
-    for (_system_id, system, _, _conditions) in graph.systems() {
+    for (_system_id, system, _conditions) in graph.systems() {
         println!("  - {}", system.name());
     }
 

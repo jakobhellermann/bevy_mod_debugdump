@@ -12,7 +12,7 @@ fn main() -> Result<(), std::io::Error> {
 
     app.world
         .resource_scope::<Schedules, _>(|world, mut schedules| {
-            let schedule = schedules.get_mut(&CoreSchedule::Main).unwrap();
+            let schedule = schedules.get_mut(&Main).unwrap();
 
             // for access info
             schedule.graph_mut().initialize(world);

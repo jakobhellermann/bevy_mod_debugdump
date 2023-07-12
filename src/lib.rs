@@ -1,4 +1,4 @@
-use bevy_app::{App, CoreSchedule};
+use bevy_app::App;
 use bevy_ecs::schedule::{ScheduleLabel, Schedules};
 
 mod dot;
@@ -14,26 +14,30 @@ pub fn schedule_graph_dot(
     label: impl ScheduleLabel,
     settings: &schedule_graph::Settings,
 ) -> String {
-    app.world
-        .resource_scope::<Schedules, _>(|world, mut schedules| {
-            let schedule = schedules
-                .get_mut(&label)
-                .ok_or_else(|| format!("schedule with label {label:?} doesn't exist"))
-                .unwrap();
-            schedule.graph_mut().initialize(world);
-            let _ = schedule.graph_mut().build_schedule(world.components());
+    fn schedule_graph_dot_inner(
+        app: &mut App,
+        label: &dyn ScheduleLabel,
+        settings: &schedule_graph::Settings,
+    ) -> String {
+        app.world
+            .resource_scope::<Schedules, _>(|world, mut schedules| {
+                let schedule = schedules
+                    .get_mut(label)
+                    .ok_or_else(|| format!("schedule with label {label:?} doesn't exist"))
+                    .unwrap();
+                schedule.graph_mut().initialize(world);
+                let _ = schedule.graph_mut().build_schedule(world.components());
 
-            schedule_graph::schedule_graph_dot(schedule, world, &settings)
-        })
+                schedule_graph::schedule_graph_dot(schedule, world, &settings)
+            })
+    }
+
+    schedule_graph_dot_inner(app, &label, settings)
 }
 
-/// Prints the [`CoreSchedule::Main`] with default settings.
-pub fn print_main_schedule(app: &mut App) {
-    let dot = schedule_graph_dot(
-        app,
-        CoreSchedule::Main,
-        &schedule_graph::Settings::default(),
-    );
+/// Prints the schedule with default settings.
+pub fn print_schedule_graph(app: &mut App, schedule_label: impl ScheduleLabel) {
+    let dot = schedule_graph_dot(app, schedule_label, &schedule_graph::Settings::default());
     println!("{dot}");
 }
 

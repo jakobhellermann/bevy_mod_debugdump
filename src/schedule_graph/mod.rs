@@ -30,7 +30,7 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
     let mut systems_in_single_set = HashMap::<NodeId, Vec<_>>::new();
     let mut systems_in_multiple_sets = bevy_utils::HashMap::<Option<NodeId>, Vec<_>>::new();
 
-    for (system_id, system, _base_set, _conditions) in graph
+    for (system_id, system, _base_set) in graph
         .systems()
         .filter(|(id, ..)| included_systems_sets.contains(id))
     {
@@ -62,7 +62,7 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
     let mut collapsed_sets = HashSet::new();
     let mut collapsed_set_children = HashMap::new();
 
-    for &(set_id, set, _base_set_membership, _conditions) in system_sets
+    for &(set_id, set, _base_set_membership) in system_sets
         .iter()
         .filter(|&&(id, ..)| graph.set_at(id).system_type().is_none())
         .filter(|(id, ..)| included_systems_sets.contains(id))
@@ -497,7 +497,7 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
 
     let systems_of_interest: HashSet<NodeId> = graph
         .systems()
-        .filter(|&(_, system, _, _)| include_system(system))
+        .filter(|&(_, system, _)| include_system(system))
         .map(|(id, ..)| id)
         .collect();
 
@@ -596,9 +596,7 @@ impl ScheduleGraphContext<'_> {
         let system_node = self
             .graph
             .systems()
-            .find_map(|(node_id, system, _, _)| {
-                (system.type_id() == system_type).then_some(node_id)
-            })
+            .find_map(|(node_id, system, _)| (system.type_id() == system_type).then_some(node_id))
             .unwrap();
         system_node
     }
@@ -648,7 +646,9 @@ enum IterSingleResult<T> {
     Multiple(Vec<T>),
 }
 fn iter_single<T>(mut iter: impl Iterator<Item = T>) -> IterSingleResult<T> {
-    let Some(first) = iter.next() else { return IterSingleResult::Empty };
+    let Some(first) = iter.next() else {
+        return IterSingleResult::Empty;
+    };
     match iter.next() {
         Some(second) => {
             let mut items = Vec::with_capacity(iter.size_hint().0 + 2);
