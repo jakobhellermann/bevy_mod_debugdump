@@ -362,6 +362,7 @@ impl ScheduleGraphContext<'_> {
                 ("label", &name),
                 ("tooltip", &name),
                 ("fillcolor", &self.settings.style.color_set),
+                ("fontcolor", &self.settings.style.color_set_label),
                 ("color", &self.settings.style.color_set_border),
                 ("penwidth", "2"),
             ],

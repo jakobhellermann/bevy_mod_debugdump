@@ -52,6 +52,7 @@ pub struct Style {
 
     pub color_background: String,
     pub color_set: String,
+    pub color_set_label: String,
     pub color_set_border: String,
     pub color_edge: Vec<String>,
     pub multiple_set_edge_color: String,
@@ -71,6 +72,7 @@ impl Style {
             color_background: "white".into(),
             color_set: "#00000008".into(),
             color_set_border: "#00000040".into(),
+            color_set_label: "#000000".into(),
             color_edge: vec![
                 "#eede00".into(),
                 "#881877".into(),
@@ -99,6 +101,7 @@ impl Style {
             color_background: "#35393f".into(),
             color_set: "#ffffff44".into(),
             color_set_border: "#ffffff50".into(),
+            color_set_label: "#ffffff".into(),
             color_edge: vec![
                 "#eede00".into(),
                 "#881877".into(),
@@ -127,6 +130,7 @@ impl Style {
             color_background: "#0d1117".into(),
             color_set: "#ffffff44".into(),
             color_set_border: "#ffffff50".into(),
+            color_set_label: "#ffffff".into(),
             color_edge: vec![
                 "#eede00".into(),
                 "#881877".into(),
