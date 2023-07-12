@@ -596,9 +596,7 @@ impl ScheduleGraphContext<'_> {
         let system_node = self
             .graph
             .systems()
-            .find_map(|(node_id, system, _)| {
-                (system.type_id() == system_type).then_some(node_id)
-            })
+            .find_map(|(node_id, system, _)| (system.type_id() == system_type).then_some(node_id))
             .unwrap();
         system_node
     }
