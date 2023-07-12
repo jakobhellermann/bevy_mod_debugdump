@@ -30,7 +30,7 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
     let mut systems_in_single_set = HashMap::<NodeId, Vec<_>>::new();
     let mut systems_in_multiple_sets = bevy_utils::HashMap::<Option<NodeId>, Vec<_>>::new();
 
-    for (system_id, system, _base_set) in graph
+    for (system_id, system, _condition) in graph
         .systems()
         .filter(|(id, ..)| included_systems_sets.contains(id))
     {
@@ -62,7 +62,7 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
     let mut collapsed_sets = HashSet::new();
     let mut collapsed_set_children = HashMap::new();
 
-    for &(set_id, set, _base_set_membership) in system_sets
+    for &(set_id, set, _condition) in system_sets
         .iter()
         .filter(|&&(id, ..)| graph.set_at(id).system_type().is_none())
         .filter(|(id, ..)| included_systems_sets.contains(id))
