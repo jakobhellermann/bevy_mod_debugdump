@@ -15,9 +15,11 @@ fn main() {
 }
 ```
 
+`PreUpdate` schedule:
+
 <picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/schedule_Main.dot.svg">
-<img alt="Main (filtered)" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_Main.dot.svg">
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/schedule_PreUpdate.dot.svg">
+<img alt="Main (filtered)" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_PreUpdate.dot.svg">
 </picture>
 
 See all schedules at [docs/schedule](./docs/schedule/README.md).
@@ -52,8 +54,8 @@ fn main() {
 ### Main render schedule
 
 <picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main/docs/schedule/dark/render_schedule_Main.dot.svg">
-<img alt="Main" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main/docs/schedule/light/render_schedule_Main.dot.svg">
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main/docs/schedule/dark/render_schedule_Render.dot.svg">
+<img alt="Main" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main/docs/schedule/light/render_schedule_Render.dot.svg">
 </picture>
 
 
