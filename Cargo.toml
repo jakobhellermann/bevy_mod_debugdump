@@ -15,16 +15,16 @@ default = ["render_graph"]
 render_graph = ["bevy_render"]
 
 [dependencies]
-bevy_ecs = "0.10"
-bevy_app = "0.10"
-bevy_utils = "0.10"
-bevy_render = { version = "0.10", optional = true }
+bevy_ecs = "0.11"
+bevy_app = "0.11"
+bevy_utils = "0.11"
+bevy_render = { version = "0.11", optional = true }
 pretty-type-name = "1.0"
 petgraph = "0.6"
 once_cell = "1.17"
 
 [dev-dependencies]
-bevy = "0.10"
+bevy = "0.11"
 
 [[example]]
 name = "print_render_graph"

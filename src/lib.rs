@@ -1,4 +1,4 @@
-use bevy_app::{App, CoreSchedule};
+use bevy_app::{App, Main};
 use bevy_ecs::schedule::{ScheduleLabel, Schedules};
 
 mod dot;
@@ -31,7 +31,7 @@ pub fn schedule_graph_dot(
 pub fn print_main_schedule(app: &mut App) {
     let dot = schedule_graph_dot(
         app,
-        CoreSchedule::Main,
+        Main,
         &schedule_graph::Settings::default(),
     );
     println!("{dot}");
