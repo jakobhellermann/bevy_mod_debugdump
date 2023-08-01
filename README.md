@@ -1,4 +1,6 @@
 # bevy_mod_debugdump
+![Crates.io](https://img.shields.io/crates/v/bevy_mod_debugdump)
+![Crates.io](https://img.shields.io/crates/d/bevy_mod_debugdump)
 
 Live playground: [jakobhellermann.github.io/bevy_mod_debugdump](https://jakobhellermann.github.io/bevy_mod_debugdump)
 
