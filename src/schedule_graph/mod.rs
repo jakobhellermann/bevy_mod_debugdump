@@ -593,12 +593,12 @@ impl ScheduleGraphContext<'_> {
     }
 
     // PERF: O(n)
-    fn system_of_system_type(&self, system_type: TypeId) -> NodeId {
+    fn system_of_system_type(&self, system_type: TypeId) -> Option<NodeId> {
         let system_node = self
             .graph
             .systems()
-            .find_map(|(node_id, system, _)| (system.type_id() == system_type).then_some(node_id))
-            .unwrap();
+            .find_map(|(node_id, system, _)| (system.type_id() == system_type).then_some(node_id));
+
         system_node
     }
 
@@ -617,8 +617,11 @@ impl ScheduleGraphContext<'_> {
             NodeId::Set(_) if self.collapsed_sets.contains(&node_id) => node_index_name(node_id),
             NodeId::Set(_) => {
                 let set = self.graph.set_at(node_id);
-                if let Some(system_type) = set.system_type() {
-                    let system_node = self.system_of_system_type(system_type);
+
+                if let Some(system_node) = set
+                    .system_type()
+                    .and_then(|system_type| self.system_of_system_type(system_type))
+                {
                     self.system_node_ref(system_node)
                 } else {
                     marker_name(node_id)
