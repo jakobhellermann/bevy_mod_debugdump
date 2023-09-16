@@ -593,12 +593,11 @@ impl ScheduleGraphContext<'_> {
     }
 
     // PERF: O(n)
-    fn system_of_system_type(&self, system_type: TypeId) -> NodeId {
+    fn system_of_system_type(&self, system_type: TypeId) -> Option<NodeId> {
         let system_node = self
             .graph
             .systems()
-            .find_map(|(node_id, system, _)| (system.type_id() == system_type).then_some(node_id))
-            .unwrap();
+            .find_map(|(node_id, system, _)| (system.type_id() == system_type).then_some(node_id));
         system_node
     }
 
@@ -619,7 +618,11 @@ impl ScheduleGraphContext<'_> {
                 let set = self.graph.set_at(node_id);
                 if let Some(system_type) = set.system_type() {
                     let system_node = self.system_of_system_type(system_type);
-                    self.system_node_ref(system_node)
+                    if let Some(system_node) = system_node {
+                        self.system_node_ref(system_node)
+                    } else {
+                        format!("UNKNOWN {:?}", set)
+                    }
                 } else {
                     marker_name(node_id)
                 }
