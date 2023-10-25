@@ -1,7 +1,11 @@
-use std::{any::TypeId, path::PathBuf};
+use std::{any::TypeId, collections::BTreeSet, path::PathBuf};
 
 use bevy::{prelude::*, render::RenderApp};
-use bevy_mod_debugdump::schedule_graph::{settings::Style, Settings};
+use bevy_ecs::{component::ComponentId, schedule::ScheduleLabel};
+use bevy_mod_debugdump::{
+    schedule_graph::{settings::Style, Settings},
+    ScheduleDebugGroup,
+};
 
 fn main() -> Result<(), std::io::Error> {
     let docs_path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("docs");
@@ -60,7 +64,11 @@ fn main() -> Result<(), std::io::Error> {
                     // for `conflicting_systems`
                     schedule
                         .graph_mut()
-                        .build_schedule(world.components())
+                        .build_schedule(
+                            world.components(),
+                            &ScheduleDebugGroup.dyn_clone(),
+                            &BTreeSet::<ComponentId>::new(),
+                        )
                         .unwrap();
 
                     let ignore_ambiguities = &[TypeId::of::<bevy_render::texture::TextureCache>()];
@@ -119,7 +127,11 @@ fn initialize_schedules(
         // for `conflicting_systems`
         schedule
             .graph_mut()
-            .build_schedule(world.components())
+            .build_schedule(
+                world.components(),
+                &ScheduleDebugGroup.dyn_clone(),
+                &BTreeSet::<ComponentId>::new(),
+            )
             .unwrap();
     })
 }
