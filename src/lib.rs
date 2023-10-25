@@ -1,11 +1,19 @@
+use std::collections::BTreeSet;
+
 use bevy_app::App;
-use bevy_ecs::schedule::{ScheduleLabel, Schedules};
+use bevy_ecs::{
+    component::ComponentId,
+    schedule::{ScheduleLabel, Schedules},
+};
 
 mod dot;
 
 #[cfg(feature = "render_graph")]
 pub mod render_graph;
 pub mod schedule_graph;
+
+#[derive(ScheduleLabel, Clone, Debug, PartialEq, Eq, Hash)]
+pub struct ScheduleDebugGroup;
 
 /// Formats the schedule into a dot graph.
 #[track_caller]
@@ -26,9 +34,13 @@ pub fn schedule_graph_dot(
                     .ok_or_else(|| format!("schedule with label {label:?} doesn't exist"))
                     .unwrap();
                 schedule.graph_mut().initialize(world);
-                let _ = schedule.graph_mut().build_schedule(world.components());
+                let _ = schedule.graph_mut().build_schedule(
+                    world.components(),
+                    &ScheduleDebugGroup.dyn_clone(),
+                    &BTreeSet::<ComponentId>::new(),
+                );
 
-                schedule_graph::schedule_graph_dot(schedule, world, &settings)
+                schedule_graph::schedule_graph_dot(schedule, world, settings)
             })
     }
 

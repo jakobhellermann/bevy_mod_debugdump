@@ -1,9 +1,12 @@
 #![allow(unused)]
-use std::path::PathBuf;
+use std::{collections::BTreeSet, path::PathBuf};
 
 use bevy::{prelude::*, render::RenderApp, utils::HashSet};
-use bevy_ecs::schedule::{NodeId, ScheduleLabel};
-use bevy_mod_debugdump::schedule_graph::Settings;
+use bevy_ecs::{
+    component::ComponentId,
+    schedule::{NodeId, ScheduleLabel},
+};
+use bevy_mod_debugdump::{schedule_graph::Settings, ScheduleDebugGroup};
 
 fn test_system_1() {}
 fn test_system_2() {}
@@ -32,7 +35,11 @@ fn main() -> Result<(), std::io::Error> {
             schedule.graph_mut().initialize(world);
             schedule
                 .graph_mut()
-                .build_schedule(world.components())
+                .build_schedule(
+                    world.components(),
+                    &ScheduleDebugGroup.dyn_clone(),
+                    &BTreeSet::<ComponentId>::new(),
+                )
                 .unwrap();
 
             let settings = Settings {
