@@ -24,19 +24,19 @@ pub fn schedule_graph_dot(
 ) -> String {
     fn schedule_graph_dot_inner(
         app: &mut App,
-        label: &dyn ScheduleLabel,
+        label: impl ScheduleLabel,
         settings: &schedule_graph::Settings,
     ) -> String {
         app.world
             .resource_scope::<Schedules, _>(|world, mut schedules| {
                 let schedule = schedules
                     .get_mut(label)
-                    .ok_or_else(|| format!("schedule with label {label:?} doesn't exist"))
+                    .ok_or_else(|| "schedule doesn't exist".to_string())
                     .unwrap();
                 schedule.graph_mut().initialize(world);
                 let _ = schedule.graph_mut().build_schedule(
                     world.components(),
-                    &ScheduleDebugGroup.dyn_clone(),
+                    ScheduleDebugGroup.intern(),
                     &BTreeSet::<ComponentId>::new(),
                 );
 
@@ -44,7 +44,7 @@ pub fn schedule_graph_dot(
             })
     }
 
-    schedule_graph_dot_inner(app, &label, settings)
+    schedule_graph_dot_inner(app, label, settings)
 }
 
 /// Prints the schedule with default settings.

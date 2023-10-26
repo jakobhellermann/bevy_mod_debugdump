@@ -66,7 +66,7 @@ fn main() -> Result<(), std::io::Error> {
                         .graph_mut()
                         .build_schedule(
                             world.components(),
-                            &ScheduleDebugGroup.dyn_clone(),
+                            ScheduleDebugGroup.intern(),
                             &BTreeSet::<ComponentId>::new(),
                         )
                         .unwrap();
@@ -129,7 +129,7 @@ fn initialize_schedules(
             .graph_mut()
             .build_schedule(
                 world.components(),
-                &ScheduleDebugGroup.dyn_clone(),
+                ScheduleDebugGroup.intern(),
                 &BTreeSet::<ComponentId>::new(),
             )
             .unwrap();

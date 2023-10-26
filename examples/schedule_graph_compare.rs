@@ -16,7 +16,7 @@ fn main() -> Result<(), std::io::Error> {
 
     app.world
         .resource_scope::<Schedules, _>(|world, mut schedules| {
-            let schedule = schedules.get_mut(&Main).unwrap();
+            let schedule = schedules.get_mut(Main).unwrap();
 
             // for access info
             schedule.graph_mut().initialize(world);
@@ -25,7 +25,7 @@ fn main() -> Result<(), std::io::Error> {
                 .graph_mut()
                 .build_schedule(
                     world.components(),
-                    &ScheduleDebugGroup.dyn_clone(),
+                    ScheduleDebugGroup.intern(),
                     &BTreeSet::<ComponentId>::new(),
                 )
                 .unwrap();
