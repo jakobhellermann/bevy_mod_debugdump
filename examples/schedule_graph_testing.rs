@@ -30,14 +30,14 @@ fn main() -> Result<(), std::io::Error> {
     app.world
         .resource_scope::<Schedules, _>(|world, mut schedules| {
             let schedule_label = Main;
-            let schedule = schedules.get_mut(&schedule_label).unwrap();
+            let schedule = schedules.get_mut(schedule_label).unwrap();
 
             schedule.graph_mut().initialize(world);
             schedule
                 .graph_mut()
                 .build_schedule(
                     world.components(),
-                    &ScheduleDebugGroup.dyn_clone(),
+                    ScheduleDebugGroup.intern(),
                     &BTreeSet::<ComponentId>::new(),
                 )
                 .unwrap();
