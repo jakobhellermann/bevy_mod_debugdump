@@ -1,0 +1,13 @@
+digraph "" {
+	"compound"="true";
+	"splines"="spline";
+	"rankdir"="LR";
+	"bgcolor"="white";
+	"fontname"="Helvetica";
+	"nodesep"="0.15";
+	edge ["penwidth"="2"];
+	node ["shape"="box", "style"="filled"];
+	"node_System(0)" ["label"="scene_spawner", "tooltip"="bevy_scene::bundle::scene_spawner"]
+	"node_System(1)" ["label"="scene_spawner_system", "tooltip"="bevy_scene::scene_spawner::scene_spawner_system"]
+	"node_System(0)" -> "node_System(1)" ["lhead"="", "ltail"="", "tooltip"="scene_spawner → scene_spawner_system", "color"="#eede00"]
+}

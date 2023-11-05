@@ -21,13 +21,6 @@
 <img alt="Last" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_Last.dot.svg">
 </picture>
 
-## LoadAssets
-
-<picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/schedule_LoadAssets.dot.svg">
-<img alt="LoadAssets" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_LoadAssets.dot.svg">
-</picture>
-
 ## Main
 
 <picture>
@@ -70,11 +63,25 @@
 <img alt="RunFixedUpdateLoop" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_RunFixedUpdateLoop.dot.svg">
 </picture>
 
+## SpawnScene
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/schedule_SpawnScene.dot.svg">
+<img alt="SpawnScene" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_SpawnScene.dot.svg">
+</picture>
+
 ## Startup
 
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/schedule_Startup.dot.svg">
 <img alt="Startup" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_Startup.dot.svg">
+</picture>
+
+## UpdateAssets
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/schedule_UpdateAssets.dot.svg">
+<img alt="UpdateAssets" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_UpdateAssets.dot.svg">
 </picture>
 
 ## Update
