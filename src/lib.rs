@@ -22,29 +22,21 @@ pub fn schedule_graph_dot(
     label: impl ScheduleLabel,
     settings: &schedule_graph::Settings,
 ) -> String {
-    fn schedule_graph_dot_inner(
-        app: &mut App,
-        label: impl ScheduleLabel,
-        settings: &schedule_graph::Settings,
-    ) -> String {
-        app.world
-            .resource_scope::<Schedules, _>(|world, mut schedules| {
-                let schedule = schedules
-                    .get_mut(label)
-                    .ok_or_else(|| "schedule doesn't exist".to_string())
-                    .unwrap();
-                schedule.graph_mut().initialize(world);
-                let _ = schedule.graph_mut().build_schedule(
-                    world.components(),
-                    ScheduleDebugGroup.intern(),
-                    &BTreeSet::<ComponentId>::new(),
-                );
+    app.world
+        .resource_scope::<Schedules, _>(|world, mut schedules| {
+            let schedule = schedules
+                .get_mut(label)
+                .ok_or_else(|| "schedule doesn't exist".to_string())
+                .unwrap();
+            schedule.graph_mut().initialize(world);
+            let _ = schedule.graph_mut().build_schedule(
+                world.components(),
+                ScheduleDebugGroup.intern(),
+                &BTreeSet::<ComponentId>::new(),
+            );
 
-                schedule_graph::schedule_graph_dot(schedule, world, settings)
-            })
-    }
-
-    schedule_graph_dot_inner(app, label, settings)
+            schedule_graph::schedule_graph_dot(schedule, world, settings)
+        })
 }
 
 /// Prints the schedule with default settings.
