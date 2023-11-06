@@ -6,7 +6,10 @@ use bevy_ecs::{
     component::ComponentId,
     schedule::{NodeId, ScheduleLabel},
 };
-use bevy_mod_debugdump::{schedule_graph::Settings, ScheduleDebugGroup};
+use bevy_mod_debugdump::schedule_graph::Settings;
+
+#[derive(ScheduleLabel, Clone, Debug, PartialEq, Eq, Hash)]
+struct ScheduleDebugGroup;
 
 fn test_system_1() {}
 fn test_system_2() {}

@@ -2,10 +2,10 @@ use std::{any::TypeId, path::PathBuf};
 
 use bevy::{prelude::*, render::RenderApp};
 use bevy_ecs::schedule::ScheduleLabel;
-use bevy_mod_debugdump::{
-    schedule_graph::{settings::Style, Settings},
-    ScheduleDebugGroup,
-};
+use bevy_mod_debugdump::schedule_graph::{settings::Style, Settings};
+
+#[derive(ScheduleLabel, Clone, Debug, PartialEq, Eq, Hash)]
+struct ScheduleDebugGroup;
 
 fn main() -> Result<(), std::io::Error> {
     let docs_path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("docs");

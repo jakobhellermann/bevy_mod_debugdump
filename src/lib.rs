@@ -8,7 +8,7 @@ pub mod render_graph;
 pub mod schedule_graph;
 
 #[derive(ScheduleLabel, Clone, Debug, PartialEq, Eq, Hash)]
-pub struct ScheduleDebugGroup;
+struct ScheduleDebugGroup;
 
 /// Formats the schedule into a dot graph.
 #[track_caller]
