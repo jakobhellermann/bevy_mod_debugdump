@@ -97,7 +97,4 @@ digraph "" {
 	"set_marker_node_Set(35)" -> "node_System(33)" ["lhead"="", "ltail"="clusternode_Set(35)", "tooltip"="ExtractAtlasNode → extract_uinode_borders", "color"="#00b0cc"]
 	"set_marker_node_Set(35)" -> "node_System(34)" ["lhead"="", "ltail"="clusternode_Set(35)", "tooltip"="ExtractAtlasNode → extract_text_uinodes", "color"="#aa3a55"]
 	"set_marker_node_Set(35)" -> "node_System(35)" ["lhead"="", "ltail"="clusternode_Set(35)", "tooltip"="ExtractAtlasNode → extract_uinode_outlines", "color"="#44d488"]
-	"node_System(33)" -> "node_System(35)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">ExtractedUiNodes</td></tr></table>>, "labeltooltip"="extract_uinode_borders — extract_uinode_outlines"]
-	"node_System(34)" -> "node_System(33)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">ExtractedUiNodes</td></tr></table>>, "labeltooltip"="extract_text_uinodes — extract_uinode_borders"]
-	"node_System(34)" -> "node_System(35)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">ExtractedUiNodes</td></tr></table>>, "labeltooltip"="extract_text_uinodes — extract_uinode_outlines"]
 }

@@ -40,9 +40,9 @@ digraph "" {
 		"color"="#00000040";
 		"penwidth"="2";
 		"set_marker_node_Set(6)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(3)" ["label"="window_closed", "tooltip"="bevy_winit::accessibility::window_closed", "fillcolor"="#664f72", "fontname"="Helvetica", "fontcolor"="#e6e0ea", "color"="#9980a6", "penwidth"="1"]
-		"node_System(4)" ["label"="poll_receivers", "tooltip"="bevy_winit::accessibility::poll_receivers", "fillcolor"="#664f72", "fontname"="Helvetica", "fontcolor"="#e6e0ea", "color"="#9980a6", "penwidth"="1"]
-		"node_System(5)" ["label"="update_accessibility_nodes", "tooltip"="bevy_winit::accessibility::update_accessibility_nodes", "fillcolor"="#664f72", "fontname"="Helvetica", "fontcolor"="#e6e0ea", "color"="#9980a6", "penwidth"="1"]
+		"node_System(3)" ["label"="poll_receivers", "tooltip"="bevy_winit::accessibility::poll_receivers", "fillcolor"="#664f72", "fontname"="Helvetica", "fontcolor"="#e6e0ea", "color"="#9980a6", "penwidth"="1"]
+		"node_System(4)" ["label"="update_accessibility_nodes", "tooltip"="bevy_winit::accessibility::update_accessibility_nodes", "fillcolor"="#664f72", "fontname"="Helvetica", "fontcolor"="#e6e0ea", "color"="#9980a6", "penwidth"="1"]
+		"node_System(5)" ["label"="window_closed", "tooltip"="bevy_winit::accessibility::window_closed", "fillcolor"="#664f72", "fontname"="Helvetica", "fontcolor"="#e6e0ea", "color"="#9980a6", "penwidth"="1"]
 	}
 	
 	subgraph "clusternode_Set(10)" {
@@ -181,7 +181,7 @@ digraph "" {
 		"node_System(32)" ["label"="ui_stack_system", "tooltip"="bevy_ui::stack::ui_stack_system", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(51)" {
+	subgraph "clusternode_Set(50)" {
 		"style"="rounded,filled";
 		"label"="AddClusters";
 		"tooltip"="AddClusters";
@@ -189,11 +189,11 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(51)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"set_marker_node_Set(50)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		"node_System(36)" ["label"="add_clusters", "tooltip"="bevy_pbr::light::add_clusters", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(52)" {
+	subgraph "clusternode_Set(51)" {
 		"style"="rounded,filled";
 		"label"="AddClustersFlush";
 		"tooltip"="AddClustersFlush";
@@ -201,11 +201,11 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(52)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"set_marker_node_Set(51)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		"node_System(37)" ["label"="apply_deferred", "tooltip"="bevy_ecs::schedule::executor::apply_deferred", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(53)" {
+	subgraph "clusternode_Set(52)" {
 		"style"="rounded,filled";
 		"label"="AssignLightsToClusters";
 		"tooltip"="AssignLightsToClusters";
@@ -213,11 +213,11 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(53)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"set_marker_node_Set(52)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		"node_System(38)" ["label"="assign_lights_to_clusters", "tooltip"="bevy_pbr::light::assign_lights_to_clusters", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(57)" {
+	subgraph "clusternode_Set(56)" {
 		"style"="rounded,filled";
 		"label"="UpdateDirectionalLightCascades";
 		"tooltip"="UpdateDirectionalLightCascades";
@@ -225,12 +225,12 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(57)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"set_marker_node_Set(56)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		"node_System(39)" ["label"="clear_directional_light_cascades", "tooltip"="bevy_pbr::light::clear_directional_light_cascades", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
 		"node_System(40)" ["label"="build_directional_light_cascades<Projection>", "tooltip"="bevy_pbr::light::build_directional_light_cascades<bevy_render::camera::projection::Projection>", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(60)" {
+	subgraph "clusternode_Set(59)" {
 		"style"="rounded,filled";
 		"label"="UpdateLightFrusta";
 		"tooltip"="UpdateLightFrusta";
@@ -238,13 +238,13 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(60)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"set_marker_node_Set(59)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		"node_System(41)" ["label"="update_directional_light_frusta", "tooltip"="bevy_pbr::light::update_directional_light_frusta", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
 		"node_System(42)" ["label"="update_point_light_frusta", "tooltip"="bevy_pbr::light::update_point_light_frusta", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
 		"node_System(43)" ["label"="update_spot_light_frusta", "tooltip"="bevy_pbr::light::update_spot_light_frusta", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(64)" {
+	subgraph "clusternode_Set(63)" {
 		"style"="rounded,filled";
 		"label"="CheckLightVisibility";
 		"tooltip"="CheckLightVisibility";
@@ -252,11 +252,11 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(64)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"set_marker_node_Set(63)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		"node_System(44)" ["label"="check_light_mesh_visibility", "tooltip"="bevy_pbr::light::check_light_mesh_visibility", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(66)" {
+	subgraph "clusternode_Set(65)" {
 		"style"="rounded,filled";
 		"label"="AudioPlaySet";
 		"tooltip"="AudioPlaySet";
@@ -264,7 +264,7 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(66)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"set_marker_node_Set(65)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		"node_System(46)" ["label"="play_queued_audio_system<AudioSource>", "tooltip"="bevy_audio::audio_output::play_queued_audio_system<bevy_audio::audio_source::AudioSource>", "fillcolor"="#98f1d1", "fontname"="Helvetica", "fontcolor"="#062c1e", "color"="#3ee4a8", "penwidth"="1"]
 		"node_System(47)" ["label"="cleanup_finished_audio<AudioSource>", "tooltip"="bevy_audio::audio_output::cleanup_finished_audio<bevy_audio::audio_source::AudioSource>", "fillcolor"="#98f1d1", "fontname"="Helvetica", "fontcolor"="#062c1e", "color"="#3ee4a8", "penwidth"="1"]
 		"node_System(48)" ["label"="update_emitter_positions", "tooltip"="bevy_audio::audio_output::update_emitter_positions", "fillcolor"="#98f1d1", "fontname"="Helvetica", "fontcolor"="#062c1e", "color"="#3ee4a8", "penwidth"="1"]
@@ -275,7 +275,7 @@ digraph "" {
 		"node_System(53)" ["label"="update_listener_positions", "tooltip"="bevy_audio::audio_output::update_listener_positions", "fillcolor"="#98f1d1", "fontname"="Helvetica", "fontcolor"="#062c1e", "color"="#3ee4a8", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(74)" {
+	subgraph "clusternode_Set(73)" {
 		"style"="rounded,filled";
 		"label"="RumbleSystem";
 		"tooltip"="RumbleSystem";
@@ -283,7 +283,7 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(74)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"set_marker_node_Set(73)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
 		"node_System(54)" ["label"="play_gilrs_rumble", "tooltip"="bevy_gilrs::rumble::play_gilrs_rumble", "fillcolor"="#973977", "fontname"="Helvetica", "fontcolor"="#f1d9e9", "color"="#c86da9", "penwidth"="1"]
 	}
 	
@@ -307,123 +307,56 @@ digraph "" {
 	"node_System(55)" ["label"="animation_player", "tooltip"="bevy_animation::animation_player"]
 	"node_System(56)" ["label"="draw_aabbs", "tooltip"="bevy_gizmos::draw_aabbs"]
 	"node_System(57)" ["label"="draw_all_aabbs", "tooltip"="bevy_gizmos::draw_all_aabbs"]
-	"set_marker_node_Set(15)" -> "set_marker_node_Set(14)" ["lhead"="clusternode_Set(14)", "ltail"="clusternode_Set(15)", "tooltip"="CalculateBounds → CalculateBoundsFlush", "color"="#eede00"]
-	"node_System(7)" -> "node_System(11)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(camera_system<OrthographicProjection>()) → update_frusta<OrthographicProjection>", "color"="#881877"]
-	"set_marker_node_Set(1)" -> "node_System(11)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → update_frusta<OrthographicProjection>", "color"="#00b0cc"]
-	"node_System(8)" -> "node_System(12)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(camera_system<PerspectiveProjection>()) → update_frusta<PerspectiveProjection>", "color"="#aa3a55"]
-	"set_marker_node_Set(1)" -> "node_System(12)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → update_frusta<PerspectiveProjection>", "color"="#44d488"]
-	"node_System(6)" -> "node_System(13)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(camera_system<Projection>()) → update_frusta<Projection>", "color"="#0090cc"]
-	"set_marker_node_Set(1)" -> "node_System(13)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → update_frusta<Projection>", "color"="#ee9e44"]
-	"set_marker_node_Set(14)" -> "node_System(16)" ["lhead"="", "ltail"="clusternode_Set(14)", "tooltip"="CalculateBoundsFlush → check_visibility", "color"="#663699"]
-	"set_marker_node_Set(18)" -> "node_System(16)" ["lhead"="", "ltail"="clusternode_Set(18)", "tooltip"="UpdateOrthographicFrusta → check_visibility", "color"="#3363bb"]
-	"set_marker_node_Set(21)" -> "node_System(16)" ["lhead"="", "ltail"="clusternode_Set(21)", "tooltip"="UpdatePerspectiveFrusta → check_visibility", "color"="#22c2bb"]
-	"set_marker_node_Set(22)" -> "node_System(16)" ["lhead"="", "ltail"="clusternode_Set(22)", "tooltip"="UpdateProjectionFrusta → check_visibility", "color"="#99d955"]
-	"set_marker_node_Set(24)" -> "node_System(16)" ["lhead"="", "ltail"="clusternode_Set(24)", "tooltip"="VisibilityPropagate → check_visibility", "color"="#eede00"]
-	"set_marker_node_Set(1)" -> "node_System(16)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → check_visibility", "color"="#881877"]
-	"node_System(22)" -> "set_marker_node_Set(34)" ["lhead"="clusternode_Set(34)", "ltail"="", "tooltip"="measure_text_system → Layout", "color"="#00b0cc"]
-	"set_marker_node_Set(34)" -> "node_System(23)" ["lhead"="", "ltail"="clusternode_Set(34)", "tooltip"="Layout → text_system", "color"="#aa3a55"]
-	"node_System(23)" -> "UNKNOWN SystemTypeSet(fn bevy_asset::assets::Assets<bevy_render::texture::image::Image>::track_assets())" ["lhead"="", "ltail"="", "tooltip"="text_system → SystemTypeSet(Assets<Image>track_assets())", "color"="#44d488"]
-	"set_marker_node_Set(1)" -> "node_System(24)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → calc_bounds", "color"="#0090cc"]
-	"node_System(28)" -> "set_marker_node_Set(34)" ["lhead"="clusternode_Set(34)", "ltail"="", "tooltip"="update_image_content_size_system → Layout", "color"="#ee9e44"]
-	"node_System(29)" -> "set_marker_node_Set(34)" ["lhead"="clusternode_Set(34)", "ltail"="", "tooltip"="update_atlas_content_size_system → Layout", "color"="#663699"]
-	"node_System(30)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="", "tooltip"="ui_layout_system → TransformPropagate", "color"="#3363bb"]
-	"set_marker_node_Set(34)" -> "node_System(31)" ["lhead"="", "ltail"="clusternode_Set(34)", "tooltip"="Layout → resolve_outlines_system", "color"="#22c2bb"]
-	"set_marker_node_Set(1)" -> "node_System(33)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → update_clipping_system", "color"="#99d955"]
-	"set_marker_node_Set(51)" -> "set_marker_node_Set(52)" ["lhead"="clusternode_Set(52)", "ltail"="clusternode_Set(51)", "tooltip"="AddClusters → AddClustersFlush", "color"="#eede00"]
-	"set_marker_node_Set(52)" -> "set_marker_node_Set(53)" ["lhead"="clusternode_Set(53)", "ltail"="clusternode_Set(52)", "tooltip"="AddClustersFlush → AssignLightsToClusters", "color"="#881877"]
-	"set_marker_node_Set(1)" -> "node_System(38)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → assign_lights_to_clusters", "color"="#00b0cc"]
-	"set_marker_node_Set(27)" -> "node_System(38)" ["lhead"="", "ltail"="clusternode_Set(27)", "tooltip"="CheckVisibility → assign_lights_to_clusters", "color"="#aa3a55"]
-	"set_marker_node_Set(10)" -> "node_System(38)" ["lhead"="", "ltail"="clusternode_Set(10)", "tooltip"="CameraUpdateSystem → assign_lights_to_clusters", "color"="#44d488"]
-	"set_marker_node_Set(1)" -> "node_System(39)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → clear_directional_light_cascades", "color"="#0090cc"]
-	"set_marker_node_Set(10)" -> "node_System(39)" ["lhead"="", "ltail"="clusternode_Set(10)", "tooltip"="CameraUpdateSystem → clear_directional_light_cascades", "color"="#ee9e44"]
-	"set_marker_node_Set(1)" -> "node_System(40)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → build_directional_light_cascades<Projection>", "color"="#663699"]
-	"set_marker_node_Set(10)" -> "node_System(40)" ["lhead"="", "ltail"="clusternode_Set(10)", "tooltip"="CameraUpdateSystem → build_directional_light_cascades<Projection>", "color"="#3363bb"]
-	"node_System(39)" -> "node_System(40)" ["lhead"="", "ltail"="", "tooltip"="clear_directional_light_cascades → build_directional_light_cascades<Projection>", "color"="#22c2bb"]
-	"set_marker_node_Set(27)" -> "node_System(41)" ["lhead"="", "ltail"="clusternode_Set(27)", "tooltip"="CheckVisibility → update_directional_light_frusta", "color"="#99d955"]
-	"set_marker_node_Set(1)" -> "node_System(41)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → update_directional_light_frusta", "color"="#eede00"]
-	"set_marker_node_Set(57)" -> "node_System(41)" ["lhead"="", "ltail"="clusternode_Set(57)", "tooltip"="UpdateDirectionalLightCascades → update_directional_light_frusta", "color"="#881877"]
-	"set_marker_node_Set(1)" -> "node_System(42)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → update_point_light_frusta", "color"="#00b0cc"]
-	"set_marker_node_Set(53)" -> "node_System(42)" ["lhead"="", "ltail"="clusternode_Set(53)", "tooltip"="AssignLightsToClusters → update_point_light_frusta", "color"="#aa3a55"]
-	"set_marker_node_Set(1)" -> "node_System(43)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → update_spot_light_frusta", "color"="#44d488"]
-	"set_marker_node_Set(53)" -> "node_System(43)" ["lhead"="", "ltail"="clusternode_Set(53)", "tooltip"="AssignLightsToClusters → update_spot_light_frusta", "color"="#0090cc"]
-	"set_marker_node_Set(14)" -> "node_System(44)" ["lhead"="", "ltail"="clusternode_Set(14)", "tooltip"="CalculateBoundsFlush → check_light_mesh_visibility", "color"="#ee9e44"]
-	"set_marker_node_Set(1)" -> "node_System(44)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → check_light_mesh_visibility", "color"="#663699"]
-	"set_marker_node_Set(60)" -> "node_System(44)" ["lhead"="", "ltail"="clusternode_Set(60)", "tooltip"="UpdateLightFrusta → check_light_mesh_visibility", "color"="#3363bb"]
-	"set_marker_node_Set(27)" -> "node_System(44)" ["lhead"="", "ltail"="clusternode_Set(27)", "tooltip"="CheckVisibility → check_light_mesh_visibility", "color"="#22c2bb"]
-	"set_marker_node_Set(1)" -> "set_marker_node_Set(66)" ["lhead"="clusternode_Set(66)", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → AudioPlaySet", "color"="#99d955"]
-	"node_System(55)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="", "tooltip"="animation_player → TransformPropagate", "color"="#eede00"]
-	"set_marker_node_Set(1)" -> "node_System(56)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → draw_aabbs", "color"="#881877"]
-	"set_marker_node_Set(1)" -> "node_System(57)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → draw_all_aabbs", "color"="#00b0cc"]
-	"node_System(4)" -> "node_System(3)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">WinitActionHandlers</td></tr></table>>, "labeltooltip"="poll_receivers — window_closed"]
-	"node_System(5)" -> "node_System(3)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">AccessKitAdapters</td></tr></table>>, "labeltooltip"="update_accessibility_nodes — window_closed"]
-	"node_System(5)" -> "node_System(24)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">AccessibilityNode</td></tr></table>>, "labeltooltip"="update_accessibility_nodes — calc_bounds"]
-	"node_System(5)" -> "node_System(25)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">AccessibilityNode</td></tr></table>>, "labeltooltip"="update_accessibility_nodes — button_changed"]
-	"node_System(5)" -> "node_System(26)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">AccessibilityNode</td></tr></table>>, "labeltooltip"="update_accessibility_nodes — image_changed"]
-	"node_System(5)" -> "node_System(27)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">AccessibilityNode</td></tr></table>>, "labeltooltip"="update_accessibility_nodes — label_changed"]
-	"node_System(6)" -> "node_System(24)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Camera</td></tr></table>>, "labeltooltip"="camera_system<Projection> — calc_bounds"]
-	"node_System(7)" -> "node_System(24)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Camera</td></tr></table>>, "labeltooltip"="camera_system<OrthographicProjection> — calc_bounds"]
-	"node_System(8)" -> "node_System(24)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Camera</td></tr></table>>, "labeltooltip"="camera_system<PerspectiveProjection> — calc_bounds"]
-	"node_System(11)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_frusta<OrthographicProjection> — update_emitter_positions"]
-	"node_System(12)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_frusta<PerspectiveProjection> — update_emitter_positions"]
-	"node_System(13)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_frusta<Projection> — update_emitter_positions"]
-	"node_System(16)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="check_visibility — update_emitter_positions"]
+	"node_System(5)" -> "node_System(3)" ["lhead"="", "ltail"="", "tooltip"="window_closed → SystemTypeSet(poll_receivers())", "color"="#eede00"]
+	"node_System(5)" -> "node_System(4)" ["lhead"="", "ltail"="", "tooltip"="window_closed → SystemTypeSet(update_accessibility_nodes())", "color"="#881877"]
+	"set_marker_node_Set(15)" -> "set_marker_node_Set(14)" ["lhead"="clusternode_Set(14)", "ltail"="clusternode_Set(15)", "tooltip"="CalculateBounds → CalculateBoundsFlush", "color"="#00b0cc"]
+	"node_System(7)" -> "node_System(11)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(camera_system<OrthographicProjection>()) → update_frusta<OrthographicProjection>", "color"="#aa3a55"]
+	"set_marker_node_Set(1)" -> "node_System(11)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → update_frusta<OrthographicProjection>", "color"="#44d488"]
+	"node_System(8)" -> "node_System(12)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(camera_system<PerspectiveProjection>()) → update_frusta<PerspectiveProjection>", "color"="#0090cc"]
+	"set_marker_node_Set(1)" -> "node_System(12)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → update_frusta<PerspectiveProjection>", "color"="#ee9e44"]
+	"node_System(6)" -> "node_System(13)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(camera_system<Projection>()) → update_frusta<Projection>", "color"="#663699"]
+	"set_marker_node_Set(1)" -> "node_System(13)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → update_frusta<Projection>", "color"="#3363bb"]
+	"set_marker_node_Set(14)" -> "node_System(16)" ["lhead"="", "ltail"="clusternode_Set(14)", "tooltip"="CalculateBoundsFlush → check_visibility", "color"="#22c2bb"]
+	"set_marker_node_Set(18)" -> "node_System(16)" ["lhead"="", "ltail"="clusternode_Set(18)", "tooltip"="UpdateOrthographicFrusta → check_visibility", "color"="#99d955"]
+	"set_marker_node_Set(21)" -> "node_System(16)" ["lhead"="", "ltail"="clusternode_Set(21)", "tooltip"="UpdatePerspectiveFrusta → check_visibility", "color"="#eede00"]
+	"set_marker_node_Set(22)" -> "node_System(16)" ["lhead"="", "ltail"="clusternode_Set(22)", "tooltip"="UpdateProjectionFrusta → check_visibility", "color"="#881877"]
+	"set_marker_node_Set(24)" -> "node_System(16)" ["lhead"="", "ltail"="clusternode_Set(24)", "tooltip"="VisibilityPropagate → check_visibility", "color"="#00b0cc"]
+	"set_marker_node_Set(1)" -> "node_System(16)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → check_visibility", "color"="#aa3a55"]
+	"node_System(21)" -> "node_System(20)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(remove_dropped_font_atlas_sets()) → update_text2d_layout", "color"="#44d488"]
+	"node_System(22)" -> "set_marker_node_Set(34)" ["lhead"="clusternode_Set(34)", "ltail"="", "tooltip"="measure_text_system → Layout", "color"="#0090cc"]
+	"set_marker_node_Set(34)" -> "node_System(23)" ["lhead"="", "ltail"="clusternode_Set(34)", "tooltip"="Layout → text_system", "color"="#ee9e44"]
+	"node_System(21)" -> "node_System(23)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(remove_dropped_font_atlas_sets()) → text_system", "color"="#663699"]
+	"set_marker_node_Set(1)" -> "node_System(24)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → calc_bounds", "color"="#3363bb"]
+	"set_marker_node_Set(10)" -> "node_System(24)" ["lhead"="", "ltail"="clusternode_Set(10)", "tooltip"="CameraUpdateSystem → calc_bounds", "color"="#22c2bb"]
+	"node_System(28)" -> "set_marker_node_Set(34)" ["lhead"="clusternode_Set(34)", "ltail"="", "tooltip"="update_image_content_size_system → Layout", "color"="#99d955"]
+	"node_System(29)" -> "set_marker_node_Set(34)" ["lhead"="clusternode_Set(34)", "ltail"="", "tooltip"="update_atlas_content_size_system → Layout", "color"="#eede00"]
+	"node_System(30)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="", "tooltip"="ui_layout_system → TransformPropagate", "color"="#881877"]
+	"set_marker_node_Set(34)" -> "node_System(31)" ["lhead"="", "ltail"="clusternode_Set(34)", "tooltip"="Layout → resolve_outlines_system", "color"="#00b0cc"]
+	"set_marker_node_Set(1)" -> "node_System(33)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → update_clipping_system", "color"="#aa3a55"]
+	"set_marker_node_Set(50)" -> "set_marker_node_Set(51)" ["lhead"="clusternode_Set(51)", "ltail"="clusternode_Set(50)", "tooltip"="AddClusters → AddClustersFlush", "color"="#44d488"]
+	"set_marker_node_Set(51)" -> "set_marker_node_Set(52)" ["lhead"="clusternode_Set(52)", "ltail"="clusternode_Set(51)", "tooltip"="AddClustersFlush → AssignLightsToClusters", "color"="#0090cc"]
+	"set_marker_node_Set(1)" -> "node_System(38)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → assign_lights_to_clusters", "color"="#ee9e44"]
+	"set_marker_node_Set(27)" -> "node_System(38)" ["lhead"="", "ltail"="clusternode_Set(27)", "tooltip"="CheckVisibility → assign_lights_to_clusters", "color"="#663699"]
+	"set_marker_node_Set(10)" -> "node_System(38)" ["lhead"="", "ltail"="clusternode_Set(10)", "tooltip"="CameraUpdateSystem → assign_lights_to_clusters", "color"="#3363bb"]
+	"set_marker_node_Set(1)" -> "node_System(39)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → clear_directional_light_cascades", "color"="#22c2bb"]
+	"set_marker_node_Set(10)" -> "node_System(39)" ["lhead"="", "ltail"="clusternode_Set(10)", "tooltip"="CameraUpdateSystem → clear_directional_light_cascades", "color"="#99d955"]
+	"set_marker_node_Set(1)" -> "node_System(40)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → build_directional_light_cascades<Projection>", "color"="#eede00"]
+	"set_marker_node_Set(10)" -> "node_System(40)" ["lhead"="", "ltail"="clusternode_Set(10)", "tooltip"="CameraUpdateSystem → build_directional_light_cascades<Projection>", "color"="#881877"]
+	"node_System(39)" -> "node_System(40)" ["lhead"="", "ltail"="", "tooltip"="clear_directional_light_cascades → build_directional_light_cascades<Projection>", "color"="#00b0cc"]
+	"set_marker_node_Set(27)" -> "node_System(41)" ["lhead"="", "ltail"="clusternode_Set(27)", "tooltip"="CheckVisibility → update_directional_light_frusta", "color"="#aa3a55"]
+	"set_marker_node_Set(1)" -> "node_System(41)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → update_directional_light_frusta", "color"="#44d488"]
+	"set_marker_node_Set(56)" -> "node_System(41)" ["lhead"="", "ltail"="clusternode_Set(56)", "tooltip"="UpdateDirectionalLightCascades → update_directional_light_frusta", "color"="#0090cc"]
+	"set_marker_node_Set(1)" -> "node_System(42)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → update_point_light_frusta", "color"="#ee9e44"]
+	"set_marker_node_Set(52)" -> "node_System(42)" ["lhead"="", "ltail"="clusternode_Set(52)", "tooltip"="AssignLightsToClusters → update_point_light_frusta", "color"="#663699"]
+	"set_marker_node_Set(1)" -> "node_System(43)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → update_spot_light_frusta", "color"="#3363bb"]
+	"set_marker_node_Set(52)" -> "node_System(43)" ["lhead"="", "ltail"="clusternode_Set(52)", "tooltip"="AssignLightsToClusters → update_spot_light_frusta", "color"="#22c2bb"]
+	"set_marker_node_Set(14)" -> "node_System(44)" ["lhead"="", "ltail"="clusternode_Set(14)", "tooltip"="CalculateBoundsFlush → check_light_mesh_visibility", "color"="#99d955"]
+	"set_marker_node_Set(1)" -> "node_System(44)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → check_light_mesh_visibility", "color"="#eede00"]
+	"set_marker_node_Set(59)" -> "node_System(44)" ["lhead"="", "ltail"="clusternode_Set(59)", "tooltip"="UpdateLightFrusta → check_light_mesh_visibility", "color"="#881877"]
+	"set_marker_node_Set(27)" -> "node_System(44)" ["lhead"="", "ltail"="clusternode_Set(27)", "tooltip"="CheckVisibility → check_light_mesh_visibility", "color"="#00b0cc"]
+	"set_marker_node_Set(1)" -> "set_marker_node_Set(65)" ["lhead"="clusternode_Set(65)", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → AudioPlaySet", "color"="#aa3a55"]
+	"node_System(55)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="", "tooltip"="animation_player → TransformPropagate", "color"="#44d488"]
+	"set_marker_node_Set(1)" -> "node_System(56)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → draw_aabbs", "color"="#0090cc"]
+	"set_marker_node_Set(1)" -> "node_System(57)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="TransformPropagate → draw_all_aabbs", "color"="#ee9e44"]
 	"node_System(17)" -> "node_System(55)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">MorphWeights</td></tr></table>>, "labeltooltip"="inherit_weights — animation_player"]
-	"node_System(19)" -> "node_System(23)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Assets&lt;Image&gt;</td></tr><tr><td bgcolor="#d3d3d3">Assets&lt;TextureAtlas&gt;</td></tr></table>>, "labeltooltip"="calculate_bounds_2d — text_system"]
-	"node_System(20)" -> "node_System(19)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Assets&lt;Image&gt;</td></tr><tr><td bgcolor="#d3d3d3">Assets&lt;TextureAtlas&gt;</td></tr></table>>, "labeltooltip"="update_text2d_layout — calculate_bounds_2d"]
-	"node_System(20)" -> "node_System(23)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Assets&lt;Image&gt;</td></tr><tr><td bgcolor="#d3d3d3">Assets&lt;TextureAtlas&gt;</td></tr><tr><td bgcolor="#d3d3d3">FontAtlasWarning</td></tr><tr><td bgcolor="#d3d3d3">FontAtlasSets</td></tr><tr><td bgcolor="#d3d3d3">TextPipeline</td></tr><tr><td bgcolor="#d3d3d3">TextLayoutInfo</td></tr></table>>, "labeltooltip"="update_text2d_layout — text_system"]
-	"node_System(20)" -> "node_System(29)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Assets&lt;TextureAtlas&gt;</td></tr></table>>, "labeltooltip"="update_text2d_layout — update_atlas_content_size_system"]
-	"node_System(21)" -> "node_System(20)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">FontAtlasSets</td></tr></table>>, "labeltooltip"="remove_dropped_font_atlas_sets — update_text2d_layout"]
-	"node_System(21)" -> "node_System(23)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">FontAtlasSets</td></tr></table>>, "labeltooltip"="remove_dropped_font_atlas_sets — text_system"]
-	"node_System(22)" -> "node_System(28)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">ContentSize</td></tr></table>>, "labeltooltip"="measure_text_system — update_image_content_size_system"]
-	"node_System(22)" -> "node_System(29)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">ContentSize</td></tr></table>>, "labeltooltip"="measure_text_system — update_atlas_content_size_system"]
-	"node_System(23)" -> "node_System(6)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Assets&lt;Image&gt;</td></tr></table>>, "labeltooltip"="text_system — camera_system<Projection>"]
-	"node_System(23)" -> "node_System(7)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Assets&lt;Image&gt;</td></tr></table>>, "labeltooltip"="text_system — camera_system<OrthographicProjection>"]
-	"node_System(23)" -> "node_System(8)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Assets&lt;Image&gt;</td></tr></table>>, "labeltooltip"="text_system — camera_system<PerspectiveProjection>"]
-	"node_System(24)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="calc_bounds — update_emitter_positions"]
-	"node_System(25)" -> "node_System(24)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">AccessibilityNode</td></tr></table>>, "labeltooltip"="button_changed — calc_bounds"]
-	"node_System(25)" -> "node_System(26)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">AccessibilityNode</td></tr></table>>, "labeltooltip"="button_changed — image_changed"]
-	"node_System(25)" -> "node_System(27)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">AccessibilityNode</td></tr></table>>, "labeltooltip"="button_changed — label_changed"]
-	"node_System(26)" -> "node_System(24)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">AccessibilityNode</td></tr></table>>, "labeltooltip"="image_changed — calc_bounds"]
-	"node_System(26)" -> "node_System(27)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">AccessibilityNode</td></tr></table>>, "labeltooltip"="image_changed — label_changed"]
-	"node_System(27)" -> "node_System(24)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">AccessibilityNode</td></tr></table>>, "labeltooltip"="label_changed — calc_bounds"]
-	"node_System(28)" -> "node_System(29)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">ContentSize</td></tr><tr><td bgcolor="#d3d3d3">UiImageSize</td></tr></table>>, "labeltooltip"="update_image_content_size_system — update_atlas_content_size_system"]
-	"node_System(31)" -> "node_System(23)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Node</td></tr></table>>, "labeltooltip"="resolve_outlines_system — text_system"]
-	"node_System(31)" -> "node_System(24)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Node</td></tr></table>>, "labeltooltip"="resolve_outlines_system — calc_bounds"]
-	"node_System(31)" -> "node_System(33)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Node</td></tr></table>>, "labeltooltip"="resolve_outlines_system — update_clipping_system"]
-	"node_System(32)" -> "node_System(23)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Node</td></tr></table>>, "labeltooltip"="ui_stack_system — text_system"]
-	"node_System(32)" -> "node_System(24)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Node</td></tr></table>>, "labeltooltip"="ui_stack_system — calc_bounds"]
-	"node_System(32)" -> "node_System(30)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Node</td></tr></table>>, "labeltooltip"="ui_stack_system — ui_layout_system"]
-	"node_System(32)" -> "node_System(31)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Node</td></tr></table>>, "labeltooltip"="ui_stack_system — resolve_outlines_system"]
-	"node_System(32)" -> "node_System(33)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Node</td></tr></table>>, "labeltooltip"="ui_stack_system — update_clipping_system"]
-	"node_System(33)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_clipping_system — update_emitter_positions"]
-	"node_System(38)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="assign_lights_to_clusters — update_emitter_positions"]
-	"node_System(40)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="build_directional_light_cascades<Projection> — update_emitter_positions"]
-	"node_System(42)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_point_light_frusta — update_emitter_positions"]
-	"node_System(43)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_spot_light_frusta — update_emitter_positions"]
-	"node_System(44)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="check_light_mesh_visibility — update_emitter_positions"]
-	"node_System(46)" -> "node_System(48)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="play_queued_audio_system<AudioSource> — update_emitter_positions"]
-	"node_System(46)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="play_queued_audio_system<AudioSource> — update_emitter_positions"]
-	"node_System(48)" -> "node_System(11)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — update_frusta<OrthographicProjection>"]
-	"node_System(48)" -> "node_System(12)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — update_frusta<PerspectiveProjection>"]
-	"node_System(48)" -> "node_System(13)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — update_frusta<Projection>"]
-	"node_System(48)" -> "node_System(16)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — check_visibility"]
-	"node_System(48)" -> "node_System(24)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — calc_bounds"]
-	"node_System(48)" -> "node_System(33)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — update_clipping_system"]
-	"node_System(48)" -> "node_System(38)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — assign_lights_to_clusters"]
-	"node_System(48)" -> "node_System(40)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — build_directional_light_cascades<Projection>"]
-	"node_System(48)" -> "node_System(42)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — update_point_light_frusta"]
-	"node_System(48)" -> "node_System(43)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — update_spot_light_frusta"]
-	"node_System(48)" -> "node_System(44)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — check_light_mesh_visibility"]
-	"node_System(48)" -> "node_System(49)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — update_listener_positions"]
-	"node_System(48)" -> "node_System(50)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — play_queued_audio_system<Pitch>"]
-	"node_System(48)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — update_emitter_positions"]
-	"node_System(48)" -> "node_System(53)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — update_listener_positions"]
-	"node_System(48)" -> "node_System(56)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — draw_aabbs"]
-	"node_System(48)" -> "node_System(57)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — draw_all_aabbs"]
-	"node_System(49)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_listener_positions — update_emitter_positions"]
-	"node_System(52)" -> "node_System(50)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_emitter_positions — play_queued_audio_system<Pitch>"]
-	"node_System(53)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="update_listener_positions — update_emitter_positions"]
-	"node_System(55)" -> "node_System(30)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">Transform</td></tr></table>>, "labeltooltip"="animation_player — ui_layout_system"]
-	"node_System(56)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="draw_aabbs — update_emitter_positions"]
-	"node_System(57)" -> "node_System(52)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">GlobalTransform</td></tr></table>>, "labeltooltip"="draw_all_aabbs — update_emitter_positions"]
 }
