@@ -29,6 +29,7 @@ fn main() -> Result<(), std::io::Error> {
 
     app.world
         .resource_scope::<Schedules, _>(|world, mut schedules| {
+            let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
             let schedule_label = Main;
             let schedule = schedules.get_mut(schedule_label).unwrap();
 
@@ -38,7 +39,7 @@ fn main() -> Result<(), std::io::Error> {
                 .build_schedule(
                     world.components(),
                     ScheduleDebugGroup.intern(),
-                    &BTreeSet::<ComponentId>::new(),
+                    &ignored_ambiguities,
                 )
                 .unwrap();
 

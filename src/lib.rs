@@ -1,10 +1,5 @@
-use std::collections::BTreeSet;
-
 use bevy_app::App;
-use bevy_ecs::{
-    component::ComponentId,
-    schedule::{ScheduleLabel, Schedules},
-};
+use bevy_ecs::schedule::{ScheduleLabel, Schedules};
 
 mod dot;
 
@@ -24,6 +19,8 @@ pub fn schedule_graph_dot(
 ) -> String {
     app.world
         .resource_scope::<Schedules, _>(|world, mut schedules| {
+            let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
+
             let schedule = schedules
                 .get_mut(label)
                 .ok_or_else(|| "schedule doesn't exist".to_string())
@@ -32,7 +29,7 @@ pub fn schedule_graph_dot(
             let _ = schedule.graph_mut().build_schedule(
                 world.components(),
                 ScheduleDebugGroup.intern(),
-                &BTreeSet::<ComponentId>::new(),
+                &ignored_ambiguities,
             );
 
             schedule_graph::schedule_graph_dot(schedule, world, settings)

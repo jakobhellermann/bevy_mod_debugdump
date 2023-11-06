@@ -1,7 +1,7 @@
-use std::{collections::BTreeSet, path::PathBuf};
+use std::path::PathBuf;
 
 use bevy::prelude::*;
-use bevy_ecs::{component::ComponentId, schedule::ScheduleLabel};
+use bevy_ecs::schedule::ScheduleLabel;
 use bevy_mod_debugdump::{
     schedule_graph::{settings::EdgeStyle, Settings},
     ScheduleDebugGroup,
@@ -16,6 +16,8 @@ fn main() -> Result<(), std::io::Error> {
 
     app.world
         .resource_scope::<Schedules, _>(|world, mut schedules| {
+            let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
+
             let schedule = schedules.get_mut(Main).unwrap();
 
             // for access info
@@ -26,7 +28,7 @@ fn main() -> Result<(), std::io::Error> {
                 .build_schedule(
                     world.components(),
                     ScheduleDebugGroup.intern(),
-                    &BTreeSet::<ComponentId>::new(),
+                    &ignored_ambiguities,
                 )
                 .unwrap();
 

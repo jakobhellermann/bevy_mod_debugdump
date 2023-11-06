@@ -1,7 +1,7 @@
-use std::{any::TypeId, collections::BTreeSet, path::PathBuf};
+use std::{any::TypeId, path::PathBuf};
 
 use bevy::{prelude::*, render::RenderApp};
-use bevy_ecs::{component::ComponentId, schedule::ScheduleLabel};
+use bevy_ecs::schedule::ScheduleLabel;
 use bevy_mod_debugdump::{
     schedule_graph::{settings::Style, Settings},
     ScheduleDebugGroup,
@@ -58,16 +58,19 @@ fn main() -> Result<(), std::io::Error> {
         render_app
             .world
             .resource_scope::<Schedules, _>(|world, mut schedules| {
+                let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
+
                 for (label, schedule) in schedules.iter_mut() {
                     // for access info
                     schedule.graph_mut().initialize(world);
                     // for `conflicting_systems`
+
                     schedule
                         .graph_mut()
                         .build_schedule(
                             world.components(),
                             ScheduleDebugGroup.intern(),
-                            &BTreeSet::<ComponentId>::new(),
+                            &ignored_ambiguities,
                         )
                         .unwrap();
 
@@ -121,6 +124,7 @@ fn initialize_schedules(
     schedules: &mut Mut<Schedules>,
     world: &mut World,
 ) -> Result<(), std::io::Error> {
+    let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
     Ok(for (_, schedule) in schedules.iter_mut() {
         // for access info
         schedule.graph_mut().initialize(world);
@@ -130,7 +134,7 @@ fn initialize_schedules(
             .build_schedule(
                 world.components(),
                 ScheduleDebugGroup.intern(),
-                &BTreeSet::<ComponentId>::new(),
+                &ignored_ambiguities,
             )
             .unwrap();
     })
