@@ -29,3 +29,10 @@ bevy = { version = "0.12" }
 [[example]]
 name = "print_render_graph"
 required-features = ["render_graph"]
+
+[patch.crates-io]
+bevy_ecs = { path = "/home/jakob/dev/rust/bevy/crates/bevy_ecs" }
+bevy_app = { path = "/home/jakob/dev/rust/bevy/crates/bevy_app" }
+bevy_utils = { path = "/home/jakob/dev/rust/bevy/crates/bevy_utils" }
+bevy_render = { path = "/home/jakob/dev/rust/bevy/crates/bevy_render" }
+bevy = { path = "/home/jakob/dev/rust/bevy" }

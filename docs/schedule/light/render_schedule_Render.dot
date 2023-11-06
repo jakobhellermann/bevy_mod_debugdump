@@ -106,10 +106,32 @@ digraph "" {
 			"node_System(73)" ["label"="queue_prepass_material_meshes<StandardMaterial>", "tooltip"="bevy_pbr::prepass::queue_prepass_material_meshes<bevy_pbr::pbr_material::StandardMaterial>", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
 		}
 		
+		subgraph "clusternode_Set(95)" {
+			"style"="rounded,filled";
+			"label"="QueueLineGizmos2d";
+			"tooltip"="QueueLineGizmos2d";
+			"fillcolor"="#00000008";
+			"fontcolor"="#000000";
+			"color"="#00000040";
+			"penwidth"="2";
+			"set_marker_node_Set(95)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(83)" ["label"="queue_line_gizmos_2d", "tooltip"="bevy_gizmos::pipeline_2d::queue_line_gizmos_2d", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		}
+		
+		subgraph "clusternode_Set(97)" {
+			"style"="rounded,filled";
+			"label"="QueueLineGizmos3d";
+			"tooltip"="QueueLineGizmos3d";
+			"fillcolor"="#00000008";
+			"fontcolor"="#000000";
+			"color"="#00000040";
+			"penwidth"="2";
+			"set_marker_node_Set(97)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(84)" ["label"="queue_line_gizmos_3d", "tooltip"="bevy_gizmos::pipeline_3d::queue_line_gizmos_3d", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		}
+		
 		"node_System(49)" ["label"="queue_sprites", "tooltip"="bevy_sprite::render::queue_sprites", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 		"node_System(51)" ["label"="queue_uinodes", "tooltip"="bevy_ui::render::queue_uinodes", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
-		"node_System(83)" ["label"="queue_line_gizmos_2d", "tooltip"="bevy_gizmos::pipeline_2d::queue_line_gizmos_2d", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(84)" ["label"="queue_line_gizmos_3d", "tooltip"="bevy_gizmos::pipeline_3d::queue_line_gizmos_3d", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 	}
 	
 	subgraph "clusternode_Set(9)" {
@@ -296,7 +318,4 @@ digraph "" {
 	"node_System(15)" -> "node_System(77)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<Image>()) → prepare_lights", "color"="#aa3a55"]
 	"node_System(81)" -> "node_System(83)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<LineGizmo>()) → queue_line_gizmos_2d", "color"="#44d488"]
 	"node_System(81)" -> "node_System(84)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<LineGizmo>()) → queue_line_gizmos_3d", "color"="#0090cc"]
-	"node_System(48)" -> "node_System(83)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">RenderPhase&lt;Transparent2d&gt;</td></tr></table>>, "labeltooltip"="queue_material2d_meshes<ColorMaterial> — queue_line_gizmos_2d"]
-	"node_System(49)" -> "node_System(83)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">RenderPhase&lt;Transparent2d&gt;</td></tr></table>>, "labeltooltip"="queue_sprites — queue_line_gizmos_2d"]
-	"node_System(68)" -> "node_System(84)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">RenderPhase&lt;Transparent3d&gt;</td></tr></table>>, "labeltooltip"="queue_material_meshes<StandardMaterial> — queue_line_gizmos_3d"]
 }
