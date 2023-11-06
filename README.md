@@ -65,7 +65,7 @@ fn main() {
 
 |bevy|bevy\_mod\_debugdump|
 |---|---|
-|*main*|*bevy-main*|
+|0.12|0.9|
 |0.11|0.8|
 |0.10|0.7|
 |0.9|0.6|
