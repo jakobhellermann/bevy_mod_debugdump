@@ -1,10 +1,11 @@
 pub mod settings;
 
+use bevy_utils::intern::Interned;
 pub use settings::Settings;
 
 use self::iter_utils::sorted;
 use crate::dot::{font_tag, html_escape, DotGraph};
-use bevy_render::render_graph::{Edge, NodeId, RenderGraph};
+use bevy_render::render_graph::{Edge, RenderGraph, RenderLabel};
 use iter_utils::EitherOrBoth;
 use pretty_type_name::pretty_type_name_str;
 use std::collections::HashMap;
@@ -34,41 +35,45 @@ fn build_dot_graph(
     settings: &Settings,
     subgraph_nest_level: usize,
 ) {
+    let fmt_label = |label: Interned<dyn RenderLabel>| format!("{:?}", label);
+
     let node_mapping: HashMap<_, _> = graph
         .iter_nodes()
         .map(|node| {
-            let name = format!(
-                "{}{}",
-                graph_name.unwrap_or(""),
-                node.name.as_deref().unwrap_or(node.type_name)
-            );
-            (node.id, name)
+            (
+                node.label,
+                format!("{}{:?}", graph_name.unwrap_or_default(), node.label),
+            )
         })
         .collect();
 
     // Convert to format fitting GraphViz node id requirements
-    let node_id = |id: &NodeId| format!("{}_{}", graph_name.unwrap_or_default(), &node_mapping[id]);
+    let node_id = |id: &Interned<dyn RenderLabel>| {
+        format!("{}_{}", graph_name.unwrap_or_default(), &node_mapping[id])
+    };
 
     let mut nodes: Vec<_> = graph.iter_nodes().collect();
     nodes.sort_by(|a, b| {
         a.type_name
             .cmp(b.type_name)
-            .then_with(|| a.name.cmp(&b.name))
+            .then_with(|| fmt_label(a.label).cmp(&fmt_label(b.label)))
     });
 
     let layer_style = &settings.style.layers[subgraph_nest_level % settings.style.layers.len()];
     let next_layer_style =
         &settings.style.layers[(subgraph_nest_level + 1) % settings.style.layers.len()];
 
-    for (name, subgraph) in sorted(graph.iter_sub_graphs(), |(name, _)| *name) {
-        let internal_name = format!("{}_{}", graph_name.unwrap_or_default(), name);
-        let mut sub_dot =
-            DotGraph::subgraph(&internal_name, &[("label", name), ("fontcolor", "red")])
-                .graph_attributes(&[
-                    ("style", "rounded,filled"),
-                    ("color", &next_layer_style.color_background),
-                    ("fontcolor", &next_layer_style.color_label),
-                ]);
+    for (name, subgraph) in sorted(graph.iter_sub_graphs(), |(name, _)| format!("{:?}", name)) {
+        let internal_name = format!("{}_{:?}", graph_name.unwrap_or_default(), name);
+        let mut sub_dot = DotGraph::subgraph(
+            &internal_name,
+            &[("label", &format!("{:?}", name)), ("fontcolor", "red")],
+        )
+        .graph_attributes(&[
+            ("style", "rounded,filled"),
+            ("color", &next_layer_style.color_background),
+            ("fontcolor", &next_layer_style.color_label),
+        ]);
         build_dot_graph(
             &mut sub_dot,
             Some(&internal_name),
@@ -80,7 +85,7 @@ fn build_dot_graph(
     }
 
     for node in &nodes {
-        let name = node.name.as_deref().unwrap_or("<node>");
+        let name = &fmt_label(node.label);
         let type_name = pretty_type_name_str(node.type_name);
 
         let inputs = node
@@ -131,7 +136,7 @@ fn build_dot_graph(
         );
 
         dot.add_node(
-            &node_id(&node.id),
+            &node_id(&node.label),
             &[
                 ("label", &label),
                 ("color", &settings.style.color_node),
