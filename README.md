@@ -13,7 +13,7 @@ use bevy::log::LogPlugin;
 fn main() {
     let mut app = App::new();
     app.add_plugins(DefaultPlugins.build().disable::<LogPlugin>()); // disable LogPlugin so that you can pipe the output directly into `dot -Tsvg`
-    bevy_mod_debugdump::print_schedule(&mut app, Update);
+    bevy_mod_debugdump::print_schedule_graph(&mut app, Update);
 }
 ```
 
