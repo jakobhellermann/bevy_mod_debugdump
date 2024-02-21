@@ -9,5 +9,6 @@ digraph "" {
 	node ["shape"="box", "style"="filled"];
 	"node_System(0)" ["label"="scene_spawner", "tooltip"="bevy_scene::bundle::scene_spawner"]
 	"node_System(1)" ["label"="scene_spawner_system", "tooltip"="bevy_scene::scene_spawner::scene_spawner_system"]
+	"node_System(2)" ["label"="apply_deferred", "tooltip"="bevy_ecs::schedule::executor::apply_deferred"]
 	"node_System(0)" -> "node_System(1)" ["lhead"="", "ltail"="", "tooltip"="scene_spawner → scene_spawner_system", "color"="#eede00"]
 }

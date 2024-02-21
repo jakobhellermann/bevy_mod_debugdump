@@ -1,0 +1,11 @@
+digraph "" {
+	"compound"="true";
+	"splines"="spline";
+	"rankdir"="LR";
+	"bgcolor"="#0d1117";
+	"fontname"="Helvetica";
+	"nodesep"="0.15";
+	edge ["penwidth"="2"];
+	node ["shape"="box", "style"="filled"];
+	"node_System(0)" ["label"="run_fixed_main_schedule", "tooltip"="bevy_time::fixed::run_fixed_main_schedule"]
+}

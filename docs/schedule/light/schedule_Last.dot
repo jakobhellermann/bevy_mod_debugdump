@@ -13,6 +13,8 @@ digraph "" {
 	"node_System(3)" ["label"="changed_windows", "tooltip"="bevy_winit::system::changed_windows"]
 	"node_System(4)" ["label"="despawn_windows", "tooltip"="bevy_winit::system::despawn_windows"]
 	"node_System(5)" ["label"="check_hierarchy_component_has_valid_parent<InheritedVisibility>", "tooltip"="bevy_hierarchy::valid_parent_check_plugin::check_hierarchy_component_has_valid_parent<bevy_render::view::visibility::InheritedVisibility>"]
-	"node_System(6)" ["label"="update_gizmo_meshes", "tooltip"="bevy_gizmos::update_gizmo_meshes"]
+	"node_System(6)" ["label"="update_gizmo_meshes<DefaultGizmoConfigGroup>", "tooltip"="bevy_gizmos::update_gizmo_meshes<bevy_gizmos::config::DefaultGizmoConfigGroup>"]
+	"node_System(7)" ["label"="update_gizmo_meshes<AabbGizmoConfigGroup>", "tooltip"="bevy_gizmos::update_gizmo_meshes<bevy_gizmos::aabb::AabbGizmoConfigGroup>"]
 	"node_System(3)" -> "node_System(4)" ["lhead"="", "ltail"="", "tooltip"="changed_windows → despawn_windows", "color"="#eede00"]
+	"node_System(7)" -> "node_System(6)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">LineGizmoHandles</td></tr></table>>, "labeltooltip"="update_gizmo_meshes<AabbGizmoConfigGroup> — update_gizmo_meshes<DefaultGizmoConfigGroup>"]
 }

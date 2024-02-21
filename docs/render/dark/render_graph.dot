@@ -4,98 +4,98 @@ digraph "RenderGraph" {
 	graph ["bgcolor"="#0d1117"];
 	edge ["fontname"="Helvetica", "fontcolor"="white"];
 	node ["shape"="plaintext", "fontname"="Helvetica", "fontcolor"="white"];
-	subgraph "cluster_core_2d" {
-		"label"="core_2d";
+	subgraph "cluster_Core2d" {
+		"label"="Core2d";
 		"fontcolor"="red";
 		graph ["style"="rounded,filled", "color"="#343a42", "fontcolor"="white"];
-		subgraph "cluster_core_2d_draw_ui" {
-			"label"="draw_ui";
+		subgraph "cluster_Core2d_SubGraphUi" {
+			"label"="SubGraphUi";
 			"fontcolor"="red";
 			graph ["style"="rounded,filled", "color"="#6f90ad", "fontcolor"="black"];
-			"_core_2d_draw_ui__core_2d_draw_uiui_pass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">ui_pass<BR/><FONT COLOR="red" POINT-SIZE="10">UiPassNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+			"_Core2d_SubGraphUi__Core2d_SubGraphUiUiPass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">UiPass<BR/><FONT COLOR="red" POINT-SIZE="10">UiPassNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
 		}
 		
-		"_core_2d__core_2dcontrast_adaptive_sharpening" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">contrast_adaptive_sharpening<BR/><FONT COLOR="red" POINT-SIZE="10">CASNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_2d__core_2dmain_pass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">main_pass<BR/><FONT COLOR="red" POINT-SIZE="10">MainPass2dNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_2d__core_2dmsaa_writeback" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">msaa_writeback<BR/><FONT COLOR="red" POINT-SIZE="10">MsaaWritebackNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_2d__core_2dend_main_pass_post_processing" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">end_main_pass_post_processing<BR/><FONT COLOR="red" POINT-SIZE="10">EmptyNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_2d__core_2dui_pass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">ui_pass<BR/><FONT COLOR="red" POINT-SIZE="10">RunGraphOnViewNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_2d__core_2dbloom" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">bloom<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;BloomNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_2d__core_2dfxaa" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">fxaa<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;FxaaNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_2d__core_2dtonemapping" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">tonemapping<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;TonemappingNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_2d__core_2dupscaling" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">upscaling<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;UpscalingNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_2d__core_2dtonemapping":"title:e" -> "_core_2d__core_2dcontrast_adaptive_sharpening":"title:w" ["color"="white"]
-		"_core_2d__core_2dfxaa":"title:e" -> "_core_2d__core_2dcontrast_adaptive_sharpening":"title:w" ["color"="white"]
-		"_core_2d__core_2dmsaa_writeback":"title:e" -> "_core_2d__core_2dmain_pass":"title:w" ["color"="white"]
-		"_core_2d__core_2dtonemapping":"title:e" -> "_core_2d__core_2dend_main_pass_post_processing":"title:w" ["color"="white"]
-		"_core_2d__core_2dfxaa":"title:e" -> "_core_2d__core_2dend_main_pass_post_processing":"title:w" ["color"="white"]
-		"_core_2d__core_2dcontrast_adaptive_sharpening":"title:e" -> "_core_2d__core_2dend_main_pass_post_processing":"title:w" ["color"="white"]
-		"_core_2d__core_2dmain_pass":"title:e" -> "_core_2d__core_2dui_pass":"title:w" ["color"="white"]
-		"_core_2d__core_2dend_main_pass_post_processing":"title:e" -> "_core_2d__core_2dui_pass":"title:w" ["color"="white"]
-		"_core_2d__core_2dmain_pass":"title:e" -> "_core_2d__core_2dbloom":"title:w" ["color"="white"]
-		"_core_2d__core_2dtonemapping":"title:e" -> "_core_2d__core_2dfxaa":"title:w" ["color"="white"]
-		"_core_2d__core_2dmain_pass":"title:e" -> "_core_2d__core_2dtonemapping":"title:w" ["color"="white"]
-		"_core_2d__core_2dbloom":"title:e" -> "_core_2d__core_2dtonemapping":"title:w" ["color"="white"]
-		"_core_2d__core_2dend_main_pass_post_processing":"title:e" -> "_core_2d__core_2dupscaling":"title:w" ["color"="white"]
-		"_core_2d__core_2dui_pass":"title:e" -> "_core_2d__core_2dupscaling":"title:w" ["color"="white"]
+		"_Core2d__Core2dConstrastAdaptiveSharpening" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">ConstrastAdaptiveSharpening<BR/><FONT COLOR="red" POINT-SIZE="10">CASNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core2d__Core2dMainPass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">MainPass<BR/><FONT COLOR="red" POINT-SIZE="10">MainPass2dNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core2d__Core2dMsaaWriteback" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">MsaaWriteback<BR/><FONT COLOR="red" POINT-SIZE="10">MsaaWritebackNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core2d__Core2dEndMainPassPostProcessing" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">EndMainPassPostProcessing<BR/><FONT COLOR="red" POINT-SIZE="10">EmptyNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core2d__Core2dUiPass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">UiPass<BR/><FONT COLOR="red" POINT-SIZE="10">RunGraphOnViewNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core2d__Core2dBloom" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">Bloom<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;BloomNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core2d__Core2dFxaa" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">Fxaa<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;FxaaNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core2d__Core2dTonemapping" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">Tonemapping<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;TonemappingNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core2d__Core2dUpscaling" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">Upscaling<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;UpscalingNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core2d__Core2dTonemapping":"title:e" -> "_Core2d__Core2dConstrastAdaptiveSharpening":"title:w" ["color"="white"]
+		"_Core2d__Core2dFxaa":"title:e" -> "_Core2d__Core2dConstrastAdaptiveSharpening":"title:w" ["color"="white"]
+		"_Core2d__Core2dMsaaWriteback":"title:e" -> "_Core2d__Core2dMainPass":"title:w" ["color"="white"]
+		"_Core2d__Core2dTonemapping":"title:e" -> "_Core2d__Core2dEndMainPassPostProcessing":"title:w" ["color"="white"]
+		"_Core2d__Core2dFxaa":"title:e" -> "_Core2d__Core2dEndMainPassPostProcessing":"title:w" ["color"="white"]
+		"_Core2d__Core2dConstrastAdaptiveSharpening":"title:e" -> "_Core2d__Core2dEndMainPassPostProcessing":"title:w" ["color"="white"]
+		"_Core2d__Core2dMainPass":"title:e" -> "_Core2d__Core2dUiPass":"title:w" ["color"="white"]
+		"_Core2d__Core2dEndMainPassPostProcessing":"title:e" -> "_Core2d__Core2dUiPass":"title:w" ["color"="white"]
+		"_Core2d__Core2dMainPass":"title:e" -> "_Core2d__Core2dBloom":"title:w" ["color"="white"]
+		"_Core2d__Core2dTonemapping":"title:e" -> "_Core2d__Core2dFxaa":"title:w" ["color"="white"]
+		"_Core2d__Core2dMainPass":"title:e" -> "_Core2d__Core2dTonemapping":"title:w" ["color"="white"]
+		"_Core2d__Core2dBloom":"title:e" -> "_Core2d__Core2dTonemapping":"title:w" ["color"="white"]
+		"_Core2d__Core2dEndMainPassPostProcessing":"title:e" -> "_Core2d__Core2dUpscaling":"title:w" ["color"="white"]
+		"_Core2d__Core2dUiPass":"title:e" -> "_Core2d__Core2dUpscaling":"title:w" ["color"="white"]
 	}
 	
-	subgraph "cluster_core_3d" {
-		"label"="core_3d";
+	subgraph "cluster_Core3d" {
+		"label"="Core3d";
 		"fontcolor"="red";
 		graph ["style"="rounded,filled", "color"="#343a42", "fontcolor"="white"];
-		subgraph "cluster_core_3d_draw_ui" {
-			"label"="draw_ui";
+		subgraph "cluster_Core3d_SubGraphUi" {
+			"label"="SubGraphUi";
 			"fontcolor"="red";
 			graph ["style"="rounded,filled", "color"="#6f90ad", "fontcolor"="black"];
-			"_core_3d_draw_ui__core_3d_draw_uiui_pass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">ui_pass<BR/><FONT COLOR="red" POINT-SIZE="10">UiPassNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+			"_Core3d_SubGraphUi__Core3d_SubGraphUiUiPass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">UiPass<BR/><FONT COLOR="red" POINT-SIZE="10">UiPassNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
 		}
 		
-		"_core_3d__core_3dcontrast_adaptive_sharpening" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">contrast_adaptive_sharpening<BR/><FONT COLOR="red" POINT-SIZE="10">CASNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dmsaa_writeback" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">msaa_writeback<BR/><FONT COLOR="red" POINT-SIZE="10">MsaaWritebackNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dshadow_pass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">shadow_pass<BR/><FONT COLOR="red" POINT-SIZE="10">ShadowPassNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dend_main_pass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">end_main_pass<BR/><FONT COLOR="red" POINT-SIZE="10">EmptyNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dend_main_pass_post_processing" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">end_main_pass_post_processing<BR/><FONT COLOR="red" POINT-SIZE="10">EmptyNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dend_prepasses" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">end_prepasses<BR/><FONT COLOR="red" POINT-SIZE="10">EmptyNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dstart_main_pass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">start_main_pass<BR/><FONT COLOR="red" POINT-SIZE="10">EmptyNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dui_pass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">ui_pass<BR/><FONT COLOR="red" POINT-SIZE="10">RunGraphOnViewNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dbloom" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">bloom<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;BloomNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dmain_opaque_pass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">main_opaque_pass<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;MainOpaquePass3dNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dmain_transmissive_pass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">main_transmissive_pass<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;MainTransmissivePass3dNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dmain_transparent_pass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">main_transparent_pass<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;MainTransparentPass3dNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dcopy_deferred_lighting_id" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">copy_deferred_lighting_id<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;CopyDeferredLightingIdNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3ddeferred_prepass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">deferred_prepass<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;DeferredGBufferPrepassNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dfxaa" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">fxaa<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;FxaaNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dprepass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">prepass<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;PrepassNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dtonemapping" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">tonemapping<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;TonemappingNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dupscaling" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">upscaling<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;UpscalingNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3ddeferred_opaque_pbr_lighting_pass_3d" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">deferred_opaque_pbr_lighting_pass_3d<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;DeferredOpaquePass3dPbrLightingNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
-		"_core_3d__core_3dtonemapping":"title:e" -> "_core_3d__core_3dcontrast_adaptive_sharpening":"title:w" ["color"="white"]
-		"_core_3d__core_3dfxaa":"title:e" -> "_core_3d__core_3dcontrast_adaptive_sharpening":"title:w" ["color"="white"]
-		"_core_3d__core_3dmain_transparent_pass":"title:e" -> "_core_3d__core_3dend_main_pass":"title:w" ["color"="white"]
-		"_core_3d__core_3dtonemapping":"title:e" -> "_core_3d__core_3dend_main_pass_post_processing":"title:w" ["color"="white"]
-		"_core_3d__core_3dfxaa":"title:e" -> "_core_3d__core_3dend_main_pass_post_processing":"title:w" ["color"="white"]
-		"_core_3d__core_3dcontrast_adaptive_sharpening":"title:e" -> "_core_3d__core_3dend_main_pass_post_processing":"title:w" ["color"="white"]
-		"_core_3d__core_3dcopy_deferred_lighting_id":"title:e" -> "_core_3d__core_3dend_prepasses":"title:w" ["color"="white"]
-		"_core_3d__core_3dend_prepasses":"title:e" -> "_core_3d__core_3dstart_main_pass":"title:w" ["color"="white"]
-		"_core_3d__core_3dmsaa_writeback":"title:e" -> "_core_3d__core_3dstart_main_pass":"title:w" ["color"="white"]
-		"_core_3d__core_3dshadow_pass":"title:e" -> "_core_3d__core_3dstart_main_pass":"title:w" ["color"="white"]
-		"_core_3d__core_3dend_main_pass":"title:e" -> "_core_3d__core_3dui_pass":"title:w" ["color"="white"]
-		"_core_3d__core_3dend_main_pass_post_processing":"title:e" -> "_core_3d__core_3dui_pass":"title:w" ["color"="white"]
-		"_core_3d__core_3dend_main_pass":"title:e" -> "_core_3d__core_3dbloom":"title:w" ["color"="white"]
-		"_core_3d__core_3dstart_main_pass":"title:e" -> "_core_3d__core_3dmain_opaque_pass":"title:w" ["color"="white"]
-		"_core_3d__core_3ddeferred_opaque_pbr_lighting_pass_3d":"title:e" -> "_core_3d__core_3dmain_opaque_pass":"title:w" ["color"="white"]
-		"_core_3d__core_3dmain_opaque_pass":"title:e" -> "_core_3d__core_3dmain_transmissive_pass":"title:w" ["color"="white"]
-		"_core_3d__core_3dmain_transmissive_pass":"title:e" -> "_core_3d__core_3dmain_transparent_pass":"title:w" ["color"="white"]
-		"_core_3d__core_3ddeferred_prepass":"title:e" -> "_core_3d__core_3dcopy_deferred_lighting_id":"title:w" ["color"="white"]
-		"_core_3d__core_3dprepass":"title:e" -> "_core_3d__core_3ddeferred_prepass":"title:w" ["color"="white"]
-		"_core_3d__core_3dtonemapping":"title:e" -> "_core_3d__core_3dfxaa":"title:w" ["color"="white"]
-		"_core_3d__core_3dend_main_pass":"title:e" -> "_core_3d__core_3dtonemapping":"title:w" ["color"="white"]
-		"_core_3d__core_3dbloom":"title:e" -> "_core_3d__core_3dtonemapping":"title:w" ["color"="white"]
-		"_core_3d__core_3dend_main_pass_post_processing":"title:e" -> "_core_3d__core_3dupscaling":"title:w" ["color"="white"]
-		"_core_3d__core_3dui_pass":"title:e" -> "_core_3d__core_3dupscaling":"title:w" ["color"="white"]
-		"_core_3d__core_3dstart_main_pass":"title:e" -> "_core_3d__core_3ddeferred_opaque_pbr_lighting_pass_3d":"title:w" ["color"="white"]
+		"_Core3d__Core3dContrastAdaptiveSharpening" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">ContrastAdaptiveSharpening<BR/><FONT COLOR="red" POINT-SIZE="10">CASNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dMsaaWriteback" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">MsaaWriteback<BR/><FONT COLOR="red" POINT-SIZE="10">MsaaWritebackNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dShadowPass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">ShadowPass<BR/><FONT COLOR="red" POINT-SIZE="10">ShadowPassNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dEndMainPass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">EndMainPass<BR/><FONT COLOR="red" POINT-SIZE="10">EmptyNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dEndMainPassPostProcessing" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">EndMainPassPostProcessing<BR/><FONT COLOR="red" POINT-SIZE="10">EmptyNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dEndPrepasses" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">EndPrepasses<BR/><FONT COLOR="red" POINT-SIZE="10">EmptyNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dStartMainPass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">StartMainPass<BR/><FONT COLOR="red" POINT-SIZE="10">EmptyNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dUiPass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">UiPass<BR/><FONT COLOR="red" POINT-SIZE="10">RunGraphOnViewNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dBloom" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">Bloom<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;BloomNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dMainOpaquePass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">MainOpaquePass<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;MainOpaquePass3dNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dMainTransmissivePass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">MainTransmissivePass<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;MainTransmissivePass3dNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dMainTransparentPass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">MainTransparentPass<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;MainTransparentPass3dNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dCopyDeferredLightingId" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">CopyDeferredLightingId<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;CopyDeferredLightingIdNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dDeferredPrepass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">DeferredPrepass<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;DeferredGBufferPrepassNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dFxaa" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">Fxaa<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;FxaaNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dPrepass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">Prepass<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;PrepassNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dTonemapping" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">Tonemapping<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;TonemappingNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dUpscaling" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">Upscaling<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;UpscalingNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dDeferredLightingPass" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">DeferredLightingPass<BR/><FONT COLOR="red" POINT-SIZE="10">ViewNodeRunner&lt;DeferredOpaquePass3dPbrLightingNode&gt;</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+		"_Core3d__Core3dTonemapping":"title:e" -> "_Core3d__Core3dContrastAdaptiveSharpening":"title:w" ["color"="white"]
+		"_Core3d__Core3dFxaa":"title:e" -> "_Core3d__Core3dContrastAdaptiveSharpening":"title:w" ["color"="white"]
+		"_Core3d__Core3dMainTransparentPass":"title:e" -> "_Core3d__Core3dEndMainPass":"title:w" ["color"="white"]
+		"_Core3d__Core3dTonemapping":"title:e" -> "_Core3d__Core3dEndMainPassPostProcessing":"title:w" ["color"="white"]
+		"_Core3d__Core3dFxaa":"title:e" -> "_Core3d__Core3dEndMainPassPostProcessing":"title:w" ["color"="white"]
+		"_Core3d__Core3dContrastAdaptiveSharpening":"title:e" -> "_Core3d__Core3dEndMainPassPostProcessing":"title:w" ["color"="white"]
+		"_Core3d__Core3dCopyDeferredLightingId":"title:e" -> "_Core3d__Core3dEndPrepasses":"title:w" ["color"="white"]
+		"_Core3d__Core3dEndPrepasses":"title:e" -> "_Core3d__Core3dStartMainPass":"title:w" ["color"="white"]
+		"_Core3d__Core3dMsaaWriteback":"title:e" -> "_Core3d__Core3dStartMainPass":"title:w" ["color"="white"]
+		"_Core3d__Core3dShadowPass":"title:e" -> "_Core3d__Core3dStartMainPass":"title:w" ["color"="white"]
+		"_Core3d__Core3dEndMainPass":"title:e" -> "_Core3d__Core3dUiPass":"title:w" ["color"="white"]
+		"_Core3d__Core3dEndMainPassPostProcessing":"title:e" -> "_Core3d__Core3dUiPass":"title:w" ["color"="white"]
+		"_Core3d__Core3dEndMainPass":"title:e" -> "_Core3d__Core3dBloom":"title:w" ["color"="white"]
+		"_Core3d__Core3dStartMainPass":"title:e" -> "_Core3d__Core3dMainOpaquePass":"title:w" ["color"="white"]
+		"_Core3d__Core3dDeferredLightingPass":"title:e" -> "_Core3d__Core3dMainOpaquePass":"title:w" ["color"="white"]
+		"_Core3d__Core3dMainOpaquePass":"title:e" -> "_Core3d__Core3dMainTransmissivePass":"title:w" ["color"="white"]
+		"_Core3d__Core3dMainTransmissivePass":"title:e" -> "_Core3d__Core3dMainTransparentPass":"title:w" ["color"="white"]
+		"_Core3d__Core3dDeferredPrepass":"title:e" -> "_Core3d__Core3dCopyDeferredLightingId":"title:w" ["color"="white"]
+		"_Core3d__Core3dPrepass":"title:e" -> "_Core3d__Core3dDeferredPrepass":"title:w" ["color"="white"]
+		"_Core3d__Core3dTonemapping":"title:e" -> "_Core3d__Core3dFxaa":"title:w" ["color"="white"]
+		"_Core3d__Core3dEndMainPass":"title:e" -> "_Core3d__Core3dTonemapping":"title:w" ["color"="white"]
+		"_Core3d__Core3dBloom":"title:e" -> "_Core3d__Core3dTonemapping":"title:w" ["color"="white"]
+		"_Core3d__Core3dEndMainPassPostProcessing":"title:e" -> "_Core3d__Core3dUpscaling":"title:w" ["color"="white"]
+		"_Core3d__Core3dUiPass":"title:e" -> "_Core3d__Core3dUpscaling":"title:w" ["color"="white"]
+		"_Core3d__Core3dStartMainPass":"title:e" -> "_Core3d__Core3dDeferredLightingPass":"title:w" ["color"="white"]
 	}
 	
-	"_camera_driver" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">camera_driver<BR/><FONT COLOR="red" POINT-SIZE="10">CameraDriverNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
+	"_CameraDriverLabel" ["label"=<<TABLE STYLE="rounded"><TR><TD PORT="title" BORDER="0" COLSPAN="2">CameraDriverLabel<BR/><FONT COLOR="red" POINT-SIZE="10">CameraDriverNode</FONT></TD></TR></TABLE>>, "color"="white", "fillcolor"="white"]
 }

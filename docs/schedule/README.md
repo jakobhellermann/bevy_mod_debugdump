@@ -14,6 +14,20 @@
 <img alt="First" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_First.dot.svg">
 </picture>
 
+## FixedMain
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/schedule_FixedMain.dot.svg">
+<img alt="FixedMain" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_FixedMain.dot.svg">
+</picture>
+
+## FixedPostUpdate
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/schedule_FixedPostUpdate.dot.svg">
+<img alt="FixedPostUpdate" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_FixedPostUpdate.dot.svg">
+</picture>
+
 ## Last
 
 <picture>
@@ -54,6 +68,13 @@
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/schedule_PreUpdate.dot.svg">
 <img alt="PreUpdate" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_PreUpdate.dot.svg">
+</picture>
+
+## RunFixedMainLoop
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/schedule_RunFixedMainLoop.dot.svg">
+<img alt="RunFixedMainLoop" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_RunFixedMainLoop.dot.svg">
 </picture>
 
 ## RunFixedUpdateLoop

@@ -8,4 +8,6 @@ digraph "" {
 	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled"];
 	"node_System(0)" ["label"="run_main", "tooltip"="bevy_app::main_schedule::Main::run_main"]
+	"node_System(1)" ["label"="begin_frame", "tooltip"="bevy_ecs::schedule::stepping::Stepping::begin_frame"]
+	"node_System(1)" -> "UNKNOWN SystemTypeSet(fn bevy_app::main_schedule::Main::run_main())" ["lhead"="", "ltail"="", "tooltip"="begin_frame → SystemTypeSet(run_main())", "color"="#eede00"]
 }

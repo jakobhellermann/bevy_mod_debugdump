@@ -16,7 +16,7 @@ digraph "" {
 	"node_System(6)" ["label"="Assets<Mesh>asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_render::mesh::mesh::Mesh>::asset_events"]
 	"node_System(7)" ["label"="Assets<SkinnedMeshInverseBindposes>asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_render::mesh::mesh::skinning::SkinnedMeshInverseBindposes>::asset_events"]
 	"node_System(8)" ["label"="Assets<Image>asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_render::texture::image::Image>::asset_events"]
-	"node_System(9)" ["label"="Assets<TextureAtlas>asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_sprite::texture_atlas::TextureAtlas>::asset_events"]
+	"node_System(9)" ["label"="Assets<TextureAtlasLayout>asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_sprite::texture_atlas::TextureAtlasLayout>::asset_events"]
 	"node_System(10)" ["label"="Assets<ColorMaterial>asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_sprite::mesh2d::color_material::ColorMaterial>::asset_events"]
 	"node_System(11)" ["label"="Assets<Font>asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_text::font::Font>::asset_events"]
 	"node_System(12)" ["label"="Assets<StandardMaterial>asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_pbr::pbr_material::StandardMaterial>::asset_events"]

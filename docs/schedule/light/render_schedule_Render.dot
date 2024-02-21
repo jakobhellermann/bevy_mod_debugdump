@@ -7,55 +7,7 @@ digraph "" {
 	"nodesep"="0.15";
 	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled"];
-	subgraph "clusternode_Set(1)" {
-		"style"="rounded,filled";
-		"label"="ManageViewsFlush";
-		"tooltip"="ManageViewsFlush";
-		"fillcolor"="#00000008";
-		"fontcolor"="#000000";
-		"color"="#00000040";
-		"penwidth"="2";
-		"set_marker_node_Set(1)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(0)" ["label"="apply_deferred", "tooltip"="bevy_ecs::schedule::executor::apply_deferred", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-	}
-	
-	subgraph "clusternode_Set(3)" {
-		"style"="rounded,filled";
-		"label"="RenderFlush";
-		"tooltip"="RenderFlush";
-		"fillcolor"="#00000008";
-		"fontcolor"="#000000";
-		"color"="#00000040";
-		"penwidth"="2";
-		"set_marker_node_Set(3)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(2)" ["label"="apply_deferred", "tooltip"="bevy_ecs::schedule::executor::apply_deferred", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-	}
-	
-	subgraph "clusternode_Set(4)" {
-		"style"="rounded,filled";
-		"label"="PrepareFlush";
-		"tooltip"="PrepareFlush";
-		"fillcolor"="#00000008";
-		"fontcolor"="#000000";
-		"color"="#00000040";
-		"penwidth"="2";
-		"set_marker_node_Set(4)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(3)" ["label"="apply_deferred", "tooltip"="bevy_ecs::schedule::executor::apply_deferred", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-	}
-	
-	subgraph "clusternode_Set(5)" {
-		"style"="rounded,filled";
-		"label"="CleanupFlush";
-		"tooltip"="CleanupFlush";
-		"fillcolor"="#00000008";
-		"fontcolor"="#000000";
-		"color"="#00000040";
-		"penwidth"="2";
-		"set_marker_node_Set(5)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(4)" ["label"="apply_deferred", "tooltip"="bevy_ecs::schedule::executor::apply_deferred", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-	}
-	
-	subgraph "clusternode_Set(6)" {
+	subgraph "clusternode_Set(0)" {
 		"style"="rounded,filled";
 		"label"="ExtractCommands";
 		"tooltip"="ExtractCommands";
@@ -63,11 +15,11 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(6)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(5)" ["label"="apply_extract_commands", "tooltip"="bevy_render::apply_extract_commands", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"set_marker_node_Set(0)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(0)" ["label"="apply_extract_commands", "tooltip"="bevy_render::apply_extract_commands", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(7)" {
+	subgraph "clusternode_Set(1)" {
 		"style"="rounded,filled";
 		"label"="ManageViews";
 		"tooltip"="ManageViews";
@@ -75,14 +27,14 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(7)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(9)" ["label"="prepare_windows", "tooltip"="bevy_render::view::window::prepare_windows", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		"node_System(10)" ["label"="sort_cameras", "tooltip"="bevy_render::camera::camera::sort_cameras", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		"node_System(11)" ["label"="prepare_view_targets", "tooltip"="bevy_render::view::prepare_view_targets", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		"node_System(77)" ["label"="prepare_lights", "tooltip"="bevy_pbr::render::light::prepare_lights", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+		"set_marker_node_Set(1)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(5)" ["label"="prepare_windows", "tooltip"="bevy_render::view::window::prepare_windows", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(6)" ["label"="sort_cameras", "tooltip"="bevy_render::camera::camera::sort_cameras", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(7)" ["label"="prepare_view_targets", "tooltip"="bevy_render::view::prepare_view_targets", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(74)" ["label"="prepare_lights", "tooltip"="bevy_pbr::render::light::prepare_lights", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(8)" {
+	subgraph "clusternode_Set(2)" {
 		"style"="rounded,filled";
 		"label"="Queue";
 		"tooltip"="Queue";
@@ -90,8 +42,8 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(8)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		subgraph "clusternode_Set(14)" {
+		"set_marker_node_Set(2)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		subgraph "clusternode_Set(8)" {
 			"style"="rounded,filled";
 			"label"="QueueMeshes";
 			"tooltip"="QueueMeshes";
@@ -99,14 +51,14 @@ digraph "" {
 			"fontcolor"="#000000";
 			"color"="#00000040";
 			"penwidth"="2";
-			"set_marker_node_Set(14)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(48)" ["label"="queue_material2d_meshes<ColorMaterial>", "tooltip"="bevy_sprite::mesh2d::material::queue_material2d_meshes<bevy_sprite::mesh2d::color_material::ColorMaterial>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-			"node_System(67)" ["label"="queue_shadows<StandardMaterial>", "tooltip"="bevy_pbr::render::light::queue_shadows<bevy_pbr::pbr_material::StandardMaterial>", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
-			"node_System(68)" ["label"="queue_material_meshes<StandardMaterial>", "tooltip"="bevy_pbr::material::queue_material_meshes<bevy_pbr::pbr_material::StandardMaterial>", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
-			"node_System(73)" ["label"="queue_prepass_material_meshes<StandardMaterial>", "tooltip"="bevy_pbr::prepass::queue_prepass_material_meshes<bevy_pbr::pbr_material::StandardMaterial>", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+			"set_marker_node_Set(8)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(45)" ["label"="queue_material2d_meshes<ColorMaterial>", "tooltip"="bevy_sprite::mesh2d::material::queue_material2d_meshes<bevy_sprite::mesh2d::color_material::ColorMaterial>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+			"node_System(64)" ["label"="queue_shadows<StandardMaterial>", "tooltip"="bevy_pbr::render::light::queue_shadows<bevy_pbr::pbr_material::StandardMaterial>", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+			"node_System(65)" ["label"="queue_material_meshes<StandardMaterial>", "tooltip"="bevy_pbr::material::queue_material_meshes<bevy_pbr::pbr_material::StandardMaterial>", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+			"node_System(70)" ["label"="queue_prepass_material_meshes<StandardMaterial>", "tooltip"="bevy_pbr::prepass::queue_prepass_material_meshes<bevy_pbr::pbr_material::StandardMaterial>", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
 		}
 		
-		subgraph "clusternode_Set(95)" {
+		subgraph "clusternode_Set(92)" {
 			"style"="rounded,filled";
 			"label"="QueueLineGizmos2d";
 			"tooltip"="QueueLineGizmos2d";
@@ -114,11 +66,11 @@ digraph "" {
 			"fontcolor"="#000000";
 			"color"="#00000040";
 			"penwidth"="2";
-			"set_marker_node_Set(95)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(83)" ["label"="queue_line_gizmos_2d", "tooltip"="bevy_gizmos::pipeline_2d::queue_line_gizmos_2d", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+			"set_marker_node_Set(92)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(80)" ["label"="queue_line_gizmos_2d", "tooltip"="bevy_gizmos::pipeline_2d::queue_line_gizmos_2d", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 		}
 		
-		subgraph "clusternode_Set(97)" {
+		subgraph "clusternode_Set(94)" {
 			"style"="rounded,filled";
 			"label"="QueueLineGizmos3d";
 			"tooltip"="QueueLineGizmos3d";
@@ -126,15 +78,15 @@ digraph "" {
 			"fontcolor"="#000000";
 			"color"="#00000040";
 			"penwidth"="2";
-			"set_marker_node_Set(97)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(84)" ["label"="queue_line_gizmos_3d", "tooltip"="bevy_gizmos::pipeline_3d::queue_line_gizmos_3d", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+			"set_marker_node_Set(94)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(81)" ["label"="queue_line_gizmos_3d", "tooltip"="bevy_gizmos::pipeline_3d::queue_line_gizmos_3d", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 		}
 		
-		"node_System(49)" ["label"="queue_sprites", "tooltip"="bevy_sprite::render::queue_sprites", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(51)" ["label"="queue_uinodes", "tooltip"="bevy_ui::render::queue_uinodes", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
+		"node_System(46)" ["label"="queue_sprites", "tooltip"="bevy_sprite::render::queue_sprites", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(48)" ["label"="queue_uinodes", "tooltip"="bevy_ui::render::queue_uinodes", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(9)" {
+	subgraph "clusternode_Set(3)" {
 		"style"="rounded,filled";
 		"label"="PhaseSort";
 		"tooltip"="PhaseSort";
@@ -142,21 +94,21 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(9)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(17)" ["label"="sort_phase_system<Transparent2d>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::core_2d::Transparent2d>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		"node_System(20)" ["label"="sort_phase_system<Opaque3d>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::core_3d::Opaque3d>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		"node_System(21)" ["label"="sort_phase_system<AlphaMask3d>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::core_3d::AlphaMask3d>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		"node_System(22)" ["label"="sort_phase_system<Transmissive3d>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::core_3d::Transmissive3d>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		"node_System(23)" ["label"="sort_phase_system<Transparent3d>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::core_3d::Transparent3d>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		"node_System(24)" ["label"="sort_phase_system<Opaque3dPrepass>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::prepass::Opaque3dPrepass>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		"node_System(25)" ["label"="sort_phase_system<AlphaMask3dPrepass>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::prepass::AlphaMask3dPrepass>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		"node_System(26)" ["label"="sort_phase_system<Opaque3dDeferred>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::deferred::Opaque3dDeferred>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		"node_System(27)" ["label"="sort_phase_system<AlphaMask3dDeferred>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::deferred::AlphaMask3dDeferred>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		"node_System(52)" ["label"="sort_phase_system<TransparentUi>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_ui::render::render_pass::TransparentUi>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		"node_System(78)" ["label"="sort_phase_system<Shadow>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_pbr::render::light::Shadow>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"set_marker_node_Set(3)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(13)" ["label"="sort_phase_system<Transparent2d>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::core_2d::Transparent2d>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(17)" ["label"="sort_phase_system<Opaque3d>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::core_3d::Opaque3d>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(18)" ["label"="sort_phase_system<AlphaMask3d>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::core_3d::AlphaMask3d>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(19)" ["label"="sort_phase_system<Transmissive3d>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::core_3d::Transmissive3d>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(20)" ["label"="sort_phase_system<Transparent3d>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::core_3d::Transparent3d>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(21)" ["label"="sort_phase_system<Opaque3dPrepass>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::prepass::Opaque3dPrepass>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(22)" ["label"="sort_phase_system<AlphaMask3dPrepass>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::prepass::AlphaMask3dPrepass>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(23)" ["label"="sort_phase_system<Opaque3dDeferred>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::deferred::Opaque3dDeferred>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(24)" ["label"="sort_phase_system<AlphaMask3dDeferred>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_core_pipeline::deferred::AlphaMask3dDeferred>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(49)" ["label"="sort_phase_system<TransparentUi>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_ui::render::render_pass::TransparentUi>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(75)" ["label"="sort_phase_system<Shadow>", "tooltip"="bevy_render::render_phase::sort_phase_system<bevy_pbr::render::light::Shadow>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(10)" {
+	subgraph "clusternode_Set(4)" {
 		"style"="rounded,filled";
 		"label"="Prepare";
 		"tooltip"="Prepare";
@@ -164,22 +116,8 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(10)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		subgraph "clusternode_Set(2)" {
-			"style"="rounded,filled";
-			"label"="PrepareResourcesFlush";
-			"tooltip"="PrepareResourcesFlush";
-			"fillcolor"="#00000008";
-			"fontcolor"="#000000";
-			"color"="#00000040";
-			"penwidth"="2";
-			"set_marker_node_Set(2)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(1)" ["label"="apply_deferred", "tooltip"="bevy_ecs::schedule::executor::apply_deferred", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-			"node_System(44)" ["label"="write_batched_instance_buffer<Mesh2dPipeline>", "tooltip"="bevy_render::batching::write_batched_instance_buffer<bevy_sprite::mesh2d::mesh::Mesh2dPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-			"node_System(61)" ["label"="write_batched_instance_buffer<MeshPipeline>", "tooltip"="bevy_render::batching::write_batched_instance_buffer<bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		}
-		
-		subgraph "clusternode_Set(16)" {
+		"set_marker_node_Set(4)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		subgraph "clusternode_Set(10)" {
 			"style"="rounded,filled";
 			"label"="PrepareResources";
 			"tooltip"="PrepareResources";
@@ -187,36 +125,50 @@ digraph "" {
 			"fontcolor"="#000000";
 			"color"="#00000040";
 			"penwidth"="2";
-			"set_marker_node_Set(16)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(12)" ["label"="prepare_view_uniforms", "tooltip"="bevy_render::view::prepare_view_uniforms", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-			"node_System(14)" ["label"="prepare_globals_buffer", "tooltip"="bevy_render::globals::prepare_globals_buffer", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-			"node_System(28)" ["label"="prepare_core_3d_depth_textures", "tooltip"="bevy_core_pipeline::core_3d::prepare_core_3d_depth_textures", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-			"node_System(29)" ["label"="prepare_core_3d_transmission_textures", "tooltip"="bevy_core_pipeline::core_3d::prepare_core_3d_transmission_textures", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-			"node_System(30)" ["label"="prepare_prepass_textures", "tooltip"="bevy_core_pipeline::core_3d::prepare_prepass_textures", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-			"node_System(31)" ["label"="prepare_deferred_lighting_id_textures", "tooltip"="bevy_core_pipeline::deferred::copy_lighting_id::prepare_deferred_lighting_id_textures", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-			"node_System(35)" ["label"="prepare_uniform_components<BloomUniforms>", "tooltip"="bevy_render::extract_component::prepare_uniform_components<bevy_core_pipeline::bloom::downsampling_pipeline::BloomUniforms>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-			"node_System(38)" ["label"="prepare_bloom_textures", "tooltip"="bevy_core_pipeline::bloom::prepare_bloom_textures", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-			"node_System(41)" ["label"="prepare_uniform_components<CASUniform>", "tooltip"="bevy_render::extract_component::prepare_uniform_components<bevy_core_pipeline::contrast_adaptive_sharpening::CASUniform>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-			"node_System(43)" ["label"="batch_and_prepare_render_phase<Transparent2d, Mesh2dPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::core_2d::Transparent2d, bevy_sprite::mesh2d::mesh::Mesh2dPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-			"node_System(54)" ["label"="batch_and_prepare_render_phase<Opaque3d, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::core_3d::Opaque3d, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-			"node_System(55)" ["label"="batch_and_prepare_render_phase<Transmissive3d, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::core_3d::Transmissive3d, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-			"node_System(56)" ["label"="batch_and_prepare_render_phase<Transparent3d, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::core_3d::Transparent3d, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-			"node_System(57)" ["label"="batch_and_prepare_render_phase<AlphaMask3d, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::core_3d::AlphaMask3d, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-			"node_System(58)" ["label"="batch_and_prepare_render_phase<Shadow, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_pbr::render::light::Shadow, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-			"node_System(59)" ["label"="batch_and_prepare_render_phase<Opaque3dDeferred, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::deferred::Opaque3dDeferred, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-			"node_System(60)" ["label"="batch_and_prepare_render_phase<AlphaMask3dDeferred, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::deferred::AlphaMask3dDeferred, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-			"node_System(62)" ["label"="prepare_skins", "tooltip"="bevy_pbr::render::skin::prepare_skins", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
-			"node_System(63)" ["label"="prepare_morphs", "tooltip"="bevy_pbr::render::morph::prepare_morphs", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
-			"node_System(70)" ["label"="prepare_previous_view_projection_uniforms", "tooltip"="bevy_pbr::prepass::prepare_previous_view_projection_uniforms", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
-			"node_System(71)" ["label"="batch_and_prepare_render_phase<Opaque3dPrepass, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::prepass::Opaque3dPrepass, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-			"node_System(72)" ["label"="batch_and_prepare_render_phase<AlphaMask3dPrepass, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::prepass::AlphaMask3dPrepass, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-			"node_System(74)" ["label"="prepare_fog", "tooltip"="bevy_pbr::render::fog::prepare_fog", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
-			"node_System(75)" ["label"="prepare_uniform_components<PbrDeferredLightingDepthId>", "tooltip"="bevy_render::extract_component::prepare_uniform_components<bevy_pbr::deferred::PbrDeferredLightingDepthId>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-			"node_System(79)" ["label"="prepare_clusters", "tooltip"="bevy_pbr::render::light::prepare_clusters", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
-			"node_System(80)" ["label"="prepare_uniform_components<LineGizmoUniform>", "tooltip"="bevy_render::extract_component::prepare_uniform_components<bevy_gizmos::LineGizmoUniform>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"set_marker_node_Set(10)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(8)" ["label"="prepare_view_uniforms", "tooltip"="bevy_render::view::prepare_view_uniforms", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(10)" ["label"="prepare_globals_buffer", "tooltip"="bevy_render::globals::prepare_globals_buffer", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(14)" ["label"="prepare_uniform_components<SkyboxUniforms>", "tooltip"="bevy_render::extract_component::prepare_uniform_components<bevy_core_pipeline::skybox::SkyboxUniforms>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(25)" ["label"="prepare_core_3d_depth_textures", "tooltip"="bevy_core_pipeline::core_3d::prepare_core_3d_depth_textures", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+			"node_System(26)" ["label"="prepare_core_3d_transmission_textures", "tooltip"="bevy_core_pipeline::core_3d::prepare_core_3d_transmission_textures", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+			"node_System(27)" ["label"="prepare_prepass_textures", "tooltip"="bevy_core_pipeline::core_3d::prepare_prepass_textures", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+			"node_System(28)" ["label"="prepare_deferred_lighting_id_textures", "tooltip"="bevy_core_pipeline::deferred::copy_lighting_id::prepare_deferred_lighting_id_textures", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+			"node_System(32)" ["label"="prepare_uniform_components<BloomUniforms>", "tooltip"="bevy_render::extract_component::prepare_uniform_components<bevy_core_pipeline::bloom::downsampling_pipeline::BloomUniforms>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(35)" ["label"="prepare_bloom_textures", "tooltip"="bevy_core_pipeline::bloom::prepare_bloom_textures", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+			"node_System(38)" ["label"="prepare_uniform_components<CASUniform>", "tooltip"="bevy_render::extract_component::prepare_uniform_components<bevy_core_pipeline::contrast_adaptive_sharpening::CASUniform>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(40)" ["label"="batch_and_prepare_render_phase<Transparent2d, Mesh2dPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::core_2d::Transparent2d, bevy_sprite::mesh2d::mesh::Mesh2dPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(51)" ["label"="batch_and_prepare_render_phase<Opaque3d, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::core_3d::Opaque3d, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(52)" ["label"="batch_and_prepare_render_phase<Transmissive3d, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::core_3d::Transmissive3d, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(53)" ["label"="batch_and_prepare_render_phase<Transparent3d, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::core_3d::Transparent3d, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(54)" ["label"="batch_and_prepare_render_phase<AlphaMask3d, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::core_3d::AlphaMask3d, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(55)" ["label"="batch_and_prepare_render_phase<Shadow, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_pbr::render::light::Shadow, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(56)" ["label"="batch_and_prepare_render_phase<Opaque3dDeferred, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::deferred::Opaque3dDeferred, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(57)" ["label"="batch_and_prepare_render_phase<AlphaMask3dDeferred, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::deferred::AlphaMask3dDeferred, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(59)" ["label"="prepare_skins", "tooltip"="bevy_pbr::render::skin::prepare_skins", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+			"node_System(60)" ["label"="prepare_morphs", "tooltip"="bevy_pbr::render::morph::prepare_morphs", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+			"node_System(67)" ["label"="prepare_previous_view_projection_uniforms", "tooltip"="bevy_pbr::prepass::prepare_previous_view_projection_uniforms", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+			"node_System(68)" ["label"="batch_and_prepare_render_phase<Opaque3dPrepass, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::prepass::Opaque3dPrepass, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(69)" ["label"="batch_and_prepare_render_phase<AlphaMask3dPrepass, MeshPipeline>", "tooltip"="bevy_render::batching::batch_and_prepare_render_phase<bevy_core_pipeline::prepass::AlphaMask3dPrepass, bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(71)" ["label"="prepare_fog", "tooltip"="bevy_pbr::render::fog::prepare_fog", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+			"node_System(72)" ["label"="prepare_uniform_components<PbrDeferredLightingDepthId>", "tooltip"="bevy_render::extract_component::prepare_uniform_components<bevy_pbr::deferred::PbrDeferredLightingDepthId>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(76)" ["label"="prepare_clusters", "tooltip"="bevy_pbr::render::light::prepare_clusters", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+			"node_System(77)" ["label"="prepare_uniform_components<LineGizmoUniform>", "tooltip"="bevy_render::extract_component::prepare_uniform_components<bevy_gizmos::LineGizmoUniform>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
 		}
 		
-		subgraph "clusternode_Set(17)" {
+		subgraph "clusternode_Set(11)" {
+			"style"="rounded,filled";
+			"label"="PrepareResourcesFlush";
+			"tooltip"="PrepareResourcesFlush";
+			"fillcolor"="#00000008";
+			"fontcolor"="#000000";
+			"color"="#00000040";
+			"penwidth"="2";
+			"set_marker_node_Set(11)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(41)" ["label"="write_batched_instance_buffer<Mesh2dPipeline>", "tooltip"="bevy_render::batching::write_batched_instance_buffer<bevy_sprite::mesh2d::mesh::Mesh2dPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+			"node_System(58)" ["label"="write_batched_instance_buffer<MeshPipeline>", "tooltip"="bevy_render::batching::write_batched_instance_buffer<bevy_pbr::render::mesh::MeshPipeline>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		}
+		
+		subgraph "clusternode_Set(12)" {
 			"style"="rounded,filled";
 			"label"="PrepareBindGroups";
 			"tooltip"="PrepareBindGroups";
@@ -224,31 +176,31 @@ digraph "" {
 			"fontcolor"="#000000";
 			"color"="#00000040";
 			"penwidth"="2";
-			"set_marker_node_Set(17)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-			"node_System(19)" ["label"="prepare_skybox_bind_groups", "tooltip"="bevy_core_pipeline::skybox::prepare_skybox_bind_groups", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-			"node_System(39)" ["label"="prepare_bloom_bind_groups", "tooltip"="bevy_core_pipeline::bloom::prepare_bloom_bind_groups", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-			"node_System(45)" ["label"="prepare_mesh2d_bind_group", "tooltip"="bevy_sprite::mesh2d::mesh::prepare_mesh2d_bind_group", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-			"node_System(46)" ["label"="prepare_mesh2d_view_bind_groups", "tooltip"="bevy_sprite::mesh2d::mesh::prepare_mesh2d_view_bind_groups", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-			"node_System(50)" ["label"="prepare_sprites", "tooltip"="bevy_sprite::render::prepare_sprites", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-			"node_System(53)" ["label"="prepare_uinodes", "tooltip"="bevy_ui::render::prepare_uinodes", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
-			"node_System(64)" ["label"="prepare_mesh_bind_group", "tooltip"="bevy_pbr::render::mesh::prepare_mesh_bind_group", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
-			"node_System(65)" ["label"="prepare_mesh_view_bind_groups", "tooltip"="bevy_pbr::render::mesh_view_bindings::prepare_mesh_view_bind_groups", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
-			"node_System(69)" ["label"="prepare_prepass_view_bind_group<StandardMaterial>", "tooltip"="bevy_pbr::prepass::prepare_prepass_view_bind_group<bevy_pbr::pbr_material::StandardMaterial>", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
-			"node_System(82)" ["label"="prepare_line_gizmo_bind_group", "tooltip"="bevy_gizmos::prepare_line_gizmo_bind_group", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+			"set_marker_node_Set(12)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"node_System(16)" ["label"="prepare_skybox_bind_groups", "tooltip"="bevy_core_pipeline::skybox::prepare_skybox_bind_groups", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+			"node_System(36)" ["label"="prepare_bloom_bind_groups", "tooltip"="bevy_core_pipeline::bloom::prepare_bloom_bind_groups", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+			"node_System(42)" ["label"="prepare_mesh2d_bind_group", "tooltip"="bevy_sprite::mesh2d::mesh::prepare_mesh2d_bind_group", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+			"node_System(43)" ["label"="prepare_mesh2d_view_bind_groups", "tooltip"="bevy_sprite::mesh2d::mesh::prepare_mesh2d_view_bind_groups", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+			"node_System(47)" ["label"="prepare_sprites", "tooltip"="bevy_sprite::render::prepare_sprites", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+			"node_System(50)" ["label"="prepare_uinodes", "tooltip"="bevy_ui::render::prepare_uinodes", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
+			"node_System(61)" ["label"="prepare_mesh_bind_group", "tooltip"="bevy_pbr::render::mesh::prepare_mesh_bind_group", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+			"node_System(62)" ["label"="prepare_mesh_view_bind_groups", "tooltip"="bevy_pbr::render::mesh_view_bindings::prepare_mesh_view_bind_groups", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+			"node_System(66)" ["label"="prepare_prepass_view_bind_group<StandardMaterial>", "tooltip"="bevy_pbr::prepass::prepare_prepass_view_bind_group<bevy_pbr::pbr_material::StandardMaterial>", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+			"node_System(79)" ["label"="prepare_line_gizmo_bind_group", "tooltip"="bevy_gizmos::prepare_line_gizmo_bind_group", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 		}
 		
-		"node_System(18)" ["label"="prepare_skybox_pipelines", "tooltip"="bevy_core_pipeline::skybox::prepare_skybox_pipelines", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(32)" ["label"="prepare_msaa_writeback_pipelines", "tooltip"="bevy_core_pipeline::msaa_writeback::prepare_msaa_writeback_pipelines", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(33)" ["label"="prepare_view_tonemapping_pipelines", "tooltip"="bevy_core_pipeline::tonemapping::prepare_view_tonemapping_pipelines", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(34)" ["label"="prepare_view_upscaling_pipelines", "tooltip"="bevy_core_pipeline::upscaling::prepare_view_upscaling_pipelines", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(36)" ["label"="prepare_downsampling_pipeline", "tooltip"="bevy_core_pipeline::bloom::downsampling_pipeline::prepare_downsampling_pipeline", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(37)" ["label"="prepare_upsampling_pipeline", "tooltip"="bevy_core_pipeline::bloom::upsampling_pipeline::prepare_upsampling_pipeline", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(40)" ["label"="prepare_fxaa_pipelines", "tooltip"="bevy_core_pipeline::fxaa::prepare_fxaa_pipelines", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(42)" ["label"="prepare_cas_pipelines", "tooltip"="bevy_core_pipeline::contrast_adaptive_sharpening::prepare_cas_pipelines", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(76)" ["label"="prepare_deferred_lighting_pipelines", "tooltip"="bevy_pbr::deferred::prepare_deferred_lighting_pipelines", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+		"node_System(15)" ["label"="prepare_skybox_pipelines", "tooltip"="bevy_core_pipeline::skybox::prepare_skybox_pipelines", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(29)" ["label"="prepare_msaa_writeback_pipelines", "tooltip"="bevy_core_pipeline::msaa_writeback::prepare_msaa_writeback_pipelines", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(30)" ["label"="prepare_view_tonemapping_pipelines", "tooltip"="bevy_core_pipeline::tonemapping::prepare_view_tonemapping_pipelines", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(31)" ["label"="prepare_view_upscaling_pipelines", "tooltip"="bevy_core_pipeline::upscaling::prepare_view_upscaling_pipelines", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(33)" ["label"="prepare_downsampling_pipeline", "tooltip"="bevy_core_pipeline::bloom::downsampling_pipeline::prepare_downsampling_pipeline", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(34)" ["label"="prepare_upsampling_pipeline", "tooltip"="bevy_core_pipeline::bloom::upsampling_pipeline::prepare_upsampling_pipeline", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(37)" ["label"="prepare_fxaa_pipelines", "tooltip"="bevy_core_pipeline::fxaa::prepare_fxaa_pipelines", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(39)" ["label"="prepare_cas_pipelines", "tooltip"="bevy_core_pipeline::contrast_adaptive_sharpening::prepare_cas_pipelines", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(73)" ["label"="prepare_deferred_lighting_pipelines", "tooltip"="bevy_pbr::deferred::prepare_deferred_lighting_pipelines", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(11)" {
+	subgraph "clusternode_Set(5)" {
 		"style"="rounded,filled";
 		"label"="Render";
 		"tooltip"="Render";
@@ -256,12 +208,12 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(11)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(6)" ["label"="process_pipeline_queue_system", "tooltip"="bevy_render::render_resource::pipeline_cache::PipelineCache::process_pipeline_queue_system", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		"node_System(7)" ["label"="render_system", "tooltip"="bevy_render::renderer::render_system", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"set_marker_node_Set(5)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(1)" ["label"="process_pipeline_queue_system", "tooltip"="bevy_render::render_resource::pipeline_cache::PipelineCache::process_pipeline_queue_system", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(2)" ["label"="render_system", "tooltip"="bevy_render::renderer::render_system", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(12)" {
+	subgraph "clusternode_Set(6)" {
 		"style"="rounded,filled";
 		"label"="Cleanup";
 		"tooltip"="Cleanup";
@@ -269,12 +221,12 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(12)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(8)" ["label"="clear_entities", "tooltip"="bevy_ecs::world::World::clear_entities", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(16)" ["label"="update_texture_cache_system", "tooltip"="bevy_render::texture::texture_cache::update_texture_cache_system", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"set_marker_node_Set(6)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(3)" ["label"="clear_entities", "tooltip"="bevy_ecs::world::World::clear_entities", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
+		"node_System(12)" ["label"="update_texture_cache_system", "tooltip"="bevy_render::texture::texture_cache::update_texture_cache_system", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(13)" {
+	subgraph "clusternode_Set(7)" {
 		"style"="rounded,filled";
 		"label"="PrepareAssets";
 		"tooltip"="PrepareAssets";
@@ -282,40 +234,50 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(13)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(13)" ["label"="prepare_assets<Mesh>", "tooltip"="bevy_render::render_asset::prepare_assets<bevy_render::mesh::mesh::Mesh>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		"node_System(15)" ["label"="prepare_assets<Image>", "tooltip"="bevy_render::render_asset::prepare_assets<bevy_render::texture::image::Image>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
-		"node_System(47)" ["label"="prepare_materials_2d<ColorMaterial>", "tooltip"="bevy_sprite::mesh2d::material::prepare_materials_2d<bevy_sprite::mesh2d::color_material::ColorMaterial>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(66)" ["label"="prepare_materials<StandardMaterial>", "tooltip"="bevy_pbr::material::prepare_materials<bevy_pbr::pbr_material::StandardMaterial>", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
-		"node_System(81)" ["label"="prepare_assets<LineGizmo>", "tooltip"="bevy_render::render_asset::prepare_assets<bevy_gizmos::LineGizmo>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"set_marker_node_Set(7)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"node_System(9)" ["label"="prepare_assets<Mesh>", "tooltip"="bevy_render::render_asset::prepare_assets<bevy_render::mesh::mesh::Mesh>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(11)" ["label"="prepare_assets<Image>", "tooltip"="bevy_render::render_asset::prepare_assets<bevy_render::texture::image::Image>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(44)" ["label"="prepare_materials_2d<ColorMaterial>", "tooltip"="bevy_sprite::mesh2d::material::prepare_materials_2d<bevy_sprite::mesh2d::color_material::ColorMaterial>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(63)" ["label"="prepare_materials<StandardMaterial>", "tooltip"="bevy_pbr::material::prepare_materials<bevy_pbr::pbr_material::StandardMaterial>", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+		"node_System(78)" ["label"="prepare_assets<LineGizmo>", "tooltip"="bevy_render::render_asset::prepare_assets<bevy_gizmos::LineGizmo>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
 	}
 	
-	"set_marker_node_Set(6)" -> "set_marker_node_Set(7)" ["lhead"="clusternode_Set(7)", "ltail"="clusternode_Set(6)", "tooltip"="ExtractCommands → ManageViews", "color"="#eede00"]
-	"set_marker_node_Set(7)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="clusternode_Set(7)", "tooltip"="ManageViews → ManageViewsFlush", "color"="#881877"]
-	"set_marker_node_Set(1)" -> "set_marker_node_Set(8)" ["lhead"="clusternode_Set(8)", "ltail"="clusternode_Set(1)", "tooltip"="ManageViewsFlush → Queue", "color"="#00b0cc"]
-	"set_marker_node_Set(8)" -> "set_marker_node_Set(9)" ["lhead"="clusternode_Set(9)", "ltail"="clusternode_Set(8)", "tooltip"="Queue → PhaseSort", "color"="#aa3a55"]
-	"set_marker_node_Set(9)" -> "set_marker_node_Set(10)" ["lhead"="clusternode_Set(10)", "ltail"="clusternode_Set(9)", "tooltip"="PhaseSort → Prepare", "color"="#44d488"]
-	"set_marker_node_Set(10)" -> "set_marker_node_Set(4)" ["lhead"="clusternode_Set(4)", "ltail"="clusternode_Set(10)", "tooltip"="Prepare → PrepareFlush", "color"="#0090cc"]
-	"set_marker_node_Set(4)" -> "set_marker_node_Set(11)" ["lhead"="clusternode_Set(11)", "ltail"="clusternode_Set(4)", "tooltip"="PrepareFlush → Render", "color"="#ee9e44"]
-	"set_marker_node_Set(11)" -> "set_marker_node_Set(3)" ["lhead"="clusternode_Set(3)", "ltail"="clusternode_Set(11)", "tooltip"="Render → RenderFlush", "color"="#663699"]
-	"set_marker_node_Set(3)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(3)", "tooltip"="RenderFlush → Cleanup", "color"="#3363bb"]
-	"set_marker_node_Set(12)" -> "set_marker_node_Set(5)" ["lhead"="clusternode_Set(5)", "ltail"="clusternode_Set(12)", "tooltip"="Cleanup → CleanupFlush", "color"="#22c2bb"]
-	"set_marker_node_Set(6)" -> "set_marker_node_Set(13)" ["lhead"="clusternode_Set(13)", "ltail"="clusternode_Set(6)", "tooltip"="ExtractCommands → PrepareAssets", "color"="#99d955"]
-	"set_marker_node_Set(13)" -> "set_marker_node_Set(10)" ["lhead"="clusternode_Set(10)", "ltail"="clusternode_Set(13)", "tooltip"="PrepareAssets → Prepare", "color"="#eede00"]
-	"node_System(13)" -> "set_marker_node_Set(14)" ["lhead"="clusternode_Set(14)", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<Mesh>()) → QueueMeshes", "color"="#881877"]
-	"set_marker_node_Set(16)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(16)", "tooltip"="PrepareResources → PrepareResourcesFlush", "color"="#00b0cc"]
-	"set_marker_node_Set(2)" -> "set_marker_node_Set(17)" ["lhead"="clusternode_Set(17)", "ltail"="clusternode_Set(2)", "tooltip"="PrepareResourcesFlush → PrepareBindGroups", "color"="#aa3a55"]
-	"node_System(6)" -> "node_System(7)" ["lhead"="", "ltail"="", "tooltip"="process_pipeline_queue_system → SystemTypeSet(render_system())", "color"="#44d488"]
-	"node_System(9)" -> "node_System(11)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_windows()) → prepare_view_targets", "color"="#0090cc"]
-	"node_System(15)" -> "node_System(11)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<Image>()) → prepare_view_targets", "color"="#ee9e44"]
-	"node_System(15)" -> "node_System(13)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<Image>()) → prepare_assets<Mesh>", "color"="#663699"]
-	"node_System(15)" -> "node_System(47)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<Image>()) → prepare_materials_2d<ColorMaterial>", "color"="#3363bb"]
-	"node_System(47)" -> "node_System(48)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_materials_2d<ColorMaterial>()) → queue_material2d_meshes<ColorMaterial>", "color"="#22c2bb"]
-	"node_System(15)" -> "node_System(66)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<Image>()) → prepare_materials<StandardMaterial>", "color"="#99d955"]
-	"node_System(66)" -> "node_System(67)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_materials<StandardMaterial>()) → queue_shadows<StandardMaterial>", "color"="#eede00"]
-	"node_System(66)" -> "node_System(68)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_materials<StandardMaterial>()) → queue_material_meshes<StandardMaterial>", "color"="#881877"]
-	"node_System(66)" -> "node_System(73)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_materials<StandardMaterial>()) → queue_prepass_material_meshes<StandardMaterial>", "color"="#00b0cc"]
-	"node_System(15)" -> "node_System(77)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<Image>()) → prepare_lights", "color"="#aa3a55"]
-	"node_System(81)" -> "node_System(83)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<LineGizmo>()) → queue_line_gizmos_2d", "color"="#44d488"]
-	"node_System(81)" -> "node_System(84)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<LineGizmo>()) → queue_line_gizmos_3d", "color"="#0090cc"]
+	"node_System(4)" ["label"="create_surfaces", "tooltip"="bevy_render::view::window::create_surfaces"]
+	"node_System(82)" ["label"="apply_deferred", "tooltip"="bevy_ecs::schedule::executor::apply_deferred"]
+	"node_System(83)" ["label"="apply_deferred", "tooltip"="bevy_ecs::schedule::executor::apply_deferred"]
+	"node_System(84)" ["label"="apply_deferred", "tooltip"="bevy_ecs::schedule::executor::apply_deferred"]
+	"set_marker_node_Set(0)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="clusternode_Set(0)", "tooltip"="ExtractCommands → ManageViews", "color"="#eede00"]
+	"set_marker_node_Set(1)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(1)", "tooltip"="ManageViews → Queue", "color"="#881877"]
+	"set_marker_node_Set(2)" -> "set_marker_node_Set(3)" ["lhead"="clusternode_Set(3)", "ltail"="clusternode_Set(2)", "tooltip"="Queue → PhaseSort", "color"="#00b0cc"]
+	"set_marker_node_Set(3)" -> "set_marker_node_Set(4)" ["lhead"="clusternode_Set(4)", "ltail"="clusternode_Set(3)", "tooltip"="PhaseSort → Prepare", "color"="#aa3a55"]
+	"set_marker_node_Set(4)" -> "set_marker_node_Set(5)" ["lhead"="clusternode_Set(5)", "ltail"="clusternode_Set(4)", "tooltip"="Prepare → Render", "color"="#44d488"]
+	"set_marker_node_Set(5)" -> "set_marker_node_Set(6)" ["lhead"="clusternode_Set(6)", "ltail"="clusternode_Set(5)", "tooltip"="Render → Cleanup", "color"="#0090cc"]
+	"set_marker_node_Set(0)" -> "set_marker_node_Set(7)" ["lhead"="clusternode_Set(7)", "ltail"="clusternode_Set(0)", "tooltip"="ExtractCommands → PrepareAssets", "color"="#ee9e44"]
+	"set_marker_node_Set(7)" -> "set_marker_node_Set(4)" ["lhead"="clusternode_Set(4)", "ltail"="clusternode_Set(7)", "tooltip"="PrepareAssets → Prepare", "color"="#663699"]
+	"UNKNOWN SystemTypeSet(fn bevy_render::render_asset::prepare_assets<bevy_render::mesh::mesh::Mesh>())" -> "set_marker_node_Set(8)" ["lhead"="clusternode_Set(8)", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<Mesh>()) → QueueMeshes", "color"="#3363bb"]
+	"set_marker_node_Set(10)" -> "set_marker_node_Set(11)" ["lhead"="clusternode_Set(11)", "ltail"="clusternode_Set(10)", "tooltip"="PrepareResources → PrepareResourcesFlush", "color"="#22c2bb"]
+	"set_marker_node_Set(11)" -> "set_marker_node_Set(12)" ["lhead"="clusternode_Set(12)", "ltail"="clusternode_Set(11)", "tooltip"="PrepareResourcesFlush → PrepareBindGroups", "color"="#99d955"]
+	"node_System(1)" -> "UNKNOWN SystemTypeSet(fn bevy_render::renderer::render_system())" ["lhead"="", "ltail"="", "tooltip"="process_pipeline_queue_system → SystemTypeSet(render_system())", "color"="#eede00"]
+	"node_System(4)" -> "UNKNOWN SystemTypeSet(fn bevy_render::view::window::prepare_windows())" ["lhead"="", "ltail"="", "tooltip"="create_surfaces → SystemTypeSet(prepare_windows())", "color"="#881877"]
+	"UNKNOWN SystemTypeSet(fn bevy_render::view::window::prepare_windows())" -> "node_System(7)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_windows()) → prepare_view_targets", "color"="#00b0cc"]
+	"UNKNOWN SystemTypeSet(fn bevy_render::render_asset::prepare_assets<bevy_render::texture::image::Image>())" -> "node_System(7)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<Image>()) → prepare_view_targets", "color"="#aa3a55"]
+	"UNKNOWN SystemTypeSet(fn bevy_render::render_asset::prepare_assets<bevy_render::texture::image::Image>())" -> "node_System(9)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<Image>()) → prepare_assets<Mesh>", "color"="#44d488"]
+	"UNKNOWN SystemTypeSet(fn bevy_render::render_asset::prepare_assets<bevy_render::texture::image::Image>())" -> "node_System(44)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<Image>()) → prepare_materials_2d<ColorMaterial>", "color"="#0090cc"]
+	"UNKNOWN SystemTypeSet(fn bevy_sprite::mesh2d::material::prepare_materials_2d<bevy_sprite::mesh2d::color_material::ColorMaterial>())" -> "node_System(45)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_materials_2d<ColorMaterial>()) → queue_material2d_meshes<ColorMaterial>", "color"="#ee9e44"]
+	"UNKNOWN SystemTypeSet(fn bevy_render::render_asset::prepare_assets<bevy_render::texture::image::Image>())" -> "node_System(63)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<Image>()) → prepare_materials<StandardMaterial>", "color"="#663699"]
+	"UNKNOWN SystemTypeSet(fn bevy_pbr::material::prepare_materials<bevy_pbr::pbr_material::StandardMaterial>())" -> "node_System(64)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_materials<StandardMaterial>()) → queue_shadows<StandardMaterial>", "color"="#3363bb"]
+	"UNKNOWN SystemTypeSet(fn bevy_pbr::material::prepare_materials<bevy_pbr::pbr_material::StandardMaterial>())" -> "node_System(65)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_materials<StandardMaterial>()) → queue_material_meshes<StandardMaterial>", "color"="#22c2bb"]
+	"UNKNOWN SystemTypeSet(fn bevy_pbr::material::prepare_materials<bevy_pbr::pbr_material::StandardMaterial>())" -> "node_System(70)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_materials<StandardMaterial>()) → queue_prepass_material_meshes<StandardMaterial>", "color"="#99d955"]
+	"UNKNOWN SystemTypeSet(fn bevy_render::render_asset::prepare_assets<bevy_render::texture::image::Image>())" -> "node_System(74)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<Image>()) → prepare_lights", "color"="#eede00"]
+	"UNKNOWN SystemTypeSet(fn bevy_render::render_asset::prepare_assets<bevy_gizmos::LineGizmo>())" -> "node_System(80)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<LineGizmo>()) → queue_line_gizmos_2d", "color"="#881877"]
+	"UNKNOWN SystemTypeSet(fn bevy_render::render_asset::prepare_assets<bevy_gizmos::LineGizmo>())" -> "node_System(81)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(prepare_assets<LineGizmo>()) → queue_line_gizmos_3d", "color"="#00b0cc"]
+	"node_System(15)" -> "node_System(31)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">PipelineCache</td></tr></table>>, "labeltooltip"="prepare_skybox_pipelines — prepare_view_upscaling_pipelines"]
+	"node_System(29)" -> "node_System(31)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">PipelineCache</td></tr></table>>, "labeltooltip"="prepare_msaa_writeback_pipelines — prepare_view_upscaling_pipelines"]
+	"node_System(30)" -> "node_System(31)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">PipelineCache</td></tr></table>>, "labeltooltip"="prepare_view_tonemapping_pipelines — prepare_view_upscaling_pipelines"]
+	"node_System(31)" -> "node_System(33)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">PipelineCache</td></tr></table>>, "labeltooltip"="prepare_view_upscaling_pipelines — prepare_downsampling_pipeline"]
+	"node_System(31)" -> "node_System(34)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">PipelineCache</td></tr></table>>, "labeltooltip"="prepare_view_upscaling_pipelines — prepare_upsampling_pipeline"]
+	"node_System(31)" -> "node_System(37)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">PipelineCache</td></tr></table>>, "labeltooltip"="prepare_view_upscaling_pipelines — prepare_fxaa_pipelines"]
+	"node_System(31)" -> "node_System(39)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">PipelineCache</td></tr></table>>, "labeltooltip"="prepare_view_upscaling_pipelines — prepare_cas_pipelines"]
+	"node_System(31)" -> "node_System(73)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">PipelineCache</td></tr></table>>, "labeltooltip"="prepare_view_upscaling_pipelines — prepare_deferred_lighting_pipelines"]
+	"node_System(64)" -> "node_System(70)" ["dir"="none", "constraint"="false", "color"="#c93526", "fontcolor"="#c93526", "label"=<<table border="0" cellborder="0"><tr><td bgcolor="#d3d3d3">RenderMeshInstances</td></tr></table>>, "labeltooltip"="queue_shadows<StandardMaterial> — queue_prepass_material_meshes<StandardMaterial>"]
 }

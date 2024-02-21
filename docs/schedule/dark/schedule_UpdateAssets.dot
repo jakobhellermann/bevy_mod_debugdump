@@ -25,7 +25,7 @@ digraph "" {
 		"node_System(7)" ["label"="Assets<Mesh>track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_render::mesh::mesh::Mesh>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3978c", "penwidth"="1"]
 		"node_System(8)" ["label"="Assets<SkinnedMeshInverseBindposes>track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_render::mesh::mesh::skinning::SkinnedMeshInverseBindposes>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3978c", "penwidth"="1"]
 		"node_System(9)" ["label"="Assets<Image>track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_render::texture::image::Image>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3978c", "penwidth"="1"]
-		"node_System(10)" ["label"="Assets<TextureAtlas>track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_sprite::texture_atlas::TextureAtlas>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3978c", "penwidth"="1"]
+		"node_System(10)" ["label"="Assets<TextureAtlasLayout>track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_sprite::texture_atlas::TextureAtlasLayout>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3978c", "penwidth"="1"]
 		"node_System(11)" ["label"="Assets<ColorMaterial>track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_sprite::mesh2d::color_material::ColorMaterial>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3978c", "penwidth"="1"]
 		"node_System(12)" ["label"="Assets<Font>track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_text::font::Font>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3978c", "penwidth"="1"]
 		"node_System(13)" ["label"="Assets<StandardMaterial>track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_pbr::pbr_material::StandardMaterial>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3978c", "penwidth"="1"]
@@ -40,5 +40,5 @@ digraph "" {
 	}
 	
 	"node_System(3)" ["label"="handle_internal_asset_events", "tooltip"="bevy_asset::server::handle_internal_asset_events"]
-	"node_System(3)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="", "tooltip"="SystemTypeSet(handle_internal_asset_events()) → TrackAssets", "color"="#eede00"]
+	"UNKNOWN SystemTypeSet(fn bevy_asset::server::handle_internal_asset_events())" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="", "tooltip"="SystemTypeSet(handle_internal_asset_events()) → TrackAssets", "color"="#eede00"]
 }

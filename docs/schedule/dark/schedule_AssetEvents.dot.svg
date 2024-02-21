@@ -92,9 +92,9 @@
 <!-- node_System(9) -->
 <g id="node10" class="node">
 <title>node_System(9)</title>
-<g id="a_node10"><a xlink:title="bevy_asset::assets::Assets&lt;bevy_sprite::texture_atlas::TextureAtlas&gt;::asset_events">
-<polygon fill="lightgrey" stroke="black" points="335.12,-459 66.38,-459 66.38,-423 335.12,-423 335.12,-459"/>
-<text text-anchor="middle" x="200.75" y="-436.32" font-family="Times,serif" font-size="14.00">Assets&lt;TextureAtlas&gt;asset_events</text>
+<g id="a_node10"><a xlink:title="bevy_asset::assets::Assets&lt;bevy_sprite::texture_atlas::TextureAtlasLayout&gt;::asset_events">
+<polygon fill="lightgrey" stroke="black" points="359.5,-459 42,-459 42,-423 359.5,-423 359.5,-459"/>
+<text text-anchor="middle" x="200.75" y="-436.32" font-family="Times,serif" font-size="14.00">Assets&lt;TextureAtlasLayout&gt;asset_events</text>
 </a>
 </g>
 </g>
