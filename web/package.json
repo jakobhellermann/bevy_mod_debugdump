@@ -20,5 +20,9 @@
     "@hpcc-js/wasm": "^2.8.0",
     "parcel": "^2.8.3",
     "svg-pan-zoom": "^3.6.1"
+  },
+  "devDependencies": {
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1"
   }
 }

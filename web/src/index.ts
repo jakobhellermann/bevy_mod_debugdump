@@ -5,11 +5,12 @@ import { Graphviz as GraphvizLoader } from "@hpcc-js/wasm/dist/graphviz";
 const includesInput = document.getElementById("includes") as HTMLInputElement;
 const excludesInput = document.getElementById("excludes") as HTMLInputElement;
 const scheduleSelect = document.getElementById("scheduleSelect") as HTMLSelectElement;
-const svgElement = document.getElementById("svg")! as HTMLImageElement;
+const svgElement = document.getElementById("svgContainer")! as HTMLImageElement;
 const shareButton = document.getElementById("share")! as HTMLButtonElement;
 const openInNewTabButton = document.getElementById("openInNewTab")! as HTMLButtonElement;
 
 
+let lastGeneratedSvg: string | null = null;
 
 function registerScroll(svg: SVGGraphicsElement) {
     svgPanZoom(svg, {
@@ -82,10 +83,9 @@ shareButton.addEventListener("click", () => {
 });
 
 openInNewTabButton.addEventListener("click", () => {
-    const svg = new XMLSerializer().serializeToString(svgElement);
-    console.log(svg);
+    if (!lastGeneratedSvg) return;
 
-    let blob = new Blob([svg], { type: "image/svg+xml" });
+    let blob = new Blob([lastGeneratedSvg], { type: "image/svg+xml" });
     let url = URL.createObjectURL(blob);
     let win = open(url);
 
@@ -127,6 +127,8 @@ async function run() {
     let updateSvgElement = (content: string) => {
         let svg = timed("dot", () => graphviz.dot(content, "svg"));
         svgElement.innerHTML = svg;
+
+        lastGeneratedSvg = new XMLSerializer().serializeToString(svgElement);
 
         registerScroll(svgElement.querySelector("svg") as SVGGraphicsElement);
     };

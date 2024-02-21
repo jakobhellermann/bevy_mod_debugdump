@@ -12,27 +12,30 @@
     <script src="./index.ts" type="module"></script>
 </head>
 
-<body>
-    <canvas id="canvas" style="display: none;"></canvas>
-    <div>
-        <div class="filterSection">
-            <p>Schedule:</p>
-            <select id="scheduleSelect">
-            </select>
+<body class="bg-[#0D1117]">
+    <canvas id="canvas" class="hidden"></canvas>
 
-            <p>Include:&nbsp;</p>
-            <input type="text" class="filter" id="includes" placeholder="bevy_render,bevy_pbr">
-            <p>Exclude:&nbsp;</p>
-            <input type="text" class="filter" id="excludes" placeholder="update_asset_storage,...">
+    <div class="m-4 flex gap-4 justify-start flex-col items-start md:flex-row md:items-center">
+        <label>
+            Schedule:
+            <select id="scheduleSelect" class="min-w-40"></select>
+        </label>
+        <label>
+            Include:
+            <input type="text" class="w-48" id="includes" placeholder="bevy_render,bevy_pbr">
+        </label>
+        <label>
+            Exclude:
+            <input type="text" class="w-48" id="excludes" placeholder="update_asset_storage,...">
+        </label>
 
-            <div id="buttonRow">
-                <button id="share">Share link</button>
-                <button id="openInNewTab">Open in new tab</button>
-            </div>
+        <div class="flex gap-4">
+            <button id="share">Share link</button>
+            <button id="openInNewTab">Open in new tab</button>
         </div>
     </div>
 
-    <div id="svg"></div>
+    <div id="svgContainer" class="mt-4 border-1"></div>
 </body>
 
 </html>

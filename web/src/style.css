@@ -1,43 +1,16 @@
-body {
-    background-color: #0D1117;
-    overflow: hidden;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+select,
+input,
+button {
+    all: revert;
 }
 
-.filterSection {
-    color: white;
 
-    display: flex;
-    align-items: center;
-    justify-content: start;
-}
-
-.filterSection input {
-    margin-right: 0.5rem;
-}
-
-.filterSection select {
-    margin-right: 0.5rem;
-}
-
-.filter {
-    width: 16rem;
-}
-
-#scheduleSelect {
-    min-width: 11rem;
-}
-
-#buttonRow {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-}
-
-#svg {
-    margin-top: 1rem;
-}
-
-#svg svg {
+#svgContainer svg {
     width: 100%;
     height: calc(100vh - 6rem);
 }
