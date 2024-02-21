@@ -26,6 +26,12 @@ body {
     min-width: 11rem;
 }
 
+#buttonRow {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
 #svg {
     margin-top: 1rem;
     width: 100%;

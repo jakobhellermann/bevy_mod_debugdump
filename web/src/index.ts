@@ -6,6 +6,7 @@ const excludesInput = document.getElementById("excludes") as HTMLInputElement;
 const scheduleSelect = document.getElementById("scheduleSelect") as HTMLSelectElement;
 const svgElement = document.getElementById("svg")! as HTMLImageElement;
 const shareButton = document.getElementById("share")! as HTMLButtonElement;
+const openInNewTabButton = document.getElementById("openInNewTab")! as HTMLButtonElement;
 
 let schedules: string[] | undefined = undefined;
 
@@ -45,6 +46,21 @@ shareButton.addEventListener("click", () => {
     navigator.clipboard.writeText(url);
 
     window.history.pushState({ path: url }, '', url);
+});
+
+openInNewTabButton.addEventListener("click", () => {
+    const svg = new XMLSerializer().serializeToString(svgElement);
+    console.log(svg);
+
+    let blob = new Blob([svg], { type: "image/svg+xml" });
+    let url = URL.createObjectURL(blob);
+    let win = open(url);
+
+    if (win) {
+        win.onload = () => URL.revokeObjectURL(url);
+    } else {
+        URL.revokeObjectURL(url);
+    }
 });
 
 async function run() {
