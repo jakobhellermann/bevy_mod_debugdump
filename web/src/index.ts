@@ -43,9 +43,6 @@ function registerScroll(svg: SVGGraphicsElement) {
     };*/
 }
 
-
-let schedules: string[] | undefined = undefined;
-
 let scheduleSelectFromQuery: string | undefined = undefined;
 
 function loadQuery() {
