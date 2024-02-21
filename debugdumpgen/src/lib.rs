@@ -1,6 +1,6 @@
 use std::any::TypeId;
 
-use bevy::{app::MainScheduleOrder, prelude::*, render::RenderApp};
+use bevy::{app::MainScheduleOrder, ecs::schedule::ScheduleLabel, prelude::*, render::RenderApp};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
@@ -24,8 +24,8 @@ impl Context {
             #[default]
             A,
         }
-        app.add_state::<ExampleState1>();
-        app.add_state::<ExampleState2>();
+        app.init_state::<ExampleState1>();
+        app.init_state::<ExampleState2>();
 
         app.add_plugins(DefaultPlugins.set(WindowPlugin {
             primary_window: Some(Window {
@@ -83,45 +83,57 @@ impl Context {
         excludes: String,
     ) -> Result<String, String> {
         choose_app(&mut self.app, render_app, |app| {
-            let schedules = app.world.resource::<Schedules>();
+            app.world
+                .resource_scope::<Schedules, _>(|world, mut schedules| {
+                    let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
 
-            let label = schedules
-                .iter()
-                .find_map(|(label, _)| (format!("{:?}", label) == schedule_label).then_some(label))
-                .ok_or_else(|| {
-                    format!(
-                        "schedule '{schedule_label}' not found in {}app",
-                        if render_app { "render " } else { "" }
-                    )
-                })?
-                .dyn_clone();
+                    let (_, schedule) = schedules
+                        .iter_mut()
+                        .find_map(|(label, schedule)| {
+                            (format!("{:?}", label) == schedule_label).then_some((label, schedule))
+                        })
+                        .ok_or_else(|| {
+                            format!(
+                                "schedule '{schedule_label}' not found in {}app",
+                                if render_app { "render " } else { "" }
+                            )
+                        })?;
 
-            let split = |s: &str| {
-                s.split(",")
-                    .filter(|s| !s.is_empty())
-                    .map(|i| i.trim().to_owned())
-                    .collect::<Vec<_>>()
-            };
-            let includes = split(&includes);
-            let excludes = split(&excludes);
+                    let split = |s: &str| {
+                        s.split(",")
+                            .filter(|s| !s.is_empty())
+                            .map(|i| i.trim().to_owned())
+                            .collect::<Vec<_>>()
+                    };
+                    let includes = split(&includes);
+                    let excludes = split(&excludes);
 
-            let ignore_ambiguities = &[TypeId::of::<bevy::render::texture::TextureCache>()];
-            let settings = bevy_mod_debugdump::schedule_graph::Settings {
-                include_system: Some(Box::new(move |system| {
-                    let name = system.name();
-                    if excludes.iter().any(|e| name.contains(e)) {
-                        return false;
+                    let ignore_ambiguities = &[TypeId::of::<bevy::render::texture::TextureCache>()];
+                    let settings = bevy_mod_debugdump::schedule_graph::Settings {
+                        include_system: Some(Box::new(move |system| {
+                            let name = system.name();
+                            if excludes.iter().any(|e| name.contains(e)) {
+                                return false;
+                            }
+
+                            includes.is_empty() || includes.iter().any(|i| name.contains(i))
+                        })),
+                        ..default()
                     }
+                    .without_single_ambiguities_on_one_of(ignore_ambiguities);
 
-                    includes.is_empty() || includes.iter().any(|i| name.contains(i))
-                })),
-                ..default()
-            }
-            .without_single_ambiguities_on_one_of(ignore_ambiguities);
+                    let settings = &settings;
+                    schedule.graph_mut().initialize(world);
+                    let _ = schedule.graph_mut().build_schedule(
+                        world.components(),
+                        ScheduleDebugGroup.intern(),
+                        &ignored_ambiguities,
+                    );
 
-            Ok(bevy_mod_debugdump::schedule_graph_dot(
-                app, label, &settings,
-            ))
+                    Ok(bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
+                        schedule, world, settings,
+                    ))
+                })
         })
     }
 }
@@ -154,3 +166,6 @@ fn with_main_world_in_render_app<T>(app: &mut App, f: impl Fn(&mut App) -> T) ->
 
     ret
 }
+
+#[derive(ScheduleLabel, Clone, Debug, PartialEq, Eq, Hash)]
+struct ScheduleDebugGroup;
