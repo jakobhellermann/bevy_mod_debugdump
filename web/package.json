@@ -18,6 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "@hpcc-js/wasm": "^2.8.0",
-    "parcel": "^2.8.3"
+    "parcel": "^2.8.3",
+    "svg-pan-zoom": "^3.6.1"
   }
 }

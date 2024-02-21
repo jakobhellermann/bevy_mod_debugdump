@@ -1,5 +1,6 @@
 body {
     background-color: #0D1117;
+    overflow: hidden;
 }
 
 .filterSection {
@@ -34,12 +35,9 @@ body {
 
 #svg {
     margin-top: 1rem;
-    width: 100%;
 }
 
 #svg svg {
     width: 100%;
-    height: auto;
-
-    max-height: 90vh;
+    height: calc(100vh - 6rem);
 }
