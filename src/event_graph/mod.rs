@@ -1,4 +1,5 @@
 use bevy_ecs::{
+    component::ComponentId,
     schedule::{NodeId, Schedule},
     world::World,
 };
@@ -14,23 +15,17 @@ pub fn events_graph_dot(
 ) -> String {
     let graph = schedule.graph();
 
-    /*
-    let hierarchy = graph.hierarchy().graph();
-    let dependency = graph.dependency().graph();
-    */
-
     let mut events_tracked = HashSet::new();
-    let mut event_readers = HashMap::<&str, Vec<NodeId>>::new();
-    let mut event_writers = HashMap::<&str, Vec<NodeId>>::new();
+    let mut event_readers = HashMap::<ComponentId, Vec<NodeId>>::new();
+    let mut event_writers = HashMap::<ComponentId, Vec<NodeId>>::new();
     for (system_id, system, _condition) in graph.systems() {
         let accesses = system.component_access();
         for access in accesses.reads() {
             let component = world.components().get_info(access).unwrap();
             let name = component.name();
             if name.starts_with("bevy_ecs::event::Events") {
-                // TODO: avoid relying on name, use TypeId ?
-                events_tracked.insert(name);
-                match event_readers.entry(name) {
+                events_tracked.insert(access);
+                match event_readers.entry(access) {
                     bevy_utils::hashbrown::hash_map::Entry::Occupied(mut entry) => {
                         entry.get_mut().push(system_id)
                     }
@@ -45,9 +40,9 @@ pub fn events_graph_dot(
             let component = world.components().get_info(access).unwrap();
             let name = component.name();
             if name.starts_with("bevy_ecs::event::Events") {
-                events_tracked.insert(name);
+                events_tracked.insert(access);
 
-                match event_writers.entry(name) {
+                match event_writers.entry(access) {
                     bevy_utils::hashbrown::hash_map::Entry::Occupied(mut entry) => {
                         entry.get_mut().push(system_id)
                     }
@@ -114,10 +109,15 @@ pub fn events_graph_dot(
         let readers = event_readers.entry(event).or_default();
         let writers = event_writers.entry(event).or_default();
 
-        let name = event.split_once('<').unwrap().1;
+        let component = world.components().get_info(event).unwrap();
+
+        // Relevant name is only what's inside "bevy::ecs::Events<(...)>"
+        let name = component.name();
+        let name = name.split_once('<').unwrap().1;
         let name = &name[0..name.len() - 1];
+        let event_id = event.index().to_string();
         dot.add_node(
-            event,
+            &event_id,
             &[
                 ("color", "green"),
                 ("label", &pretty_type_name::pretty_type_name_str(name)),
@@ -126,10 +126,10 @@ pub fn events_graph_dot(
             ],
         );
         for writer in writers {
-            dot.add_edge(&node_string(writer), event, &[]);
+            dot.add_edge(&node_string(writer), &event_id, &[]);
         }
         for reader in readers {
-            dot.add_edge(event, &node_string(reader), &[]);
+            dot.add_edge(&event_id, &node_string(reader), &[]);
         }
     }
     dot.finish().to_string()
