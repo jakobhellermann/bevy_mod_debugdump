@@ -103,10 +103,7 @@ pub fn events_graph_dot(
             &node_string(s),
             &[
                 ("color", color),
-                (
-                    "label",
-                    name.split('<').next().unwrap().split("::").last().unwrap(),
-                ),
+                ("label", &pretty_type_name::pretty_type_name_str(name)),
                 ("tooltip", name),
                 ("shape", "box"),
             ],
@@ -117,18 +114,14 @@ pub fn events_graph_dot(
         let readers = event_readers.entry(event).or_default();
         let writers = event_writers.entry(event).or_default();
 
-        let name = event
-            .split_once('<')
-            .unwrap()
-            .1 /* .split("::").last()
-            .unwrap()*/;
+        let name = event.split_once('<').unwrap().1;
         let name = &name[0..name.len() - 1];
         dot.add_node(
             event,
             &[
                 ("color", "green"),
-                ("label", name),
-                ("tooltip", "nice event"),
+                ("label", &pretty_type_name::pretty_type_name_str(name)),
+                ("tooltip", name),
                 ("shape", "ellipse"),
             ],
         );
