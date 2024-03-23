@@ -36,7 +36,6 @@ pub fn events_graph_dot(
             }
         }
         for access in accesses.writes() {
-            // TODO: avoid copying code?
             let component = world.components().get_info(access).unwrap();
             let name = component.name();
             if name.starts_with("bevy_ecs::event::Events") {
