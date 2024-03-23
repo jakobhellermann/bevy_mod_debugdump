@@ -114,7 +114,7 @@ pub fn events_graph_dot(
         let name = component.name();
         let name = name.split_once('<').unwrap().1;
         let name = &name[0..name.len() - 1];
-        let event_id = event.index().to_string();
+        let event_id = format!("event_{0}", event.index());
         dot.add_node(
             &event_id,
             &[
@@ -142,5 +142,5 @@ fn node_index(node_id: &NodeId) -> usize {
 }
 /// Internal but we use that as identifiers
 fn node_string(node_id: &NodeId) -> String {
-    node_index(node_id).to_string()
+    format!("system_{0}", node_index(node_id))
 }
