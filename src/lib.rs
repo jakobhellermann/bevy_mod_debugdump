@@ -3,12 +3,55 @@ use bevy_ecs::schedule::{ScheduleLabel, Schedules};
 
 mod dot;
 
+pub mod event_graph;
 #[cfg(feature = "render_graph")]
 pub mod render_graph;
 pub mod schedule_graph;
 
 #[derive(ScheduleLabel, Clone, Debug, PartialEq, Eq, Hash)]
 struct ScheduleDebugGroup;
+
+/// Formats the events into a dot graph.
+#[track_caller]
+pub fn events_graph_dot(
+    app: &mut App,
+    label: impl ScheduleLabel,
+    settings: &schedule_graph::Settings,
+) -> String {
+    app.world
+        .resource_scope::<Schedules, _>(|world, mut schedules| {
+            let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
+
+            let schedule = schedules
+                .get_mut(label)
+                .ok_or_else(|| "schedule doesn't exist".to_string())
+                .unwrap();
+            schedule.graph_mut().initialize(world);
+            let _ = schedule.graph_mut().build_schedule(
+                world.components(),
+                ScheduleDebugGroup.intern(),
+                &ignored_ambiguities,
+            );
+
+            event_graph::events_graph_dot(schedule, world, settings)
+        })
+}
+
+/// Prints the schedule with default settings.
+pub fn print_events_graph(app: &mut App, schedule_label: impl ScheduleLabel) {
+    let dot = events_graph_dot(
+        app,
+        schedule_label,
+        &schedule_graph::Settings {
+            style: schedule_graph::settings::Style {
+                color_background: "white".to_string(),
+                ..schedule_graph::settings::Style::default()
+            },
+            ..schedule_graph::Settings::default()
+        },
+    );
+    println!("{dot}");
+}
 
 /// Formats the schedule into a dot graph.
 #[track_caller]
