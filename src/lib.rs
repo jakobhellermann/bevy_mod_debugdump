@@ -16,7 +16,7 @@ struct ScheduleDebugGroup;
 pub fn events_graph_dot(
     app: &mut App,
     labels: Vec<Box<dyn ScheduleLabel>>,
-    settings: &schedule_graph::Settings,
+    settings: &event_graph::Settings,
 ) -> String {
     app.world
         .resource_scope::<Schedules, _>(|world, mut schedules| {
@@ -36,7 +36,7 @@ pub fn events_graph_dot(
                     ScheduleDebugGroup.intern(),
                     &ignored_ambiguities,
                 );
-                let context = event_graph::events_graph_dot(schedule, world);
+                let context = event_graph::events_graph_dot(schedule, world, settings);
                 contexts.push(context);
             }
             event_graph::print_context(schedules.as_ref(), &contexts, world, settings)
@@ -45,17 +45,7 @@ pub fn events_graph_dot(
 
 /// Prints the schedule with default settings.
 pub fn print_events_graph(app: &mut App, schedule_labels: Vec<Box<dyn ScheduleLabel>>) {
-    let dot = events_graph_dot(
-        app,
-        schedule_labels,
-        &schedule_graph::Settings {
-            style: schedule_graph::settings::Style {
-                color_background: "white".to_string(),
-                ..schedule_graph::settings::Style::default()
-            },
-            ..schedule_graph::Settings::default()
-        },
-    );
+    let dot = events_graph_dot(app, schedule_labels, &event_graph::Settings::default());
     println!("{dot}");
 }
 

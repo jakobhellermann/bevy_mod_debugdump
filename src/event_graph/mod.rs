@@ -1,3 +1,6 @@
+pub mod settings;
+mod system_style;
+
 use bevy_ecs::{
     component::ComponentId,
     schedule::{NodeId, Schedule, ScheduleLabel, Schedules},
@@ -6,6 +9,7 @@ use bevy_ecs::{
 use bevy_utils::hashbrown::{HashMap, HashSet};
 
 use crate::dot::DotGraph;
+pub use settings::Settings;
 
 pub struct EventGraphContext {
     events_tracked: HashSet<ComponentId>,
@@ -15,17 +19,21 @@ pub struct EventGraphContext {
 }
 
 /// Formats the events into a dot graph.
-pub fn events_graph_dot(schedule: &Schedule, world: &World) -> EventGraphContext {
+pub fn events_graph_dot(
+    schedule: &Schedule,
+    world: &World,
+    settings: &Settings,
+) -> EventGraphContext {
     let graph = schedule.graph();
 
     let mut events_tracked = HashSet::new();
     let mut event_readers = HashMap::<ComponentId, Vec<NodeId>>::new();
     let mut event_writers = HashMap::<ComponentId, Vec<NodeId>>::new();
     for (system_id, system, _condition) in graph.systems() {
-        // TODO: make this configurable
-        let system_name = graph.system_at(system_id).name();
-        if system_name.starts_with("bevy_ecs::event::event_update_system<") {
-            continue;
+        if let Some(include_system) = &settings.include_system {
+            if !(include_system)(system) {
+                continue;
+            }
         }
         let accesses = system.component_access();
         for access in accesses.reads() {
@@ -72,7 +80,7 @@ pub fn print_only_context(
     dot: &mut DotGraph,
     ctx: &EventGraphContext,
     world: &World,
-    _settings: &crate::schedule_graph::Settings,
+    settings: &Settings,
 ) {
     let schedule = schedules
         .iter()
@@ -112,7 +120,7 @@ pub fn print_only_context(
             name,
             &[
                 ("color", color),
-                ("label", &pretty_type_name::pretty_type_name_str(name)),
+                ("label", &display_name(name, settings)),
                 ("tooltip", name),
                 ("shape", "box"),
             ],
@@ -134,7 +142,7 @@ pub fn print_only_context(
             &event_id,
             &[
                 ("color", "green"),
-                ("label", &pretty_type_name::pretty_type_name_str(name)),
+                ("label", &display_name(name, settings)),
                 ("tooltip", name),
                 ("shape", "ellipse"),
             ],
@@ -142,12 +150,43 @@ pub fn print_only_context(
         for writer in writers {
             // We have to use full names, because nodeId is schedule specific, and I want to support multiple schedules displayed
             let system_name = graph.get_system_at(writer).unwrap().name();
-            dot.add_edge(&system_name, &event_id, &[]);
+            dot.add_edge(
+                &system_name,
+                &event_id,
+                &[
+                    // TODO: customize edges, colors in a same fashion as schedules
+                    /*
+                    ("lhead", &self.lref(to)),
+                    ("ltail", &self.lref(from)),
+                    ("tooltip", &self.edge_tooltip(from, to)),
+                     */
+                    ("color", &settings.style.color_edge[0]),
+                ],
+            );
         }
         for reader in readers {
             let system_name = graph.get_system_at(reader).unwrap().name();
-            dot.add_edge(&event_id, &system_name, &[]);
+            dot.add_edge(
+                &event_id,
+                &system_name,
+                &[
+                    /*
+                    ("lhead", &self.lref(to)),
+                    ("ltail", &self.lref(from)),
+                    ("tooltip", &self.edge_tooltip(from, to)),
+                    */
+                    ("color", &settings.style.color_edge[0]),
+                ],
+            );
         }
+    }
+}
+
+fn display_name(name: &str, settings: &Settings) -> String {
+    if settings.prettify_system_names {
+        pretty_type_name::pretty_type_name_str(name)
+    } else {
+        name.to_string()
     }
 }
 
@@ -155,7 +194,7 @@ pub fn print_context(
     schedules: &Schedules,
     ctxs: &Vec<EventGraphContext>,
     world: &World,
-    settings: &crate::schedule_graph::Settings,
+    settings: &Settings,
 ) -> String {
     let mut dot = DotGraph::new(
         "",
