@@ -1,7 +1,7 @@
 use once_cell::sync::Lazy;
 use std::borrow::Cow;
 
-use bevy_ecs::system::System;
+use bevy_ecs::{component::ComponentInfo, system::System};
 use bevy_render::color::Color;
 use bevy_utils::HashMap;
 
@@ -43,6 +43,12 @@ pub struct SystemStyle {
     pub border_color: Option<Color>,
     pub border_width: f32,
 }
+pub struct ComponentInfoStyle {
+    pub bg_color: Color,
+    pub text_color: Option<Color>,
+    pub border_color: Option<Color>,
+    pub border_width: f32,
+}
 
 pub fn color_to_hex(color: Color) -> String {
     format!(
@@ -77,6 +83,38 @@ pub fn system_to_style(system: &dyn System<In = (), Out = ()>) -> SystemStyle {
             .unwrap();
 
         SystemStyle {
+            bg_color,
+            text_color: None,
+            border_color: None,
+            border_width: 1.0,
+        }
+    }
+}
+
+pub fn event_to_style(system: &ComponentInfo) -> ComponentInfoStyle {
+    let name = system.name();
+    let pretty_name: Cow<str> = pretty_type_name::pretty_type_name_str(name).into();
+    let is_apply_system_buffers = pretty_name == "apply_system_buffers";
+    let name_without_event = name
+        .trim_start_matches("bevy_ecs::event::Events<")
+        .trim_end_matches(">::update_system");
+    let crate_name = name_without_event.split("::").next();
+
+    if is_apply_system_buffers {
+        ComponentInfoStyle {
+            bg_color: Color::hex("E70000").unwrap(),
+            text_color: Some(Color::hex("ffffff").unwrap()),
+            border_color: Some(Color::hex("5A0000").unwrap()),
+            border_width: 2.0,
+        }
+    } else {
+        let bg_color = crate_name
+            .and_then(|n| CRATE_COLORS.get(n))
+            .map(Color::hex)
+            .unwrap_or(Color::hex("eff1f3"))
+            .unwrap();
+
+        ComponentInfoStyle {
             bg_color,
             text_color: None,
             border_color: None,

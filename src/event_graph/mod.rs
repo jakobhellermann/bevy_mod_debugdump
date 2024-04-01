@@ -1,6 +1,8 @@
 pub mod settings;
 mod system_style;
 
+use std::sync::atomic::AtomicUsize;
+
 use bevy_ecs::{
     component::ComponentId,
     schedule::{NodeId, Schedule, ScheduleLabel, Schedules},
@@ -11,19 +13,85 @@ use bevy_utils::hashbrown::{HashMap, HashSet};
 use crate::dot::DotGraph;
 pub use settings::Settings;
 
-pub struct EventGraphContext {
+pub struct EventGraphContext<'a> {
+    settings: &'a Settings,
+
     events_tracked: HashSet<ComponentId>,
     event_readers: HashMap<ComponentId, Vec<NodeId>>,
     event_writers: HashMap<ComponentId, Vec<NodeId>>,
     schedule: Box<dyn ScheduleLabel>,
+
+    color_edge_idx: AtomicUsize,
+}
+
+impl<'a> EventGraphContext<'a> {
+    fn next_edge_color(&self) -> &str {
+        use std::sync::atomic::Ordering;
+        let (Ok(idx) | Err(idx)) =
+            self.color_edge_idx
+                .fetch_update(Ordering::SeqCst, Ordering::SeqCst, |a| {
+                    Some((a + 1) % self.settings.style.color_edge.len())
+                });
+
+        &self.settings.style.color_edge[idx]
+    }
+
+    fn add_system(
+        &self,
+        dot: &mut DotGraph,
+        system: &NodeId,
+        graph: &bevy_ecs::schedule::ScheduleGraph,
+    ) {
+        let sys = &graph.get_system_at(*system).unwrap();
+        let name = &sys.name();
+
+        let node_style = self.settings.get_system_style(*sys);
+        dot.add_node(
+            name,
+            &[
+                ("label", &display_name(name, self.settings)),
+                ("tooltip", name),
+                ("shape", "box"),
+                ("fillcolor", &node_style.bg_color),
+                ("fontname", &self.settings.style.fontname),
+                ("fontcolor", &node_style.text_color),
+                ("color", &node_style.border_color),
+                ("penwidth", &node_style.border_width.to_string()),
+            ],
+        );
+    }
+
+    fn add_event(&self, dot: &mut DotGraph, event: &ComponentId, world: &World) -> String {
+        let component = world.components().get_info(*event).unwrap();
+        // Relevant name is only what's inside "bevy::ecs::Events<(...)>"
+        let full_name = component.name();
+        let name = full_name.split_once('<').unwrap().1;
+        let name = &name[0..name.len() - 1];
+        let event_id = format!("event_{0}", event.index());
+        let node_style = self.settings.get_event_style(component);
+        dot.add_node(
+            &event_id,
+            &[
+                ("label", &display_name(name, self.settings)),
+                ("tooltip", name),
+                ("shape", "ellipse"),
+                ("fillcolor", &node_style.bg_color),
+                ("fontname", &self.settings.style.fontname),
+                ("fontcolor", &node_style.text_color),
+                ("color", &node_style.border_color),
+                ("penwidth", &node_style.border_width.to_string()),
+            ],
+        );
+        event_id
+    }
 }
 
 /// Formats the events into a dot graph.
-pub fn events_graph_dot(
+pub fn events_graph_dot<'a>(
     schedule: &Schedule,
     world: &World,
-    settings: &Settings,
-) -> EventGraphContext {
+    settings: &'a Settings,
+) -> EventGraphContext<'a> {
     let graph = schedule.graph();
 
     let mut events_tracked = HashSet::new();
@@ -68,10 +136,12 @@ pub fn events_graph_dot(
         }
     }
     EventGraphContext {
+        settings,
         events_tracked,
         event_readers,
         event_writers,
         schedule: Box::new(schedule.label()),
+        color_edge_idx: AtomicUsize::new(0),
     }
 }
 
@@ -80,7 +150,6 @@ pub fn print_only_context(
     dot: &mut DotGraph,
     ctx: &EventGraphContext,
     world: &World,
-    settings: &Settings,
 ) {
     let schedule = schedules
         .iter()
@@ -109,44 +178,15 @@ pub fn print_only_context(
         .collect::<Vec<&NodeId>>();
 
     for s in all_systems {
-        let name = &graph.get_system_at(*s).unwrap().name();
-        let color = match (all_writers.contains(s), all_readers.contains(s)) {
-            (true, false) => "yellow",
-            (false, true) => "red",
-            (true, true) => "orange",
-            _ => panic!("Unexpected event handled."),
-        };
-        dot.add_node(
-            name,
-            &[
-                ("color", color),
-                ("label", &display_name(name, settings)),
-                ("tooltip", name),
-                ("shape", "box"),
-            ],
-        );
+        ctx.add_system(dot, s, graph);
     }
 
     for event in ctx.events_tracked.iter() {
         let readers = ctx.event_readers.get(event).cloned().unwrap_or_default();
         let writers = ctx.event_writers.get(event).cloned().unwrap_or_default();
 
-        let component = world.components().get_info(*event).unwrap();
+        let event_id = ctx.add_event(dot, event, world);
 
-        // Relevant name is only what's inside "bevy::ecs::Events<(...)>"
-        let full_name = component.name();
-        let name = full_name.split_once('<').unwrap().1;
-        let name = &name[0..name.len() - 1];
-        let event_id = format!("event_{0}", event.index());
-        dot.add_node(
-            &event_id,
-            &[
-                ("color", "green"),
-                ("label", &display_name(name, settings)),
-                ("tooltip", name),
-                ("shape", "ellipse"),
-            ],
-        );
         for writer in writers {
             // We have to use full names, because nodeId is schedule specific, and I want to support multiple schedules displayed
             let system_name = graph.get_system_at(writer).unwrap().name();
@@ -160,12 +200,13 @@ pub fn print_only_context(
                     ("ltail", &self.lref(from)),
                     ("tooltip", &self.edge_tooltip(from, to)),
                      */
-                    ("color", &settings.style.color_edge[0]),
+                    ("color", ctx.next_edge_color()),
                 ],
             );
         }
         for reader in readers {
             let system_name = graph.get_system_at(reader).unwrap().name();
+
             dot.add_edge(
                 &event_id,
                 &system_name,
@@ -175,7 +216,7 @@ pub fn print_only_context(
                     ("ltail", &self.lref(from)),
                     ("tooltip", &self.edge_tooltip(from, to)),
                     */
-                    ("color", &settings.style.color_edge[0]),
+                    ("color", ctx.next_edge_color()),
                 ],
             );
         }
@@ -212,7 +253,7 @@ pub fn print_context(
     .node_attributes(&[("shape", "box"), ("style", "filled")]);
 
     for ctx in ctxs {
-        print_only_context(schedules, &mut dot, ctx, world, settings);
+        print_only_context(schedules, &mut dot, ctx, world);
     }
     dot.finish().to_string()
 }

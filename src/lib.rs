@@ -13,22 +13,17 @@ struct ScheduleDebugGroup;
 
 /// Formats the events into a dot graph.
 #[track_caller]
-pub fn events_graph_dot(
-    app: &mut App,
-    labels: Vec<Box<dyn ScheduleLabel>>,
-    settings: &event_graph::Settings,
-) -> String {
+pub fn events_graph_dot(app: &mut App, settings: &event_graph::Settings) -> String {
     app.world
         .resource_scope::<Schedules, _>(|world, mut schedules| {
             let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
             let mut contexts: Vec<event_graph::EventGraphContext> = Vec::new();
-            for l in labels.iter() {
-                let Some((_, schedule)) = schedules
-                    .iter_mut()
-                    .find(|s| (**l).as_dyn_eq().dyn_eq(s.0.as_dyn_eq()))
-                else {
-                    continue;
-                };
+            for (_l, schedule) in schedules.iter_mut() {
+                if let Some(include_schedule) = &settings.include_schedule {
+                    if !(include_schedule)(schedule) {
+                        continue;
+                    }
+                }
                 schedule.graph_mut().initialize(world);
 
                 let _ = schedule.graph_mut().build_schedule(
@@ -44,8 +39,8 @@ pub fn events_graph_dot(
 }
 
 /// Prints the schedule with default settings.
-pub fn print_events_graph(app: &mut App, schedule_labels: Vec<Box<dyn ScheduleLabel>>) {
-    let dot = events_graph_dot(app, schedule_labels, &event_graph::Settings::default());
+pub fn print_events_graph(app: &mut App) {
+    let dot = events_graph_dot(app, &event_graph::Settings::default());
     println!("{dot}");
 }
 
