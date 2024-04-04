@@ -253,7 +253,21 @@ pub fn print_context(
     .node_attributes(&[("shape", "box"), ("style", "filled")]);
 
     for ctx in ctxs {
-        print_only_context(schedules, &mut dot, ctx, world);
+        let schedule_name = format!("{:?}", ctx.schedule);
+        let mut schedule_graph = DotGraph::subgraph(
+            &schedule_name,
+            &[
+                ("style", "rounded,filled"),
+                ("label", &schedule_name),
+                ("tooltip", &schedule_name),
+                ("fillcolor", &settings.style.color_schedule),
+                ("fontcolor", &settings.style.color_schedule_label),
+                ("color", &settings.style.color_schedule_border),
+                ("penwidth", "2"),
+            ],
+        );
+        print_only_context(schedules, &mut schedule_graph, ctx, world);
+        dot.add_sub_graph(schedule_graph);
     }
     dot.finish().to_string()
 }
