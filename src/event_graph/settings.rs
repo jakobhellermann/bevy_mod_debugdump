@@ -60,7 +60,6 @@ pub struct Style {
     pub color_schedule_label: String,
     pub color_schedule_border: String,
     pub color_edge: Vec<String>,
-    pub multiple_set_edge_color: String,
 
     pub penwidth_edge: f32,
 }
@@ -88,7 +87,6 @@ impl Style {
                 "#22c2bb".into(),
                 "#99d955".into(),
             ],
-            multiple_set_edge_color: "blue".into(),
             penwidth_edge: 2.0,
         }
     }
@@ -115,7 +113,6 @@ impl Style {
                 "#22c2bb".into(),
                 "#99d955".into(),
             ],
-            multiple_set_edge_color: "blue".into(),
             penwidth_edge: 2.0,
         }
     }
@@ -142,7 +139,6 @@ impl Style {
                 "#22c2bb".into(),
                 "#99d955".into(),
             ],
-            multiple_set_edge_color: "blue".into(),
             penwidth_edge: 2.0,
         }
     }
