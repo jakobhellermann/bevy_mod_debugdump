@@ -84,18 +84,25 @@ pub fn print_render_graph(app: &mut App) {
     println!("{dot}");
 }
 
-/// Check the command line for arguments relevant to this crate. The app will
-/// run as before.
+/// Check the command line for arguments relevant to this crate.
 ///
-/// # Dump the render graph
+/// ## Dump the render graph
 ///
 /// Use `--dump-render <file.dot>` to dump the render graph.
 ///
-/// # Dump the schedule graph
+/// ## Dump the schedule graph
 ///
 /// Use `--dump-schedule <file.dot>` to dump the `Update` schedule graph.
 ///
-/// Does not require disabling of logging.
+/// ## Exit the app
+///
+/// Use `--exit` to exit the app. This may be useful if one wants to create
+/// these graphs in script.
+///
+/// # Usage
+///
+/// Set up your app as usual. No log disabling required. Add the
+/// `bevy_mod_debugdump::CommandLineArgs` plugin at the end. And run your app.
 ///
 /// ```rust,no_run
 /// use bevy::prelude::*;
@@ -108,11 +115,6 @@ pub fn print_render_graph(app: &mut App) {
 ///         .run();
 /// }
 /// ```
-///
-/// # Exit the app
-///
-/// Use `--exit` to exit the app. This may be useful if one wants to create
-/// these graphs in script.
 ///
 /// TODO: Consider adding a means of selecting a schedule other than `Update`.
 pub struct CommandLineArgs;
@@ -142,9 +144,12 @@ impl bevy_app::Plugin for CommandLineArgs {
                 use bevy_ecs::event::EventWriter;
                 // TODO: It would be nice if we could exit before the window
                 // opens, but I don't see how.
-                app.add_systems(bevy_app::First, |mut app_exit_events: EventWriter<bevy_app::AppExit>| {
-                    app_exit_events.send(bevy_app::AppExit);
-                });
+                app.add_systems(
+                    bevy_app::First,
+                    |mut app_exit_events: EventWriter<bevy_app::AppExit>| {
+                        app_exit_events.send(bevy_app::AppExit);
+                    },
+                );
             }
         }
     }
