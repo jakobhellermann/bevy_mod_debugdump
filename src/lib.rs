@@ -83,3 +83,45 @@ pub fn print_render_graph(app: &mut App) {
     let dot = render_graph_dot(app, &render_graph::Settings::default());
     println!("{dot}");
 }
+
+/// Check the command line for arguments.
+///
+/// # Dump the render graph
+///
+/// Use `--dump-render <file.dot>` to dump the render graph.
+///
+///
+/// # Dump the schedule graph
+///
+/// Use `--dump-schedule <file.dot>` to dump the `Update` schedule graph.
+///
+/// Does not require disabling of logging.
+///
+/// TODO: Consider adding a means of selecting a schedule other than `Update`.
+pub struct CommandLineArgs;
+
+impl bevy_app::Plugin for CommandLineArgs {
+    fn build(&self, app: &mut App) {
+        use std::fs::File;
+        use std::io::Write;
+        let mut args = std::env::args();
+        while let Some(arg) = args.next() {
+            if arg == "--dump-render" {
+                let settings = render_graph::Settings::default();
+                let mut out =
+                    File::create(args.next().expect("file argument")).expect("file create");
+                write!(out, "{}", render_graph_dot(app, &settings)).expect("write file");
+            } else if arg == "--dump-schedule" {
+                let settings = schedule_graph::Settings::default();
+                let mut out =
+                    File::create(args.next().expect("file argument")).expect("file create");
+                write!(
+                    out,
+                    "{}",
+                    schedule_graph_dot(app, bevy_app::Update, &settings)
+                )
+                .expect("write file");
+            }
+        }
+    }
+}
