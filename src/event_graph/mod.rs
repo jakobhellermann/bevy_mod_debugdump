@@ -147,8 +147,10 @@ pub fn events_graph_dot<'a>(
 
 pub fn print_only_context(
     schedules: &bevy_ecs::schedule::Schedules,
-    dot: &mut DotGraph,
+    events_dotgraph: &mut DotGraph,
+    schedules_dotgraph: &mut DotGraph,
     ctx: &EventGraphContext,
+    other_ctxs: &[EventGraphContext],
     world: &World,
 ) {
     let schedule = schedules
@@ -157,40 +159,42 @@ pub fn print_only_context(
         .unwrap()
         .1;
     let graph = schedule.graph();
-    let all_writers = ctx
-        .event_writers
-        .values()
-        .flatten()
-        .copied()
-        .collect::<HashSet<_>>();
-    let all_readers = ctx
-        .event_readers
-        .values()
-        .flatten()
-        .copied()
-        .collect::<HashSet<_>>();
+    {
+        let all_writers = ctx.event_writers.values().flatten();
+        let all_readers = ctx.event_readers.values().flatten();
 
-    let all_systems = all_writers
-        .iter()
-        .chain(all_readers.iter())
-        .collect::<HashSet<_>>()
-        .into_iter()
-        .collect::<Vec<&NodeId>>();
+        // Deduplicate systems
+        let all_systems = all_writers
+            .chain(all_readers)
+            .collect::<HashSet<_>>()
+            .into_iter()
+            .collect::<Vec<&NodeId>>();
 
-    for s in all_systems {
-        ctx.add_system(dot, s, graph);
+        for s in all_systems {
+            ctx.add_system(schedules_dotgraph, s, graph);
+        }
     }
-
     for event in ctx.events_tracked.iter() {
         let readers = ctx.event_readers.get(event).cloned().unwrap_or_default();
         let writers = ctx.event_writers.get(event).cloned().unwrap_or_default();
 
-        let event_id = ctx.add_event(dot, event, world);
+        let graph_to_write_to = if other_ctxs
+            .iter()
+            .filter(|c| c.events_tracked.contains(event))
+            .count()
+            > 1
+        {
+            &mut *events_dotgraph
+        } else {
+            &mut *schedules_dotgraph
+        };
+
+        let event_id = ctx.add_event(graph_to_write_to, event, world);
 
         for writer in writers {
             // We have to use full names, because nodeId is schedule specific, and I want to support multiple schedules displayed
             let system_name = graph.get_system_at(writer).unwrap().name();
-            dot.add_edge(
+            graph_to_write_to.add_edge(
                 &system_name,
                 &event_id,
                 &[
@@ -207,7 +211,7 @@ pub fn print_only_context(
         for reader in readers {
             let system_name = graph.get_system_at(reader).unwrap().name();
 
-            dot.add_edge(
+            graph_to_write_to.add_edge(
                 &event_id,
                 &system_name,
                 &[
@@ -266,7 +270,7 @@ pub fn print_context(
                 ("penwidth", "2"),
             ],
         );
-        print_only_context(schedules, &mut schedule_graph, ctx, world);
+        print_only_context(schedules, &mut dot, &mut schedule_graph, ctx, ctxs, world);
         dot.add_sub_graph(schedule_graph);
     }
     dot.finish().to_string()
