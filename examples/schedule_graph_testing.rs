@@ -30,7 +30,7 @@ fn main() -> Result<(), std::io::Error> {
     // app.configure_sets((TestSet::A, TestSet::B).chain().in_set(TestSet::C));
     app.add_plugins(DefaultPlugins.build().disable::<bevy::log::LogPlugin>());
 
-    app.world
+    app.world_mut()
         .resource_scope::<Schedules, _>(|world, mut schedules| {
             let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
             let schedule_label = Main;

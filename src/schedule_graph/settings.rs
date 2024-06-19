@@ -1,7 +1,7 @@
 use std::any::TypeId;
 
+use bevy_color::{Color, Hsla};
 use bevy_ecs::{component::ComponentId, system::System, world::World};
-use bevy_render::color::Color;
 
 use super::system_style::{color_to_hex, system_to_style, SystemStyle};
 
@@ -221,7 +221,12 @@ impl Settings {
         let style = (self.system_style)(system);
 
         // Check if bg is dark
-        let [h, s, l, _] = style.bg_color.as_hsla_f32();
+        let Hsla {
+            hue: h,
+            saturation: s,
+            lightness: l,
+            alpha: _,
+        } = Hsla::from(style.bg_color);
         // TODO Fix following: https://ux.stackexchange.com/q/107318
         let is_dark = l < 0.6;
 

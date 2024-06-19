@@ -15,24 +15,25 @@ default = ["render_graph"]
 render_graph = []
 
 [dependencies]
-bevy_ecs = { version = "0.13" }
-bevy_app = { version = "0.13" }
-bevy_utils = { version = "0.13" }
-bevy_render = { version = "0.13" }
+bevy_ecs = { version = "0.14.0-rc.3" }
+bevy_app = { version = "0.14.0-rc.3" }
+bevy_utils = { version = "0.14.0-rc.3" }
+bevy_render = { version = "0.14.0-rc.3" }
+bevy_color = { version = "0.14.0-rc.3" }
 pretty-type-name = "1.0"
 petgraph = "0.6"
 once_cell = "1.17"
 
 [dev-dependencies]
-bevy = { version = "0.13" }
+bevy = { version = "0.14.0-rc.3" }
 
 [[example]]
 name = "print_render_graph"
 required-features = ["render_graph"]
 
 # [patch.crates-io]
-# bevy_ecs = { path = "/home/jakob/dev/rust/bevy/crates/bevy_ecs" }
-# bevy_app = { path = "/home/jakob/dev/rust/bevy/crates/bevy_app" }
-# bevy_utils = { path = "/home/jakob/dev/rust/bevy/crates/bevy_utils" }
-# bevy_render = { path = "/home/jakob/dev/rust/bevy/crates/bevy_render" }
-# bevy = { path = "/home/jakob/dev/rust/bevy" }
+# bevy_ecs = { path = "../bevy/crates/bevy_ecs" }
+# bevy_app = { path = "../bevy/crates/bevy_app" }
+# bevy_utils = { path = "../bevy/crates/bevy_utils" }
+# bevy_render = { path = "../bevy/crates/bevy_render" }
+# bevy = { path = "../bevy" }

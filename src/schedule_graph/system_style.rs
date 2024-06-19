@@ -1,8 +1,8 @@
 use once_cell::sync::Lazy;
 use std::borrow::Cow;
 
+use bevy_color::{Color, Srgba};
 use bevy_ecs::system::System;
-use bevy_render::color::Color;
 use bevy_utils::HashMap;
 
 static CRATE_COLORS: Lazy<HashMap<&str, &str>> = Lazy::new(|| {
@@ -47,9 +47,9 @@ pub struct SystemStyle {
 pub fn color_to_hex(color: Color) -> String {
     format!(
         "#{:0>2x}{:0>2x}{:0>2x}",
-        (color.r() * 255.0) as u8,
-        (color.g() * 255.0) as u8,
-        (color.b() * 255.0) as u8,
+        (color.to_srgba().red * 255.0) as u8,
+        (color.to_srgba().green * 255.0) as u8,
+        (color.to_srgba().blue * 255.0) as u8,
     )
 }
 
@@ -64,17 +64,18 @@ pub fn system_to_style(system: &dyn System<In = (), Out = ()>) -> SystemStyle {
 
     if is_apply_system_buffers {
         SystemStyle {
-            bg_color: Color::hex("E70000").unwrap(),
-            text_color: Some(Color::hex("ffffff").unwrap()),
-            border_color: Some(Color::hex("5A0000").unwrap()),
+            bg_color: Srgba::hex("E70000").unwrap().into(),
+            text_color: Some(Srgba::hex("ffffff").unwrap().into()),
+            border_color: Some(Srgba::hex("5A0000").unwrap().into()),
             border_width: 2.0,
         }
     } else {
         let bg_color = crate_name
             .and_then(|n| CRATE_COLORS.get(n))
-            .map(Color::hex)
-            .unwrap_or(Color::hex("eff1f3"))
-            .unwrap();
+            .map(Srgba::hex)
+            .unwrap_or(Srgba::hex("eff1f3"))
+            .unwrap()
+            .into();
 
         SystemStyle {
             bg_color,

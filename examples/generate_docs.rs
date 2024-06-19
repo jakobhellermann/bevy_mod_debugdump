@@ -22,7 +22,7 @@ fn main() -> Result<(), std::io::Error> {
     let style_light = Style::light();
     let style_dark = Style::dark_github();
 
-    app.world
+    app.world_mut()
         .resource_scope::<Schedules, _>(|world, mut schedules| {
             initialize_schedules(&mut schedules, world)?;
 
@@ -56,7 +56,7 @@ fn main() -> Result<(), std::io::Error> {
 
     with_main_world_in_render_app(&mut app, |render_app| {
         render_app
-            .world
+            .world_mut()
             .resource_scope::<Schedules, _>(|world, mut schedules| {
                 let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
 
@@ -140,23 +140,23 @@ fn initialize_schedules(
     })
 }
 
-fn with_main_world_in_render_app<T>(app: &mut App, f: impl Fn(&mut App) -> T) -> T {
+fn with_main_world_in_render_app<T>(app: &mut App, f: impl Fn(&mut SubApp) -> T) -> T {
     // temporarily add the app world to the render world as a resource
-    let inserted_world = std::mem::take(&mut app.world);
+    let inserted_world = std::mem::take(app.world_mut());
     let mut render_main_world = bevy_render::MainWorld::default();
     *render_main_world = inserted_world;
 
     let render_app = app.sub_app_mut(RenderApp);
-    render_app.world.insert_resource(render_main_world);
+    render_app.world().insert_resource(render_main_world);
 
     let ret = f(render_app);
 
     // move the app world back, as if nothing happened.
     let mut inserted_world = render_app
-        .world
+        .world()
         .remove_resource::<bevy_render::MainWorld>()
         .unwrap();
-    app.world = std::mem::take(&mut *inserted_world);
+    app.world_mut() = std::mem::take(&mut *inserted_world);
 
     ret
 }

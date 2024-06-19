@@ -1,6 +1,6 @@
 pub mod settings;
 
-use bevy_utils::intern::Interned;
+use bevy_ecs::intern::Interned;
 pub use settings::Settings;
 
 use self::iter_utils::sorted;

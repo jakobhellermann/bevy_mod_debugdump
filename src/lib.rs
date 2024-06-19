@@ -17,7 +17,7 @@ pub fn schedule_graph_dot(
     label: impl ScheduleLabel,
     settings: &schedule_graph::Settings,
 ) -> String {
-    app.world
+    app.world_mut()
         .resource_scope::<Schedules, _>(|world, mut schedules| {
             let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
 
@@ -61,8 +61,8 @@ pub fn render_graph_dot(app: &App, settings: &render_graph::Settings) -> String 
 
     let render_app = app
         .get_sub_app(bevy_render::RenderApp)
-        .unwrap_or_else(|_| panic!("no render app"));
-    let render_graph = render_app.world.get_resource::<RenderGraph>().unwrap();
+        .unwrap_or_else(|| panic!("no render app"));
+    let render_graph = render_app.world().get_resource::<RenderGraph>().unwrap();
 
     render_graph::render_graph_dot(render_graph, &settings)
 }
