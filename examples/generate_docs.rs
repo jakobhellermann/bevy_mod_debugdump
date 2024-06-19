@@ -156,7 +156,8 @@ fn with_main_world_in_render_app<T>(app: &mut App, f: impl Fn(&mut SubApp) -> T)
         .world()
         .remove_resource::<bevy_render::MainWorld>()
         .unwrap();
-    app.world_mut() = std::mem::take(&mut *inserted_world);
+    // FIXME: bevy 0.14 does not expose world anymore, so this pattern is not possible to my knowledge.
+    app.world = std::mem::take(&mut *inserted_world);
 
     ret
 }
