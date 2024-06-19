@@ -14,7 +14,7 @@ fn main() -> Result<(), std::io::Error> {
     let mut app = App::new();
     app.add_plugins(DefaultPlugins);
 
-    app.world
+    app.world_mut()
         .resource_scope::<Schedules, _>(|world, mut schedules| {
             let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
 
