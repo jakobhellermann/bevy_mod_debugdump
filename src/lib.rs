@@ -134,16 +134,16 @@ fn parse_args() -> Result<Args, lexopt::Error> {
 
     let mut dump_update_schedule = None;
     let mut dump_render = None;
-    let mut exit = false;
+    let mut exit = true;
 
     let mut parser = lexopt::Parser::from_env();
     while let Some(arg) = parser.next()? {
         match arg {
             Long("dump-update-schedule") => dump_update_schedule = Some(parser.value()?.parse()?),
             Long("dump-render") => dump_render = Some(parser.value()?.parse()?),
-            Long("exit") => exit = true,
+            Long("no-exit") => exit = false,
             Long("help") => {
-                println!("Usage: [--dump-update-schedule file] [--dump-render file] [--exit]");
+                println!("Usage: [--dump-update-schedule file] [--dump-render file] [--no-exit]");
                 std::process::exit(0);
             }
             _ => return Err(arg.unexpected()),
