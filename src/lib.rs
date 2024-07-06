@@ -1,3 +1,6 @@
+use std::io::Write;
+use std::{fs::File, path::PathBuf};
+
 use bevy_app::App;
 use bevy_ecs::schedule::{ScheduleLabel, Schedules};
 
@@ -21,9 +24,10 @@ pub fn schedule_graph_dot(
         .resource_scope::<Schedules, _>(|world, mut schedules| {
             let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
 
+            let label_name = format!("{:?}", label);
             let schedule = schedules
                 .get_mut(label)
-                .ok_or_else(|| "schedule doesn't exist".to_string())
+                .ok_or_else(|| format!("schedule {label_name} doesn't exist"))
                 .unwrap();
             schedule.graph_mut().initialize(world);
             let _ = schedule.graph_mut().build_schedule(
@@ -119,38 +123,81 @@ pub fn print_render_graph(app: &mut App) {
 /// TODO: Consider adding a means of selecting a schedule other than `Update`.
 pub struct CommandLineArgs;
 
+struct Args {
+    dump_render: Option<PathBuf>,
+    dump_update_schedule: Option<PathBuf>,
+    exit: bool,
+}
+
+fn parse_args() -> Result<Args, lexopt::Error> {
+    use lexopt::prelude::*;
+
+    let mut dump_update_schedule = None;
+    let mut dump_render = None;
+    let mut exit = false;
+
+    let mut parser = lexopt::Parser::from_env();
+    while let Some(arg) = parser.next()? {
+        match arg {
+            Long("dump-update-schedule") => dump_update_schedule = Some(parser.value()?.parse()?),
+            Long("dump-render") => dump_render = Some(parser.value()?.parse()?),
+            Long("exit") => exit = true,
+            Long("help") => {
+                println!("Usage: [--dump-update-schedule file] [--dump-render file] [--exit]");
+                std::process::exit(0);
+            }
+            _ => return Err(arg.unexpected()),
+        }
+    }
+
+    Ok(Args {
+        dump_render,
+        dump_update_schedule,
+        exit,
+    })
+}
+
+fn execute_cli(app: &mut App) -> Result<Args, Box<dyn std::error::Error>> {
+    let args = parse_args()?;
+
+    if let Some(dump_render) = &args.dump_render {
+        let settings = render_graph::Settings::default();
+        let mut out = File::create(dump_render)?;
+        write!(out, "{}", render_graph_dot(app, &settings))?;
+    }
+
+    if let Some(dump_update_schedule) = &args.dump_update_schedule {
+        let settings = schedule_graph::Settings::default();
+        let mut out = File::create(dump_update_schedule)?;
+        write!(
+            out,
+            "{}",
+            schedule_graph_dot(app, bevy_app::Update, &settings)
+        )?;
+    }
+
+    Ok(args)
+}
+
 impl bevy_app::Plugin for CommandLineArgs {
     fn build(&self, app: &mut App) {
-        use std::fs::File;
-        use std::io::Write;
-        let mut args = std::env::args();
-        while let Some(arg) = args.next() {
-            if arg == "--dump-render" {
-                let settings = render_graph::Settings::default();
-                let mut out =
-                    File::create(args.next().expect("file argument")).expect("file create");
-                write!(out, "{}", render_graph_dot(app, &settings)).expect("write file");
-            } else if arg == "--dump-update-schedule" {
-                let settings = schedule_graph::Settings::default();
-                let mut out =
-                    File::create(args.next().expect("file argument")).expect("file create");
-                write!(
-                    out,
-                    "{}",
-                    schedule_graph_dot(app, bevy_app::Update, &settings)
-                )
-                .expect("write file");
-            } else if arg == "--exit" {
-                use bevy_ecs::event::EventWriter;
-                // TODO: It would be nice if we could exit before the window
-                // opens, but I don't see how.
-                app.add_systems(
-                    bevy_app::First,
-                    |mut app_exit_events: EventWriter<bevy_app::AppExit>| {
-                        app_exit_events.send(bevy_app::AppExit::Success);
-                    },
-                );
+        let exit = match execute_cli(app) {
+            Ok(args) => args.exit,
+            Err(e) => {
+                eprintln!("{e:?}");
+                true
             }
+        };
+
+        if exit {
+            // TODO: It would be nice if we could exit before the window
+            // opens, but I don't see how.
+            app.add_systems(
+                bevy_app::First,
+                |mut app_exit_events: bevy_ecs::event::EventWriter<bevy_app::AppExit>| {
+                    app_exit_events.send(bevy_app::AppExit::Success);
+                },
+            );
         }
     }
 }
