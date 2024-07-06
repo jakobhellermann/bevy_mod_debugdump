@@ -92,7 +92,7 @@ pub fn print_render_graph(app: &mut App) {
 ///
 /// ## Dump the schedule graph
 ///
-/// Use `--dump-schedule <file.dot>` to dump the `Update` schedule graph.
+/// Use `--dump-update-schedule <file.dot>` to dump the `Update` schedule graph.
 ///
 /// ## Exit the app
 ///
@@ -130,7 +130,7 @@ impl bevy_app::Plugin for CommandLineArgs {
                 let mut out =
                     File::create(args.next().expect("file argument")).expect("file create");
                 write!(out, "{}", render_graph_dot(app, &settings)).expect("write file");
-            } else if arg == "--dump-schedule" {
+            } else if arg == "--dump-update-schedule" {
                 let settings = schedule_graph::Settings::default();
                 let mut out =
                     File::create(args.next().expect("file argument")).expect("file create");
@@ -147,7 +147,7 @@ impl bevy_app::Plugin for CommandLineArgs {
                 app.add_systems(
                     bevy_app::First,
                     |mut app_exit_events: EventWriter<bevy_app::AppExit>| {
-                        app_exit_events.send(bevy_app::AppExit);
+                        app_exit_events.send(bevy_app::AppExit::Success);
                     },
                 );
             }
