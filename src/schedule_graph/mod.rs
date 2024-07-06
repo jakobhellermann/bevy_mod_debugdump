@@ -1,5 +1,5 @@
 pub mod settings;
-mod system_style;
+pub mod system_style;
 
 use bevy_utils::{HashMap, HashSet};
 pub use settings::Settings;
