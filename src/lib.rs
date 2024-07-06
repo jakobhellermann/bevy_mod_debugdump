@@ -100,8 +100,7 @@ pub fn print_render_graph(app: &mut App) {
 ///
 /// ## Exit the app
 ///
-/// Use `--exit` to exit the app. This may be useful if one wants to create
-/// these graphs in script.
+/// By default the app will exit after performing the dump. If you want to keep the app running, use `--no-exit`.
 ///
 /// # Usage
 ///

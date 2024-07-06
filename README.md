@@ -4,6 +4,25 @@
 
 Live playground: [jakobhellermann.github.io/bevy_mod_debugdump](https://jakobhellermann.github.io/bevy_mod_debugdump)
 
+```rust
+use bevy::prelude::*;
+use bevy::log::LogPlugin;
+
+fn main() {
+    App::new()
+        .add_plugins(DefaultPlugins)
+        .add_plugins(bevy_mod_debugdump::CommandLineArgs)
+        .run()
+}
+```
+
+```
+cargo run -- --dump-update-schedule
+
+Usage: [--dump-update-schedule file] [--dump-render file] [--no-exit]
+```
+
+
 ## Schedule graph
 
 ```rust
