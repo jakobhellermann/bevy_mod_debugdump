@@ -40,5 +40,5 @@ digraph "" {
 	}
 	
 	"node_System(3)" ["label"="handle_internal_asset_events", "tooltip"="bevy_asset::server::handle_internal_asset_events"]
-	"UNKNOWN SystemTypeSet(fn bevy_asset::server::handle_internal_asset_events())" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="", "tooltip"="SystemTypeSet(handle_internal_asset_events()) → TrackAssets", "color"="#eede00"]
+	"node_System(3)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="", "tooltip"="SystemTypeSet(ExclusiveFunctionSystem<fn(), handle_internal_asset_events>()) → TrackAssets", "color"="#eede00"]
 }

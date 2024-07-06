@@ -111,6 +111,6 @@ digraph "" {
 	}
 	
 	"node_System(3)" ["label"="reset_event_update_signal_system", "tooltip"="bevy_ecs::event::reset_event_update_signal_system"]
-	"UNKNOWN SystemTypeSet(fn bevy_time::time_system())" -> "node_System(2)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(time_system()) → virtual_time_system", "color"="#eede00"]
+	"node_System(1)" -> "node_System(2)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(FunctionSystem<fn(ResMut<Time<Real>>, Res<TimeUpdateStrategy>, Option<Res<TimeReceiver>>, Local<bool>), time_system>()) → virtual_time_system", "color"="#eede00"]
 	"set_marker_node_Set(1)" -> "node_System(3)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="EventUpdates → reset_event_update_signal_system", "color"="#881877"]
 }
