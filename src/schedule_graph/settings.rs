@@ -1,7 +1,7 @@
 use std::any::TypeId;
 
 use bevy_color::{Color, Hsla};
-use bevy_ecs::{component::ComponentId, system::System, world::World};
+use bevy_ecs::{component::ComponentId, schedule::SystemSet, system::System, world::World};
 
 use super::system_style::{color_to_hex, system_to_style, SystemStyle};
 
@@ -174,6 +174,9 @@ pub struct NodeStyle {
 // Function that maps `System` to `T`
 type SystemMapperFn<T> = Box<dyn Fn(&dyn System<In = (), Out = ()>) -> T>;
 
+// Function that maps `SystemSet` to `T`
+type SystemSetMapperFn<T> = Box<dyn Fn(&dyn SystemSet) -> T>;
+
 pub struct Settings {
     pub style: Style,
     pub system_style: SystemMapperFn<SystemStyle>,
@@ -188,6 +191,7 @@ pub struct Settings {
 
     pub system_name: SystemMapperFn<String>,
     pub full_system_name: SystemMapperFn<String>,
+    pub system_set_name: SystemSetMapperFn<String>,
 }
 
 impl Settings {
@@ -305,6 +309,7 @@ impl Default for Settings {
 
             system_name: Box::new(pretty_system_name),
             full_system_name: Box::new(full_system_name),
+            system_set_name: Box::new(default_system_set_name),
         }
     }
 }
@@ -315,4 +320,8 @@ pub fn pretty_system_name(system: &dyn System<In = (), Out = ()>) -> String {
 
 pub fn full_system_name(system: &dyn System<In = (), Out = ()>) -> String {
     system.name().into()
+}
+
+pub fn default_system_set_name(system_set: &dyn SystemSet) -> String {
+    format!("{:?}", system_set)
 }

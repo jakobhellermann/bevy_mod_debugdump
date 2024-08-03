@@ -557,10 +557,14 @@ impl ScheduleGraphContext<'_> {
         (*self.settings.system_name)(system).into()
     }
 
+    fn system_set_name(&self, system_set: &dyn SystemSet) -> Cow<str> {
+        (*self.settings.system_set_name)(system_set).into()
+    }
+
     fn full_name(&self, node_id: NodeId) -> Cow<str> {
         match node_id {
             NodeId::System(_) => self.system_name(self.graph.system_at(node_id)),
-            NodeId::Set(_) => format!("{:?}", self.graph.set_at(node_id)).into(),
+            NodeId::Set(_) => self.system_set_name(self.graph.set_at(node_id)),
         }
     }
 
