@@ -457,11 +457,11 @@ impl ScheduleGraphContext<'_> {
     }
 
     fn edge_tooltip(&self, a: NodeId, b: NodeId) -> String {
-        format!("{} → {}", self.name(a), self.name(b))
+        format!("{} → {}", self.full_name(a), self.full_name(b))
     }
 
     fn edge_tooltip_undirected(&self, a: NodeId, b: NodeId) -> String {
-        format!("{} — {}", self.name(a), self.name(b))
+        format!("{} — {}", self.full_name(a), self.full_name(b))
     }
 
     fn next_edge_color(&self) -> &str {
@@ -554,28 +554,13 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
 
 impl ScheduleGraphContext<'_> {
     fn system_name(&self, system: &dyn System<In = (), Out = ()>) -> Cow<str> {
-        let name = system.name();
-        if self.settings.prettify_system_names {
-            pretty_type_name::pretty_type_name_str(&name).into()
-        } else {
-            name
-        }
+        (*self.settings.system_name)(system).into()
     }
 
     fn full_name(&self, node_id: NodeId) -> Cow<str> {
         match node_id {
-            NodeId::System(_) => self.graph.system_at(node_id).name(),
+            NodeId::System(_) => self.system_name(self.graph.system_at(node_id)),
             NodeId::Set(_) => format!("{:?}", self.graph.set_at(node_id)).into(),
-        }
-    }
-
-    fn name(&self, node_id: NodeId) -> Cow<str> {
-        let name = self.full_name(node_id);
-
-        if self.settings.prettify_system_names {
-            pretty_type_name::pretty_type_name_str(&name).into()
-        } else {
-            name
         }
     }
 
