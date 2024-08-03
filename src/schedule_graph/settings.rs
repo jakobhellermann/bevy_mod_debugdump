@@ -186,7 +186,8 @@ pub struct Settings {
     pub ambiguity_enable_on_world: bool,
     pub include_ambiguity: Option<Box<IncludeAmbiguityFn>>,
 
-    pub prettify_system_names: bool,
+    pub system_name: SystemMapperFn<String>,
+    pub full_system_name: SystemMapperFn<String>,
 }
 
 impl Settings {
@@ -302,7 +303,16 @@ impl Default for Settings {
             ambiguity_enable_on_world: false,
             include_ambiguity: None,
 
-            prettify_system_names: true,
+            system_name: Box::new(pretty_system_name),
+            full_system_name: Box::new(full_system_name),
         }
     }
+}
+
+pub fn pretty_system_name(system: &dyn System<In = (), Out = ()>) -> String {
+    pretty_type_name::pretty_type_name_str(&system.name())
+}
+
+pub fn full_system_name(system: &dyn System<In = (), Out = ()>) -> String {
+    system.name().into()
 }
