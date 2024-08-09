@@ -286,7 +286,9 @@ fn execute_cli(app: &mut App) -> Result<Args, Box<dyn std::error::Error>> {
 }
 
 impl bevy_app::Plugin for CommandLineArgs {
-    fn build(&self, app: &mut App) {
+    fn build(&self, _app: &mut App) {}
+
+    fn finish(&self, app: &mut App) {
         let exit = match execute_cli(app) {
             Ok(args) => args.exit,
             Err(e) => {
