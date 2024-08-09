@@ -46,8 +46,8 @@ pub fn print_schedule_graph(app: &mut App, schedule_label: impl ScheduleLabel) {
     println!("{dot}");
 }
 
-/// Returns the current render graph using [`render_graph_dot`](render_graph::render_graph_dot).
-/// # Example
+/// Returns the current render graph using
+/// [`render_graph_dot`](render_graph::render_graph_dot). # Example
 /// ```rust,no_run
 /// use bevy::prelude::*;
 ///
@@ -71,8 +71,8 @@ pub fn render_graph_dot(app: &App, settings: &render_graph::Settings) -> String 
     render_graph::render_graph_dot(render_graph, &settings)
 }
 
-/// Prints the current render graph using [`render_graph_dot`](render_graph::render_graph_dot).
-/// # Example
+/// Prints the current render graph using
+/// [`render_graph_dot`](render_graph::render_graph_dot). # Example
 /// ```rust,no_run
 /// use bevy::prelude::*;
 ///
@@ -100,7 +100,8 @@ pub fn print_render_graph(app: &mut App) {
 ///
 /// ## Exit the app
 ///
-/// By default the app will exit after performing the dump. If you want to keep the app running, use `--no-exit`.
+/// By default the app will exit after performing the dump. If you want to keep
+/// the app running, use `--no-exit`.
 ///
 /// # Usage
 ///
@@ -179,7 +180,9 @@ fn execute_cli(app: &mut App) -> Result<Args, Box<dyn std::error::Error>> {
 }
 
 impl bevy_app::Plugin for CommandLineArgs {
-    fn build(&self, app: &mut App) {
+    fn build(&self, _app: &mut App) {}
+
+    fn finish(&self, app: &mut App) {
         let exit = match execute_cli(app) {
             Ok(args) => args.exit,
             Err(e) => {
