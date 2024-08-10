@@ -189,14 +189,7 @@ impl bevy_app::Plugin for CommandLineArgs {
         };
 
         if exit {
-            // TODO: It would be nice if we could exit before the window
-            // opens, but I don't see how.
-            app.add_systems(
-                bevy_app::First,
-                |mut app_exit_events: bevy_ecs::event::EventWriter<bevy_app::AppExit>| {
-                    app_exit_events.send(bevy_app::AppExit::Success);
-                },
-            );
+            std::process::exit(0);
         }
     }
 }
