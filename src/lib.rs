@@ -46,8 +46,8 @@ pub fn print_schedule_graph(app: &mut App, schedule_label: impl ScheduleLabel) {
     println!("{dot}");
 }
 
-/// Returns the current render graph using [`render_graph_dot`](render_graph::render_graph_dot).
-/// # Example
+/// Returns the current render graph using
+/// [`render_graph_dot`](render_graph::render_graph_dot). # Example
 /// ```rust,no_run
 /// use bevy::prelude::*;
 ///
@@ -71,8 +71,8 @@ pub fn render_graph_dot(app: &App, settings: &render_graph::Settings) -> String 
     render_graph::render_graph_dot(render_graph, &settings)
 }
 
-/// Prints the current render graph using [`render_graph_dot`](render_graph::render_graph_dot).
-/// # Example
+/// Prints the current render graph using
+/// [`render_graph_dot`](render_graph::render_graph_dot). # Example
 /// ```rust,no_run
 /// use bevy::prelude::*;
 ///
@@ -92,15 +92,16 @@ pub fn print_render_graph(app: &mut App) {
 ///
 /// ## Dump the render graph
 ///
-/// Use `--dump-render <file.dot>` to dump the render graph.
+/// Use `dump-render <file.dot>` to dump the render graph.
 ///
 /// ## Dump the schedule graph
 ///
-/// Use `--dump-update-schedule <file.dot>` to dump the `Update` schedule graph.
+/// Use `dump-update-schedule <file.dot>` to dump the `Update` schedule graph.
 ///
 /// ## Exit the app
 ///
-/// By default the app will exit after performing the dump. If you want to keep the app running, use `--no-exit`.
+/// By default the app will exit after performing the dump. If you want to keep
+/// the app running, use `--no-exit`.
 ///
 /// # Usage
 ///
@@ -123,59 +124,84 @@ pub fn print_render_graph(app: &mut App) {
 pub struct CommandLineArgs;
 
 struct Args {
-    dump_render: Option<PathBuf>,
-    dump_update_schedule: Option<PathBuf>,
+    command: ArgsCommand,
     exit: bool,
+}
+
+/// A command to execute from the CLI.
+enum ArgsCommand {
+    None,
+    /// Dumps the render graph to the specified file path.
+    DumpRender(PathBuf),
+    /// Dumps the Update schedule graph to the specified file path.
+    DumpUpdateSchedule(PathBuf),
 }
 
 fn parse_args() -> Result<Args, lexopt::Error> {
     use lexopt::prelude::*;
 
-    let mut dump_update_schedule = None;
-    let mut dump_render = None;
+    let mut command = ArgsCommand::None;
     let mut exit = true;
 
     let mut parser = lexopt::Parser::from_env();
     while let Some(arg) = parser.next()? {
-        match arg {
-            Long("dump-update-schedule") => dump_update_schedule = Some(parser.value()?.parse()?),
-            Long("dump-render") => dump_render = Some(parser.value()?.parse()?),
+        match &arg {
+            Value(value) => {
+                if !matches!(command, ArgsCommand::None) {
+                    return Err(arg.unexpected());
+                }
+
+                if value == "dump-update-schedule" {
+                    let path = parser.value()?.parse()?;
+                    command = ArgsCommand::DumpUpdateSchedule(path);
+                } else if value == "dump-render" {
+                    let path = parser.value()?.parse()?;
+                    command = ArgsCommand::DumpRender(path);
+                } else {
+                    return Err(arg.unexpected());
+                }
+            }
             Long("no-exit") => exit = false,
             Long("help") => {
-                println!("Usage: [--dump-update-schedule file] [--dump-render file] [--no-exit]");
+                println!(
+                    "Commands:\n\n\
+                    dump-update-schedule <file>\n\
+                    dump-render <file>\n\n\
+                      --no-exit Do not exit after performing debugdump actions"
+                );
                 std::process::exit(0);
             }
             _ => return Err(arg.unexpected()),
         }
     }
 
-    Ok(Args {
-        dump_render,
-        dump_update_schedule,
-        exit,
-    })
+    Ok(Args { command, exit })
 }
 
 fn execute_cli(app: &mut App) -> Result<Args, Box<dyn std::error::Error>> {
     let args = parse_args()?;
 
-    if let Some(dump_render) = &args.dump_render {
-        let settings = render_graph::Settings::default();
-        let mut out = File::create(dump_render)?;
-        write!(out, "{}", render_graph_dot(app, &settings))?;
-    }
+    match &args.command {
+        ArgsCommand::None => Ok(args),
+        ArgsCommand::DumpRender(path) => {
+            let settings = render_graph::Settings::default();
+            let mut out = File::create(path)?;
+            write!(out, "{}", render_graph_dot(app, &settings))?;
 
-    if let Some(dump_update_schedule) = &args.dump_update_schedule {
-        let settings = schedule_graph::Settings::default();
-        let mut out = File::create(dump_update_schedule)?;
-        write!(
-            out,
-            "{}",
-            schedule_graph_dot(app, bevy_app::Update, &settings)
-        )?;
-    }
+            Ok(args)
+        }
+        ArgsCommand::DumpUpdateSchedule(path) => {
+            let settings = schedule_graph::Settings::default();
+            let mut out = File::create(path)?;
+            write!(
+                out,
+                "{}",
+                schedule_graph_dot(app, bevy_app::Update, &settings)
+            )?;
 
-    Ok(args)
+            Ok(args)
+        }
+    }
 }
 
 impl bevy_app::Plugin for CommandLineArgs {
