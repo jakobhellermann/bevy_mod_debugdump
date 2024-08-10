@@ -122,7 +122,6 @@ impl DotGraph {
             &[
                 ("style", "invis"),
                 ("label", ""),
-                ("height", "0"),
                 ("shape", "point"),
             ],
         );
