@@ -256,10 +256,14 @@ fn parse_args() -> Result<Args, lexopt::Error> {
 }
 
 fn execute_cli(app: &mut App) -> Result<Args, Box<dyn std::error::Error>> {
-    let args = parse_args()?;
+    let mut args = parse_args()?;
 
     match &args.command {
-        ArgsCommand::None => Ok(args),
+        ArgsCommand::None => {
+            // Don't exit unless we do something here.
+            args.exit = false;
+            Ok(args)
+        }
         ArgsCommand::DumpRender(path) => {
             let settings = render_graph::Settings::default();
             let mut out = File::create(path)?;
