@@ -164,17 +164,19 @@ fn find_schedule<'a>(
     app: &'a App,
     schedule_name: &str,
 ) -> Result<Interned<dyn ScheduleLabel>, FindScheduleError> {
+    let lower_schedule_name = schedule_name.to_lowercase();
+
     let schedules = app.world().resource::<Schedules>();
     let schedules = schedules
         .iter()
         // Note we get the Interned label from `schedule` since `&dyn ScheduleLabel` doesn't `impl
         // ScheduleLabel`.
-        .map(|(label, schedule)| (format!("{label:?}"), schedule.label()))
+        .map(|(label, schedule)| (format!("{label:?}").to_lowercase(), schedule.label()))
         .collect::<Vec<_>>();
 
     let mut found_label = None;
     for (str, label) in schedules.iter() {
-        if str == schedule_name {
+        if str == &lower_schedule_name {
             if found_label.is_some() {
                 return Err(FindScheduleError::MoreThanOneMatch(
                     schedule_name.to_string(),
