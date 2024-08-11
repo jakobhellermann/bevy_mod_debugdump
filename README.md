@@ -17,9 +17,13 @@ fn main() {
 ```
 
 ```
-cargo run -- --dump-update-schedule
+$ cargo run -- --help
+Commands:
 
-Usage: [--dump-update-schedule file] [--dump-render file] [--no-exit]
+dump-schedule <schedule_name> <file>
+dump-render <file>
+
+--no-exit Do not exit after performing debugdump action
 ```
 
 
