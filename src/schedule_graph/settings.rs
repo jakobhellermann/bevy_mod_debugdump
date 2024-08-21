@@ -183,6 +183,7 @@ pub struct Settings {
 
     /// When set to `Some`, will only include systems matching the predicate, and their ancestor sets
     pub include_system: Option<SystemMapperFn<bool>>,
+    pub include_system_set: Option<SystemSetMapperFn<bool>>,
     pub collapse_single_system_sets: bool,
 
     pub ambiguity_enable: bool,
@@ -301,6 +302,7 @@ impl Default for Settings {
             system_style: Box::new(system_to_style),
 
             include_system: None,
+            include_system_set: None,
             collapse_single_system_sets: false,
 
             ambiguity_enable: true,

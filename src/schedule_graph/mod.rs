@@ -477,19 +477,26 @@ impl ScheduleGraphContext<'_> {
 }
 
 fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<NodeId> {
+    let system_set_filter = settings
+        .include_system_set
+        .as_deref()
+        .unwrap_or(&include_all_system_sets);
+
     let Some(include_system) = &settings.include_system else {
-        return graph
-            .systems()
-            .map(|(id, ..)| id)
-            .chain(graph.system_sets().map(|(id, ..)| id))
-            .collect();
+        let systems = graph.systems().map(|(id, ..)| id);
+        let system_sets = graph
+            .system_sets()
+            .filter_map(|(id, set, _)| system_set_filter(set).then_some(id));
+        return systems.chain(system_sets).collect();
     };
 
     let hierarchy = graph.hierarchy().graph();
 
     let root_sets = hierarchy.nodes().filter(|&node| {
+        let system_set = graph.set_at(node);
         node.is_set()
-            && graph.set_at(node).system_type().is_none()
+            && system_set.system_type().is_none()
+            && system_set_filter(system_set)
             && hierarchy
                 .neighbors_directed(node, Direction::Incoming)
                 .next()
@@ -502,16 +509,25 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
         .map(|(id, ..)| id)
         .collect();
 
+    fn include_all_system_sets(_: &dyn SystemSet) -> bool {
+        true
+    }
+
     fn include_ancestors(
         id: NodeId,
+        graph: &ScheduleGraph,
         hierarchy: &DiGraphMap<NodeId, ()>,
+        filter: &impl Fn(&dyn SystemSet) -> bool,
         included_systems_sets: &mut HashSet<NodeId>,
     ) {
         let parents = hierarchy.neighbors_directed(id, Direction::Incoming);
 
         for parent in parents {
-            included_systems_sets.insert(parent);
-            include_ancestors(parent, hierarchy, included_systems_sets);
+            let system_set = graph.set_at(parent);
+            if filter(system_set) {
+                included_systems_sets.insert(parent);
+                include_ancestors(parent, graph, hierarchy, filter, included_systems_sets);
+            }
         }
     }
 
@@ -519,7 +535,13 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
     included_systems_sets.extend(root_sets);
 
     for &id in &systems_of_interest {
-        include_ancestors(id, hierarchy, &mut included_systems_sets);
+        include_ancestors(
+            id,
+            graph,
+            hierarchy,
+            &system_set_filter,
+            &mut included_systems_sets,
+        );
     }
 
     if settings.ambiguity_enable {
@@ -540,12 +562,24 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
     for (from, to, ()) in graph.dependency().graph().all_edges() {
         if systems_of_interest.contains(&from) {
             included_systems_sets.insert(to);
-            include_ancestors(to, hierarchy, &mut included_systems_sets);
+            include_ancestors(
+                to,
+                graph,
+                hierarchy,
+                &system_set_filter,
+                &mut included_systems_sets,
+            );
         }
 
         if systems_of_interest.contains(&to) {
             included_systems_sets.insert(from);
-            include_ancestors(to, hierarchy, &mut included_systems_sets);
+            include_ancestors(
+                to,
+                graph,
+                hierarchy,
+                &system_set_filter,
+                &mut included_systems_sets,
+            );
         }
     }
 
