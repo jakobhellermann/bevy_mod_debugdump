@@ -493,9 +493,11 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
     let hierarchy = graph.hierarchy().graph();
 
     let root_sets = hierarchy.nodes().filter(|&node| {
+        if !node.is_set() {
+            return false;
+        }
         let system_set = graph.set_at(node);
-        node.is_set()
-            && system_set.system_type().is_none()
+        system_set.system_type().is_none()
             && system_set_filter(system_set)
             && hierarchy
                 .neighbors_directed(node, Direction::Incoming)
