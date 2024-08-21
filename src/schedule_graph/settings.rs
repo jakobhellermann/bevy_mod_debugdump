@@ -197,29 +197,37 @@ pub struct Settings {
 
 impl Settings {
     /// Set the `include_system` predicate to match only systems for which their names matches `filter`
-    pub fn filter_name(mut self, filter: impl Fn(&str) -> bool + 'static) -> Self {
-        self.include_system = Some(Box::new(move |system| {
-            let name = system.name();
-            filter(&name)
-        }));
-        self
+    pub fn filter_name(self, filter: impl Fn(&str) -> bool + 'static) -> Self {
+        self.with_system_filter(move |system| filter(&system.name()))
     }
     /// Set the `include_system` predicate to only match systems from the specified crate
-    pub fn filter_in_crate(mut self, crate_: &str) -> Self {
+    pub fn filter_in_crate(self, crate_: &str) -> Self {
         let crate_ = crate_.to_owned();
-        self.include_system = Some(Box::new(move |system| {
-            let name = system.name();
-            name.starts_with(&crate_)
-        }));
-        self
+        self.with_system_filter(move |system| system.name().starts_with(&crate_))
     }
     /// Set the `include_system` predicate to only match systems from the specified crates
-    pub fn filter_in_crates(mut self, crates: &[&str]) -> Self {
+    pub fn filter_in_crates(self, crates: &[&str]) -> Self {
         let crates: Vec<_> = crates.iter().map(|&s| s.to_owned()).collect();
-        self.include_system = Some(Box::new(move |system| {
-            let name = system.name();
-            crates.iter().any(|crate_| name.starts_with(crate_))
-        }));
+        self.with_system_filter(move |system| {
+            crates
+                .iter()
+                .any(|crate_| system.name().starts_with(crate_))
+        })
+    }
+
+    pub fn with_system_filter(
+        mut self,
+        filter: impl Fn(&dyn System<In = (), Out = ()>) -> bool + 'static,
+    ) -> Self {
+        self.include_system = Some(Box::new(filter));
+        self
+    }
+
+    pub fn with_system_set_filter(
+        mut self,
+        filter: impl Fn(&dyn SystemSet) -> bool + 'static,
+    ) -> Self {
+        self.include_system_set = Some(Box::new(filter));
         self
     }
 
