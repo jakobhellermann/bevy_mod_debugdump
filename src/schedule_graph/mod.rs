@@ -14,11 +14,73 @@ use bevy_ecs::{
 };
 use petgraph::{prelude::DiGraphMap, Direction};
 
+fn incoming_nodes(
+    graph: &petgraph::prelude::GraphMap<NodeId, (), petgraph::Directed>,
+    u: NodeId,
+) -> Vec<NodeId> {
+    let mut res = vec![];
+    res.push(u);
+
+    for neighbor in graph.neighbors_directed(u, Direction::Incoming) {
+        res.push(neighbor);
+        res.append(&mut incoming_nodes(graph, neighbor));
+    }
+
+    res
+}
+fn output_nodes(
+    graph: &petgraph::prelude::GraphMap<NodeId, (), petgraph::Directed>,
+    u: NodeId,
+) -> Vec<NodeId> {
+    let mut res = vec![];
+
+    for neighbor in graph.neighbors_directed(u, Direction::Outgoing) {
+        res.push(neighbor);
+        res.append(&mut output_nodes(graph, neighbor));
+    }
+
+    res
+}
+
+fn remove_transitive_edges(
+    graph: &mut petgraph::prelude::GraphMap<NodeId, (), petgraph::Directed>,
+) {
+    let mut top_nodes = HashSet::new();
+
+    for n in graph.nodes() {
+        let mut all_upper_nodes = vec![n];
+
+        all_upper_nodes.append(&mut incoming_nodes(graph, n));
+        top_nodes.insert(all_upper_nodes.last().unwrap().clone());
+    }
+
+    for node_up in top_nodes {
+        let upper = incoming_nodes(graph, node_up);
+        let down = output_nodes(graph, node_up);
+        for down_node in down {
+            if graph.remove_edge(node_up, down_node).is_some() {
+                let incoming_nodes_to_down = incoming_nodes(graph, down_node);
+                let mut cancel_removal = true;
+                for n in incoming_nodes_to_down {
+                    if upper.contains(&n) {
+                        cancel_removal = false;
+                        break;
+                    }
+                }
+                if cancel_removal {
+                    graph.add_edge(node_up, down_node, ());
+                }
+            }
+        }
+    }
+}
+
 /// Formats the schedule into a dot graph.
 pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Settings) -> String {
     let graph = schedule.graph();
     let hierarchy = graph.hierarchy().graph();
-    let dependency = graph.dependency().graph();
+    let dependency = &mut graph.dependency().graph().clone();
+    remove_transitive_edges(dependency);
 
     let included_systems_sets = included_systems_sets(graph, settings);
 
