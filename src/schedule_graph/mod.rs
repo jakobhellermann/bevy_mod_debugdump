@@ -21,7 +21,11 @@ use bevy_ecs::{
 pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Settings) -> String {
     let graph = schedule.graph();
     let hierarchy = graph.hierarchy().graph();
-    let dependency = graph.dependency().graph();
+
+    let mut dependency = graph.dependency().graph().clone();
+    if settings.remove_transitive_edges {
+        remove_transitive_edges(&mut dependency);
+    }
 
     let included_systems_sets = included_systems_sets(graph, settings);
 
@@ -147,7 +151,7 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
         settings,
         world,
         graph: schedule.graph(),
-        dependency,
+        dependency: &mut dependency,
         included_systems_sets,
         systems_freestanding,
         systems_in_single_set,
@@ -720,5 +724,63 @@ impl Iterator for Ancestors<'_> {
             .extend(self.graph.neighbors_directed(item, Direction::Incoming));
 
         Some(item)
+    }
+}
+
+fn collect_reachable(
+    reachable: &mut HashSet<NodeId>,
+    graph: &DiGraph,
+    u: NodeId,
+    direction: Direction,
+) {
+    for neighbor in graph.neighbors_directed(u, direction) {
+        reachable.insert(neighbor);
+        collect_reachable(reachable, graph, neighbor, direction);
+    }
+}
+
+fn toposort(graph: &DiGraph) -> Vec<NodeId> {
+    let mut visited = HashSet::new();
+    let mut stack = Vec::new();
+
+    fn dfs(visited: &mut HashSet<NodeId>, stack: &mut Vec<NodeId>, graph: &DiGraph, node: NodeId) {
+        if !visited.insert(node) {
+            return;
+        }
+
+        for neighbour in graph.neighbors(node) {
+            dfs(visited, stack, graph, neighbour);
+        }
+
+        stack.push(node);
+    }
+
+    for node in graph.nodes() {
+        dfs(&mut visited, &mut stack, graph, node);
+    }
+
+    stack.reverse();
+    stack
+}
+
+fn remove_transitive_edges(graph: &mut DiGraph) {
+    let toposort = toposort(graph);
+
+    let mut reachable = HashSet::new();
+
+    for visiting in toposort {
+        let direct_heighbours: Vec<NodeId> = graph.neighbors(visiting).collect();
+        for n in direct_heighbours {
+            graph.remove_edge(visiting, n);
+
+            reachable.clear();
+            collect_reachable(&mut reachable, &graph, visiting, Direction::Outgoing);
+
+            // if we still can access a neighbour with a longer path, it's a transitive dependency.
+            if !reachable.contains(&n) {
+                // No longer path, so we're keeping that edge.
+                graph.add_edge(visiting, n);
+            }
+        }
     }
 }

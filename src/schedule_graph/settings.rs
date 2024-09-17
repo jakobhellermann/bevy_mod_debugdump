@@ -179,6 +179,7 @@ pub struct Settings {
     /// When set to `Some`, will only include systems matching the predicate, and their ancestor sets
     pub include_system: Option<SystemMapperFn<bool>>,
     pub collapse_single_system_sets: bool,
+    pub remove_transitive_edges: bool,
 
     pub ambiguity_enable: bool,
     pub ambiguity_enable_on_world: bool,
@@ -297,6 +298,7 @@ impl Default for Settings {
 
             include_system: None,
             collapse_single_system_sets: false,
+            remove_transitive_edges: true,
 
             ambiguity_enable: false,
             ambiguity_enable_on_world: false,
