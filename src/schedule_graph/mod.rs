@@ -12,31 +12,21 @@ use bevy_ecs::{
     system::System,
     world::World,
 };
-use petgraph::{prelude::DiGraphMap, Direction};
+use petgraph::{
+    prelude::DiGraphMap,
+    Direction::{self, Outgoing},
+};
 
-fn incoming_nodes(
+fn dfs_all_neighbours_directed(
     graph: &petgraph::prelude::GraphMap<NodeId, (), petgraph::Directed>,
     u: NodeId,
-) -> Vec<NodeId> {
-    let mut res = vec![];
-    res.push(u);
-
-    for neighbor in graph.neighbors_directed(u, Direction::Incoming) {
-        res.push(neighbor);
-        res.append(&mut incoming_nodes(graph, neighbor));
-    }
-
-    res
-}
-fn output_nodes(
-    graph: &petgraph::prelude::GraphMap<NodeId, (), petgraph::Directed>,
-    u: NodeId,
+    direction: Direction,
 ) -> Vec<NodeId> {
     let mut res = vec![];
 
-    for neighbor in graph.neighbors_directed(u, Direction::Outgoing) {
+    for neighbor in graph.neighbors_directed(u, direction) {
         res.push(neighbor);
-        res.append(&mut output_nodes(graph, neighbor));
+        res.append(&mut dfs_all_neighbours_directed(graph, neighbor, direction));
     }
 
     res
@@ -45,31 +35,32 @@ fn output_nodes(
 fn remove_transitive_edges(
     graph: &mut petgraph::prelude::GraphMap<NodeId, (), petgraph::Directed>,
 ) {
+    // Holds all root nodes
     let mut top_nodes = HashSet::new();
 
     for n in graph.nodes() {
-        let mut all_upper_nodes = vec![n];
+        let mut all_upstream_nodes = vec![n];
 
-        all_upper_nodes.append(&mut incoming_nodes(graph, n));
-        top_nodes.insert(all_upper_nodes.last().unwrap().clone());
+        all_upstream_nodes.append(&mut dfs_all_neighbours_directed(
+            graph,
+            n,
+            Direction::Incoming,
+        ));
+        // Save the node which is most upstream
+        top_nodes.insert(all_upstream_nodes.last().unwrap().clone());
     }
 
-    for node_up in top_nodes {
-        let upper = incoming_nodes(graph, node_up);
-        let down = output_nodes(graph, node_up);
-        for down_node in down {
-            if graph.remove_edge(node_up, down_node).is_some() {
-                let incoming_nodes_to_down = incoming_nodes(graph, down_node);
-                let mut cancel_removal = true;
-                for n in incoming_nodes_to_down {
-                    if upper.contains(&n) {
-                        cancel_removal = false;
-                        break;
-                    }
-                }
-                if cancel_removal {
-                    graph.add_edge(node_up, down_node, ());
-                }
+    let toposort = petgraph::algo::toposort(&*graph, None).unwrap();
+
+    for visiting in toposort {
+        let direct_heighbours: Vec<NodeId> = graph.neighbors_directed(visiting, Outgoing).collect();
+        for n in direct_heighbours {
+            graph.remove_edge(visiting, n);
+            // if we still can access a neighbour with a longer path, it's a transitive dependency.
+            let descendants = dfs_all_neighbours_directed(&graph, visiting, Direction::Outgoing);
+            if !descendants.contains(&n) {
+                // No longer path, so we're keeping that edge.
+                graph.add_edge(visiting, n, ());
             }
         }
     }
