@@ -12,6 +12,8 @@ pub struct Context {
 impl Context {
     #[wasm_bindgen(constructor)]
     pub fn new() -> Self {
+        console_error_panic_hook::set_once();
+
         let mut app = App::default();
 
         #[derive(States, PartialEq, Eq, Clone, Debug, Hash, Default)]

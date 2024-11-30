@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 bevy = "0.15"
 bevy_mod_debugdump = { git = "https://github.com/jakobhellermann/bevy_mod_debugdump" }
+console_error_panic_hook = "0.1.7"
 wasm-bindgen = "0.2"
 
 [lib]
