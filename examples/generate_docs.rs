@@ -1,8 +1,22 @@
 use std::{any::TypeId, path::PathBuf};
 
-use bevy::{prelude::*, render::RenderApp};
+use bevy::{
+    core_pipeline::core_3d::Transmissive3d,
+    pbr::{MeshInputUniform, MeshUniform},
+    prelude::*,
+    render::RenderApp,
+    sprite::Mesh2dUniform,
+};
 use bevy_ecs::schedule::ScheduleLabel;
 use bevy_mod_debugdump::schedule_graph::{settings::Style, Settings};
+use bevy_render::{
+    batching::{
+        gpu_preprocessing::{BatchedInstanceBuffers, IndirectParametersBuffer},
+        no_gpu_preprocessing::BatchedInstanceBuffer,
+    },
+    render_asset::RenderAssetBytesPerFrame,
+    render_phase::ViewSortedRenderPhases,
+};
 
 #[derive(ScheduleLabel, Clone, Debug, PartialEq, Eq, Hash)]
 struct ScheduleDebugGroup;
@@ -74,7 +88,16 @@ fn main() -> Result<(), std::io::Error> {
                         )
                         .unwrap();
 
-                    let ignore_ambiguities = &[TypeId::of::<bevy_render::texture::TextureCache>()];
+                    let ignore_ambiguities = &[
+                        TypeId::of::<bevy_render::MainWorld>(),
+                        TypeId::of::<bevy_render::texture::TextureCache>(),
+                        TypeId::of::<IndirectParametersBuffer>(),
+                        TypeId::of::<BatchedInstanceBuffers<MeshUniform, MeshInputUniform>>(),
+                        TypeId::of::<BatchedInstanceBuffer<MeshUniform>>(),
+                        TypeId::of::<BatchedInstanceBuffer<Mesh2dUniform>>(),
+                        TypeId::of::<RenderAssetBytesPerFrame>(),
+                        TypeId::of::<ViewSortedRenderPhases<Transmissive3d>>(),
+                    ];
                     let settings_light = Settings {
                         style: style_light.clone(),
                         ..Default::default()
