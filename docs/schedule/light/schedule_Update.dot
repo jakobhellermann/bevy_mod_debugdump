@@ -8,4 +8,7 @@ digraph "" {
 	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled"];
 	"node_System(0)" ["label"="close_when_requested", "tooltip"="bevy_window::system::close_when_requested"]
+	"node_System(1)" ["label"="exit_on_flag", "tooltip"="bevy_app::terminal_ctrl_c_handler::TerminalCtrlCHandlerPlugin::exit_on_flag"]
+	"node_System(2)" ["label"="trigger_screenshots", "tooltip"="bevy_render::view::window::screenshot::trigger_screenshots"]
+	"node_System(3)" ["label"="check_msaa", "tooltip"="bevy_core_pipeline::oit::check_msaa"]
 }

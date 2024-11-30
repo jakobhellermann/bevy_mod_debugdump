@@ -15,86 +15,8 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(1)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
-		"node_System(0)" ["label"="event_update_system<AppExit>", "tooltip"="bevy_ecs::event::event_update_system<bevy_app::app::AppExit>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(4)" ["label"="event_update_system<HierarchyEvent>", "tooltip"="bevy_ecs::event::event_update_system<bevy_hierarchy::events::HierarchyEvent>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(5)" ["label"="event_update_system<KeyboardInput>", "tooltip"="bevy_ecs::event::event_update_system<bevy_input::keyboard::KeyboardInput>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(6)" ["label"="event_update_system<MouseButtonInput>", "tooltip"="bevy_ecs::event::event_update_system<bevy_input::mouse::MouseButtonInput>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(7)" ["label"="event_update_system<MouseMotion>", "tooltip"="bevy_ecs::event::event_update_system<bevy_input::mouse::MouseMotion>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(8)" ["label"="event_update_system<MouseWheel>", "tooltip"="bevy_ecs::event::event_update_system<bevy_input::mouse::MouseWheel>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(9)" ["label"="event_update_system<TouchpadMagnify>", "tooltip"="bevy_ecs::event::event_update_system<bevy_input::touchpad::TouchpadMagnify>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(10)" ["label"="event_update_system<TouchpadRotate>", "tooltip"="bevy_ecs::event::event_update_system<bevy_input::touchpad::TouchpadRotate>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(11)" ["label"="event_update_system<GamepadConnectionEvent>", "tooltip"="bevy_ecs::event::event_update_system<bevy_input::gamepad::GamepadConnectionEvent>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(12)" ["label"="event_update_system<GamepadButtonChangedEvent>", "tooltip"="bevy_ecs::event::event_update_system<bevy_input::gamepad::GamepadButtonChangedEvent>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(13)" ["label"="event_update_system<GamepadButtonInput>", "tooltip"="bevy_ecs::event::event_update_system<bevy_input::gamepad::GamepadButtonInput>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(14)" ["label"="event_update_system<GamepadAxisChangedEvent>", "tooltip"="bevy_ecs::event::event_update_system<bevy_input::gamepad::GamepadAxisChangedEvent>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(15)" ["label"="event_update_system<GamepadEvent>", "tooltip"="bevy_ecs::event::event_update_system<bevy_input::gamepad::GamepadEvent>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(16)" ["label"="event_update_system<GamepadRumbleRequest>", "tooltip"="bevy_ecs::event::event_update_system<bevy_input::gamepad::GamepadRumbleRequest>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(17)" ["label"="event_update_system<TouchInput>", "tooltip"="bevy_ecs::event::event_update_system<bevy_input::touch::TouchInput>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(18)" ["label"="event_update_system<WindowResized>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::WindowResized>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(19)" ["label"="event_update_system<WindowCreated>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::WindowCreated>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(20)" ["label"="event_update_system<WindowClosed>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::WindowClosed>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(21)" ["label"="event_update_system<WindowCloseRequested>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::WindowCloseRequested>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(22)" ["label"="event_update_system<WindowDestroyed>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::WindowDestroyed>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(23)" ["label"="event_update_system<RequestRedraw>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::RequestRedraw>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(24)" ["label"="event_update_system<CursorMoved>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::CursorMoved>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(25)" ["label"="event_update_system<CursorEntered>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::CursorEntered>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(26)" ["label"="event_update_system<CursorLeft>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::CursorLeft>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(27)" ["label"="event_update_system<ReceivedCharacter>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::ReceivedCharacter>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(28)" ["label"="event_update_system<Ime>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::Ime>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(29)" ["label"="event_update_system<WindowFocused>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::WindowFocused>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(30)" ["label"="event_update_system<WindowOccluded>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::WindowOccluded>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(31)" ["label"="event_update_system<WindowScaleFactorChanged>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::WindowScaleFactorChanged>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(32)" ["label"="event_update_system<WindowBackendScaleFactorChanged>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::WindowBackendScaleFactorChanged>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(33)" ["label"="event_update_system<FileDragAndDrop>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::FileDragAndDrop>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(34)" ["label"="event_update_system<WindowMoved>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::WindowMoved>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(35)" ["label"="event_update_system<WindowThemeChanged>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::WindowThemeChanged>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(36)" ["label"="event_update_system<ApplicationLifetime>", "tooltip"="bevy_ecs::event::event_update_system<bevy_window::event::ApplicationLifetime>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(37)" ["label"="event_update_system<AssetEvent<LoadedFolder>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_asset::folder::LoadedFolder>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(38)" ["label"="event_update_system<AssetLoadFailedEvent<LoadedFolder>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_asset::folder::LoadedFolder>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(39)" ["label"="event_update_system<AssetEvent<LoadedUntypedAsset>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_asset::assets::LoadedUntypedAsset>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(40)" ["label"="event_update_system<AssetLoadFailedEvent<LoadedUntypedAsset>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_asset::assets::LoadedUntypedAsset>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(41)" ["label"="event_update_system<AssetEvent<()>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<()>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(42)" ["label"="event_update_system<AssetLoadFailedEvent<()>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<()>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(43)" ["label"="event_update_system<UntypedAssetLoadFailedEvent>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::UntypedAssetLoadFailedEvent>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(44)" ["label"="event_update_system<AssetEvent<DynamicScene>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_scene::dynamic_scene::DynamicScene>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(45)" ["label"="event_update_system<AssetLoadFailedEvent<DynamicScene>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_scene::dynamic_scene::DynamicScene>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(46)" ["label"="event_update_system<AssetEvent<Scene>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_scene::scene::Scene>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(47)" ["label"="event_update_system<AssetLoadFailedEvent<Scene>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_scene::scene::Scene>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(48)" ["label"="event_update_system<SceneInstanceReady>", "tooltip"="bevy_ecs::event::event_update_system<bevy_scene::scene_spawner::SceneInstanceReady>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(49)" ["label"="event_update_system<ActionRequest>", "tooltip"="bevy_ecs::event::event_update_system<bevy_a11y::ActionRequest>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(50)" ["label"="event_update_system<AssetEvent<Shader>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_render::render_resource::shader::Shader>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(51)" ["label"="event_update_system<AssetLoadFailedEvent<Shader>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_render::render_resource::shader::Shader>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(52)" ["label"="event_update_system<AssetEvent<Mesh>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_render::mesh::mesh::Mesh>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(53)" ["label"="event_update_system<AssetLoadFailedEvent<Mesh>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_render::mesh::mesh::Mesh>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(54)" ["label"="event_update_system<AssetEvent<SkinnedMeshInverseBindposes>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_render::mesh::mesh::skinning::SkinnedMeshInverseBindposes>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(55)" ["label"="event_update_system<AssetLoadFailedEvent<SkinnedMeshInverseBindposes>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_render::mesh::mesh::skinning::SkinnedMeshInverseBindposes>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(56)" ["label"="event_update_system<AssetEvent<Image>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_render::texture::image::Image>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(57)" ["label"="event_update_system<AssetLoadFailedEvent<Image>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_render::texture::image::Image>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(58)" ["label"="event_update_system<AssetEvent<TextureAtlasLayout>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_sprite::texture_atlas::TextureAtlasLayout>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(59)" ["label"="event_update_system<AssetLoadFailedEvent<TextureAtlasLayout>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_sprite::texture_atlas::TextureAtlasLayout>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(60)" ["label"="event_update_system<AssetEvent<ColorMaterial>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_sprite::mesh2d::color_material::ColorMaterial>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(61)" ["label"="event_update_system<AssetLoadFailedEvent<ColorMaterial>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_sprite::mesh2d::color_material::ColorMaterial>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(62)" ["label"="event_update_system<AssetEvent<Font>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_text::font::Font>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(63)" ["label"="event_update_system<AssetLoadFailedEvent<Font>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_text::font::Font>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(64)" ["label"="event_update_system<AssetEvent<StandardMaterial>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_pbr::pbr_material::StandardMaterial>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(65)" ["label"="event_update_system<AssetLoadFailedEvent<StandardMaterial>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_pbr::pbr_material::StandardMaterial>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(66)" ["label"="event_update_system<AssetEvent<Gltf>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_gltf::Gltf>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(67)" ["label"="event_update_system<AssetLoadFailedEvent<Gltf>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_gltf::Gltf>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(68)" ["label"="event_update_system<AssetEvent<GltfNode>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_gltf::GltfNode>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(69)" ["label"="event_update_system<AssetLoadFailedEvent<GltfNode>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_gltf::GltfNode>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(70)" ["label"="event_update_system<AssetEvent<GltfPrimitive>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_gltf::GltfPrimitive>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(71)" ["label"="event_update_system<AssetLoadFailedEvent<GltfPrimitive>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_gltf::GltfPrimitive>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(72)" ["label"="event_update_system<AssetEvent<GltfMesh>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_gltf::GltfMesh>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(73)" ["label"="event_update_system<AssetLoadFailedEvent<GltfMesh>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_gltf::GltfMesh>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(74)" ["label"="event_update_system<AssetEvent<AudioSource>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_audio::audio_source::AudioSource>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(75)" ["label"="event_update_system<AssetLoadFailedEvent<AudioSource>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_audio::audio_source::AudioSource>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(76)" ["label"="event_update_system<AssetEvent<Pitch>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_audio::pitch::Pitch>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(77)" ["label"="event_update_system<AssetLoadFailedEvent<Pitch>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_audio::pitch::Pitch>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(78)" ["label"="event_update_system<AssetEvent<AnimationClip>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_animation::AnimationClip>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(79)" ["label"="event_update_system<AssetLoadFailedEvent<AnimationClip>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_animation::AnimationClip>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(80)" ["label"="event_update_system<AssetEvent<LineGizmo>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetEvent<bevy_gizmos::LineGizmo>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
-		"node_System(81)" ["label"="event_update_system<AssetLoadFailedEvent<LineGizmo>>", "tooltip"="bevy_ecs::event::event_update_system<bevy_asset::event::AssetLoadFailedEvent<bevy_gizmos::LineGizmo>>", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
+		"set_marker_node_Set(1)" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(0)" ["label"="event_update_system", "tooltip"="bevy_ecs::event::update::event_update_system", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
 	}
 	
 	subgraph "clusternode_Set(3)" {
@@ -105,12 +27,41 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(3)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"set_marker_node_Set(3)" ["style"="invis", "label"="", "shape"="point"]
 		"node_System(1)" ["label"="time_system", "tooltip"="bevy_time::time_system", "fillcolor"="#c7ddbd", "fontname"="Helvetica", "fontcolor"="#162111", "color"="#8dba79", "penwidth"="1"]
-		"node_System(2)" ["label"="virtual_time_system", "tooltip"="bevy_time::virt::virtual_time_system", "fillcolor"="#c7ddbd", "fontname"="Helvetica", "fontcolor"="#162111", "color"="#8dba79", "penwidth"="1"]
 	}
 	
-	"node_System(3)" ["label"="reset_event_update_signal_system", "tooltip"="bevy_ecs::event::reset_event_update_signal_system"]
-	"node_System(1)" -> "node_System(2)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(FunctionSystem<fn(ResMut<Time<Real>>, Res<TimeUpdateStrategy>, Option<Res<TimeReceiver>>, Local<bool>), time_system>()) → virtual_time_system", "color"="#eede00"]
-	"set_marker_node_Set(1)" -> "node_System(3)" ["lhead"="", "ltail"="clusternode_Set(1)", "tooltip"="EventUpdates → reset_event_update_signal_system", "color"="#881877"]
+	subgraph "clusternode_Set(7)" {
+		"style"="rounded,filled";
+		"label"="Input";
+		"tooltip"="Input";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(7)" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(3)" ["label"="mouse_pick_events", "tooltip"="bevy_picking::input::mouse_pick_events", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(4)" ["label"="touch_pick_events", "tooltip"="bevy_picking::input::touch_pick_events", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+	}
+	
+	subgraph "clusternode_Set(9)" {
+		"style"="rounded,filled";
+		"label"="PostInput";
+		"tooltip"="PostInput";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(9)" ["style"="invis", "label"="", "shape"="point"]
+	}
+	
+	"node_System(2)" ["label"="clear_screenshots", "tooltip"="bevy_render::view::window::screenshot::clear_screenshots"]
+	"node_System(0)" -> "node_System(2)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::exclusive_function_system::ExclusiveFunctionSystem<fn(bevy_ecs::system::system_param::Local<bevy_ecs::component::Tick>), bevy_ecs::event::update::event_update_system>()) → clear_screenshots", "color"="#eede00"]
+	"node_System(2)" -> "UNKNOWN SystemTypeSet(fn bevy_ecs::system::exclusive_function_system::ExclusiveFunctionSystem<fn(), bevy_ecs::schedule::executor::apply_deferred>())" ["lhead"="", "ltail"="", "tooltip"="clear_screenshots → SystemTypeSet(fn bevy_ecs::system::exclusive_function_system::ExclusiveFunctionSystem<fn(), bevy_ecs::schedule::executor::apply_deferred>())", "color"="#881877"]
+	"node_System(3)" -> "node_System(4)" ["lhead"="", "ltail"="", "tooltip"="mouse_pick_events → touch_pick_events", "color"="#00b0cc"]
+	"set_marker_node_Set(3)" -> "set_marker_node_Set(7)" ["lhead"="clusternode_Set(7)", "ltail"="clusternode_Set(3)", "tooltip"="TimeSystem → Input", "color"="#aa3a55"]
+	"set_marker_node_Set(1)" -> "set_marker_node_Set(7)" ["lhead"="clusternode_Set(7)", "ltail"="clusternode_Set(1)", "tooltip"="EventUpdates → Input", "color"="#44d488"]
+	"set_marker_node_Set(3)" -> "set_marker_node_Set(9)" ["lhead"="clusternode_Set(9)", "ltail"="clusternode_Set(3)", "tooltip"="TimeSystem → PostInput", "color"="#0090cc"]
+	"set_marker_node_Set(1)" -> "set_marker_node_Set(9)" ["lhead"="clusternode_Set(9)", "ltail"="clusternode_Set(1)", "tooltip"="EventUpdates → PostInput", "color"="#ee9e44"]
+	"set_marker_node_Set(7)" -> "set_marker_node_Set(9)" ["lhead"="clusternode_Set(9)", "ltail"="clusternode_Set(7)", "tooltip"="Input → PostInput", "color"="#663699"]
 }
