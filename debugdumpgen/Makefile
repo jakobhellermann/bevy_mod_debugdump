@@ -6,7 +6,7 @@ wasmbindgen: out/debugdumpgen.wasm
 	@du -h out/debugdumpgen_bg.wasm
 
 out/debugdumpgen.wasm: src/lib.rs Cargo.toml
-	cargo build -Zunstable-options --out-dir out --release
+	cargo build -Zunstable-options --artifact-dir out --release
 
 .PHONY: clean
 clean:

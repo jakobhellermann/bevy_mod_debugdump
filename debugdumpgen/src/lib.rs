@@ -24,8 +24,6 @@ impl Context {
             #[default]
             A,
         }
-        app.init_state::<ExampleState1>();
-        app.init_state::<ExampleState2>();
 
         app.add_plugins(DefaultPlugins.set(WindowPlugin {
             primary_window: Some(Window {
@@ -34,12 +32,14 @@ impl Context {
             }),
             ..default()
         }));
+        app.init_state::<ExampleState1>();
+        app.init_state::<ExampleState2>();
 
         Context { app }
     }
 
     pub fn main_schedules(&self) -> Vec<JsValue> {
-        let main_schedule_order = self.app.world.resource::<MainScheduleOrder>();
+        let main_schedule_order = self.app.world().resource::<MainScheduleOrder>();
         main_schedule_order
             .labels
             .iter()
@@ -47,8 +47,8 @@ impl Context {
             .collect()
     }
     pub fn non_main_schedules(&self) -> Vec<JsValue> {
-        let main_schedule_order = self.app.world.resource::<MainScheduleOrder>();
-        let schedules = self.app.world.resource::<Schedules>();
+        let main_schedule_order = self.app.world().resource::<MainScheduleOrder>();
+        let schedules = self.app.world().resource::<Schedules>();
 
         schedules
             .iter()
@@ -67,7 +67,7 @@ impl Context {
             .collect()
     }
     pub fn render_schedules(&self) -> Vec<JsValue> {
-        let schedules = self.app.sub_app(RenderApp).world.resource::<Schedules>();
+        let schedules = self.app.sub_app(RenderApp).world().resource::<Schedules>();
 
         schedules
             .iter()
@@ -83,7 +83,7 @@ impl Context {
         excludes: String,
     ) -> Result<String, String> {
         choose_app(&mut self.app, render_app, |app| {
-            app.world
+            app.world_mut()
                 .resource_scope::<Schedules, _>(|world, mut schedules| {
                     let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
 
@@ -108,7 +108,10 @@ impl Context {
                     let includes = split(&includes);
                     let excludes = split(&excludes);
 
-                    let ignore_ambiguities = &[TypeId::of::<bevy::render::texture::TextureCache>()];
+                    let ignore_ambiguities = &[
+                        TypeId::of::<bevy::render::texture::TextureCache>(),
+                        TypeId::of::<bevy::render::MainWorld>(),
+                    ];
                     let settings = bevy_mod_debugdump::schedule_graph::Settings {
                         include_system: Some(Box::new(move |system| {
                             let name = system.name();
@@ -138,31 +141,32 @@ impl Context {
     }
 }
 
-fn choose_app<T>(main_app: &mut App, render_app: bool, f: impl Fn(&mut App) -> T) -> T {
+fn choose_app<T>(main_app: &mut App, render_app: bool, f: impl Fn(&mut SubApp) -> T) -> T {
     if render_app {
         with_main_world_in_render_app(main_app, f)
     } else {
-        f(main_app)
+        f(main_app.main_mut())
     }
 }
 
-fn with_main_world_in_render_app<T>(app: &mut App, f: impl Fn(&mut App) -> T) -> T {
+fn with_main_world_in_render_app<T>(app: &mut App, f: impl Fn(&mut SubApp) -> T) -> T {
     // temporarily add the app world to the render world as a resource
-    let inserted_world = std::mem::take(&mut app.world);
+
+    let inserted_world = std::mem::take(app.world_mut());
     let mut render_main_world = bevy::render::MainWorld::default();
     *render_main_world = inserted_world;
 
     let render_app = app.sub_app_mut(RenderApp);
-    render_app.world.insert_resource(render_main_world);
+    render_app.world_mut().insert_resource(render_main_world);
 
     let ret = f(render_app);
 
     // move the app world back, as if nothing happened.
     let mut inserted_world = render_app
-        .world
+        .world_mut()
         .remove_resource::<bevy::render::MainWorld>()
         .unwrap();
-    app.world = std::mem::take(&mut *inserted_world);
+    std::mem::swap(&mut *inserted_world, app.world_mut());
 
     ret
 }
