@@ -14,6 +14,20 @@
 <img alt="First" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_First.dot.svg">
 </picture>
 
+## FixedFirst
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/schedule_FixedFirst.dot.svg">
+<img alt="FixedFirst" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_FixedFirst.dot.svg">
+</picture>
+
+## FixedLast
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/schedule_FixedLast.dot.svg">
+<img alt="FixedLast" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_FixedLast.dot.svg">
+</picture>
+
 ## FixedMain
 
 <picture>
@@ -96,6 +110,13 @@
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/schedule_Startup.dot.svg">
 <img alt="Startup" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_Startup.dot.svg">
+</picture>
+
+## StateTransition
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/schedule_StateTransition.dot.svg">
+<img alt="StateTransition" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/schedule_StateTransition.dot.svg">
 </picture>
 
 ## Update

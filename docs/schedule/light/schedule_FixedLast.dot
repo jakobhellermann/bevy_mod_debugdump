@@ -1,0 +1,13 @@
+digraph "" {
+	"compound"="true";
+	"splines"="spline";
+	"rankdir"="LR";
+	"bgcolor"="white";
+	"fontname"="Helvetica";
+	"nodesep"="0.15";
+	edge ["penwidth"="2"];
+	node ["shape"="box", "style"="filled"];
+	"node_System(0)" ["label"="collect_requested_gizmos<DefaultGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::collect_requested_gizmos<bevy_gizmos::config::DefaultGizmoConfigGroup, bevy_time::fixed::Fixed>"]
+	"node_System(1)" ["label"="collect_requested_gizmos<AabbGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::collect_requested_gizmos<bevy_gizmos::aabb::AabbGizmoConfigGroup, bevy_time::fixed::Fixed>"]
+	"node_System(2)" ["label"="collect_requested_gizmos<LightGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::collect_requested_gizmos<bevy_gizmos::light::LightGizmoConfigGroup, bevy_time::fixed::Fixed>"]
+}

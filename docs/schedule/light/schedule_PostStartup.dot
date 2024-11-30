@@ -15,7 +15,7 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(1)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"set_marker_node_Set(1)" ["style"="invis", "label"="", "shape"="point"]
 		subgraph "clusternode_Set(0)" {
 			"style"="rounded,filled";
 			"label"="PropagateTransformsSet";
@@ -24,7 +24,7 @@ digraph "" {
 			"fontcolor"="#000000";
 			"color"="#00000040";
 			"penwidth"="2";
-			"set_marker_node_Set(0)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+			"set_marker_node_Set(0)" ["style"="invis", "label"="", "shape"="point"]
 			"node_System(1)" ["label"="propagate_transforms", "tooltip"="bevy_transform::systems::propagate_transforms", "fillcolor"="#ffe7b9", "fontname"="Helvetica", "fontcolor"="#322100", "color"="#ffc453", "penwidth"="1"]
 		}
 		
@@ -39,7 +39,7 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(5)" ["style"="invis", "label"="", "height"="0", "shape"="point"]
+		"set_marker_node_Set(5)" ["style"="invis", "label"="", "shape"="point"]
 		"node_System(2)" ["label"="camera_system<Projection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::Projection>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
 		"node_System(3)" ["label"="camera_system<OrthographicProjection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::OrthographicProjection>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
 		"node_System(4)" ["label"="camera_system<PerspectiveProjection>", "tooltip"="bevy_render::camera::camera::camera_system<bevy_render::camera::projection::PerspectiveProjection>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]

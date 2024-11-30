@@ -1,0 +1,57 @@
+digraph "" {
+	"compound"="true";
+	"splines"="spline";
+	"rankdir"="LR";
+	"bgcolor"="white";
+	"fontname"="Helvetica";
+	"nodesep"="0.15";
+	edge ["penwidth"="2"];
+	node ["shape"="box", "style"="filled"];
+	subgraph "clusternode_Set(0)" {
+		"style"="rounded,filled";
+		"label"="DependentTransitions";
+		"tooltip"="DependentTransitions";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(0)" ["style"="invis", "label"="", "shape"="point"]
+	}
+	
+	subgraph "clusternode_Set(1)" {
+		"style"="rounded,filled";
+		"label"="ExitSchedules";
+		"tooltip"="ExitSchedules";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(1)" ["style"="invis", "label"="", "shape"="point"]
+	}
+	
+	subgraph "clusternode_Set(2)" {
+		"style"="rounded,filled";
+		"label"="TransitionSchedules";
+		"tooltip"="TransitionSchedules";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(2)" ["style"="invis", "label"="", "shape"="point"]
+	}
+	
+	subgraph "clusternode_Set(3)" {
+		"style"="rounded,filled";
+		"label"="EnterSchedules";
+		"tooltip"="EnterSchedules";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(3)" ["style"="invis", "label"="", "shape"="point"]
+	}
+	
+	"set_marker_node_Set(0)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="clusternode_Set(0)", "tooltip"="DependentTransitions → ExitSchedules", "color"="#eede00"]
+	"set_marker_node_Set(1)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(1)", "tooltip"="ExitSchedules → TransitionSchedules", "color"="#881877"]
+	"set_marker_node_Set(2)" -> "set_marker_node_Set(3)" ["lhead"="clusternode_Set(3)", "ltail"="clusternode_Set(2)", "tooltip"="TransitionSchedules → EnterSchedules", "color"="#00b0cc"]
+}
