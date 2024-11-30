@@ -72,15 +72,15 @@ fn main() {
 ### Extract schedule
 
 <picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main/docs/schedule/dark/render_schedule_ExtractSchedule.dot.svg">
-<img alt="ExtractSchedule" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main/docs/schedule/light/render_schedule_ExtractSchedule.dot.svg" height=512>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/render_schedule_ExtractSchedule.dot.svg">
+<img alt="ExtractSchedule" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/render_schedule_ExtractSchedule.dot.svg" height=512>
 </picture>
 
 ### Main render schedule
 
 <picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main/docs/schedule/dark/render_schedule_Render.dot.svg">
-<img alt="Main" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/bevy-main/docs/schedule/light/render_schedule_Render.dot.svg">
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/render_schedule_Render.dot.svg">
+<img alt="Main" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/render_schedule_Render.dot.svg">
 </picture>
 
 
