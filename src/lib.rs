@@ -6,6 +6,7 @@ use std::{fs::File, path::PathBuf};
 use bevy_app::App;
 use bevy_ecs::intern::Interned;
 use bevy_ecs::schedule::{ScheduleLabel, Schedules};
+use bevy_utils::tracing::{error, info};
 
 mod dot;
 
@@ -199,19 +200,19 @@ fn find_schedule<'a>(
 struct Args {
     command: ArgsCommand,
     exit: bool,
+    /// The path to write the graph dot to. If unset, write to stdout.
+    out_path: Option<PathBuf>,
 }
 
 /// A command to execute from the CLI.
 enum ArgsCommand {
     None,
     /// Dumps the render graph to the specified file path.
-    DumpRender(PathBuf),
+    DumpRender,
     /// Dumps the schedule graph.
     DumpSchedule {
         /// The schedule to dump.
         schedule: String,
-        /// The path to write the graph dot to.
-        path: PathBuf,
     },
 }
 
@@ -220,6 +221,7 @@ fn parse_args() -> Result<Args, lexopt::Error> {
 
     let mut command = ArgsCommand::None;
     let mut exit = true;
+    let mut out_path = None;
 
     let mut parser = lexopt::Parser::from_env();
     while let Some(arg) = parser.next()? {
@@ -231,22 +233,22 @@ fn parse_args() -> Result<Args, lexopt::Error> {
 
                 if value == "dump-schedule" {
                     let schedule = parser.value()?.parse()?;
-                    let path = parser.value()?.parse()?;
-                    command = ArgsCommand::DumpSchedule { schedule, path };
+                    command = ArgsCommand::DumpSchedule { schedule };
                 } else if value == "dump-render" {
-                    let path = parser.value()?.parse()?;
-                    command = ArgsCommand::DumpRender(path);
+                    command = ArgsCommand::DumpRender;
                 } else {
                     return Err(arg.unexpected());
                 }
             }
+            Short('o') | Long("output") => out_path = Some(parser.value()?.parse()?),
             Long("no-exit") => exit = false,
             Long("help") => {
-                println!(
-                    "Commands:\n\n\
-                    dump-schedule <schedule_name> <file>\n\
-                    dump-render <file>\n\n\
-                      --no-exit Do not exit after performing debugdump actions"
+                info!(
+                    "Usage:\n\
+                    dump-schedule <schedule_name> \n\
+                    dump-render \n\n\
+                      -o, --output  Write output to file instead of printing to stdout\n\
+                      --no-exit     Do not exit after performing debugdump actions"
                 );
                 std::process::exit(0);
             }
@@ -254,11 +256,31 @@ fn parse_args() -> Result<Args, lexopt::Error> {
         }
     }
 
-    Ok(Args { command, exit })
+    Ok(Args {
+        command,
+        exit,
+        out_path,
+    })
 }
 
-fn execute_cli(app: &mut App) -> Result<Args, Box<dyn std::error::Error>> {
+type Result<T, E = Box<dyn std::error::Error>> = std::result::Result<T, E>;
+
+fn execute_cli(app: &mut App) -> Result<Args> {
     let mut args = parse_args()?;
+
+    let write = |out: &str| -> Result<()> {
+        match &args.out_path {
+            None => {
+                println!("{}", out);
+                Ok(())
+            }
+            Some(path) => {
+                let mut out_file = File::create(path)?;
+                write!(out_file, "{}", out)?;
+                Ok(())
+            }
+        }
+    };
 
     match &args.command {
         ArgsCommand::None => {
@@ -266,19 +288,17 @@ fn execute_cli(app: &mut App) -> Result<Args, Box<dyn std::error::Error>> {
             args.exit = false;
             Ok(args)
         }
-        ArgsCommand::DumpRender(path) => {
+        ArgsCommand::DumpRender => {
             let settings = render_graph::Settings::default();
-            let mut out = File::create(path)?;
-            write!(out, "{}", render_graph_dot(app, &settings))?;
+            write(&render_graph_dot(app, &settings))?;
 
             Ok(args)
         }
-        ArgsCommand::DumpSchedule { schedule, path } => {
+        ArgsCommand::DumpSchedule { schedule } => {
             let schedule = find_schedule(&app, schedule)?;
 
             let settings = schedule_graph::Settings::default();
-            let mut out = File::create(path)?;
-            write!(out, "{}", schedule_graph_dot(app, schedule, &settings))?;
+            write(&schedule_graph_dot(app, schedule, &settings))?;
 
             Ok(args)
         }
@@ -292,7 +312,7 @@ impl bevy_app::Plugin for CommandLineArgs {
         let exit = match execute_cli(app) {
             Ok(args) => args.exit,
             Err(e) => {
-                eprintln!("{e:?}");
+                error!("{e:?}");
                 true
             }
         };
