@@ -9,11 +9,9 @@ use std::{any::TypeId, borrow::Cow, collections::VecDeque, fmt::Write, sync::ato
 
 use crate::dot::DotGraph;
 use bevy_ecs::{
-    schedule::{
-        graph::{DiGraph, Direction},
-        NodeId, Schedule, ScheduleGraph, SystemSet,
-    },
-    system::ScheduleSystem,
+    component::ComponentId,
+    schedule::{graph::Direction, NodeId, Schedule, ScheduleGraph, SystemSet},
+    system::System,
     world::World,
 };
 
@@ -221,7 +219,7 @@ impl ScheduleGraphContext<'_> {
             let name = self.system_name(system);
             dot.add_node(
                 &node_index_name(system_id),
-                &[("label", &name), ("tooltip", &system.name())],
+                &[("label", &name), ("tooltip", &self.system_tooltip(system))],
             );
         }
 
@@ -475,6 +473,77 @@ impl ScheduleGraphContext<'_> {
                 });
 
         &self.settings.style.color_edge[idx]
+    }
+
+    fn system_tooltip(&self, system: &dyn System<In = (), Out = ()>) -> String {
+        let mut tooltip = String::new();
+
+        let access = system.component_access();
+
+        fn list(
+            tooltip: &mut String,
+            world: &World,
+            name: &str,
+            components: impl Iterator<Item = ComponentId>,
+        ) {
+            let truncate_in_place = |tooltip: &mut String, end: &str| {
+                tooltip.truncate(tooltip.trim_end_matches(end).len())
+            };
+
+            let mut components = components.peekable();
+            if components.peek().is_none() {
+                return;
+            }
+            tooltip.push_str(name);
+            tooltip.push_str(" [");
+            for component_id in components {
+                let name_of_component = disqualified::ShortName(
+                    world
+                        .components()
+                        .get_info(component_id)
+                        .map_or_else(|| "<missing>".into(), |info| info.name()),
+                )
+                .to_string();
+
+                tooltip.push_str(&name_of_component);
+                tooltip.push_str(", ");
+            }
+            truncate_in_place(tooltip, ", ");
+            tooltip.push_str("]\\n");
+        }
+
+        if access.has_write_all_resources() {
+            tooltip.push_str("ResMut[all] ");
+        } else if access.has_read_all_resources() {
+            tooltip.push_str("Res[all] ");
+        }
+        if access.has_write_all_components() {
+            tooltip.push_str("ComponentsMut[all] ");
+        } else if access.has_read_all_components() {
+            tooltip.push_str("Components[all] ");
+        }
+
+        list(&mut tooltip, self.world, "Res", access.resource_reads());
+        list(&mut tooltip, self.world, "ResMut", access.resource_writes());
+
+        let (component_access, component_acccess_inverted) = access.component_reads_and_writes();
+
+        list(
+            &mut tooltip,
+            self.world,
+            if component_acccess_inverted {
+                "NotComponents"
+            } else {
+                "Components"
+            },
+            component_access,
+        );
+
+        if tooltip.is_empty() {
+            disqualified::ShortName(&system.name()).to_string()
+        } else {
+            tooltip
+        }
     }
 }
 

@@ -4,6 +4,7 @@ use std::fmt::Debug;
 
 use bevy_app::App;
 use bevy_ecs::schedule::{ScheduleLabel, Schedules};
+use bevy_ecs::world::World;
 
 mod cli;
 mod dot;
@@ -16,35 +17,35 @@ pub mod schedule_graph;
 struct ScheduleDebugGroup;
 
 /// Formats the schedule into a dot graph.
+/// Sub
 #[track_caller]
 pub fn schedule_graph_dot(
-    app: &mut App,
+    world: &mut World,
     label: impl ScheduleLabel,
     settings: &schedule_graph::Settings,
 ) -> String {
-    app.world_mut()
-        .resource_scope::<Schedules, _>(|world, mut schedules| {
-            let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
+    world.resource_scope::<Schedules, _>(|world, mut schedules| {
+        let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
 
-            let label_name = format!("{:?}", label);
-            let schedule = schedules
-                .get_mut(label)
-                .ok_or_else(|| format!("schedule {label_name} doesn't exist"))
-                .unwrap();
-            schedule.graph_mut().initialize(world);
-            let _ = schedule.graph_mut().build_schedule(
-                world,
-                ScheduleDebugGroup.intern(),
-                &ignored_ambiguities,
-            );
+        let label_name = format!("{:?}", label);
+        let schedule = schedules
+            .get_mut(label)
+            .ok_or_else(|| format!("schedule {label_name} doesn't exist"))
+            .unwrap();
+        schedule.graph_mut().initialize(world);
+        let _ = schedule.graph_mut().build_schedule(
+            world.components(),
+            ScheduleDebugGroup.intern(),
+            &ignored_ambiguities,
+        );
 
-            schedule_graph::schedule_graph_dot(schedule, world, settings)
-        })
+        schedule_graph::schedule_graph_dot(schedule, world, settings)
+    })
 }
 
 /// Prints the schedule with default settings.
-pub fn print_schedule_graph(app: &mut App, schedule_label: impl ScheduleLabel) {
-    let dot = schedule_graph_dot(app, schedule_label, &schedule_graph::Settings::default());
+pub fn print_schedule_graph(world: &mut World, schedule_label: impl ScheduleLabel) {
+    let dot = schedule_graph_dot(world, schedule_label, &schedule_graph::Settings::default());
     println!("{dot}");
 }
 

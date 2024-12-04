@@ -175,7 +175,7 @@ fn execute_cli(app: &mut App) -> Result<Args> {
             let schedule = find_schedule(app, schedule)?;
 
             let settings = schedule_graph::Settings::default();
-            write(&schedule_graph_dot(app, schedule, &settings))?;
+            write(&schedule_graph_dot(app.world_mut(), schedule, &settings))?;
 
             Ok(args)
         }
