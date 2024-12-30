@@ -12,13 +12,13 @@ exclude = ["docs/*"]
 
 [features]
 default = ["render_graph"]
-render_graph = []
+render_graph = ["dep:bevy_render"]
 
 [dependencies]
 bevy_ecs = { version = "0.15.0" }
 bevy_app = { version = "0.15.0" }
 bevy_utils = { version = "0.15.0" }
-bevy_render = { version = "0.15.0" }
+bevy_render = { version = "0.15.0", optional = true }
 bevy_color = { version = "0.15.0" }
 pretty-type-name = "1.0"
 petgraph = "0.6"
@@ -27,6 +27,10 @@ lexopt = "0.3.0"
 
 [dev-dependencies]
 bevy = { version = "0.15.0" }
+
+[[example]]
+name = "generate_docs"
+required-features = ["render_graph"]
 
 [[example]]
 name = "print_render_graph"
