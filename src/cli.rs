@@ -5,7 +5,9 @@ use bevy_ecs::{intern::Interned, schedule::ScheduleLabel, schedule::Schedules};
 use bevy_utils::tracing::{error, info};
 use std::io::Write;
 
-use crate::{render_graph, render_graph_dot, schedule_graph, schedule_graph_dot};
+#[cfg(feature = "render_graph")]
+use crate::{render_graph, render_graph_dot};
+use crate::{schedule_graph, schedule_graph_dot};
 
 /// Check the command line for arguments relevant to this crate.
 ///
@@ -157,12 +159,18 @@ fn execute_cli(app: &mut App) -> Result<Args> {
             args.exit = false;
             Ok(args)
         }
+        #[cfg(feature = "render_graph")]
         ArgsCommand::DumpRender => {
             let settings = render_graph::Settings::default();
             write(&render_graph_dot(app, &settings))?;
 
             Ok(args)
         }
+        #[cfg(not(feature = "render_graph"))]
+        ArgsCommand::DumpRender => Err(
+            "cannot dump renderer, consider enabling the feature `bevy_mod_debugdump/render_graph"
+                .into(),
+        ),
         ArgsCommand::DumpSchedule { schedule } => {
             let schedule = find_schedule(&app, schedule)?;
 
