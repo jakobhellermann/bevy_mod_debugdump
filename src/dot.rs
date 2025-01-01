@@ -13,12 +13,22 @@ fn escape_quote(input: &str) -> Cow<'_, str> {
     }
 }
 
+#[test]
+fn escape_correctly() {
+    assert_eq!(escape_id("a"), "\"a\"");
+    assert_eq!(escape_id("contains \" quotes"), "\"contains \\\" quotes\"");
+    assert_eq!(escape_id("RAW:<table>x</table>"), r#"<table>x</table>"#);
+
+    let complex = "<Plugin>;build::{{closure}} → solve_constraint<FixedJoint, 2>";
+    assert_eq!(escape_id(complex), format!("\"{complex}\""));
+}
+
 fn escape_id(input: &str) -> Cow<'_, str> {
-    if input.starts_with('<') && input.ends_with('>') {
-        input.into()
-    } else {
-        format!("\"{}\"", escape_quote(input)).into()
+    if let Some(raw) = input.strip_prefix("RAW:") {
+        return raw.into();
     }
+
+    format!("\"{}\"", escape_quote(input)).into()
 }
 
 fn format_attributes(attrs: &[(&str, &str)]) -> String {
