@@ -129,7 +129,7 @@ fn build_dot_graph(
             .collect::<String>();
 
         let label = format!(
-            "<<TABLE STYLE=\"rounded\"><TR><TD PORT=\"title\" BORDER=\"0\" COLSPAN=\"2\">{}<BR/>{}</TD></TR>{}</TABLE>>",
+            "RAW:<<TABLE STYLE=\"rounded\"><TR><TD PORT=\"title\" BORDER=\"0\" COLSPAN=\"2\">{}<BR/>{}</TD></TR>{}</TABLE>>",
             html_escape(name),
             font_tag(&type_name, &settings.style.color_typename, 10),
             slots,

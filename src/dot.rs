@@ -24,21 +24,11 @@ fn escape_correctly() {
 }
 
 fn escape_id(input: &str) -> Cow<'_, str> {
-    // this is kind of horrible but right now the API accepts `add_edge(a, b, [("quoteme", "tobequoted"), ("raw", "<table>...</table>")])
-    // so this works™ for now™
-    let tag_start = input
-        .find('<')
-        .and_then(|from| Some(&input[from + 1..input.find('>')?]));
-    let tag_end = input
-        .rfind("</")
-        .and_then(|from| Some(&input[from + 2..input.rfind('>')?]));
-    let is_html_heuristic = tag_start.is_some() && tag_start == tag_end;
-
-    if is_html_heuristic {
-        input.into()
-    } else {
-        format!("\"{}\"", escape_quote(input)).into()
+    if let Some(raw) = input.strip_prefix("RAW:") {
+        return raw.into();
     }
+
+    format!("\"{}\"", escape_quote(input)).into()
 }
 
 fn format_attributes(attrs: &[(&str, &str)]) -> String {
