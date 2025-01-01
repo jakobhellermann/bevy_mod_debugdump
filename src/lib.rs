@@ -1,3 +1,5 @@
+#![allow(clippy::needless_doctest_main)]
+#![allow(clippy::type_complexity)]
 use std::fmt::Debug;
 
 use bevy_app::App;
@@ -68,7 +70,7 @@ pub fn render_graph_dot(app: &App, settings: &render_graph::Settings) -> String 
         .unwrap_or_else(|| panic!("no render app"));
     let render_graph = render_app.world().get_resource::<RenderGraph>().unwrap();
 
-    render_graph::render_graph_dot(render_graph, &settings)
+    render_graph::render_graph_dot(render_graph, settings)
 }
 
 /// Prints the current render graph using

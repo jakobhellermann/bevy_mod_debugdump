@@ -172,7 +172,7 @@ fn execute_cli(app: &mut App) -> Result<Args> {
                 .into(),
         ),
         ArgsCommand::DumpSchedule { schedule } => {
-            let schedule = find_schedule(&app, schedule)?;
+            let schedule = find_schedule(app, schedule)?;
 
             let settings = schedule_graph::Settings::default();
             write(&schedule_graph_dot(app, schedule, &settings))?;
@@ -215,8 +215,8 @@ impl std::fmt::Display for FindScheduleError {
 impl std::error::Error for FindScheduleError {}
 
 /// Looks up a schedule by its string name in `App`.
-fn find_schedule<'a>(
-    app: &'a App,
+fn find_schedule(
+    app: &App,
     schedule_name: &str,
 ) -> Result<Interned<dyn ScheduleLabel>, FindScheduleError> {
     let lower_schedule_name = schedule_name.to_lowercase();

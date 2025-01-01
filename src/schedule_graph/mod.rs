@@ -290,7 +290,7 @@ impl ScheduleGraphContext<'_> {
                         .get_info(component_id)
                         .unwrap()
                         .name();
-                    let pretty_name = pretty_type_name::pretty_type_name_str(&component_name);
+                    let pretty_name = pretty_type_name::pretty_type_name_str(component_name);
 
                     format!(
                         r#"<tr><td bgcolor="{}">{}</td></tr>"#,
@@ -452,7 +452,7 @@ impl ScheduleGraphContext<'_> {
         }
         dot.add_node(
             &self.node_ref(system_id),
-            &[("label", &name), ("tooltip", &system.name())],
+            &[("label", name), ("tooltip", &system.name())],
         );
     }
 
@@ -654,10 +654,7 @@ fn iter_single<T>(mut iter: impl Iterator<Item = T>) -> IterSingleResult<T> {
     }
 }
 
-fn hierarchy_parents<'a>(
-    node: NodeId,
-    graph: &'a ScheduleGraph,
-) -> impl Iterator<Item = NodeId> + 'a {
+fn hierarchy_parents(node: NodeId, graph: &ScheduleGraph) -> impl Iterator<Item = NodeId> + '_ {
     let hierarchy = graph.hierarchy().graph();
     hierarchy
         .neighbors_directed(node, Direction::Incoming)
