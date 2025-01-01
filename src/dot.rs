@@ -13,8 +13,28 @@ fn escape_quote(input: &str) -> Cow<'_, str> {
     }
 }
 
+#[test]
+fn escape_correctly() {
+    assert_eq!(escape_id("a"), "\"a\"");
+    assert_eq!(escape_id("contains \" quotes"), "\"contains \\\" quotes\"");
+    assert_eq!(escape_id("<table>x</table>"), r#"<table>x</table>"#);
+
+    let complex = "<Plugin>;build::{{closure}} → solve_constraint<FixedJoint, 2>";
+    assert_eq!(escape_id(complex), format!("\"{complex}\""));
+}
+
 fn escape_id(input: &str) -> Cow<'_, str> {
-    if input.starts_with('<') && input.ends_with('>') {
+    // this is kind of horrible but right now the API accepts `add_edge(a, b, [("quoteme", "tobequoted"), ("raw", "<table>...</table>")])
+    // so this works™ for now™
+    let tag_start = input
+        .find('<')
+        .and_then(|from| Some(&input[from + 1..input.find('>')?]));
+    let tag_end = input
+        .rfind("</")
+        .and_then(|from| Some(&input[from + 2..input.rfind('>')?]));
+    let is_html_heuristic = tag_start.is_some() && tag_start == tag_end;
+
+    if is_html_heuristic {
         input.into()
     } else {
         format!("\"{}\"", escape_quote(input)).into()
