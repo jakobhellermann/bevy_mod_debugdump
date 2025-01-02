@@ -12,13 +12,66 @@ use bevy_ecs::{
     system::System,
     world::World,
 };
-use petgraph::{prelude::DiGraphMap, Direction};
+use petgraph::{
+    prelude::DiGraphMap,
+    Direction::{self, Outgoing},
+};
+
+fn dfs_all_neighbours_directed(
+    graph: &petgraph::prelude::GraphMap<NodeId, (), petgraph::Directed>,
+    u: NodeId,
+    direction: Direction,
+) -> Vec<NodeId> {
+    let mut res = vec![];
+
+    for neighbor in graph.neighbors_directed(u, direction) {
+        res.push(neighbor);
+        res.append(&mut dfs_all_neighbours_directed(graph, neighbor, direction));
+    }
+
+    res
+}
+
+fn remove_transitive_edges(
+    graph: &mut petgraph::prelude::GraphMap<NodeId, (), petgraph::Directed>,
+) {
+    // Holds all root nodes
+    let mut top_nodes = HashSet::new();
+
+    for n in graph.nodes() {
+        let mut all_upstream_nodes = vec![n];
+
+        all_upstream_nodes.append(&mut dfs_all_neighbours_directed(
+            graph,
+            n,
+            Direction::Incoming,
+        ));
+        // Save the node which is most upstream
+        top_nodes.insert(all_upstream_nodes.last().unwrap().clone());
+    }
+
+    let toposort = petgraph::algo::toposort(&*graph, None).unwrap();
+
+    for visiting in toposort {
+        let direct_heighbours: Vec<NodeId> = graph.neighbors_directed(visiting, Outgoing).collect();
+        for n in direct_heighbours {
+            graph.remove_edge(visiting, n);
+            // if we still can access a neighbour with a longer path, it's a transitive dependency.
+            let descendants = dfs_all_neighbours_directed(&graph, visiting, Direction::Outgoing);
+            if !descendants.contains(&n) {
+                // No longer path, so we're keeping that edge.
+                graph.add_edge(visiting, n, ());
+            }
+        }
+    }
+}
 
 /// Formats the schedule into a dot graph.
 pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Settings) -> String {
     let graph = schedule.graph();
     let hierarchy = graph.hierarchy().graph();
-    let dependency = graph.dependency().graph();
+    let dependency = &mut graph.dependency().graph().clone();
+    remove_transitive_edges(dependency);
 
     let included_systems_sets = included_systems_sets(graph, settings);
 
