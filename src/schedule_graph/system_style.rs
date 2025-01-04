@@ -1,11 +1,11 @@
-use once_cell::sync::Lazy;
 use std::borrow::Cow;
+use std::sync::LazyLock;
 
 use bevy_color::{Color, Srgba};
 use bevy_ecs::system::System;
 use bevy_utils::HashMap;
 
-static CRATE_COLORS: Lazy<HashMap<&str, &str>> = Lazy::new(|| {
+static CRATE_COLORS: LazyLock<HashMap<&str, &str>> = LazyLock::new(|| {
     [
         // Beige/Red
         ("bevy_transform", "FFE7B9"),
