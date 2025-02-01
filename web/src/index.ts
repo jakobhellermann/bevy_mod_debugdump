@@ -1,5 +1,6 @@
 import svgPanZoom from "svg-pan-zoom";
-import init, { Context } from "../../debugdumpgen/out/debugdumpgen";
+// import init, { Context } from "../../debugdumpgen/out/debugdumpgen";
+import init, { Context } from "../../target/release/wasm-bindgen/debugdumpgen";
 import { Graphviz } from "@hpcc-js/wasm-graphviz";
 
 const includesInput = document.getElementById("includes") as HTMLInputElement;
