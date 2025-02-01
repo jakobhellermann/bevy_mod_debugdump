@@ -1,0 +1,37 @@
+default target = "docs";
+
+config profile = "release"
+
+let wasm-target = "wasm32-unknown-unknown"
+let wasm-opt-flags = "-O2"
+
+let cargo-profile = profile | match {
+    "debug" => "dev"
+}
+
+task docs {
+    build "{profile}/wasm-bindgen/debugdumpgen_bg.opt.wasm"
+
+    run "bun install --cwd web"
+    run "npm --prefix web run build"
+}
+
+build "%.opt.wasm" {
+    let source-file = "{%}.wasm"
+    from source-file
+    run "wasm-opt <in> -o <out> {wasm-opt-flags}"
+}
+
+build "{profile}/wasm-bindgen/debugdumpgen_bg.wasm" {
+    let out-dir = "{profile}/wasm-bindgen"
+
+    from "{wasm-target}/{profile}/debugdumpgen.wasm";
+    run "wasm-bindgen --target web target/{wasm-target}/{profile}/debugdumpgen.wasm --out-dir <out-dir>"
+}
+
+build "{wasm-target}/{profile}/debugdumpgen.wasm" {
+    depfile "{wasm-target}/{profile}/debugdumpgen.d"
+
+    env "CARGO_TARGET_DIR" = "target"
+    run "cargo build --manifest-path debugdumpgen/Cargo.toml --profile {cargo-profile} --target {wasm-target}"
+}
