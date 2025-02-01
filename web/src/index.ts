@@ -1,6 +1,6 @@
 import svgPanZoom from "svg-pan-zoom";
 import init, { Context } from "../../debugdumpgen/out/debugdumpgen";
-import { Graphviz as GraphvizLoader } from "@hpcc-js/wasm/dist/graphviz";
+import { Graphviz } from "@hpcc-js/wasm-graphviz";
 
 const includesInput = document.getElementById("includes") as HTMLInputElement;
 const excludesInput = document.getElementById("excludes") as HTMLInputElement;
@@ -97,7 +97,7 @@ openInNewTabButton.addEventListener("click", () => {
 });
 
 async function run() {
-    let [graphviz, _] = await Promise.all([GraphvizLoader.load(), init()]);
+    let [graphviz, _] = await Promise.all([Graphviz.load(), init()]);
     let context = new Context();
 
 

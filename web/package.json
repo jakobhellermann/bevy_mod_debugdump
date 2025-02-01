@@ -17,7 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hpcc-js/wasm": "^2.8.0",
+    "@hpcc-js/wasm-graphviz": "^1.7.0",
     "svg-pan-zoom": "^3.6.1"
   },
   "devDependencies": {
