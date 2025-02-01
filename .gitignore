@@ -8,3 +8,6 @@
 /*.dot
 /*.svg
 *.png
+
+/web
+/debugdumpgen
