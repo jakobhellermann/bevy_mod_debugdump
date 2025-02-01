@@ -4,8 +4,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-bevy = { git = "https://github.com/bevyengine/bevy" }
-bevy_mod_debugdump = { git = "https://github.com/jakobhellermann/bevy_mod_debugdump", branch = "bevy-main" }
+bevy = "0.16"
+bevy_mod_debugdump = "0.13"
+# bevy = { git = "https://github.com/bevyengine/bevy" }
+# bevy_mod_debugdump = { git = "https://github.com/jakobhellermann/bevy_mod_debugdump", branch = "bevy-main" }
 console_error_panic_hook = "0.1"
 wasm-bindgen = "0.2"
 
@@ -17,12 +19,12 @@ opt-level = "s"
 lto = "thin"
 strip = true
 
-[patch."https://github.com/bevyengine/bevy"]
-bevy = { git = "https://github.com/jakobhellermann/bevy", branch = "infalliblesystemwrapper-forward-typeid" }
-bevy_app = { git = "https://github.com/jakobhellermann/bevy", branch = "infalliblesystemwrapper-forward-typeid" }
-bevy_color = { git = "https://github.com/jakobhellermann/bevy", branch = "infalliblesystemwrapper-forward-typeid" }
-bevy_ecs = { git = "https://github.com/jakobhellermann/bevy", branch = "infalliblesystemwrapper-forward-typeid" }
-bevy_log = { git = "https://github.com/jakobhellermann/bevy", branch = "infalliblesystemwrapper-forward-typeid" }
-bevy_platform = { git = "https://github.com/jakobhellermann/bevy", branch = "infalliblesystemwrapper-forward-typeid" }
-bevy_render = { git = "https://github.com/jakobhellermann/bevy", branch = "infalliblesystemwrapper-forward-typeid" }
-bevy_utils = { git = "https://github.com/jakobhellermann/bevy", branch = "infalliblesystemwrapper-forward-typeid" }
+# [patch."https://github.com/bevyengine/bevy"]
+# bevy = { git = "https://github.com/jakobhellermann/bevy", branch = "infalliblesystemwrapper-forward-typeid" }
+# bevy_app = { git = "https://github.com/jakobhellermann/bevy", branch = "infalliblesystemwrapper-forward-typeid" }
+# bevy_color = { git = "https://github.com/jakobhellermann/bevy", branch = "infalliblesystemwrapper-forward-typeid" }
+# bevy_ecs = { git = "https://github.com/jakobhellermann/bevy", branch = "infalliblesystemwrapper-forward-typeid" }
+# bevy_log = { git = "https://github.com/jakobhellermann/bevy", branch = "infalliblesystemwrapper-forward-typeid" }
+# bevy_platform = { git = "https://github.com/jakobhellermann/bevy", branch = "infalliblesystemwrapper-forward-typeid" }
+# bevy_render = { git = "https://github.com/jakobhellermann/bevy", branch = "infalliblesystemwrapper-forward-typeid" }
+# bevy_utils = { git = "https://github.com/jakobhellermann/bevy", branch = "infalliblesystemwrapper-forward-typeid" }
