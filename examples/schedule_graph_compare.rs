@@ -39,7 +39,7 @@ fn main() -> Result<(), std::io::Error> {
                 let mut settings = Settings::default();
                 settings.style.edge_style = edge_style;
                 let dot = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
-                    schedule, &world, &settings,
+                    schedule, world, &settings,
                 );
 
                 std::fs::write(

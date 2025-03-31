@@ -61,7 +61,7 @@ impl bevy_app::Plugin for CommandLineArgs {
             app.add_systems(
                 bevy_app::First,
                 |mut app_exit_events: bevy_ecs::event::EventWriter<bevy_app::AppExit>| {
-                    app_exit_events.send(bevy_app::AppExit::Success);
+                    app_exit_events.write(bevy_app::AppExit::Success);
                 },
             );
         }

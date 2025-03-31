@@ -1,12 +1,7 @@
 use std::any::TypeId;
 
 use bevy_color::{Color, Hsla};
-use bevy_ecs::{
-    component::ComponentId,
-    schedule::SystemSet,
-    system::{ScheduleSystem, System},
-    world::World,
-};
+use bevy_ecs::{component::ComponentId, schedule::SystemSet, system::ScheduleSystem, world::World};
 
 use super::system_style::{color_to_hex, system_to_style, SystemStyle};
 

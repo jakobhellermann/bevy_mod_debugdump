@@ -106,10 +106,10 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
 
             let children_sets_empty = sets_in_single_set
                 .get(&set_id)
-                .map_or(true, |vec| vec.is_empty());
+                .is_none_or(|vec| vec.is_empty());
             let children_sets_in_multiple_empty = systems_in_multiple_sets
                 .get(&Some(set_id))
-                .map_or(true, |vec| vec.is_empty());
+                .is_none_or(|vec| vec.is_empty());
 
             if children_in_multiple.is_empty()
                 && children.len() <= 1
