@@ -25,11 +25,7 @@ fn main() -> Result<(), std::io::Error> {
             // for `conflicting_systems`
             schedule
                 .graph_mut()
-                .build_schedule(
-                    world.components(),
-                    ScheduleDebugGroup.intern(),
-                    &ignored_ambiguities,
-                )
+                .build_schedule(world, ScheduleDebugGroup.intern(), &ignored_ambiguities)
                 .unwrap();
 
             for edge_style in [

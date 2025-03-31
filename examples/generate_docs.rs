@@ -11,7 +11,7 @@ use bevy_ecs::schedule::ScheduleLabel;
 use bevy_mod_debugdump::schedule_graph::{settings::Style, Settings};
 use bevy_render::{
     batching::{
-        gpu_preprocessing::{BatchedInstanceBuffers, IndirectParametersBuffer},
+        gpu_preprocessing::{BatchedInstanceBuffers, IndirectParametersBuffers},
         no_gpu_preprocessing::BatchedInstanceBuffer,
     },
     render_asset::RenderAssetBytesPerFrame,
@@ -81,17 +81,13 @@ fn main() -> Result<(), std::io::Error> {
 
                     schedule
                         .graph_mut()
-                        .build_schedule(
-                            world.components(),
-                            ScheduleDebugGroup.intern(),
-                            &ignored_ambiguities,
-                        )
+                        .build_schedule(world, ScheduleDebugGroup.intern(), &ignored_ambiguities)
                         .unwrap();
 
                     let ignore_ambiguities = &[
                         TypeId::of::<bevy_render::MainWorld>(),
                         TypeId::of::<bevy_render::texture::TextureCache>(),
-                        TypeId::of::<IndirectParametersBuffer>(),
+                        TypeId::of::<IndirectParametersBuffers>(),
                         TypeId::of::<BatchedInstanceBuffers<MeshUniform, MeshInputUniform>>(),
                         TypeId::of::<BatchedInstanceBuffer<MeshUniform>>(),
                         TypeId::of::<BatchedInstanceBuffer<Mesh2dUniform>>(),
@@ -154,11 +150,7 @@ fn initialize_schedules(
         // for `conflicting_systems`
         schedule
             .graph_mut()
-            .build_schedule(
-                world.components(),
-                ScheduleDebugGroup.intern(),
-                &ignored_ambiguities,
-            )
+            .build_schedule(world, ScheduleDebugGroup.intern(), &ignored_ambiguities)
             .unwrap();
     })
 }
