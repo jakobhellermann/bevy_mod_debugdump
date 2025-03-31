@@ -2,7 +2,7 @@ use std::{fs::File, path::PathBuf};
 
 use bevy_app::App;
 use bevy_ecs::{intern::Interned, schedule::ScheduleLabel, schedule::Schedules};
-use bevy_utils::tracing::{error, info};
+use bevy_log::{error, info};
 use std::io::Write;
 
 #[cfg(feature = "render_graph")]
