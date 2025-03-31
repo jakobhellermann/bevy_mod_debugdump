@@ -23,7 +23,6 @@ bevy_platform_support = { version = "0.16.0-rc.2" }
 bevy_render = { version = "0.16.0-rc.2", optional = true }
 bevy_utils = { version = "0.16.0-rc.2" }
 pretty-type-name = "1.0"
-petgraph = "0.7"
 lexopt = "0.3.0"
 
 [dev-dependencies]

@@ -9,11 +9,13 @@ use std::{any::TypeId, borrow::Cow, collections::VecDeque, fmt::Write, sync::ato
 
 use crate::dot::DotGraph;
 use bevy_ecs::{
-    schedule::{NodeId, Schedule, ScheduleGraph, SystemSet},
-    system::System,
+    schedule::{
+        graph::{DiGraph, Direction},
+        NodeId, Schedule, ScheduleGraph, SystemSet,
+    },
+    system::ScheduleSystem,
     world::World,
 };
-use petgraph::{prelude::*, Direction};
 
 /// Formats the schedule into a dot graph.
 pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Settings) -> String {
@@ -60,8 +62,8 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
     let mut sets_in_single_set = HashMap::<NodeId, Vec<_>>::default();
     let mut sets_in_multiple_sets = HashMap::<Option<NodeId>, Vec<_>>::default();
 
-    let mut collapsed_sets = HashSet::new();
-    let mut collapsed_set_children = HashMap::new();
+    let mut collapsed_sets = HashSet::default();
+    let mut collapsed_set_children = HashMap::default();
 
     for &(set_id, set, _condition) in system_sets
         .iter()
@@ -175,14 +177,13 @@ struct ScheduleGraphContext<'a> {
     world: &'a World,
 
     graph: &'a ScheduleGraph,
-    dependency: &'a DiGraphMap<NodeId, ()>,
+    dependency: &'a DiGraph,
 
     included_systems_sets: HashSet<NodeId>,
 
-    systems_freestanding: Vec<(NodeId, &'a dyn System<In = (), Out = ()>)>,
-    systems_in_single_set: HashMap<NodeId, Vec<(NodeId, &'a dyn System<In = (), Out = ()>)>>,
-    systems_in_multiple_sets:
-        HashMap<Option<NodeId>, Vec<(NodeId, &'a dyn System<In = (), Out = ()>)>>,
+    systems_freestanding: Vec<(NodeId, &'a ScheduleSystem)>,
+    systems_in_single_set: HashMap<NodeId, Vec<(NodeId, &'a ScheduleSystem)>>,
+    systems_in_multiple_sets: HashMap<Option<NodeId>, Vec<(NodeId, &'a ScheduleSystem)>>,
 
     sets_freestanding: Vec<(NodeId, &'a dyn SystemSet)>,
     sets_in_single_set: HashMap<NodeId, Vec<(NodeId, &'a dyn SystemSet)>>,
@@ -236,7 +237,7 @@ impl ScheduleGraphContext<'_> {
 
     /// Add dependency edges between nodes
     fn add_dependencies(&self, dot: &mut DotGraph) {
-        for (from, to, ()) in self.dependency.all_edges() {
+        for (from, to) in self.dependency.all_edges() {
             if !self.included_systems_sets.contains(&from)
                 || !self.included_systems_sets.contains(&to)
             {
@@ -429,7 +430,7 @@ impl ScheduleGraphContext<'_> {
         &self,
         dot: &mut DotGraph,
         system_id: NodeId,
-        system: &(dyn System<In = (), Out = ()>),
+        system: &ScheduleSystem,
     ) {
         assert!(self.included_systems_sets.contains(&system_id));
         let mut name = self.system_name(system);
@@ -505,7 +506,7 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
 
     fn include_ancestors(
         id: NodeId,
-        hierarchy: &DiGraphMap<NodeId, ()>,
+        hierarchy: &DiGraph,
         included_systems_sets: &mut HashSet<NodeId>,
     ) {
         let parents = hierarchy.neighbors_directed(id, Direction::Incoming);
@@ -538,7 +539,7 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
         }
     }
 
-    for (from, to, ()) in graph.dependency().graph().all_edges() {
+    for (from, to) in graph.dependency().graph().all_edges() {
         if systems_of_interest.contains(&from) {
             included_systems_sets.insert(to);
             include_ancestors(to, hierarchy, &mut included_systems_sets);
@@ -554,7 +555,7 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
 }
 
 impl ScheduleGraphContext<'_> {
-    fn system_name(&self, system: &dyn System<In = (), Out = ()>) -> Cow<str> {
+    fn system_name(&self, system: &ScheduleSystem) -> Cow<str> {
         (*self.settings.system_name)(system).into()
     }
 
@@ -662,10 +663,7 @@ fn hierarchy_parents(node: NodeId, graph: &ScheduleGraph) -> impl Iterator<Item 
         .filter(|&parent| graph.set_at(parent).system_type().is_none())
 }
 
-fn lowest_common_ancestor(
-    parents: &[NodeId],
-    hierarchy: &DiGraphMap<NodeId, ()>,
-) -> Option<NodeId> {
+fn lowest_common_ancestor(parents: &[NodeId], hierarchy: &DiGraph) -> Option<NodeId> {
     let parent = parents.last().unwrap();
     let mut common_ancestors: Vec<_> = ancestors_of_node(*parent, hierarchy).collect();
 
@@ -681,10 +679,7 @@ fn lowest_common_ancestor(
     first_common_ancestor
 }
 
-fn ancestors_of_node(
-    node_id: NodeId,
-    graph: &DiGraphMap<NodeId, ()>,
-) -> impl Iterator<Item = NodeId> + '_ {
+fn ancestors_of_node(node_id: NodeId, graph: &DiGraph) -> impl Iterator<Item = NodeId> + '_ {
     let mut queue = VecDeque::with_capacity(1);
     queue.push_back(node_id);
     Ancestors { queue, graph }
@@ -692,7 +687,7 @@ fn ancestors_of_node(
 
 struct Ancestors<'a> {
     queue: VecDeque<NodeId>,
-    graph: &'a DiGraphMap<NodeId, ()>,
+    graph: &'a DiGraph,
 }
 
 impl Iterator for Ancestors<'_> {
