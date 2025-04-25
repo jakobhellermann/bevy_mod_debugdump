@@ -1,4 +1,3 @@
-use std::borrow::Cow;
 use std::sync::LazyLock;
 
 use bevy_color::{Color, Srgba};
@@ -55,7 +54,7 @@ pub fn color_to_hex(color: Color) -> String {
 
 pub fn system_to_style(system: &ScheduleSystem) -> SystemStyle {
     let name = system.name();
-    let pretty_name: Cow<str> = pretty_type_name::pretty_type_name_str(&name).into();
+    let pretty_name = disqualified::ShortName(&name).to_string();
     let is_apply_system_buffers = pretty_name == "apply_system_buffers";
     let name_without_event = name
         .trim_start_matches("bevy_ecs::event::Events<")

@@ -292,12 +292,12 @@ impl ScheduleGraphContext<'_> {
                         .get_info(component_id)
                         .unwrap()
                         .name();
-                    let pretty_name = pretty_type_name::pretty_type_name_str(component_name);
+                    let pretty_name = disqualified::ShortName(component_name);
 
                     format!(
                         r#"<tr><td bgcolor="{}">{}</td></tr>"#,
                         self.settings.style.ambiguity_bgcolor,
-                        crate::dot::html_escape(&pretty_name)
+                        crate::dot::html_escape(&pretty_name.to_string())
                     )
                 });
                 let trs = component_names.collect::<String>();
@@ -612,7 +612,7 @@ impl ScheduleGraphContext<'_> {
                     if let Some(system_node) = system_node {
                         self.system_node_ref(system_node)
                     } else {
-                        format!("UNKNOWN {:?}", set)
+                        format!("UNKNOWN {:?}", disqualified::ShortName(&format!("{set:?}")))
                     }
                 } else {
                     marker_name(node_id)

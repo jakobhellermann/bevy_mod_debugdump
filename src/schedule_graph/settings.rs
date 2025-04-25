@@ -310,7 +310,7 @@ impl Default for Settings {
 }
 
 pub fn pretty_system_name(system: &ScheduleSystem) -> String {
-    pretty_type_name::pretty_type_name_str(&system.name())
+    disqualified::ShortName(&system.name()).to_string()
 }
 
 pub fn full_system_name(system: &ScheduleSystem) -> String {
