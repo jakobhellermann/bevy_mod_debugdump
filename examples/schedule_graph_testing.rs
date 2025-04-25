@@ -73,7 +73,7 @@ fn print_schedule(schedule: &Schedule, schedule_label: &dyn ScheduleLabel) {
             }
         };
         if false {
-            pretty_type_name::pretty_type_name_str(&name)
+            disqualified::ShortName(&name).to_string()
         } else {
             name.into()
         }

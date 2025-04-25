@@ -7,7 +7,6 @@ use self::iter_utils::sorted;
 use crate::dot::{font_tag, html_escape, DotGraph};
 use bevy_render::render_graph::{Edge, RenderGraph, RenderLabel};
 use iter_utils::EitherOrBoth;
-use pretty_type_name::pretty_type_name_str;
 use std::collections::HashMap;
 
 /// Formats the render graph into a dot graph
@@ -86,7 +85,7 @@ fn build_dot_graph(
 
     for node in &nodes {
         let name = &fmt_label(node.label);
-        let type_name = pretty_type_name_str(node.type_name);
+        let type_name = disqualified::ShortName(node.type_name);
 
         let inputs = node
             .input_slots
@@ -131,7 +130,7 @@ fn build_dot_graph(
         let label = format!(
             "RAW:<<TABLE STYLE=\"rounded\"><TR><TD PORT=\"title\" BORDER=\"0\" COLSPAN=\"2\">{}<BR/>{}</TD></TR>{}</TABLE>>",
             html_escape(name),
-            font_tag(&type_name, &settings.style.color_typename, 10),
+            font_tag(&type_name.to_string(), &settings.style.color_typename, 10),
             slots,
         );
 
