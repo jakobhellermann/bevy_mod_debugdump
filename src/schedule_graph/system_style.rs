@@ -2,8 +2,8 @@ use std::borrow::Cow;
 use std::sync::LazyLock;
 
 use bevy_color::{Color, Srgba};
-use bevy_ecs::system::System;
-use bevy_utils::HashMap;
+use bevy_ecs::system::ScheduleSystem;
+use bevy_platform::collections::hash_map::HashMap;
 
 static CRATE_COLORS: LazyLock<HashMap<&str, &str>> = LazyLock::new(|| {
     [
@@ -53,7 +53,7 @@ pub fn color_to_hex(color: Color) -> String {
     )
 }
 
-pub fn system_to_style(system: &dyn System<In = (), Out = ()>) -> SystemStyle {
+pub fn system_to_style(system: &ScheduleSystem) -> SystemStyle {
     let name = system.name();
     let pretty_name: Cow<str> = pretty_type_name::pretty_type_name_str(&name).into();
     let is_apply_system_buffers = pretty_name == "apply_system_buffers";

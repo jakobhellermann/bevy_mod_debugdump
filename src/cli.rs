@@ -2,7 +2,7 @@ use std::{fs::File, path::PathBuf};
 
 use bevy_app::App;
 use bevy_ecs::{intern::Interned, schedule::ScheduleLabel, schedule::Schedules};
-use bevy_utils::tracing::{error, info};
+use bevy_log::{error, info};
 use std::io::Write;
 
 #[cfg(feature = "render_graph")]
@@ -61,7 +61,7 @@ impl bevy_app::Plugin for CommandLineArgs {
             app.add_systems(
                 bevy_app::First,
                 |mut app_exit_events: bevy_ecs::event::EventWriter<bevy_app::AppExit>| {
-                    app_exit_events.send(bevy_app::AppExit::Success);
+                    app_exit_events.write(bevy_app::AppExit::Success);
                 },
             );
         }

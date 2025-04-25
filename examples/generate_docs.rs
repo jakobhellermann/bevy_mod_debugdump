@@ -11,7 +11,7 @@ use bevy_ecs::schedule::ScheduleLabel;
 use bevy_mod_debugdump::schedule_graph::{settings::Style, Settings};
 use bevy_render::{
     batching::{
-        gpu_preprocessing::{BatchedInstanceBuffers, IndirectParametersBuffer},
+        gpu_preprocessing::{BatchedInstanceBuffers, IndirectParametersBuffers},
         no_gpu_preprocessing::BatchedInstanceBuffer,
     },
     render_asset::RenderAssetBytesPerFrame,
@@ -51,12 +51,12 @@ fn main() -> Result<(), std::io::Error> {
             for (label, schedule) in schedules.iter() {
                 let dot_light = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
                     schedule,
-                    &world,
+                    world,
                     &settings_light,
                 );
                 let dot_dark = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
                     schedule,
-                    &world,
+                    world,
                     &settings_dark,
                 );
 
@@ -81,17 +81,13 @@ fn main() -> Result<(), std::io::Error> {
 
                     schedule
                         .graph_mut()
-                        .build_schedule(
-                            world.components(),
-                            ScheduleDebugGroup.intern(),
-                            &ignored_ambiguities,
-                        )
+                        .build_schedule(world, ScheduleDebugGroup.intern(), &ignored_ambiguities)
                         .unwrap();
 
                     let ignore_ambiguities = &[
                         TypeId::of::<bevy_render::MainWorld>(),
                         TypeId::of::<bevy_render::texture::TextureCache>(),
-                        TypeId::of::<IndirectParametersBuffer>(),
+                        TypeId::of::<IndirectParametersBuffers>(),
                         TypeId::of::<BatchedInstanceBuffers<MeshUniform, MeshInputUniform>>(),
                         TypeId::of::<BatchedInstanceBuffer<MeshUniform>>(),
                         TypeId::of::<BatchedInstanceBuffer<Mesh2dUniform>>(),
@@ -111,12 +107,12 @@ fn main() -> Result<(), std::io::Error> {
 
                     let dot_light = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
                         schedule,
-                        &world,
+                        world,
                         &settings_light,
                     );
                     let dot_dark = bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
                         schedule,
-                        &world,
+                        world,
                         &settings_dark,
                     );
 
@@ -148,19 +144,16 @@ fn initialize_schedules(
     world: &mut World,
 ) -> Result<(), std::io::Error> {
     let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
-    Ok(for (_, schedule) in schedules.iter_mut() {
+    for (_, schedule) in schedules.iter_mut() {
         // for access info
         schedule.graph_mut().initialize(world);
         // for `conflicting_systems`
         schedule
             .graph_mut()
-            .build_schedule(
-                world.components(),
-                ScheduleDebugGroup.intern(),
-                &ignored_ambiguities,
-            )
+            .build_schedule(world, ScheduleDebugGroup.intern(), &ignored_ambiguities)
             .unwrap();
-    })
+    }
+    Ok(())
 }
 
 fn with_main_world_in_render_app<T>(app: &mut App, f: impl Fn(&mut SubApp) -> T) -> T {

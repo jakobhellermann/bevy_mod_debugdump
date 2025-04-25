@@ -1,12 +1,13 @@
 #![allow(unused)]
 use std::{collections::BTreeSet, path::PathBuf};
 
-use bevy::{prelude::*, render::RenderApp, utils::HashSet};
+use bevy::{prelude::*, render::RenderApp};
 use bevy_ecs::{
     component::ComponentId,
     schedule::{NodeId, ScheduleLabel},
 };
 use bevy_mod_debugdump::schedule_graph::Settings;
+use bevy_platform::collections::hash_set::HashSet;
 
 #[derive(ScheduleLabel, Clone, Debug, PartialEq, Eq, Hash)]
 struct ScheduleDebugGroup;
@@ -39,11 +40,7 @@ fn main() -> Result<(), std::io::Error> {
             schedule.graph_mut().initialize(world);
             schedule
                 .graph_mut()
-                .build_schedule(
-                    world.components(),
-                    ScheduleDebugGroup.intern(),
-                    &ignored_ambiguities,
-                )
+                .build_schedule(world, ScheduleDebugGroup.intern(), &ignored_ambiguities)
                 .unwrap();
 
             let settings = Settings {
@@ -96,13 +93,13 @@ fn print_schedule(schedule: &Schedule, schedule_label: &dyn ScheduleLabel) {
 
     println!("- HIERARCHY");
     let hierarchy = graph.hierarchy();
-    for (from, to, ()) in hierarchy.graph().all_edges() {
+    for (from, to) in hierarchy.graph().all_edges() {
         println!("  - {} -> {}", name_of_node(from), name_of_node(to));
     }
 
     println!("- DEPENDENCY");
     let hierarchy = graph.dependency();
-    for (from, to, ()) in hierarchy.graph().all_edges() {
+    for (from, to) in hierarchy.graph().all_edges() {
         println!("  - {} -> {}", name_of_node(from), name_of_node(to));
     }
 
