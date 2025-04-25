@@ -130,7 +130,7 @@ impl Context {
                     let settings = &settings;
                     schedule.graph_mut().initialize(world);
                     let _ = schedule.graph_mut().build_schedule(
-                        world.components(),
+                        world,
                         ScheduleDebugGroup.intern(),
                         &ignored_ambiguities,
                     );
