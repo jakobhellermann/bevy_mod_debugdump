@@ -301,7 +301,7 @@ impl ScheduleGraphContext<'_> {
                     )
                 });
                 let trs = component_names.collect::<String>();
-                format!(r#"<<table border="0" cellborder="0">{trs}</table>>"#)
+                format!(r#"RAW:<<table border="0" cellborder="0">{trs}</table>>"#)
             };
 
             dot.add_edge(
