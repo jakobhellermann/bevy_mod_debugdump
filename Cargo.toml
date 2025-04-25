@@ -16,18 +16,18 @@ cli = ["dep:lexopt"]
 render_graph = ["dep:bevy_render"]
 
 [dependencies]
-bevy_app = { version = "0.18.0" }
-bevy_color = { version = "0.18.0" }
-bevy_ecs = { version = "0.18.0" }
-bevy_log = { version = "0.18.0" }
-bevy_platform = { version = "0.18.0" }
-bevy_render = { version = "0.18.0", optional = true }
-bevy_utils = { version = "0.18.0" }
+bevy_app = { git = "https://github.com/bevyengine/bevy" }
+bevy_color = { git = "https://github.com/bevyengine/bevy" }
+bevy_ecs = { git = "https://github.com/bevyengine/bevy" }
+bevy_log = { git = "https://github.com/bevyengine/bevy" }
+bevy_platform = { git = "https://github.com/bevyengine/bevy" }
+bevy_render = { git = "https://github.com/bevyengine/bevy", optional = true }
+bevy_utils = { git = "https://github.com/bevyengine/bevy" }
 disqualified = "1.0"
 lexopt = { version = "0.3.0", optional = true }
 
 [dev-dependencies]
-bevy = { version = "0.18.0" }
+bevy = { git = "https://github.com/bevyengine/bevy" }
 
 [[example]]
 name = "generate_docs"
@@ -37,9 +37,12 @@ required-features = ["render_graph"]
 name = "print_render_graph"
 required-features = ["render_graph"]
 
-# [patch.crates-io]
-# bevy_ecs = { path = "../bevy/crates/bevy_ecs" }
-# bevy_app = { path = "../bevy/crates/bevy_app" }
-# bevy_utils = { path = "../bevy/crates/bevy_utils" }
-# bevy_render = { path = "../bevy/crates/bevy_render" }
-# bevy = { path = "../bevy" }
+[patch."https://github.com/bevyengine/bevy"]
+bevy = { path = "../bevy" }
+bevy_app = { path =  "../bevy/crates/bevy_app" }
+bevy_color = { path =  "../bevy/crates/bevy_color" }
+bevy_ecs = { path =  "../bevy/crates/bevy_ecs" }
+bevy_log = { path =  "../bevy/crates/bevy_log" }
+bevy_platform = { path =  "../bevy/crates/bevy_platform" }
+bevy_render = { path =  "../bevy/crates/bevy_render" }
+bevy_utils = { path =  "../bevy/crates/bevy_utils" }
