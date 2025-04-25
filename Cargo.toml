@@ -15,18 +15,18 @@ default = ["cli"]
 cli = ["dep:lexopt"]
 
 [dependencies]
-bevy_app = { version = "0.19.0" }
-bevy_color = { version = "0.19.0" }
-bevy_ecs = { version = "0.19.0" }
-bevy_log = { version = "0.19.0" }
-bevy_platform = { version = "0.19.0" }
-bevy_utils = { version = "0.19.0", features = ["debug"] }
+bevy_app = { git = "https://github.com/bevyengine/bevy" }
+bevy_color = { git = "https://github.com/bevyengine/bevy" }
+bevy_ecs = { git = "https://github.com/bevyengine/bevy" }
+bevy_log = { git = "https://github.com/bevyengine/bevy" }
+bevy_platform = { git = "https://github.com/bevyengine/bevy" }
+bevy_utils = { git = "https://github.com/bevyengine/bevy", features = ["debug"] }
 disqualified = "1.0"
 lexopt = { version = "0.3.0", optional = true }
 
 [dev-dependencies]
-bevy = { version = "0.19.0" }
-bevy_render = { version = "0.19.0" }
+bevy = { git = "https://github.com/bevyengine/bevy" }
+bevy_render = { git = "https://github.com/bevyengine/bevy" }
 
 [patch.crates-io]
 # bevy_ecs = { path = "../bevy/crates/bevy_ecs" }
@@ -37,12 +37,3 @@ bevy_render = { version = "0.19.0" }
 # bevy_render = { path = "../bevy/crates/bevy_render" }
 # bevy_utils = { path = "../bevy/crates/bevy_utils" }
 # bevy = { path = "../bevy" }
-
-# bevy_ecs = { git = "https://github.com/bevyengine/bevy" }
-# bevy_app = { git = "https://github.com/bevyengine/bevy" }
-# bevy_color = { git = "https://github.com/bevyengine/bevy" }
-# bevy_log = { git = "https://github.com/bevyengine/bevy" }
-# bevy_platform = { git = "https://github.com/bevyengine/bevy" }
-# bevy_render = { git = "https://github.com/bevyengine/bevy" }
-# bevy_utils = { git = "https://github.com/bevyengine/bevy" }
-# bevy = { git = "https://github.com/bevyengine/bevy" }
