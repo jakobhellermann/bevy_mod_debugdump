@@ -7,7 +7,7 @@ use bevy_ecs::{
     schedule::{NodeId, ScheduleLabel},
 };
 use bevy_mod_debugdump::schedule_graph::Settings;
-use bevy_platform_support::collections::hash_set::HashSet;
+use bevy_platform::collections::hash_set::HashSet;
 
 #[derive(ScheduleLabel, Clone, Debug, PartialEq, Eq, Hash)]
 struct ScheduleDebugGroup;

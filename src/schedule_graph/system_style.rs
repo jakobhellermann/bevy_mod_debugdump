@@ -3,7 +3,7 @@ use std::sync::LazyLock;
 
 use bevy_color::{Color, Srgba};
 use bevy_ecs::system::ScheduleSystem;
-use bevy_platform_support::collections::hash_map::HashMap;
+use bevy_platform::collections::hash_map::HashMap;
 
 static CRATE_COLORS: LazyLock<HashMap<&str, &str>> = LazyLock::new(|| {
     [
