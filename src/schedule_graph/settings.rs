@@ -298,7 +298,7 @@ impl Default for Settings {
             include_system: None,
             collapse_single_system_sets: false,
 
-            ambiguity_enable: true,
+            ambiguity_enable: false,
             ambiguity_enable_on_world: false,
             include_ambiguity: None,
 
