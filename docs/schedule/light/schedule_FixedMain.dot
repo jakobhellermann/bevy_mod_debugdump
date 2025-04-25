@@ -7,5 +7,5 @@ digraph "" {
 	"nodesep"="0.15";
 	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled"];
-	"node_System(0)" ["label"="run_fixed_main", "tooltip"="bevy_app::main_schedule::FixedMain::run_fixed_main"]
+	"node_System(0)" ["label"="FixedMain::run_fixed_main", "tooltip"="bevy_app::main_schedule::FixedMain::run_fixed_main"]
 }
