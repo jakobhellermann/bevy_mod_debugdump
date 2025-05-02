@@ -5,6 +5,7 @@ use std::fmt::Debug;
 use bevy_app::App;
 use bevy_ecs::schedule::{ScheduleLabel, Schedules};
 
+#[cfg(feature = "cli")]
 mod cli;
 mod dot;
 
@@ -90,4 +91,5 @@ pub fn print_render_graph(app: &mut App) {
     println!("{dot}");
 }
 
+#[cfg(feature = "cli")]
 pub use cli::CommandLineArgs;
