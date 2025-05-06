@@ -5,13 +5,13 @@ use bevy_platform::collections::hash_map::HashMap;
 use bevy_platform::collections::hash_set::HashSet;
 pub use settings::Settings;
 
-use std::{borrow::Cow, collections::VecDeque, fmt::Write, sync::atomic::AtomicUsize};
+use std::{any::TypeId, borrow::Cow, collections::VecDeque, fmt::Write, sync::atomic::AtomicUsize};
 
 use crate::dot::DotGraph;
 use bevy_ecs::{
     schedule::{
         graph::{DiGraph, Direction},
-        NodeId, Schedule, ScheduleGraph, SystemSet,
+        ApplyDeferred, NodeId, Schedule, ScheduleGraph, SystemSet,
     },
     system::ScheduleSystem,
     world::World,
@@ -610,12 +610,29 @@ impl ScheduleGraphContext<'_> {
             NodeId::Set(_) => {
                 let set = self.graph.set_at(node_id);
 
-                if set.system_type().is_some() {
+                if set.system_type() == Some(TypeId::of::<ApplyDeferred>()) {
+                    "ApplyDeferred".to_owned()
+                } else if set.system_type().is_some() {
                     let system_node = self.system_of_system_type(set);
                     if let Some(system_node) = system_node {
                         self.system_node_ref(system_node)
                     } else {
-                        format!("UNKNOWN {:?}", disqualified::ShortName(&format!("{set:?}")))
+                        let name = format!("{:?}", disqualified::ShortName(&format!("{set:?}")));
+                        if name.starts_with("SystemTypeSet(fn FunctionSystem") {
+                            let fn_name = name
+                                .trim_end_matches(">())")
+                                .rsplit_once(' ')
+                                .unwrap()
+                                .1
+                                .to_owned();
+
+                            format!("<missing> {fn_name}")
+                        } else {
+                            format!(
+                                "<missing> {:?}",
+                                disqualified::ShortName(&format!("{set:?}"))
+                            )
+                        }
                     }
                 } else {
                     marker_name(node_id)
