@@ -27,7 +27,7 @@ pub fn schedule_graph_dot(
         .resource_scope::<Schedules, _>(|world, mut schedules| {
             let ignored_ambiguities = schedules.ignored_scheduling_ambiguities.clone();
 
-            let label_name = format!("{:?}", label);
+            let label_name = format!("{label:?}");
             let schedule = schedules
                 .get_mut(label)
                 .ok_or_else(|| format!("schedule {label_name} doesn't exist"))

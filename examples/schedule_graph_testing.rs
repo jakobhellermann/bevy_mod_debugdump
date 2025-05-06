@@ -79,11 +79,11 @@ fn print_schedule(schedule: &Schedule, schedule_label: &dyn ScheduleLabel) {
         }
     };
 
-    println!("{:?}", schedule_label);
+    println!("{schedule_label:?}");
 
     println!("- SETS");
     for (_set_id, set, _conditions) in graph.system_sets() {
-        println!("  - {:?}", set);
+        println!("  - {set:?}");
     }
 
     println!("- SYSTEMS");

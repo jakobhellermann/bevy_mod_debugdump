@@ -142,12 +142,12 @@ fn execute_cli(app: &mut App) -> Result<Args> {
     let write = |out: &str| -> Result<()> {
         match &args.out_path {
             None => {
-                println!("{}", out);
+                println!("{out}");
                 Ok(())
             }
             Some(path) => {
                 let mut out_file = File::create(path)?;
-                write!(out_file, "{}", out)?;
+                write!(out_file, "{out}")?;
                 Ok(())
             }
         }

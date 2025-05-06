@@ -34,7 +34,7 @@ fn build_dot_graph(
     settings: &Settings,
     subgraph_nest_level: usize,
 ) {
-    let fmt_label = |label: Interned<dyn RenderLabel>| format!("{:?}", label);
+    let fmt_label = |label: Interned<dyn RenderLabel>| format!("{label:?}");
 
     let node_mapping: HashMap<_, _> = graph
         .iter_nodes()
@@ -62,11 +62,11 @@ fn build_dot_graph(
     let next_layer_style =
         &settings.style.layers[(subgraph_nest_level + 1) % settings.style.layers.len()];
 
-    for (name, subgraph) in sorted(graph.iter_sub_graphs(), |(name, _)| format!("{:?}", name)) {
+    for (name, subgraph) in sorted(graph.iter_sub_graphs(), |(name, _)| format!("{name:?}")) {
         let internal_name = format!("{}_{:?}", graph_name.unwrap_or_default(), name);
         let mut sub_dot = DotGraph::subgraph(
             &internal_name,
-            &[("label", &format!("{:?}", name)), ("fontcolor", "red")],
+            &[("label", &format!("{name:?}")), ("fontcolor", "red")],
         )
         .graph_attributes(&[
             ("style", "rounded,filled"),
@@ -94,7 +94,7 @@ fn build_dot_graph(
             .map(|(index, slot)| {
                 format!(
                     "<TD PORT=\"{}\">{}: {}</TD>",
-                    html_escape(&format!("in-{}", index)),
+                    html_escape(&format!("in-{index}")),
                     html_escape(&slot.name),
                     html_escape(&format!("{:?}", slot.slot_type))
                 )
@@ -108,7 +108,7 @@ fn build_dot_graph(
             .map(|(index, slot)| {
                 format!(
                     "<TD PORT=\"{}\">{}: {}</TD>",
-                    html_escape(&format!("out-{}", index)),
+                    html_escape(&format!("out-{index}")),
                     html_escape(&slot.name),
                     html_escape(&format!("{:?}", slot.slot_type))
                 )
@@ -117,12 +117,12 @@ fn build_dot_graph(
 
         let slots = iter_utils::zip_longest(inputs.iter(), outputs.iter())
             .map(|pair| match pair {
-                EitherOrBoth::Both(input, output) => format!("<TR>{}{}</TR>", input, output),
+                EitherOrBoth::Both(input, output) => format!("<TR>{input}{output}</TR>"),
                 EitherOrBoth::Left(input) => {
-                    format!("<TR>{}<TD BORDER=\"0\">&nbsp;</TD></TR>", input)
+                    format!("<TR>{input}<TD BORDER=\"0\">&nbsp;</TD></TR>")
                 }
                 EitherOrBoth::Right(output) => {
-                    format!("<TR><TD BORDER=\"0\">&nbsp;</TD>{}</TR>", output)
+                    format!("<TR><TD BORDER=\"0\">&nbsp;</TD>{output}</TR>")
                 }
             })
             .collect::<String>();
@@ -155,9 +155,9 @@ fn build_dot_graph(
                 } => {
                     dot.add_edge_with_ports(
                         &node_id(output_node),
-                        Some(&format!("out-{}:e", output_index)),
+                        Some(&format!("out-{output_index}:e")),
                         &node_id(input_node),
-                        Some(&format!("in-{}:w", input_index)),
+                        Some(&format!("in-{input_index}:w")),
                         &[("color", &layer_style.color_edge_slot)],
                     );
                 }

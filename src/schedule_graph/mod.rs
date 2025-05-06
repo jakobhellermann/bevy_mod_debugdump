@@ -652,11 +652,11 @@ fn set_cluster_name(id: NodeId) -> String {
 }
 
 fn node_index_name(node_id: NodeId) -> String {
-    format!("node_{:?}", node_id)
+    format!("node_{node_id:?}")
 }
 fn marker_name(node_id: NodeId) -> String {
     assert!(node_id.is_set());
-    format!("set_marker_node_{:?}", node_id)
+    format!("set_marker_node_{node_id:?}")
 }
 
 enum IterSingleResult<T> {
@@ -774,7 +774,7 @@ fn remove_transitive_edges(graph: &mut DiGraph) {
             graph.remove_edge(visiting, n);
 
             reachable.clear();
-            collect_reachable(&mut reachable, &graph, visiting, Direction::Outgoing);
+            collect_reachable(&mut reachable, graph, visiting, Direction::Outgoing);
 
             // if we still can access a neighbour with a longer path, it's a transitive dependency.
             if !reachable.contains(&n) {

@@ -37,7 +37,7 @@ fn format_attributes(attrs: &[(&str, &str)]) -> String {
         .map(|(a, b)| format!("{}={}", escape_id(a), escape_id(b)))
         .collect();
     let attrs = attrs.join(", ");
-    format!("[{}]", attrs)
+    format!("[{attrs}]")
 }
 pub fn font_tag(text: &str, color: &str, size: u8) -> String {
     if text.is_empty() {
@@ -78,7 +78,7 @@ impl DotGraph {
         DotGraph::new(name, "digraph", options)
     }
     pub fn subgraph(name: &str, options: &[(&str, &str)]) -> DotGraph {
-        DotGraph::new(&format!("cluster{}", name), "subgraph", options)
+        DotGraph::new(&format!("cluster{name}"), "subgraph", options)
     }
 
     #[allow(dead_code)]

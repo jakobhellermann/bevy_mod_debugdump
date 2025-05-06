@@ -320,5 +320,5 @@ pub fn full_system_name(system: &ScheduleSystem) -> String {
 }
 
 pub fn default_system_set_name(system_set: &dyn SystemSet) -> String {
-    format!("{:?}", system_set)
+    format!("{system_set:?}")
 }
