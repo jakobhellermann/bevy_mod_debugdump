@@ -5,7 +5,7 @@ use bevy_platform::collections::hash_map::HashMap;
 use bevy_platform::collections::hash_set::HashSet;
 pub use settings::Settings;
 
-use std::{any::TypeId, borrow::Cow, collections::VecDeque, fmt::Write, sync::atomic::AtomicUsize};
+use std::{borrow::Cow, collections::VecDeque, fmt::Write, sync::atomic::AtomicUsize};
 
 use crate::dot::DotGraph;
 use bevy_ecs::{
@@ -584,12 +584,14 @@ impl ScheduleGraphContext<'_> {
     }
 
     // PERF: O(n)
-    fn system_of_system_type(&self, system_type: TypeId) -> Option<NodeId> {
-        let system_node = self
-            .graph
-            .systems()
-            .find_map(|(node_id, system, _)| (system.type_id() == system_type).then_some(node_id));
-        system_node
+    fn system_of_system_type(&self, set: &dyn SystemSet) -> Option<NodeId> {
+        self.graph.systems().find_map(|(id, system, _)| {
+            if system.name().starts_with("print_schedule_graph") {
+                dbg!(&system, system.default_system_sets(), set);
+            }
+            let is_system_set = system.default_system_sets().iter().any(|s| s.0 == set);
+            is_system_set.then_some(id)
+        })
     }
 
     fn system_node_ref(&self, node_id: NodeId) -> String {
@@ -607,8 +609,9 @@ impl ScheduleGraphContext<'_> {
             NodeId::Set(_) if self.collapsed_sets.contains(&node_id) => node_index_name(node_id),
             NodeId::Set(_) => {
                 let set = self.graph.set_at(node_id);
-                if let Some(system_type) = set.system_type() {
-                    let system_node = self.system_of_system_type(system_type);
+
+                if set.system_type().is_some() {
+                    let system_node = self.system_of_system_type(set);
                     if let Some(system_node) = system_node {
                         self.system_node_ref(system_node)
                     } else {
