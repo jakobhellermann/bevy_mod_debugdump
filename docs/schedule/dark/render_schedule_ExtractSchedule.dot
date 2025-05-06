@@ -7,7 +7,25 @@ digraph "" {
 	"nodesep"="0.15";
 	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled"];
-	subgraph "clusternode_Set(38)" {
+	subgraph "clusternode_Set(10)" {
+		"style"="rounded,filled";
+		"label"="ExtractAssetsSet";
+		"tooltip"="ExtractAssetsSet";
+		"fillcolor"="#ffffff44";
+		"fontcolor"="#ffffff";
+		"color"="#ffffff50";
+		"penwidth"="2";
+		"set_marker_node_Set(10)" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(9)" ["label"="extract_render_asset<RenderMesh>", "tooltip"="bevy_render::render_asset::extract_render_asset<bevy_render::mesh::RenderMesh>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(12)" ["label"="extract_render_asset<GpuShaderStorageBuffer>", "tooltip"="bevy_render::render_asset::extract_render_asset<bevy_render::storage::GpuShaderStorageBuffer>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(16)" ["label"="extract_render_asset<GpuImage>", "tooltip"="bevy_render::render_asset::extract_render_asset<bevy_render::texture::gpu_image::GpuImage>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(35)" ["label"="extract_render_asset<PreparedMaterial2d<ColorMaterial>>", "tooltip"="bevy_render::render_asset::extract_render_asset<bevy_sprite::mesh2d::material::PreparedMaterial2d<bevy_sprite::mesh2d::color_material::ColorMaterial>>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(52)" ["label"="extract_render_asset<PreparedMaterial<StandardMaterial>>", "tooltip"="bevy_render::render_asset::extract_render_asset<bevy_pbr::material::PreparedMaterial<bevy_pbr::pbr_material::StandardMaterial>>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(65)" ["label"="extract_render_asset<PreparedMaterial<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>>", "tooltip"="bevy_render::render_asset::extract_render_asset<bevy_pbr::material::PreparedMaterial<bevy_pbr::extended_material::ExtendedMaterial<bevy_pbr::pbr_material::StandardMaterial, bevy_pbr::decal::forward::ForwardDecalMaterialExt>>>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"node_System(76)" ["label"="extract_render_asset<GpuLineGizmo>", "tooltip"="bevy_render::render_asset::extract_render_asset<bevy_gizmos::GpuLineGizmo>", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+	}
+	
+	subgraph "clusternode_Set(40)" {
 		"style"="rounded,filled";
 		"label"="ExtractSprites";
 		"tooltip"="ExtractSprites";
@@ -15,11 +33,23 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(38)" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(37)" ["label"="extract_sprites", "tooltip"="bevy_sprite::render::extract_sprites", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"set_marker_node_Set(40)" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(38)" ["label"="extract_sprites", "tooltip"="bevy_sprite::render::extract_sprites", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(41)" {
+	subgraph "clusternode_Set(43)" {
+		"style"="rounded,filled";
+		"label"="ExtractCameraViews";
+		"tooltip"="ExtractCameraViews";
+		"fillcolor"="#ffffff44";
+		"fontcolor"="#ffffff";
+		"color"="#ffffff50";
+		"penwidth"="2";
+		"set_marker_node_Set(43)" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(41)" ["label"="extract_ui_camera_view", "tooltip"="bevy_ui::render::extract_ui_camera_view", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
+	}
+	
+	subgraph "clusternode_Set(44)" {
 		"style"="rounded,filled";
 		"label"="ExtractBoxShadows";
 		"tooltip"="ExtractBoxShadows";
@@ -27,11 +57,11 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(41)" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(46)" ["label"="extract_shadows", "tooltip"="bevy_ui::render::box_shadow::extract_shadows", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
+		"set_marker_node_Set(44)" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(48)" ["label"="extract_shadows", "tooltip"="bevy_ui::render::box_shadow::extract_shadows", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(42)" {
+	subgraph "clusternode_Set(45)" {
 		"style"="rounded,filled";
 		"label"="ExtractBackgrounds";
 		"tooltip"="ExtractBackgrounds";
@@ -39,11 +69,11 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(42)" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(41)" ["label"="extract_uinode_background_colors", "tooltip"="bevy_ui::render::extract_uinode_background_colors", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
+		"set_marker_node_Set(45)" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(42)" ["label"="extract_uinode_background_colors", "tooltip"="bevy_ui::render::extract_uinode_background_colors", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(43)" {
+	subgraph "clusternode_Set(46)" {
 		"style"="rounded,filled";
 		"label"="ExtractImages";
 		"tooltip"="ExtractImages";
@@ -51,11 +81,11 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(43)" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(42)" ["label"="extract_uinode_images", "tooltip"="bevy_ui::render::extract_uinode_images", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
+		"set_marker_node_Set(46)" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(43)" ["label"="extract_uinode_images", "tooltip"="bevy_ui::render::extract_uinode_images", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(44)" {
+	subgraph "clusternode_Set(47)" {
 		"style"="rounded,filled";
 		"label"="ExtractTextureSlice";
 		"tooltip"="ExtractTextureSlice";
@@ -63,11 +93,11 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(44)" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(45)" ["label"="extract_ui_texture_slices", "tooltip"="bevy_ui::render::ui_texture_slice_pipeline::extract_ui_texture_slices", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
+		"set_marker_node_Set(47)" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(47)" ["label"="extract_ui_texture_slices", "tooltip"="bevy_ui::render::ui_texture_slice_pipeline::extract_ui_texture_slices", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(45)" {
+	subgraph "clusternode_Set(48)" {
 		"style"="rounded,filled";
 		"label"="ExtractBorders";
 		"tooltip"="ExtractBorders";
@@ -75,11 +105,23 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(45)" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(43)" ["label"="extract_uinode_borders", "tooltip"="bevy_ui::render::extract_uinode_borders", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
+		"set_marker_node_Set(48)" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(44)" ["label"="extract_uinode_borders", "tooltip"="bevy_ui::render::extract_uinode_borders", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(46)" {
+	subgraph "clusternode_Set(49)" {
+		"style"="rounded,filled";
+		"label"="ExtractTextShadows";
+		"tooltip"="ExtractTextShadows";
+		"fillcolor"="#ffffff44";
+		"fontcolor"="#ffffff";
+		"color"="#ffffff50";
+		"penwidth"="2";
+		"set_marker_node_Set(49)" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(45)" ["label"="extract_text_shadows", "tooltip"="bevy_ui::render::extract_text_shadows", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
+	}
+	
+	subgraph "clusternode_Set(50)" {
 		"style"="rounded,filled";
 		"label"="ExtractText";
 		"tooltip"="ExtractText";
@@ -87,11 +129,22 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(46)" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(44)" ["label"="extract_text_sections", "tooltip"="bevy_ui::render::extract_text_sections", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
+		"set_marker_node_Set(50)" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(46)" ["label"="extract_text_sections", "tooltip"="bevy_ui::render::extract_text_sections", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(57)" {
+	subgraph "clusternode_Set(51)" {
+		"style"="rounded,filled";
+		"label"="ExtractDebug";
+		"tooltip"="ExtractDebug";
+		"fillcolor"="#ffffff44";
+		"fontcolor"="#ffffff";
+		"color"="#ffffff50";
+		"penwidth"="2";
+		"set_marker_node_Set(51)" ["style"="invis", "label"="", "shape"="point"]
+	}
+	
+	subgraph "clusternode_Set(60)" {
 		"style"="rounded,filled";
 		"label"="ExtractMeshesSet";
 		"tooltip"="ExtractMeshesSet";
@@ -99,71 +152,100 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(57)" ["style"="invis", "label"="", "shape"="point"]
+		"set_marker_node_Set(60)" ["style"="invis", "label"="", "shape"="point"]
 	}
 	
-	"node_System(0)" ["label"="extract_shaders", "tooltip"="bevy_render::render_resource::pipeline_cache::PipelineCache::extract_shaders"]
+	subgraph "clusternode_Set(67)" {
+		"style"="rounded,filled";
+		"label"="ExtractMaterialsSet";
+		"tooltip"="ExtractMaterialsSet";
+		"fillcolor"="#ffffff44";
+		"fontcolor"="#ffffff";
+		"color"="#ffffff50";
+		"penwidth"="2";
+		"set_marker_node_Set(67)" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(53)" ["label"="extract_mesh_materials<StandardMaterial>", "tooltip"="bevy_pbr::material::extract_mesh_materials<bevy_pbr::pbr_material::StandardMaterial>", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+		"node_System(66)" ["label"="extract_mesh_materials<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>", "tooltip"="bevy_pbr::material::extract_mesh_materials<bevy_pbr::extended_material::ExtendedMaterial<bevy_pbr::pbr_material::StandardMaterial, bevy_pbr::decal::forward::ForwardDecalMaterialExt>>", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+	}
+	
+	"node_System(0)" ["label"="PipelineCache::extract_shaders", "tooltip"="bevy_render::render_resource::pipeline_cache::PipelineCache::extract_shaders"]
 	"node_System(1)" ["label"="extract_windows", "tooltip"="bevy_render::view::window::extract_windows"]
 	"node_System(2)" ["label"="extract_resource<ManualTextureViews>", "tooltip"="bevy_render::extract_resource::extract_resource<bevy_render::camera::manual_texture_view::ManualTextureViews>"]
 	"node_System(3)" ["label"="extract_resource<ClearColor>", "tooltip"="bevy_render::extract_resource::extract_resource<bevy_render::camera::clear_color::ClearColor>"]
 	"node_System(4)" ["label"="extract_components<CameraMainTextureUsages>", "tooltip"="bevy_render::extract_component::extract_components<bevy_render::camera::camera::CameraMainTextureUsages>"]
 	"node_System(5)" ["label"="extract_cameras", "tooltip"="bevy_render::camera::camera::extract_cameras"]
 	"node_System(6)" ["label"="extract_components<Msaa>", "tooltip"="bevy_render::extract_component::extract_components<bevy_render::view::Msaa>"]
-	"node_System(7)" ["label"="extract_visibility_ranges", "tooltip"="bevy_render::view::visibility::range::extract_visibility_ranges"]
-	"node_System(8)" ["label"="extract_render_asset<RenderMesh>", "tooltip"="bevy_render::render_asset::extract_render_asset<bevy_render::mesh::RenderMesh>"]
-	"node_System(9)" ["label"="extract_frame_count", "tooltip"="bevy_render::globals::extract_frame_count"]
-	"node_System(10)" ["label"="extract_time", "tooltip"="bevy_render::globals::extract_time"]
-	"node_System(11)" ["label"="extract_render_asset<GpuShaderStorageBuffer>", "tooltip"="bevy_render::render_asset::extract_render_asset<bevy_render::storage::GpuShaderStorageBuffer>"]
-	"node_System(12)" ["label"="extract_components<Readback>", "tooltip"="bevy_render::extract_component::extract_components<bevy_render::gpu_readback::Readback>"]
-	"node_System(13)" ["label"="sync_readbacks", "tooltip"="bevy_render::gpu_readback::sync_readbacks"]
-	"node_System(14)" ["label"="extract_resource<RenderAssetBytesPerFrame>", "tooltip"="bevy_render::extract_resource::extract_resource<bevy_render::render_asset::RenderAssetBytesPerFrame>"]
-	"node_System(15)" ["label"="extract_render_asset<GpuImage>", "tooltip"="bevy_render::render_asset::extract_render_asset<bevy_render::texture::gpu_image::GpuImage>"]
-	"node_System(16)" ["label"="extract_components<Camera2d>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::core_2d::camera_2d::Camera2d>"]
-	"node_System(17)" ["label"="extract_core_2d_camera_phases", "tooltip"="bevy_core_pipeline::core_2d::extract_core_2d_camera_phases"]
-	"node_System(18)" ["label"="extract_components<Skybox>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::skybox::Skybox>"]
-	"node_System(19)" ["label"="extract_components<Camera3d>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::core_3d::camera_3d::Camera3d>"]
-	"node_System(20)" ["label"="extract_core_3d_camera_phases", "tooltip"="bevy_core_pipeline::core_3d::extract_core_3d_camera_phases"]
-	"node_System(21)" ["label"="extract_camera_prepass_phase", "tooltip"="bevy_core_pipeline::core_3d::extract_camera_prepass_phase"]
-	"node_System(22)" ["label"="extract_resource<TonemappingLuts>", "tooltip"="bevy_render::extract_resource::extract_resource<bevy_core_pipeline::tonemapping::TonemappingLuts>"]
-	"node_System(23)" ["label"="extract_components<Tonemapping>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::tonemapping::Tonemapping>"]
-	"node_System(24)" ["label"="extract_components<DebandDither>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::tonemapping::DebandDither>"]
-	"node_System(25)" ["label"="extract_components<Bloom>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::bloom::settings::Bloom>"]
-	"node_System(26)" ["label"="extract_components<Fxaa>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::fxaa::Fxaa>"]
-	"node_System(27)" ["label"="extract_components<ContrastAdaptiveSharpening>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::contrast_adaptive_sharpening::ContrastAdaptiveSharpening>"]
-	"node_System(28)" ["label"="extract_components<MotionBlur>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::motion_blur::MotionBlur>"]
-	"node_System(29)" ["label"="extract_depth_of_field_settings", "tooltip"="bevy_core_pipeline::dof::extract_depth_of_field_settings"]
-	"node_System(30)" ["label"="extract_components<Smaa>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::smaa::Smaa>"]
-	"node_System(31)" ["label"="extract_components<ChromaticAberration>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::post_process::ChromaticAberration>"]
-	"node_System(32)" ["label"="extract_components<OrderIndependentTransparencySettings>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::oit::OrderIndependentTransparencySettings>"]
-	"node_System(33)" ["label"="extract_mesh2d", "tooltip"="bevy_sprite::mesh2d::mesh::extract_mesh2d"]
-	"node_System(34)" ["label"="extract_render_asset<PreparedMaterial2d<ColorMaterial>>", "tooltip"="bevy_render::render_asset::extract_render_asset<bevy_sprite::mesh2d::material::PreparedMaterial2d<bevy_sprite::mesh2d::color_material::ColorMaterial>>"]
-	"node_System(35)" ["label"="extract_mesh_materials_2d<ColorMaterial>", "tooltip"="bevy_sprite::mesh2d::material::extract_mesh_materials_2d<bevy_sprite::mesh2d::color_material::ColorMaterial>"]
-	"node_System(36)" ["label"="extract_components<SpriteSource>", "tooltip"="bevy_render::extract_component::extract_components<bevy_sprite::SpriteSource>"]
-	"node_System(38)" ["label"="extract_sprite_events", "tooltip"="bevy_sprite::render::extract_sprite_events"]
-	"node_System(39)" ["label"="extract_text2d_sprite", "tooltip"="bevy_text::text2d::extract_text2d_sprite"]
-	"node_System(40)" ["label"="extract_default_ui_camera_view", "tooltip"="bevy_ui::render::extract_default_ui_camera_view"]
-	"node_System(47)" ["label"="extract_skins", "tooltip"="bevy_pbr::render::skin::extract_skins"]
-	"node_System(48)" ["label"="extract_morphs", "tooltip"="bevy_pbr::render::morph::extract_morphs"]
-	"node_System(49)" ["label"="clear_batched_gpu_instance_buffers<MeshPipeline>", "tooltip"="bevy_render::batching::gpu_preprocessing::clear_batched_gpu_instance_buffers<bevy_pbr::render::mesh::MeshPipeline>"]
-	"node_System(50)" ["label"="extract_render_asset<PreparedMaterial<StandardMaterial>>", "tooltip"="bevy_render::render_asset::extract_render_asset<bevy_pbr::material::PreparedMaterial<bevy_pbr::pbr_material::StandardMaterial>>"]
-	"node_System(51)" ["label"="extract_mesh_materials<StandardMaterial>", "tooltip"="bevy_pbr::material::extract_mesh_materials<bevy_pbr::pbr_material::StandardMaterial>"]
-	"node_System(52)" ["label"="extract_camera_previous_view_data", "tooltip"="bevy_pbr::prepass::extract_camera_previous_view_data"]
-	"node_System(53)" ["label"="extract_resource<AmbientLight>", "tooltip"="bevy_render::extract_resource::extract_resource<bevy_pbr::light::ambient_light::AmbientLight>"]
-	"node_System(54)" ["label"="extract_components<DistanceFog>", "tooltip"="bevy_render::extract_component::extract_components<bevy_pbr::fog::DistanceFog>"]
-	"node_System(55)" ["label"="extract_resource<DefaultOpaqueRendererMethod>", "tooltip"="bevy_render::extract_resource::extract_resource<bevy_pbr::material::DefaultOpaqueRendererMethod>"]
-	"node_System(56)" ["label"="extract_components<ShadowFilteringMethod>", "tooltip"="bevy_render::extract_component::extract_components<bevy_pbr::light::ShadowFilteringMethod>"]
-	"node_System(57)" ["label"="extract_volumetric_fog", "tooltip"="bevy_pbr::volumetric_fog::render::extract_volumetric_fog"]
-	"node_System(58)" ["label"="extract_components<ScreenSpaceReflections>", "tooltip"="bevy_render::extract_component::extract_components<bevy_pbr::ssr::ScreenSpaceReflections>"]
-	"node_System(59)" ["label"="extract_components<PbrDeferredLightingDepthId>", "tooltip"="bevy_render::extract_component::extract_components<bevy_pbr::deferred::PbrDeferredLightingDepthId>"]
-	"node_System(60)" ["label"="extract_clusters", "tooltip"="bevy_pbr::cluster::extract_clusters"]
-	"node_System(61)" ["label"="extract_lights", "tooltip"="bevy_pbr::render::light::extract_lights"]
-	"node_System(62)" ["label"="extract_render_asset<GpuLineGizmo>", "tooltip"="bevy_render::render_asset::extract_render_asset<bevy_gizmos::GpuLineGizmo>"]
-	"node_System(63)" ["label"="extract_gizmo_data", "tooltip"="bevy_gizmos::extract_gizmo_data"]
-	"set_marker_node_Set(38)" -> "node_System(39)" ["lhead"="", "ltail"="clusternode_Set(38)", "tooltip"="ExtractSprites → extract_text2d_sprite", "color"="#eede00"]
-	"set_marker_node_Set(41)" -> "set_marker_node_Set(42)" ["lhead"="clusternode_Set(42)", "ltail"="clusternode_Set(41)", "tooltip"="ExtractBoxShadows → ExtractBackgrounds", "color"="#881877"]
-	"set_marker_node_Set(42)" -> "set_marker_node_Set(43)" ["lhead"="clusternode_Set(43)", "ltail"="clusternode_Set(42)", "tooltip"="ExtractBackgrounds → ExtractImages", "color"="#00b0cc"]
-	"set_marker_node_Set(43)" -> "set_marker_node_Set(44)" ["lhead"="clusternode_Set(44)", "ltail"="clusternode_Set(43)", "tooltip"="ExtractImages → ExtractTextureSlice", "color"="#aa3a55"]
-	"set_marker_node_Set(44)" -> "set_marker_node_Set(45)" ["lhead"="clusternode_Set(45)", "ltail"="clusternode_Set(44)", "tooltip"="ExtractTextureSlice → ExtractBorders", "color"="#44d488"]
-	"set_marker_node_Set(45)" -> "set_marker_node_Set(46)" ["lhead"="clusternode_Set(46)", "ltail"="clusternode_Set(45)", "tooltip"="ExtractBorders → ExtractText", "color"="#0090cc"]
-	"node_System(49)" -> "set_marker_node_Set(57)" ["lhead"="clusternode_Set(57)", "ltail"="", "tooltip"="clear_batched_gpu_instance_buffers<MeshPipeline> → ExtractMeshesSet", "color"="#ee9e44"]
+	"node_System(7)" ["label"="extract_components<OcclusionCulling>", "tooltip"="bevy_render::extract_component::extract_components<bevy_render::experimental::occlusion_culling::OcclusionCulling>"]
+	"node_System(8)" ["label"="extract_visibility_ranges", "tooltip"="bevy_render::view::visibility::range::extract_visibility_ranges"]
+	"node_System(10)" ["label"="extract_frame_count", "tooltip"="bevy_render::globals::extract_frame_count"]
+	"node_System(11)" ["label"="extract_time", "tooltip"="bevy_render::globals::extract_time"]
+	"node_System(13)" ["label"="extract_components<Readback>", "tooltip"="bevy_render::extract_component::extract_components<bevy_render::gpu_readback::Readback>"]
+	"node_System(14)" ["label"="sync_readbacks", "tooltip"="bevy_render::gpu_readback::sync_readbacks"]
+	"node_System(15)" ["label"="extract_render_asset_bytes_per_frame", "tooltip"="bevy_render::render_asset::extract_render_asset_bytes_per_frame"]
+	"node_System(17)" ["label"="extract_components<Camera2d>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::core_2d::camera_2d::Camera2d>"]
+	"node_System(18)" ["label"="extract_core_2d_camera_phases", "tooltip"="bevy_core_pipeline::core_2d::extract_core_2d_camera_phases"]
+	"node_System(19)" ["label"="extract_components<Skybox>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::skybox::Skybox>"]
+	"node_System(20)" ["label"="extract_components<Camera3d>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::core_3d::camera_3d::Camera3d>"]
+	"node_System(21)" ["label"="extract_core_3d_camera_phases", "tooltip"="bevy_core_pipeline::core_3d::extract_core_3d_camera_phases"]
+	"node_System(22)" ["label"="extract_camera_prepass_phase", "tooltip"="bevy_core_pipeline::core_3d::extract_camera_prepass_phase"]
+	"node_System(23)" ["label"="extract_resource<TonemappingLuts>", "tooltip"="bevy_render::extract_resource::extract_resource<bevy_core_pipeline::tonemapping::TonemappingLuts>"]
+	"node_System(24)" ["label"="extract_components<Tonemapping>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::tonemapping::Tonemapping>"]
+	"node_System(25)" ["label"="extract_components<DebandDither>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::tonemapping::DebandDither>"]
+	"node_System(26)" ["label"="extract_components<Bloom>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::bloom::settings::Bloom>"]
+	"node_System(27)" ["label"="extract_components<Fxaa>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::fxaa::Fxaa>"]
+	"node_System(28)" ["label"="extract_components<ContrastAdaptiveSharpening>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::contrast_adaptive_sharpening::ContrastAdaptiveSharpening>"]
+	"node_System(29)" ["label"="extract_components<MotionBlur>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::motion_blur::MotionBlur>"]
+	"node_System(30)" ["label"="extract_depth_of_field_settings", "tooltip"="bevy_core_pipeline::dof::extract_depth_of_field_settings"]
+	"node_System(31)" ["label"="extract_components<Smaa>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::smaa::Smaa>"]
+	"node_System(32)" ["label"="extract_components<ChromaticAberration>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::post_process::ChromaticAberration>"]
+	"node_System(33)" ["label"="extract_components<OrderIndependentTransparencySettings>", "tooltip"="bevy_render::extract_component::extract_components<bevy_core_pipeline::oit::OrderIndependentTransparencySettings>"]
+	"node_System(34)" ["label"="extract_mesh2d", "tooltip"="bevy_sprite::mesh2d::mesh::extract_mesh2d"]
+	"node_System(36)" ["label"="extract_entities_needs_specialization<ColorMaterial>", "tooltip"="bevy_sprite::mesh2d::material::extract_entities_needs_specialization<bevy_sprite::mesh2d::color_material::ColorMaterial>"]
+	"node_System(37)" ["label"="extract_mesh_materials_2d<ColorMaterial>", "tooltip"="bevy_sprite::mesh2d::material::extract_mesh_materials_2d<bevy_sprite::mesh2d::color_material::ColorMaterial>"]
+	"node_System(39)" ["label"="extract_sprite_events", "tooltip"="bevy_sprite::render::extract_sprite_events"]
+	"node_System(40)" ["label"="extract_text2d_sprite", "tooltip"="bevy_text::text2d::extract_text2d_sprite"]
+	"node_System(49)" ["label"="extract_skins", "tooltip"="bevy_pbr::render::skin::extract_skins"]
+	"node_System(50)" ["label"="extract_morphs", "tooltip"="bevy_pbr::render::morph::extract_morphs"]
+	"node_System(51)" ["label"="clear_batched_gpu_instance_buffers<MeshPipeline>", "tooltip"="bevy_render::batching::gpu_preprocessing::clear_batched_gpu_instance_buffers<bevy_pbr::render::mesh::MeshPipeline>"]
+	"node_System(54)" ["label"="early_sweep_material_instances<StandardMaterial>", "tooltip"="bevy_pbr::material::early_sweep_material_instances<bevy_pbr::pbr_material::StandardMaterial>"]
+	"node_System(55)" ["label"="extract_entities_needs_specialization<StandardMaterial>", "tooltip"="bevy_pbr::material::extract_entities_needs_specialization<bevy_pbr::pbr_material::StandardMaterial>"]
+	"node_System(56)" ["label"="extract_camera_previous_view_data", "tooltip"="bevy_pbr::prepass::extract_camera_previous_view_data"]
+	"node_System(57)" ["label"="extract_resource<AmbientLight>", "tooltip"="bevy_render::extract_resource::extract_resource<bevy_pbr::light::ambient_light::AmbientLight>"]
+	"node_System(58)" ["label"="extract_components<DistanceFog>", "tooltip"="bevy_render::extract_component::extract_components<bevy_pbr::fog::DistanceFog>"]
+	"node_System(59)" ["label"="extract_resource<DefaultOpaqueRendererMethod>", "tooltip"="bevy_render::extract_resource::extract_resource<bevy_pbr::material::DefaultOpaqueRendererMethod>"]
+	"node_System(60)" ["label"="extract_components<ShadowFilteringMethod>", "tooltip"="bevy_render::extract_component::extract_components<bevy_pbr::light::ShadowFilteringMethod>"]
+	"node_System(61)" ["label"="extract_volumetric_fog", "tooltip"="bevy_pbr::volumetric_fog::render::extract_volumetric_fog"]
+	"node_System(62)" ["label"="extract_components<ScreenSpaceReflections>", "tooltip"="bevy_render::extract_component::extract_components<bevy_pbr::ssr::ScreenSpaceReflections>"]
+	"node_System(63)" ["label"="extract_components<ClusteredDecal>", "tooltip"="bevy_render::extract_component::extract_components<bevy_pbr::decal::clustered::ClusteredDecal>"]
+	"node_System(64)" ["label"="extract_decals", "tooltip"="bevy_pbr::decal::clustered::extract_decals"]
+	"node_System(67)" ["label"="early_sweep_material_instances<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>", "tooltip"="bevy_pbr::material::early_sweep_material_instances<bevy_pbr::extended_material::ExtendedMaterial<bevy_pbr::pbr_material::StandardMaterial, bevy_pbr::decal::forward::ForwardDecalMaterialExt>>"]
+	"node_System(68)" ["label"="extract_entities_needs_specialization<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>", "tooltip"="bevy_pbr::material::extract_entities_needs_specialization<bevy_pbr::extended_material::ExtendedMaterial<bevy_pbr::pbr_material::StandardMaterial, bevy_pbr::decal::forward::ForwardDecalMaterialExt>>"]
+	"node_System(69)" ["label"="extract_components<AmbientLight>", "tooltip"="bevy_render::extract_component::extract_components<bevy_pbr::light::ambient_light::AmbientLight>"]
+	"node_System(70)" ["label"="extract_components<Atmosphere>", "tooltip"="bevy_render::extract_component::extract_components<bevy_pbr::atmosphere::Atmosphere>"]
+	"node_System(71)" ["label"="extract_components<AtmosphereSettings>", "tooltip"="bevy_render::extract_component::extract_components<bevy_pbr::atmosphere::AtmosphereSettings>"]
+	"node_System(72)" ["label"="extract_components<PbrDeferredLightingDepthId>", "tooltip"="bevy_render::extract_component::extract_components<bevy_pbr::deferred::PbrDeferredLightingDepthId>"]
+	"node_System(73)" ["label"="extract_clusters", "tooltip"="bevy_pbr::cluster::extract_clusters"]
+	"node_System(74)" ["label"="extract_lights", "tooltip"="bevy_pbr::render::light::extract_lights"]
+	"node_System(75)" ["label"="late_sweep_material_instances", "tooltip"="bevy_pbr::material::late_sweep_material_instances"]
+	"node_System(77)" ["label"="extract_gizmo_data", "tooltip"="bevy_gizmos::extract_gizmo_data"]
+	"node_System(78)" ["label"="extract_linegizmos", "tooltip"="bevy_gizmos::retained::extract_linegizmos"]
+	"set_marker_node_Set(50)" -> "set_marker_node_Set(51)" ["lhead"="clusternode_Set(51)", "ltail"="clusternode_Set(50)", "tooltip"="ExtractText → ExtractDebug", "color"="#eede00"]
+	"node_System(5)" -> "node_System(36)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::commands::Commands, bevy_render::extract_param::Extract<bevy_ecs::system::query::Query<(bevy_ecs::entity::Entity, bevy_render::sync_world::RenderEntity, &bevy_render::camera::camera::Camera, &bevy_render::camera::camera::CameraRenderGraph, &bevy_transform::components::global_transform::GlobalTransform, &bevy_render::view::visibility::VisibleEntities, &bevy_render::primitives::Frustum, core::option::Option<&bevy_render::view::ColorGrading>, core::option::Option<&bevy_render::camera::camera::Exposure>, core::option::Option<&bevy_render::camera::camera::TemporalJitter>, core::option::Option<&bevy_render::view::visibility::render_layers::RenderLayers>, core::option::Option<&bevy_render::camera::projection::Projection>, bevy_ecs::query::fetch::Has<bevy_render::view::NoIndirectDrawing>)>>, bevy_render::extract_param::Extract<bevy_ecs::system::query::Query<bevy_ecs::entity::Entity, bevy_ecs::query::filter::With<bevy_window::window::PrimaryWindow>>>, bevy_ecs::change_detection::Res<bevy_render::batching::gpu_preprocessing::GpuPreprocessingSupport>, bevy_render::extract_param::Extract<bevy_ecs::system::query::Query<&bevy_render::sync_world::RenderEntity>>), bevy_render::camera::camera::extract_cameras>()) → extract_entities_needs_specialization<ColorMaterial>", "color"="#881877"]
+	"node_System(5)" -> "node_System(55)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::commands::Commands, bevy_render::extract_param::Extract<bevy_ecs::system::query::Query<(bevy_ecs::entity::Entity, bevy_render::sync_world::RenderEntity, &bevy_render::camera::camera::Camera, &bevy_render::camera::camera::CameraRenderGraph, &bevy_transform::components::global_transform::GlobalTransform, &bevy_render::view::visibility::VisibleEntities, &bevy_render::primitives::Frustum, core::option::Option<&bevy_render::view::ColorGrading>, core::option::Option<&bevy_render::camera::camera::Exposure>, core::option::Option<&bevy_render::camera::camera::TemporalJitter>, core::option::Option<&bevy_render::view::visibility::render_layers::RenderLayers>, core::option::Option<&bevy_render::camera::projection::Projection>, bevy_ecs::query::fetch::Has<bevy_render::view::NoIndirectDrawing>)>>, bevy_render::extract_param::Extract<bevy_ecs::system::query::Query<bevy_ecs::entity::Entity, bevy_ecs::query::filter::With<bevy_window::window::PrimaryWindow>>>, bevy_ecs::change_detection::Res<bevy_render::batching::gpu_preprocessing::GpuPreprocessingSupport>, bevy_render::extract_param::Extract<bevy_ecs::system::query::Query<&bevy_render::sync_world::RenderEntity>>), bevy_render::camera::camera::extract_cameras>()) → extract_entities_needs_specialization<StandardMaterial>", "color"="#00b0cc"]
+	"node_System(67)" -> "node_System(75)" ["lhead"="", "ltail"="", "tooltip"="early_sweep_material_instances<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>> → SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::change_detection::ResMut<bevy_pbr::material::RenderMaterialInstances>, bevy_render::extract_param::Extract<bevy_ecs::removal_detection::RemovedComponents<bevy_render::view::visibility::ViewVisibility>>), bevy_pbr::material::late_sweep_material_instances>())", "color"="#aa3a55"]
+	"set_marker_node_Set(67)" -> "node_System(54)" ["lhead"="", "ltail"="clusternode_Set(67)", "tooltip"="ExtractMaterialsSet → early_sweep_material_instances<StandardMaterial>", "color"="#44d488"]
+	"node_System(51)" -> "set_marker_node_Set(60)" ["lhead"="clusternode_Set(60)", "ltail"="", "tooltip"="clear_batched_gpu_instance_buffers<MeshPipeline> → ExtractMeshesSet", "color"="#0090cc"]
+	"node_System(75)" -> "set_marker_node_Set(60)" ["lhead"="clusternode_Set(60)", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::change_detection::ResMut<bevy_pbr::material::RenderMaterialInstances>, bevy_render::extract_param::Extract<bevy_ecs::removal_detection::RemovedComponents<bevy_render::view::visibility::ViewVisibility>>), bevy_pbr::material::late_sweep_material_instances>()) → ExtractMeshesSet", "color"="#ee9e44"]
+	"node_System(54)" -> "node_System(75)" ["lhead"="", "ltail"="", "tooltip"="early_sweep_material_instances<StandardMaterial> → SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::change_detection::ResMut<bevy_pbr::material::RenderMaterialInstances>, bevy_render::extract_param::Extract<bevy_ecs::removal_detection::RemovedComponents<bevy_render::view::visibility::ViewVisibility>>), bevy_pbr::material::late_sweep_material_instances>())", "color"="#663699"]
+	"set_marker_node_Set(45)" -> "set_marker_node_Set(46)" ["lhead"="clusternode_Set(46)", "ltail"="clusternode_Set(45)", "tooltip"="ExtractBackgrounds → ExtractImages", "color"="#3363bb"]
+	"set_marker_node_Set(67)" -> "node_System(67)" ["lhead"="", "ltail"="clusternode_Set(67)", "tooltip"="ExtractMaterialsSet → early_sweep_material_instances<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>", "color"="#22c2bb"]
+	"set_marker_node_Set(46)" -> "set_marker_node_Set(47)" ["lhead"="clusternode_Set(47)", "ltail"="clusternode_Set(46)", "tooltip"="ExtractImages → ExtractTextureSlice", "color"="#99d955"]
+	"set_marker_node_Set(47)" -> "set_marker_node_Set(48)" ["lhead"="clusternode_Set(48)", "ltail"="clusternode_Set(47)", "tooltip"="ExtractTextureSlice → ExtractBorders", "color"="#eede00"]
+	"set_marker_node_Set(44)" -> "set_marker_node_Set(45)" ["lhead"="clusternode_Set(45)", "ltail"="clusternode_Set(44)", "tooltip"="ExtractBoxShadows → ExtractBackgrounds", "color"="#881877"]
+	"set_marker_node_Set(49)" -> "set_marker_node_Set(50)" ["lhead"="clusternode_Set(50)", "ltail"="clusternode_Set(49)", "tooltip"="ExtractTextShadows → ExtractText", "color"="#00b0cc"]
+	"set_marker_node_Set(40)" -> "node_System(40)" ["lhead"="", "ltail"="clusternode_Set(40)", "tooltip"="ExtractSprites → extract_text2d_sprite", "color"="#aa3a55"]
+	"node_System(5)" -> "node_System(68)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::commands::Commands, bevy_render::extract_param::Extract<bevy_ecs::system::query::Query<(bevy_ecs::entity::Entity, bevy_render::sync_world::RenderEntity, &bevy_render::camera::camera::Camera, &bevy_render::camera::camera::CameraRenderGraph, &bevy_transform::components::global_transform::GlobalTransform, &bevy_render::view::visibility::VisibleEntities, &bevy_render::primitives::Frustum, core::option::Option<&bevy_render::view::ColorGrading>, core::option::Option<&bevy_render::camera::camera::Exposure>, core::option::Option<&bevy_render::camera::camera::TemporalJitter>, core::option::Option<&bevy_render::view::visibility::render_layers::RenderLayers>, core::option::Option<&bevy_render::camera::projection::Projection>, bevy_ecs::query::fetch::Has<bevy_render::view::NoIndirectDrawing>)>>, bevy_render::extract_param::Extract<bevy_ecs::system::query::Query<bevy_ecs::entity::Entity, bevy_ecs::query::filter::With<bevy_window::window::PrimaryWindow>>>, bevy_ecs::change_detection::Res<bevy_render::batching::gpu_preprocessing::GpuPreprocessingSupport>, bevy_render::extract_param::Extract<bevy_ecs::system::query::Query<&bevy_render::sync_world::RenderEntity>>), bevy_render::camera::camera::extract_cameras>()) → extract_entities_needs_specialization<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>", "color"="#44d488"]
+	"set_marker_node_Set(43)" -> "set_marker_node_Set(44)" ["lhead"="clusternode_Set(44)", "ltail"="clusternode_Set(43)", "tooltip"="ExtractCameraViews → ExtractBoxShadows", "color"="#0090cc"]
+	"node_System(8)" -> "set_marker_node_Set(60)" ["lhead"="clusternode_Set(60)", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::change_detection::ResMut<bevy_render::view::visibility::range::RenderVisibilityRanges>, bevy_render::extract_param::Extract<bevy_ecs::system::query::Query<(bevy_ecs::entity::Entity, &bevy_render::view::visibility::range::VisibilityRange)>>, bevy_render::extract_param::Extract<bevy_ecs::system::query::Query<bevy_ecs::entity::Entity, bevy_ecs::query::filter::Changed<bevy_render::view::visibility::range::VisibilityRange>>>, bevy_render::extract_param::Extract<bevy_ecs::removal_detection::RemovedComponents<bevy_render::view::visibility::range::VisibilityRange>>), bevy_render::view::visibility::range::extract_visibility_ranges>()) → ExtractMeshesSet", "color"="#ee9e44"]
+	"set_marker_node_Set(48)" -> "set_marker_node_Set(49)" ["lhead"="clusternode_Set(49)", "ltail"="clusternode_Set(48)", "tooltip"="ExtractBorders → ExtractTextShadows", "color"="#663699"]
 }
