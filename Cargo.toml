@@ -37,6 +37,9 @@ required-features = ["render_graph"]
 name = "print_render_graph"
 required-features = ["render_graph"]
 
+[[example]]
+name = "print_events_graph"
+
 # [patch.crates-io]
 # bevy_ecs = { path = "../bevy/crates/bevy_ecs" }
 # bevy_app = { path = "../bevy/crates/bevy_app" }
