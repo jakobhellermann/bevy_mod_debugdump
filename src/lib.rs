@@ -50,7 +50,8 @@ pub fn print_schedule_graph(app: &mut App, schedule_label: impl ScheduleLabel) {
 }
 
 /// Returns the current render graph using
-/// [`render_graph_dot`](render_graph::render_graph_dot). # Example
+/// [`render_graph_dot`](render_graph::render_graph_dot).
+/// # Example
 /// ```rust,no_run
 /// use bevy::prelude::*;
 ///
@@ -75,7 +76,8 @@ pub fn render_graph_dot(app: &App, settings: &render_graph::Settings) -> String 
 }
 
 /// Prints the current render graph using
-/// [`render_graph_dot`](render_graph::render_graph_dot). # Example
+/// [`render_graph_dot`](render_graph::render_graph_dot).
+/// # Example
 /// ```rust,no_run
 /// use bevy::prelude::*;
 ///
