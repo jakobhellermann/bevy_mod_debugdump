@@ -559,15 +559,15 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
 }
 
 impl ScheduleGraphContext<'_> {
-    fn system_name(&self, system: &ScheduleSystem) -> Cow<str> {
+    fn system_name(&self, system: &ScheduleSystem) -> Cow<'_, str> {
         (*self.settings.system_name)(system).into()
     }
 
-    fn system_set_name(&self, system_set: &dyn SystemSet) -> Cow<str> {
+    fn system_set_name(&self, system_set: &dyn SystemSet) -> Cow<'_, str> {
         (*self.settings.system_set_name)(system_set).into()
     }
 
-    fn full_name(&self, node_id: NodeId) -> Cow<str> {
+    fn full_name(&self, node_id: NodeId) -> Cow<'_, str> {
         match node_id {
             NodeId::System(_) => self.system_name(self.graph.system_at(node_id)),
             NodeId::Set(_) => self.system_set_name(self.graph.set_at(node_id)),
