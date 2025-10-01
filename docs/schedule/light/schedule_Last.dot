@@ -7,35 +7,37 @@ digraph "" {
 	"nodesep"="0.15";
 	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled"];
-	subgraph "clusternode_Set(10)" {
+	subgraph "clusternode_Set(SystemSetKey(12v1))" {
 		"style"="rounded,filled";
-		"label"="UpdateGizmoMeshes";
-		"tooltip"="UpdateGizmoMeshes";
+		"label"="GizmoMeshSystems";
+		"tooltip"="GizmoMeshSystems";
 		"fillcolor"="#00000008";
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(10)" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(9)" ["label"="update_gizmo_meshes<DefaultGizmoConfigGroup>", "tooltip"="bevy_gizmos::update_gizmo_meshes<bevy_gizmos::config::DefaultGizmoConfigGroup>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(11)" ["label"="update_gizmo_meshes<AabbGizmoConfigGroup>", "tooltip"="bevy_gizmos::update_gizmo_meshes<bevy_gizmos::aabb::AabbGizmoConfigGroup>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(13)" ["label"="update_gizmo_meshes<LightGizmoConfigGroup>", "tooltip"="bevy_gizmos::update_gizmo_meshes<bevy_gizmos::light::LightGizmoConfigGroup>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"set_marker_node_Set(SystemSetKey(12v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(11v1))" ["label"="update_gizmo_meshes<DefaultGizmoConfigGroup>", "tooltip"="bevy_gizmos::update_gizmo_meshes<bevy_gizmos::config::DefaultGizmoConfigGroup>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(13v1))" ["label"="update_gizmo_meshes<AabbGizmoConfigGroup>", "tooltip"="bevy_gizmos::update_gizmo_meshes<bevy_gizmos::aabb::AabbGizmoConfigGroup>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(15v1))" ["label"="update_gizmo_meshes<LightGizmoConfigGroup>", "tooltip"="bevy_gizmos::update_gizmo_meshes<bevy_gizmos::light::LightGizmoConfigGroup>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 	}
 	
-	"node_System(0)" ["label"="tick_global_task_pools", "tooltip"="bevy_app::task_pool_plugin::tick_global_task_pools"]
-	"node_System(1)" ["label"="update_frame_count", "tooltip"="bevy_diagnostic::frame_count_diagnostics_plugin::update_frame_count"]
-	"node_System(2)" ["label"="changed_windows", "tooltip"="bevy_winit::system::changed_windows"]
-	"node_System(3)" ["label"="despawn_windows", "tooltip"="bevy_winit::system::despawn_windows"]
-	"node_System(4)" ["label"="check_keyboard_focus_lost", "tooltip"="bevy_winit::system::check_keyboard_focus_lost"]
-	"node_System(5)" ["label"="update_cursors", "tooltip"="bevy_winit::cursor::update_cursors"]
-	"node_System(6)" ["label"="configure_depth_texture_usages", "tooltip"="bevy_core_pipeline::oit::configure_depth_texture_usages"]
-	"node_System(7)" ["label"="trim_cosmic_cache", "tooltip"="bevy_text::pipeline::trim_cosmic_cache"]
-	"node_System(8)" ["label"="propagate_gizmos<DefaultGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::propagate_gizmos<bevy_gizmos::config::DefaultGizmoConfigGroup, bevy_time::fixed::Fixed>"]
-	"node_System(10)" ["label"="propagate_gizmos<AabbGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::propagate_gizmos<bevy_gizmos::aabb::AabbGizmoConfigGroup, bevy_time::fixed::Fixed>"]
-	"node_System(12)" ["label"="propagate_gizmos<LightGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::propagate_gizmos<bevy_gizmos::light::LightGizmoConfigGroup, bevy_time::fixed::Fixed>"]
-	"node_System(14)" ["label"="deactivate_touch_pointers", "tooltip"="bevy_picking::input::deactivate_touch_pointers"]
-	"node_System(12)" -> "set_marker_node_Set(10)" ["lhead"="clusternode_Set(10)", "ltail"="", "tooltip"="propagate_gizmos<LightGizmoConfigGroup, Fixed> → UpdateGizmoMeshes", "color"="#eede00"]
-	"node_System(3)" -> "node_System(4)" ["lhead"="", "ltail"="", "tooltip"="despawn_windows → check_keyboard_focus_lost", "color"="#881877"]
-	"node_System(8)" -> "set_marker_node_Set(10)" ["lhead"="clusternode_Set(10)", "ltail"="", "tooltip"="propagate_gizmos<DefaultGizmoConfigGroup, Fixed> → UpdateGizmoMeshes", "color"="#00b0cc"]
-	"node_System(2)" -> "node_System(3)" ["lhead"="", "ltail"="", "tooltip"="changed_windows → despawn_windows", "color"="#aa3a55"]
-	"node_System(10)" -> "set_marker_node_Set(10)" ["lhead"="clusternode_Set(10)", "ltail"="", "tooltip"="propagate_gizmos<AabbGizmoConfigGroup, Fixed> → UpdateGizmoMeshes", "color"="#44d488"]
+	"node_System(SystemKey(1v1))" ["label"="tick_global_task_pools", "tooltip"="bevy_app::task_pool_plugin::tick_global_task_pools"]
+	"node_System(SystemKey(2v1))" ["label"="update_frame_count", "tooltip"="bevy_diagnostic::frame_count_diagnostics_plugin::update_frame_count"]
+	"node_System(SystemKey(3v1))" ["label"="changed_windows", "tooltip"="bevy_winit::system::changed_windows"]
+	"node_System(SystemKey(4v1))" ["label"="changed_cursor_options", "tooltip"="bevy_winit::system::changed_cursor_options"]
+	"node_System(SystemKey(5v1))" ["label"="despawn_windows", "tooltip"="bevy_winit::system::despawn_windows"]
+	"node_System(SystemKey(6v1))" ["label"="check_keyboard_focus_lost", "tooltip"="bevy_winit::system::check_keyboard_focus_lost"]
+	"node_System(SystemKey(7v1))" ["label"="update_cursors", "tooltip"="bevy_winit::cursor::update_cursors"]
+	"node_System(SystemKey(8v1))" ["label"="configure_depth_texture_usages", "tooltip"="bevy_core_pipeline::oit::configure_depth_texture_usages"]
+	"node_System(SystemKey(9v1))" ["label"="trim_cosmic_cache", "tooltip"="bevy_text::pipeline::trim_cosmic_cache"]
+	"node_System(SystemKey(10v1))" ["label"="propagate_gizmos<DefaultGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::propagate_gizmos<bevy_gizmos::config::DefaultGizmoConfigGroup, bevy_time::fixed::Fixed>"]
+	"node_System(SystemKey(12v1))" ["label"="propagate_gizmos<AabbGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::propagate_gizmos<bevy_gizmos::aabb::AabbGizmoConfigGroup, bevy_time::fixed::Fixed>"]
+	"node_System(SystemKey(14v1))" ["label"="propagate_gizmos<LightGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::propagate_gizmos<bevy_gizmos::light::LightGizmoConfigGroup, bevy_time::fixed::Fixed>"]
+	"node_System(SystemKey(16v1))" ["label"="deactivate_touch_pointers", "tooltip"="bevy_picking::input::deactivate_touch_pointers"]
+	"node_System(SystemKey(12v1))" -> "set_marker_node_Set(SystemSetKey(12v1))" ["lhead"="clusternode_Set(SystemSetKey(12v1))", "ltail"="", "tooltip"="propagate_gizmos<AabbGizmoConfigGroup, Fixed> → GizmoMeshSystems", "color"="#eede00"]
+	"node_System(SystemKey(14v1))" -> "set_marker_node_Set(SystemSetKey(12v1))" ["lhead"="clusternode_Set(SystemSetKey(12v1))", "ltail"="", "tooltip"="propagate_gizmos<LightGizmoConfigGroup, Fixed> → GizmoMeshSystems", "color"="#881877"]
+	"node_System(SystemKey(10v1))" -> "set_marker_node_Set(SystemSetKey(12v1))" ["lhead"="clusternode_Set(SystemSetKey(12v1))", "ltail"="", "tooltip"="propagate_gizmos<DefaultGizmoConfigGroup, Fixed> → GizmoMeshSystems", "color"="#00b0cc"]
+	"node_System(SystemKey(4v1))" -> "node_System(SystemKey(5v1))" ["lhead"="", "ltail"="", "tooltip"="changed_cursor_options → despawn_windows", "color"="#aa3a55"]
+	"node_System(SystemKey(3v1))" -> "node_System(SystemKey(4v1))" ["lhead"="", "ltail"="", "tooltip"="changed_windows → changed_cursor_options", "color"="#44d488"]
+	"node_System(SystemKey(5v1))" -> "node_System(SystemKey(6v1))" ["lhead"="", "ltail"="", "tooltip"="despawn_windows → check_keyboard_focus_lost", "color"="#0090cc"]
 }

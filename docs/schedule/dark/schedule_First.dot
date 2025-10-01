@@ -7,44 +7,31 @@ digraph "" {
 	"nodesep"="0.15";
 	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled"];
-	subgraph "clusternode_Set(1)" {
+	subgraph "clusternode_Set(SystemSetKey(2v1))" {
 		"style"="rounded,filled";
-		"label"="EventUpdates";
-		"tooltip"="EventUpdates";
+		"label"="MessageUpdateSystems";
+		"tooltip"="MessageUpdateSystems";
 		"fillcolor"="#ffffff44";
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(1)" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(0)" ["label"="event_update_system", "tooltip"="bevy_ecs::event::update::event_update_system", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
+		"set_marker_node_Set(SystemSetKey(2v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(1v1))" ["label"="message_update_system", "tooltip"="bevy_ecs::message::update::message_update_system", "fillcolor"="#b0d34a", "fontname"="Helvetica", "fontcolor"="#edf5d5", "color"="#d3e69c", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(3)" {
+	subgraph "clusternode_Set(SystemSetKey(4v1))" {
 		"style"="rounded,filled";
-		"label"="TimeSystem";
-		"tooltip"="TimeSystem";
+		"label"="TimeSystems";
+		"tooltip"="TimeSystems";
 		"fillcolor"="#ffffff44";
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(3)" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(1)" ["label"="time_system", "tooltip"="bevy_time::time_system", "fillcolor"="#c7ddbd", "fontname"="Helvetica", "fontcolor"="#162111", "color"="#8dba79", "penwidth"="1"]
+		"set_marker_node_Set(SystemSetKey(4v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(2v1))" ["label"="time_system", "tooltip"="bevy_time::time_system", "fillcolor"="#c7ddbd", "fontname"="Helvetica", "fontcolor"="#162111", "color"="#8dba79", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(7)" {
-		"style"="rounded,filled";
-		"label"="Input";
-		"tooltip"="Input";
-		"fillcolor"="#ffffff44";
-		"fontcolor"="#ffffff";
-		"color"="#ffffff50";
-		"penwidth"="2";
-		"set_marker_node_Set(7)" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(3)" ["label"="mouse_pick_events", "tooltip"="bevy_picking::input::mouse_pick_events", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(4)" ["label"="touch_pick_events", "tooltip"="bevy_picking::input::touch_pick_events", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-	}
-	
-	subgraph "clusternode_Set(9)" {
+	subgraph "clusternode_Set(SystemSetKey(8v1))" {
 		"style"="rounded,filled";
 		"label"="PostInput";
 		"tooltip"="PostInput";
@@ -52,16 +39,29 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(9)" ["style"="invis", "label"="", "shape"="point"]
+		"set_marker_node_Set(SystemSetKey(8v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(4v1))" ["label"="viewport_picking", "tooltip"="bevy_ui::widget::viewport::viewport_picking", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
 	}
 	
-	"node_System(2)" ["label"="clear_screenshots", "tooltip"="bevy_render::view::window::screenshot::clear_screenshots"]
-	"node_System(2)" -> "ApplyDeferred" ["lhead"="", "ltail"="", "tooltip"="clear_screenshots → SystemTypeSet(fn bevy_ecs::schedule::executor::ApplyDeferred())", "color"="#eede00"]
-	"set_marker_node_Set(3)" -> "set_marker_node_Set(7)" ["lhead"="clusternode_Set(7)", "ltail"="clusternode_Set(3)", "tooltip"="TimeSystem → Input", "color"="#881877"]
-	"set_marker_node_Set(1)" -> "set_marker_node_Set(7)" ["lhead"="clusternode_Set(7)", "ltail"="clusternode_Set(1)", "tooltip"="EventUpdates → Input", "color"="#00b0cc"]
-	"node_System(0)" -> "node_System(2)" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::exclusive_function_system::ExclusiveFunctionSystem<fn(bevy_ecs::system::system_param::Local<bevy_ecs::component::Tick>), bevy_ecs::event::update::event_update_system>()) → clear_screenshots", "color"="#aa3a55"]
-	"set_marker_node_Set(7)" -> "set_marker_node_Set(9)" ["lhead"="clusternode_Set(9)", "ltail"="clusternode_Set(7)", "tooltip"="Input → PostInput", "color"="#44d488"]
-	"node_System(3)" -> "node_System(4)" ["lhead"="", "ltail"="", "tooltip"="mouse_pick_events → touch_pick_events", "color"="#0090cc"]
-	"set_marker_node_Set(3)" -> "set_marker_node_Set(9)" ["lhead"="clusternode_Set(9)", "ltail"="clusternode_Set(3)", "tooltip"="TimeSystem → PostInput", "color"="#ee9e44"]
-	"set_marker_node_Set(1)" -> "set_marker_node_Set(9)" ["lhead"="clusternode_Set(9)", "ltail"="clusternode_Set(1)", "tooltip"="EventUpdates → PostInput", "color"="#663699"]
+	subgraph "clusternode_Set(SystemSetKey(10v1))" {
+		"style"="rounded,filled";
+		"label"="Input";
+		"tooltip"="Input";
+		"fillcolor"="#ffffff44";
+		"fontcolor"="#ffffff";
+		"color"="#ffffff50";
+		"penwidth"="2";
+		"set_marker_node_Set(SystemSetKey(10v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(5v1))" ["label"="mouse_pick_events", "tooltip"="bevy_picking::input::mouse_pick_events", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(6v1))" ["label"="touch_pick_events", "tooltip"="bevy_picking::input::touch_pick_events", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+	}
+	
+	"node_System(SystemKey(3v1))" ["label"="clear_screenshots", "tooltip"="bevy_render::view::window::screenshot::clear_screenshots"]
+	"node_System(SystemKey(7v1))" ["label"="apply_deferred", "tooltip"="bevy_ecs::apply_deferred"]
+	"set_marker_node_Set(SystemSetKey(2v1))" -> "set_marker_node_Set(SystemSetKey(10v1))" ["lhead"="clusternode_Set(SystemSetKey(10v1))", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="MessageUpdateSystems → Input", "color"="#eede00"]
+	"set_marker_node_Set(SystemSetKey(10v1))" -> "set_marker_node_Set(SystemSetKey(8v1))" ["lhead"="clusternode_Set(SystemSetKey(8v1))", "ltail"="clusternode_Set(SystemSetKey(10v1))", "tooltip"="Input → PostInput", "color"="#881877"]
+	"node_System(SystemKey(3v1))" -> "ApplyDeferred" ["lhead"="", "ltail"="", "tooltip"="clear_screenshots → SystemTypeSet(fn bevy_ecs::schedule::executor::ApplyDeferred())", "color"="#00b0cc"]
+	"node_System(SystemKey(5v1))" -> "node_System(SystemKey(6v1))" ["lhead"="", "ltail"="", "tooltip"="mouse_pick_events → touch_pick_events", "color"="#aa3a55"]
+	"set_marker_node_Set(SystemSetKey(4v1))" -> "set_marker_node_Set(SystemSetKey(10v1))" ["lhead"="clusternode_Set(SystemSetKey(10v1))", "ltail"="clusternode_Set(SystemSetKey(4v1))", "tooltip"="TimeSystems → Input", "color"="#44d488"]
+	"node_System(SystemKey(1v1))" -> "node_System(SystemKey(3v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::exclusive_function_system::ExclusiveFunctionSystem<fn(bevy_ecs::system::system_param::Local<'_, bevy_ecs::component::tick::Tick>), (), bevy_ecs::message::update::message_update_system>()) → clear_screenshots", "color"="#0090cc"]
 }

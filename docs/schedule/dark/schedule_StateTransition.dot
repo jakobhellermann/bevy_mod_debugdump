@@ -7,7 +7,7 @@ digraph "" {
 	"nodesep"="0.15";
 	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled"];
-	subgraph "clusternode_Set(0)" {
+	subgraph "clusternode_Set(SystemSetKey(1v1))" {
 		"style"="rounded,filled";
 		"label"="DependentTransitions";
 		"tooltip"="DependentTransitions";
@@ -15,10 +15,10 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(0)" ["style"="invis", "label"="", "shape"="point"]
+		"set_marker_node_Set(SystemSetKey(1v1))" ["style"="invis", "label"="", "shape"="point"]
 	}
 	
-	subgraph "clusternode_Set(1)" {
+	subgraph "clusternode_Set(SystemSetKey(2v1))" {
 		"style"="rounded,filled";
 		"label"="ExitSchedules";
 		"tooltip"="ExitSchedules";
@@ -26,10 +26,10 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(1)" ["style"="invis", "label"="", "shape"="point"]
+		"set_marker_node_Set(SystemSetKey(2v1))" ["style"="invis", "label"="", "shape"="point"]
 	}
 	
-	subgraph "clusternode_Set(2)" {
+	subgraph "clusternode_Set(SystemSetKey(3v1))" {
 		"style"="rounded,filled";
 		"label"="TransitionSchedules";
 		"tooltip"="TransitionSchedules";
@@ -37,10 +37,10 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(2)" ["style"="invis", "label"="", "shape"="point"]
+		"set_marker_node_Set(SystemSetKey(3v1))" ["style"="invis", "label"="", "shape"="point"]
 	}
 	
-	subgraph "clusternode_Set(3)" {
+	subgraph "clusternode_Set(SystemSetKey(4v1))" {
 		"style"="rounded,filled";
 		"label"="EnterSchedules";
 		"tooltip"="EnterSchedules";
@@ -48,10 +48,10 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(3)" ["style"="invis", "label"="", "shape"="point"]
+		"set_marker_node_Set(SystemSetKey(4v1))" ["style"="invis", "label"="", "shape"="point"]
 	}
 	
-	"set_marker_node_Set(1)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(1)", "tooltip"="ExitSchedules → TransitionSchedules", "color"="#eede00"]
-	"set_marker_node_Set(2)" -> "set_marker_node_Set(3)" ["lhead"="clusternode_Set(3)", "ltail"="clusternode_Set(2)", "tooltip"="TransitionSchedules → EnterSchedules", "color"="#881877"]
-	"set_marker_node_Set(0)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="clusternode_Set(0)", "tooltip"="DependentTransitions → ExitSchedules", "color"="#00b0cc"]
+	"set_marker_node_Set(SystemSetKey(1v1))" -> "set_marker_node_Set(SystemSetKey(2v1))" ["lhead"="clusternode_Set(SystemSetKey(2v1))", "ltail"="clusternode_Set(SystemSetKey(1v1))", "tooltip"="DependentTransitions → ExitSchedules", "color"="#eede00"]
+	"set_marker_node_Set(SystemSetKey(2v1))" -> "set_marker_node_Set(SystemSetKey(3v1))" ["lhead"="clusternode_Set(SystemSetKey(3v1))", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="ExitSchedules → TransitionSchedules", "color"="#881877"]
+	"set_marker_node_Set(SystemSetKey(3v1))" -> "set_marker_node_Set(SystemSetKey(4v1))" ["lhead"="clusternode_Set(SystemSetKey(4v1))", "ltail"="clusternode_Set(SystemSetKey(3v1))", "tooltip"="TransitionSchedules → EnterSchedules", "color"="#00b0cc"]
 }

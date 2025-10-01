@@ -7,5 +7,5 @@ digraph "" {
 	"nodesep"="0.15";
 	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled"];
-	"node_System(0)" ["label"="signal_event_update_system", "tooltip"="bevy_ecs::event::update::signal_event_update_system"]
+	"node_System(SystemKey(1v1))" ["label"="signal_message_update_system", "tooltip"="bevy_ecs::message::update::signal_message_update_system"]
 }

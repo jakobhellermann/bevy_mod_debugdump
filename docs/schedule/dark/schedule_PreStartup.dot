@@ -7,5 +7,5 @@ digraph "" {
 	"nodesep"="0.15";
 	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled"];
-	"node_System(0)" ["label"="gilrs_event_startup_system", "tooltip"="bevy_gilrs::gilrs_system::gilrs_event_startup_system"]
+	"node_System(SystemKey(1v1))" ["label"="gilrs_event_startup_system", "tooltip"="bevy_gilrs::gilrs_system::gilrs_event_startup_system"]
 }

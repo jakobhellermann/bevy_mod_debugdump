@@ -7,7 +7,7 @@ digraph "" {
 	"nodesep"="0.15";
 	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled"];
-	subgraph "clusternode_Set(0)" {
+	subgraph "clusternode_Set(SystemSetKey(1v1))" {
 		"style"="rounded,filled";
 		"label"="BeforeFixedMainLoop";
 		"tooltip"="BeforeFixedMainLoop";
@@ -15,13 +15,13 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(0)" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(1)" ["label"="start_gizmo_context<DefaultGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::start_gizmo_context<bevy_gizmos::config::DefaultGizmoConfigGroup, bevy_time::fixed::Fixed>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(3)" ["label"="start_gizmo_context<AabbGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::start_gizmo_context<bevy_gizmos::aabb::AabbGizmoConfigGroup, bevy_time::fixed::Fixed>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(5)" ["label"="start_gizmo_context<LightGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::start_gizmo_context<bevy_gizmos::light::LightGizmoConfigGroup, bevy_time::fixed::Fixed>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"set_marker_node_Set(SystemSetKey(1v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(2v1))" ["label"="start_gizmo_context<DefaultGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::start_gizmo_context<bevy_gizmos::config::DefaultGizmoConfigGroup, bevy_time::fixed::Fixed>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(4v1))" ["label"="start_gizmo_context<AabbGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::start_gizmo_context<bevy_gizmos::aabb::AabbGizmoConfigGroup, bevy_time::fixed::Fixed>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(6v1))" ["label"="start_gizmo_context<LightGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::start_gizmo_context<bevy_gizmos::light::LightGizmoConfigGroup, bevy_time::fixed::Fixed>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(1)" {
+	subgraph "clusternode_Set(SystemSetKey(2v1))" {
 		"style"="rounded,filled";
 		"label"="FixedMainLoop";
 		"tooltip"="FixedMainLoop";
@@ -29,11 +29,11 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(1)" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(0)" ["label"="run_fixed_main_schedule", "tooltip"="bevy_time::fixed::run_fixed_main_schedule", "fillcolor"="#c7ddbd", "fontname"="Helvetica", "fontcolor"="#162111", "color"="#8dba79", "penwidth"="1"]
+		"set_marker_node_Set(SystemSetKey(2v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(1v1))" ["label"="run_fixed_main_schedule", "tooltip"="bevy_time::fixed::run_fixed_main_schedule", "fillcolor"="#c7ddbd", "fontname"="Helvetica", "fontcolor"="#162111", "color"="#8dba79", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(2)" {
+	subgraph "clusternode_Set(SystemSetKey(3v1))" {
 		"style"="rounded,filled";
 		"label"="AfterFixedMainLoop";
 		"tooltip"="AfterFixedMainLoop";
@@ -41,12 +41,12 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(2)" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(2)" ["label"="end_gizmo_context<DefaultGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::end_gizmo_context<bevy_gizmos::config::DefaultGizmoConfigGroup, bevy_time::fixed::Fixed>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(4)" ["label"="end_gizmo_context<AabbGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::end_gizmo_context<bevy_gizmos::aabb::AabbGizmoConfigGroup, bevy_time::fixed::Fixed>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(6)" ["label"="end_gizmo_context<LightGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::end_gizmo_context<bevy_gizmos::light::LightGizmoConfigGroup, bevy_time::fixed::Fixed>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"set_marker_node_Set(SystemSetKey(3v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(3v1))" ["label"="end_gizmo_context<DefaultGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::end_gizmo_context<bevy_gizmos::config::DefaultGizmoConfigGroup, bevy_time::fixed::Fixed>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(5v1))" ["label"="end_gizmo_context<AabbGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::end_gizmo_context<bevy_gizmos::aabb::AabbGizmoConfigGroup, bevy_time::fixed::Fixed>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(7v1))" ["label"="end_gizmo_context<LightGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::end_gizmo_context<bevy_gizmos::light::LightGizmoConfigGroup, bevy_time::fixed::Fixed>", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 	}
 	
-	"set_marker_node_Set(1)" -> "set_marker_node_Set(2)" ["lhead"="clusternode_Set(2)", "ltail"="clusternode_Set(1)", "tooltip"="FixedMainLoop → AfterFixedMainLoop", "color"="#eede00"]
-	"set_marker_node_Set(0)" -> "set_marker_node_Set(1)" ["lhead"="clusternode_Set(1)", "ltail"="clusternode_Set(0)", "tooltip"="BeforeFixedMainLoop → FixedMainLoop", "color"="#881877"]
+	"set_marker_node_Set(SystemSetKey(1v1))" -> "set_marker_node_Set(SystemSetKey(2v1))" ["lhead"="clusternode_Set(SystemSetKey(2v1))", "ltail"="clusternode_Set(SystemSetKey(1v1))", "tooltip"="BeforeFixedMainLoop → FixedMainLoop", "color"="#eede00"]
+	"set_marker_node_Set(SystemSetKey(2v1))" -> "set_marker_node_Set(SystemSetKey(3v1))" ["lhead"="clusternode_Set(SystemSetKey(3v1))", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="FixedMainLoop → AfterFixedMainLoop", "color"="#881877"]
 }

@@ -149,3 +149,10 @@
 <img alt="Render" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/render_schedule_Render.dot.svg">
 </picture>
 
+## RenderStartup
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/render_schedule_RenderStartup.dot.svg">
+<img alt="RenderStartup" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/render_schedule_RenderStartup.dot.svg">
+</picture>
+

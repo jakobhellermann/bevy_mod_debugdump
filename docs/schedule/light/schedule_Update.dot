@@ -7,8 +7,10 @@ digraph "" {
 	"nodesep"="0.15";
 	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled"];
-	"node_System(0)" ["label"="close_when_requested", "tooltip"="bevy_window::system::close_when_requested"]
-	"node_System(1)" ["label"="TerminalCtrlCHandlerPlugin::exit_on_flag", "tooltip"="bevy_app::terminal_ctrl_c_handler::TerminalCtrlCHandlerPlugin::exit_on_flag"]
-	"node_System(2)" ["label"="trigger_screenshots", "tooltip"="bevy_render::view::window::screenshot::trigger_screenshots"]
-	"node_System(3)" ["label"="check_msaa", "tooltip"="bevy_core_pipeline::oit::check_msaa"]
+	"node_System(SystemKey(1v1))" ["label"="close_when_requested", "tooltip"="bevy_window::system::close_when_requested"]
+	"node_System(SystemKey(2v1))" ["label"="TerminalCtrlCHandlerPlugin::exit_on_flag", "tooltip"="bevy_app::terminal_ctrl_c_handler::TerminalCtrlCHandlerPlugin::exit_on_flag"]
+	"node_System(SystemKey(3v1))" ["label"="trigger_screenshots", "tooltip"="bevy_render::view::window::screenshot::trigger_screenshots"]
+	"node_System(SystemKey(4v1))" ["label"="check_msaa", "tooltip"="bevy_core_pipeline::oit::check_msaa"]
+	"node_System(SystemKey(5v1))" ["label"="update_tilemap_chunk_indices", "tooltip"="bevy_sprite_render::tilemap_chunk::update_tilemap_chunk_indices"]
+	"node_System(SystemKey(6v1))" ["label"="prepare_atmosphere_probe_components", "tooltip"="bevy_pbr::atmosphere::environment::prepare_atmosphere_probe_components"]
 }
