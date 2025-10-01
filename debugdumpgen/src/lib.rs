@@ -1,6 +1,7 @@
 use std::any::TypeId;
 
-use bevy::{app::MainScheduleOrder, ecs::schedule::ScheduleLabel, prelude::*, render::RenderApp};
+use bevy::prelude::*;
+use bevy::{app::MainScheduleOrder, render::RenderApp};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
@@ -129,11 +130,9 @@ impl Context {
 
                     let settings = &settings;
                     schedule.graph_mut().initialize(world);
-                    let _ = schedule.graph_mut().build_schedule(
-                        world,
-                        ScheduleDebugGroup.intern(),
-                        &ignored_ambiguities,
-                    );
+                    let _ = schedule
+                        .graph_mut()
+                        .build_schedule(world, &ignored_ambiguities);
 
                     Ok(bevy_mod_debugdump::schedule_graph::schedule_graph_dot(
                         schedule, world, settings,
@@ -172,6 +171,3 @@ fn with_main_world_in_render_app<T>(app: &mut App, f: impl Fn(&mut SubApp) -> T)
 
     ret
 }
-
-#[derive(ScheduleLabel, Clone, Debug, PartialEq, Eq, Hash)]
-struct ScheduleDebugGroup;
