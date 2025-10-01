@@ -59,7 +59,7 @@ use bevy::log::LogPlugin;
 
 fn main() {
     let mut app = App::new();
-    app.add_plugins(DefaultPlugins.build().disable::<LogPlugin>()); 
+    app.add_plugins(DefaultPlugins.build().disable::<LogPlugin>());
     bevy_mod_debugdump::print_render_graph(&mut app);
 }
 ```
@@ -88,6 +88,7 @@ fn main() {
 
 |bevy|bevy\_mod\_debugdump|
 |---|---|
+|0.17|0.14|
 |0.16|0.13|
 |0.15|0.12|
 |0.14|0.11|
