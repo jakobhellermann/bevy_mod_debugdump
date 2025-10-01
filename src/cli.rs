@@ -1,7 +1,11 @@
 use std::{fs::File, path::PathBuf};
 
 use bevy_app::App;
-use bevy_ecs::{intern::Interned, schedule::ScheduleLabel, schedule::Schedules};
+use bevy_ecs::{
+    intern::Interned,
+    message::MessageWriter,
+    schedule::{ScheduleLabel, Schedules},
+};
 use bevy_log::{error, info};
 use std::io::Write;
 
@@ -60,7 +64,7 @@ impl bevy_app::Plugin for CommandLineArgs {
             // opens, but I don't see how.
             app.add_systems(
                 bevy_app::First,
-                |mut app_exit_events: bevy_ecs::event::EventWriter<bevy_app::AppExit>| {
+                |mut app_exit_events: MessageWriter<bevy_app::AppExit>| {
                     app_exit_events.write(bevy_app::AppExit::Success);
                 },
             );

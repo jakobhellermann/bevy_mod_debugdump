@@ -5,9 +5,7 @@ use bevy::{
     pbr::{MeshInputUniform, MeshUniform},
     prelude::*,
     render::RenderApp,
-    sprite::Mesh2dUniform,
 };
-use bevy_ecs::schedule::ScheduleLabel;
 use bevy_mod_debugdump::schedule_graph::{settings::Style, Settings};
 use bevy_render::{
     batching::{
@@ -17,9 +15,6 @@ use bevy_render::{
     render_asset::RenderAssetBytesPerFrame,
     render_phase::ViewSortedRenderPhases,
 };
-
-#[derive(ScheduleLabel, Clone, Debug, PartialEq, Eq, Hash)]
-struct ScheduleDebugGroup;
 
 fn main() -> Result<(), std::io::Error> {
     let docs_path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("docs");
@@ -81,7 +76,7 @@ fn main() -> Result<(), std::io::Error> {
 
                     schedule
                         .graph_mut()
-                        .build_schedule(world, ScheduleDebugGroup.intern(), &ignored_ambiguities)
+                        .build_schedule(world, &ignored_ambiguities)
                         .unwrap();
 
                     let ignore_ambiguities = &[
@@ -90,7 +85,6 @@ fn main() -> Result<(), std::io::Error> {
                         TypeId::of::<IndirectParametersBuffers>(),
                         TypeId::of::<BatchedInstanceBuffers<MeshUniform, MeshInputUniform>>(),
                         TypeId::of::<BatchedInstanceBuffer<MeshUniform>>(),
-                        TypeId::of::<BatchedInstanceBuffer<Mesh2dUniform>>(),
                         TypeId::of::<RenderAssetBytesPerFrame>(),
                         TypeId::of::<ViewSortedRenderPhases<Transmissive3d>>(),
                     ];
@@ -150,7 +144,7 @@ fn initialize_schedules(
         // for `conflicting_systems`
         schedule
             .graph_mut()
-            .build_schedule(world, ScheduleDebugGroup.intern(), &ignored_ambiguities)
+            .build_schedule(world, &ignored_ambiguities)
             .unwrap();
     }
     Ok(())

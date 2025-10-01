@@ -1,6 +1,5 @@
 #![allow(clippy::needless_doctest_main)]
 #![allow(clippy::type_complexity)]
-use std::fmt::Debug;
 
 use bevy_app::App;
 use bevy_ecs::schedule::{ScheduleLabel, Schedules};
@@ -12,9 +11,6 @@ mod dot;
 #[cfg(feature = "render_graph")]
 pub mod render_graph;
 pub mod schedule_graph;
-
-#[derive(ScheduleLabel, Clone, Debug, PartialEq, Eq, Hash)]
-struct ScheduleDebugGroup;
 
 /// Formats the schedule into a dot graph.
 #[track_caller]
@@ -33,11 +29,9 @@ pub fn schedule_graph_dot(
                 .ok_or_else(|| format!("schedule {label_name} doesn't exist"))
                 .unwrap();
             schedule.graph_mut().initialize(world);
-            let _ = schedule.graph_mut().build_schedule(
-                world,
-                ScheduleDebugGroup.intern(),
-                &ignored_ambiguities,
-            );
+            let _ = schedule
+                .graph_mut()
+                .build_schedule(world, &ignored_ambiguities);
 
             schedule_graph::schedule_graph_dot(schedule, world, settings)
         })

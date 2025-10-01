@@ -316,7 +316,7 @@ pub fn pretty_system_name(system: &ScheduleSystem) -> String {
 }
 
 pub fn full_system_name(system: &ScheduleSystem) -> String {
-    system.name().into()
+    system.name().to_string()
 }
 
 pub fn default_system_set_name(system_set: &dyn SystemSet) -> String {

@@ -1,11 +1,7 @@
 use std::path::PathBuf;
 
 use bevy::prelude::*;
-use bevy_ecs::schedule::ScheduleLabel;
 use bevy_mod_debugdump::schedule_graph::{settings::EdgeStyle, Settings};
-
-#[derive(ScheduleLabel, Clone, Debug, PartialEq, Eq, Hash)]
-struct ScheduleDebugGroup;
 
 fn main() -> Result<(), std::io::Error> {
     let compare_path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("compare");
@@ -25,7 +21,7 @@ fn main() -> Result<(), std::io::Error> {
             // for `conflicting_systems`
             schedule
                 .graph_mut()
-                .build_schedule(world, ScheduleDebugGroup.intern(), &ignored_ambiguities)
+                .build_schedule(world, &ignored_ambiguities)
                 .unwrap();
 
             for edge_style in [

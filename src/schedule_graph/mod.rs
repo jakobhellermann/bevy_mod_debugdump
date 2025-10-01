@@ -11,7 +11,7 @@ use crate::dot::DotGraph;
 use bevy_ecs::{
     schedule::{
         graph::{DiGraph, Direction},
-        ApplyDeferred, NodeId, Schedule, ScheduleGraph, SystemSet,
+        ApplyDeferred, NodeId, Schedule, ScheduleGraph, SystemKey, SystemSet,
     },
     system::ScheduleSystem,
     world::World,
@@ -29,7 +29,7 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
 
     let included_systems_sets = included_systems_sets(graph, settings);
 
-    let mut system_sets: Vec<_> = graph.system_sets().collect();
+    let mut system_sets: Vec<_> = graph.system_sets.iter().collect();
     system_sets.sort_by_key(|&(node_id, ..)| node_id);
 
     // collect sets and systems
@@ -38,18 +38,20 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
     let mut systems_in_multiple_sets = HashMap::<Option<NodeId>, Vec<_>>::default();
 
     for (system_id, system, _condition) in graph
-        .systems()
-        .filter(|(id, ..)| included_systems_sets.contains(id))
+        .systems
+        .iter()
+        .filter(|(id, ..)| included_systems_sets.contains(&NodeId::System(*id)))
     {
-        let single_parent = iter_single(hierarchy_parents(system_id, graph));
+        let node_id = NodeId::System(system_id);
+        let single_parent = iter_single(hierarchy_parents(node_id, graph));
 
         match single_parent {
-            IterSingleResult::Empty => systems_freestanding.push((system_id, system)),
+            IterSingleResult::Empty => systems_freestanding.push((node_id, system)),
             IterSingleResult::Single(parent) => {
                 systems_in_single_set
                     .entry(parent)
                     .or_default()
-                    .push((system_id, system));
+                    .push((node_id, system));
             }
             IterSingleResult::Multiple(parents) => {
                 let first_common_ancestor = lowest_common_ancestor(&parents, hierarchy);
@@ -57,7 +59,7 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
                 systems_in_multiple_sets
                     .entry(first_common_ancestor)
                     .or_default()
-                    .push((system_id, system))
+                    .push((node_id, system))
             }
         }
     }
@@ -71,18 +73,19 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
 
     for &(set_id, set, _condition) in system_sets
         .iter()
-        .filter(|&&(id, ..)| graph.set_at(id).system_type().is_none())
-        .filter(|(id, ..)| included_systems_sets.contains(id))
+        .filter(|&&(id, ..)| graph.system_sets.get(id).unwrap().system_type().is_none())
+        .filter(|(id, ..)| included_systems_sets.contains(&NodeId::Set(*id)))
     {
-        let single_parent = iter_single(hierarchy_parents(set_id, graph));
+        let node_id = NodeId::Set(set_id);
+        let single_parent = iter_single(hierarchy_parents(node_id, graph));
 
         match single_parent {
-            IterSingleResult::Empty => sets_freestanding.push((set_id, set)),
+            IterSingleResult::Empty => sets_freestanding.push((node_id, set)),
             IterSingleResult::Single(parent) => {
                 sets_in_single_set
                     .entry(parent)
                     .or_default()
-                    .push((set_id, set));
+                    .push((node_id, set));
             }
             IterSingleResult::Multiple(parents) => {
                 let first_common_ancestor = lowest_common_ancestor(&parents, hierarchy);
@@ -90,29 +93,30 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
                 sets_in_multiple_sets
                     .entry(first_common_ancestor)
                     .or_default()
-                    .push((set_id, set));
+                    .push((node_id, set));
             }
         }
     }
 
     for &(set_id, ..) in system_sets
         .iter()
-        .filter(|&&(id, ..)| graph.set_at(id).system_type().is_none())
-        .filter(|(id, ..)| included_systems_sets.contains(id))
+        .filter(|&&(id, ..)| graph.system_sets.get(id).unwrap().system_type().is_none())
+        .filter(|(id, ..)| included_systems_sets.contains(&NodeId::Set(*id)))
     {
+        let node_id = NodeId::Set(set_id);
         if settings.collapse_single_system_sets {
             let children = systems_in_single_set
-                .get(&set_id)
+                .get(&node_id)
                 .map_or(&[] as &[_], |vec| vec.as_slice());
             let children_in_multiple = systems_in_multiple_sets
-                .get(&Some(set_id))
+                .get(&Some(node_id))
                 .map_or(&[] as &[_], |vec| vec.as_slice());
 
             let children_sets_empty = sets_in_single_set
-                .get(&set_id)
+                .get(&node_id)
                 .is_none_or(|vec| vec.is_empty());
             let children_sets_in_multiple_empty = systems_in_multiple_sets
-                .get(&Some(set_id))
+                .get(&Some(node_id))
                 .is_none_or(|vec| vec.is_empty());
 
             if children_in_multiple.is_empty()
@@ -120,13 +124,13 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
                 && children_sets_empty
                 && children_sets_in_multiple_empty
             {
-                collapsed_sets.insert(set_id);
+                collapsed_sets.insert(node_id);
 
                 for &(child, ..) in children {
-                    collapsed_set_children.insert(child, set_id);
+                    collapsed_set_children.insert(child, node_id);
                 }
                 for &(child, ..) in children_in_multiple {
-                    collapsed_set_children.insert(child, set_id);
+                    collapsed_set_children.insert(child, node_id);
                 }
             }
         }
@@ -181,7 +185,7 @@ struct ScheduleGraphContext<'a> {
     world: &'a World,
 
     graph: &'a ScheduleGraph,
-    dependency: &'a DiGraph,
+    dependency: &'a DiGraph<NodeId>,
 
     included_systems_sets: HashSet<NodeId>,
 
@@ -268,8 +272,12 @@ impl ScheduleGraphContext<'_> {
         conflicting_systems.sort();
 
         for (system_a, system_b, conflicts) in conflicting_systems {
-            if !self.included_systems_sets.contains(&system_a)
-                || !self.included_systems_sets.contains(&system_b)
+            if !self
+                .included_systems_sets
+                .contains(&NodeId::System(system_a))
+                || !self
+                    .included_systems_sets
+                    .contains(&NodeId::System(system_b))
             {
                 continue;
             }
@@ -279,9 +287,9 @@ impl ScheduleGraphContext<'_> {
             }
 
             if let Some(include_ambiguity) = &self.settings.include_ambiguity {
-                let system_a = self.graph.system_at(system_a);
-                let system_b = self.graph.system_at(system_b);
-                if !include_ambiguity(system_a, system_b, &conflicts, self.world) {
+                let system_a = self.graph.systems.get(system_a).unwrap();
+                let system_b = self.graph.systems.get(system_b).unwrap();
+                if !include_ambiguity(&system_a.system, &system_b.system, &conflicts, self.world) {
                     continue;
                 }
             }
@@ -296,7 +304,7 @@ impl ScheduleGraphContext<'_> {
                         .get_info(component_id)
                         .unwrap()
                         .name();
-                    let pretty_name = disqualified::ShortName(component_name);
+                    let pretty_name = disqualified::ShortName(component_name.as_ref());
 
                     format!(
                         r#"<tr><td bgcolor="{}">{}</td></tr>"#,
@@ -309,8 +317,8 @@ impl ScheduleGraphContext<'_> {
             };
 
             dot.add_edge(
-                &self.node_ref(system_a),
-                &self.node_ref(system_b),
+                &self.system_node_ref(system_a),
+                &self.system_node_ref(system_b),
                 &[
                     ("dir", "none"),
                     ("constraint", "false"),
@@ -319,7 +327,10 @@ impl ScheduleGraphContext<'_> {
                     ("label", &label),
                     (
                         "labeltooltip",
-                        &self.edge_tooltip_undirected(system_a, system_b),
+                        &self.edge_tooltip_undirected(
+                            NodeId::System(system_a),
+                            NodeId::System(system_b),
+                        ),
                     ),
                 ],
             );
@@ -443,7 +454,11 @@ impl ScheduleGraphContext<'_> {
 
         for parent in hierarchy_parents(system_id, self.graph) {
             assert!(self.included_systems_sets.contains(&parent));
-            let parent_set = self.graph.set_at(parent);
+            let parent_set = self
+                .graph
+                .system_sets
+                .get(parent.as_set().unwrap())
+                .unwrap();
             let _ = write!(name, ", {parent_set:?}");
 
             dot.add_edge(
@@ -485,17 +500,20 @@ impl ScheduleGraphContext<'_> {
 fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<NodeId> {
     let Some(include_system) = &settings.include_system else {
         return graph
-            .systems()
-            .map(|(id, ..)| id)
-            .chain(graph.system_sets().map(|(id, ..)| id))
+            .systems
+            .iter()
+            .map(|(id, ..)| NodeId::System(id))
+            .chain(graph.system_sets.iter().map(|(id, ..)| NodeId::Set(id)))
             .collect();
     };
 
     let hierarchy = graph.hierarchy().graph();
 
     let root_sets = hierarchy.nodes().filter(|&node| {
-        node.is_set()
-            && graph.set_at(node).system_type().is_none()
+        let Some(set_key) = node.as_set() else {
+            return false;
+        };
+        graph.system_sets[set_key].system_type().is_none()
             && hierarchy
                 .neighbors_directed(node, Direction::Incoming)
                 .next()
@@ -503,14 +521,15 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
     });
 
     let systems_of_interest: HashSet<NodeId> = graph
-        .systems()
+        .systems
+        .iter()
         .filter(|&(_, system, _)| include_system(system))
-        .map(|(id, ..)| id)
+        .map(|(id, ..)| NodeId::System(id))
         .collect();
 
     fn include_ancestors(
         id: NodeId,
-        hierarchy: &DiGraph,
+        hierarchy: &DiGraph<NodeId>,
         included_systems_sets: &mut HashSet<NodeId>,
     ) {
         let parents = hierarchy.neighbors_directed(id, Direction::Incoming);
@@ -530,7 +549,9 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
 
     if settings.ambiguity_enable {
         for &(a, b, ref conflicts) in graph.conflicting_systems() {
-            if !systems_of_interest.contains(&a) || !systems_of_interest.contains(&b) {
+            if !systems_of_interest.contains(&NodeId::System(a))
+                || !systems_of_interest.contains(&NodeId::System(b))
+            {
                 continue;
             }
 
@@ -538,8 +559,8 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
                 continue;
             }
 
-            included_systems_sets.insert(a);
-            included_systems_sets.insert(b);
+            included_systems_sets.insert(NodeId::System(a));
+            included_systems_sets.insert(NodeId::System(b));
         }
     }
 
@@ -569,13 +590,21 @@ impl ScheduleGraphContext<'_> {
 
     fn full_name(&self, node_id: NodeId) -> Cow<'_, str> {
         match node_id {
-            NodeId::System(_) => self.system_name(self.graph.system_at(node_id)),
-            NodeId::Set(_) => self.system_set_name(self.graph.set_at(node_id)),
+            NodeId::System(key) => self.system_name(&self.graph.systems.get(key).unwrap().system),
+            NodeId::Set(key) => self.system_set_name(self.graph.system_sets.get(key).unwrap()),
         }
     }
 
     fn is_non_system_set(&self, node_id: NodeId) -> bool {
-        node_id.is_set() && self.graph.set_at(node_id).system_type().is_none()
+        let NodeId::Set(key) = node_id else {
+            return false;
+        };
+        self.graph
+            .system_sets
+            .get(key)
+            .unwrap()
+            .system_type()
+            .is_none()
     }
 
     // lhead/ltail
@@ -588,8 +617,8 @@ impl ScheduleGraphContext<'_> {
     }
 
     // PERF: O(n)
-    fn system_of_system_type(&self, set: &dyn SystemSet) -> Option<NodeId> {
-        self.graph.systems().find_map(|(id, system, _)| {
+    fn system_of_system_type(&self, set: &dyn SystemSet) -> Option<SystemKey> {
+        self.graph.systems.iter().find_map(|(id, system, _)| {
             if system.name().starts_with("print_schedule_graph") {
                 dbg!(&system, system.default_system_sets(), set);
             }
@@ -598,21 +627,20 @@ impl ScheduleGraphContext<'_> {
         })
     }
 
-    fn system_node_ref(&self, node_id: NodeId) -> String {
-        assert!(node_id.is_system());
-        if let Some(collapsed_set) = self.collapsed_set_children.get(&node_id) {
+    fn system_node_ref(&self, node_id: SystemKey) -> String {
+        if let Some(collapsed_set) = self.collapsed_set_children.get(&NodeId::System(node_id)) {
             node_index_name(*collapsed_set)
         } else {
-            node_index_name(node_id)
+            node_index_name(NodeId::System(node_id))
         }
     }
 
     fn node_ref(&self, node_id: NodeId) -> String {
         match node_id {
-            NodeId::System(_) => self.system_node_ref(node_id),
+            NodeId::System(system) => self.system_node_ref(system),
             NodeId::Set(_) if self.collapsed_sets.contains(&node_id) => node_index_name(node_id),
-            NodeId::Set(_) => {
-                let set = self.graph.set_at(node_id);
+            NodeId::Set(set) => {
+                let set = self.graph.system_sets.get(set).unwrap();
 
                 if set.system_type() == Some(TypeId::of::<ApplyDeferred>()) {
                     "ApplyDeferred".to_owned()
@@ -684,10 +712,18 @@ fn hierarchy_parents(node: NodeId, graph: &ScheduleGraph) -> impl Iterator<Item 
     let hierarchy = graph.hierarchy().graph();
     hierarchy
         .neighbors_directed(node, Direction::Incoming)
-        .filter(|&parent| graph.set_at(parent).system_type().is_none())
+        .filter(|&parent| {
+            let parent = parent.as_set().unwrap(); // TODO: why?
+            graph
+                .system_sets
+                .get(parent)
+                .unwrap()
+                .system_type()
+                .is_none()
+        })
 }
 
-fn lowest_common_ancestor(parents: &[NodeId], hierarchy: &DiGraph) -> Option<NodeId> {
+fn lowest_common_ancestor(parents: &[NodeId], hierarchy: &DiGraph<NodeId>) -> Option<NodeId> {
     let parent = parents.last().unwrap();
     let mut common_ancestors: Vec<_> = ancestors_of_node(*parent, hierarchy).collect();
 
@@ -703,7 +739,10 @@ fn lowest_common_ancestor(parents: &[NodeId], hierarchy: &DiGraph) -> Option<Nod
     first_common_ancestor
 }
 
-fn ancestors_of_node(node_id: NodeId, graph: &DiGraph) -> impl Iterator<Item = NodeId> + '_ {
+fn ancestors_of_node(
+    node_id: NodeId,
+    graph: &DiGraph<NodeId>,
+) -> impl Iterator<Item = NodeId> + '_ {
     let mut queue = VecDeque::with_capacity(1);
     queue.push_back(node_id);
     Ancestors { queue, graph }
@@ -711,7 +750,7 @@ fn ancestors_of_node(node_id: NodeId, graph: &DiGraph) -> impl Iterator<Item = N
 
 struct Ancestors<'a> {
     queue: VecDeque<NodeId>,
-    graph: &'a DiGraph,
+    graph: &'a DiGraph<NodeId>,
 }
 
 impl Iterator for Ancestors<'_> {
@@ -729,7 +768,7 @@ impl Iterator for Ancestors<'_> {
 
 fn collect_reachable(
     reachable: &mut HashSet<NodeId>,
-    graph: &DiGraph,
+    graph: &DiGraph<NodeId>,
     u: NodeId,
     direction: Direction,
 ) {
@@ -739,11 +778,16 @@ fn collect_reachable(
     }
 }
 
-fn toposort(graph: &DiGraph) -> Vec<NodeId> {
+fn toposort(graph: &DiGraph<NodeId>) -> Vec<NodeId> {
     let mut visited = HashSet::new();
     let mut stack = Vec::new();
 
-    fn dfs(visited: &mut HashSet<NodeId>, stack: &mut Vec<NodeId>, graph: &DiGraph, node: NodeId) {
+    fn dfs(
+        visited: &mut HashSet<NodeId>,
+        stack: &mut Vec<NodeId>,
+        graph: &DiGraph<NodeId>,
+        node: NodeId,
+    ) {
         if !visited.insert(node) {
             return;
         }
@@ -763,7 +807,7 @@ fn toposort(graph: &DiGraph) -> Vec<NodeId> {
     stack
 }
 
-fn remove_transitive_edges(graph: &mut DiGraph) {
+fn remove_transitive_edges(graph: &mut DiGraph<NodeId>) {
     let toposort = toposort(graph);
 
     let mut reachable = HashSet::new();

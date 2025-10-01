@@ -40,7 +40,7 @@ fn main() -> Result<(), std::io::Error> {
             schedule.graph_mut().initialize(world);
             schedule
                 .graph_mut()
-                .build_schedule(world, ScheduleDebugGroup.intern(), &ignored_ambiguities)
+                .build_schedule(world, &ignored_ambiguities)
                 .unwrap();
 
             let settings = Settings {
@@ -61,9 +61,9 @@ fn print_schedule(schedule: &Schedule, schedule_label: &dyn ScheduleLabel) {
 
     let name_of_node = |id: NodeId| {
         let name = match id {
-            NodeId::System(_) => graph.system_at(id).name(),
-            NodeId::Set(_) => {
-                let name = format!("{:?}", graph.set_at(id));
+            NodeId::System(id) => graph.systems.get(id).unwrap().name(),
+            NodeId::Set(id) => {
+                let name = format!("{:?}", graph.system_sets.get(id).unwrap());
                 if let Some(name) = name.strip_prefix("SystemTypeSet(\"") {
                     let system_name = name.trim_end_matches("\")").to_string();
                     format!("@{system_name}").into()
@@ -75,19 +75,19 @@ fn print_schedule(schedule: &Schedule, schedule_label: &dyn ScheduleLabel) {
         if false {
             disqualified::ShortName(&name).to_string()
         } else {
-            name.into()
+            name.to_string()
         }
     };
 
     println!("{schedule_label:?}");
 
     println!("- SETS");
-    for (_set_id, set, _conditions) in graph.system_sets() {
+    for (_set_id, set, _conditions) in graph.system_sets.iter() {
         println!("  - {set:?}");
     }
 
     println!("- SYSTEMS");
-    for (_system_id, system, _conditions) in graph.systems() {
+    for (_system_id, system, _conditions) in graph.systems.iter() {
         println!("  - {}", system.name());
     }
 
