@@ -33,7 +33,7 @@ pub fn schedule_graph_dot(
                 .graph_mut()
                 .build_schedule(world, &ignored_ambiguities);
 
-            schedule_graph::schedule_graph_dot(schedule, world, settings)
+            schedule_graph::d2::schedule_graph_dot(schedule, world, settings)
         })
 }
 

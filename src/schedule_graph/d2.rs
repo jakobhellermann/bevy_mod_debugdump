@@ -1,11 +1,6 @@
-pub mod settings;
-pub mod system_style;
-
-pub mod d2;
-
+pub use super::settings::Settings;
 use bevy_platform::collections::hash_map::HashMap;
 use bevy_platform::collections::hash_set::HashSet;
-pub use settings::Settings;
 
 use std::{any::TypeId, borrow::Cow, collections::VecDeque, fmt::Write, sync::atomic::AtomicUsize};
 
