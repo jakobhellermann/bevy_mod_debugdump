@@ -548,7 +548,7 @@ fn included_systems_sets(graph: &ScheduleGraph, settings: &Settings) -> HashSet<
     }
 
     if settings.ambiguity_enable {
-        for &(a, b, ref conflicts) in graph.conflicting_systems() {
+        for &(a, b, ref conflicts) in &graph.conflicting_systems().0 {
             if !systems_of_interest.contains(&NodeId::System(a))
                 || !systems_of_interest.contains(&NodeId::System(b))
             {
