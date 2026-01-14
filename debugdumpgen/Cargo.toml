@@ -1,11 +1,11 @@
 [package]
 name = "debugdumpgen"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 
 [dependencies]
-bevy = "0.17"
-bevy_mod_debugdump = "0.14"
+bevy = "0.18"
+bevy_mod_debugdump = "0.15"
 # bevy = { git = "https://github.com/bevyengine/bevy" }
 # bevy_mod_debugdump = { git = "https://github.com/jakobhellermann/bevy_mod_debugdump", branch = "bevy-main" }
 console_error_panic_hook = "0.1"
