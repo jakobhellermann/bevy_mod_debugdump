@@ -6,6 +6,7 @@ use bevy_ecs::schedule::{ScheduleLabel, Schedules};
 
 #[cfg(feature = "cli")]
 mod cli;
+mod d2;
 mod dot;
 
 #[cfg(feature = "render_graph")]

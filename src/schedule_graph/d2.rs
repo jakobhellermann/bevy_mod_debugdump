@@ -1,10 +1,11 @@
+use crate::d2::D2Graph;
+
 pub use super::settings::Settings;
 use bevy_platform::collections::hash_map::HashMap;
 use bevy_platform::collections::hash_set::HashSet;
 
 use std::{any::TypeId, borrow::Cow, collections::VecDeque, fmt::Write, sync::atomic::AtomicUsize};
 
-use crate::dot::DotGraph;
 use bevy_ecs::{
     schedule::{
         graph::{DiGraph, Direction},
@@ -133,20 +134,9 @@ pub fn schedule_graph_dot(schedule: &Schedule, world: &World, settings: &Setting
         }
     }
 
-    let mut dot = DotGraph::new(
-        "",
-        "digraph",
-        &[
-            ("compound", "true"), // enable ltail/lhead
-            ("splines", settings.style.edge_style.as_dot()),
-            ("rankdir", settings.style.schedule_rankdir.as_dot()),
-            ("bgcolor", &settings.style.color_background),
-            ("fontname", &settings.style.fontname),
-            ("nodesep", "0.15"),
-        ],
-    )
-    .edge_attributes(&[("penwidth", &format!("{}", settings.style.penwidth_edge))])
-    .node_attributes(&[("shape", "box"), ("style", "filled")]);
+    let mut dot = D2Graph::root();
+
+    dot.add_directive("direction", "right");
 
     let context = ScheduleGraphContext {
         settings,
@@ -203,7 +193,7 @@ struct ScheduleGraphContext<'a> {
 
 impl ScheduleGraphContext<'_> {
     /// Add sets with systems recursively, as well as sets belonging to multiple sets without a common ancestor
-    fn add_sets(&self, dot: &mut DotGraph) {
+    fn add_sets(&self, dot: &mut D2Graph) {
         for &(set_id, set) in self.sets_freestanding.iter() {
             assert!(self.included_systems_sets.contains(&set_id));
             self.add_set(set_id, set, dot);
@@ -220,7 +210,7 @@ impl ScheduleGraphContext<'_> {
     }
 
     /// Add freestanding systems that do not belong to a set, as well as systems in multiple sets without a common ancestor
-    fn add_freestanding_systems(&self, dot: &mut DotGraph) {
+    fn add_freestanding_systems(&self, dot: &mut D2Graph) {
         for &(system_id, system) in self.systems_freestanding.iter() {
             assert!(self.included_systems_sets.contains(&system_id));
             let name = self.system_name(system);
@@ -241,7 +231,7 @@ impl ScheduleGraphContext<'_> {
     }
 
     /// Add dependency edges between nodes
-    fn add_dependencies(&self, dot: &mut DotGraph) {
+    fn add_dependencies(&self, dot: &mut D2Graph) {
         for (from, to) in self.dependency.all_edges() {
             if !self.included_systems_sets.contains(&from)
                 || !self.included_systems_sets.contains(&to)
@@ -264,7 +254,7 @@ impl ScheduleGraphContext<'_> {
     }
 
     /// Add ambiguity edges
-    fn add_ambiguities(&self, dot: &mut DotGraph) {
+    fn add_ambiguities(&self, dot: &mut D2Graph) {
         let mut conflicting_systems = self.graph.conflicting_systems().to_vec();
         conflicting_systems.sort();
 
@@ -336,7 +326,7 @@ impl ScheduleGraphContext<'_> {
 }
 
 impl ScheduleGraphContext<'_> {
-    fn add_set_in_multiple_sets(&self, dot: &mut DotGraph, set_id: NodeId, set: &dyn SystemSet) {
+    fn add_set_in_multiple_sets(&self, dot: &mut D2Graph, set_id: NodeId, set: &dyn SystemSet) {
         assert!(self.included_systems_sets.contains(&set_id));
         self.add_set(set_id, set, dot);
 
@@ -356,7 +346,7 @@ impl ScheduleGraphContext<'_> {
     }
 
     // add regular set and system hierarchy
-    fn add_set(&self, set_id: NodeId, set: &dyn SystemSet, dot: &mut DotGraph) {
+    fn add_set(&self, set_id: NodeId, set: &dyn SystemSet, dot: &mut D2Graph) {
         let name = format!("{set:?}");
 
         if self.collapsed_sets.contains(&set_id) {
@@ -369,20 +359,9 @@ impl ScheduleGraphContext<'_> {
         }
 
         let system_set_cluster_name = node_index_name(set_id); // in sync with system_cluster_name
-        let mut system_set_graph = DotGraph::subgraph(
-            &system_set_cluster_name,
-            &[
-                ("style", "rounded,filled"),
-                ("label", &name),
-                ("tooltip", &name),
-                ("fillcolor", &self.settings.style.color_set),
-                ("fontcolor", &self.settings.style.color_set_label),
-                ("color", &self.settings.style.color_set_border),
-                ("penwidth", "2"),
-            ],
-        );
+        let mut system_set_graph = dot.subgraph(system_set_cluster_name.to_string());
 
-        system_set_graph.add_invisible_node(&marker_name(set_id));
+        system_set_graph.add_invisible_node(&node_index_name(set_id));
 
         for &(nested_set_id, nested_set) in self
             .sets_in_single_set
@@ -435,15 +414,16 @@ impl ScheduleGraphContext<'_> {
             self.add_system_in_multiple_sets(&mut system_set_graph, system_id, system);
         }
 
-        dot.add_sub_graph(system_set_graph);
+        dot.add_sub_graph(&system_set_cluster_name, &name, system_set_graph);
     }
 
     fn add_system_in_multiple_sets(
         &self,
-        dot: &mut DotGraph,
+        dot: &mut D2Graph,
         system_id: NodeId,
         system: &ScheduleSystem,
     ) {
+        return; // TODO
         assert!(self.included_systems_sets.contains(&system_id));
         let mut name = self.system_name(system);
         let name = name.to_mut();
@@ -664,7 +644,7 @@ impl ScheduleGraphContext<'_> {
                         }
                     }
                 } else {
-                    marker_name(node_id)
+                    node_index_name(node_id)
                 }
             }
         }
@@ -678,10 +658,6 @@ fn set_cluster_name(id: NodeId) -> String {
 
 fn node_index_name(node_id: NodeId) -> String {
     format!("node_{node_id:?}")
-}
-fn marker_name(node_id: NodeId) -> String {
-    assert!(node_id.is_set());
-    format!("set_marker_node_{node_id:?}")
 }
 
 enum IterSingleResult<T> {
