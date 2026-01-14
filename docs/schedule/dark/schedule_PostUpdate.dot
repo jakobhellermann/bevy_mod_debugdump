@@ -46,16 +46,17 @@ digraph "" {
 		"node_System(SystemKey(50v1))" ["label"="Assets<Font>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_text::font::Font>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
 		"node_System(SystemKey(77v1))" ["label"="Assets<StandardMaterial>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_pbr::pbr_material::StandardMaterial>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
 		"node_System(SystemKey(81v1))" ["label"="Assets<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_pbr::extended_material::ExtendedMaterial<bevy_pbr::pbr_material::StandardMaterial, bevy_pbr::decal::forward::ForwardDecalMaterialExt>>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(85v1))" ["label"="Assets<Gltf>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::Gltf>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(86v1))" ["label"="Assets<GltfNode>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::GltfNode>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(87v1))" ["label"="Assets<GltfPrimitive>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::GltfPrimitive>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(88v1))" ["label"="Assets<GltfMesh>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::GltfMesh>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(89v1))" ["label"="Assets<GltfSkin>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::GltfSkin>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(92v1))" ["label"="Assets<AudioSource>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_audio::audio_source::AudioSource>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(95v1))" ["label"="Assets<Pitch>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_audio::pitch::Pitch>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(99v1))" ["label"="Assets<AnimationClip>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_animation::AnimationClip>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(100v1))" ["label"="Assets<AnimationGraph>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_animation::graph::AnimationGraph>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(107v1))" ["label"="Assets<GizmoAsset>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_gizmos::GizmoAsset>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(84v1))" ["label"="Assets<ScatteringMedium>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_pbr::medium::ScatteringMedium>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(86v1))" ["label"="Assets<Gltf>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::Gltf>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(87v1))" ["label"="Assets<GltfNode>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::GltfNode>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(88v1))" ["label"="Assets<GltfPrimitive>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::GltfPrimitive>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(89v1))" ["label"="Assets<GltfMesh>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::GltfMesh>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(90v1))" ["label"="Assets<GltfSkin>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::GltfSkin>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(93v1))" ["label"="Assets<AudioSource>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_audio::audio_source::AudioSource>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(96v1))" ["label"="Assets<Pitch>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_audio::pitch::Pitch>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(100v1))" ["label"="Assets<AnimationClip>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_animation::AnimationClip>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(101v1))" ["label"="Assets<AnimationGraph>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_animation::graph::AnimationGraph>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(108v1))" ["label"="Assets<GizmoAsset>::asset_events", "tooltip"="bevy_asset::assets::Assets<bevy_gizmos::GizmoAsset>::asset_events", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
 	}
 	
 	subgraph "clusternode_Set(SystemSetKey(13v1))" {
@@ -110,31 +111,18 @@ digraph "" {
 	
 	subgraph "clusternode_Set(SystemSetKey(29v1))" {
 		"style"="rounded,filled";
-		"label"="CalculateBounds";
-		"tooltip"="CalculateBounds";
-		"fillcolor"="#ffffff44";
-		"fontcolor"="#ffffff";
-		"color"="#ffffff50";
-		"penwidth"="2";
-		"set_marker_node_Set(SystemSetKey(29v1))" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(SystemKey(23v1))" ["label"="calculate_bounds", "tooltip"="bevy_camera::visibility::calculate_bounds", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(SystemKey(40v1))" ["label"="calculate_bounds_2d", "tooltip"="bevy_sprite::calculate_bounds_2d", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-	}
-	
-	subgraph "clusternode_Set(SystemSetKey(30v1))" {
-		"style"="rounded,filled";
 		"label"="CheckVisibility";
 		"tooltip"="CheckVisibility";
 		"fillcolor"="#ffffff44";
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(SystemSetKey(30v1))" ["style"="invis", "label"="", "shape"="point"]
+		"set_marker_node_Set(SystemSetKey(29v1))" ["style"="invis", "label"="", "shape"="point"]
 		"node_System(SystemKey(26v1))" ["label"="check_visibility", "tooltip"="bevy_camera::visibility::check_visibility", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 		"node_System(SystemKey(28v1))" ["label"="check_visibility_ranges", "tooltip"="bevy_camera::visibility::range::check_visibility_ranges", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(SystemSetKey(31v1))" {
+	subgraph "clusternode_Set(SystemSetKey(30v1))" {
 		"style"="rounded,filled";
 		"label"="VisibilityPropagate";
 		"tooltip"="VisibilityPropagate";
@@ -142,12 +130,12 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(SystemSetKey(31v1))" ["style"="invis", "label"="", "shape"="point"]
+		"set_marker_node_Set(SystemSetKey(30v1))" ["style"="invis", "label"="", "shape"="point"]
 		"node_System(SystemKey(24v1))" ["label"="visibility_propagate_system", "tooltip"="bevy_camera::visibility::visibility_propagate_system", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 		"node_System(SystemKey(25v1))" ["label"="reset_view_visibility", "tooltip"="bevy_camera::visibility::reset_view_visibility", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(SystemSetKey(32v1))" {
+	subgraph "clusternode_Set(SystemSetKey(31v1))" {
 		"style"="rounded,filled";
 		"label"="MarkNewlyHiddenEntitiesInvisible";
 		"tooltip"="MarkNewlyHiddenEntitiesInvisible";
@@ -155,8 +143,21 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(SystemSetKey(32v1))" ["style"="invis", "label"="", "shape"="point"]
+		"set_marker_node_Set(SystemSetKey(31v1))" ["style"="invis", "label"="", "shape"="point"]
 		"node_System(SystemKey(27v1))" ["label"="mark_newly_hidden_entities_invisible", "tooltip"="bevy_camera::visibility::mark_newly_hidden_entities_invisible", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+	}
+	
+	subgraph "clusternode_Set(SystemSetKey(32v1))" {
+		"style"="rounded,filled";
+		"label"="CalculateBounds";
+		"tooltip"="CalculateBounds";
+		"fillcolor"="#ffffff44";
+		"fontcolor"="#ffffff";
+		"color"="#ffffff50";
+		"penwidth"="2";
+		"set_marker_node_Set(SystemSetKey(32v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(23v1))" ["label"="calculate_bounds", "tooltip"="bevy_camera::visibility::calculate_bounds", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(40v1))" ["label"="calculate_bounds_2d", "tooltip"="bevy_sprite::calculate_bounds_2d", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 	}
 	
 	subgraph "clusternode_Set(SystemSetKey(39v1))" {
@@ -245,12 +246,12 @@ digraph "" {
 		"color"="#ffffff50";
 		"penwidth"="2";
 		"set_marker_node_Set(SystemSetKey(58v1))" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(SystemKey(101v1))" ["label"="thread_animation_graphs", "tooltip"="bevy_animation::graph::thread_animation_graphs", "fillcolor"="#ffbdb9", "fontname"="Helvetica", "fontcolor"="#320200", "color"="#ff5c53", "penwidth"="1"]
-		"node_System(SystemKey(102v1))" ["label"="advance_transitions", "tooltip"="bevy_animation::transition::advance_transitions", "fillcolor"="#ffbdb9", "fontname"="Helvetica", "fontcolor"="#320200", "color"="#ff5c53", "penwidth"="1"]
-		"node_System(SystemKey(103v1))" ["label"="advance_animations", "tooltip"="bevy_animation::advance_animations", "fillcolor"="#ffbdb9", "fontname"="Helvetica", "fontcolor"="#320200", "color"="#ff5c53", "penwidth"="1"]
-		"node_System(SystemKey(104v1))" ["label"="animate_targets", "tooltip"="bevy_animation::animate_targets", "fillcolor"="#ffbdb9", "fontname"="Helvetica", "fontcolor"="#320200", "color"="#ff5c53", "penwidth"="1"]
-		"node_System(SystemKey(105v1))" ["label"="trigger_untargeted_animation_events", "tooltip"="bevy_animation::trigger_untargeted_animation_events", "fillcolor"="#ffbdb9", "fontname"="Helvetica", "fontcolor"="#320200", "color"="#ff5c53", "penwidth"="1"]
-		"node_System(SystemKey(106v1))" ["label"="expire_completed_transitions", "tooltip"="bevy_animation::transition::expire_completed_transitions", "fillcolor"="#ffbdb9", "fontname"="Helvetica", "fontcolor"="#320200", "color"="#ff5c53", "penwidth"="1"]
+		"node_System(SystemKey(102v1))" ["label"="thread_animation_graphs", "tooltip"="bevy_animation::graph::thread_animation_graphs", "fillcolor"="#ffbdb9", "fontname"="Helvetica", "fontcolor"="#320200", "color"="#ff5c53", "penwidth"="1"]
+		"node_System(SystemKey(103v1))" ["label"="advance_transitions", "tooltip"="bevy_animation::transition::advance_transitions", "fillcolor"="#ffbdb9", "fontname"="Helvetica", "fontcolor"="#320200", "color"="#ff5c53", "penwidth"="1"]
+		"node_System(SystemKey(104v1))" ["label"="advance_animations", "tooltip"="bevy_animation::advance_animations", "fillcolor"="#ffbdb9", "fontname"="Helvetica", "fontcolor"="#320200", "color"="#ff5c53", "penwidth"="1"]
+		"node_System(SystemKey(105v1))" ["label"="animate_targets", "tooltip"="bevy_animation::animate_targets", "fillcolor"="#ffbdb9", "fontname"="Helvetica", "fontcolor"="#320200", "color"="#ff5c53", "penwidth"="1"]
+		"node_System(SystemKey(106v1))" ["label"="trigger_untargeted_animation_events", "tooltip"="bevy_animation::trigger_untargeted_animation_events", "fillcolor"="#ffbdb9", "fontname"="Helvetica", "fontcolor"="#320200", "color"="#ff5c53", "penwidth"="1"]
+		"node_System(SystemKey(107v1))" ["label"="expire_completed_transitions", "tooltip"="bevy_animation::transition::expire_completed_transitions", "fillcolor"="#ffbdb9", "fontname"="Helvetica", "fontcolor"="#320200", "color"="#ff5c53", "penwidth"="1"]
 	}
 	
 	subgraph "clusternode_Set(SystemSetKey(67v1))" {
@@ -296,9 +297,9 @@ digraph "" {
 			"color"="#ffffff50";
 			"penwidth"="2";
 			"set_marker_node_Set(SystemSetKey(75v1))" ["style"="invis", "label"="", "shape"="point"]
-			"node_System(SystemKey(52v1))" ["label"="update_source<ComputedUiTargetCamera, ()>", "tooltip"="bevy_app::propagate::update_source<bevy_ui::ui_node::ComputedUiTargetCamera, ()>", "fillcolor"="#639d18", "fontname"="Helvetica", "fontcolor"="#e7f8d2", "color"="#98e03a", "penwidth"="1"]
-			"node_System(SystemKey(53v1))" ["label"="update_stopped<ComputedUiTargetCamera, ()>", "tooltip"="bevy_app::propagate::update_stopped<bevy_ui::ui_node::ComputedUiTargetCamera, ()>", "fillcolor"="#639d18", "fontname"="Helvetica", "fontcolor"="#e7f8d2", "color"="#98e03a", "penwidth"="1"]
-			"node_System(SystemKey(54v1))" ["label"="update_reparented<ComputedUiTargetCamera, (), ChildOf>", "tooltip"="bevy_app::propagate::update_reparented<bevy_ui::ui_node::ComputedUiTargetCamera, (), bevy_ecs::hierarchy::ChildOf>", "fillcolor"="#639d18", "fontname"="Helvetica", "fontcolor"="#e7f8d2", "color"="#98e03a", "penwidth"="1"]
+			"node_System(SystemKey(52v1))" ["label"="update_source<ComputedUiTargetCamera, (), ChildOf>", "tooltip"="bevy_app::propagate::update_source<bevy_ui::ui_node::ComputedUiTargetCamera, (), bevy_ecs::hierarchy::ChildOf>", "fillcolor"="#639d18", "fontname"="Helvetica", "fontcolor"="#e7f8d2", "color"="#98e03a", "penwidth"="1"]
+			"node_System(SystemKey(53v1))" ["label"="update_reparented<ComputedUiTargetCamera, (), ChildOf>", "tooltip"="bevy_app::propagate::update_reparented<bevy_ui::ui_node::ComputedUiTargetCamera, (), bevy_ecs::hierarchy::ChildOf>", "fillcolor"="#639d18", "fontname"="Helvetica", "fontcolor"="#e7f8d2", "color"="#98e03a", "penwidth"="1"]
+			"node_System(SystemKey(54v1))" ["label"="update_removed_limit<ComputedUiTargetCamera, (), ChildOf>", "tooltip"="bevy_app::propagate::update_removed_limit<bevy_ui::ui_node::ComputedUiTargetCamera, (), bevy_ecs::hierarchy::ChildOf>", "fillcolor"="#639d18", "fontname"="Helvetica", "fontcolor"="#e7f8d2", "color"="#98e03a", "penwidth"="1"]
 			"node_System(SystemKey(55v1))" ["label"="propagate_inherited<ComputedUiTargetCamera, (), ChildOf>", "tooltip"="bevy_app::propagate::propagate_inherited<bevy_ui::ui_node::ComputedUiTargetCamera, (), bevy_ecs::hierarchy::ChildOf>", "fillcolor"="#639d18", "fontname"="Helvetica", "fontcolor"="#e7f8d2", "color"="#98e03a", "penwidth"="1"]
 			"node_System(SystemKey(56v1))" ["label"="propagate_output<ComputedUiTargetCamera, ()>", "tooltip"="bevy_app::propagate::propagate_output<bevy_ui::ui_node::ComputedUiTargetCamera, ()>", "fillcolor"="#639d18", "fontname"="Helvetica", "fontcolor"="#e7f8d2", "color"="#98e03a", "penwidth"="1"]
 		}
@@ -312,9 +313,9 @@ digraph "" {
 			"color"="#ffffff50";
 			"penwidth"="2";
 			"set_marker_node_Set(SystemSetKey(81v1))" ["style"="invis", "label"="", "shape"="point"]
-			"node_System(SystemKey(57v1))" ["label"="update_source<ComputedUiRenderTargetInfo, ()>", "tooltip"="bevy_app::propagate::update_source<bevy_ui::ui_node::ComputedUiRenderTargetInfo, ()>", "fillcolor"="#639d18", "fontname"="Helvetica", "fontcolor"="#e7f8d2", "color"="#98e03a", "penwidth"="1"]
-			"node_System(SystemKey(58v1))" ["label"="update_stopped<ComputedUiRenderTargetInfo, ()>", "tooltip"="bevy_app::propagate::update_stopped<bevy_ui::ui_node::ComputedUiRenderTargetInfo, ()>", "fillcolor"="#639d18", "fontname"="Helvetica", "fontcolor"="#e7f8d2", "color"="#98e03a", "penwidth"="1"]
-			"node_System(SystemKey(59v1))" ["label"="update_reparented<ComputedUiRenderTargetInfo, (), ChildOf>", "tooltip"="bevy_app::propagate::update_reparented<bevy_ui::ui_node::ComputedUiRenderTargetInfo, (), bevy_ecs::hierarchy::ChildOf>", "fillcolor"="#639d18", "fontname"="Helvetica", "fontcolor"="#e7f8d2", "color"="#98e03a", "penwidth"="1"]
+			"node_System(SystemKey(57v1))" ["label"="update_source<ComputedUiRenderTargetInfo, (), ChildOf>", "tooltip"="bevy_app::propagate::update_source<bevy_ui::ui_node::ComputedUiRenderTargetInfo, (), bevy_ecs::hierarchy::ChildOf>", "fillcolor"="#639d18", "fontname"="Helvetica", "fontcolor"="#e7f8d2", "color"="#98e03a", "penwidth"="1"]
+			"node_System(SystemKey(58v1))" ["label"="update_reparented<ComputedUiRenderTargetInfo, (), ChildOf>", "tooltip"="bevy_app::propagate::update_reparented<bevy_ui::ui_node::ComputedUiRenderTargetInfo, (), bevy_ecs::hierarchy::ChildOf>", "fillcolor"="#639d18", "fontname"="Helvetica", "fontcolor"="#e7f8d2", "color"="#98e03a", "penwidth"="1"]
+			"node_System(SystemKey(59v1))" ["label"="update_removed_limit<ComputedUiRenderTargetInfo, (), ChildOf>", "tooltip"="bevy_app::propagate::update_removed_limit<bevy_ui::ui_node::ComputedUiRenderTargetInfo, (), bevy_ecs::hierarchy::ChildOf>", "fillcolor"="#639d18", "fontname"="Helvetica", "fontcolor"="#e7f8d2", "color"="#98e03a", "penwidth"="1"]
 			"node_System(SystemKey(60v1))" ["label"="propagate_inherited<ComputedUiRenderTargetInfo, (), ChildOf>", "tooltip"="bevy_app::propagate::propagate_inherited<bevy_ui::ui_node::ComputedUiRenderTargetInfo, (), bevy_ecs::hierarchy::ChildOf>", "fillcolor"="#639d18", "fontname"="Helvetica", "fontcolor"="#e7f8d2", "color"="#98e03a", "penwidth"="1"]
 			"node_System(SystemKey(61v1))" ["label"="propagate_output<ComputedUiRenderTargetInfo, ()>", "tooltip"="bevy_app::propagate::propagate_output<bevy_ui::ui_node::ComputedUiRenderTargetInfo, ()>", "fillcolor"="#639d18", "fontname"="Helvetica", "fontcolor"="#e7f8d2", "color"="#98e03a", "penwidth"="1"]
 		}
@@ -391,7 +392,7 @@ digraph "" {
 		"set_marker_node_Set(SystemSetKey(96v1))" ["style"="invis", "label"="", "shape"="point"]
 	}
 	
-	subgraph "clusternode_Set(SystemSetKey(118v1))" {
+	subgraph "clusternode_Set(SystemSetKey(119v1))" {
 		"style"="rounded,filled";
 		"label"="AudioPlaybackSystems";
 		"tooltip"="AudioPlaybackSystems";
@@ -399,16 +400,16 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(SystemSetKey(118v1))" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(SystemKey(90v1))" ["label"="update_emitter_positions", "tooltip"="bevy_audio::audio_output::update_emitter_positions", "fillcolor"="#98f1d1", "fontname"="Helvetica", "fontcolor"="#062c1e", "color"="#3ee4a8", "penwidth"="1"]
-		"node_System(SystemKey(91v1))" ["label"="update_listener_positions", "tooltip"="bevy_audio::audio_output::update_listener_positions", "fillcolor"="#98f1d1", "fontname"="Helvetica", "fontcolor"="#062c1e", "color"="#3ee4a8", "penwidth"="1"]
-		"node_System(SystemKey(93v1))" ["label"="play_queued_audio_system<AudioSource>", "tooltip"="bevy_audio::audio_output::play_queued_audio_system<bevy_audio::audio_source::AudioSource>", "fillcolor"="#98f1d1", "fontname"="Helvetica", "fontcolor"="#062c1e", "color"="#3ee4a8", "penwidth"="1"]
-		"node_System(SystemKey(94v1))" ["label"="cleanup_finished_audio<AudioSource>", "tooltip"="bevy_audio::audio_output::cleanup_finished_audio<bevy_audio::audio_source::AudioSource>", "fillcolor"="#98f1d1", "fontname"="Helvetica", "fontcolor"="#062c1e", "color"="#3ee4a8", "penwidth"="1"]
-		"node_System(SystemKey(96v1))" ["label"="play_queued_audio_system<Pitch>", "tooltip"="bevy_audio::audio_output::play_queued_audio_system<bevy_audio::pitch::Pitch>", "fillcolor"="#98f1d1", "fontname"="Helvetica", "fontcolor"="#062c1e", "color"="#3ee4a8", "penwidth"="1"]
-		"node_System(SystemKey(97v1))" ["label"="cleanup_finished_audio<Pitch>", "tooltip"="bevy_audio::audio_output::cleanup_finished_audio<bevy_audio::pitch::Pitch>", "fillcolor"="#98f1d1", "fontname"="Helvetica", "fontcolor"="#062c1e", "color"="#3ee4a8", "penwidth"="1"]
+		"set_marker_node_Set(SystemSetKey(119v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(91v1))" ["label"="update_emitter_positions", "tooltip"="bevy_audio::audio_output::update_emitter_positions", "fillcolor"="#98f1d1", "fontname"="Helvetica", "fontcolor"="#062c1e", "color"="#3ee4a8", "penwidth"="1"]
+		"node_System(SystemKey(92v1))" ["label"="update_listener_positions", "tooltip"="bevy_audio::audio_output::update_listener_positions", "fillcolor"="#98f1d1", "fontname"="Helvetica", "fontcolor"="#062c1e", "color"="#3ee4a8", "penwidth"="1"]
+		"node_System(SystemKey(94v1))" ["label"="play_queued_audio_system<AudioSource>", "tooltip"="bevy_audio::audio_output::play_queued_audio_system<bevy_audio::audio_source::AudioSource>", "fillcolor"="#98f1d1", "fontname"="Helvetica", "fontcolor"="#062c1e", "color"="#3ee4a8", "penwidth"="1"]
+		"node_System(SystemKey(95v1))" ["label"="cleanup_finished_audio<AudioSource>", "tooltip"="bevy_audio::audio_output::cleanup_finished_audio<bevy_audio::audio_source::AudioSource>", "fillcolor"="#98f1d1", "fontname"="Helvetica", "fontcolor"="#062c1e", "color"="#3ee4a8", "penwidth"="1"]
+		"node_System(SystemKey(97v1))" ["label"="play_queued_audio_system<Pitch>", "tooltip"="bevy_audio::audio_output::play_queued_audio_system<bevy_audio::pitch::Pitch>", "fillcolor"="#98f1d1", "fontname"="Helvetica", "fontcolor"="#062c1e", "color"="#3ee4a8", "penwidth"="1"]
+		"node_System(SystemKey(98v1))" ["label"="cleanup_finished_audio<Pitch>", "tooltip"="bevy_audio::audio_output::cleanup_finished_audio<bevy_audio::pitch::Pitch>", "fillcolor"="#98f1d1", "fontname"="Helvetica", "fontcolor"="#062c1e", "color"="#3ee4a8", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(SystemSetKey(128v1))" {
+	subgraph "clusternode_Set(SystemSetKey(129v1))" {
 		"style"="rounded,filled";
 		"label"="RumbleSystems";
 		"tooltip"="RumbleSystems";
@@ -416,8 +417,8 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(SystemSetKey(128v1))" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(SystemKey(98v1))" ["label"="play_gilrs_rumble", "tooltip"="bevy_gilrs::rumble::play_gilrs_rumble", "fillcolor"="#973977", "fontname"="Helvetica", "fontcolor"="#f1d9e9", "color"="#c86da9", "penwidth"="1"]
+		"set_marker_node_Set(SystemSetKey(129v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(99v1))" ["label"="play_gilrs_rumble", "tooltip"="bevy_gilrs::rumble::play_gilrs_rumble", "fillcolor"="#973977", "fontname"="Helvetica", "fontcolor"="#f1d9e9", "color"="#c86da9", "penwidth"="1"]
 	}
 	
 	"node_System(SystemKey(4v1))" ["label"="exit_on_all_closed", "tooltip"="bevy_window::system::exit_on_all_closed"]
@@ -426,7 +427,7 @@ digraph "" {
 	"node_System(SystemKey(39v1))" ["label"="check_msaa", "tooltip"="bevy_core_pipeline::core_3d::check_msaa"]
 	"node_System(SystemKey(45v1))" ["label"="check_entities_needing_specialization<ColorMaterial>", "tooltip"="bevy_sprite_render::mesh2d::material::check_entities_needing_specialization<bevy_sprite_render::mesh2d::color_material::ColorMaterial>"]
 	"node_System(SystemKey(47v1))" ["label"="check_entities_needing_specialization<TilemapChunkMaterial>", "tooltip"="bevy_sprite_render::mesh2d::material::check_entities_needing_specialization<bevy_sprite_render::tilemap_chunk::tilemap_chunk_material::TilemapChunkMaterial>"]
-	"node_System(SystemKey(51v1))" ["label"="remove_dropped_font_atlas_sets", "tooltip"="bevy_text::font_atlas_set::remove_dropped_font_atlas_sets"]
+	"node_System(SystemKey(51v1))" ["label"="free_unused_font_atlases_system", "tooltip"="bevy_text::font_atlas_set::free_unused_font_atlases_system"]
 	"node_System(SystemKey(65v1))" ["label"="update_clipping_system", "tooltip"="bevy_ui::update::update_clipping_system"]
 	"node_System(SystemKey(71v1))" ["label"="calc_bounds", "tooltip"="bevy_ui::accessibility::calc_bounds"]
 	"node_System(SystemKey(72v1))" ["label"="button_changed", "tooltip"="bevy_ui::accessibility::button_changed"]
@@ -439,12 +440,11 @@ digraph "" {
 	"node_System(SystemKey(80v1))" ["label"="check_light_entities_needing_specialization<StandardMaterial>", "tooltip"="bevy_pbr::render::light::check_light_entities_needing_specialization<bevy_pbr::pbr_material::StandardMaterial>"]
 	"node_System(SystemKey(82v1))" ["label"="mark_meshes_as_changed_if_their_materials_changed<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>", "tooltip"="bevy_pbr::material::mark_meshes_as_changed_if_their_materials_changed<bevy_pbr::extended_material::ExtendedMaterial<bevy_pbr::pbr_material::StandardMaterial, bevy_pbr::decal::forward::ForwardDecalMaterialExt>>"]
 	"node_System(SystemKey(83v1))" ["label"="check_entities_needing_specialization<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>", "tooltip"="bevy_pbr::material::check_entities_needing_specialization<bevy_pbr::extended_material::ExtendedMaterial<bevy_pbr::pbr_material::StandardMaterial, bevy_pbr::decal::forward::ForwardDecalMaterialExt>>"]
-	"node_System(SystemKey(84v1))" ["label"="insert_deferred_lighting_pass_id_component", "tooltip"="bevy_pbr::deferred::insert_deferred_lighting_pass_id_component"]
-	"node_System(SystemKey(108v1))" ["label"="draw_aabbs", "tooltip"="bevy_gizmos::aabb::draw_aabbs"]
-	"node_System(SystemKey(109v1))" ["label"="draw_all_aabbs", "tooltip"="bevy_gizmos::aabb::draw_all_aabbs"]
-	"node_System(SystemKey(110v1))" ["label"="draw_lights", "tooltip"="bevy_gizmos::light::draw_lights"]
-	"node_System(SystemKey(111v1))" ["label"="draw_all_lights", "tooltip"="bevy_gizmos::light::draw_all_lights"]
-	"node_System(SystemKey(112v1))" ["label"="apply_deferred", "tooltip"="bevy_ecs::apply_deferred"]
+	"node_System(SystemKey(85v1))" ["label"="insert_deferred_lighting_pass_id_component", "tooltip"="bevy_pbr::deferred::insert_deferred_lighting_pass_id_component"]
+	"node_System(SystemKey(109v1))" ["label"="draw_aabbs", "tooltip"="bevy_gizmos::aabb::draw_aabbs"]
+	"node_System(SystemKey(110v1))" ["label"="draw_all_aabbs", "tooltip"="bevy_gizmos::aabb::draw_all_aabbs"]
+	"node_System(SystemKey(111v1))" ["label"="draw_lights", "tooltip"="bevy_gizmos::light::draw_lights"]
+	"node_System(SystemKey(112v1))" ["label"="draw_all_lights", "tooltip"="bevy_gizmos::light::draw_all_lights"]
 	"node_System(SystemKey(113v1))" ["label"="apply_deferred", "tooltip"="bevy_ecs::apply_deferred"]
 	"node_System(SystemKey(114v1))" ["label"="apply_deferred", "tooltip"="bevy_ecs::apply_deferred"]
 	"node_System(SystemKey(115v1))" ["label"="apply_deferred", "tooltip"="bevy_ecs::apply_deferred"]
@@ -455,7 +455,7 @@ digraph "" {
 	"node_System(SystemKey(120v1))" ["label"="apply_deferred", "tooltip"="bevy_ecs::apply_deferred"]
 	"node_System(SystemKey(121v1))" ["label"="apply_deferred", "tooltip"="bevy_ecs::apply_deferred"]
 	"node_System(SystemKey(122v1))" ["label"="apply_deferred", "tooltip"="bevy_ecs::apply_deferred"]
-	"node_System(SystemKey(43v1))" -> "set_marker_node_Set(SystemSetKey(29v1))" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(SystemSetKey(29v1))"]
+	"node_System(SystemKey(43v1))" -> "set_marker_node_Set(SystemSetKey(32v1))" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(SystemSetKey(32v1))"]
 	"node_System(SystemKey(43v1))" -> "set_marker_node_Set(SystemSetKey(57v1))" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(SystemSetKey(57v1))"]
 	"node_System(SystemKey(43v1))" ["label"="calculate_bounds_text2d
 In multiple sets, CalculateBounds, Text2dUpdateSystems", "tooltip"="bevy_sprite::text2d::calculate_bounds_text2d"]
@@ -473,89 +473,90 @@ In multiple sets, Content, AmbiguousWithText, AmbiguousWithUpdateText2dLayout", 
 	"node_System(SystemKey(67v1))" -> "set_marker_node_Set(SystemSetKey(96v1))" ["dir"="none", "color"="blue", "lhead"="clusternode_Set(SystemSetKey(96v1))"]
 	"node_System(SystemKey(67v1))" ["label"="update_viewport_render_target_size
 In multiple sets, PostLayout, AmbiguousWithText, AmbiguousWithUpdateText2dLayout", "tooltip"="bevy_ui::widget::viewport::update_viewport_render_target_size"]
-	"set_marker_node_Set(SystemSetKey(72v1))" -> "set_marker_node_Set(SystemSetKey(73v1))" ["lhead"="clusternode_Set(SystemSetKey(73v1))", "ltail"="clusternode_Set(SystemSetKey(72v1))", "tooltip"="Content → Layout", "color"="#eede00"]
-	"set_marker_node_Set(SystemSetKey(7v1))" -> "node_System(SystemKey(21v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(7v1))", "tooltip"="AssetEventSystems → mark_3d_meshes_as_changed_if_their_assets_changed", "color"="#881877"]
-	"node_System(SystemKey(51v1))" -> "node_System(SystemKey(42v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::change_detection::ResMut<'_, bevy_text::font_atlas_set::FontAtlasSets>, bevy_ecs::message::message_reader::MessageReader<'_, '_, bevy_asset::event::AssetEvent<bevy_text::font::Font>>), (), bevy_text::font_atlas_set::remove_dropped_font_atlas_sets>()) → update_text2d_layout", "color"="#00b0cc"]
-	"set_marker_node_Set(SystemSetKey(19v1))" -> "node_System(SystemKey(32v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(19v1))", "tooltip"="CameraUpdateSystems → clear_directional_light_cascades", "color"="#aa3a55"]
-	"set_marker_node_Set(SystemSetKey(58v1))" -> "node_System(SystemKey(41v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(58v1))", "tooltip"="AnimationSystems → detect_text_needs_rerender<Text2d>", "color"="#44d488"]
-	"node_System(SystemKey(53v1))" -> "node_System(SystemKey(54v1))" ["lhead"="", "ltail"="", "tooltip"="update_stopped<ComputedUiTargetCamera, ()> → update_reparented<ComputedUiTargetCamera, (), ChildOf>", "color"="#0090cc"]
-	"node_System(SystemKey(58v1))" -> "node_System(SystemKey(59v1))" ["lhead"="", "ltail"="", "tooltip"="update_stopped<ComputedUiRenderTargetInfo, ()> → update_reparented<ComputedUiRenderTargetInfo, (), ChildOf>", "color"="#ee9e44"]
-	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(110v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → draw_lights", "color"="#663699"]
+	"set_marker_node_Set(SystemSetKey(32v1))" -> "set_marker_node_Set(SystemSetKey(29v1))" ["lhead"="clusternode_Set(SystemSetKey(29v1))", "ltail"="clusternode_Set(SystemSetKey(32v1))", "tooltip"="CalculateBounds → CheckVisibility", "color"="#eede00"]
+	"set_marker_node_Set(SystemSetKey(72v1))" -> "set_marker_node_Set(SystemSetKey(73v1))" ["lhead"="clusternode_Set(SystemSetKey(73v1))", "ltail"="clusternode_Set(SystemSetKey(72v1))", "tooltip"="Content → Layout", "color"="#881877"]
+	"set_marker_node_Set(SystemSetKey(7v1))" -> "node_System(SystemKey(21v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(7v1))", "tooltip"="AssetEventSystems → mark_3d_meshes_as_changed_if_their_assets_changed", "color"="#00b0cc"]
+	"node_System(SystemKey(51v1))" -> "node_System(SystemKey(42v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::change_detection::params::ResMut<'_, bevy_text::font_atlas_set::FontAtlasSet>, bevy_ecs::message::message_reader::MessageReader<'_, '_, bevy_asset::event::AssetEvent<bevy_text::font::Font>>), (), (), bevy_text::font_atlas_set::free_unused_font_atlases_system>()) → update_text2d_layout", "color"="#aa3a55"]
+	"set_marker_node_Set(SystemSetKey(19v1))" -> "node_System(SystemKey(32v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(19v1))", "tooltip"="CameraUpdateSystems → clear_directional_light_cascades", "color"="#44d488"]
+	"set_marker_node_Set(SystemSetKey(58v1))" -> "node_System(SystemKey(41v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(58v1))", "tooltip"="AnimationSystems → detect_text_needs_rerender<Text2d>", "color"="#0090cc"]
+	"node_System(SystemKey(53v1))" -> "node_System(SystemKey(54v1))" ["lhead"="", "ltail"="", "tooltip"="update_reparented<ComputedUiTargetCamera, (), ChildOf> → update_removed_limit<ComputedUiTargetCamera, (), ChildOf>", "color"="#ee9e44"]
+	"node_System(SystemKey(58v1))" -> "node_System(SystemKey(59v1))" ["lhead"="", "ltail"="", "tooltip"="update_reparented<ComputedUiRenderTargetInfo, (), ChildOf> → update_removed_limit<ComputedUiRenderTargetInfo, (), ChildOf>", "color"="#663699"]
 	"set_marker_node_Set(SystemSetKey(44v1))" -> "set_marker_node_Set(SystemSetKey(46v1))" ["lhead"="clusternode_Set(SystemSetKey(46v1))", "ltail"="clusternode_Set(SystemSetKey(44v1))", "tooltip"="AddClusters → AssignLightsToClusters", "color"="#3363bb"]
-	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(34v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → update_point_light_frusta", "color"="#22c2bb"]
-	"node_System(SystemKey(21v1))" -> "node_System(SystemKey(83v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::query::Query<'_, '_, &mut bevy_mesh::components::Mesh3d>, bevy_ecs::message::message_reader::MessageReader<'_, '_, bevy_asset::event::AssetEvent<bevy_mesh::mesh::Mesh>>), (), bevy_mesh::components::mark_3d_meshes_as_changed_if_their_assets_changed>()) → check_entities_needing_specialization<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>", "color"="#99d955"]
-	"set_marker_node_Set(SystemSetKey(7v1))" -> "node_System(SystemKey(47v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(7v1))", "tooltip"="AssetEventSystems → check_entities_needing_specialization<TilemapChunkMaterial>", "color"="#eede00"]
-	"node_System(SystemKey(12v1))" -> "node_System(SystemKey(11v1))" ["lhead"="", "ltail"="", "tooltip"="window_closed → SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(core::option::Option<bevy_ecs::change_detection::Res<'_, bevy_input_focus::InputFocus>>, bevy_ecs::system::query::Query<'_, '_, (bevy_ecs::entity::Entity, &bevy_window::window::Window), bevy_ecs::query::filter::With<bevy_window::window::PrimaryWindow>>, bevy_ecs::system::query::Query<'_, '_, (bevy_ecs::entity::Entity, &bevy_a11y::AccessibilityNode, core::option::Option<&bevy_ecs::hierarchy::Children>, core::option::Option<&bevy_ecs::hierarchy::ChildOf>)>, bevy_ecs::system::query::Query<'_, '_, bevy_ecs::entity::Entity, bevy_ecs::query::filter::With<bevy_a11y::AccessibilityNode>>, bevy_ecs::system::system_param::NonSendMarker), (), bevy_winit::accessibility::update_accessibility_nodes>())", "color"="#881877"]
-	"set_marker_node_Set(SystemSetKey(19v1))" -> "node_System(SystemKey(42v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(19v1))", "tooltip"="CameraUpdateSystems → update_text2d_layout", "color"="#00b0cc"]
-	"node_System(SystemKey(104v1))" -> "node_System(SystemKey(105v1))" ["lhead"="", "ltail"="", "tooltip"="animate_targets → trigger_untargeted_animation_events", "color"="#aa3a55"]
-	"node_System(SystemKey(15v1))" -> "node_System(SystemKey(22v1))" ["lhead"="", "ltail"="", "tooltip"="camera_system → SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::query::Query<'_, '_, (&bevy_transform::components::global_transform::GlobalTransform, &bevy_camera::projection::Projection, &mut bevy_camera::primitives::Frustum), bevy_ecs::query::filter::Or<(bevy_ecs::query::filter::Changed<bevy_transform::components::global_transform::GlobalTransform>, bevy_ecs::query::filter::Changed<bevy_camera::projection::Projection>)>>), (), bevy_camera::visibility::update_frusta>())", "color"="#44d488"]
-	"set_marker_node_Set(SystemSetKey(29v1))" -> "node_System(SystemKey(109v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(29v1))", "tooltip"="CalculateBounds → draw_all_aabbs", "color"="#0090cc"]
-	"node_System(SystemKey(15v1))" -> "set_marker_node_Set(SystemSetKey(7v1))" ["lhead"="clusternode_Set(SystemSetKey(7v1))", "ltail"="", "tooltip"="camera_system → AssetEventSystems", "color"="#ee9e44"]
-	"set_marker_node_Set(SystemSetKey(19v1))" -> "set_marker_node_Set(SystemSetKey(70v1))" ["lhead"="clusternode_Set(SystemSetKey(70v1))", "ltail"="clusternode_Set(SystemSetKey(19v1))", "tooltip"="CameraUpdateSystems → Prepare", "color"="#663699"]
-	"node_System(SystemKey(68v1))" -> "node_System(SystemKey(69v1))" ["lhead"="", "ltail"="", "tooltip"="detect_text_needs_rerender<Text> → measure_text_system", "color"="#3363bb"]
-	"set_marker_node_Set(SystemSetKey(71v1))" -> "set_marker_node_Set(SystemSetKey(72v1))" ["lhead"="clusternode_Set(SystemSetKey(72v1))", "ltail"="clusternode_Set(SystemSetKey(71v1))", "tooltip"="Propagate → Content", "color"="#22c2bb"]
-	"set_marker_node_Set(SystemSetKey(2v1))" -> "set_marker_node_Set(SystemSetKey(29v1))" ["lhead"="clusternode_Set(SystemSetKey(29v1))", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → CalculateBounds", "color"="#99d955"]
-	"node_System(SystemKey(29v1))" -> "node_System(SystemKey(38v1))" ["lhead"="", "ltail"="", "tooltip"="validate_shadow_map_size → SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::change_detection::Res<'_, bevy_light::directional_light::DirectionalLightShadowMap>, bevy_ecs::system::query::Query<'_, '_, (bevy_ecs::entity::Entity, &bevy_transform::components::global_transform::GlobalTransform, &bevy_camera::projection::Projection, &bevy_camera::camera::Camera)>, bevy_ecs::system::query::Query<'_, '_, (&bevy_transform::components::global_transform::GlobalTransform, &bevy_light::directional_light::DirectionalLight, &bevy_light::cascade::CascadeShadowConfig, &mut bevy_light::cascade::Cascades)>), (), bevy_light::cascade::build_directional_light_cascades>())", "color"="#eede00"]
-	"node_System(SystemKey(1v1))" -> "node_System(SystemKey(2v1))" ["lhead"="", "ltail"="", "tooltip"="mark_dirty_trees → propagate_parent_transforms", "color"="#881877"]
-	"set_marker_node_Set(SystemSetKey(7v1))" -> "node_System(SystemKey(79v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(7v1))", "tooltip"="AssetEventSystems → check_entities_needing_specialization<StandardMaterial>", "color"="#00b0cc"]
-	"node_System(SystemKey(21v1))" -> "node_System(SystemKey(78v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::query::Query<'_, '_, &mut bevy_mesh::components::Mesh3d>, bevy_ecs::message::message_reader::MessageReader<'_, '_, bevy_asset::event::AssetEvent<bevy_mesh::mesh::Mesh>>), (), bevy_mesh::components::mark_3d_meshes_as_changed_if_their_assets_changed>()) → mark_meshes_as_changed_if_their_materials_changed<StandardMaterial>", "color"="#aa3a55"]
-	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(22v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → update_frusta", "color"="#44d488"]
-	"set_marker_node_Set(SystemSetKey(46v1))" -> "node_System(SystemKey(34v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(46v1))", "tooltip"="AssignLightsToClusters → update_point_light_frusta", "color"="#0090cc"]
-	"node_System(SystemKey(104v1))" -> "set_marker_node_Set(SystemSetKey(22v1))" ["lhead"="clusternode_Set(SystemSetKey(22v1))", "ltail"="", "tooltip"="animate_targets → InheritWeightSystems", "color"="#ee9e44"]
-	"node_System(SystemKey(105v1))" -> "node_System(SystemKey(106v1))" ["lhead"="", "ltail"="", "tooltip"="trigger_untargeted_animation_events → expire_completed_transitions", "color"="#663699"]
-	"set_marker_node_Set(SystemSetKey(29v1))" -> "set_marker_node_Set(SystemSetKey(30v1))" ["lhead"="clusternode_Set(SystemSetKey(30v1))", "ltail"="clusternode_Set(SystemSetKey(29v1))", "tooltip"="CalculateBounds → CheckVisibility", "color"="#3363bb"]
-	"node_System(SystemKey(21v1))" -> "node_System(SystemKey(82v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::query::Query<'_, '_, &mut bevy_mesh::components::Mesh3d>, bevy_ecs::message::message_reader::MessageReader<'_, '_, bevy_asset::event::AssetEvent<bevy_mesh::mesh::Mesh>>), (), bevy_mesh::components::mark_3d_meshes_as_changed_if_their_assets_changed>()) → mark_meshes_as_changed_if_their_materials_changed<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>", "color"="#22c2bb"]
-	"node_System(SystemKey(103v1))" -> "node_System(SystemKey(104v1))" ["lhead"="", "ltail"="", "tooltip"="advance_animations → animate_targets", "color"="#99d955"]
-	"set_marker_node_Set(SystemSetKey(19v1))" -> "node_System(SystemKey(71v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(19v1))", "tooltip"="CameraUpdateSystems → calc_bounds", "color"="#eede00"]
-	"node_System(SystemKey(12v1))" -> "node_System(SystemKey(10v1))" ["lhead"="", "ltail"="", "tooltip"="window_closed → SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::change_detection::Res<'_, bevy_winit::accessibility::WinitActionRequestHandlers>, bevy_ecs::message::message_writer::MessageWriter<'_, bevy_a11y::ActionRequest>), (), bevy_winit::accessibility::poll_receivers>())", "color"="#881877"]
-	"set_marker_node_Set(SystemSetKey(70v1))" -> "set_marker_node_Set(SystemSetKey(71v1))" ["lhead"="clusternode_Set(SystemSetKey(71v1))", "ltail"="clusternode_Set(SystemSetKey(70v1))", "tooltip"="Prepare → Propagate", "color"="#00b0cc"]
-	"set_marker_node_Set(SystemSetKey(30v1))" -> "node_System(SystemKey(37v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(30v1))", "tooltip"="CheckVisibility → check_point_light_mesh_visibility", "color"="#aa3a55"]
-	"set_marker_node_Set(SystemSetKey(30v1))" -> "node_System(SystemKey(36v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(30v1))", "tooltip"="CheckVisibility → check_dir_light_mesh_visibility", "color"="#44d488"]
-	"set_marker_node_Set(SystemSetKey(58v1))" -> "set_marker_node_Set(SystemSetKey(70v1))" ["lhead"="clusternode_Set(SystemSetKey(70v1))", "ltail"="clusternode_Set(SystemSetKey(58v1))", "tooltip"="AnimationSystems → Prepare", "color"="#0090cc"]
-	"set_marker_node_Set(SystemSetKey(2v1))" -> "set_marker_node_Set(SystemSetKey(118v1))" ["lhead"="clusternode_Set(SystemSetKey(118v1))", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → AudioPlaybackSystems", "color"="#ee9e44"]
-	"node_System(SystemKey(52v1))" -> "node_System(SystemKey(53v1))" ["lhead"="", "ltail"="", "tooltip"="update_source<ComputedUiTargetCamera, ()> → update_stopped<ComputedUiTargetCamera, ()>", "color"="#663699"]
-	"node_System(SystemKey(51v1))" -> "node_System(SystemKey(70v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::change_detection::ResMut<'_, bevy_text::font_atlas_set::FontAtlasSets>, bevy_ecs::message::message_reader::MessageReader<'_, '_, bevy_asset::event::AssetEvent<bevy_text::font::Font>>), (), bevy_text::font_atlas_set::remove_dropped_font_atlas_sets>()) → text_system", "color"="#3363bb"]
-	"node_System(SystemKey(54v1))" -> "node_System(SystemKey(55v1))" ["lhead"="", "ltail"="", "tooltip"="update_reparented<ComputedUiTargetCamera, (), ChildOf> → propagate_inherited<ComputedUiTargetCamera, (), ChildOf>", "color"="#22c2bb"]
-	"node_System(SystemKey(101v1))" -> "node_System(SystemKey(102v1))" ["lhead"="", "ltail"="", "tooltip"="thread_animation_graphs → advance_transitions", "color"="#99d955"]
-	"set_marker_node_Set(SystemSetKey(31v1))" -> "set_marker_node_Set(SystemSetKey(30v1))" ["lhead"="clusternode_Set(SystemSetKey(30v1))", "ltail"="clusternode_Set(SystemSetKey(31v1))", "tooltip"="VisibilityPropagate → CheckVisibility", "color"="#eede00"]
-	"node_System(SystemKey(102v1))" -> "node_System(SystemKey(103v1))" ["lhead"="", "ltail"="", "tooltip"="advance_transitions → advance_animations", "color"="#881877"]
-	"set_marker_node_Set(SystemSetKey(30v1))" -> "node_System(SystemKey(31v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(30v1))", "tooltip"="CheckVisibility → assign_objects_to_clusters", "color"="#00b0cc"]
-	"set_marker_node_Set(SystemSetKey(28v1))" -> "set_marker_node_Set(SystemSetKey(30v1))" ["lhead"="clusternode_Set(SystemSetKey(30v1))", "ltail"="clusternode_Set(SystemSetKey(28v1))", "tooltip"="UpdateFrusta → CheckVisibility", "color"="#aa3a55"]
-	"node_System(SystemKey(60v1))" -> "node_System(SystemKey(61v1))" ["lhead"="", "ltail"="", "tooltip"="propagate_inherited<ComputedUiRenderTargetInfo, (), ChildOf> → propagate_output<ComputedUiRenderTargetInfo, ()>", "color"="#44d488"]
-	"set_marker_node_Set(SystemSetKey(39v1))" -> "node_System(SystemKey(33v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(39v1))", "tooltip"="UpdateDirectionalLightCascades → update_directional_light_frusta", "color"="#0090cc"]
-	"set_marker_node_Set(SystemSetKey(49v1))" -> "node_System(SystemKey(36v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(49v1))", "tooltip"="UpdateLightFrusta → check_dir_light_mesh_visibility", "color"="#ee9e44"]
-	"set_marker_node_Set(SystemSetKey(7v1))" -> "node_System(SystemKey(45v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(7v1))", "tooltip"="AssetEventSystems → check_entities_needing_specialization<ColorMaterial>", "color"="#663699"]
-	"node_System(SystemKey(70v1))" -> "set_marker_node_Set(SystemSetKey(7v1))" ["lhead"="clusternode_Set(SystemSetKey(7v1))", "ltail"="", "tooltip"="text_system → AssetEventSystems", "color"="#3363bb"]
-	"node_System(SystemKey(48v1))" -> "set_marker_node_Set(SystemSetKey(7v1))" ["lhead"="clusternode_Set(SystemSetKey(7v1))", "ltail"="", "tooltip"="compute_slices_on_asset_event → AssetEventSystems", "color"="#22c2bb"]
-	"node_System(SystemKey(101v1))" -> "set_marker_node_Set(SystemSetKey(7v1))" ["lhead"="clusternode_Set(SystemSetKey(7v1))", "ltail"="", "tooltip"="thread_animation_graphs → AssetEventSystems", "color"="#99d955"]
+	"node_System(SystemKey(102v1))" -> "set_marker_node_Set(SystemSetKey(7v1))" ["lhead"="clusternode_Set(SystemSetKey(7v1))", "ltail"="", "tooltip"="thread_animation_graphs → AssetEventSystems", "color"="#22c2bb"]
+	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(34v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → update_point_light_frusta", "color"="#99d955"]
+	"node_System(SystemKey(21v1))" -> "node_System(SystemKey(83v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::query::Query<'_, '_, &mut bevy_mesh::components::Mesh3d>, bevy_ecs::message::message_reader::MessageReader<'_, '_, bevy_asset::event::AssetEvent<bevy_mesh::mesh::Mesh>>), (), (), bevy_mesh::components::mark_3d_meshes_as_changed_if_their_assets_changed>()) → check_entities_needing_specialization<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>", "color"="#eede00"]
+	"set_marker_node_Set(SystemSetKey(7v1))" -> "node_System(SystemKey(47v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(7v1))", "tooltip"="AssetEventSystems → check_entities_needing_specialization<TilemapChunkMaterial>", "color"="#881877"]
+	"node_System(SystemKey(107v1))" -> "set_marker_node_Set(SystemSetKey(2v1))" ["lhead"="clusternode_Set(SystemSetKey(2v1))", "ltail"="", "tooltip"="expire_completed_transitions → Propagate", "color"="#00b0cc"]
+	"node_System(SystemKey(12v1))" -> "node_System(SystemKey(11v1))" ["lhead"="", "ltail"="", "tooltip"="window_closed → SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(core::option::Option<bevy_ecs::change_detection::params::Res<'_, bevy_input_focus::InputFocus>>, bevy_ecs::system::query::Query<'_, '_, (bevy_ecs::entity::Entity, &bevy_window::window::Window), bevy_ecs::query::filter::With<bevy_window::window::PrimaryWindow>>, bevy_ecs::system::query::Query<'_, '_, (bevy_ecs::entity::Entity, &bevy_a11y::AccessibilityNode, core::option::Option<&bevy_ecs::hierarchy::Children>, core::option::Option<&bevy_ecs::hierarchy::ChildOf>)>, bevy_ecs::system::query::Query<'_, '_, bevy_ecs::entity::Entity, bevy_ecs::query::filter::With<bevy_a11y::AccessibilityNode>>, bevy_ecs::system::system_param::NonSendMarker), (), (), bevy_winit::accessibility::update_accessibility_nodes>())", "color"="#aa3a55"]
+	"set_marker_node_Set(SystemSetKey(28v1))" -> "set_marker_node_Set(SystemSetKey(29v1))" ["lhead"="clusternode_Set(SystemSetKey(29v1))", "ltail"="clusternode_Set(SystemSetKey(28v1))", "tooltip"="UpdateFrusta → CheckVisibility", "color"="#44d488"]
+	"set_marker_node_Set(SystemSetKey(2v1))" -> "set_marker_node_Set(SystemSetKey(32v1))" ["lhead"="clusternode_Set(SystemSetKey(32v1))", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → CalculateBounds", "color"="#0090cc"]
+	"set_marker_node_Set(SystemSetKey(19v1))" -> "node_System(SystemKey(42v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(19v1))", "tooltip"="CameraUpdateSystems → update_text2d_layout", "color"="#ee9e44"]
+	"set_marker_node_Set(SystemSetKey(2v1))" -> "set_marker_node_Set(SystemSetKey(119v1))" ["lhead"="clusternode_Set(SystemSetKey(119v1))", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → AudioPlaybackSystems", "color"="#663699"]
+	"node_System(SystemKey(15v1))" -> "node_System(SystemKey(22v1))" ["lhead"="", "ltail"="", "tooltip"="camera_system → SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::query::Query<'_, '_, (&bevy_transform::components::global_transform::GlobalTransform, &bevy_camera::projection::Projection, &mut bevy_camera::primitives::Frustum), bevy_ecs::query::filter::Or<(bevy_ecs::query::filter::Changed<bevy_transform::components::global_transform::GlobalTransform>, bevy_ecs::query::filter::Changed<bevy_camera::projection::Projection>)>>), (), (), bevy_camera::visibility::update_frusta>())", "color"="#3363bb"]
+	"node_System(SystemKey(105v1))" -> "set_marker_node_Set(SystemSetKey(22v1))" ["lhead"="clusternode_Set(SystemSetKey(22v1))", "ltail"="", "tooltip"="animate_targets → InheritWeightSystems", "color"="#22c2bb"]
+	"node_System(SystemKey(104v1))" -> "node_System(SystemKey(105v1))" ["lhead"="", "ltail"="", "tooltip"="advance_animations → animate_targets", "color"="#99d955"]
+	"node_System(SystemKey(15v1))" -> "set_marker_node_Set(SystemSetKey(7v1))" ["lhead"="clusternode_Set(SystemSetKey(7v1))", "ltail"="", "tooltip"="camera_system → AssetEventSystems", "color"="#eede00"]
+	"set_marker_node_Set(SystemSetKey(19v1))" -> "set_marker_node_Set(SystemSetKey(70v1))" ["lhead"="clusternode_Set(SystemSetKey(70v1))", "ltail"="clusternode_Set(SystemSetKey(19v1))", "tooltip"="CameraUpdateSystems → Prepare", "color"="#881877"]
+	"node_System(SystemKey(68v1))" -> "node_System(SystemKey(69v1))" ["lhead"="", "ltail"="", "tooltip"="detect_text_needs_rerender<Text> → measure_text_system", "color"="#00b0cc"]
+	"set_marker_node_Set(SystemSetKey(71v1))" -> "set_marker_node_Set(SystemSetKey(72v1))" ["lhead"="clusternode_Set(SystemSetKey(72v1))", "ltail"="clusternode_Set(SystemSetKey(71v1))", "tooltip"="Propagate → Content", "color"="#aa3a55"]
+	"node_System(SystemKey(29v1))" -> "node_System(SystemKey(38v1))" ["lhead"="", "ltail"="", "tooltip"="validate_shadow_map_size → SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::change_detection::params::Res<'_, bevy_light::directional_light::DirectionalLightShadowMap>, bevy_ecs::system::query::Query<'_, '_, (bevy_ecs::entity::Entity, &bevy_transform::components::global_transform::GlobalTransform, &bevy_camera::projection::Projection, &bevy_camera::camera::Camera)>, bevy_ecs::system::query::Query<'_, '_, (&bevy_transform::components::global_transform::GlobalTransform, &bevy_light::directional_light::DirectionalLight, &bevy_light::cascade::CascadeShadowConfig, &mut bevy_light::cascade::Cascades)>), (), (), bevy_light::cascade::build_directional_light_cascades>())", "color"="#44d488"]
+	"set_marker_node_Set(SystemSetKey(31v1))" -> "node_System(SystemKey(110v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(31v1))", "tooltip"="MarkNewlyHiddenEntitiesInvisible → draw_all_aabbs", "color"="#0090cc"]
+	"node_System(SystemKey(1v1))" -> "node_System(SystemKey(2v1))" ["lhead"="", "ltail"="", "tooltip"="mark_dirty_trees → propagate_parent_transforms", "color"="#ee9e44"]
+	"set_marker_node_Set(SystemSetKey(29v1))" -> "node_System(SystemKey(36v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(29v1))", "tooltip"="CheckVisibility → check_dir_light_mesh_visibility", "color"="#663699"]
+	"set_marker_node_Set(SystemSetKey(30v1))" -> "set_marker_node_Set(SystemSetKey(29v1))" ["lhead"="clusternode_Set(SystemSetKey(29v1))", "ltail"="clusternode_Set(SystemSetKey(30v1))", "tooltip"="VisibilityPropagate → CheckVisibility", "color"="#3363bb"]
+	"set_marker_node_Set(SystemSetKey(7v1))" -> "node_System(SystemKey(79v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(7v1))", "tooltip"="AssetEventSystems → check_entities_needing_specialization<StandardMaterial>", "color"="#22c2bb"]
+	"node_System(SystemKey(21v1))" -> "node_System(SystemKey(78v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::query::Query<'_, '_, &mut bevy_mesh::components::Mesh3d>, bevy_ecs::message::message_reader::MessageReader<'_, '_, bevy_asset::event::AssetEvent<bevy_mesh::mesh::Mesh>>), (), (), bevy_mesh::components::mark_3d_meshes_as_changed_if_their_assets_changed>()) → mark_meshes_as_changed_if_their_materials_changed<StandardMaterial>", "color"="#99d955"]
+	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(22v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → update_frusta", "color"="#eede00"]
+	"set_marker_node_Set(SystemSetKey(46v1))" -> "node_System(SystemKey(34v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(46v1))", "tooltip"="AssignLightsToClusters → update_point_light_frusta", "color"="#881877"]
+	"node_System(SystemKey(105v1))" -> "node_System(SystemKey(106v1))" ["lhead"="", "ltail"="", "tooltip"="animate_targets → trigger_untargeted_animation_events", "color"="#00b0cc"]
+	"node_System(SystemKey(37v1))" -> "set_marker_node_Set(SystemSetKey(31v1))" ["lhead"="clusternode_Set(SystemSetKey(31v1))", "ltail"="", "tooltip"="check_point_light_mesh_visibility → MarkNewlyHiddenEntitiesInvisible", "color"="#aa3a55"]
+	"node_System(SystemKey(103v1))" -> "node_System(SystemKey(104v1))" ["lhead"="", "ltail"="", "tooltip"="advance_transitions → advance_animations", "color"="#44d488"]
+	"node_System(SystemKey(21v1))" -> "node_System(SystemKey(82v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::query::Query<'_, '_, &mut bevy_mesh::components::Mesh3d>, bevy_ecs::message::message_reader::MessageReader<'_, '_, bevy_asset::event::AssetEvent<bevy_mesh::mesh::Mesh>>), (), (), bevy_mesh::components::mark_3d_meshes_as_changed_if_their_assets_changed>()) → mark_meshes_as_changed_if_their_materials_changed<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>", "color"="#0090cc"]
+	"set_marker_node_Set(SystemSetKey(19v1))" -> "node_System(SystemKey(71v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(19v1))", "tooltip"="CameraUpdateSystems → calc_bounds", "color"="#ee9e44"]
+	"set_marker_node_Set(SystemSetKey(70v1))" -> "set_marker_node_Set(SystemSetKey(71v1))" ["lhead"="clusternode_Set(SystemSetKey(71v1))", "ltail"="clusternode_Set(SystemSetKey(70v1))", "tooltip"="Prepare → Propagate", "color"="#663699"]
+	"node_System(SystemKey(12v1))" -> "node_System(SystemKey(10v1))" ["lhead"="", "ltail"="", "tooltip"="window_closed → SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::change_detection::params::Res<'_, bevy_winit::accessibility::WinitActionRequestHandlers>, bevy_ecs::message::message_writer::MessageWriter<'_, bevy_a11y::ActionRequest>), (), (), bevy_winit::accessibility::poll_receivers>())", "color"="#3363bb"]
+	"node_System(SystemKey(106v1))" -> "node_System(SystemKey(107v1))" ["lhead"="", "ltail"="", "tooltip"="trigger_untargeted_animation_events → expire_completed_transitions", "color"="#22c2bb"]
+	"set_marker_node_Set(SystemSetKey(58v1))" -> "set_marker_node_Set(SystemSetKey(70v1))" ["lhead"="clusternode_Set(SystemSetKey(70v1))", "ltail"="clusternode_Set(SystemSetKey(58v1))", "tooltip"="AnimationSystems → Prepare", "color"="#99d955"]
+	"node_System(SystemKey(52v1))" -> "node_System(SystemKey(53v1))" ["lhead"="", "ltail"="", "tooltip"="update_source<ComputedUiTargetCamera, (), ChildOf> → update_reparented<ComputedUiTargetCamera, (), ChildOf>", "color"="#eede00"]
+	"node_System(SystemKey(51v1))" -> "node_System(SystemKey(70v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::change_detection::params::ResMut<'_, bevy_text::font_atlas_set::FontAtlasSet>, bevy_ecs::message::message_reader::MessageReader<'_, '_, bevy_asset::event::AssetEvent<bevy_text::font::Font>>), (), (), bevy_text::font_atlas_set::free_unused_font_atlases_system>()) → text_system", "color"="#881877"]
+	"node_System(SystemKey(54v1))" -> "node_System(SystemKey(55v1))" ["lhead"="", "ltail"="", "tooltip"="update_removed_limit<ComputedUiTargetCamera, (), ChildOf> → propagate_inherited<ComputedUiTargetCamera, (), ChildOf>", "color"="#00b0cc"]
+	"set_marker_node_Set(SystemSetKey(31v1))" -> "node_System(SystemKey(109v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(31v1))", "tooltip"="MarkNewlyHiddenEntitiesInvisible → draw_aabbs", "color"="#aa3a55"]
+	"node_System(SystemKey(102v1))" -> "node_System(SystemKey(103v1))" ["lhead"="", "ltail"="", "tooltip"="thread_animation_graphs → advance_transitions", "color"="#44d488"]
+	"node_System(SystemKey(60v1))" -> "node_System(SystemKey(61v1))" ["lhead"="", "ltail"="", "tooltip"="propagate_inherited<ComputedUiRenderTargetInfo, (), ChildOf> → propagate_output<ComputedUiRenderTargetInfo, ()>", "color"="#0090cc"]
+	"set_marker_node_Set(SystemSetKey(39v1))" -> "node_System(SystemKey(33v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(39v1))", "tooltip"="UpdateDirectionalLightCascades → update_directional_light_frusta", "color"="#ee9e44"]
+	"set_marker_node_Set(SystemSetKey(49v1))" -> "node_System(SystemKey(36v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(49v1))", "tooltip"="UpdateLightFrusta → check_dir_light_mesh_visibility", "color"="#663699"]
+	"set_marker_node_Set(SystemSetKey(7v1))" -> "node_System(SystemKey(45v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(7v1))", "tooltip"="AssetEventSystems → check_entities_needing_specialization<ColorMaterial>", "color"="#3363bb"]
+	"node_System(SystemKey(70v1))" -> "set_marker_node_Set(SystemSetKey(7v1))" ["lhead"="clusternode_Set(SystemSetKey(7v1))", "ltail"="", "tooltip"="text_system → AssetEventSystems", "color"="#22c2bb"]
+	"node_System(SystemKey(48v1))" -> "set_marker_node_Set(SystemSetKey(7v1))" ["lhead"="clusternode_Set(SystemSetKey(7v1))", "ltail"="", "tooltip"="compute_slices_on_asset_event → AssetEventSystems", "color"="#99d955"]
 	"set_marker_node_Set(SystemSetKey(19v1))" -> "node_System(SystemKey(31v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(19v1))", "tooltip"="CameraUpdateSystems → assign_objects_to_clusters", "color"="#eede00"]
-	"node_System(SystemKey(57v1))" -> "node_System(SystemKey(58v1))" ["lhead"="", "ltail"="", "tooltip"="update_source<ComputedUiRenderTargetInfo, ()> → update_stopped<ComputedUiRenderTargetInfo, ()>", "color"="#881877"]
-	"node_System(SystemKey(79v1))" -> "node_System(SystemKey(80v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::query::Query<'_, '_, bevy_ecs::entity::Entity, (bevy_ecs::query::filter::Or<(bevy_ecs::query::filter::Changed<bevy_mesh::components::Mesh3d>, bevy_asset::asset_changed::AssetChanged<bevy_mesh::components::Mesh3d>, bevy_ecs::query::filter::Changed<bevy_pbr::mesh_material::MeshMaterial3d<bevy_pbr::pbr_material::StandardMaterial>>, bevy_asset::asset_changed::AssetChanged<bevy_pbr::mesh_material::MeshMaterial3d<bevy_pbr::pbr_material::StandardMaterial>>)>, bevy_ecs::query::filter::With<bevy_pbr::mesh_material::MeshMaterial3d<bevy_pbr::pbr_material::StandardMaterial>>)>, bevy_ecs::system::system_param::Local<'_, bevy_utils::parallel_queue::Parallel<alloc::vec::Vec<bevy_ecs::entity::Entity>>>, bevy_ecs::change_detection::ResMut<'_, bevy_pbr::material::EntitiesNeedingSpecialization<bevy_pbr::pbr_material::StandardMaterial>>), (), bevy_pbr::material::check_entities_needing_specialization<bevy_pbr::pbr_material::StandardMaterial>>()) → check_light_entities_needing_specialization<StandardMaterial>", "color"="#00b0cc"]
-	"node_System(SystemKey(106v1))" -> "set_marker_node_Set(SystemSetKey(2v1))" ["lhead"="clusternode_Set(SystemSetKey(2v1))", "ltail"="", "tooltip"="expire_completed_transitions → Propagate", "color"="#aa3a55"]
+	"set_marker_node_Set(SystemSetKey(7v1))" -> "set_marker_node_Set(SystemSetKey(32v1))" ["lhead"="clusternode_Set(SystemSetKey(32v1))", "ltail"="clusternode_Set(SystemSetKey(7v1))", "tooltip"="AssetEventSystems → CalculateBounds", "color"="#881877"]
+	"node_System(SystemKey(57v1))" -> "node_System(SystemKey(58v1))" ["lhead"="", "ltail"="", "tooltip"="update_source<ComputedUiRenderTargetInfo, (), ChildOf> → update_reparented<ComputedUiRenderTargetInfo, (), ChildOf>", "color"="#00b0cc"]
+	"node_System(SystemKey(79v1))" -> "node_System(SystemKey(80v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::query::Query<'_, '_, bevy_ecs::entity::Entity, (bevy_ecs::query::filter::Or<(bevy_ecs::query::filter::Changed<bevy_mesh::components::Mesh3d>, bevy_asset::asset_changed::AssetChanged<bevy_mesh::components::Mesh3d>, bevy_ecs::query::filter::Changed<bevy_pbr::mesh_material::MeshMaterial3d<bevy_pbr::pbr_material::StandardMaterial>>, bevy_asset::asset_changed::AssetChanged<bevy_pbr::mesh_material::MeshMaterial3d<bevy_pbr::pbr_material::StandardMaterial>>)>, bevy_ecs::query::filter::With<bevy_pbr::mesh_material::MeshMaterial3d<bevy_pbr::pbr_material::StandardMaterial>>)>, bevy_ecs::system::system_param::Local<'_, bevy_utils::parallel_queue::Parallel<alloc::vec::Vec<bevy_ecs::entity::Entity>>>, bevy_ecs::change_detection::params::ResMut<'_, bevy_pbr::material::EntitiesNeedingSpecialization<bevy_pbr::pbr_material::StandardMaterial>>), (), (), bevy_pbr::material::check_entities_needing_specialization<bevy_pbr::pbr_material::StandardMaterial>>()) → check_light_entities_needing_specialization<StandardMaterial>", "color"="#aa3a55"]
 	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(32v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → clear_directional_light_cascades", "color"="#44d488"]
 	"set_marker_node_Set(SystemSetKey(46v1))" -> "node_System(SystemKey(35v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(46v1))", "tooltip"="AssignLightsToClusters → update_spot_light_frusta", "color"="#0090cc"]
-	"node_System(SystemKey(63v1))" -> "set_marker_node_Set(SystemSetKey(2v1))" ["lhead"="clusternode_Set(SystemSetKey(2v1))", "ltail"="", "tooltip"="ui_layout_system → Propagate", "color"="#ee9e44"]
-	"node_System(SystemKey(21v1))" -> "node_System(SystemKey(79v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::query::Query<'_, '_, &mut bevy_mesh::components::Mesh3d>, bevy_ecs::message::message_reader::MessageReader<'_, '_, bevy_asset::event::AssetEvent<bevy_mesh::mesh::Mesh>>), (), bevy_mesh::components::mark_3d_meshes_as_changed_if_their_assets_changed>()) → check_entities_needing_specialization<StandardMaterial>", "color"="#663699"]
-	"node_System(SystemKey(28v1))" -> "node_System(SystemKey(26v1))" ["lhead"="", "ltail"="", "tooltip"="check_visibility_ranges → SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::system_param::Local<'_, bevy_utils::parallel_queue::Parallel<bevy_platform::collections::hash_map::HashMap<core::any::TypeId, alloc::vec::Vec<bevy_ecs::entity::Entity>, bevy_platform::hash::NoOpHash>>>, bevy_ecs::system::query::Query<'_, '_, (bevy_ecs::entity::Entity, &mut bevy_camera::visibility::VisibleEntities, &bevy_camera::primitives::Frustum, core::option::Option<&bevy_camera::visibility::render_layers::RenderLayers>, &bevy_camera::camera::Camera, bevy_ecs::query::fetch::Has<bevy_camera::visibility::NoCpuCulling>)>, bevy_ecs::system::query::Query<'_, '_, (bevy_ecs::entity::Entity, &bevy_camera::visibility::InheritedVisibility, &mut bevy_camera::visibility::ViewVisibility, &bevy_camera::visibility::VisibilityClass, core::option::Option<&bevy_camera::visibility::render_layers::RenderLayers>, core::option::Option<&bevy_camera::primitives::Aabb>, &bevy_transform::components::global_transform::GlobalTransform, bevy_ecs::query::fetch::Has<bevy_camera::visibility::NoFrustumCulling>, bevy_ecs::query::fetch::Has<bevy_camera::visibility::range::VisibilityRange>)>, core::option::Option<bevy_ecs::change_detection::Res<'_, bevy_camera::visibility::range::VisibleEntityRanges>>, bevy_ecs::change_detection::ResMut<'_, bevy_camera::visibility::PreviousVisibleEntities>), (), bevy_camera::visibility::check_visibility>())", "color"="#3363bb"]
-	"node_System(SystemKey(51v1))" -> "set_marker_node_Set(SystemSetKey(7v1))" ["lhead"="clusternode_Set(SystemSetKey(7v1))", "ltail"="", "tooltip"="remove_dropped_font_atlas_sets → AssetEventSystems", "color"="#22c2bb"]
-	"node_System(SystemKey(41v1))" -> "node_System(SystemKey(42v1))" ["lhead"="", "ltail"="", "tooltip"="detect_text_needs_rerender<Text2d> → update_text2d_layout", "color"="#99d955"]
-	"set_marker_node_Set(SystemSetKey(7v1))" -> "node_System(SystemKey(83v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(7v1))", "tooltip"="AssetEventSystems → check_entities_needing_specialization<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>", "color"="#eede00"]
-	"set_marker_node_Set(SystemSetKey(30v1))" -> "node_System(SystemKey(33v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(30v1))", "tooltip"="CheckVisibility → update_directional_light_frusta", "color"="#881877"]
-	"set_marker_node_Set(SystemSetKey(2v1))" -> "set_marker_node_Set(SystemSetKey(31v1))" ["lhead"="clusternode_Set(SystemSetKey(31v1))", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → VisibilityPropagate", "color"="#00b0cc"]
-	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(35v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → update_spot_light_frusta", "color"="#aa3a55"]
-	"set_marker_node_Set(SystemSetKey(2v1))" -> "set_marker_node_Set(SystemSetKey(28v1))" ["lhead"="clusternode_Set(SystemSetKey(28v1))", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → UpdateFrusta", "color"="#44d488"]
-	"set_marker_node_Set(SystemSetKey(19v1))" -> "node_System(SystemKey(30v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(19v1))", "tooltip"="CameraUpdateSystems → add_clusters", "color"="#0090cc"]
-	"set_marker_node_Set(SystemSetKey(73v1))" -> "set_marker_node_Set(SystemSetKey(74v1))" ["lhead"="clusternode_Set(SystemSetKey(74v1))", "ltail"="clusternode_Set(SystemSetKey(73v1))", "tooltip"="Layout → PostLayout", "color"="#ee9e44"]
-	"node_System(SystemKey(37v1))" -> "set_marker_node_Set(SystemSetKey(32v1))" ["lhead"="clusternode_Set(SystemSetKey(32v1))", "ltail"="", "tooltip"="check_point_light_mesh_visibility → MarkNewlyHiddenEntitiesInvisible", "color"="#663699"]
-	"node_System(SystemKey(59v1))" -> "node_System(SystemKey(60v1))" ["lhead"="", "ltail"="", "tooltip"="update_reparented<ComputedUiRenderTargetInfo, (), ChildOf> → propagate_inherited<ComputedUiRenderTargetInfo, (), ChildOf>", "color"="#3363bb"]
-	"set_marker_node_Set(SystemSetKey(29v1))" -> "node_System(SystemKey(108v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(29v1))", "tooltip"="CalculateBounds → draw_aabbs", "color"="#22c2bb"]
-	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(71v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → calc_bounds", "color"="#99d955"]
-	"set_marker_node_Set(SystemSetKey(49v1))" -> "node_System(SystemKey(37v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(49v1))", "tooltip"="UpdateLightFrusta → check_point_light_mesh_visibility", "color"="#eede00"]
-	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(111v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → draw_all_lights", "color"="#881877"]
-	"node_System(SystemKey(32v1))" -> "node_System(SystemKey(38v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::query::Query<'_, '_, (&bevy_light::directional_light::DirectionalLight, &mut bevy_light::cascade::Cascades)>), (), bevy_light::cascade::clear_directional_light_cascades>()) → build_directional_light_cascades", "color"="#00b0cc"]
-	"node_System(SystemKey(36v1))" -> "set_marker_node_Set(SystemSetKey(32v1))" ["lhead"="clusternode_Set(SystemSetKey(32v1))", "ltail"="", "tooltip"="check_dir_light_mesh_visibility → MarkNewlyHiddenEntitiesInvisible", "color"="#aa3a55"]
+	"node_System(SystemKey(36v1))" -> "set_marker_node_Set(SystemSetKey(31v1))" ["lhead"="clusternode_Set(SystemSetKey(31v1))", "ltail"="", "tooltip"="check_dir_light_mesh_visibility → MarkNewlyHiddenEntitiesInvisible", "color"="#ee9e44"]
+	"node_System(SystemKey(63v1))" -> "set_marker_node_Set(SystemSetKey(2v1))" ["lhead"="clusternode_Set(SystemSetKey(2v1))", "ltail"="", "tooltip"="ui_layout_system → Propagate", "color"="#663699"]
+	"node_System(SystemKey(21v1))" -> "node_System(SystemKey(79v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::query::Query<'_, '_, &mut bevy_mesh::components::Mesh3d>, bevy_ecs::message::message_reader::MessageReader<'_, '_, bevy_asset::event::AssetEvent<bevy_mesh::mesh::Mesh>>), (), (), bevy_mesh::components::mark_3d_meshes_as_changed_if_their_assets_changed>()) → check_entities_needing_specialization<StandardMaterial>", "color"="#3363bb"]
+	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(112v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → draw_all_lights", "color"="#22c2bb"]
+	"node_System(SystemKey(28v1))" -> "node_System(SystemKey(26v1))" ["lhead"="", "ltail"="", "tooltip"="check_visibility_ranges → SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::system_param::Local<'_, bevy_utils::parallel_queue::Parallel<bevy_platform::collections::hash_map::HashMap<core::any::TypeId, alloc::vec::Vec<bevy_ecs::entity::Entity>, bevy_platform::hash::NoOpHash>>>, bevy_ecs::system::query::Query<'_, '_, (bevy_ecs::entity::Entity, &mut bevy_camera::visibility::VisibleEntities, &bevy_camera::primitives::Frustum, core::option::Option<&bevy_camera::visibility::render_layers::RenderLayers>, &bevy_camera::camera::Camera, bevy_ecs::query::fetch::Has<bevy_camera::visibility::NoCpuCulling>)>, bevy_ecs::system::query::Query<'_, '_, (bevy_ecs::entity::Entity, &bevy_camera::visibility::InheritedVisibility, &mut bevy_camera::visibility::ViewVisibility, core::option::Option<&bevy_camera::visibility::VisibilityClass>, core::option::Option<&bevy_camera::visibility::render_layers::RenderLayers>, core::option::Option<&bevy_camera::primitives::Aabb>, &bevy_transform::components::global_transform::GlobalTransform, bevy_ecs::query::fetch::Has<bevy_camera::visibility::NoFrustumCulling>, bevy_ecs::query::fetch::Has<bevy_camera::visibility::range::VisibilityRange>)>, core::option::Option<bevy_ecs::change_detection::params::Res<'_, bevy_camera::visibility::range::VisibleEntityRanges>>), (), (), bevy_camera::visibility::check_visibility>())", "color"="#99d955"]
+	"set_marker_node_Set(SystemSetKey(29v1))" -> "node_System(SystemKey(31v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(29v1))", "tooltip"="CheckVisibility → assign_objects_to_clusters", "color"="#eede00"]
+	"set_marker_node_Set(SystemSetKey(29v1))" -> "node_System(SystemKey(37v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(29v1))", "tooltip"="CheckVisibility → check_point_light_mesh_visibility", "color"="#881877"]
+	"node_System(SystemKey(51v1))" -> "set_marker_node_Set(SystemSetKey(7v1))" ["lhead"="clusternode_Set(SystemSetKey(7v1))", "ltail"="", "tooltip"="free_unused_font_atlases_system → AssetEventSystems", "color"="#00b0cc"]
+	"node_System(SystemKey(41v1))" -> "node_System(SystemKey(42v1))" ["lhead"="", "ltail"="", "tooltip"="detect_text_needs_rerender<Text2d> → update_text2d_layout", "color"="#aa3a55"]
+	"set_marker_node_Set(SystemSetKey(7v1))" -> "node_System(SystemKey(83v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(7v1))", "tooltip"="AssetEventSystems → check_entities_needing_specialization<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>", "color"="#44d488"]
+	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(35v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → update_spot_light_frusta", "color"="#0090cc"]
+	"set_marker_node_Set(SystemSetKey(2v1))" -> "set_marker_node_Set(SystemSetKey(28v1))" ["lhead"="clusternode_Set(SystemSetKey(28v1))", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → UpdateFrusta", "color"="#ee9e44"]
+	"set_marker_node_Set(SystemSetKey(19v1))" -> "node_System(SystemKey(30v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(19v1))", "tooltip"="CameraUpdateSystems → add_clusters", "color"="#663699"]
+	"set_marker_node_Set(SystemSetKey(73v1))" -> "set_marker_node_Set(SystemSetKey(74v1))" ["lhead"="clusternode_Set(SystemSetKey(74v1))", "ltail"="clusternode_Set(SystemSetKey(73v1))", "tooltip"="Layout → PostLayout", "color"="#3363bb"]
+	"node_System(SystemKey(59v1))" -> "node_System(SystemKey(60v1))" ["lhead"="", "ltail"="", "tooltip"="update_removed_limit<ComputedUiRenderTargetInfo, (), ChildOf> → propagate_inherited<ComputedUiRenderTargetInfo, (), ChildOf>", "color"="#22c2bb"]
+	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(111v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → draw_lights", "color"="#99d955"]
+	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(71v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → calc_bounds", "color"="#eede00"]
+	"set_marker_node_Set(SystemSetKey(49v1))" -> "node_System(SystemKey(37v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(49v1))", "tooltip"="UpdateLightFrusta → check_point_light_mesh_visibility", "color"="#881877"]
+	"node_System(SystemKey(32v1))" -> "node_System(SystemKey(38v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::query::Query<'_, '_, (&bevy_light::directional_light::DirectionalLight, &mut bevy_light::cascade::Cascades)>), (), (), bevy_light::cascade::clear_directional_light_cascades>()) → build_directional_light_cascades", "color"="#00b0cc"]
+	"set_marker_node_Set(SystemSetKey(2v1))" -> "set_marker_node_Set(SystemSetKey(30v1))" ["lhead"="clusternode_Set(SystemSetKey(30v1))", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → VisibilityPropagate", "color"="#aa3a55"]
 	"node_System(SystemKey(55v1))" -> "node_System(SystemKey(56v1))" ["lhead"="", "ltail"="", "tooltip"="propagate_inherited<ComputedUiTargetCamera, (), ChildOf> → propagate_output<ComputedUiTargetCamera, ()>", "color"="#44d488"]
 	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(65v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Propagate → update_clipping_system", "color"="#0090cc"]
 	"node_System(SystemKey(42v1))" -> "node_System(SystemKey(43v1))" ["lhead"="", "ltail"="", "tooltip"="update_text2d_layout → calculate_bounds_text2d", "color"="#ee9e44"]
-	"node_System(SystemKey(2v1))" -> "node_System(SystemKey(3v1))" ["lhead"="", "ltail"="", "tooltip"="propagate_parent_transforms → sync_simple_transforms", "color"="#663699"]
+	"set_marker_node_Set(SystemSetKey(29v1))" -> "node_System(SystemKey(33v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(29v1))", "tooltip"="CheckVisibility → update_directional_light_frusta", "color"="#663699"]
+	"node_System(SystemKey(2v1))" -> "node_System(SystemKey(3v1))" ["lhead"="", "ltail"="", "tooltip"="propagate_parent_transforms → sync_simple_transforms", "color"="#3363bb"]
 }

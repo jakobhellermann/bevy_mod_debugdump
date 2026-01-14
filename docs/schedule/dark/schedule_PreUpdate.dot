@@ -37,32 +37,33 @@ digraph "" {
 		"node_System(SystemKey(8v1))" ["label"="Assets<LoadedFolder>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_asset::folder::LoadedFolder>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
 		"node_System(SystemKey(9v1))" ["label"="Assets<LoadedUntypedAsset>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_asset::assets::LoadedUntypedAsset>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
 		"node_System(SystemKey(10v1))" ["label"="Assets<()>::track_assets", "tooltip"="bevy_asset::assets::Assets<()>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(12v1))" ["label"="Assets<DynamicScene>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_scene::dynamic_scene::DynamicScene>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(13v1))" ["label"="Assets<Scene>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_scene::scene::Scene>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(14v1))" ["label"="Assets<TextureAtlasLayout>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_image::texture_atlas::TextureAtlasLayout>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(15v1))" ["label"="Assets<Shader>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_shader::shader::Shader>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(16v1))" ["label"="Assets<ShaderStorageBuffer>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_render::storage::ShaderStorageBuffer>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(17v1))" ["label"="Assets<Image>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_image::image::Image>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(18v1))" ["label"="Assets<Mesh>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_mesh::mesh::Mesh>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(19v1))" ["label"="Assets<SkinnedMeshInverseBindposes>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_mesh::skinning::SkinnedMeshInverseBindposes>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(21v1))" ["label"="Assets<ColorMaterial>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_sprite_render::mesh2d::color_material::ColorMaterial>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(22v1))" ["label"="Assets<TilemapChunkMaterial>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_sprite_render::tilemap_chunk::tilemap_chunk_material::TilemapChunkMaterial>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(23v1))" ["label"="Assets<Font>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_text::font::Font>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(28v1))" ["label"="Assets<StandardMaterial>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_pbr::pbr_material::StandardMaterial>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(29v1))" ["label"="Assets<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_pbr::extended_material::ExtendedMaterial<bevy_pbr::pbr_material::StandardMaterial, bevy_pbr::decal::forward::ForwardDecalMaterialExt>>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(30v1))" ["label"="Assets<Gltf>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::Gltf>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(31v1))" ["label"="Assets<GltfNode>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::GltfNode>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(32v1))" ["label"="Assets<GltfPrimitive>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::GltfPrimitive>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(33v1))" ["label"="Assets<GltfMesh>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::GltfMesh>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(34v1))" ["label"="Assets<GltfSkin>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::GltfSkin>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(35v1))" ["label"="Assets<AudioSource>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_audio::audio_source::AudioSource>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(36v1))" ["label"="Assets<Pitch>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_audio::pitch::Pitch>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(38v1))" ["label"="Assets<AnimationClip>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_animation::AnimationClip>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(39v1))" ["label"="Assets<AnimationGraph>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_animation::graph::AnimationGraph>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
-		"node_System(SystemKey(40v1))" ["label"="Assets<GizmoAsset>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_gizmos::GizmoAsset>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(13v1))" ["label"="Assets<DynamicScene>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_scene::dynamic_scene::DynamicScene>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(14v1))" ["label"="Assets<Scene>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_scene::scene::Scene>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(15v1))" ["label"="Assets<TextureAtlasLayout>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_image::texture_atlas::TextureAtlasLayout>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(16v1))" ["label"="Assets<Shader>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_shader::shader::Shader>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(17v1))" ["label"="Assets<ShaderStorageBuffer>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_render::storage::ShaderStorageBuffer>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(18v1))" ["label"="Assets<Image>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_image::image::Image>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(19v1))" ["label"="Assets<Mesh>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_mesh::mesh::Mesh>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(20v1))" ["label"="Assets<SkinnedMeshInverseBindposes>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_mesh::skinning::SkinnedMeshInverseBindposes>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(22v1))" ["label"="Assets<ColorMaterial>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_sprite_render::mesh2d::color_material::ColorMaterial>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(23v1))" ["label"="Assets<TilemapChunkMaterial>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_sprite_render::tilemap_chunk::tilemap_chunk_material::TilemapChunkMaterial>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(24v1))" ["label"="Assets<Font>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_text::font::Font>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(29v1))" ["label"="Assets<StandardMaterial>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_pbr::pbr_material::StandardMaterial>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(30v1))" ["label"="Assets<ExtendedMaterial<StandardMaterial, ForwardDecalMaterialExt>>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_pbr::extended_material::ExtendedMaterial<bevy_pbr::pbr_material::StandardMaterial, bevy_pbr::decal::forward::ForwardDecalMaterialExt>>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(31v1))" ["label"="Assets<ScatteringMedium>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_pbr::medium::ScatteringMedium>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(32v1))" ["label"="Assets<Gltf>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::Gltf>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(33v1))" ["label"="Assets<GltfNode>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::GltfNode>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(34v1))" ["label"="Assets<GltfPrimitive>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::GltfPrimitive>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(35v1))" ["label"="Assets<GltfMesh>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::GltfMesh>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(36v1))" ["label"="Assets<GltfSkin>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_gltf::assets::GltfSkin>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(37v1))" ["label"="Assets<AudioSource>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_audio::audio_source::AudioSource>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(38v1))" ["label"="Assets<Pitch>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_audio::pitch::Pitch>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(40v1))" ["label"="Assets<AnimationClip>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_animation::AnimationClip>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(41v1))" ["label"="Assets<AnimationGraph>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_animation::graph::AnimationGraph>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
+		"node_System(SystemKey(42v1))" ["label"="Assets<GizmoAsset>::track_assets", "tooltip"="bevy_asset::assets::Assets<bevy_gizmos::GizmoAsset>::track_assets", "fillcolor"="#d1cbc5", "fontname"="Helvetica", "fontcolor"="#1c1916", "color"="#a3988c", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(SystemSetKey(23v1))" {
+	subgraph "clusternode_Set(SystemSetKey(24v1))" {
 		"style"="rounded,filled";
 		"label"="Backend";
 		"tooltip"="Backend";
@@ -70,13 +71,13 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(SystemSetKey(23v1))" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(SystemKey(20v1))" ["label"="sprite_picking", "tooltip"="bevy_sprite::picking_backend::sprite_picking", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(SystemKey(25v1))" ["label"="ui_picking", "tooltip"="bevy_ui::picking_backend::ui_picking", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
-		"node_System(SystemKey(44v1))" ["label"="update_window_hits", "tooltip"="bevy_picking::window::update_window_hits", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"set_marker_node_Set(SystemSetKey(24v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(21v1))" ["label"="sprite_picking", "tooltip"="bevy_sprite::picking_backend::sprite_picking", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(26v1))" ["label"="ui_picking", "tooltip"="bevy_ui::picking_backend::ui_picking", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
+		"node_System(SystemKey(46v1))" ["label"="update_window_hits", "tooltip"="bevy_picking::window::update_window_hits", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(SystemSetKey(28v1))" {
+	subgraph "clusternode_Set(SystemSetKey(29v1))" {
 		"style"="rounded,filled";
 		"label"="Focus";
 		"tooltip"="Focus";
@@ -84,11 +85,11 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(SystemSetKey(28v1))" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(SystemKey(24v1))" ["label"="ui_focus_system", "tooltip"="bevy_ui::focus::ui_focus_system", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
+		"set_marker_node_Set(SystemSetKey(29v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(25v1))" ["label"="ui_focus_system", "tooltip"="bevy_ui::focus::ui_focus_system", "fillcolor"="#ffb1e5", "fontname"="Helvetica", "fontcolor"="#320021", "color"="#ff4bc2", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(SystemSetKey(46v1))" {
+	subgraph "clusternode_Set(SystemSetKey(48v1))" {
 		"style"="rounded,filled";
 		"label"="ProcessInput";
 		"tooltip"="ProcessInput";
@@ -96,13 +97,13 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(SystemSetKey(46v1))" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(SystemKey(41v1))" ["label"="update_pointer_map", "tooltip"="bevy_picking::pointer::update_pointer_map", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(SystemKey(42v1))" ["label"="PointerInput::receive", "tooltip"="bevy_picking::pointer::PointerInput::receive", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(SystemKey(43v1))" ["label"="RayMap::repopulate", "tooltip"="bevy_picking::backend::ray::RayMap::repopulate", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"set_marker_node_Set(SystemSetKey(48v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(43v1))" ["label"="update_pointer_map", "tooltip"="bevy_picking::pointer::update_pointer_map", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(44v1))" ["label"="PointerInput::receive", "tooltip"="bevy_picking::pointer::PointerInput::receive", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(45v1))" ["label"="RayMap::repopulate", "tooltip"="bevy_picking::backend::ray::RayMap::repopulate", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(SystemSetKey(50v1))" {
+	subgraph "clusternode_Set(SystemSetKey(52v1))" {
 		"style"="rounded,filled";
 		"label"="Hover";
 		"tooltip"="Hover";
@@ -110,15 +111,15 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(SystemSetKey(50v1))" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(SystemKey(45v1))" ["label"="generate_hovermap", "tooltip"="bevy_picking::hover::generate_hovermap", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(SystemKey(46v1))" ["label"="update_interactions", "tooltip"="bevy_picking::hover::update_interactions", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(SystemKey(47v1))" ["label"="update_is_hovered", "tooltip"="bevy_picking::hover::update_is_hovered", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(SystemKey(48v1))" ["label"="update_is_directly_hovered", "tooltip"="bevy_picking::hover::update_is_directly_hovered", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
-		"node_System(SystemKey(49v1))" ["label"="pointer_events", "tooltip"="bevy_picking::events::pointer_events", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"set_marker_node_Set(SystemSetKey(52v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(47v1))" ["label"="generate_hovermap", "tooltip"="bevy_picking::hover::generate_hovermap", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(48v1))" ["label"="update_interactions", "tooltip"="bevy_picking::hover::update_interactions", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(49v1))" ["label"="update_is_hovered", "tooltip"="bevy_picking::hover::update_is_hovered", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(50v1))" ["label"="update_is_directly_hovered", "tooltip"="bevy_picking::hover::update_is_directly_hovered", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(51v1))" ["label"="pointer_events", "tooltip"="bevy_picking::events::pointer_events", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(SystemSetKey(51v1))" {
+	subgraph "clusternode_Set(SystemSetKey(53v1))" {
 		"style"="rounded,filled";
 		"label"="PostHover";
 		"tooltip"="PostHover";
@@ -126,10 +127,10 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(SystemSetKey(51v1))" ["style"="invis", "label"="", "shape"="point"]
+		"set_marker_node_Set(SystemSetKey(53v1))" ["style"="invis", "label"="", "shape"="point"]
 	}
 	
-	subgraph "clusternode_Set(SystemSetKey(52v1))" {
+	subgraph "clusternode_Set(SystemSetKey(54v1))" {
 		"style"="rounded,filled";
 		"label"="Last";
 		"tooltip"="Last";
@@ -137,27 +138,29 @@ digraph "" {
 		"fontcolor"="#ffffff";
 		"color"="#ffffff50";
 		"penwidth"="2";
-		"set_marker_node_Set(SystemSetKey(52v1))" ["style"="invis", "label"="", "shape"="point"]
+		"set_marker_node_Set(SystemSetKey(54v1))" ["style"="invis", "label"="", "shape"="point"]
 	}
 	
 	"node_System(SystemKey(11v1))" ["label"="handle_internal_asset_events", "tooltip"="bevy_asset::server::handle_internal_asset_events"]
-	"node_System(SystemKey(26v1))" ["label"="update_mesh_previous_global_transforms", "tooltip"="bevy_pbr::prepass::update_mesh_previous_global_transforms"]
-	"node_System(SystemKey(27v1))" ["label"="update_previous_view_data", "tooltip"="bevy_pbr::prepass::update_previous_view_data"]
-	"node_System(SystemKey(37v1))" ["label"="gilrs_event_system", "tooltip"="bevy_gilrs::gilrs_system::gilrs_event_system"]
-	"node_System(SystemKey(50v1))" ["label"="apply_deferred", "tooltip"="bevy_ecs::apply_deferred"]
-	"node_System(SystemKey(51v1))" ["label"="apply_deferred", "tooltip"="bevy_ecs::apply_deferred"]
-	"node_System(SystemKey(37v1))" -> "set_marker_node_Set(SystemSetKey(2v1))" ["lhead"="clusternode_Set(SystemSetKey(2v1))", "ltail"="", "tooltip"="gilrs_event_system → InputSystems", "color"="#eede00"]
-	"set_marker_node_Set(SystemSetKey(50v1))" -> "set_marker_node_Set(SystemSetKey(51v1))" ["lhead"="clusternode_Set(SystemSetKey(51v1))", "ltail"="clusternode_Set(SystemSetKey(50v1))", "tooltip"="Hover → PostHover", "color"="#881877"]
-	"node_System(SystemKey(5v1))" -> "node_System(SystemKey(6v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::commands::Commands<'_, '_>, bevy_ecs::message::message_reader::MessageReader<'_, '_, bevy_input::gamepad::GamepadConnectionEvent>), (), bevy_input::gamepad::gamepad_connection_system>()) → gamepad_event_processing_system", "color"="#00b0cc"]
-	"node_System(SystemKey(11v1))" -> "set_marker_node_Set(SystemSetKey(10v1))" ["lhead"="clusternode_Set(SystemSetKey(10v1))", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::exclusive_function_system::ExclusiveFunctionSystem<fn(), (), bevy_asset::server::handle_internal_asset_events>()) → AssetTrackingSystems", "color"="#aa3a55"]
-	"set_marker_node_Set(SystemSetKey(23v1))" -> "set_marker_node_Set(SystemSetKey(50v1))" ["lhead"="clusternode_Set(SystemSetKey(50v1))", "ltail"="clusternode_Set(SystemSetKey(23v1))", "tooltip"="Backend → Hover", "color"="#44d488"]
-	"node_System(SystemKey(45v1))" -> "node_System(SystemKey(46v1))" ["lhead"="", "ltail"="", "tooltip"="generate_hovermap → update_interactions", "color"="#0090cc"]
-	"node_System(SystemKey(46v1))" -> "node_System(SystemKey(47v1))" ["lhead"="", "ltail"="", "tooltip"="update_interactions → update_is_hovered", "color"="#ee9e44"]
-	"node_System(SystemKey(48v1))" -> "node_System(SystemKey(49v1))" ["lhead"="", "ltail"="", "tooltip"="update_is_directly_hovered → pointer_events", "color"="#663699"]
-	"node_System(SystemKey(46v1))" -> "node_System(SystemKey(48v1))" ["lhead"="", "ltail"="", "tooltip"="update_interactions → update_is_directly_hovered", "color"="#3363bb"]
-	"set_marker_node_Set(SystemSetKey(46v1))" -> "set_marker_node_Set(SystemSetKey(23v1))" ["lhead"="clusternode_Set(SystemSetKey(23v1))", "ltail"="clusternode_Set(SystemSetKey(46v1))", "tooltip"="ProcessInput → Backend", "color"="#22c2bb"]
-	"set_marker_node_Set(SystemSetKey(51v1))" -> "set_marker_node_Set(SystemSetKey(52v1))" ["lhead"="clusternode_Set(SystemSetKey(52v1))", "ltail"="clusternode_Set(SystemSetKey(51v1))", "tooltip"="PostHover → Last", "color"="#99d955"]
-	"node_System(SystemKey(47v1))" -> "node_System(SystemKey(49v1))" ["lhead"="", "ltail"="", "tooltip"="update_is_hovered → pointer_events", "color"="#eede00"]
-	"node_System(SystemKey(42v1))" -> "node_System(SystemKey(43v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::message::message_reader::MessageReader<'_, '_, bevy_picking::pointer::PointerInput>, bevy_ecs::system::query::Query<'_, '_, (&bevy_picking::pointer::PointerId, &mut bevy_picking::pointer::PointerLocation, &mut bevy_picking::pointer::PointerPress)>), (), bevy_picking::pointer::PointerInput::receive>()) → RayMap::repopulate", "color"="#881877"]
-	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(24v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="InputSystems → ui_focus_system", "color"="#00b0cc"]
+	"node_System(SystemKey(12v1))" ["label"="publish_asset_server_diagnostics", "tooltip"="bevy_asset::server::publish_asset_server_diagnostics"]
+	"node_System(SystemKey(27v1))" ["label"="update_mesh_previous_global_transforms", "tooltip"="bevy_pbr::prepass::update_mesh_previous_global_transforms"]
+	"node_System(SystemKey(28v1))" ["label"="update_previous_view_data", "tooltip"="bevy_pbr::prepass::update_previous_view_data"]
+	"node_System(SystemKey(39v1))" ["label"="gilrs_event_system", "tooltip"="bevy_gilrs::gilrs_system::gilrs_event_system"]
+	"node_System(SystemKey(52v1))" ["label"="apply_deferred", "tooltip"="bevy_ecs::apply_deferred"]
+	"node_System(SystemKey(53v1))" ["label"="apply_deferred", "tooltip"="bevy_ecs::apply_deferred"]
+	"set_marker_node_Set(SystemSetKey(53v1))" -> "set_marker_node_Set(SystemSetKey(54v1))" ["lhead"="clusternode_Set(SystemSetKey(54v1))", "ltail"="clusternode_Set(SystemSetKey(53v1))", "tooltip"="PostHover → Last", "color"="#eede00"]
+	"set_marker_node_Set(SystemSetKey(48v1))" -> "set_marker_node_Set(SystemSetKey(24v1))" ["lhead"="clusternode_Set(SystemSetKey(24v1))", "ltail"="clusternode_Set(SystemSetKey(48v1))", "tooltip"="ProcessInput → Backend", "color"="#881877"]
+	"node_System(SystemKey(5v1))" -> "node_System(SystemKey(6v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::system::commands::Commands<'_, '_>, bevy_ecs::message::message_reader::MessageReader<'_, '_, bevy_input::gamepad::GamepadConnectionEvent>), (), (), bevy_input::gamepad::gamepad_connection_system>()) → gamepad_event_processing_system", "color"="#00b0cc"]
+	"set_marker_node_Set(SystemSetKey(52v1))" -> "set_marker_node_Set(SystemSetKey(53v1))" ["lhead"="clusternode_Set(SystemSetKey(53v1))", "ltail"="clusternode_Set(SystemSetKey(52v1))", "tooltip"="Hover → PostHover", "color"="#aa3a55"]
+	"set_marker_node_Set(SystemSetKey(24v1))" -> "set_marker_node_Set(SystemSetKey(52v1))" ["lhead"="clusternode_Set(SystemSetKey(52v1))", "ltail"="clusternode_Set(SystemSetKey(24v1))", "tooltip"="Backend → Hover", "color"="#44d488"]
+	"node_System(SystemKey(44v1))" -> "node_System(SystemKey(45v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::function_system::FunctionSystem<fn(bevy_ecs::message::message_reader::MessageReader<'_, '_, bevy_picking::pointer::PointerInput>, bevy_ecs::system::query::Query<'_, '_, (&bevy_picking::pointer::PointerId, &mut bevy_picking::pointer::PointerLocation, &mut bevy_picking::pointer::PointerPress)>), (), (), bevy_picking::pointer::PointerInput::receive>()) → RayMap::repopulate", "color"="#0090cc"]
+	"node_System(SystemKey(49v1))" -> "node_System(SystemKey(51v1))" ["lhead"="", "ltail"="", "tooltip"="update_is_hovered → pointer_events", "color"="#ee9e44"]
+	"node_System(SystemKey(11v1))" -> "node_System(SystemKey(12v1))" ["lhead"="", "ltail"="", "tooltip"="handle_internal_asset_events → publish_asset_server_diagnostics", "color"="#663699"]
+	"node_System(SystemKey(11v1))" -> "set_marker_node_Set(SystemSetKey(10v1))" ["lhead"="clusternode_Set(SystemSetKey(10v1))", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::exclusive_function_system::ExclusiveFunctionSystem<fn(), (), bevy_asset::server::handle_internal_asset_events>()) → AssetTrackingSystems", "color"="#3363bb"]
+	"node_System(SystemKey(48v1))" -> "node_System(SystemKey(49v1))" ["lhead"="", "ltail"="", "tooltip"="update_interactions → update_is_hovered", "color"="#22c2bb"]
+	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(25v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="InputSystems → ui_focus_system", "color"="#99d955"]
+	"node_System(SystemKey(39v1))" -> "set_marker_node_Set(SystemSetKey(2v1))" ["lhead"="clusternode_Set(SystemSetKey(2v1))", "ltail"="", "tooltip"="gilrs_event_system → InputSystems", "color"="#eede00"]
+	"node_System(SystemKey(47v1))" -> "node_System(SystemKey(48v1))" ["lhead"="", "ltail"="", "tooltip"="generate_hovermap → update_interactions", "color"="#881877"]
+	"node_System(SystemKey(48v1))" -> "node_System(SystemKey(50v1))" ["lhead"="", "ltail"="", "tooltip"="update_interactions → update_is_directly_hovered", "color"="#00b0cc"]
+	"node_System(SystemKey(50v1))" -> "node_System(SystemKey(51v1))" ["lhead"="", "ltail"="", "tooltip"="update_is_directly_hovered → pointer_events", "color"="#aa3a55"]
 }

@@ -7,8 +7,19 @@ digraph "" {
 	"nodesep"="0.15";
 	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled"];
-	"node_System(SystemKey(1v1))" ["label"="scene_spawner", "tooltip"="bevy_scene::scene_spawner::scene_spawner"]
-	"node_System(SystemKey(2v1))" ["label"="scene_spawner_system", "tooltip"="bevy_scene::scene_spawner::scene_spawner_system"]
+	subgraph "clusternode_Set(SystemSetKey(2v1))" {
+		"style"="rounded,filled";
+		"label"="Spawn";
+		"tooltip"="Spawn";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(SystemSetKey(2v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(1v1))" ["label"="scene_spawner", "tooltip"="bevy_scene::scene_spawner::scene_spawner", "fillcolor"="#bacfcb", "fontname"="Helvetica", "fontcolor"="#141e1c", "color"="#7da59d", "penwidth"="1"]
+		"node_System(SystemKey(2v1))" ["label"="scene_spawner_system", "tooltip"="bevy_scene::scene_spawner::scene_spawner_system", "fillcolor"="#bacfcb", "fontname"="Helvetica", "fontcolor"="#141e1c", "color"="#7da59d", "penwidth"="1"]
+	}
+	
 	"node_System(SystemKey(3v1))" ["label"="apply_deferred", "tooltip"="bevy_ecs::apply_deferred"]
 	"node_System(SystemKey(1v1))" -> "node_System(SystemKey(2v1))" ["lhead"="", "ltail"="", "tooltip"="scene_spawner → scene_spawner_system", "color"="#eede00"]
 }
