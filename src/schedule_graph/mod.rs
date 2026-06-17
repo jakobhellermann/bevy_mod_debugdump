@@ -289,7 +289,12 @@ impl ScheduleGraphContext<'_> {
             if let Some(include_ambiguity) = &self.settings.include_ambiguity {
                 let system_a = self.graph.systems.get(system_a).unwrap();
                 let system_b = self.graph.systems.get(system_b).unwrap();
-                if !include_ambiguity(&system_a.system, &system_b.system, &conflicts, self.world) {
+                if !include_ambiguity(
+                    &system_a.system(),
+                    &system_b.system(),
+                    &conflicts,
+                    self.world,
+                ) {
                     continue;
                 }
             }
@@ -590,7 +595,7 @@ impl ScheduleGraphContext<'_> {
 
     fn full_name(&self, node_id: NodeId) -> Cow<'_, str> {
         match node_id {
-            NodeId::System(key) => self.system_name(&self.graph.systems.get(key).unwrap().system),
+            NodeId::System(key) => self.system_name(&self.graph.systems.get(key).unwrap().system()),
             NodeId::Set(key) => self.system_set_name(self.graph.system_sets.get(key).unwrap()),
         }
     }
