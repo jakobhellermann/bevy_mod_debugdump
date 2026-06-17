@@ -135,6 +135,20 @@
 
 # Render App
 
+## Core2d
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/render_schedule_Core2d.dot.svg">
+<img alt="Core2d" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/render_schedule_Core2d.dot.svg">
+</picture>
+
+## Core3d
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/render_schedule_Core3d.dot.svg">
+<img alt="Core3d" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/render_schedule_Core3d.dot.svg">
+</picture>
+
 ## ExtractSchedule
 
 <picture>
@@ -147,6 +161,20 @@
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/render_schedule_Render.dot.svg">
 <img alt="Render" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/render_schedule_Render.dot.svg">
+</picture>
+
+## RenderGraph
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/render_schedule_RenderGraph.dot.svg">
+<img alt="RenderGraph" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/render_schedule_RenderGraph.dot.svg">
+</picture>
+
+## RenderRecovery
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/render_schedule_RenderRecovery.dot.svg">
+<img alt="RenderRecovery" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/render_schedule_RenderRecovery.dot.svg">
 </picture>
 
 ## RenderStartup

@@ -7,7 +7,9 @@ digraph "" {
 	"nodesep"="0.15";
 	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled"];
-	"node_System(SystemKey(1v1))" ["label"="clear_gizmo_context<DefaultGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::clear_gizmo_context<bevy_gizmos::config::DefaultGizmoConfigGroup, bevy_time::fixed::Fixed>"]
-	"node_System(SystemKey(2v1))" ["label"="clear_gizmo_context<AabbGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::clear_gizmo_context<bevy_gizmos::aabb::AabbGizmoConfigGroup, bevy_time::fixed::Fixed>"]
-	"node_System(SystemKey(3v1))" ["label"="clear_gizmo_context<LightGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::clear_gizmo_context<bevy_gizmos::light::LightGizmoConfigGroup, bevy_time::fixed::Fixed>"]
+	"node_System(SystemKey(1v1))" ["label"="clear_gizmo_context<LightGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::clear_gizmo_context<bevy_light::gizmos::LightGizmoConfigGroup, bevy_time::fixed::Fixed>"]
+	"node_System(SystemKey(2v1))" ["label"="clear_gizmo_context<DefaultGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::clear_gizmo_context<bevy_gizmos::config::DefaultGizmoConfigGroup, bevy_time::fixed::Fixed>"]
+	"node_System(SystemKey(3v1))" ["label"="clear_gizmo_context<AabbGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::clear_gizmo_context<bevy_gizmos::aabb::AabbGizmoConfigGroup, bevy_time::fixed::Fixed>"]
+	"node_System(SystemKey(4v1))" ["label"="clear_gizmo_context<FrustumGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::clear_gizmo_context<bevy_gizmos::frustum::FrustumGizmoConfigGroup, bevy_time::fixed::Fixed>"]
+	"node_System(SystemKey(5v1))" ["label"="clear_gizmo_context<SkinnedMeshBoundsGizmoConfigGroup, Fixed>", "tooltip"="bevy_gizmos::clear_gizmo_context<bevy_gizmos::skinned_mesh_bounds::SkinnedMeshBoundsGizmoConfigGroup, bevy_time::fixed::Fixed>"]
 }

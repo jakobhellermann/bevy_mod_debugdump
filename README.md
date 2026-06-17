@@ -21,7 +21,6 @@ $ cargo run -- --help
 Commands:
 
 dump-schedule <schedule_name> <file>
-dump-render <file>
 
 --no-exit Do not exit after performing debugdump action
 ```
@@ -50,24 +49,6 @@ fn main() {
 See all schedules at [docs/schedule](./docs/schedule/README.md).
 
 ## Render app
-
-### Render graph
-
-```rust
-use bevy::prelude::*;
-use bevy::log::LogPlugin;
-
-fn main() {
-    let mut app = App::new();
-    app.add_plugins(DefaultPlugins.build().disable::<LogPlugin>());
-    bevy_mod_debugdump::print_render_graph(&mut app);
-}
-```
-
-<picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/render/dark/render_graph.dot.svg">
-<img alt="render graph" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/render/light/render_graph.dot.svg">
-</picture>
 
 ### Extract schedule
 

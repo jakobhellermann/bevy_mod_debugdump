@@ -60,8 +60,8 @@ digraph "" {
 	"node_System(SystemKey(7v1))" ["label"="apply_deferred", "tooltip"="bevy_ecs::apply_deferred"]
 	"set_marker_node_Set(SystemSetKey(2v1))" -> "set_marker_node_Set(SystemSetKey(10v1))" ["lhead"="clusternode_Set(SystemSetKey(10v1))", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="MessageUpdateSystems → Input", "color"="#eede00"]
 	"set_marker_node_Set(SystemSetKey(10v1))" -> "set_marker_node_Set(SystemSetKey(8v1))" ["lhead"="clusternode_Set(SystemSetKey(8v1))", "ltail"="clusternode_Set(SystemSetKey(10v1))", "tooltip"="Input → PostInput", "color"="#881877"]
-	"node_System(SystemKey(3v1))" -> "ApplyDeferred" ["lhead"="", "ltail"="", "tooltip"="clear_screenshots → SystemTypeSet(fn bevy_ecs::schedule::executor::ApplyDeferred())", "color"="#00b0cc"]
+	"node_System(SystemKey(3v1))" -> "ApplyDeferred" ["lhead"="", "ltail"="", "tooltip"="clear_screenshots → SystemTypeSet:bevy_ecs::schedule::executor::ApplyDeferred", "color"="#00b0cc"]
 	"node_System(SystemKey(5v1))" -> "node_System(SystemKey(6v1))" ["lhead"="", "ltail"="", "tooltip"="mouse_pick_events → touch_pick_events", "color"="#aa3a55"]
 	"set_marker_node_Set(SystemSetKey(4v1))" -> "set_marker_node_Set(SystemSetKey(10v1))" ["lhead"="clusternode_Set(SystemSetKey(10v1))", "ltail"="clusternode_Set(SystemSetKey(4v1))", "tooltip"="TimeSystems → Input", "color"="#44d488"]
-	"node_System(SystemKey(1v1))" -> "node_System(SystemKey(3v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet(fn bevy_ecs::system::exclusive_function_system::ExclusiveFunctionSystem<fn(bevy_ecs::system::system_param::Local<'_, bevy_ecs::change_detection::tick::Tick>), (), bevy_ecs::message::update::message_update_system>()) → clear_screenshots", "color"="#0090cc"]
+	"node_System(SystemKey(1v1))" -> "node_System(SystemKey(3v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet:bevy_ecs::message::update::message_update_system → clear_screenshots", "color"="#0090cc"]
 }

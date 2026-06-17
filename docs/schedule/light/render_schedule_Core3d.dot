@@ -1,0 +1,127 @@
+digraph "" {
+	"compound"="true";
+	"splines"="spline";
+	"rankdir"="LR";
+	"bgcolor"="white";
+	"fontname"="Helvetica";
+	"nodesep"="0.15";
+	edge ["penwidth"="2"];
+	node ["shape"="box", "style"="filled"];
+	subgraph "clusternode_Set(SystemSetKey(1v1))" {
+		"style"="rounded,filled";
+		"label"="Prepass";
+		"tooltip"="Prepass";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(SystemSetKey(1v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(1v1))" ["label"="early_prepass", "tooltip"="bevy_core_pipeline::prepass::node::early_prepass", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(2v1))" ["label"="early_deferred_prepass", "tooltip"="bevy_core_pipeline::deferred::node::early_deferred_prepass", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(3v1))" ["label"="late_prepass", "tooltip"="bevy_core_pipeline::prepass::node::late_prepass", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(4v1))" ["label"="late_deferred_prepass", "tooltip"="bevy_core_pipeline::deferred::node::late_deferred_prepass", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(5v1))" ["label"="copy_deferred_lighting_id", "tooltip"="bevy_core_pipeline::deferred::copy_lighting_id::copy_deferred_lighting_id", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+	}
+	
+	subgraph "clusternode_Set(SystemSetKey(2v1))" {
+		"style"="rounded,filled";
+		"label"="MainPass";
+		"tooltip"="MainPass";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(SystemSetKey(2v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(6v1))" ["label"="main_opaque_pass_3d", "tooltip"="bevy_core_pipeline::core_3d::main_opaque_pass_3d_node::main_opaque_pass_3d", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(7v1))" ["label"="main_transparent_pass_3d", "tooltip"="bevy_core_pipeline::core_3d::main_transparent_pass_3d_node::main_transparent_pass_3d", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(10v1))" ["label"="oit_resolve", "tooltip"="bevy_core_pipeline::oit::resolve::node::oit_resolve", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(24v1))" ["label"="screen_space_reflections", "tooltip"="bevy_pbr::ssr::screen_space_reflections", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+		"node_System(SystemKey(25v1))" ["label"="main_transmissive_pass_3d", "tooltip"="bevy_pbr::transmission::node::main_transmissive_pass_3d", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+		"node_System(SystemKey(26v1))" ["label"="deferred_lighting", "tooltip"="bevy_pbr::deferred::deferred_lighting", "fillcolor"="#abd5fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#48a3f8", "penwidth"="1"]
+	}
+	
+	subgraph "clusternode_Set(SystemSetKey(3v1))" {
+		"style"="rounded,filled";
+		"label"="EarlyPostProcess";
+		"tooltip"="EarlyPostProcess";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(SystemSetKey(3v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(20v1))" ["label"="temporal_anti_alias", "tooltip"="bevy_anti_alias::taa::temporal_anti_alias", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+	}
+	
+	subgraph "clusternode_Set(SystemSetKey(4v1))" {
+		"style"="rounded,filled";
+		"label"="PostProcess";
+		"tooltip"="PostProcess";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(SystemSetKey(4v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(8v1))" ["label"="tonemapping", "tooltip"="bevy_core_pipeline::tonemapping::node::tonemapping", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(12v1))" ["label"="late_downsample_depth", "tooltip"="bevy_core_pipeline::mip_generation::experimental::depth::late_downsample_depth", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(14v1))" ["label"="bloom", "tooltip"="bevy_post_process::bloom::bloom", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(15v1))" ["label"="motion_blur", "tooltip"="bevy_post_process::motion_blur::motion_blur", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(18v1))" ["label"="fxaa", "tooltip"="bevy_anti_alias::fxaa::node::fxaa", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(19v1))" ["label"="smaa", "tooltip"="bevy_anti_alias::smaa::smaa", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(21v1))" ["label"="cas", "tooltip"="bevy_anti_alias::contrast_adaptive_sharpening::node::cas", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+	}
+	
+	"node_System(SystemKey(9v1))" ["label"="upscaling", "tooltip"="bevy_core_pipeline::upscaling::node::upscaling"]
+	"node_System(SystemKey(11v1))" ["label"="early_downsample_depth", "tooltip"="bevy_core_pipeline::mip_generation::experimental::depth::early_downsample_depth"]
+	"node_System(SystemKey(13v1))" ["label"="msaa_writeback", "tooltip"="bevy_post_process::msaa_writeback::msaa_writeback"]
+	"node_System(SystemKey(16v1))" ["label"="depth_of_field", "tooltip"="bevy_post_process::dof::depth_of_field"]
+	"node_System(SystemKey(17v1))" ["label"="post_processing", "tooltip"="bevy_post_process::effect_stack::post_processing"]
+	"node_System(SystemKey(22v1))" ["label"="ui_pass", "tooltip"="bevy_ui_render::render_pass::ui_pass"]
+	"node_System(SystemKey(23v1))" ["label"="volumetric_fog", "tooltip"="bevy_pbr::volumetric_fog::render::volumetric_fog"]
+	"node_System(SystemKey(27v1))" ["label"="per_view_shadow_pass<false>", "tooltip"="bevy_pbr::render::light::per_view_shadow_pass<false>"]
+	"node_System(SystemKey(28v1))" ["label"="per_view_shadow_pass<true>", "tooltip"="bevy_pbr::render::light::per_view_shadow_pass<true>"]
+	"node_System(SystemKey(29v1))" ["label"="shared_shadow_pass<false>", "tooltip"="bevy_pbr::render::light::shared_shadow_pass<false>"]
+	"node_System(SystemKey(30v1))" ["label"="shared_shadow_pass<true>", "tooltip"="bevy_pbr::render::light::shared_shadow_pass<true>"]
+	"node_System(SystemKey(2v1))" -> "node_System(SystemKey(11v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet:bevy_core_pipeline::deferred::node::early_deferred_prepass → early_downsample_depth", "color"="#eede00"]
+	"set_marker_node_Set(SystemSetKey(1v1))" -> "set_marker_node_Set(SystemSetKey(2v1))" ["lhead"="clusternode_Set(SystemSetKey(2v1))", "ltail"="clusternode_Set(SystemSetKey(1v1))", "tooltip"="Prepass → MainPass", "color"="#881877"]
+	"node_System(SystemKey(8v1))" -> "node_System(SystemKey(18v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet:bevy_core_pipeline::tonemapping::node::tonemapping → fxaa", "color"="#00b0cc"]
+	"node_System(SystemKey(8v1))" -> "node_System(SystemKey(19v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet:bevy_core_pipeline::tonemapping::node::tonemapping → smaa", "color"="#aa3a55"]
+	"node_System(SystemKey(2v1))" -> "node_System(SystemKey(3v1))" ["lhead"="", "ltail"="", "tooltip"="early_deferred_prepass → late_prepass", "color"="#44d488"]
+	"node_System(SystemKey(25v1))" -> "node_System(SystemKey(7v1))" ["lhead"="", "ltail"="", "tooltip"="main_transmissive_pass_3d → SystemTypeSet:bevy_core_pipeline::core_3d::main_transparent_pass_3d_node::main_transparent_pass_3d", "color"="#0090cc"]
+	"node_System(SystemKey(28v1))" -> "set_marker_node_Set(SystemSetKey(2v1))" ["lhead"="clusternode_Set(SystemSetKey(2v1))", "ltail"="", "tooltip"="per_view_shadow_pass<true> → MainPass", "color"="#ee9e44"]
+	"<missing> early_prepass_build_indirect_parameters" -> "node_System(SystemKey(29v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet:bevy_pbr::render::gpu_preprocess::early_prepass_build_indirect_parameters → shared_shadow_pass<false>", "color"="#663699"]
+	"node_System(SystemKey(29v1))" -> "node_System(SystemKey(11v1))" ["lhead"="", "ltail"="", "tooltip"="shared_shadow_pass<false> → SystemTypeSet:bevy_core_pipeline::mip_generation::experimental::depth::early_downsample_depth", "color"="#3363bb"]
+	"node_System(SystemKey(29v1))" -> "node_System(SystemKey(30v1))" ["lhead"="", "ltail"="", "tooltip"="shared_shadow_pass<false> → SystemTypeSet:bevy_pbr::render::light::shared_shadow_pass<true>", "color"="#22c2bb"]
+	"node_System(SystemKey(30v1))" -> "set_marker_node_Set(SystemSetKey(2v1))" ["lhead"="clusternode_Set(SystemSetKey(2v1))", "ltail"="", "tooltip"="shared_shadow_pass<true> → MainPass", "color"="#99d955"]
+	"node_System(SystemKey(3v1))" -> "node_System(SystemKey(4v1))" ["lhead"="", "ltail"="", "tooltip"="late_prepass → late_deferred_prepass", "color"="#eede00"]
+	"node_System(SystemKey(27v1))" -> "node_System(SystemKey(11v1))" ["lhead"="", "ltail"="", "tooltip"="per_view_shadow_pass<false> → SystemTypeSet:bevy_core_pipeline::mip_generation::experimental::depth::early_downsample_depth", "color"="#881877"]
+	"<missing> late_prepass_build_indirect_parameters" -> "node_System(SystemKey(28v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet:bevy_pbr::render::gpu_preprocess::late_prepass_build_indirect_parameters → per_view_shadow_pass<true>", "color"="#00b0cc"]
+	"node_System(SystemKey(26v1))" -> "node_System(SystemKey(24v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet:bevy_pbr::deferred::deferred_lighting → screen_space_reflections", "color"="#aa3a55"]
+	"node_System(SystemKey(28v1))" -> "<missing> main_build_indirect_parameters" ["lhead"="", "ltail"="", "tooltip"="per_view_shadow_pass<true> → SystemTypeSet:bevy_pbr::render::gpu_preprocess::main_build_indirect_parameters", "color"="#44d488"]
+	"node_System(SystemKey(16v1))" -> "node_System(SystemKey(17v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet:bevy_post_process::dof::depth_of_field → post_processing", "color"="#0090cc"]
+	"node_System(SystemKey(11v1))" -> "node_System(SystemKey(3v1))" ["lhead"="", "ltail"="", "tooltip"="early_downsample_depth → SystemTypeSet:bevy_core_pipeline::prepass::node::late_prepass", "color"="#ee9e44"]
+	"node_System(SystemKey(4v1))" -> "node_System(SystemKey(5v1))" ["lhead"="", "ltail"="", "tooltip"="late_deferred_prepass → copy_deferred_lighting_id", "color"="#663699"]
+	"node_System(SystemKey(27v1))" -> "node_System(SystemKey(28v1))" ["lhead"="", "ltail"="", "tooltip"="per_view_shadow_pass<false> → SystemTypeSet:bevy_pbr::render::light::per_view_shadow_pass<true>", "color"="#3363bb"]
+	"node_System(SystemKey(14v1))" -> "node_System(SystemKey(8v1))" ["lhead"="", "ltail"="", "tooltip"="bloom → SystemTypeSet:bevy_core_pipeline::tonemapping::node::tonemapping", "color"="#22c2bb"]
+	"set_marker_node_Set(SystemSetKey(3v1))" -> "set_marker_node_Set(SystemSetKey(4v1))" ["lhead"="clusternode_Set(SystemSetKey(4v1))", "ltail"="clusternode_Set(SystemSetKey(3v1))", "tooltip"="EarlyPostProcess → PostProcess", "color"="#99d955"]
+	"node_System(SystemKey(26v1))" -> "node_System(SystemKey(6v1))" ["lhead"="", "ltail"="", "tooltip"="deferred_lighting → SystemTypeSet:bevy_core_pipeline::core_3d::main_opaque_pass_3d_node::main_opaque_pass_3d", "color"="#eede00"]
+	"node_System(SystemKey(6v1))" -> "node_System(SystemKey(7v1))" ["lhead"="", "ltail"="", "tooltip"="main_opaque_pass_3d → main_transparent_pass_3d", "color"="#881877"]
+	"node_System(SystemKey(23v1))" -> "set_marker_node_Set(SystemSetKey(3v1))" ["lhead"="clusternode_Set(SystemSetKey(3v1))", "ltail"="", "tooltip"="volumetric_fog → EarlyPostProcess", "color"="#00b0cc"]
+	"node_System(SystemKey(1v1))" -> "node_System(SystemKey(2v1))" ["lhead"="", "ltail"="", "tooltip"="early_prepass → early_deferred_prepass", "color"="#aa3a55"]
+	"node_System(SystemKey(24v1))" -> "node_System(SystemKey(6v1))" ["lhead"="", "ltail"="", "tooltip"="screen_space_reflections → SystemTypeSet:bevy_core_pipeline::core_3d::main_opaque_pass_3d_node::main_opaque_pass_3d", "color"="#44d488"]
+	"node_System(SystemKey(6v1))" -> "node_System(SystemKey(25v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet:bevy_core_pipeline::core_3d::main_opaque_pass_3d_node::main_opaque_pass_3d → main_transmissive_pass_3d", "color"="#0090cc"]
+	"set_marker_node_Set(SystemSetKey(4v1))" -> "node_System(SystemKey(9v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(4v1))", "tooltip"="PostProcess → upscaling", "color"="#ee9e44"]
+	"node_System(SystemKey(30v1))" -> "<missing> main_build_indirect_parameters" ["lhead"="", "ltail"="", "tooltip"="shared_shadow_pass<true> → SystemTypeSet:bevy_pbr::render::gpu_preprocess::main_build_indirect_parameters", "color"="#663699"]
+	"node_System(SystemKey(15v1))" -> "node_System(SystemKey(14v1))" ["lhead"="", "ltail"="", "tooltip"="motion_blur → SystemTypeSet:bevy_post_process::bloom::bloom", "color"="#3363bb"]
+	"node_System(SystemKey(16v1))" -> "node_System(SystemKey(8v1))" ["lhead"="", "ltail"="", "tooltip"="depth_of_field → SystemTypeSet:bevy_core_pipeline::tonemapping::node::tonemapping", "color"="#22c2bb"]
+	"node_System(SystemKey(17v1))" -> "node_System(SystemKey(8v1))" ["lhead"="", "ltail"="", "tooltip"="post_processing → SystemTypeSet:bevy_core_pipeline::tonemapping::node::tonemapping", "color"="#99d955"]
+	"<missing> late_prepass_build_indirect_parameters" -> "node_System(SystemKey(30v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet:bevy_pbr::render::gpu_preprocess::late_prepass_build_indirect_parameters → shared_shadow_pass<true>", "color"="#eede00"]
+	"set_marker_node_Set(SystemSetKey(2v1))" -> "node_System(SystemKey(23v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="MainPass → volumetric_fog", "color"="#881877"]
+	"<missing> early_prepass_build_indirect_parameters" -> "node_System(SystemKey(27v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet:bevy_pbr::render::gpu_preprocess::early_prepass_build_indirect_parameters → per_view_shadow_pass<false>", "color"="#00b0cc"]
+	"node_System(SystemKey(13v1))" -> "set_marker_node_Set(SystemSetKey(2v1))" ["lhead"="clusternode_Set(SystemSetKey(2v1))", "ltail"="", "tooltip"="msaa_writeback → MainPass", "color"="#aa3a55"]
+	"node_System(SystemKey(7v1))" -> "node_System(SystemKey(10v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet:bevy_core_pipeline::core_3d::main_transparent_pass_3d_node::main_transparent_pass_3d → oit_resolve", "color"="#44d488"]
+	"node_System(SystemKey(18v1))" -> "node_System(SystemKey(21v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet:bevy_anti_alias::fxaa::node::fxaa → cas", "color"="#0090cc"]
+	"node_System(SystemKey(19v1))" -> "node_System(SystemKey(21v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet:bevy_anti_alias::smaa::smaa → cas", "color"="#ee9e44"]
+	"node_System(SystemKey(14v1))" -> "node_System(SystemKey(16v1))" ["lhead"="", "ltail"="", "tooltip"="SystemTypeSet:bevy_post_process::bloom::bloom → depth_of_field", "color"="#663699"]
+	"set_marker_node_Set(SystemSetKey(4v1))" -> "node_System(SystemKey(22v1))" ["lhead"="", "ltail"="clusternode_Set(SystemSetKey(4v1))", "tooltip"="PostProcess → ui_pass", "color"="#3363bb"]
+	"node_System(SystemKey(22v1))" -> "node_System(SystemKey(9v1))" ["lhead"="", "ltail"="", "tooltip"="ui_pass → SystemTypeSet:bevy_core_pipeline::upscaling::node::upscaling", "color"="#22c2bb"]
+}

@@ -1,0 +1,61 @@
+digraph "" {
+	"compound"="true";
+	"splines"="spline";
+	"rankdir"="LR";
+	"bgcolor"="white";
+	"fontname"="Helvetica";
+	"nodesep"="0.15";
+	edge ["penwidth"="2"];
+	node ["shape"="box", "style"="filled"];
+	subgraph "clusternode_Set(SystemSetKey(1v1))" {
+		"style"="rounded,filled";
+		"label"="Begin";
+		"tooltip"="Begin";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(SystemSetKey(1v1))" ["style"="invis", "label"="", "shape"="point"]
+	}
+	
+	subgraph "clusternode_Set(SystemSetKey(2v1))" {
+		"style"="rounded,filled";
+		"label"="Render";
+		"tooltip"="Render";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(SystemSetKey(2v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(1v1))" ["label"="camera_driver", "tooltip"="bevy_core_pipeline::schedule::camera_driver", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+	}
+	
+	subgraph "clusternode_Set(SystemSetKey(3v1))" {
+		"style"="rounded,filled";
+		"label"="Submit";
+		"tooltip"="Submit";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(SystemSetKey(3v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(2v1))" ["label"="submit_pending_command_buffers", "tooltip"="bevy_core_pipeline::schedule::submit_pending_command_buffers", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+		"node_System(SystemKey(3v1))" ["label"="handle_uncovered_swap_chains", "tooltip"="bevy_core_pipeline::schedule::handle_uncovered_swap_chains", "fillcolor"="#eff1f3", "fontname"="Helvetica", "fontcolor"="#15191d", "color"="#b4bec7", "penwidth"="1"]
+	}
+	
+	subgraph "clusternode_Set(SystemSetKey(4v1))" {
+		"style"="rounded,filled";
+		"label"="Finish";
+		"tooltip"="Finish";
+		"fillcolor"="#00000008";
+		"fontcolor"="#000000";
+		"color"="#00000040";
+		"penwidth"="2";
+		"set_marker_node_Set(SystemSetKey(4v1))" ["style"="invis", "label"="", "shape"="point"]
+	}
+	
+	"set_marker_node_Set(SystemSetKey(1v1))" -> "set_marker_node_Set(SystemSetKey(2v1))" ["lhead"="clusternode_Set(SystemSetKey(2v1))", "ltail"="clusternode_Set(SystemSetKey(1v1))", "tooltip"="Begin → Render", "color"="#eede00"]
+	"set_marker_node_Set(SystemSetKey(3v1))" -> "set_marker_node_Set(SystemSetKey(4v1))" ["lhead"="clusternode_Set(SystemSetKey(4v1))", "ltail"="clusternode_Set(SystemSetKey(3v1))", "tooltip"="Submit → Finish", "color"="#881877"]
+	"set_marker_node_Set(SystemSetKey(2v1))" -> "set_marker_node_Set(SystemSetKey(3v1))" ["lhead"="clusternode_Set(SystemSetKey(3v1))", "ltail"="clusternode_Set(SystemSetKey(2v1))", "tooltip"="Render → Submit", "color"="#00b0cc"]
+	"node_System(SystemKey(2v1))" -> "node_System(SystemKey(3v1))" ["lhead"="", "ltail"="", "tooltip"="submit_pending_command_buffers → handle_uncovered_swap_chains", "color"="#aa3a55"]
+}

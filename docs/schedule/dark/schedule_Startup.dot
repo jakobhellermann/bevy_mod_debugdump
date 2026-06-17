@@ -7,5 +7,6 @@ digraph "" {
 	"nodesep"="0.15";
 	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled"];
-	"node_System(SystemKey(1v1))" ["label"="spawn_mouse_pointer", "tooltip"="bevy_picking::input::spawn_mouse_pointer"]
+	"node_System(SystemKey(1v1))" ["label"="spawn_gizmo_meshes", "tooltip"="bevy_gizmos_render::transform_gizmo_render::spawn_gizmo_meshes"]
+	"node_System(SystemKey(2v1))" ["label"="spawn_mouse_pointer", "tooltip"="bevy_picking::input::spawn_mouse_pointer"]
 }

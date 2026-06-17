@@ -21,7 +21,7 @@ digraph "" {
 		"node_System(SystemKey(3v1))" ["label"="sync_simple_transforms", "tooltip"="bevy_transform::systems::sync_simple_transforms", "fillcolor"="#ffe7b9", "fontname"="Helvetica", "fontcolor"="#322100", "color"="#ffc453", "penwidth"="1"]
 	}
 	
-	subgraph "clusternode_Set(SystemSetKey(6v1))" {
+	subgraph "clusternode_Set(SystemSetKey(7v1))" {
 		"style"="rounded,filled";
 		"label"="CameraUpdateSystems";
 		"tooltip"="CameraUpdateSystems";
@@ -29,10 +29,11 @@ digraph "" {
 		"fontcolor"="#000000";
 		"color"="#00000040";
 		"penwidth"="2";
-		"set_marker_node_Set(SystemSetKey(6v1))" ["style"="invis", "label"="", "shape"="point"]
-		"node_System(SystemKey(4v1))" ["label"="camera_system", "tooltip"="bevy_render::camera::camera_system", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
+		"set_marker_node_Set(SystemSetKey(7v1))" ["style"="invis", "label"="", "shape"="point"]
+		"node_System(SystemKey(5v1))" ["label"="camera_system", "tooltip"="bevy_render::camera::camera_system", "fillcolor"="#70b9fc", "fontname"="Helvetica", "fontcolor"="#011a31", "color"="#0c88f9", "penwidth"="1"]
 	}
 	
+	"node_System(SystemKey(4v1))" ["label"="set_initial_focus", "tooltip"="bevy_input_focus::set_initial_focus"]
 	"node_System(SystemKey(1v1))" -> "node_System(SystemKey(2v1))" ["lhead"="", "ltail"="", "tooltip"="mark_dirty_trees → propagate_parent_transforms", "color"="#eede00"]
 	"node_System(SystemKey(2v1))" -> "node_System(SystemKey(3v1))" ["lhead"="", "ltail"="", "tooltip"="propagate_parent_transforms → sync_simple_transforms", "color"="#881877"]
 }

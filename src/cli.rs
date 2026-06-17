@@ -13,10 +13,6 @@ use crate::{schedule_graph, schedule_graph_dot};
 
 /// Check the command line for arguments relevant to this crate.
 ///
-/// ## Dump the render graph
-///
-/// Use `dump-render <file.dot>` to dump the render graph.
-///
 /// ## Dump the schedule graph
 ///
 /// Use `dump-update-schedule <file.dot>` to dump the `Update` schedule graph.
@@ -114,8 +110,7 @@ fn parse_args() -> Result<Args, lexopt::Error> {
             Long("help") => {
                 info!(
                     "Usage:\n\
-                    dump-schedule <schedule_name> \n\
-                    dump-render \n\n\
+                    dump-schedule <schedule_name> \n\n\
                       -o, --output  Write output to file instead of printing to stdout\n\
                       --no-exit     Do not exit after performing debugdump actions"
                 );
