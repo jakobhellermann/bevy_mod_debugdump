@@ -7,10 +7,13 @@ digraph "" {
 	"nodesep"="0.15";
 	edge ["penwidth"="2"];
 	node ["shape"="box", "style"="filled"];
-	"node_System(SystemKey(1v1))" ["label"="close_when_requested", "tooltip"="bevy_window::system::close_when_requested"]
-	"node_System(SystemKey(2v1))" ["label"="TerminalCtrlCHandlerPlugin::exit_on_flag", "tooltip"="bevy_app::terminal_ctrl_c_handler::TerminalCtrlCHandlerPlugin::exit_on_flag"]
-	"node_System(SystemKey(3v1))" ["label"="trigger_screenshots", "tooltip"="bevy_render::view::window::screenshot::trigger_screenshots"]
+	"node_System(SystemKey(1v1))" ["label"="TerminalCtrlCHandlerPlugin::exit_on_flag", "tooltip"="bevy_app::terminal_ctrl_c_handler::TerminalCtrlCHandlerPlugin::exit_on_flag"]
+	"node_System(SystemKey(2v1))" ["label"="trigger_screenshots", "tooltip"="bevy_render::view::window::screenshot::trigger_screenshots"]
+	"node_System(SystemKey(3v1))" ["label"="automatically_add_parallax_correction_components", "tooltip"="bevy_light::probe::automatically_add_parallax_correction_components"]
 	"node_System(SystemKey(4v1))" ["label"="check_msaa", "tooltip"="bevy_core_pipeline::oit::check_msaa"]
 	"node_System(SystemKey(5v1))" ["label"="update_tilemap_chunk_indices", "tooltip"="bevy_sprite_render::tilemap_chunk::update_tilemap_chunk_indices"]
 	"node_System(SystemKey(6v1))" ["label"="prepare_atmosphere_probe_components", "tooltip"="bevy_pbr::atmosphere::environment::prepare_atmosphere_probe_components"]
+	"node_System(SystemKey(7v1))" ["label"="menu_acquire_focus", "tooltip"="bevy_ui_widgets::menu::menu_acquire_focus"]
+	"node_System(SystemKey(8v1))" ["label"="menu_on_lose_focus", "tooltip"="bevy_ui_widgets::menu::menu_on_lose_focus"]
+	"node_System(SystemKey(7v1))" -> "node_System(SystemKey(8v1))" ["lhead"="", "ltail"="", "tooltip"="menu_acquire_focus → menu_on_lose_focus", "color"="#eede00"]
 }

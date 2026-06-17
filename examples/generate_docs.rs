@@ -18,11 +18,8 @@ use bevy_render::{
 fn main() -> Result<(), std::io::Error> {
     let docs_path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("docs");
     let schedule_path = docs_path.join("schedule");
-    let render_path = docs_path.join("render");
     std::fs::create_dir_all(schedule_path.join("light"))?;
     std::fs::create_dir_all(schedule_path.join("dark"))?;
-    std::fs::create_dir_all(render_path.join("light"))?;
-    std::fs::create_dir_all(render_path.join("dark"))?;
 
     let mut app = App::new();
     app.add_plugins(DefaultPlugins);

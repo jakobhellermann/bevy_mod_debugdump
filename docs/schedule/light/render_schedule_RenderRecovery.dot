@@ -1,0 +1,13 @@
+digraph "" {
+	"compound"="true";
+	"splines"="spline";
+	"rankdir"="LR";
+	"bgcolor"="white";
+	"fontname"="Helvetica";
+	"nodesep"="0.15";
+	edge ["penwidth"="2"];
+	node ["shape"="box", "style"="filled"];
+	"node_System(SystemKey(1v1))" ["label"="run_render_schedule", "tooltip"="bevy_render::run_render_schedule"]
+	"node_System(SystemKey(2v1))" ["label"="send_time", "tooltip"="bevy_render::send_time"]
+	"node_System(SystemKey(1v1))" -> "node_System(SystemKey(2v1))" ["lhead"="", "ltail"="", "tooltip"="run_render_schedule → send_time", "color"="#eede00"]
+}
