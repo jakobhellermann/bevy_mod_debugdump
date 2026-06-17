@@ -9,8 +9,6 @@ use bevy_ecs::{
 use bevy_log::{error, info};
 use std::io::Write;
 
-#[cfg(feature = "render_graph")]
-use crate::{render_graph, render_graph_dot};
 use crate::{schedule_graph, schedule_graph_dot};
 
 /// Check the command line for arguments relevant to this crate.
@@ -82,8 +80,6 @@ struct Args {
 /// A command to execute from the CLI.
 enum ArgsCommand {
     None,
-    /// Dumps the render graph to the specified file path.
-    DumpRender,
     /// Dumps the schedule graph.
     DumpSchedule {
         /// The schedule to dump.
@@ -109,8 +105,6 @@ fn parse_args() -> Result<Args, lexopt::Error> {
                 if value == "dump-schedule" {
                     let schedule = parser.value()?.parse()?;
                     command = ArgsCommand::DumpSchedule { schedule };
-                } else if value == "dump-render" {
-                    command = ArgsCommand::DumpRender;
                 } else {
                     return Err(arg.unexpected());
                 }
@@ -163,18 +157,6 @@ fn execute_cli(app: &mut App) -> Result<Args> {
             args.exit = false;
             Ok(args)
         }
-        #[cfg(feature = "render_graph")]
-        ArgsCommand::DumpRender => {
-            let settings = render_graph::Settings::default();
-            write(&render_graph_dot(app, &settings))?;
-
-            Ok(args)
-        }
-        #[cfg(not(feature = "render_graph"))]
-        ArgsCommand::DumpRender => Err(
-            "cannot dump renderer, consider enabling the feature `bevy_mod_debugdump/render_graph"
-                .into(),
-        ),
         ArgsCommand::DumpSchedule { schedule } => {
             let schedule = find_schedule(app, schedule)?;
 

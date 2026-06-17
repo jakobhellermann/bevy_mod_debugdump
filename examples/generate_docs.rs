@@ -1,8 +1,7 @@
 use std::{any::TypeId, path::PathBuf};
 
 use bevy::{
-    core_pipeline::core_3d::Transmissive3d,
-    pbr::{MeshInputUniform, MeshUniform},
+    pbr::{MeshInputUniform, MeshUniform, Transmissive3d},
     prelude::*,
     render::RenderApp,
 };
@@ -117,18 +116,6 @@ fn main() -> Result<(), std::io::Error> {
                 Ok::<(), std::io::Error>(())
             })
     })?;
-
-    let settings_render_light = bevy_mod_debugdump::render_graph::Settings {
-        style: bevy_mod_debugdump::render_graph::settings::Style::light(),
-    };
-    let settings_render_dark = bevy_mod_debugdump::render_graph::Settings {
-        style: bevy_mod_debugdump::render_graph::settings::Style::dark_github(),
-    };
-    let dot_light = bevy_mod_debugdump::render_graph_dot(&app, &settings_render_light);
-    let dot_dark = bevy_mod_debugdump::render_graph_dot(&app, &settings_render_dark);
-    let filename = "render_graph.dot";
-    std::fs::write(render_path.join("light").join(filename), dot_light)?;
-    std::fs::write(render_path.join("dark").join(filename), dot_dark)?;
 
     Ok(())
 }

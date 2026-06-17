@@ -1,5 +1,3 @@
-#![cfg_attr(not(feature = "render_graph"), allow(dead_code))]
-
 use std::borrow::Cow;
 pub struct DotGraph {
     buffer: String,
@@ -39,6 +37,11 @@ fn format_attributes(attrs: &[(&str, &str)]) -> String {
     let attrs = attrs.join(", ");
     format!("[{attrs}]")
 }
+
+#[expect(
+    unused,
+    reason = "was used for rendering render graphs, which were removed in Bevy 0.19"
+)]
 pub fn font_tag(text: &str, color: &str, size: u8) -> String {
     if text.is_empty() {
         return "".to_string();
@@ -74,6 +77,10 @@ impl DotGraph {
         dot
     }
 
+    #[expect(
+        unused,
+        reason = "was used for rendering render graphs, which were removed in Bevy 0.19"
+    )]
     pub fn digraph(name: &str, options: &[(&str, &str)]) -> DotGraph {
         DotGraph::new(name, "digraph", options)
     }
