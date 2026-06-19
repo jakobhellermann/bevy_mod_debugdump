@@ -69,6 +69,7 @@ See all schedules at [docs/schedule](./docs/schedule/README.md).
 
 |bevy|bevy\_mod\_debugdump|
 |---|---|
+|0.19|0.16|
 |0.18|0.15|
 |0.17|0.14|
 |0.16|0.13|
