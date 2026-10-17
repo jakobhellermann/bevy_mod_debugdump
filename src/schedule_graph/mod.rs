@@ -494,7 +494,7 @@ impl ScheduleGraphContext<'_> {
         use std::sync::atomic::Ordering;
         let (Ok(idx) | Err(idx)) =
             self.color_edge_idx
-                .fetch_update(Ordering::SeqCst, Ordering::SeqCst, |a| {
+                .try_update(Ordering::SeqCst, Ordering::SeqCst, |a| {
                     Some((a + 1) % self.settings.style.color_edge.len())
                 });
 
