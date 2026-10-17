@@ -156,6 +156,13 @@
 <img alt="ExtractSchedule" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/render_schedule_ExtractSchedule.dot.svg">
 </picture>
 
+## First
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/dark/render_schedule_First.dot.svg">
+<img alt="First" src="https://raw.githubusercontent.com/jakobhellermann/bevy_mod_debugdump/main/docs/schedule/light/render_schedule_First.dot.svg">
+</picture>
+
 ## Render
 
 <picture>

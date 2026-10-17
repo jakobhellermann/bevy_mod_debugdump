@@ -12,8 +12,5 @@ digraph "" {
 	"node_System(SystemKey(3v1))" ["label"="automatically_add_parallax_correction_components", "tooltip"="bevy_light::probe::automatically_add_parallax_correction_components"]
 	"node_System(SystemKey(4v1))" ["label"="check_msaa", "tooltip"="bevy_core_pipeline::oit::check_msaa"]
 	"node_System(SystemKey(5v1))" ["label"="update_tilemap_chunk_indices", "tooltip"="bevy_sprite_render::tilemap_chunk::update_tilemap_chunk_indices"]
-	"node_System(SystemKey(6v1))" ["label"="prepare_atmosphere_probe_components", "tooltip"="bevy_pbr::atmosphere::environment::prepare_atmosphere_probe_components"]
-	"node_System(SystemKey(7v1))" ["label"="menu_acquire_focus", "tooltip"="bevy_ui_widgets::menu::menu_acquire_focus"]
-	"node_System(SystemKey(8v1))" ["label"="menu_on_lose_focus", "tooltip"="bevy_ui_widgets::menu::menu_on_lose_focus"]
-	"node_System(SystemKey(7v1))" -> "node_System(SystemKey(8v1))" ["lhead"="", "ltail"="", "tooltip"="menu_acquire_focus → menu_on_lose_focus", "color"="#eede00"]
+	"node_System(SystemKey(6v1))" ["label"="sync_dialog_z", "tooltip"="bevy_ui_widgets::dialog::sync_dialog_z"]
 }
